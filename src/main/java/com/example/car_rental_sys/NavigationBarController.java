@@ -1,28 +1,40 @@
 package com.example.car_rental_sys;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
-public class NavigationBar {
+public class NavigationBarController {
     @FXML
     private ImageView closeIconBtn;
+
+    @FXML
+    private ImageView logoImage;
 
     @FXML
     private Pane navBarPanel;
 
     @FXML
+    public static NavigationBarController navigationBarControllerInstance;
+
+    @FXML
     private void initialize() {
 //        System.out.println("Hello World!");
         dragAndDrop();
+        navigationBarControllerInstance = this;
     }
 
     @FXML
-    private String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/";
+    private final String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
     @FXML
     private void contactBtnClick() {
@@ -30,13 +42,22 @@ public class NavigationBar {
     }
 
     @FXML
-    private void carsBtnClick() {
-        System.out.println("carsBtnClick");
+    private void aboutBtnClick() {
+        System.out.println("aboutBtnClick");
     }
 
     @FXML
-    private void homeBtnClick() {
-        System.out.println("homeBtnClick");
+    private void homeBtnClick(ActionEvent actionEvent) {
+        //System.out.println("homeBtnClick");
+        Pane pane  = null;
+        try {
+            URL url = getClass().getResource("fxml/mainPage.fxml");
+            assert url != null;
+            pane = FXMLLoader.load(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ((Button)actionEvent.getSource()).getScene().setRoot(pane);
     }
 
     @FXML
@@ -80,5 +101,20 @@ public class NavigationBar {
             HelloApplication.stageInstance.setX(event.getScreenX() + locationX);
             HelloApplication.stageInstance.setY(event.getScreenY() + locationY);
         });
+    }
+
+    @FXML
+    public void changeLogoImage(String type){
+//        System.out.println(type + "lallala");
+        String fileUrl = null;
+        if (type.equalsIgnoreCase("green")){
+            fileUrl = imagefolderRoot + "/logo_dark.png" ;
+        }else if (type.equalsIgnoreCase("blue")){
+            fileUrl = imagefolderRoot +"/logo_dark_blue.png";
+        }
+        assert fileUrl != null;
+        File file = new File(fileUrl);
+        Image image = new Image(file.toURI().toString());
+        logoImage.setImage(image);
     }
 }

@@ -10,8 +10,8 @@
 
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="832.0" prefWidth="1280.0"
-      style="-fx-background-color: #525252;" stylesheets="@mainPage.css" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.mainPageController">
+      style="-fx-background-color: #525252;" stylesheets="@../style/mainPage.css" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.MainPageController">
     <Pane prefHeight="832.0" prefWidth="380.0" style="-fx-background-color: #1b1b1b;">
         <Label layoutX="95.0" layoutY="137.0" text="100+" textFill="WHITE">
             <font>
@@ -37,7 +37,7 @@
     <Pane layoutX="900.0" prefHeight="832.0" prefWidth="380.0" style="-fx-background-color: #1b1b1b;">
         <ImageView fitHeight="70.0" fitWidth="200.0" layoutX="246.0" layoutY="612.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@image/mouseScrollDown.png"/>
+            <Image url="@../image/UI/mouseScrollDown.png"/>
         </ImageView>
         <Label fx:id="introLabel" layoutX="40.0" layoutY="181.0" text="introText" textFill="#bcbcbc">
             <font>
@@ -47,7 +47,7 @@
     </Pane>
     <ImageView fx:id="carImage" fitHeight="380.0" fitWidth="1046.0" layoutX="117.0" layoutY="257.0" pickOnBounds="true"
                preserveRatio="true">
-        <Image url="@image/600LT-Spider-rg1.png"/>
+        <Image url="@../image/UI/600LT-Spider-rg1.png"/>
     </ImageView>
     <Label layoutX="448.0" layoutY="116.0" prefHeight="48.0" prefWidth="384.0" text="Rent the best" textFill="WHITE">
         <font>
@@ -76,15 +76,15 @@
                   style="-fx-fill: white;"/>
             <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="31.0" layoutY="26.0" pickOnBounds="true"
                        preserveRatio="true">
-                <Image url="@image/position.png"/>
+                <Image url="@../image/UI/position.png"/>
             </ImageView>
             <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="313.0" layoutY="26.0" pickOnBounds="true"
                        preserveRatio="true">
-                <Image url="@image/position.png"/>
+                <Image url="@../image/UI/position.png"/>
             </ImageView>
             <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="593.0" layoutY="26.0" pickOnBounds="true"
                        preserveRatio="true">
-                <Image url="@image/position.png"/>
+                <Image url="@../image/UI/position.png"/>
             </ImageView>
             <Label layoutX="85.0" layoutY="21.0" onMouseClicked="#locationBtnClick"
                    fx:id="locationBtn"
@@ -133,45 +133,7 @@
             <Font name="System Bold" size="14.0"/>
         </font>
     </Button>
-    <Pane fx:id="navBarPanel" prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
-        <Button layoutX="1012.0" layoutY="30.0" mnemonicParsing="false"
-                onAction="#contactBtnClick" prefHeight="45.0" prefWidth="163.0"
-                style="-fx-background-radius: 10; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.1), 40, 0.3, 0, 20);"
-                styleClass="contactUs"
-                text="Contact Us">
-            <font>
-                <Font name="System Bold" size="14.0"/>
-            </font>
-        </Button>
-        <Button layoutX="734.0" layoutY="37.0" mnemonicParsing="false" onAction="#carsBtnClick" prefHeight="30.0"
-                prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;"
-                styleClass="navBtn" text="Cars">
-            <font>
-                <Font name="System Bold" size="14.0"/>
-            </font>
-        </Button>
-        <Button layoutX="454.0" layoutY="36.0" mnemonicParsing="false" onAction="#homeBtnClick" prefHeight="30.0"
-                prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;"
-                styleClass="navBtn" text="Home">
-            <font>
-                <Font name="System Bold" size="14.0"/>
-            </font>
-        </Button>
-        <Button layoutX="590.0" layoutY="35.0" mnemonicParsing="false" onAction="#serviceBtnClick" prefHeight="30.0"
-                prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;"
-                styleClass="navBtn" text="Services">
-            <font>
-                <Font name="System Bold" size="14.0"/>
-            </font>
-        </Button>
-        <ImageView fx:id="logoImage" fitHeight="41.0" fitWidth="170.0" layoutX="94.0" layoutY="35.0"
-                   pickOnBounds="true" preserveRatio="true">
-            <Image url="@image/logo_dark.png"/>
-        </ImageView>
-        <ImageView fx:id="closeIconBtn" fitHeight="150.0" fitWidth="25.0" layoutX="1229.0" layoutY="40.0"
-                   onMouseClicked="#closeIconBtnClicked" onMouseEntered="#changeImageToHover"
-                   onMouseExited="#changeImageToClose" pickOnBounds="true" preserveRatio="true">
-            <Image url="@image/closeIcon.png"/>
-        </ImageView>
+    <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
+        <fx:include source="navigationBar.fxml" />
     </Pane>
 </Pane>

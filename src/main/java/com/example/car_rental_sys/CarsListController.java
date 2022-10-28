@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
-public class carsListController {
+public class CarsListController {
     @FXML
     private ScrollPane scrollPane;
 
@@ -19,7 +19,7 @@ public class carsListController {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(1270);
 
-        ArrayList<String[]> carsData = FileOperate.readFileToArray(config.carsDataPath);
+        ArrayList<String[]> carsData = FileOperate.readFileToArray(Config.carsDataPath);
         for (String[] carData :carsData
                 ) {
             CarCard carCard = new CarCard(carData[0],carData[1],carData[2],carData[3],carData[4],carData[5]);

@@ -13,13 +13,13 @@
       style="-fx-background-color: transparent;"
       xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
-      fx:controller="com.example.car_rental_sys.NavigationBar">
+      fx:controller="com.example.car_rental_sys.NavigationBarController">
     <Button layoutX="1012.0" layoutY="30.0" mnemonicParsing="false" onAction="#contactBtnClick" prefHeight="45.0" prefWidth="163.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.1), 40, 0.3, 0, 20);" styleClass="contactUs" text="Contact Us">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>
     </Button>
-    <Button layoutX="734.0" layoutY="37.0" mnemonicParsing="false" onAction="#carsBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;" styleClass="navBtn" text="Cars">
+    <Button layoutX="734.0" layoutY="37.0" mnemonicParsing="false" onAction="#aboutBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;" styleClass="navBtn" text="About">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>
@@ -35,9 +35,9 @@
         </font>
     </Button>
     <ImageView fx:id="logoImage" fitHeight="41.0" fitWidth="170.0" layoutX="94.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@image/logo_dark.png" />
+        <Image url="@../image/UI/logo_dark.png" />
     </ImageView>
     <ImageView fx:id="closeIconBtn" fitHeight="150.0" fitWidth="25.0" layoutX="1229.0" layoutY="40.0" onMouseClicked="#closeIconBtnClicked" onMouseEntered="#changeImageToHover" onMouseExited="#changeImageToClose" pickOnBounds="true" preserveRatio="true">
-        <Image url="@image/closeIcon.png" />
+        <Image url="@../image/UI/closeIcon.png" />
     </ImageView>
 </Pane>

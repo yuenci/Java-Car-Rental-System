@@ -29,3 +29,5 @@ Chevrolet_Corvette,2,6781,Automatic,#8c1d38,#d8bcc2
 Ferrari_California,2,7920,Manual,#bc8404,#dfb20a
 Maserati_GTS,2,5145,Manual,#312f35,#818691
 Terzo_Millennio,2,4704,Manual,#334d66,#87a2b6
+Toyota_GR_Supra,2,1988,Automatic,#dd1b23,#d46c6c
+Honda_Acura_NSX,2,4220,Automatic,#234064,#b5d1df

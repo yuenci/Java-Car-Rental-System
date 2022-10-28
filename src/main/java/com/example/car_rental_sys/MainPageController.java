@@ -2,15 +2,17 @@ package com.example.car_rental_sys;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,21 +22,13 @@ import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.Locale;
 
-public class mainPageController {
+public class MainPageController {
     @FXML
     private Pane mainPane;
 
     @FXML
-    private Pane navBarPanel;
-
-    @FXML
     private ImageView carImage;
 
-    @FXML
-    private ImageView logoImage;
-
-    @FXML
-    private ImageView closeIconBtn;
 
     @FXML
     private Button searchBtn;
@@ -61,7 +55,7 @@ public class mainPageController {
     private  Label returnDateBtn;
 
     @FXML
-    private String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/";
+    private String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
     @FXML
     private String[] carImageList = new String[]{"/600LT-Spider-rg1.png","/grearcar.png",
@@ -71,9 +65,8 @@ public class mainPageController {
 
     @FXML
     public void initialize() {
-        //System.out.println("init");
+            //System.out.println("init");
         addScrollEvent();
-        dragAndDrop();
         initDateTimeLabel();
         introLabel.setWrapText(true);
         String text =
@@ -168,16 +161,16 @@ public class mainPageController {
 
 
     @FXML
-    void changeStyle(String styleType){
-        if(styleType.equals("green")){
-            changeImage(imagefolderRoot +"logo_dark.png",logoImage);
+    public  void changeStyle(String styleType){
+        if(styleType.equalsIgnoreCase("green")){
+            NavigationBarController.navigationBarControllerInstance.changeLogoImage("green");
             changeClass(searchBtn,"searchBtnGreen");
             changeClass(openCatalogBtn,"openCatalogBtnGreen");
             changeClass(locationBtn,"operaBtnGreen");
             changeClass(pickUpDateBtn,"operaBtnGreen");
             changeClass(returnDateBtn,"operaBtnGreen");
-        }else if(styleType.equals("blue")){
-            changeImage(imagefolderRoot +"logo_dark_blue.png",logoImage);
+        }else if(styleType.equalsIgnoreCase("blue")){
+            NavigationBarController.navigationBarControllerInstance.changeLogoImage("blue");
             changeClass(searchBtn,"searchBtnBlue");
             changeClass(openCatalogBtn,"openCatalogBtnBlue");
             changeClass(locationBtn,"operaBtnBlue");
@@ -201,51 +194,18 @@ public class mainPageController {
 
 
     @FXML
-    void closeIconBtnClicked(MouseEvent event) {
-        System.exit(0);
-    }
+    void openCatalogBtnClick(ActionEvent actionEvent) {
+        //System.out.println("openCatalogBtnClick");
+        Pane pane  = null;
+        try {
+            URL url = getClass().getResource("fxml/carsList.fxml");
+            assert url != null;
+            pane = FXMLLoader.load(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ((Button)actionEvent.getSource()).getScene().setRoot(pane);
 
-    private double locationX,locationY;
-
-
-    @FXML
-    void dragAndDrop() {
-        navBarPanel.setOnMousePressed((MouseEvent event) -> {
-            locationX = HelloApplication.stageInstance.getX() - event.getScreenX();
-            locationY = HelloApplication.stageInstance.getY() - event.getScreenY();
-        });
-
-        navBarPanel.setOnMouseDragged((MouseEvent event) -> {
-            HelloApplication.stageInstance.setX(event.getScreenX() + locationX);
-            HelloApplication.stageInstance.setY(event.getScreenY() + locationY);
-        });
-    }
-
-
-
-    @FXML
-    void homeBtnClick(ActionEvent event) {
-        System.out.println("homeBtnClick");
-    }
-
-    @FXML
-    void carsBtnClick() {
-        System.out.println("carsBtnClick");
-    }
-
-    @FXML
-    void serviceBtnClick() {
-        System.out.println("serviceBtnClick");
-    }
-
-    @FXML
-    void contactBtnClick() {
-        System.out.println("contactBtnClick");
-    }
-
-    @FXML
-    void openCatalogBtnClick() {
-        System.out.println("openCatalogBtnClick");
     }
 
     @FXML
@@ -270,14 +230,5 @@ public class mainPageController {
         System.out.println("searchBtnClick");
     }
 
-    @FXML
-    public void changeImageToHover(MouseEvent mouseDragEvent) {
-        changeImage(imagefolderRoot +"/closeIconHover.png",closeIconBtn);
-    }
 
-    //changeImageToClose`
-    @FXML
-    public void changeImageToClose(MouseEvent mouseDragEvent) {
-        changeImage(imagefolderRoot +"/closeIcon.png",closeIconBtn);
-    }
 }
