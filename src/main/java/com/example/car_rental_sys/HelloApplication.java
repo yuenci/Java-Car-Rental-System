@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene( fxmlLoader.load(), width, height);
         stageInstance = stage;
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/logoIcon.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);

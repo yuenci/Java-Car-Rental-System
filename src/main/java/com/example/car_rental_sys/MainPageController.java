@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 
@@ -67,6 +68,7 @@ public class MainPageController {
     public void initialize() {
             //System.out.println("init");
         addScrollEvent();
+        addKeyPressEvent();
         initDateTimeLabel();
         introLabel.setWrapText(true);
         String text =
@@ -85,26 +87,45 @@ public class MainPageController {
             double deltaY = event.getDeltaY();
             //System.out.println(deltaY);
             if (deltaY < 0) {
-                int nextCarImageIndex = currentCarImageIndex + 1;
-                if(nextCarImageIndex >= carImageList.length){
-                    nextCarImageIndex = 0;
-                }
-                changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
-                currentCarImageIndex = nextCarImageIndex;
-                changeStyleAccordingIndex(currentCarImageIndex);
-
-//                System.out.println(carImageList[nextCarImageIndex]);
+                changeCardImage(1);
             }else{
-                int nextCarImageIndex = currentCarImageIndex - 1;
-                if(nextCarImageIndex < 0){
-                    nextCarImageIndex = carImageList.length - 1;
-                }
-                changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
-                currentCarImageIndex = nextCarImageIndex;
-                changeStyleAccordingIndex(currentCarImageIndex);
+                changeCardImage(-1);
             }
 
         });
+    }
+
+    void addKeyPressEvent() {
+        mainPane.setOnKeyReleased(e -> {
+            switch (e.getCode()) {
+                case DOWN: changeCardImage(1); break;
+                case UP: changeCardImage(-1); break;
+                case LEFT: changeCardImage(1); break;
+                case RIGHT: changeCardImage(-1); break;
+            }
+        });
+    }
+
+    void changeCardImage(int direction){
+        if (direction < 0) {
+            int nextCarImageIndex = currentCarImageIndex + 1;
+            if(nextCarImageIndex >= carImageList.length){
+                nextCarImageIndex = 0;
+            }
+            changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
+            currentCarImageIndex = nextCarImageIndex;
+            changeStyleAccordingIndex(currentCarImageIndex);
+
+//                System.out.println(carImageList[nextCarImageIndex]);
+        }else{
+            int nextCarImageIndex = currentCarImageIndex - 1;
+            if(nextCarImageIndex < 0){
+                nextCarImageIndex = carImageList.length - 1;
+            }
+            changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
+            currentCarImageIndex = nextCarImageIndex;
+            changeStyleAccordingIndex(currentCarImageIndex);
+        }
     }
 
     @FXML

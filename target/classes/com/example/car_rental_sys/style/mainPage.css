@@ -11,7 +11,7 @@
 
 .navBtn {
     -fx-text-fill:  red;
-    -fx-font-weight: bolder;
+    /*-fx-font-weight: bolder;*/
     -fx-background-color: #ACACE6;
 }
 
