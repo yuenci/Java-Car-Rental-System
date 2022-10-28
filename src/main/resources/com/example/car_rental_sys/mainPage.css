@@ -1,0 +1,77 @@
+/*.button:hover {*/
+/*    -fx-background-color: #383838;*/
+/*    -fx-scale-y: 1.1;*/
+/*}*/
+
+.navBtn:hover {
+    -fx-text-fill: black !important;
+    -fx-background-color: white !important;
+    -fx-cursor: hand;
+}
+
+.navBtn {
+    -fx-text-fill:  red;
+    -fx-font-weight: bolder;
+    -fx-background-color: #ACACE6;
+}
+
+.operaBtnGreen:hover {
+    -fx-text-fill: #CAE943;
+    -fx-cursor: hand;
+}
+
+.operaBtnBlue:hover {
+    -fx-text-fill: #1D90F4;
+    -fx-cursor: hand;
+}
+
+
+.searchBtnGreen{
+    -fx-background-radius: 10;
+    -fx-background-color: #CAE943;
+    -fx-effect: dropshadow(gaussian, rgba(202, 233, 67,0.1), 90, 0.7, 0, 0);
+    -fx-alignment: center;
+}
+
+.searchBtnBlue{
+    -fx-background-radius: 10;
+    -fx-background-color: #1D90F4;
+    -fx-effect: dropshadow(gaussian, rgba(29, 144, 244,0.1), 90, 0.7, 0, 0);
+    -fx-alignment: center;
+}
+
+.openCatalogBtnGreen{
+    -fx-background-radius: 10;
+    -fx-background-color: #CAE943;
+    -fx-effect: dropshadow(gaussian, rgba(202, 233, 67,0.3), 40, 0.3, 0, 20);
+    -fx-alignment: center;
+}
+
+.openCatalogBtnBlue{
+    -fx-background-radius: 10;
+    -fx-background-color: #1D90F4;
+    -fx-effect: dropshadow(gaussian, rgba(29, 144, 244,0.3), 40, 0.3, 0, 20);
+    -fx-alignment: center;
+}
+
+.contactUs:hover{
+    -fx-background-color: #818181 !important;
+    -fx-text-fill: white !important;
+    -fx-cursor: hand;
+}
+
+.openCatalogBtnGreen:hover, .searchBtnGreen:hover {
+    -fx-background-color: #7EB712 !important;
+    -fx-text-fill: white !important;
+    -fx-cursor: hand;
+}
+
+.openCatalogBtnBlue:hover, .searchBtnBlue:hover {
+    -fx-background-color: #165DFF !important;
+    -fx-text-fill: white !important;
+    -fx-cursor: hand;
+}
+
+#closeIconBtn:hover{
+    -fx-cursor: hand;
+}
