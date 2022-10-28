@@ -16,7 +16,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainPage01.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("carsList.fxml"));
 
         double width = 1280;
         double height = 832;
@@ -28,7 +29,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene( fxmlLoader.load(), width, height);
         stageInstance = stage;
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image("https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/logoIcon.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/logoIcon.png"));
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);

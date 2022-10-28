@@ -275,7 +275,7 @@ public class mainPageController {
         changeImage(imagefolderRoot +"/closeIconHover.png",closeIconBtn);
     }
 
-    //changeImageToClose
+    //changeImageToClose`
     @FXML
     public void changeImageToClose(MouseEvent mouseDragEvent) {
         changeImage(imagefolderRoot +"/closeIcon.png",closeIconBtn);
