@@ -1,136 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="832.0" prefWidth="1280.0"
-      style="-fx-background-color: #525252;" stylesheets="@../style/mainPage.css" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.MainPageController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #525252;" stylesheets="@../style/mainPage.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="com.example.car_rental_sys.MainPageController">
     <Pane prefHeight="832.0" prefWidth="380.0" style="-fx-background-color: #1b1b1b;">
         <Label layoutX="95.0" layoutY="137.0" text="100+" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="30.0"/>
+                <Font name="System Bold" size="30.0" />
             </font>
         </Label>
         <Label layoutX="95.0" layoutY="182.0" text="Types of machines" textFill="#bcbcbc">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
         <Label layoutX="95.0" layoutY="280.0" text="20K+" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="30.0"/>
+                <Font name="System Bold" size="30.0" />
             </font>
         </Label>
         <Label layoutX="95.0" layoutY="325.0" text="Clients served" textFill="#bcbcbc">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
     </Pane>
     <Pane layoutX="900.0" prefHeight="832.0" prefWidth="380.0" style="-fx-background-color: #1b1b1b;">
-        <ImageView fitHeight="70.0" fitWidth="200.0" layoutX="246.0" layoutY="612.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../image/UI/mouseScrollDown.png"/>
+        <ImageView fitHeight="70.0" fitWidth="200.0" layoutX="246.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/mouseScrollDown.png" />
         </ImageView>
-        <Label fx:id="introLabel" layoutX="40.0" layoutY="181.0" text="introText" textFill="#bcbcbc">
+        <Label fx:id="introLabel" layoutX="40.0" layoutY="159.0" text="introText" textFill="#bcbcbc">
             <font>
-                <Font size="16.0"/>
+                <Font size="16.0" />
             </font>
         </Label>
     </Pane>
-    <ImageView fx:id="carImage" fitHeight="380.0" fitWidth="1046.0" layoutX="117.0" layoutY="257.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../image/UI/600LT-Spider-rg1.png"/>
+    <ImageView fx:id="carImage" fitHeight="380.0" fitWidth="1046.0" layoutX="117.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../image/UI/600LT-Spider-rg1.png" />
     </ImageView>
     <Label layoutX="448.0" layoutY="116.0" prefHeight="48.0" prefWidth="384.0" text="Rent the best" textFill="WHITE">
         <font>
-            <Font size="60.0"/>
+            <Font size="60.0" />
         </font>
     </Label>
     <Label layoutX="589.0" layoutY="186.0" text="cars" textFill="WHITE">
         <font>
-            <Font size="60.0"/>
+            <Font size="60.0" />
         </font>
     </Label>
-    <Pane layoutY="707.0" prefHeight="125.0" prefWidth="1280.0"
-          style="-fx-background-color: #303030; -fx-background-radius: 50 50 0 0;">
-        <Pane layoutX="85.0" layoutY="42.0" prefHeight="83.0" prefWidth="1110.0"
-              style="-fx-background-color: #484848; -fx-background-radius: 20 20 0 0;">
-            <Button fx:id="searchBtn" layoutX="961.0" layoutY="14.0" mnemonicParsing="false"
-                    onAction="#searchBtnClick" prefHeight="56.0" prefWidth="126.0" styleClass="searchBtnGreen"
-                    text="Search">
+    <Pane layoutY="707.0" prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: #303030; -fx-background-radius: 50 50 0 0;">
+        <Pane layoutX="85.0" layoutY="42.0" prefHeight="83.0" prefWidth="1110.0" style="-fx-background-color: #484848; -fx-background-radius: 20 20 0 0;">
+            <Button fx:id="searchBtn" layoutX="961.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchBtnClick" prefHeight="56.0" prefWidth="126.0" styleClass="searchBtnGreen" text="Search">
                 <font>
-                    <Font name="System Bold" size="14.0"/>
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Button>
-            <Line endX="100.0" layoutX="176.0" layoutY="68.0" startX="100.0" startY="-47.0" stroke="WHITE"
-                  style="-fx-fill: white;"/>
-            <Line endX="100.0" layoutX="455.0" layoutY="65.0" startX="100.0" startY="-47.0" stroke="WHITE"
-                  style="-fx-fill: white;"/>
-            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="31.0" layoutY="26.0" pickOnBounds="true"
-                       preserveRatio="true">
-                <Image url="@../image/UI/position.png"/>
+            <Line endX="100.0" layoutX="176.0" layoutY="68.0" startX="100.0" startY="-47.0" stroke="WHITE" style="-fx-fill: white;" />
+            <Line endX="100.0" layoutX="455.0" layoutY="65.0" startX="100.0" startY="-47.0" stroke="WHITE" style="-fx-fill: white;" />
+            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="31.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../image/UI/position.png" />
             </ImageView>
-            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="313.0" layoutY="26.0" pickOnBounds="true"
-                       preserveRatio="true">
-                <Image url="@../image/UI/position.png"/>
+            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="313.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../image/UI/position.png" />
             </ImageView>
-            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="593.0" layoutY="26.0" pickOnBounds="true"
-                       preserveRatio="true">
-                <Image url="@../image/UI/position.png"/>
+            <ImageView fitHeight="56.0" fitWidth="30.0" layoutX="593.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../image/UI/position.png" />
             </ImageView>
-            <Label layoutX="85.0" layoutY="21.0" onMouseClicked="#locationBtnClick"
-                   fx:id="locationBtn"
-                   styleClass="operaBtnGreen" text="Choose a location" textFill="WHITE">
+            <Label fx:id="locationBtn" layoutX="85.0" layoutY="21.0" onMouseClicked="#locationBtnClick" styleClass="operaBtnGreen" text="Choose a location" textFill="WHITE">
                 <font>
-                    <Font size="16.0"/>
+                    <Font size="16.0" />
                 </font>
             </Label>
             <Label layoutX="85.0" layoutY="50.0" text="Kuala Lumpur, Malaysia" textFill="#bcbcbc">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <Label layoutX="367.0" layoutY="21.0" onMouseClicked="#pickUpBtnClick"
-                   fx:id="pickUpDateBtn"
-                   styleClass="operaBtnGreen" text="Pick-up date" textFill="WHITE">
+            <Label fx:id="pickUpDateBtn" layoutX="367.0" layoutY="21.0" onMouseClicked="#pickUpBtnClick" styleClass="operaBtnGreen" text="Pick-up date" textFill="WHITE">
                 <font>
-                    <Font size="16.0"/>
+                    <Font size="16.0" />
                 </font>
             </Label>
-            <Label fx:id="pickUpDateLabel" layoutX="367.0" layoutY="50.0" text="Oct 28, 10:00 AM"
-                   textFill="#bcbcbc">
+            <Label fx:id="pickUpDateLabel" layoutX="367.0" layoutY="50.0" text="Oct 28, 10:00 AM" textFill="#bcbcbc">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
-            <Label layoutX="644.0" layoutY="21.0" onMouseClicked="#returnBtnClick"
-                   fx:id="returnDateBtn"
-                   styleClass="operaBtnGreen" text="Return date" textFill="WHITE">
+            <Label fx:id="returnDateBtn" layoutX="644.0" layoutY="21.0" onMouseClicked="#returnBtnClick" styleClass="operaBtnGreen" text="Return date" textFill="WHITE">
                 <font>
-                    <Font size="16.0"/>
+                    <Font size="16.0" />
                 </font>
             </Label>
-            <Label fx:id="returnDateLabel" layoutX="645.0" layoutY="50.0" text="Nov 08, 10:00 AM"
-                   textFill="#bcbcbc">
+            <Label fx:id="returnDateLabel" layoutX="645.0" layoutY="50.0" text="Nov 08, 10:00 AM" textFill="#bcbcbc">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
             </Label>
         </Pane>
     </Pane>
-    <Button fx:id="openCatalogBtn" layoutX="552.0" layoutY="618.0" mnemonicParsing="false"
-            onAction="#openCatalogBtnClick" prefHeight="45.0" prefWidth="180.0" styleClass="openCatalogBtnGreen"
-            text="Open catalog">
+    <Button fx:id="openCatalogBtn" layoutX="552.0" layoutY="618.0" mnemonicParsing="false" onAction="#openCatalogBtnClick" prefHeight="45.0" prefWidth="180.0" styleClass="openCatalogBtnGreen" text="Open catalog">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Button>
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">

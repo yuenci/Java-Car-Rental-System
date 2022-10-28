@@ -40,6 +40,7 @@ public class CarCard extends Pane {
         initParameters(this.pasengers,this.price,this.carType);//car parameters args
         addCarImage(this.brandModel);//car image args
         initHoverEvent();
+        addClickEvent();
     }
 
     private void initSize(){
@@ -128,5 +129,20 @@ public class CarCard extends Pane {
                 "linear-gradient(to left," + this.gradientDark +"," + this.gradientLight+");");
     }
 
+    private void addClickEvent(){
+        this.setOnMouseClicked(event -> {
+            System.out.println("clicked on " + brandModel);
+            if (StatusContainer.isLogin == 0) {
+                //new Tools().reSetScence("login.fxml");
+                System.out.println("Please login first");
+            } else {
+                goToDetailsPage();
+            }
+        });
+    }
+
+    private void goToDetailsPage(){
+        //new Tools().reSetScence("login.fxml");
+    }
 }
 
