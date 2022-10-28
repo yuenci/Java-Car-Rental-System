@@ -48,21 +48,12 @@ public class NavigationBarController {
 
     @FXML
     private void homeBtnClick(ActionEvent actionEvent) {
-        //System.out.println("homeBtnClick");
-        Pane pane  = null;
-        try {
-            URL url = getClass().getResource("fxml/mainPage.fxml");
-            assert url != null;
-            pane = FXMLLoader.load(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ((Button)actionEvent.getSource()).getScene().setRoot(pane);
+        new Tools().reSetScence(actionEvent,"mainPage.fxml");
     }
 
     @FXML
-    private void serviceBtnClick() {
-        System.out.println("serviceBtnClick");
+    private void serviceBtnClick(ActionEvent actionEvent) {
+        new Tools().reSetScence(actionEvent,"signUp.fxml");
     }
 
     @FXML

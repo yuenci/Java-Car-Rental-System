@@ -195,17 +195,7 @@ public class MainPageController {
 
     @FXML
     void openCatalogBtnClick(ActionEvent actionEvent) {
-        //System.out.println("openCatalogBtnClick");
-        Pane pane  = null;
-        try {
-            URL url = getClass().getResource("fxml/carsList.fxml");
-            assert url != null;
-            pane = FXMLLoader.load(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ((Button)actionEvent.getSource()).getScene().setRoot(pane);
-
+        new Tools().reSetScence(actionEvent,"carsList.fxml");
     }
 
     @FXML

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0"
+      prefWidth="1280.0" style="-fx-background-color: #1b1b1b;" xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.SignUpPageController">
+   <ImageView fitHeight="832.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../image/UI/loginPage.png"/>
+   </ImageView>
+
+   <Pane layoutX="66.0" layoutY="178.0" prefHeight="448.0" prefWidth="406.0" style="-fx-background-color: transparent;">
+      <Label layoutX="14.0" layoutY="26.0" text="START  FOR  FREE" textFill="#818181">
+         <font>
+            <Font name="Calibri Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label layoutX="6.0" layoutY="45.0" text="Create new account" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="44.0"/>
+         </font>
+      </Label>
+      <Label layoutX="363.0" layoutY="37.0" text="." textFill="#5576e1">
+         <font>
+            <Font name="System Bold" size="42.0"/>
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="103.0" text="Already A Member?" textFill="#818181">
+         <font>
+            <Font name="Calibri" size="15.0"/>
+         </font>
+      </Label>
+      <Label id="btnLogin" layoutX="142.0" layoutY="103.0" onMouseClicked="#loginClicked" style="-fx-cursor: hand;"
+             text="Log in" textFill="#1d90f4">
+         <font>
+            <Font name="Calibri" size="15.0"/>
+         </font>
+      </Label>
+      <TextField layoutX="7.0" layoutY="151.0" onMouseClicked="#txtFirstNameClicked" prefColumnCount="1"
+                 prefHeight="50.0" prefWidth="155.0" promptText="Michal"
+                 style="-fx-background-color: #3d404a; -fx-text-fill: white; -fx-background-radius: 15px;">
+         <font>
+            <Font name="Candara Italic" size="16.0"/>
+         </font>
+         <padding>
+            <Insets left="15.0" right="12.0" top="12.0"/>
+         </padding>
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+      </TextField>
+      <Label layoutX="24.0" layoutY="157.0" text="First name" textFill="#848b98">
+         <font>
+            <Font name="Calibri Bold" size="12.0"/>
+         </font>
+      </Label>
+      <TextField layoutX="186.0" layoutY="151.0" onMouseClicked="#txtLastNameClicked" prefColumnCount="1"
+                 prefHeight="50.0" prefWidth="155.0" promptText="Masiak"
+                 style="-fx-background-color: #3d404a; -fx-text-fill: white; -fx-background-radius: 15px;">
+         <font>
+            <Font name="Candara Italic" size="16.0"/>
+         </font>
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <padding>
+            <Insets left="15.0" right="12.0" top="12.0"/>
+         </padding>
+      </TextField>
+      <Label layoutX="202.0" layoutY="157.0" text="Last name" textFill="#848b98">
+         <font>
+            <Font name="Calibri Bold" size="12.0"/>
+         </font>
+      </Label>
+      <TextField layoutX="7.0" layoutY="222.0" onMouseClicked="#txtEmailClicked" prefColumnCount="1"
+                 prefHeight="50.0" prefWidth="335.0" promptText="Sample@anwhere.co"
+                 style="-fx-background-color: #3d404a; -fx-text-fill: white; -fx-background-radius: 15px;">
+         <font>
+            <Font name="Candara Italic" size="16.0"/>
+         </font>
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <padding>
+            <Insets left="15.0" right="12.0" top="12.0"/>
+         </padding>
+      </TextField>
+      <Label layoutX="24.0" layoutY="228.0" text="Email" textFill="#848b98">
+         <font>
+            <Font name="Calibri Bold" size="12.0"/>
+         </font>
+      </Label>
+      <TextField layoutX="7.0" layoutY="295.0" onMouseClicked="#txtPasswordClicked" prefColumnCount="1"
+                 prefHeight="50.0" prefWidth="335.0" promptText="********"
+                 style="-fx-background-color: #3d404a; -fx-text-fill: white; -fx-background-radius: 15px;">
+         <font>
+            <Font name="Candara Italic" size="16.0"/>
+         </font>
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <padding>
+            <Insets left="15.0" right="12.0" top="12.0"/>
+         </padding>
+      </TextField>
+      <Label layoutX="24.0" layoutY="300.0" text="Password" textFill="#848b98">
+         <font>
+            <Font name="Calibri Bold" size="12.0"/>
+         </font>
+      </Label>
+      <Button layoutX="7.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="155.0"
+              style="-fx-background-color: #545b69; -fx-background-radius: 25px; -fx-cursor: hand;"
+              text="Change method" textFill="WHITE">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Button>
+      <Button id="btnCreate" layoutX="186.0" layoutY="372.0" mnemonicParsing="false"
+              onMouseClicked="#btnCreateClicked" onMouseEntered="#btnCreateHover" prefHeight="50.0" prefWidth="155.0"
+              style="-fx-background-color: #1d90f4; -fx-background-radius: 25px; -fx-cursor: hand;"
+              text="Create account" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="14.0"/>
+         </font>
+      </Button>
+   </Pane>
+   <Label layoutX="573.0" layoutY="147.0" text="Anytime, Anywhere, Anycar!" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="42.0"/>
+      </font>
+   </Label>
+   <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
+      <fx:include source="navigationBar.fxml"/>
+   </Pane>
+</Pane>

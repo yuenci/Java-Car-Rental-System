@@ -16,8 +16,12 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/mainPage.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/carsList.fxml"));
+//        String fxmlName = "mainPage.fxml";
+//        String fxmlName = "carsList.fxml";
+        String fxmlName = "signUp.fxml";
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/"+ fxmlName));
 
         double width = 1280;
         double height = 832;
