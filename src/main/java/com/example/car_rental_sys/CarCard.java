@@ -84,8 +84,8 @@ public class CarCard extends Pane {
     }
 
     private void initParameters(String passgerNum, String priceNum, String carType){
-        addImage("passage.png",80,cardHeight-80,20,20);
-        addImage("manual.png",140,cardHeight-80,20,20);
+        addImage("passage.png",80,cardHeight-80,20,20,"UI");
+        addImage("manual.png",140,cardHeight-80,20,20,"UI");
         Label passagesNum = addLabel(passgerNum,110,cardHeight-80);
         Label manualOrAuto = addLabel(carType,170,cardHeight-80);
         Label price = addLabel("RM"+ priceNum +"/D",280,cardHeight-80);
@@ -95,16 +95,21 @@ public class CarCard extends Pane {
 
     }
 
-    private void addImage(String imageName, double x, double y, double width, double height){
+    private void addImage(String imageName, double x, double y, double width, double height,String type){
         ImageView imageview = new ImageView();
         imageview.setLayoutX(x);
         imageview.setLayoutY(y);
         imageview.setFitHeight(height);
         imageview.setFitWidth(width);
-        Image image = new Image("file:src/main/resources/com/example/car_rental_sys/image/" +imageName);
-        imageview.setImage(image);
+        if (type.equalsIgnoreCase("car")){
+            imageview.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/"+imageName));
+        }
+        else if (type.equalsIgnoreCase("UI")){
+            imageview.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/"+imageName));
+        }
         this.getChildren().add(imageview);
     }
+
 
     private Label addLabel(String text, double x, double y){
         Label label = new Label(text);
@@ -117,7 +122,7 @@ public class CarCard extends Pane {
     }
 
     private void addCarImage(String imageName){
-        addImage("cars/" + imageName +".png",50,50,320,216);
+        addImage("cars/" + imageName +".png",50,50,320,216,"car");
         this.setStyle(this.getStyle() +
                 "-fx-background-color: " +
                 "linear-gradient(to left," + this.gradientDark +"," + this.gradientLight+");");
