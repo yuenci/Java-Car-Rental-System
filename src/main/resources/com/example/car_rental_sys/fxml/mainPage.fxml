@@ -53,7 +53,9 @@
         </font>
     </Label>
     <Pane layoutY="707.0" prefHeight="125.0" prefWidth="1280.0" style="-fx-background-color: #303030; -fx-background-radius: 50 50 0 0;">
-        <Pane layoutX="85.0" layoutY="42.0" prefHeight="83.0" prefWidth="1110.0" style="-fx-background-color: #484848; -fx-background-radius: 20 20 0 0;">
+        <Pane layoutX="85.0" layoutY="42.0" prefHeight="83.0" prefWidth="1110.0"
+              style="-fx-background-color: #484848; -fx-background-radius: 20 20 0 0;"
+              fx:id="operationBar">
             <Button fx:id="searchBtn" layoutX="961.0" layoutY="14.0" mnemonicParsing="false" onAction="#searchBtnClick" prefHeight="56.0" prefWidth="126.0" styleClass="searchBtnGreen" text="Search">
                 <font>
                     <Font name="System Bold" size="14.0" />

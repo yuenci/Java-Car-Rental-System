@@ -3,17 +3,19 @@ package com.example.car_rental_sys;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -98,34 +100,34 @@ public class MainPageController {
     void addKeyPressEvent() {
         mainPane.setOnKeyReleased(e -> {
             switch (e.getCode()) {
-                case DOWN: changeCardImage(1); break;
-                case UP: changeCardImage(-1); break;
-                case LEFT: changeCardImage(1); break;
-                case RIGHT: changeCardImage(-1); break;
+                case DOWN:
+                case LEFT:
+                    changeCardImage(1); break;
+                case UP:
+                case RIGHT:
+                    changeCardImage(-1); break;
             }
         });
     }
 
     void changeCardImage(int direction){
+        int nextCarImageIndex;
         if (direction < 0) {
-            int nextCarImageIndex = currentCarImageIndex + 1;
+            nextCarImageIndex = currentCarImageIndex + 1;
             if(nextCarImageIndex >= carImageList.length){
                 nextCarImageIndex = 0;
             }
-            changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
-            currentCarImageIndex = nextCarImageIndex;
-            changeStyleAccordingIndex(currentCarImageIndex);
 
 //                System.out.println(carImageList[nextCarImageIndex]);
         }else{
-            int nextCarImageIndex = currentCarImageIndex - 1;
+            nextCarImageIndex = currentCarImageIndex - 1;
             if(nextCarImageIndex < 0){
                 nextCarImageIndex = carImageList.length - 1;
             }
-            changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
-            currentCarImageIndex = nextCarImageIndex;
-            changeStyleAccordingIndex(currentCarImageIndex);
         }
+        changeImage(imagefolderRoot +carImageList[nextCarImageIndex],carImage);
+        currentCarImageIndex = nextCarImageIndex;
+        changeStyleAccordingIndex(currentCarImageIndex);
     }
 
     @FXML
@@ -224,10 +226,35 @@ public class MainPageController {
         System.out.println("locationBtnClick");
     }
 
+    @FXML
+    Pane operationBar;
 
     @FXML
     void pickUpBtnClick() {
-        System.out.println("pickUpBtnClick");
+        //System.out.println("pickUpBtnClick");
+
+        Bounds bounds = operationBar.getBoundsInLocal();
+        Bounds screenBounds = operationBar.localToScreen(bounds);
+        int x = (int) screenBounds.getMinX();
+        int y = (int) screenBounds.getMinY();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/pickDate.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load(), 560, 410);
+            Stage stage = new Stage();
+            stage.setTitle("Pick Up Date");
+            stage.setX(x + 270);
+            stage.setY(y - 330);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
     }
 
 
