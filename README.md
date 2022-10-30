@@ -13,7 +13,7 @@
   <h3 align="center">Car Rental System</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An awesome Car Rental System build with Java!
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
