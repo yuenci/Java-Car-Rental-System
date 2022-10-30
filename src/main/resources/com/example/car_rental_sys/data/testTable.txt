@@ -1,0 +1,13 @@
+name:str=anonym,age:num=18,address:str=Malaysia
+james,25,China-
+kota,26,Japan
+mike,28,France
+nancy,29,Germany
+innis,25,China-
+anonym,70,ChinaIn4
+anonym,80,ChinaIn5
+Innis,23,China
+anonym,70,ChinaIn4
+anonym,80,ChinaIn5
+Innis,23,China
+Innis,23,China

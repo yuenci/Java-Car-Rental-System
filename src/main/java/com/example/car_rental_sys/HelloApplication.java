@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -9,7 +10,10 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HelloApplication extends Application {
     public static Stage stageInstance;
@@ -39,6 +43,9 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
+        ArrayList<String[]> data=  SQL.query("select * from testTable where name = 'Innis'");
+        System.out.println(Arrays.toString(data.get(0)));
     }
 
     public static void main(String[] args) {
