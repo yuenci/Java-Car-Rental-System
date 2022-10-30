@@ -147,7 +147,14 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Authors
-<img src="https://github.com/yuenci/Laptop-Repair-Services-Management-System/blob/master/image/avatar-innis.png" alt="profile image" width="60px">
+<a href="https://github.com/yuenci">
+  <img src="https://github.com/yuenci/Laptop-Repair-Services-Management-System/blob/master/image/avatar-innis.png" alt="profile image" width="60px">
+</a>
+
+<a href="https://github.com/Kaikiat1126">
+  <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/kk-Profile-logo.png" alt="profile image" width="60px">
+</a>
+
 
 
 <!-- CONTACT -->
