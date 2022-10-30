@@ -1,18 +1,16 @@
 # Java_Car_Rental_System
 
-# Project-Template
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/yuenci/Java-Car-Rental-System">
+    <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/UI/logo_light_green.png" alt="Logo" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Java Car Rental System</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
@@ -22,9 +20,9 @@
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/yuenci/Java-Car-Rental-System/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/yuenci/Java-Car-Rental-System/issues">Request Feature</a>
   </p>
 </div>
 
