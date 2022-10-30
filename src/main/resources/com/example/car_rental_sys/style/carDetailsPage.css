@@ -1,0 +1,17 @@
+#commentScrollPane{
+    -fx-background: #151515;
+    -fx-border-color: #151515;
+    -fx-border-width: 1
+}
+
+.scroll-pane {
+    -fx-background-color: #151515;
+}
+.toolbarButton{
+    -fx-text-fill: white;
+}
+
+.toolbarButton:hover {
+    -fx-background-color: #151515;
+    -fx-cursor: hand;
+}

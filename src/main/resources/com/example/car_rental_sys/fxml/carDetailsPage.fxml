@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #1d1f20;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.CarDetailsPage">
+    <Pane  prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;" stylesheets="@../style/carDetailsPage.css">
+        <fx:include source="navigationBar.fxml" />
+    </Pane>
+   <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="91.0" layoutY="127.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../image/cars/logo/lamborghini-logo.png"/>
+   </ImageView>
+   <Label layoutX="213.0" layoutY="127.0" style="-fx-text-fill: white;" text="Lamborghini Superleggera">
+      <font>
+         <Font size="32.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="213.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../image/UI/star.png"/>
+   </ImageView>
+   <Label layoutX="261.0" layoutY="193.0" text="4.8" textFill="WHITE">
+      <font>
+         <Font size="30.0" />
+      </font></Label>
+   <ImageView fx:id="carImageView" fitHeight="541.0" fitWidth="600.0" layoutX="-27.0" layoutY="216.0"
+              pickOnBounds="true" preserveRatio="true" style="-fx-scale-z: 100;">
+      <Image url="@../image/cars/Huracan_EVO.png"/>
+   </ImageView>
+   <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="605.0" layoutY="193.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../image/UI/speed.png"/>
+   </ImageView>
+   <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="844.0" layoutY="193.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../image/UI/seats.png"/>
+   </ImageView>
+   <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="1078.0" layoutY="193.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../image/UI/engine.png"/>
+   </ImageView>
+   <Label layoutX="917.0" layoutY="329.0" prefHeight="22.0" prefWidth="42.0" text="Seats" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font></Label>
+   <Label layoutX="655.0" layoutY="329.0" prefHeight="22.0" prefWidth="88.0" text="Max Speed" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font></Label>
+   <Label layoutX="1118.0" layoutY="329.0" prefHeight="22.0" prefWidth="108.0" text="Engine Power" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font></Label>
+   <Label layoutX="635.0" layoutY="290.0" prefHeight="32.0" prefWidth="128.0" text="322 km/h" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+   <Label layoutX="930.0" layoutY="290.0" text="4" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+   <Label layoutX="1144.0" layoutY="290.0" text="4.0 L" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+   <Pane layoutX="852.0" layoutY="398.0" prefHeight="311.0" prefWidth="421.0"
+         style="-fx-background-color: #2f2f2f; -fx-background-radius: 10;">
+      <WebView fx:id="webview" layoutX="12.0" prefHeight="311.0" prefWidth="397.0"/>
+   </Pane>
+   <Pane layoutX="851.0" layoutY="756.0" prefHeight="80.0" prefWidth="430.0"
+         style="-fx-background-color: #2F2F2F; -fx-background-radius: 50 0 0 0;">
+      <Pane layoutX="230.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #165DFF;">
+         <Label layoutX="43.0" layoutY="24.0" text="Rent Now" textFill="WHITE">
+            <font>
+               <Font size="24.0"/>
+            </font>
+         </Label>
+      </Pane>
+      <Label layoutX="57.0" layoutY="24.0" text="RM3000/D" textAlignment="RIGHT" textFill="#fffbfb">
+         <font>
+            <Font size="24.0"/>
+         </font>
+      </Label>
+   </Pane>
+   <Pane layoutY="554.0" prefHeight="284.0" prefWidth="790.0"
+         style="-fx-background-color: #2f2f2f; -fx-background-radius: 0 10  0  0;">
+      <Label layoutX="24.0" layoutY="14.0" text="10 comments" textFill="WHITE">
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Label>
+      <ScrollPane fx:id="commentScrollPane" layoutY="43.0" prefHeight="236.0" prefWidth="790.0"
+                  style="-fx-background: #2f2f2f; -fx-border-color: #2f2f2f;"/>
+      <Label layoutX="676.0" layoutY="14.0" text="View more" textFill="#1782ff">
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Label>
+   </Pane>
+</Pane>

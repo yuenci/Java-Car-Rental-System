@@ -3,12 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #151515;"
-      stylesheets="@../style/mainPage.css" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.CarsListController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0"
+      style="-fx-background-color: #151515;" stylesheets="@../style/cardListPage.css"
+      xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.CarsListController">
     <Pane fx:id="navBarPanelContainer" prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
-        <fx:include source="navigationBar.fxml"/>
+        <fx:include source="navigationBar.fxml" />
     </Pane>
-   <ScrollPane fx:id="scrollPane" layoutY="98.0" prefHeight="740.0" prefWidth="1280.0" style="-fx-background: #151515; -fx-border-color: #151515;" />
+   <ScrollPane fx:id="scrollPane" layoutY="98.0" prefHeight="740.0" prefWidth="1280.0"  />
 </Pane>
