@@ -10,7 +10,7 @@
     <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/UI/logo_light_green.png" alt="Logo" height="80">
   </a>
 
-  <h3 align="center">Java Car Rental System</h3>
+  <h3 align="center">Car Rental System</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
