@@ -1,6 +1,9 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,11 +15,22 @@ import javafx.scene.web.WebView;
 
 import java.io.File;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CarDetailsPage {
     @FXML
     ImageView carImageView;
+
+    @FXML
+    ImageView logImageView;
+
+    @FXML
+    ImageView backBtnImageView;
+
+    @FXML
+    ImageView keyTipsImageView;
 
     @FXML
     WebView webview;
@@ -24,12 +38,24 @@ public class CarDetailsPage {
     @FXML
     ScrollPane commentScrollPane;
 
+    @FXML
+    Label starText;
+
+    @FXML
+    Label modelText;
+
+
     private String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
 
     @FXML
     private void initialize(){
+        modelText.setText(StatusContainer.currentCarChoosed.replace("_"," "));
         initImage();
+        initStar();
+        initLogo();
         initComments();
+        backBtnClickEvent();
+        initKeyTips();
         WebEngine engine = webview.getEngine();
 
         URL url = this.getClass().getResource("/com/example/car_rental_sys/html/radar.html");
@@ -43,6 +69,7 @@ public class CarDetailsPage {
 
     private  void initImage(){
         File file = new File(imageFileRoot + StatusContainer.currentCarChoosed + ".png");
+
         Image image = new Image(file.toURI().toString());
         carImageView.setImage(image);
 
@@ -50,6 +77,37 @@ public class CarDetailsPage {
         Translate flipTranslation = new Translate(carImageView.getImage().getWidth(),0);
         Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
         carImageView.getTransforms().addAll(flipTranslation,flipRotation);
+    }
+
+    private  void initLogo(){
+        Thread thread = new Thread(() -> {
+            String logoFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/logo/";
+            String sql = "select carBrand from cars where carModel = '" + StatusContainer.currentCarChoosed + "'";
+            String brand = SQL.query(sql).get(0)[0];
+            //System.out.println(brand);
+
+            Image image = Tools.getImageObjFromPath(logoFileRoot + brand + "-logo.png");
+            if(image != null){
+                logImageView.setImage(image);
+            }else{
+                logImageView.setImage(Tools.getImageObjFromPath(logoFileRoot + "default-logo.png"));
+            }
+        });
+        thread.start();
+
+
+    }
+
+    private  void initStar(){
+        Thread thread = new Thread(() -> {
+            String sql = "select star from cars where carModel = '" + StatusContainer.currentCarChoosed + "'";
+            String star = SQL.query(sql).get(0)[0];
+            if(!Objects.equals(star, "")){
+                starText.setText(star);
+            }
+        });
+        thread.start();
+
     }
 
     private void initComments(){
@@ -72,6 +130,46 @@ public class CarDetailsPage {
 
         commentScrollPane.setFitToWidth(true);
         commentScrollPane.setContent(flowPane);
+    }
+
+    private void backBtnClickEvent(){
+        backBtnImageView.setOnMouseEntered(event -> {
+            Image image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-blue.png");
+            backBtnImageView.setImage(image);
+            backBtnImageView.getScene().setCursor(javafx.scene.Cursor.HAND);
+        });
+
+        backBtnImageView.setOnMouseExited(event -> {
+            Image image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-white.png");
+            backBtnImageView.setImage(image);
+            backBtnImageView.getScene().setCursor(javafx.scene.Cursor.DEFAULT);
+        });
+
+        backBtnImageView.setOnMouseClicked(event -> Tools.changeScence("carsList.fxml"));
+
+
+    }
+
+    private  void initKeyTips(){
+        Thread thread = new Thread(() -> {
+            for (int i = 0; i <1; i++) {
+                try {
+                    Thread.sleep(6 * 1000); //设置暂停的时间 5 秒
+                    keyTipsImageView.setImage(null);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        if(StatusContainer.isFirstViewCar){
+            thread.start();
+        }else{
+            keyTipsImageView.setImage(null);
+            StatusContainer.isFirstViewCar = false;
+        }
+
+
     }
 
 }

@@ -20,8 +20,8 @@ public class CarsListController {
         flowPane.setPrefWidth(1270);
 
         ArrayList<String[]> carsData = FileOperate.readFileToArray(Config.carsDataPath);
-        for (String[] carData :carsData
-                ) {
+        for (int i = 1; i < carsData.size(); i++) {
+            String[] carData = carsData.get(i);
             CarCard carCard = new CarCard(carData[0],carData[1],carData[2],carData[3],carData[4],carData[5]);
             flowPane.getChildren().add(carCard);
         }

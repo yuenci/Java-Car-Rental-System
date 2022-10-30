@@ -134,11 +134,12 @@ public class CarCard extends Pane {
         this.setOnMouseClicked(event -> {
             System.out.println("clicked on " + brandModel);
             StatusContainer.currentCarChoosed = this.brandModel;
-            if (StatusContainer.isLogin == 0) {
-                new Tools().reSetScence("loginPage.fxml");
-                //System.out.println("Please login first");
-            } else {
+            if (StatusContainer.isLogin) {
                 goToDetailsPage();
+
+            } else {
+                //System.out.println("Please login first");
+                new Tools().reSetScence("loginPage.fxml");
             }
         });
     }

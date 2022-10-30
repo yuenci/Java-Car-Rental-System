@@ -20,8 +20,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String fxmlName = "mainPage.fxml";
-        //String fxmlName = "carsList.fxml";
+//        String fxmlName = "mainPage.fxml";
+        String fxmlName = "carsList.fxml";
         //String fxmlName = "signUp.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
@@ -44,8 +44,8 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.show();
 
-        ArrayList<String[]> data=  SQL.query("select * from testTable where name = 'Innis'");
-        System.out.println(Arrays.toString(data.get(0)));
+//        ArrayList<String[]> data=  SQL.query("select * from testTable where name = 'Innis'");
+//        System.out.println(Arrays.toString(data.get(0)));
     }
 
     public static void main(String[] args) {
