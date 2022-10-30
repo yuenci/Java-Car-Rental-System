@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -132,9 +133,10 @@ public class CarCard extends Pane {
     private void addClickEvent(){
         this.setOnMouseClicked(event -> {
             System.out.println("clicked on " + brandModel);
+            StatusContainer.currentCarChoosed = this.brandModel;
             if (StatusContainer.isLogin == 0) {
-                //new Tools().reSetScence("login.fxml");
-                System.out.println("Please login first");
+                new Tools().reSetScence("loginPage.fxml");
+                //System.out.println("Please login first");
             } else {
                 goToDetailsPage();
             }
@@ -142,7 +144,7 @@ public class CarCard extends Pane {
     }
 
     private void goToDetailsPage(){
-        //new Tools().reSetScence("login.fxml");
+        new Tools().reSetScence("carDetailsPage.fxml");
     }
 }
 

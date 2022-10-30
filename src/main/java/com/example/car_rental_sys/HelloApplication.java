@@ -18,9 +18,9 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsList.fxml";
-        String fxmlName = "signUp.fxml";
+        //String fxmlName = "signUp.fxml";
         //String fxmlName = "loginPage.fxml";
-
+        String fxmlName = "carDetailsPage.fxml";
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/"+ fxmlName));
 
