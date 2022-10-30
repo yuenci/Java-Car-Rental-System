@@ -61,10 +61,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/JavaFX_Logo.png" alt="JavaFXLogo" height="60"> 
 </a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
 * [SQL2TXT](https://github.com/yuenci/sqlParser-SQL2TXT) - SQL statement operation txt file CRUD
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
