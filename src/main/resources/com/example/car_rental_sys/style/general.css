@@ -1,0 +1,12 @@
+.txtField:focused{
+    -fx-border-color: #165DFF;
+    -fx-border-radius: 15px;
+}
+
+.btnLogin:hover{
+    -fx-background-color: #4080ff !important;
+}
+
+.btnSignUp:hover{
+    -fx-border-color: #e5e6eb !important;
+}
