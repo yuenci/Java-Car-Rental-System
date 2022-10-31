@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.teamdev.jxbrowser:jxbrowser-win64:7.28.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/teamdev/jxbrowser/jxbrowser-win64/7.28.1/jxbrowser-win64-7.28.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/teamdev/jxbrowser/jxbrowser-win64/7.28.1/jxbrowser-win64-7.28.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/teamdev/jxbrowser/jxbrowser-win64/7.28.1/jxbrowser-win64-7.28.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

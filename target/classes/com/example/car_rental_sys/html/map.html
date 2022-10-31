@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #iframe1 {
+            width: 600px;
+            height: 450px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<iframe id="iframe1" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig&q=Eiffel+Tower,Paris+France&language=en"
+        allowfullscreen>
+</iframe>
+
+<script>
+    let ifr1 = document.getElementById("iframe1");
+    let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+    let mode = "place";
+    let parameter = "&q=place_id:ChIJ2SVQebtKzDERaKlLcSoYNxw&language=en";
+
+    let url = "https://www.google.com/maps/embed/v1/" + mode + "?key=" + key + parameter;
+    // console.log(url);
+
+    ifr1.src = url;
+
+</script>
+</body>
+
+</html>

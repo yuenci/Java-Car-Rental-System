@@ -3,6 +3,8 @@ module com.example.car_rental_sys {
     requires javafx.fxml;
     requires javafx.web;
     requires jsqlparser;
+    requires jxbrowser;
+    requires jxbrowser.javafx;
 
 
     opens com.example.car_rental_sys to javafx.fxml;

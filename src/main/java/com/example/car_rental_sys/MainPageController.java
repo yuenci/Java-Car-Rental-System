@@ -1,5 +1,7 @@
 package com.example.car_rental_sys;
 
+import com.teamdev.jxbrowser.browser.callback.InjectJsCallback;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,22 +12,39 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.TextStyle;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
+
+
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
+import com.teamdev.jxbrowser.frame.Frame;
+import com.teamdev.jxbrowser.js.ConsoleMessage;
+import com.teamdev.jxbrowser.js.ConsoleMessageLevel;
+import com.teamdev.jxbrowser.js.JsAccessible;
+import com.teamdev.jxbrowser.js.JsObject;
+
+
 
 public class MainPageController {
+    public static MainPageController mainPageController;
     @FXML
     private Pane mainPane;
 
@@ -58,6 +77,12 @@ public class MainPageController {
     private  Label returnDateBtn;
 
     @FXML
+    public  Label locationText;
+
+    @FXML
+    Pane operationBar;
+
+    @FXML
     private String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
     @FXML
@@ -72,13 +97,17 @@ public class MainPageController {
         addScrollEvent();
         addKeyPressEvent();
         initDateTimeLabel();
+        initIntroLabel();
+        mainPageController = this;
+    }
+    private void initIntroLabel(){
         introLabel.setWrapText(true);
         String text =
                 "We want you to have a stress-free\n"+
-        "rental experience, so we make it easy to\n"+
-        "hire a car - by providing simple car\n"+
-        "rental app with customer reviews and\n"+
-        "plenty of pick-up locations across the \ncities.\n";
+                        "rental experience, so we make it easy to\n"+
+                        "hire a car - by providing simple car\n"+
+                        "rental app with customer reviews and\n"+
+                        "plenty of pick-up locations across the \ncities.\n";
 
         introLabel.setText(text);
     }
@@ -223,11 +252,83 @@ public class MainPageController {
 
     @FXML
     void locationBtnClick() {
-        System.out.println("locationBtnClick");
+        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+
+        Browser browser = engine.newBrowser();
+
+        //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/map.html");
+        //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/jxTest.html");
+//        assert url != null;
+//        browser.navigation().loadUrl(url.toString());
+
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/googleMap.html").getAbsolutePath());
+
+        browser.set(InjectJsCallback.class, params -> {
+            JsObject window = params.frame().executeJavaScript("window");
+            assert window != null;
+            window.putProperty("java", new JavaObject());
+
+            return InjectJsCallback.Response.proceed();
+        });
+
+
+//        Frame frame = browser.frames().get(0);
+//        frame.executeJavaScript("insert();");
+
+        //browser.mainFrame.executeJavaScript("alert('hello world')");
+//
+//        String title =  browser.mainFrame().executeJavaScript("document.title");
+//
+//        browser.executeJavaScript("alert('hello world')");
+
+        //browser.navigation().loadUrl("https://www.bejson.com/httputil/clientinfo/");
+        //browser.navigation().loadUrl("http://127.0.0.1:8080/");
+
+        BrowserView view = BrowserView.newInstance(browser);
+
+
+
+
+        browser.on(ConsoleMessageReceived.class, event -> {
+            ConsoleMessage consoleMessage = event.consoleMessage();
+            ConsoleMessageLevel level = consoleMessage.level();
+            String message = consoleMessage.message();
+            System.out.println(message);
+        });
+
+        Scene scene = new Scene(new BorderPane(view),800,600);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("JxBrowser");
+        stage.setScene(scene);
+        stage.show();
+
+        updateLocation();
+
+        stage.setOnCloseRequest(event -> {
+            timer.cancel();
+            engine.close();
+        });
     }
 
-    @FXML
-    Pane operationBar;
+    private final Timer timer = new Timer();
+
+    private void updateLocation(){
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if (StatusContainer.locationChose!=null){
+                        locationText.setText(StatusContainer.locationChose);
+                    }
+                });
+
+            }
+        },0,200);
+    }
+
+
 
     @FXML
     void pickUpBtnClick() {
@@ -268,5 +369,9 @@ public class MainPageController {
         System.out.println("searchBtnClick");
     }
 
+    void showDatePicker(){
+        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+        Browser browser = engine.newBrowser();
 
+    }
 }

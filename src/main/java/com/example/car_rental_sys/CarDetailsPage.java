@@ -85,17 +85,17 @@ public class CarDetailsPage {
 
     }
     private void initData(){
-        String sql = "SELECT * FROM cars WHERE carModel = '"+StatusContainer.currentCarChoosed+"'";
+        String sql = "SELECT * FROM cars WHERE carModel = '"+StatusContainer.currentCarChose +"'";
         ArrayList<String[]> result = SQL.query(sql);
         carDetailsData = result.get(0);
         //System.out.println(Arrays.toString(carDetailsdata));
     }
 
     private  void initImage(){
-        modelText.setText(StatusContainer.currentCarChoosed.replace("_"," "));
+        modelText.setText(StatusContainer.currentCarChose.replace("_"," "));
 
         String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
-        File file = new File(imageFileRoot + StatusContainer.currentCarChoosed + ".png");
+        File file = new File(imageFileRoot + StatusContainer.currentCarChose + ".png");
 
         Image image = new Image(file.toURI().toString());
         carImageView.setImage(image);
@@ -109,7 +109,7 @@ public class CarDetailsPage {
     private  void initLogo(){
         Thread thread = new Thread(() -> {
             String logoFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/logo/";
-            String sql = "select carBrand from cars where carModel = '" + StatusContainer.currentCarChoosed + "'";
+            String sql = "select carBrand from cars where carModel = '" + StatusContainer.currentCarChose + "'";
             String brand = SQL.query(sql).get(0)[0];
             //System.out.println(brand);
 
@@ -152,7 +152,7 @@ public class CarDetailsPage {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(780);
 
-        String model = StatusContainer.currentCarChoosed;
+        String model = StatusContainer.currentCarChose;
         String sql = "SELECT commentID FROM comments WHERE payload = '"+model+"'" + " and type='modelComment'";
         ArrayList<String[]> result = SQL.query(sql);
 
@@ -210,7 +210,7 @@ public class CarDetailsPage {
     private void initWebView(){
         String sql = "select power,comfort,handing,space,allocation,interior"
                 +" from carsRadarData where carModel = '"
-                +StatusContainer.currentCarChoosed+"'";
+                +StatusContainer.currentCarChose +"'";
         //System.out.println(sql);
         String[] radarData = SQL.query(sql).get(0);
         String radarDataStr = Arrays.toString(radarData);
@@ -242,7 +242,7 @@ public class CarDetailsPage {
 
     private void changeCar(int index){
         //System.out.println("changeCar:" + index);
-        String model = StatusContainer.currentCarChoosed;
+        String model = StatusContainer.currentCarChose;
         String sql = "select modelID from cars where carModel='" + model + "'";
         //System.out.println(sql);
         int modelID = Integer.parseInt(SQL.query(sql).get(0)[0]);
@@ -251,13 +251,13 @@ public class CarDetailsPage {
         String firstCarModel = SQL.query(sqlFirstModel).get(0)[0];
 
         if(modelID + index ==0){
-            StatusContainer.currentCarChoosed = firstCarModel;
+            StatusContainer.currentCarChose = firstCarModel;
         }else{
             String sqlNewModel = "select carModel from cars where modelID = " + (modelID + index);
             try{
-                StatusContainer.currentCarChoosed = SQL.query(sqlNewModel).get(0)[0];
+                StatusContainer.currentCarChose = SQL.query(sqlNewModel).get(0)[0];
             }catch (Exception e){
-                StatusContainer.currentCarChoosed = firstCarModel;
+                StatusContainer.currentCarChose = firstCarModel;
             }
         }
 

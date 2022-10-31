@@ -1,11 +1,17 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,13 +21,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+
 public class HelloApplication extends Application {
     public static Stage stageInstance;
 
     @Override
     public void start(Stage stage) throws IOException {
-//        String fxmlName = "mainPage.fxml";
-        String fxmlName = "carsList.fxml";
+        String fxmlName = "mainPage.fxml";
+        //String fxmlName = "carsList.fxml";
         //String fxmlName = "signUp.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
@@ -44,13 +52,37 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.show();
 
-//        ArrayList<String[]> data=  SQL.query("select * from testTable where name = 'Innis'");
-//        System.out.println(Arrays.toString(data.get(0)));
+        System.setProperty("jxbrowser.license.key",Config.jxBrowserLicense);
+        StartHttpServer();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
+    public static void StartHttpServer(){
+//        String path = System.getProperty("user.dir") + Config.htmlComponents + "datePicker\\test.bat";
+//        Thread thread = new Thread(() -> {
+//            Tools.executeBatFile("\""+ path +"\"",false);
+//            System.out.println("http server started");
+//        });
+//        thread.start();
+//        Thread thread = new Thread(() -> {
+//            Runtime ec=Runtime.getRuntime();
+//            try {
+//                String path = System.getProperty("user.dir") + Config.htmlComponents + "datePicker";
+//                String cmd = "\"" + path + "\\test.bat\"";
+//                ec.exec(cmd);
+//                System.out.println(cmd);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        thread.start();
 
+
+    }
+
+    private static class Stirng {
+    }
 }

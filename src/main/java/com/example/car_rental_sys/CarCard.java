@@ -1,17 +1,11 @@
 package com.example.car_rental_sys;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
-import java.util.ArrayList;
 
 public class CarCard extends Pane {
     private int cardHeight = 310;
@@ -133,7 +127,7 @@ public class CarCard extends Pane {
     private void addClickEvent(){
         this.setOnMouseClicked(event -> {
             System.out.println("clicked on " + brandModel);
-            StatusContainer.currentCarChoosed = this.brandModel;
+            StatusContainer.currentCarChose = this.brandModel;
             if (StatusContainer.isLogin) {
                 goToDetailsPage();
 
