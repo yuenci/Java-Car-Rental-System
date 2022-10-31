@@ -61,8 +61,15 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/JavaFX_Logo.png" alt="JavaFXLogo" height="60"> 
 </a>
 
+<a href="https://nodejs.org/">
+<img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/Node.js_logo.png" alt="JavaFXLogo" height="60"> 
+</a>
+
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
 * [SQL2TXT](https://github.com/yuenci/sqlParser-SQL2TXT) - SQL statement operation txt file CRUD
+* [Google Map platform](https://developers.google.com/maps/documentation/embed/get-started) - Map embed component 
+* [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/examples)
+* [JxBrowser](https://www.teamdev.com/jxbrowser) - a Chromium web browser for javaFX
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,6 +87,9 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install npm@latest -g
   ```
+
+* Google map key
+* JxBrower license
 
 ### Installation
 
