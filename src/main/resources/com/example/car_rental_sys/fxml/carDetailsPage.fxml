@@ -6,11 +6,8 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #1d1f20;" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.CarDetailsPage"
-      stylesheets="@../style/carDetailsPage.css">
-    <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;" >
+<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #1d1f20;" stylesheets="@../style/carDetailsPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.CarDetailsPage">
+    <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBar.fxml" />
     </Pane>
    <ImageView fx:id="logImageView" fitHeight="100.0" fitWidth="100.0" layoutX="91.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
@@ -85,7 +82,7 @@
       </Label>
    </Pane>
    <Pane layoutY="554.0" prefHeight="284.0" prefWidth="790.0" style="-fx-background-color: #2f2f2f; -fx-background-radius: 0 10  0  0;">
-      <Label layoutX="24.0" layoutY="14.0" text="10 comments" textFill="WHITE">
+      <Label fx:id="commentsNum" layoutX="24.0" layoutY="14.0" text="10 comments" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

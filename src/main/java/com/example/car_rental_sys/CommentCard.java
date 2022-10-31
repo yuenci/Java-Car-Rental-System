@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,11 +12,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommentCard extends Pane {
     private String commentID;
     private int  cardHeight = 90;
     private int cardWidth = 770;
+    private String[] commentData;
     public CommentCard(String commentID) {
         super();
         this.commentID = commentID;
@@ -23,6 +27,7 @@ public class CommentCard extends Pane {
     }
 
     private  void initialize(){
+        initData();
         setSize();
         setProfileImage();
         initRightSide();
@@ -35,6 +40,10 @@ public class CommentCard extends Pane {
 
         //System.out.println("commentID: " + commentID);
     }
+    private void initData(){
+        String sql = "select * from comments where commentID = " + commentID;
+        commentData = SQL.query(sql).get(0);
+    }
 
     private void setSize(){
         this.setPrefHeight(cardHeight);
@@ -43,7 +52,8 @@ public class CommentCard extends Pane {
 
     private  void setProfileImage(){
         String profileImagePathRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/";
-        Image image = getImageObjFromPath(profileImagePathRoot + "innis.png");
+        String userID = commentData[3];
+        Image image = getImageObjFromPath(profileImagePathRoot + userID +".png");
 
         ImageView imageView =  new ImageView(image);
         imageView.setFitHeight(40);
@@ -63,20 +73,22 @@ public class CommentCard extends Pane {
     }
 
     private  HBox getUserNameAndCommentTime(){
+        String userName = SQL.query("select userName from users where userID = " + commentData[3]).get(0)[0];
+
         HBox hBox = new HBox();
-        Label userName = new Label("  " +"Innis" + "  ");
-        Label commentTime = new Label("2020-12-12");
+        Label userNameLabel = new Label("  " +userName + "  ");
+        Label commentTime = new Label(commentData[6].substring(0,10));
 
-        userName.setPrefHeight(20);
-        userName.setAlignment(Pos.TOP_CENTER);
+        userNameLabel.setPrefHeight(20);
+        userNameLabel.setAlignment(Pos.TOP_CENTER);
 
-        hBox.getChildren().addAll(userName,commentTime);
+        hBox.getChildren().addAll(userNameLabel,commentTime);
 
         return hBox;
     }
 
     private  Label getCommentContent(){
-        Label commentContent = new Label("  " +"This is a comment");
+        Label commentContent = new Label("  " + commentData[4]);
         commentContent.setPrefHeight(20);
         commentContent.setFont(new Font(14));
         commentContent.setAlignment(Pos.TOP_CENTER);
@@ -90,7 +102,8 @@ public class CommentCard extends Pane {
         HBox hBox = new HBox();
 
         String[] imageNames = {"commentLike.png","commentStar.png","commentReply.png"};
-        String[] data = {"520","333","Reply"};
+        //System.out.println(Arrays.toString(commentData));
+        String[] data = {commentData[7],commentData[8],"Reply"};
 
         for (int i = 0; i < imageNames.length; i++) {
             Button button = new Button(data[i]);

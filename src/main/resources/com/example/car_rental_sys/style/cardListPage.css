@@ -1,9 +1,11 @@
 #scrollPane{
-    -fx-background: #151515;
-    -fx-border-color: #151515;
+    /*-fx-background: #151515;*/
+    /*-fx-border-color: #151515;*/
+    -fx-background: transparent;
+    -fx-border-color: transparent;
     -fx-border-width: 1
 }
 
 .scroll-pane {
-    -fx-background-color: #151515;
+    -fx-background-color: transparent;
 }

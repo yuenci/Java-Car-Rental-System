@@ -1,6 +1,9 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.sqlParser.SQL;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -57,6 +60,9 @@ public class CarDetailsPage {
     @FXML
     Label priceText;
 
+    @FXML
+    Label commentsNum;
+
 
     private String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
     private String[] carDetailsdata = null;
@@ -81,7 +87,7 @@ public class CarDetailsPage {
         String sql = "SELECT * FROM cars WHERE carModel = '"+StatusContainer.currentCarChoosed+"'";
         ArrayList<String[]> result = SQL.query(sql);
         carDetailsdata = result.get(0);
-        System.out.println(Arrays.toString(carDetailsdata));
+        //System.out.println(Arrays.toString(carDetailsdata));
     }
 
     private  void initImage(){
@@ -144,16 +150,15 @@ public class CarDetailsPage {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(780);
 
+        String model = StatusContainer.currentCarChoosed;
+        String sql = "SELECT commentID FROM comments WHERE payload = '"+model+"'" + " and type='modelComment'";
+        ArrayList<String[]> result = SQL.query(sql);
 
-        //ArrayList<String[]> carsData = FileOperate.readFileToArray(Config.carsDataPath);
-//        for (String[] commentData :commentsData
-//        ) {
-//            CommentCard commentCard = new CommentCard("comment1");
-//            flowPane.getChildren().add(commentCard);
-//        }
+        commentsNum.setText(result.size() + " comments");
 
-        for (int i = 0; i < 4; i++) {
-            CommentCard commentCard = new CommentCard("comment1");
+        for (String[] strings : result) {
+            //System.out.println(strings[0]);
+            CommentCard commentCard = new CommentCard(strings[0]);
             flowPane.getChildren().add(commentCard);
         }
 
@@ -203,11 +208,26 @@ public class CarDetailsPage {
     }
 
     private void initWebView(){
+        String sql = "select power,comfort,handing,space,allocation,interior"
+                +" from carsRadarData where carModel = '"
+                +StatusContainer.currentCarChoosed+"'";
+        String[] radarData = SQL.query(sql).get(0);
+        String radarDataStr = Arrays.toString(radarData);
+        //System.out.println(radarDataStr);
+
         WebEngine engine = webview.getEngine();
         URL url = this.getClass().getResource("/com/example/car_rental_sys/html/radar.html");
+        engine.setJavaScriptEnabled(true);
+        engine.getLoadWorker().stateProperty().addListener(
+                (ov, oldState, newState) -> {
+                    if (newState == Worker.State.SUCCEEDED) {
+                        engine.executeScript("initRadar("+radarDataStr+");");
+                    }
+                });
         assert url != null;
         engine.load(url.toString());
-        //engine.executeScript("initRadar([1.0,2.0,3.0,4.0,5.0,6.0])");
+
+        //engine.executeScript("initRadar([1.0,2.0,3.0,4.0,5.0,6.0]);");
 
 //        webview.getSettings().setJavaScriptEnabled(true);
 //        webview.loadUrl("file:///android_asset/test.html");
