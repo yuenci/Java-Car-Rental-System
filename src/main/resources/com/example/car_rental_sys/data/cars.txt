@@ -11,7 +11,7 @@ modelID:num=0,carModel:str=None,seats:num=2,price:num=0,gearType:str=None,darkCo
 10,Bugatti_Divo,2,4367,Manual,#6a7a7a,#63b0bf,Bugatti,4.8,310,4.7
 11,Mclaren_2018,2,7879,Manual,#843f42,#d8402e,Mclaren,4.9,396,3.4
 12,Lamborghini_lp550_spyder,2,5623,Automatic,#14355a,#50a7d2,Lamborghini,4.6,454,4.7
-13,myvi6_Gen2,2,7820,Manual,#4b2d64,#7d5998,myvi6,4.8,455,6.0
+13,Myvi_Gen2,2,7820,Manual,#4b2d64,#7d5998,Myvi,4.8,455,6.0
 14,Chevrolet_Corvette_ZR1,2,4676,Automatic,#6d838f,#dae1e3,Chevrolet,4.0,485,6.7
 15,McLaren_570S,2,4263,Automatic,#645148,#cdb29b,McLaren,4.8,450,4.9
 16,Lotus_Evija_Fittipaldi,2,2432,Automatic,#0b1119,#d0d7df,Lotus,4.9,414,4.1

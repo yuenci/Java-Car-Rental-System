@@ -1,16 +1,16 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.sqlParser.SQL;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.scene.web.WebEngine;
@@ -18,10 +18,8 @@ import javafx.scene.web.WebView;
 
 import java.io.File;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class CarDetailsPage {
     @FXML
@@ -63,13 +61,19 @@ public class CarDetailsPage {
     @FXML
     Label commentsNum;
 
+    @FXML
+    Pane containPane;
 
-    private String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
-    private String[] carDetailsdata = null;
+    @FXML
+    Pane cardDetailsPageContainer;
+
+
+    private String[] carDetailsData = null;
 
     @FXML
     private void initialize(){
         initData();
+        initContainPaneEvent();
         initImage();
         initStar();
         initSpeedSeatsPowerPrise();
@@ -79,20 +83,18 @@ public class CarDetailsPage {
         initKeyTips();
         initWebView();
 
-
-        //engine.load("https://www.google.com/");
-        //engine.load( getClass().getResource("radar.html").toString() );
     }
     private void initData(){
         String sql = "SELECT * FROM cars WHERE carModel = '"+StatusContainer.currentCarChoosed+"'";
         ArrayList<String[]> result = SQL.query(sql);
-        carDetailsdata = result.get(0);
+        carDetailsData = result.get(0);
         //System.out.println(Arrays.toString(carDetailsdata));
     }
 
     private  void initImage(){
         modelText.setText(StatusContainer.currentCarChoosed.replace("_"," "));
 
+        String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
         File file = new File(imageFileRoot + StatusContainer.currentCarChoosed + ".png");
 
         Image image = new Image(file.toURI().toString());
@@ -125,8 +127,8 @@ public class CarDetailsPage {
 
     private  void initStar(){
         Thread thread = new Thread(() -> {
-            if(carDetailsdata != null && carDetailsdata.length > 8){
-                starText.setText(carDetailsdata[8]);
+            if(carDetailsData != null && carDetailsData.length > 8){
+                starText.setText(carDetailsData[8]);
             }
         });
         thread.start();
@@ -135,11 +137,11 @@ public class CarDetailsPage {
 
     private void initSpeedSeatsPowerPrise(){
         Thread thread = new Thread(() -> {
-            if(carDetailsdata != null && carDetailsdata.length > 8){
-                speedText.setText(carDetailsdata[9] + " km/h");
-                seatsText.setText(carDetailsdata[2]);
-                powerText.setText(carDetailsdata[10] + " L");
-                priceText.setText("RM" + carDetailsdata[3] + "/D");
+            if(carDetailsData != null && carDetailsData.length > 8){
+                speedText.setText(carDetailsData[9] + " km/h");
+                seatsText.setText(carDetailsData[2]);
+                powerText.setText(carDetailsData[10] + " L");
+                priceText.setText("RM" + carDetailsData[3] + "/D");
             }
         });
         thread.start();
@@ -191,6 +193,7 @@ public class CarDetailsPage {
                 try {
                     Thread.sleep(6 * 1000); //set pause time
                     keyTipsImageView.setImage(null);
+                    StatusContainer.isFirstViewCar = false;
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -201,16 +204,14 @@ public class CarDetailsPage {
             thread.start();
         }else{
             keyTipsImageView.setImage(null);
-            StatusContainer.isFirstViewCar = false;
         }
-
-
     }
 
     private void initWebView(){
         String sql = "select power,comfort,handing,space,allocation,interior"
                 +" from carsRadarData where carModel = '"
                 +StatusContainer.currentCarChoosed+"'";
+        //System.out.println(sql);
         String[] radarData = SQL.query(sql).get(0);
         String radarDataStr = Arrays.toString(radarData);
         //System.out.println(radarDataStr);
@@ -226,16 +227,43 @@ public class CarDetailsPage {
                 });
         assert url != null;
         engine.load(url.toString());
-
-        //engine.executeScript("initRadar([1.0,2.0,3.0,4.0,5.0,6.0]);");
-
-//        webview.getSettings().setJavaScriptEnabled(true);
-//        webview.loadUrl("file:///android_asset/test.html");
-//        webview.setWebViewClient(new WebViewClient(){
-//            public void onPageFinished(WebView view, String url){
-//                webview.loadUrl("javascript:init('" + theArgumentYouWantToPass + "')");
-//            }
-//        });
     }
+
+    private void initContainPaneEvent(){
+        cardDetailsPageContainer.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if(keyEvent.getCode() == KeyCode.LEFT){
+                changeCar(-1);
+            }else if(keyEvent.getCode() == KeyCode.RIGHT){
+                changeCar(1);
+            }
+            keyEvent.consume();
+        });
+    }
+
+    private void changeCar(int index){
+        //System.out.println("changeCar:" + index);
+        String model = StatusContainer.currentCarChoosed;
+        String sql = "select modelID from cars where carModel='" + model + "'";
+        //System.out.println(sql);
+        int modelID = Integer.parseInt(SQL.query(sql).get(0)[0]);
+
+        String sqlFirstModel = "select carModel from cars where modelID = 1 " ;
+        String firstCarModel = SQL.query(sqlFirstModel).get(0)[0];
+
+        if(modelID + index ==0){
+            StatusContainer.currentCarChoosed = firstCarModel;
+        }else{
+            String sqlNewModel = "select carModel from cars where modelID = " + (modelID + index);
+            try{
+                StatusContainer.currentCarChoosed = SQL.query(sqlNewModel).get(0)[0];
+            }catch (Exception e){
+                StatusContainer.currentCarChoosed = firstCarModel;
+            }
+        }
+
+        Tools.changeScence("carDetailsPage.fxml");
+    }
+
+
 
 }
