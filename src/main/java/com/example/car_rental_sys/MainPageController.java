@@ -4,8 +4,6 @@ import com.teamdev.jxbrowser.browser.callback.InjectJsCallback;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,8 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -33,12 +29,8 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.engine.EngineOptions;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
-import com.teamdev.jxbrowser.frame.Frame;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
-import com.teamdev.jxbrowser.js.ConsoleMessageLevel;
-import com.teamdev.jxbrowser.js.JsAccessible;
 import com.teamdev.jxbrowser.js.JsObject;
 
 
@@ -291,7 +283,7 @@ public class MainPageController {
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
-            ConsoleMessageLevel level = consoleMessage.level();
+            //ConsoleMessageLevel level = consoleMessage.level();
             String message = consoleMessage.message();
             System.out.println(message);
         });
@@ -311,10 +303,10 @@ public class MainPageController {
         });
     }
 
-    private final Timer timer = new Timer();
+    private  Timer timer;
 
     private void updateLocation(){
-
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -332,46 +324,74 @@ public class MainPageController {
 
     @FXML
     void pickUpBtnClick() {
-        //System.out.println("pickUpBtnClick");
-
-        Bounds bounds = operationBar.getBoundsInLocal();
-        Bounds screenBounds = operationBar.localToScreen(bounds);
-        int x = (int) screenBounds.getMinX();
-        int y = (int) screenBounds.getMinY();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/pickDate.fxml"));
-        try {
-            Scene scene = new Scene(fxmlLoader.load(), 560, 410);
-            Stage stage = new Stage();
-            stage.setTitle("Pick Up Date");
-            stage.setX(x + 270);
-            stage.setY(y - 330);
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-
+        showDatePicker();
     }
 
 
     @FXML
     void returnBtnClick() {
-        System.out.println("returnBtnClick");
+
+        //System.out.println("returnBtnClick");
+        showDatePicker();
     }
 
     @FXML
     void searchBtnClick() {
-        System.out.println("searchBtnClick");
+        //System.out.println("searchBtnClick");
+
     }
 
     void showDatePicker(){
         Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
         Browser browser = engine.newBrowser();
 
+        browser.navigation().loadUrl("http://127.0.0.1:8080/");
+
+        browser.on(ConsoleMessageReceived.class, event -> {
+            ConsoleMessage consoleMessage = event.consoleMessage();
+            //ConsoleMessageLevel level = consoleMessage.level();
+            String message = consoleMessage.message();
+            System.out.println(message);
+
+            String[] messageArray = message.split(",");
+            StatusContainer.pickDateTime = messageArray[0];
+            StatusContainer.returnDateTime = messageArray[1];
+
+        });
+
+        BrowserView view = BrowserView.newInstance(browser);
+
+        Scene scene = new Scene(new BorderPane(view),800,600);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("JxBrowser");
+        stage.setScene(scene);
+        stage.show();
+
+        updatePickAndReturnDateTime();
+
+        stage.setOnCloseRequest(event -> {
+            timerDatePciker.cancel();
+            engine.close();
+        });
+
+    }
+
+    private Timer timerDatePciker ;
+
+    private void updatePickAndReturnDateTime(){
+        timerDatePciker = new Timer();
+        timerDatePciker.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if (StatusContainer.pickDateTime!=null){
+                        pickUpDateLabel.setText(StatusContainer.pickDateTime);
+                        returnDateLabel.setText(StatusContainer.returnDateTime);
+                    }
+                });
+
+            }
+        },0,200);
     }
 }

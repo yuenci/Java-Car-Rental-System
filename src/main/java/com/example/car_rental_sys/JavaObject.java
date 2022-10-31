@@ -20,4 +20,6 @@ public final class JavaObject {
         //System.out.println( "Location: " + text + "!");
         StatusContainer.locationChose = text;
     }
+
+
 }

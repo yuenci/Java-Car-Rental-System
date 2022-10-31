@@ -7,4 +7,6 @@ public class StatusContainer {
 
     public static boolean isFirstViewCar = true;
     public static String locationChose = null;
+    public static String pickDateTime = null;
+    public static String returnDateTime = null;
 }
