@@ -34,95 +34,99 @@
   -->
 
   <script type="text/javascript">
-    var dom = document.getElementById('container');
-    var myChart = echarts.init(dom, null, {
-      renderer: 'canvas',
-      useDirtyRect: false
-    });
-    var app = {};
+    function initRadar(valueList){
+      var dom = document.getElementById('container');
+      var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+      });
+      //var app = {};
 
-    var option;
+      var option;
 
-    option = {
-      // title: {
-      //   text: 'Basic Radar Chart'
-      // },
-      // legend: {
-      //   data: ['Allocated Budget', 'Actual Spending']
-      // },
-      // tooltip: {  //配置详情提示框组件
-      //   //设置雷达图的tooltip不会超出div，也可设置position属性
-      //   //设置定位不会随着鼠标移动而变化
-      //   confine: true,  //设置是否将tooltip框限制在图表的区域内
-      //   enterable: true,  //设置鼠标是否可以移动到tooltip区域内
-      // },
-      radar: {
-        // shape: 'circle',
-        //Power, Comfort, Handling, Space, Configuration, Interior
-        indicator: [
-          { name: 'Power', max: 5 },
-          { name: 'Comfort', max: 5 },
-          { name: 'Handling', max: 5 },
-          { name: 'Space', max: 5 },
-          { name: 'Allocation', max: 5 },
-          { name: 'Interior', max: 5 }
-        ],
-        // name size
-        name: {
-          textStyle: {
-            fontSize: 16,
-            // color: '#fff'
-          }
-        },
-        shape: "polygon",
-
-      },
-      series: [
-        {
-          name: 'Budget vs spending',
-          type: 'radar',
-          itemStyle: {  //设置折线拐点标志的样式
-            normal: { color: '#165dff' },
-            emphasis: { color: "#CAE943" }
+      option = {
+        // title: {
+        //   text: 'Basic Radar Chart'
+        // },
+        // legend: {
+        //   data: ['Allocated Budget', 'Actual Spending']
+        // },
+        // tooltip: {  //配置详情提示框组件
+        //   //设置雷达图的tooltip不会超出div，也可设置position属性
+        //   //设置定位不会随着鼠标移动而变化
+        //   confine: true,  //设置是否将tooltip框限制在图表的区域内
+        //   enterable: true,  //设置鼠标是否可以移动到tooltip区域内
+        // },
+        radar: {
+          // shape: 'circle',
+          //Power, Comfort, Handling, Space, Configuration, Interior
+          indicator: [
+            { name: 'Power', max: 5 },
+            { name: 'Comfort', max: 5 },
+            { name: 'Handling', max: 5 },
+            { name: 'Space', max: 5 },
+            { name: 'Allocation', max: 5 },
+            { name: 'Interior', max: 5 }
+          ],
+          // name size
+          name: {
+            textStyle: {
+              fontSize: 16,
+              // color: '#fff'
+            }
           },
-          data: [
-            {
-              value: [4.200, 3.000, 2.0000, 3.5000, 5.0000, 1.8000],
-              name: 'Allocated Budget',
-              symbol: 'Circle',
-              symbolSize: 12,  //设置单个数据标记的大小
-              lineStyle: {
-                normal: { color: '#165dff' },
-                emphasis: { color: "#CAE943" }
-              },
-              label: {
-                normal: {
-                  show: true,
-                  fontSize: '16',
-                  color: '#fff',
-                  formatter: function (params) {
-                    return params.value;
+          shape: "polygon",
+
+        },
+        series: [
+          {
+            name: 'Budget vs spending',
+            type: 'radar',
+            itemStyle: {  //设置折线拐点标志的样式
+              normal: { color: '#165dff' },
+              emphasis: { color: "#CAE943" }
+            },
+            data: [
+              {
+                // value: [4.200, 3.000, 2.0000, 3.5000, 5.0000, 1.8000],
+                value: valueList,
+                name: 'Allocated Budget',
+                symbol: 'Circle',
+                symbolSize: 12,  //设置单个数据标记的大小
+                lineStyle: {
+                  normal: { color: '#165dff' },
+                  emphasis: { color: "#CAE943" }
+                },
+                label: {
+                  normal: {
+                    show: true,
+                    fontSize: '16',
+                    color: '#fff',
+                    formatter: function (params) {
+                      return params.value;
+                    }
                   }
                 }
+
               }
+              // },
+              // {
+              //   value: [5000, 14000, 28000, 26000, 42000, 21000],
+              //   name: 'Actual Spending'
+              // }
+            ]
+          }
+        ],
 
-            }
-            // },
-            // {
-            //   value: [5000, 14000, 28000, 26000, 42000, 21000],
-            //   name: 'Actual Spending'
-            // }
-          ]
-        }
-      ],
+      };
 
-    };
+      if (option && typeof option === 'object') {
+        myChart.setOption(option);
+      }
 
-    if (option && typeof option === 'object') {
-      myChart.setOption(option);
+      window.addEventListener('resize', myChart.resize);
     }
 
-    window.addEventListener('resize', myChart.resize);
   </script>
 </body>
 

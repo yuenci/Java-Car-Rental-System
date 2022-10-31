@@ -15,14 +15,11 @@
     -fx-background-color: #151515;
     -fx-cursor: hand;
 }
-#backBtn{
-    -fx-background-image: url("/com/example/car_rental_sys/image/UI/back-blue.png");
-    /*-fx-graphic: url(/com/example/car_rental_sys/image/UI/back-blue.png);*/
+.rentPane{
+    -fx-background-color: #165DFF;
 }
 
-
-#backBtn:hover {
-    -fx-background-image: url("/com/example/car_rental_sys/image/UI/back-white.png");
-    /*-fx-graphic: url(/com/example/car_rental_sys/image/UI/back-white.png);*/
-    -fx-cursor: hand;
+.rentPane:hover{
+    -fx-background-color: #1D90F4 !important;
+    -fx-cursor: hand !important;
 }

@@ -17,6 +17,7 @@ import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class CarDetailsPage {
@@ -44,30 +45,48 @@ public class CarDetailsPage {
     @FXML
     Label modelText;
 
+    @FXML
+    Label speedText;
+
+    @FXML
+    Label seatsText;
+
+    @FXML
+    Label powerText;
+
+    @FXML
+    Label priceText;
+
 
     private String imageFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/";
+    private String[] carDetailsdata = null;
 
     @FXML
     private void initialize(){
-        modelText.setText(StatusContainer.currentCarChoosed.replace("_"," "));
+        initData();
         initImage();
         initStar();
+        initSpeedSeatsPowerPrise();
         initLogo();
         initComments();
         backBtnClickEvent();
         initKeyTips();
-        WebEngine engine = webview.getEngine();
-
-        URL url = this.getClass().getResource("/com/example/car_rental_sys/html/radar.html");
-        assert url != null;
-        engine.load(url.toString());
+        initWebView();
 
 
         //engine.load("https://www.google.com/");
         //engine.load( getClass().getResource("radar.html").toString() );
     }
+    private void initData(){
+        String sql = "SELECT * FROM cars WHERE carModel = '"+StatusContainer.currentCarChoosed+"'";
+        ArrayList<String[]> result = SQL.query(sql);
+        carDetailsdata = result.get(0);
+        System.out.println(Arrays.toString(carDetailsdata));
+    }
 
     private  void initImage(){
+        modelText.setText(StatusContainer.currentCarChoosed.replace("_"," "));
+
         File file = new File(imageFileRoot + StatusContainer.currentCarChoosed + ".png");
 
         Image image = new Image(file.toURI().toString());
@@ -100,10 +119,21 @@ public class CarDetailsPage {
 
     private  void initStar(){
         Thread thread = new Thread(() -> {
-            String sql = "select star from cars where carModel = '" + StatusContainer.currentCarChoosed + "'";
-            String star = SQL.query(sql).get(0)[0];
-            if(!Objects.equals(star, "")){
-                starText.setText(star);
+            if(carDetailsdata != null && carDetailsdata.length > 8){
+                starText.setText(carDetailsdata[8]);
+            }
+        });
+        thread.start();
+
+    }
+
+    private void initSpeedSeatsPowerPrise(){
+        Thread thread = new Thread(() -> {
+            if(carDetailsdata != null && carDetailsdata.length > 8){
+                speedText.setText(carDetailsdata[9] + " km/h");
+                seatsText.setText(carDetailsdata[2]);
+                powerText.setText(carDetailsdata[10] + " L");
+                priceText.setText("RM" + carDetailsdata[3] + "/D");
             }
         });
         thread.start();
@@ -154,7 +184,7 @@ public class CarDetailsPage {
         Thread thread = new Thread(() -> {
             for (int i = 0; i <1; i++) {
                 try {
-                    Thread.sleep(6 * 1000); //设置暂停的时间 5 秒
+                    Thread.sleep(6 * 1000); //set pause time
                     keyTipsImageView.setImage(null);
 
                 } catch (InterruptedException e) {
@@ -170,6 +200,22 @@ public class CarDetailsPage {
         }
 
 
+    }
+
+    private void initWebView(){
+        WebEngine engine = webview.getEngine();
+        URL url = this.getClass().getResource("/com/example/car_rental_sys/html/radar.html");
+        assert url != null;
+        engine.load(url.toString());
+        //engine.executeScript("initRadar([1.0,2.0,3.0,4.0,5.0,6.0])");
+
+//        webview.getSettings().setJavaScriptEnabled(true);
+//        webview.loadUrl("file:///android_asset/test.html");
+//        webview.setWebViewClient(new WebViewClient(){
+//            public void onPageFinished(WebView view, String url){
+//                webview.loadUrl("javascript:init('" + theArgumentYouWantToPass + "')");
+//            }
+//        });
     }
 
 }
