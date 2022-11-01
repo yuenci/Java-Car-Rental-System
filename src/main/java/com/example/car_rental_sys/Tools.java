@@ -62,35 +62,41 @@ public class Tools {
 
     }
 
-    /**
-     * 执行bat文件，
-     *
-     * @param file          bat文件路径
-     * @param isCloseWindow 执行完毕后是否关闭cmd窗口
-     * @return bat文件输出log
-     */
 
-    public static String executeBatFile(String file, boolean isCloseWindow) {
-        String cmdCommand;
-        if (isCloseWindow) {
-            cmdCommand = "cmd.exe /c " + file;
-        } else {
-            cmdCommand = "cmd.exe /k " + file;
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        Process process;
+    public static void exebat(String strcmd){
+        strcmd = "cmd /c start " + strcmd;
+        Runtime rt = Runtime.getRuntime(); //Runtime.getRuntime() return current runtime object
+        Process ps = null;  //Process can track the execution of the child process or get the information of the child process.
         try {
-            process = Runtime.getRuntime().exec(cmdCommand);
-            BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(process.getInputStream(), "GBK"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line).append(" ");
-            }
-            return stringBuilder.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            ps = rt.exec(strcmd);   // execute the command
+            ps.waitFor();  // wait for the process to complete
+        } catch (IOException | InterruptedException e1) {
+            e1.printStackTrace();
         }
+
+        assert ps != null;
+        int i = ps.exitValue();  //get return value
+        if (i == 0) {
+            System.out.println("Server start.");
+        } else {
+            System.out.println("Server failed.");
+        }
+
+        ps.destroy();  //destroy  process
+    }
+    public static String getProjectPath(){
+        return   System.getProperty("user.dir");
+        //E:\Materials\Semester 3\CRS-version0.2
+    }
+
+
+    public static void StartHttpServer(){
+        Thread thread = new Thread(() -> {
+            String projectPath = Tools.getProjectPath();
+            String cmdStr = "http-server \""+ projectPath +"\\crs\\src\\main\\resources\\com\\example\\car_rental_sys\\html\\datePicker\"";
+            Tools.exebat(cmdStr);
+        });
+        thread.start();
+
     }
 }
