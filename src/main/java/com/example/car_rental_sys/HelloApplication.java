@@ -54,27 +54,17 @@ public class HelloApplication extends Application {
         stage.show();
 
         System.setProperty("jxbrowser.license.key",Config.jxBrowserLicense);
-        StartHttpServer();
 
-        sendPINCode();
+        StartHttpServer();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    public static void sendPINCode(){
-        Thread thread = new Thread(() -> {
-            try {
-                SendEmail.sendVerificationEmail("yuenci1575270674@gmail.com","Innis");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        thread.start();
-    }
 
     public static void StartHttpServer(){
+        Tools.StartHttpServer();
     }
 
 }

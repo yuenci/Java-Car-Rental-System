@@ -93,10 +93,12 @@ public class Tools {
     public static void StartHttpServer(){
         Thread thread = new Thread(() -> {
             String projectPath = Tools.getProjectPath();
-            String cmdStr = "http-server \""+ projectPath +"\\crs\\src\\main\\resources\\com\\example\\car_rental_sys\\html\\datePicker\"";
+            String cmdStr = "http-server \""+ projectPath +"\\src\\main\\resources\\com\\example\\car_rental_sys\\html\\datePicker\"";
+            System.out.println(cmdStr);
             Tools.exebat(cmdStr);
         });
         thread.start();
 
+        // http-server "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\html\datePicker"
     }
 }
