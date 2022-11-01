@@ -90,6 +90,8 @@ This is an example of how to list things you need to use the software and how to
 
 * Google map key
 * JxBrower license
+There can be no spaces or characters other than letters in the path.
+Add a library for mail
 
 ### Installation
 

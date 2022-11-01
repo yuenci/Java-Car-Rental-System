@@ -59,14 +59,12 @@ public class SendEmail {
         int max = 999999;
         int pinCode = min + (int)(Math.random() * (max-min+1));
 
-        String content = "<div><img src=\""  + Config.logoAddress + "\"></div>"
-                + "<div>Hi" + useName + ",</div>"
-                + "<div>" + "Your verification code is: " + pinCode + "</div>";
-
+        StatusContainer.currentPinCode = String.valueOf(pinCode);
+        String content = getHtmlContent(StatusContainer.currentPinCode,useName);
 
         message.setContent(content, "text/html;charset=UTF-8");
 //        message.setContent("<h1>This is actual message</h1>", "text/html" ); // 发送 HTML 消息, 可以插入html标签
-        StatusContainer.currentPinCode = String.valueOf(pinCode);
+
         message.setSentDate(new Date());
         message.saveChanges();
 
@@ -75,6 +73,41 @@ public class SendEmail {
 
     public static void sendVerificationEmail(String receiveEmailAddress,String uerName) throws Exception {
         SendEmail.send("yuenci1575270674@gmail.com","Innis");
+    }
+
+    public static String getHtmlContent(String PINCode,String userName){
+        return "<div style=\"margin: 0  auto ;width: 500px;height: 300px;border-style: solid;border-width: thin;" +
+                "border-color: #dadce0;border-radius: 8px;padding: 40px 20px;\"><div style=\"text-align:center;\">" +
+                "<img src=\"" +
+                Config.logoAddress+
+                "\"" +
+                "alt=\"Logo\"style=\"height: 50px;\"></div><h3 style=\"text-align: center;padding-bottom: 20px;" +
+                "border-bottom: 1px solid #dadce0;\">Your Rent.Inc signup verification is in progres</h3><p " +
+                "style=\"margin: 30px 0px ;\">Hi, " +
+                userName +
+                ", Your verification code is:</p><pre style=\"padding:16px 24px;" +
+                "border:1px solid #eeeeee;background-color:#f4f4f4;border-radius:3px;font-family:monospace;" +
+                "margin-bottom:24px\">" +
+                PINCode+
+                "</pre><div>Thank you for choosing our service. For more information,please click this " +
+                "<a href=\"https://github.com/yuenci/Java-Car-Rental-System\">link</a>.</div></div><div " +
+                "style=\"text-align:center; margin-top: 20px;\"><a href=\"#\"style=\"width:24px;height:24px;" +
+                "display:inline-block;margin-right:20px\"target=\"_blank\">" +
+                "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/a02d1c02-e2dd-41e6-93a7-27741476b3d1.png\"" +
+                "style=\"width:24px;height:24px\"alt=\"\"></a>" +
+                "<a href=\"#\"style=\"width:24px;height:24px;display:inline-block;margin-right:20px\"target=\"_blank\">" +
+                "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/6ce6ce99-b65b-4f3a-9d7f-7e68ca600640.png\"" +
+                "style=\"width:24px;height:24px\"alt=\"\" ></a><a href=\"#\"" +
+                "style=\"width:24px;height:24px;display:inline-block;margin-right:20px\"target=\"_blank\">" +
+                "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/d09a1d99-bb2b-41a5-a4c4-594c09f9da3c.png\"" +
+                "style=\"width:24px;height:24px\"alt=\"\" ></a><a href=\"#\"" +
+                "style=\"width:24px;height:24px;display:inline-block;margin-right:20px\"target=\"_blank\">" +
+                "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/fbc0a520-9f70-4532-ba6f-39fc52697f1e.png\"" +
+                "style=\"width:24px;height:24px\"alt=\"\" ></a><a href=\"#\"" +
+                "style=\"width:24px;height:24px;display:inline-block\"target=\"_blank\">" +
+                "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/5baa24d9-e6c4-48d6-a3bd-27c7acfcbf31.png\"" +
+                "style=\"width:24px;height:24px\"alt=\"\" ></a></div><div " +
+                "style=\"color:#969696;text-align:center; margin-top: 10px;\">©2022 Rent.Inc.All rights reserved.</div>";
     }
 
 }

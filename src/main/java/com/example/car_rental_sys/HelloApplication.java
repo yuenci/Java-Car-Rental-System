@@ -20,8 +20,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+
+// https://github.com/users/yuenci/projects/3
 
 public class HelloApplication extends Application {
     public static Stage stageInstance;
