@@ -54,35 +54,26 @@ public class HelloApplication extends Application {
 
         System.setProperty("jxbrowser.license.key",Config.jxBrowserLicense);
         StartHttpServer();
+
+        sendPINCode();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
+    public static void sendPINCode(){
+        Thread thread = new Thread(() -> {
+            try {
+                SendEmail.sendVerificationEmail("yuenci1575270674@gmail.com","Innis");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+    }
+
     public static void StartHttpServer(){
-//        String path = System.getProperty("user.dir") + Config.htmlComponents + "datePicker\\test.bat";
-//        Thread thread = new Thread(() -> {
-//            Tools.executeBatFile("\""+ path +"\"",false);
-//            System.out.println("http server started");
-//        });
-//        thread.start();
-//        Thread thread = new Thread(() -> {
-//            Runtime ec=Runtime.getRuntime();
-//            try {
-//                String path = System.getProperty("user.dir") + Config.htmlComponents + "datePicker";
-//                String cmd = "\"" + path + "\\test.bat\"";
-//                ec.exec(cmd);
-//                System.out.println(cmd);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
-//        thread.start();
-
-
     }
 
-    private static class Stirng {
-    }
 }

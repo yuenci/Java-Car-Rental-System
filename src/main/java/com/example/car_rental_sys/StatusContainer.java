@@ -9,4 +9,5 @@ public class StatusContainer {
     public static String locationChose = null;
     public static String pickDateTime = null;
     public static String returnDateTime = null;
+    public static String currentPinCode = null;
 }

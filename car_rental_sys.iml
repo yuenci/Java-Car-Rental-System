@@ -34,5 +34,7 @@
     <orderEntry type="library" name="Maven: com.teamdev.jxbrowser:jxbrowser-javafx:7.28.1" level="project" />
     <orderEntry type="library" name="Maven: com.teamdev.jxbrowser:jxbrowser-win64:7.28.1" level="project" />
     <orderEntry type="library" name="Maven: com.teamdev.jxbrowser:jxbrowser:7.28.1" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>

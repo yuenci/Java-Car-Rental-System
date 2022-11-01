@@ -5,6 +5,7 @@ module com.example.car_rental_sys {
     requires jsqlparser;
     requires jxbrowser;
     requires jxbrowser.javafx;
+    requires java.mail;
 
 
     opens com.example.car_rental_sys to javafx.fxml;
