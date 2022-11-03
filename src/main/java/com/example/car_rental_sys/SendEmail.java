@@ -20,7 +20,7 @@ public class SendEmail {
     public static String myEmailSMTPHost = Config.myEmailSMTPHost;
 
 
-    private static void send(String receiveEmailAddress,String userName) throws Exception {
+    private static void send(String receiveEmailAddress,String userName,String type) throws Exception {
 
         Properties props = new Properties();
         props.setProperty("mail.transport.protocol", "smtp");
@@ -37,7 +37,7 @@ public class SendEmail {
         Session session = Session.getInstance(props);
         session.setDebug(false);
 
-        MimeMessage message = createMimeMessage(session, myEmailAccount, receiveEmailAddress,userName);
+        MimeMessage message = createMimeMessage(session, myEmailAccount, receiveEmailAddress,userName,type);
 
         Transport transport = session.getTransport();
 
@@ -46,21 +46,21 @@ public class SendEmail {
         transport.close();
     }
 
-    private static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String useName) throws Exception {
+    private static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String useName,String type) throws Exception {
         MimeMessage message = new MimeMessage(session);
 
         message.setFrom(new InternetAddress(sendMail, "Rent.Inc", "UTF-8"));
 
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "Dear xx(user)", "UTF-8"));
 
-        message.setSubject("Your Rent.Inc signup verification is in progres", "UTF-8");
+        message.setSubject("Your Rent.Inc "+type+" verification is in progres", "UTF-8");
 
         int min = 100000;
         int max = 999999;
         int pinCode = min + (int)(Math.random() * (max-min+1));
 
         StatusContainer.currentPinCode = String.valueOf(pinCode);
-        String content = getHtmlContent(StatusContainer.currentPinCode,useName);
+        String content = getHtmlContent(StatusContainer.currentPinCode,useName,type);
 
         message.setContent(content, "text/html;charset=UTF-8");
 //        message.setContent("<h1>This is actual message</h1>", "text/html" ); // 发送 HTML 消息, 可以插入html标签
@@ -71,18 +71,18 @@ public class SendEmail {
         return message;
     }
 
-    public static void sendVerificationEmail(String receiveEmailAddress,String uerName) throws Exception {
-        SendEmail.send("yuenci1575270674@gmail.com","Innis");
-    }
 
-    public static String getHtmlContent(String PINCode,String userName){
+
+    public static String getHtmlContent(String PINCode,String userName,String type){
         return "<div style=\"margin: 0  auto ;width: 500px;height: 300px;border-style: solid;border-width: thin;" +
                 "border-color: #dadce0;border-radius: 8px;padding: 40px 20px;\"><div style=\"text-align:center;\">" +
                 "<img src=\"" +
                 Config.logoAddress+
                 "\"" +
                 "alt=\"Logo\"style=\"height: 50px;\"></div><h3 style=\"text-align: center;padding-bottom: 20px;" +
-                "border-bottom: 1px solid #dadce0;\">Your Rent.Inc signup verification is in progres</h3><p " +
+                "border-bottom: 1px solid #dadce0;\">Your Rent.Inc " +
+                type +
+                " verification is in progres</h3><p " +
                 "style=\"margin: 30px 0px ;\">Hi, " +
                 userName +
                 ", Your verification code is:</p><pre style=\"padding:16px 24px;" +
@@ -108,6 +108,11 @@ public class SendEmail {
                 "<img src=\"https://cdn.tngdigital.com.my/resource/2022/6/27/5baa24d9-e6c4-48d6-a3bd-27c7acfcbf31.png\"" +
                 "style=\"width:24px;height:24px\"alt=\"\" ></a></div><div " +
                 "style=\"color:#969696;text-align:center; margin-top: 10px;\">©2022 Rent.Inc.All rights reserved.</div>";
+    }
+
+    public static void sendVerificationEmail(String receiveEmailAddress,String uerName,String type) throws Exception {
+        SendEmail.send("yuenci1575270674@gmail.com","Innis","signUp");
+        // sign up ; login; reset password
     }
 
 }

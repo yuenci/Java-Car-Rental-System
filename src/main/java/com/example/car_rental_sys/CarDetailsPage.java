@@ -264,6 +264,14 @@ public class CarDetailsPage {
         Tools.changeScence("carDetailsPage.fxml");
     }
 
-
+    @FXML
+    private void rentNowBtnClickEvent(){
+        if (StatusContainer.isLogin) {
+            new Tools().reSetScence("paymentPage.fxml");
+        } else {
+            //System.out.println("Please login first");
+            new Tools().reSetScence("loginPage.fxml");
+        }
+    }
 
 }

@@ -11,112 +11,96 @@
         <fx:include source="navigationBar.fxml" />
     </Pane>
    <Pane fx:id="containPane" layoutX="-3.0" layoutY="92.0" prefHeight="744.0" prefWidth="1286.0">
-      <ImageView fx:id="logImageView" fitHeight="100.0" fitWidth="100.0" layoutX="88.0" layoutY="33.0"
-                 pickOnBounds="true" preserveRatio="true"/>
-      <Label fx:id="modelText" layoutX="202.0" layoutY="33.0" style="-fx-text-fill: white;"
-             text="Lamborghini Superleggera">
+      <ImageView fx:id="logImageView" fitHeight="100.0" fitWidth="100.0" layoutX="88.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="modelText" layoutX="202.0" layoutY="33.0" style="-fx-text-fill: white;" text="Lamborghini Superleggera">
          <font>
-            <Font size="32.0"/>
+            <Font size="32.0" />
          </font>
       </Label>
-      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="202.0" layoutY="97.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../image/UI/star.png"/>
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="202.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/star.png" />
       </ImageView>
       <Label fx:id="starText" layoutX="254.0" layoutY="93.0" text="4.8" textFill="WHITE">
          <font>
-            <Font size="30.0"/>
+            <Font size="30.0" />
          </font>
       </Label>
-      <ImageView fx:id="carImageView" fitHeight="541.0" fitWidth="600.0" layoutX="-25.0" layoutY="125.0"
-                 pickOnBounds="true" preserveRatio="true" style="-fx-scale-z: 100;">
-         <Image url="@../image/cars/Huracan_EVO.png"/>
+      <ImageView fx:id="carImageView" fitHeight="541.0" fitWidth="600.0" layoutX="-25.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-z: 100;">
+         <Image url="@../image/cars/Huracan_EVO.png" />
       </ImageView>
-      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="612.0" layoutY="98.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../image/UI/speed.png"/>
+      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="612.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/speed.png" />
       </ImageView>
-      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="844.0" layoutY="98.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../image/UI/seats.png"/>
+      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="844.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/seats.png" />
       </ImageView>
-      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="1077.0" layoutY="98.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../image/UI/engine.png"/>
+      <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="1077.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/engine.png" />
       </ImageView>
-      <Label layoutX="924.0" layoutY="231.0" prefHeight="22.0" prefWidth="42.0" text="Seats" textAlignment="CENTER"
-             textFill="WHITE">
+      <Label layoutX="924.0" layoutY="231.0" prefHeight="22.0" prefWidth="42.0" text="Seats" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="16.0"/>
+            <Font size="16.0" />
          </font>
       </Label>
       <Label layoutX="662.0" layoutY="231.0" prefHeight="22.0" prefWidth="88.0" text="Max Speed" textFill="WHITE">
          <font>
-            <Font size="16.0"/>
+            <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="1123.0" layoutY="231.0" prefHeight="22.0" prefWidth="108.0" text="Engine Power"
-             textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="1123.0" layoutY="231.0" prefHeight="22.0" prefWidth="108.0" text="Engine Power" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="16.0"/>
+            <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="speedText" layoutX="642.0" layoutY="192.0" prefHeight="32.0" prefWidth="128.0" text="322 km/h"
-             textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="speedText" layoutX="642.0" layoutY="192.0" prefHeight="32.0" prefWidth="128.0" text="322 km/h" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="seatsText" layoutX="938.0" layoutY="192.0" text="4" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="powerText" layoutX="1149.0" layoutY="192.0" text="4.0 L" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Pane layoutX="848.0" layoutY="305.0" prefHeight="311.0" prefWidth="424.0"
-            style="-fx-background-color: #2f2f2f; -fx-background-radius: 10;">
-         <WebView fx:id="webview" layoutX="14.0" prefHeight="311.0" prefWidth="397.0"/>
+      <Pane layoutX="848.0" layoutY="305.0" prefHeight="311.0" prefWidth="424.0" style="-fx-background-color: #2f2f2f; -fx-background-radius: 10;">
+         <WebView fx:id="webview" layoutX="14.0" prefHeight="311.0" prefWidth="397.0" />
       </Pane>
-      <Pane layoutX="849.0" layoutY="664.0" prefHeight="80.0" prefWidth="434.0"
-            style="-fx-background-color: #2F2F2F; -fx-background-radius: 50 0 0 0;">
-         <Label fx:id="priceText" layoutX="47.0" layoutY="24.0" text="RM3000/D" textAlignment="RIGHT"
-                textFill="#fffbfb">
+      <Pane layoutX="849.0" layoutY="664.0" prefHeight="80.0" prefWidth="434.0" style="-fx-background-color: #2F2F2F; -fx-background-radius: 50 0 0 0;">
+         <Label fx:id="priceText" layoutX="47.0" layoutY="24.0" text="RM3000/D" textAlignment="RIGHT" textFill="#fffbfb">
             <font>
-               <Font size="24.0"/>
+               <Font size="24.0" />
             </font>
          </Label>
-         <Pane layoutX="223.0" prefHeight="80.0" prefWidth="211.0" styleClass="rentPane">
+         <Pane  layoutX="223.0" prefHeight="80.0" prefWidth="211.0"
+               styleClass="rentPane" onMouseClicked="#rentNowBtnClickEvent">
             <Label layoutX="43.0" layoutY="24.0" text="Rent Now" textFill="WHITE">
                <font>
-                  <Font size="24.0"/>
+                  <Font size="24.0" />
                </font>
             </Label>
          </Pane>
       </Pane>
-      <ImageView fx:id="backBtnImageView" fitHeight="150.0" fitWidth="30.0" layoutX="1231.0" layoutY="39.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../image/UI/back-white.png"/>
+      <ImageView fx:id="backBtnImageView" fitHeight="150.0" fitWidth="30.0" layoutX="1231.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/back-white.png" />
       </ImageView>
-      <ImageView fx:id="keyTipsImageView" fitHeight="150.0" fitWidth="200.0" layoutX="635.0" layoutY="322.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../image/UI/pressLeftAndRight.gif"/>
+      <ImageView fx:id="keyTipsImageView" fitHeight="150.0" fitWidth="200.0" layoutX="635.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/pressLeftAndRight.gif" />
       </ImageView>
-      <Pane layoutY="460.0" prefHeight="284.0" prefWidth="790.0"
-            style="-fx-background-color: #2f2f2f; -fx-background-radius: 0 10  0  0;">
-         <ScrollPane fx:id="commentScrollPane" layoutY="48.0" prefHeight="236.0" prefWidth="790.0"
-                     style="-fx-background: #2f2f2f; -fx-border-color: #2f2f2f;"/>
+      <Pane layoutY="460.0" prefHeight="284.0" prefWidth="790.0" style="-fx-background-color: #2f2f2f; -fx-background-radius: 0 10  0  0;">
+         <ScrollPane fx:id="commentScrollPane" layoutY="48.0" prefHeight="236.0" prefWidth="790.0" style="-fx-background: #2f2f2f; -fx-border-color: #2f2f2f;" />
          <Label layoutX="665.0" layoutY="14.0" text="View more" textFill="#1782ff">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Label>
          <Label fx:id="commentsNum" layoutX="37.0" layoutY="14.0" text="10 comments" textFill="WHITE">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Label>
       </Pane>

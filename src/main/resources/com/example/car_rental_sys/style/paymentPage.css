@@ -1,0 +1,112 @@
+.chooseCarTextDefault{
+    -fx-text-fill: #838383  ;
+}
+
+
+.chooseCarBtnDefault{
+    -fx-background-radius: 15  ;
+    -fx-background-color: #1d1e26  ;
+    -fx-text-fill: #838383 ;
+}
+
+.chooseCarHover{
+    -fx-text-fill: white  ;
+    -fx-cursor: hand  ;
+}
+
+.chooseCarBtnHover{
+    -fx-background-radius: 15  ;
+    -fx-background-color: white  ;
+    -fx-text-fill: black  ;
+    -fx-cursor: hand  ;
+}
+
+.makePaymentText:hover{
+    -fx-cursor: hand !important;
+}
+
+.makePaymentBtn {
+    -fx-background-radius: 15;
+    -fx-background-color: white;
+}
+
+.makePaymentBtn:hover{
+    -fx-cursor: hand !important;
+}
+
+.viewDetailsBtn{
+    -fx-background-color: #1f1f2b;
+    -fx-background-radius: 5;
+}
+
+.viewDetailsBtn:hover{
+    -fx-background-color:  #838383 ;
+    -fx-cursor: hand;
+}
+.makePaymentButton{
+    -fx-background-color: #cae943;
+    -fx-background-radius: 5;
+}
+
+.makePaymentButton:hover{
+    -fx-background-color: #7EB712;
+    -fx-cursor: hand;
+}
+
+#carImageView:hover{
+    -fx-cursor: hand;
+}
+
+/*.radio-button .radio:selected {*/
+/*    -fx-background-color: red;*/
+/*    -fx-background-image: green;*/
+/*}*/
+#methodPaypal ,#methodBankcard {
+    -fx-background-color: #141318  !important;
+    -fx-border-radius: 10px;
+}
+
+#methodPaypal:hover,#methodBankcard:hover{
+    -fx-background-color: #1f1f2b  !important;
+    -fx-border-radius: 10px;
+    -fx-cursor: hand;
+}
+
+/*.radio-button:selected .radio .dot {*/
+/*    -fx-background-color: #d2dea0;*/
+/*    -fx-background-insets: 0;*/
+/*}*/
+
+/*.radio-button .radio {*/
+/*    -fx-border-width: 1px;*/
+/*    -fx-border-color: -fx-darkest-grey-color;*/
+/*    -fx-background-color: white;*/
+/*    -fx-background-image: null;*/
+/*    -fx-border-radius: 15px;*/
+/*    -fx-padding: 3px;*/
+/*}*/
+/*.radio-button:selected .radio .dot  {*/
+/*    !*-fx-background-color:#a0c400;*!*/
+/*}*/
+
+.radio-button .dot {
+    -fx-background-radius: 10px;
+    -fx-padding: 6px;
+}
+
+.downBtn:hover{
+    -fx-background-color: red;
+    -fx-cursor: hand;
+}
+
+#downIconBtn{
+    -fx-graphic: url("../image/UI/down.png");
+    -fx-background-color: transparent;
+}
+
+#downIconBtn:hover{
+    -fx-graphic: url("../image/UI/down.png");
+    -fx-background-color: #838383 ;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}

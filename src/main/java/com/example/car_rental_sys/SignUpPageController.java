@@ -9,7 +9,8 @@ public class SignUpPageController {
 
     @FXML
     void loginClicked(MouseEvent event) {
-        System.out.println("login clicked");
+//        System.out.println("login clicked");
+        Tools.changeScence("loginPage.fxml");
     }
 
     @FXML

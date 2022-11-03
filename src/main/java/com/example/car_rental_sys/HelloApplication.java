@@ -29,11 +29,12 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String fxmlName = "mainPage.fxml";
+//        String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsList.fxml";
         //String fxmlName = "signUp.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
+        String fxmlName = "paymentPage.fxml";
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/"+ fxmlName));
 
@@ -55,7 +56,8 @@ public class HelloApplication extends Application {
 
         System.setProperty("jxbrowser.license.key",Config.jxBrowserLicense);
 
-        StartHttpServer();
+        //StartHttpServer();
+
     }
 
     public static void main(String[] args) {
