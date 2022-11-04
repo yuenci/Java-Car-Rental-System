@@ -368,8 +368,8 @@ public class MainPageController {
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
-            if(message.length() == 39){
-                String[] messageArray = message.split(",");
+            if(message.length() == 33){
+                String[] messageArray = message.split(";");
                 StatusContainer.pickDateTime = messageArray[0];
                 StatusContainer.returnDateTime = messageArray[1];
 

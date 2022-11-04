@@ -36,7 +36,7 @@ public class NavigationBarController {
 
     @FXML
     private void contactBtnClick() {
-        System.out.println("contactBtnClick");
+        Tools.changeScene("contactUsPage.fxml");
     }
 
     @FXML

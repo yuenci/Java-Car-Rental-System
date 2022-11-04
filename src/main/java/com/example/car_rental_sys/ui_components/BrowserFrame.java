@@ -44,6 +44,9 @@ public class BrowserFrame {
     protected  Browser browser = null;
     protected  Function<String,Void> callBackFunc = null;
 
+    // style
+    private String captionBarBgc = "#323844";
+
     public BrowserFrame(int width, int height, String url) {
         this.width = width;
         this.height = height;
@@ -92,7 +95,7 @@ public class BrowserFrame {
     public Label  getCaptionBar(){
         Label captionBar = new Label();
         captionBar.setPrefSize(this.width,30);
-        captionBar.setStyle("-fx-background-color: #323844");
+        captionBar.setStyle("-fx-background-color: " + captionBarBgc + ";");
 //        captionBar.setStyle("-fx-background-color: #818181");
         captionBar.setLayoutX(0);
         captionBar.setLayoutY(0);
