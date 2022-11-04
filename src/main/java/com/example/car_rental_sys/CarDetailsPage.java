@@ -182,7 +182,7 @@ public class CarDetailsPage {
             backBtnImageView.getScene().setCursor(javafx.scene.Cursor.DEFAULT);
         });
 
-        backBtnImageView.setOnMouseClicked(event -> Tools.changeScence("carsList.fxml"));
+        backBtnImageView.setOnMouseClicked(event -> Tools.changeScene("carsList.fxml"));
 
 
     }
@@ -261,16 +261,16 @@ public class CarDetailsPage {
             }
         }
 
-        Tools.changeScence("carDetailsPage.fxml");
+        Tools.changeScene("carDetailsPage.fxml");
     }
 
     @FXML
     private void rentNowBtnClickEvent(){
         if (StatusContainer.isLogin) {
-            new Tools().reSetScence("paymentPage.fxml");
+            new Tools().reSetScene("paymentPage.fxml");
         } else {
             //System.out.println("Please login first");
-            new Tools().reSetScence("loginPage.fxml");
+            new Tools().reSetScene("loginPage.fxml");
         }
     }
 

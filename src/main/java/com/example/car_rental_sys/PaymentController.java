@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
@@ -147,7 +146,7 @@ public class PaymentController {
 
     @FXML
     private void viewCarDetailBtnClickEvent(){
-       Tools.changeScence("carDetailsPage.fxml");
+       Tools.changeScene("carDetailsPage.fxml");
     }
 
     private void textAlignment(){
@@ -156,7 +155,7 @@ public class PaymentController {
 
     @FXML
     private void goToCarListPage(){
-        Tools.changeScence("carsList.fxml");
+        Tools.changeScene("carsList.fxml");
     }
 
     @FXML

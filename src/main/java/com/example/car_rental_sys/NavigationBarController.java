@@ -2,16 +2,12 @@ package com.example.car_rental_sys;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 public class NavigationBarController {
     @FXML
@@ -48,12 +44,12 @@ public class NavigationBarController {
 
     @FXML
     private void homeBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScence(actionEvent,"mainPage.fxml");
+        new Tools().reSetScene(actionEvent,"mainPage.fxml");
     }
 
     @FXML
     private void serviceBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScence(actionEvent,"signUp.fxml");
+        new Tools().reSetScene(actionEvent,"signUp.fxml");
     }
 
     @FXML

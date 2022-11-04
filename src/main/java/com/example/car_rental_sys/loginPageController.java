@@ -9,6 +9,6 @@ public class loginPageController {
 
     @FXML
     private void signUpBtnClick(){
-        new Tools().reSetScence( "signUp.fxml");
+        new Tools().reSetScene( "signUp.fxml");
     }
 }

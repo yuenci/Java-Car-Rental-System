@@ -8,80 +8,76 @@
 
 <Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #0e0e10;" stylesheets="@../style/paymentPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.PaymentController">
    <Pane layoutX="901.0" prefHeight="836.0" prefWidth="380.0" style="-fx-background-color: #15141b;">
-      <children>
-         <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../image/avatar/1.png" />
-            </image>
-         </ImageView>
-         <Label layoutX="120.0" layoutY="130.0" text="Innis" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="16.0" />
-            </font>
-         </Label>
-         <Label layoutX="120.0" layoutY="164.0" text="Car rental payment" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Line endX="202.0" layoutX="151.0" layoutY="213.0" startX="-100.0" stroke="#2f2f2f" />
-         <Label layoutX="51.0" layoutY="248.0" text="Price/Per day" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="277.0" layoutY="248.0" text="RM2000/D" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="51.0" layoutY="288.0" text="Duration" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="277.0" layoutY="288.0" prefHeight="19.0" prefWidth="76.0" text="5 Days" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="51.0" layoutY="322.0" text="Discount" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="277.0" layoutY="322.0" prefHeight="19.0" prefWidth="76.0" text="RM100/D" textFill="#838383">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="51.0" layoutY="362.0" text="Tax" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="277.0" layoutY="362.0" prefHeight="19.0" prefWidth="76.0" text="3%" textFill="#838383">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Label>
-         <Button layoutX="46.0" layoutY="497.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Button>
-         <Line endX="202.0" layoutX="146.0" layoutY="413.0" startX="-100.0" stroke="#2f2f2f" />
-         <Label layoutX="51.0" layoutY="446.0" text="Total amount" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="277.0" layoutY="446.0" prefHeight="19.0" prefWidth="76.0" text="RM10000" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font>
-         </Label>
-      </children>
+      <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/avatar/1.png" />
+      </ImageView>
+      <Label layoutX="120.0" layoutY="130.0" text="Innis" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="120.0" layoutY="164.0" text="Car rental payment" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Line endX="202.0" layoutX="151.0" layoutY="213.0" startX="-100.0" stroke="#2f2f2f" />
+      <Label fx:id="perr" layoutX="51.0" layoutY="248.0" text="Price/Per day" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="248.0" text="RM2000/D" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="288.0" text="Duration" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="288.0" prefHeight="19.0" prefWidth="76.0" text="5 Days" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="322.0" text="Discount" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="322.0" prefHeight="19.0" prefWidth="76.0" text="RM100/D" textFill="#838383">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="362.0" text="Tax" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="362.0" prefHeight="19.0" prefWidth="76.0" text="3%" textFill="#838383">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="46.0" layoutY="497.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Line endX="202.0" layoutX="146.0" layoutY="413.0" startX="-100.0" stroke="#2f2f2f" />
+      <Label layoutX="51.0" layoutY="446.0" text="Total amount" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="446.0" prefHeight="19.0" prefWidth="76.0" text="RM10000" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </Pane>
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBar.fxml" />
@@ -124,50 +120,38 @@
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <Pane fx:id="methodPaypal" layoutX="95.0" layoutY="426.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
-      <children>
-         <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
-         <ImageView fx:id="paypalImage" fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../image/UI/PayPal-logopng.png" />
-            </image>
-         </ImageView>
-      </children>
+   <Pane layoutX="95.0" layoutY="426.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
+      <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
+      <ImageView fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/PayPal-logopng.png" />
+      </ImageView>
    </Pane>
    <Label layoutX="95.0" layoutY="386.0" text="PAYMENT METHODS" textFill="#838383">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <Pane fx:id="methodBankcard" layoutX="95.0" layoutY="540.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
-      <children>
-         <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#paypalMethodClickEvent" text="Mastercard ****6742" textFill="WHITE">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
-         <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../image/UI/mastercard.png" />
-            </image>
-         </ImageView>
-         <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#bankcardMethodClickEvent" text="Expires on 9/26" textFill="#838383">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Button fx:id="downIconBtn" layoutX="666.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showBankCardChooser" prefHeight="20.0" prefWidth="20.0" />
-      </children>
+   <Pane layoutX="95.0" layoutY="540.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
+      <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#paypalMethodClickEvent" text="Mastercard ****6742" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
+      <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/UI/mastercard.png" />
+      </ImageView>
+      <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#bankcardMethodClickEvent" text="Expires on 9/26" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="downIconBtn" layoutX="666.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showBankCardChooser" prefHeight="20.0" prefWidth="20.0" />
    </Pane>
    <Pane layoutX="95.0" layoutY="211.0" prefHeight="100.0" prefWidth="164.0" style="-fx-background-color: #8a8a8a; -fx-background-radius: 10;">
-      <children>
-         <ImageView fx:id="carImageView" fitHeight="100.0" fitWidth="164.0" layoutX="8.0" onMouseClicked="#viewCarDetailBtnClickEvent" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../image/cars/Ferrari_California.png" />
-            </image>
-         </ImageView>
-      </children>
+      <ImageView fx:id="carImageView" fitHeight="100.0" fitWidth="164.0" layoutX="8.0" onMouseClicked="#viewCarDetailBtnClickEvent" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../image/cars/Ferrari_California.png" />
+      </ImageView>
    </Pane>
    <ScrollPane fx:id="bankCardsContainer" layoutX="95.0" layoutY="632.0" prefHeight="202.0" prefWidth="720.0" />
 </Pane>

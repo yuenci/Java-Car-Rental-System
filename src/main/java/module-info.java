@@ -6,6 +6,7 @@ module com.example.car_rental_sys {
     requires jxbrowser;
     requires jxbrowser.javafx;
     requires java.mail;
+    requires org.apache.commons.codec;
 
 
     opens com.example.car_rental_sys to javafx.fxml;

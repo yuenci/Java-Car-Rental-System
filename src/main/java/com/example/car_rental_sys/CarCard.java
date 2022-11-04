@@ -134,7 +134,7 @@ public class CarCard extends Pane {
     }
 
     private void goToDetailsPage(){
-        new Tools().reSetScence("carDetailsPage.fxml");
+        new Tools().reSetScene("carDetailsPage.fxml");
     }
 }
 

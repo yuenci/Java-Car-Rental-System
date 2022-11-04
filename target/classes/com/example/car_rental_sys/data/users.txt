@@ -1,3 +1,0 @@
-userID:num=0,userName:str=null,userGroup:str=customer,post:str=null,password:str=123456,securityProblem:str=null,securityAnswer:str=null,birthday:str=null,gender:str=null,Country:str=null,phone:str=0123456789,email:str=rent@mail.com,address:str=null,about:str=null,regTime:str=null
-1,Innis,admin,CEO,123456,What is my favourite,coding,1999-04-16,Male,China,1575270694,1575270674@qq.com,Hello there,2021-12-03 15:04:56
-2,kk,admin,CTO,123456,what is my favourite,reading,2001-03-20,Male,Malaysia,110727484,KK@gamil.com,Hello there,2021-12-03 15:04:56

@@ -239,7 +239,7 @@ public class MainPageController {
 
     @FXML
     void openCatalogBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScence(actionEvent,"carsList.fxml");
+        new Tools().reSetScene(actionEvent,"carsList.fxml");
     }
 
     @FXML
@@ -345,7 +345,8 @@ public class MainPageController {
         Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
         Browser browser = engine.newBrowser();
 
-        browser.navigation().loadUrl("http://127.0.0.1:8080/");
+        browser.navigation().loadUrl("http://127.0.0.1:8080/datePicker/index.html");
+        //browser.navigation().loadUrl("https://www.google.com/");
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();

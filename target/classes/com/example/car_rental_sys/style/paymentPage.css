@@ -110,3 +110,8 @@
     -fx-cursor: hand;
     -fx-background-radius: 5;
 }
+
+#perr{
+    -fx-background-color: red;
+    -fx-font-family: "inter";
+}
