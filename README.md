@@ -70,6 +70,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Google Map platform](https://developers.google.com/maps/documentation/embed/get-started) - Map embed component 
 * [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/examples)
 * [JxBrowser](https://www.teamdev.com/jxbrowser) - a Chromium web browser for javaFX
+* [Apache Commons Codec](https://mvnrepository.com/artifact/commons-codec/commons-codec) - Md5 encryption
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
