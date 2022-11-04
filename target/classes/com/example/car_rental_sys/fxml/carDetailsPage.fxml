@@ -76,7 +76,7 @@
                <Font size="24.0" />
             </font>
          </Label>
-         <Pane fx:id="rentNowBtn" layoutX="223.0" prefHeight="80.0" prefWidth="211.0"
+         <Pane  layoutX="223.0" prefHeight="80.0" prefWidth="211.0"
                styleClass="rentPane" onMouseClicked="#rentNowBtnClickEvent">
             <Label layoutX="43.0" layoutY="24.0" text="Rent Now" textFill="WHITE">
                <font>

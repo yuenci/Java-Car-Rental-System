@@ -51,6 +51,9 @@ public class PaymentController {
     Label expiresDate;
 
     @FXML
+    Button downIconBtn;
+
+    @FXML
     ImageView bankcardImage;
 
     ArrayList<BankCard> bankCards = new ArrayList<>();
@@ -165,7 +168,7 @@ public class PaymentController {
             bankCardsContainer.setVisible(false);
             isBankCardSelecterShow = false;
         }
-       System.out.println("showBankCardChooser");
+       //System.out.println("showBankCardChooser");
     }
 
     private void initBankCardChooser(){
