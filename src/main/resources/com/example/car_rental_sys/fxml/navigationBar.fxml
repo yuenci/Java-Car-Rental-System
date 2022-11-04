@@ -14,7 +14,7 @@
       xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
       stylesheets="@../style/mainPage.css"
-      fx:controller="com.example.car_rental_sys.NavigationBarController">
+      fx:controller="com.example.car_rental_sys.controllers.NavigationBarController">
     <Button layoutX="1012.0" layoutY="30.0" mnemonicParsing="false" onAction="#contactBtnClick" prefHeight="45.0" prefWidth="163.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.1), 40, 0.3, 0, 20);" styleClass="contactUs" text="Contact Us">
         <font>
             <Font name="System Bold" size="14.0" />

@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -39,10 +40,10 @@ public class Tools {
      */
     public void reSetScene(String fxmlName) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/"+ fxmlName));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/"+ fxmlName));
         try {
             Scene scene = new Scene( fxmlLoader.load());
-            HelloApplication.stageInstance.setScene(scene);
+            Application.stageInstance.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,10 +56,10 @@ public class Tools {
      */
     public static void changeScene(String fxmlName) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/"+ fxmlName));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/"+ fxmlName));
         try {
             Scene scene = new Scene( fxmlLoader.load());
-            HelloApplication.stageInstance.setScene(scene);
+            Application.stageInstance.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }

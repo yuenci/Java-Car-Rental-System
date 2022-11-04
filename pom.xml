@@ -96,7 +96,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.car_rental_sys/com.example.car_rental_sys.HelloApplication
+                            <mainClass>com.example.car_rental_sys/com.example.car_rental_sys.Application
                             </mainClass>
                         </configuration>
                     </execution>

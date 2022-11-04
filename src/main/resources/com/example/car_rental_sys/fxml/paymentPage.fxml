@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #0e0e10;" stylesheets="@../style/paymentPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.PaymentController">
+<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #0e0e10;" stylesheets="@../style/paymentPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PaymentController">
    <Pane layoutX="901.0" prefHeight="836.0" prefWidth="380.0" style="-fx-background-color: #15141b;">
       <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/avatar/1.png" />

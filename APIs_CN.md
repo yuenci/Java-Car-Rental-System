@@ -49,3 +49,30 @@ String encrypted = Encryption.AESEncrypt(key, data);
 System.out.println(encrypted);
 System.out.println(Encryption.AESDecrypt(key, encrypted));
 ```
+
+# BrowerView
+```java
+String url = "http://127.0.0.1:8080/slideVerify/index.html";
+BrowserModal browserModal = new BrowserModal(375, 450, url) ;
+browserModal.setModality();
+Function func = (Function<String,Void>) (message) -> {
+    if (Objects.equals(message, "Verification succeeded")) {
+        StatusContainer.ifVerify = true;
+        System.out.println(message);
+        Platform.runLater(() -> {
+            //code
+            try {
+                Thread.sleep(2 * 1000);
+                browserModal.stage.close();
+
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        });
+    }
+    return null;
+};
+
+browserModal.setFunction(func);
+browserModal.show();
+```
