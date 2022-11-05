@@ -1,0 +1,45 @@
+.my-class {
+    -fx-shape: "m 0,15.984 5.672,5.664 c 0,0 3.182,-3.18 6.314,-6.312 V 32 h 8.021 V 15.336 l 6.32,6.32 L 32,15.984 16.002,0 Z";
+    -fx-pref-width: 1.333em;
+    -fx-pref-height: 1.333em;
+    -fx-background-color: red;
+}
+
+.title{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    /*-fx-background-color: blue;*/
+    -fx-text-alignment: right;
+}
+
+.message{
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    /*-fx-background-color: green;*/
+}
+
+.btnBlue{
+    -fx-background-color: #3c7eff;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+
+.btnBlue:hover{
+    -fx-background-color:#306fff;
+    -fx-cursor: hand;
+}
+
+.btnRed{
+    -fx-background-color: #f76965;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.btnRed:hover{
+    -fx-background-color:#f54e4e;
+    -fx-cursor: hand;
+}

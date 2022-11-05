@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ui_components.Loading;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
@@ -45,7 +46,7 @@ public class NavigationBarController {
     private void aboutBtnClick() {
         System.out.println("aboutBtnClick");
         //Tools.changeScene("aboutUsPage.fxml");
-
+        Loading.show();
     }
 
     @FXML
