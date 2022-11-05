@@ -55,11 +55,13 @@ public class OrderDetailsComponentController {
     }
 
     private void setOrderNum(String orderNum) {
-       // this.orderNum.setText(orderNum);
+        this.orderNum.setText(orderNum);
+        System.out.println("setOrd  erNum");
     }
 
     private void setOrderDate(String orderDate) {
-        //this.orderDate.setText(orderDate);
+        this.orderDate.setText(orderDate);
+        System.out.println("setOrderDate");
     }
 }
 
