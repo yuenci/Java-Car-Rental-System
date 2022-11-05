@@ -157,7 +157,7 @@ public class PaymentController {
 
     @FXML
     private void goToCarListPage(){
-        Tools.changeScene("carsList.fxml");
+        Tools.changeScene("carsListPage.fxml");
     }
 
     @FXML
