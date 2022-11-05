@@ -67,9 +67,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
 * [SQL2TXT](https://github.com/yuenci/sqlParser-SQL2TXT) - SQL statement operation txt file CRUD
-* [Google Map platform](https://developers.google.com/maps/documentation/embed/get-started) - Map embed component 
-* [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/examples)
+* [Google Map platform](https://developers.google.com/maps/documentation/embed/get-started) - Map embed frame 
+* [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/examples) - Map component 
 * [JxBrowser](https://www.teamdev.com/jxbrowser) - a Chromium web browser for javaFX
+* [Apache Commons Codec](https://mvnrepository.com/artifact/commons-codec/commons-codec) - Md5 encryption
+* [vue-monoplasty-slide-verify](https://github.com/monoplasty/vue-monoplasty-slide-verify) - slide verify 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -92,7 +94,9 @@ This is an example of how to list things you need to use the software and how to
 * JxBrower license
 There can be no spaces or characters other than letters in the path.
 Add a library for mail
-
+ ```sh
+npm i http-server -g
+```
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
