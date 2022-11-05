@@ -186,7 +186,7 @@ public class CarDetailsPageController {
             backBtnImageView.getScene().setCursor(javafx.scene.Cursor.DEFAULT);
         });
 
-        backBtnImageView.setOnMouseClicked(event -> Tools.changeScene("carsList.fxml"));
+        backBtnImageView.setOnMouseClicked(event -> Tools.changeScene("carsListPage.fxml"));
 
 
     }

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,7 +83,8 @@ public class Tools {
         Runtime rt = Runtime.getRuntime(); //Runtime.getRuntime() return current runtime object
         Process ps = null;  //Process can track the execution of the child process or get the information of the child process.
         try {
-            ps = rt.exec(strcmd);   // execute the command
+            ps = rt.exec(strcmd);
+            //ps = rt.exec(strcmd);   // execute the command
             ps.waitFor();  // wait for the process to complete
         } catch (IOException | InterruptedException e1) {
             e1.printStackTrace();
@@ -143,5 +145,16 @@ public class Tools {
         // 100: email not found
         // 300: password not match
         // 400: unknown error
+    }
+
+    public static void componentTest(String fxmlName,double width, double height) throws IOException {
+        Stage stage = Application.stageInstance;
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
+        Scene scene = new Scene(fxmlLoader.load(), width, height);
+        stage.setTitle("orderDetails!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 }

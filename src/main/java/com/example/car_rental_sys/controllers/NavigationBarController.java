@@ -51,7 +51,7 @@ public class NavigationBarController {
 
     @FXML
     private void serviceBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScene(actionEvent,"signUp.fxml");
+        new Tools().reSetScene(actionEvent,"signUpPage.fxml");
     }
 
     @FXML

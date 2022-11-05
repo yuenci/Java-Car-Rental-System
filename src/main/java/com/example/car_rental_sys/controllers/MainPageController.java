@@ -234,7 +234,7 @@ public class MainPageController {
 
     @FXML
     void openCatalogBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScene(actionEvent,"carsList.fxml");
+        new Tools().reSetScene(actionEvent,"carsListPage.fxml");
     }
 
     @FXML
@@ -244,9 +244,7 @@ public class MainPageController {
         browserModal.setModality();
         Function<String, Void> func =  (message) -> {
             if(!Objects.equals(message, "")){
-                Platform.runLater(() -> {
-                    locationText.setText(message);
-                });
+                Platform.runLater(() -> locationText.setText(message));
 
             }
             return null;
