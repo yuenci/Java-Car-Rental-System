@@ -44,7 +44,7 @@ def chat(messageList):
         frequency_penalty=0,
         presence_penalty=0.6,
         stop=[" Human:", " AI:"]
-    )
+    )![](C:/Users/Innis/AppData/Local/Temp/download.jpg)
     response = response["choices"][0]["text"].replace(
         "\nAI:", "").replace("\n", "")
 
