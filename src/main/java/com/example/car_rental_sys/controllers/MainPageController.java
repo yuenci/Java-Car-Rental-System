@@ -24,10 +24,10 @@ import java.util.*;
 import java.util.function.Function;
 
 
-public class MainPageController {
+public class MainPageController extends Controller{
     public static MainPageController mainPageController;
     @FXML
-    private Pane mainPane;
+    public Pane mainPane;
 
     @FXML
     private ImageView carImage;
@@ -80,6 +80,7 @@ public class MainPageController {
         initDateTimeLabel();
         initIntroLabel();
         mainPageController = this;
+        StatusContainer.currentPageController = this;
     }
     private void initIntroLabel(){
         introLabel.setWrapText(true);

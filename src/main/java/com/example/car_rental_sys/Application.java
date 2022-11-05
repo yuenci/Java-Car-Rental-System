@@ -7,8 +7,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-
 import java.io.IOException;
 
 // https://github.com/users/yuenci/projects/3
@@ -25,24 +23,18 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        String fxmlName = "mainPage.fxml";
+        String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
         //String fxmlName = "paymentPage.fxml";
-        String fxmlName = "contactUsPage.fxml";
+        //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
 
         stageInstance = stage;
 
-
         startStage(fxmlName);
-
-
-
-
-
 
     }
 
@@ -79,25 +71,11 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
-
     public static void StartHttpServer() {
         Tools.StartHttpServer();
     }
 
     private static void registerJxBrowserLicence(){
-        System.setProperty("jxbrowser.license.key", Config.jxBrowserLicense);
+        System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
     }
-
-
-    private  static  void orderDetails(Stage stage,String fxmlfile) throws IOException {
-        String fxmlName = "OrderDetailsComponent.fxml";
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
-        stage.setTitle("orderDetails!");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
-
 }

@@ -1,7 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ui_components.CarCard;
-import com.example.car_rental_sys.Config;
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.funtions.FileOperate;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -18,7 +18,7 @@ public class CarsListController {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(1270);
 
-        ArrayList<String[]> carsData = FileOperate.readFileToArray(Config.carsDataPath);
+        ArrayList<String[]> carsData = FileOperate.readFileToArray(ConfigFile.carsDataPath);
         for (int i = 1; i < carsData.size(); i++) {
             String[] carData = carsData.get(i);
             CarCard carCard = new CarCard(carData[1],carData[2],carData[3],carData[4],carData[5],carData[6]);

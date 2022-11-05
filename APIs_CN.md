@@ -76,3 +76,17 @@ Function func = (Function<String,Void>) (message) -> {
 browserModal.setFunction(func);
 browserModal.show();
 ```
+
+# MessageBox
+```java
+MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "This is a notification message.This is a notification messageThis is a notification messageThis is a notification message");
+messageFrame.setCallbackfunc((Integer i) -> {
+    System.out.println("callback called!!!!!!!!!!!!!!");
+    return null;
+});
+messageFrame.show();
+```
+一共有五种类型： CONFIRM, ERROR, INFO, SUCCESS, WARNING
+构造器有两种：
+一种是只有类型和message 的（标题为默认）
+另一种是类型，message，标题，

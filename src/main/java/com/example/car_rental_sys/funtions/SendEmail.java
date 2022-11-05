@@ -2,7 +2,7 @@ package com.example.car_rental_sys.funtions;
 
 
 
-import com.example.car_rental_sys.Config;
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 
 import javax.mail.Session;
@@ -18,9 +18,9 @@ import java.util.Properties;
  */
 public class SendEmail {
 
-    public static String myEmailAccount = Config.myEmailAccount;
-    public static String myEmailPassword = Config.myEmailPassword;
-    public static String myEmailSMTPHost = Config.myEmailSMTPHost;
+    public static String myEmailAccount = ConfigFile.myEmailAccount;
+    public static String myEmailPassword = ConfigFile.myEmailPassword;
+    public static String myEmailSMTPHost = ConfigFile.myEmailSMTPHost;
 
 
     private static void send(String receiveEmailAddress,String userName,String type) throws Exception {
@@ -79,7 +79,7 @@ public class SendEmail {
         return "<div style=\"margin: 0  auto ;width: 500px;height: 300px;border-style: solid;border-width: thin;" +
                 "border-color: #dadce0;border-radius: 8px;padding: 40px 20px;\"><div style=\"text-align:center;\">" +
                 "<img src=\"" +
-                Config.logoAddress+
+                ConfigFile.logoAddress+
                 "\"" +
                 "alt=\"Logo\"style=\"height: 50px;\"></div><h3 style=\"text-align: center;padding-bottom: 20px;" +
                 "border-bottom: 1px solid #dadce0;\">Your Rent.Inc " +
