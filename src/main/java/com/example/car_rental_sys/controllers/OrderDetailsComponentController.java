@@ -63,5 +63,10 @@ public class OrderDetailsComponentController {
         this.orderDate.setText(orderDate);
         System.out.println("setOrderDate");
     }
+
+    private void setCarName(String carName) {
+        this.carName.setText(carName);
+        System.out.println("setCarName");
+    }
 }
 
