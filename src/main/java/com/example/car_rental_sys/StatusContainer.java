@@ -18,4 +18,5 @@ public class StatusContainer {
     public static PaymentController paymentControllerInstance = null;
     public static RadioButton radioBtn2 = null;
     public static Controller currentPageController= null;
+    public static String currentResetPassWordEmail = null;
 }

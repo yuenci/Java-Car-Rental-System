@@ -41,3 +41,8 @@
     -fx-text-fill: #4080ff;
     -fx-cursor: hand;
 }
+
+#recoveryLabel:hover{
+    -fx-text-fill: #4080ff;
+    -fx-cursor: hand;
+}

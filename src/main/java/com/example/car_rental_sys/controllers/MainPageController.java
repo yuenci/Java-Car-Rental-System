@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
@@ -363,7 +364,7 @@ public class MainPageController extends Controller{
     }
 
     void showDatePicker(){
-        String url = "http://127.0.0.1:8080/datePicker/index.html";
+        String url = ConfigFile.backendPost +  "datePicker/index.html";
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {

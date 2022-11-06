@@ -1,8 +1,11 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -171,4 +174,63 @@ public class Tools {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
+    public static boolean checkPassword(String password){
+        if(password.length() < 8){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[A-Z].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[a-z].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[0-9].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
+            messageFrame.show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean checkEmail(String email){
+        if(!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Please enter a valid email address");
+            messageFrame.show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean resetPassword(String email,String newPassword){
+        ArrayList<String[]> result = SQL.query("SELECT userID FROM userInfo WHERE email = '"+ email +"'");
+        if(result.size() == 0)  return false ; // email not found return 100
+
+        try{
+            String userID = result.get(0)[0];
+            String newPasswordMD5 = Encryption.med5Encrypt(newPassword);
+            SQL.excute("UPDATE password SET password = '"+ newPasswordMD5 +"' WHERE userID = "+ userID);
+            //SendEmail.sendEmail(email, "Your new password", "Your new password is: " + newPassword);
+            return true;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 }

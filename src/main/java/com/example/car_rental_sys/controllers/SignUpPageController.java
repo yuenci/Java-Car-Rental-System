@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
@@ -170,7 +171,7 @@ public class SignUpPageController extends Controller {
 
     @FXML
     private void slideVerify() {
-        String url = "http://127.0.0.1:8174/slideVerify/index.html";
+        String url = ConfigFile.backendPost +  "slideVerify/index.html";
         BrowserModal browserModal = new BrowserModal(375, 450, url) ;
         // modal
         browserModal.setModality();
@@ -262,34 +263,7 @@ public class SignUpPageController extends Controller {
 
     // password strong check
     private boolean checkPassword(){
-        if(passwordStr.length() < 8){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
-            messageFrame.show();
-            return false;
-        }
-        else if(!passwordStr.matches(".*[A-Z].*")){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
-            messageFrame.show();
-            return false;
-        }
-        else if(!passwordStr.matches(".*[a-z].*")){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
-            messageFrame.show();
-            return false;
-        }
-        else if(!passwordStr.matches(".*[0-9].*")){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
-            messageFrame.show();
-            return false;
-        }
-        else if(!passwordStr.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*")){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
-            messageFrame.show();
-            return false;
-        }
-        else{
-            return true;
-        }
+         return Tools.checkPassword(passwordStr);
     }
 
     // check if the email is valid
@@ -305,15 +279,8 @@ public class SignUpPageController extends Controller {
             return false;
         }
 
+        return  Tools.checkEmail(email);
 
-        if(!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
-            MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Please enter a valid email address");
-            messageFrame.show();
-            return false;
-        }
-        else{
-            return true;
-        }
     }
 
     private void setNewCustomerInfo(){
@@ -345,3 +312,5 @@ public class SignUpPageController extends Controller {
     }
 }
 
+// #TODO use slideverification in out of net environment
+// #TODO use slideverification can't verify email, should verify email again

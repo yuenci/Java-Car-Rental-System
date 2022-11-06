@@ -1,3 +1,9 @@
+.txtField{
+    -fx-background-color: #3d404a;
+    -fx-text-fill: white;
+    -fx-background-radius: 15px;
+}
+
 .txtField:focused{
     -fx-border-color: #165DFF;
     -fx-border-radius: 15px;
@@ -9,4 +15,34 @@
 
 .btnSignUp:hover{
     -fx-border-color: #e5e6eb !important;
+}
+
+.txtLabel{
+    -fx-text-fill: #848b98;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: Calibri;
+}
+
+.tipText{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: Calibri;
+}
+
+.tipText2{
+    -fx-text-fill: #818181;
+    -fx-font-size: 14px;
+    -fx-font-family: Calibri;
+}
+
+.tipText2:hover{
+    -fx-text-fill: #4080ff;
+    -fx-cursor: hand;
+}
+
+#recoveryLabel:hover{
+    -fx-text-fill: #4080ff;
+    -fx-cursor: hand;
 }

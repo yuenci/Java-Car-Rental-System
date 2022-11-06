@@ -10,4 +10,5 @@ public class ConfigFile {
     public static String myEmailPassword = "GBZYHLHTFOYUAXAP";
     public static String myEmailSMTPHost = "smtp.163.com";
     public static String logoAddress  = "https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/logo_light_green_cloud.png";
+    public static String backendPost = "http://127.0.0.1:8174/";
 }

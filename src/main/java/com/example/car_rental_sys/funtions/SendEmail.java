@@ -60,6 +60,7 @@ public class SendEmail {
         int min = 100000;
         int max = 999999;
         int pinCode = min + (int)(Math.random() * (max-min+1));
+        System.out.println("pinCode:[" + pinCode + "]");
 
         StatusContainer.currentPinCode = String.valueOf(pinCode);
         String content = getHtmlContent(StatusContainer.currentPinCode,useName,type);
@@ -75,7 +76,7 @@ public class SendEmail {
 
 
 
-    public static String getHtmlContent(String PINCode,String userName,String type){
+    private static String getHtmlContent(String PINCode,String userName,String type){
         return "<div style=\"margin: 0  auto ;width: 500px;height: 300px;border-style: solid;border-width: thin;" +
                 "border-color: #dadce0;border-radius: 8px;padding: 40px 20px;\"><div style=\"text-align:center;\">" +
                 "<img src=\"" +
@@ -118,3 +119,4 @@ public class SendEmail {
     }
 
 }
+// # send email after reset password

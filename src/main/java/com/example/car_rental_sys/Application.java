@@ -17,17 +17,15 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
         registerJxBrowserLicence();
-        //StartHttpServer();
-        Tools.getNewUserID();
-
+        StartHttpServer();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
        // String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
-        String fxmlName = "signUpPage.fxml";
-        //String fxmlName = "loginPage.fxml";
+        //String fxmlName = "signUpPage.fxml";
+        String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";

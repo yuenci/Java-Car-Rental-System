@@ -17,8 +17,6 @@ let servicer = servicers[index];
 addServerMessage(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`);
 
 function addServerMessage(message) {
-    let newDate = new Date();
-    let time = newDate.toLocaleTimeString().substring(0, 10);
 
     let messageRes = `
     <div class="message-container-left">
@@ -28,7 +26,7 @@ function addServerMessage(message) {
         <div class="message-area">
             <div class="message-topic">
                 <div class="message-sender">${servicer}</div>
-                <div class="message-time">${time}</div>
+                <div class="message-time">${getTime()}</div>
             </div>
             <div class="message">${message}</div>
         </div>
@@ -38,16 +36,20 @@ function addServerMessage(message) {
     scrollToBottom();
 }
 
-function addCustomerMessage(message) {
+function getTime() {
     let newDate = new Date();
     let format = (x) => x.toString().padStart(2, "0");
     let time = format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
+    return time;
+}
+
+function addCustomerMessage(message) {
 
     let messageRes = `
     <div class="message-container-right">
         <div class="message-area">
             <div class="message-topic">
-                <div class="message-time">${time}</div>
+                <div class="message-time">${getTime()}</div>
             </div>
             <div class="message">${message}</div>
         </div>
@@ -149,4 +151,4 @@ function netWorkError() {
         <div class="error-message-container"><p class="error-message">${message}</p></div>
     `
     $("#char-area-bottom").before(messageRes);
-}
+} 
