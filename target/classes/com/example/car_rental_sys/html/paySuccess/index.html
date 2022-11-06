@@ -23,7 +23,7 @@
             object-fit: cover;
         }
 
-        #continaer {
+        #container {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -31,7 +31,7 @@
             text-align: center;
             color: white;
             font-size: 22px;
-            /* display: none; */
+            display: none;
         }
 
         img {
@@ -61,13 +61,13 @@
 </head>
 
 <body>
-    <video src="./RENDER_4_AdobeExpress.mp4" autoplay></video>
+    <video src="./video2.mp4" autoplay></video>
     <script>
         function buttonClickEvent() {
-            invoke.world();
+            window.invoke.world();
         }
     </script>
-    <div id="continaer">
+    <div id="container">
         <img src="success.png" alt="success">
         <p>Transaction completed</p>
         <p>Your car is on the way !</p>
@@ -77,8 +77,13 @@
     <script>
         // 延迟16s
         setTimeout(() => {
-            document.getElementById('continaer').style.display = 'block';
+            document.getElementById('container').style.display = 'block';
         }, 16000)
+
+        function stopVideo() {
+            document.querySelector('video').remove();
+            document.getElementById('container').style.display = 'block';
+        }
     </script>
 </body>
 
