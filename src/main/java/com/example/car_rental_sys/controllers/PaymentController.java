@@ -73,6 +73,7 @@ public class PaymentController {
         initRadioEvent();
         textAlignment();
         initBankCardChooser();
+
         StatusContainer.paymentControllerInstance = this;
         StatusContainer.radioBtn2 = radioBtn2;
     }
@@ -201,6 +202,13 @@ public class PaymentController {
             image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/mastercard.png");
         }
         bankcardImage.setImage(image);
+    }
+
+
+    @FXML
+    private  void makePaymentBtnClickEvent(){
+        //System.out.println( "makePaymentBtnClickEvent" );
+        Tools.changeScene("paySuccessPage.fxml");
     }
 
 }

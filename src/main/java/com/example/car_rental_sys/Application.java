@@ -23,7 +23,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String fxmlName = "mainPage.fxml";
+       // String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -31,6 +31,7 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
+        String fxmlName = "paySuccessPage.fxml";
 
         stageInstance = stage;
 

@@ -62,7 +62,8 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="46.0" layoutY="497.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
+      <Button  layoutX="46.0" layoutY="497.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="303.0"
+              styleClass="makePaymentButton" text="Make Payment" onAction="#makePaymentBtnClickEvent">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
