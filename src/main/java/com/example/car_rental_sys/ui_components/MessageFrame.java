@@ -19,9 +19,10 @@ public class MessageFrame {
 
 
     private String type;
-    private String message = "";
+    private String message;
     private String title = "";
-    private Function<Integer, Void> callback = null;
+    private Function<Integer, Void> successCallback = null;
+    private Function<Integer, Void> failedCallback = null;
 
     private final Pane mainPane =StatusContainer.currentPageController.mainPane;
     private final Pane mainBGCPane = new VBox();
@@ -106,7 +107,8 @@ public class MessageFrame {
 
 
     private void addTitle(){
-        String titleText = title;
+//        String titleText = title;
+        String titleText;
         if(Objects.equals(title, "")){
             StringBuilder titleSpaceStr = new StringBuilder();
             titleText = titleSpaceStr.append(" ".repeat(titleSpace)) + type;
@@ -154,11 +156,12 @@ public class MessageFrame {
         Button btn = new Button("OK");
         btn.getStyleClass().add("btnBlue");
         btn.setPrefSize(100, 30);
-        btn.setOnAction(e -> close());
+        btn.setOnAction(e ->   callSuccessCallback());
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(btn);
         VBox.setMargin(borderPane, new Insets(40, 0, 0, 0));
+
 
         messageVPane.getChildren().add(borderPane);
     }
@@ -167,13 +170,15 @@ public class MessageFrame {
         Button btn1 = new Button("OK");
         btn1.getStyleClass().add("btnBlue");
         btn1.setPrefSize(100, 30);
-        btn1.setOnAction(e -> callbackfunc());
         messageVPane.getChildren().add(btn1);
+
+        btn1.setOnMouseClicked(e ->callSuccessCallback());
 
         Button btn2 = new Button("Cancel");
         btn2.getStyleClass().add("btnRed");
         btn2.setPrefSize(100, 30);
-        btn2.setOnAction(e -> close());
+
+        btn1.setOnMouseClicked(e ->callFailedCallback());
 
         HBox hBox = new HBox();
         HBox.setMargin(btn1, new Insets(40, 20, 0, 20));
@@ -192,17 +197,33 @@ public class MessageFrame {
         mainPane.getChildren().remove(mainBGCPane);
     }
 
-    private void callbackfunc(){
-        if(this.callback != null){
-            this.callback.apply(1);
-        }else {
-            System.out.println("callback is null");
-        }
 
-        System.out.println("callbackfunc() called");
+    private void callSuccessCallback(){
+        if(this.successCallback != null){
+            System.out.println( "successCallback called");
+            this.successCallback.apply(1);
+        }else {
+            System.out.println("successCallback is null");
+        }
+        close();
     }
 
-    public void setCallbackfunc(Function<Integer, Void> func) {
-        this.callback = func;
+    private void callFailedCallback(){
+        if(this.failedCallback != null){
+            System.out.println(  "failedCallback called");
+            this.failedCallback.apply(1);
+        }else {
+            System.out.println("failedCallback is null");
+        }
+        close();
+    }
+
+
+    public void setSuccessCallbackFunc(Function<Integer, Void> func) {
+        this.successCallback = func;
+    }
+
+    public void setFailedCallbackFunc(Function<Integer, Void> func) {
+        this.failedCallback = func;
     }
 }

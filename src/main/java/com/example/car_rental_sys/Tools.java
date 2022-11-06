@@ -1,6 +1,7 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Tools {
     /**
@@ -109,7 +112,7 @@ public class Tools {
     public static void StartHttpServer(){
         Thread thread = new Thread(() -> {
             String projectPath = Tools.getProjectPath();
-            String cmdStr = "http-server \""+ projectPath +"\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8080";
+            String cmdStr = "http-server \""+ projectPath +"\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8174";
             //System.out.println(cmdStr);
             Tools.exebat(cmdStr);
         });
@@ -157,4 +160,15 @@ public class Tools {
         stage.setResizable(false);
         stage.show();
     }
+
+    public static int getNewUserID(){
+        ArrayList<String[]> result = FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/userInfo.txt");
+        //System.out.println(result.size() );
+        return result.size();
+    }
+
+    public static  String getFormatDateTime(){
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
 }

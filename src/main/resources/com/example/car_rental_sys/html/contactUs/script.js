@@ -78,12 +78,16 @@ async function sendMessage() {
     $inputBox.val("");
     scrollToBottom();
 
-    let data = await getResponse();
-    addServerMessage(data["response"]);
+    await getResponse().then(function (data) {
+        addServerMessage(data["response"]);
+    }).catch(function (error) {
+        netWorkError();
+    });
+
 }
 
 function getResponse() {
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         $.ajax({
             type: 'POST',
             url: `http://101.43.138.40:81/response`,
@@ -91,6 +95,9 @@ function getResponse() {
             success: function (data) {
                 console.log(data);
                 resolve(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                reject(errorThrown);
             },
             contentType: "application/json",
             dataType: 'json'
@@ -143,8 +150,3 @@ function netWorkError() {
     `
     $("#char-area-bottom").before(messageRes);
 }
-
-netWorkError();
-netWorkError();
-addServerMessage(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`);
-netWorkError();
