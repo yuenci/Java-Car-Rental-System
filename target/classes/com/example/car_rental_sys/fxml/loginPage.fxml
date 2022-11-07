@@ -82,7 +82,7 @@
    <ImageView fx:id="emailImageView" fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../image/UI/mailIcon.png" />
    </ImageView>
-   <ImageView fx:id="showPasswordIcon" fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="377.0" onMouseClicked="#showPasswordIconClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+   <ImageView  fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="377.0" onMouseClicked="#showPasswordIconClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
       <Image url="@../image/UI/viewIcon.png" />
    </ImageView>
    <Label fx:id="tipLabel" layoutX="419.0" layoutY="203.0" prefHeight="67.0" prefWidth="443.0" text="To keep connect with please login with your personal info" textAlignment="CENTER" textFill="#818181" wrapText="true">
