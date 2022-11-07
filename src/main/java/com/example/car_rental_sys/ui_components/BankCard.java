@@ -44,7 +44,7 @@ public class BankCard extends Pane {
     private void initCardEvent(){
         this.setOnMouseClicked(event -> {
             //System.out.println("Card Clicked");
-
+            StatusContainer.currentPaymentMethod = this.cardType;
             ArrayList<BankCard> bankCards = StatusContainer.paymentControllerInstance.bankCards;
             for (BankCard bankCard : bankCards) {
                 bankCard.setChoseDoneInvisible();
@@ -60,6 +60,7 @@ public class BankCard extends Pane {
     }
 
     private  void  initComponents(){
+        StatusContainer.currentChooseBankCardNum = this.cardNumber;
         this.cardTypeAndNumberText = cardType + " " + "****" +  cardNumber.substring(cardNumber.length() - 4);
         Label cardTypeAndNumber = new Label(cardTypeAndNumberText);
         cardTypeAndNumber.setLayoutX(140);

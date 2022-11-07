@@ -62,8 +62,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button  layoutX="46.0" layoutY="497.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="303.0"
-              styleClass="makePaymentButton" text="Make Payment" onAction="#makePaymentBtnClickEvent">
+      <Button layoutX="46.0" layoutY="497.0" mnemonicParsing="false" onAction="#makePaymentBtnClickEvent" prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -74,7 +73,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="277.0" layoutY="446.0" prefHeight="19.0" prefWidth="76.0" text="RM10000" textFill="WHITE">
+      <Label fx:id="totalPrice" layoutX="277.0" layoutY="446.0" prefHeight="19.0" prefWidth="76.0" text="RM10000" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -121,9 +120,9 @@
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <Pane layoutX="95.0" layoutY="426.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
-      <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
-      <ImageView fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
+   <Pane fx:id="paypayConatiner" layoutX="95.0" layoutY="426.0" onMouseClicked="#selectRadioBtn1" prefHeight="84.0" prefWidth="720.0">
+      <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#selectRadioBtn1"/>
+      <ImageView fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#selectRadioBtn1" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/PayPal-logopng.png" />
       </ImageView>
    </Pane>
@@ -132,17 +131,17 @@
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <Pane layoutX="95.0" layoutY="540.0" onMouseClicked="#methodCardClickEvent" prefHeight="84.0" prefWidth="720.0">
-      <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#paypalMethodClickEvent" text="Mastercard ****6742" textFill="WHITE">
+   <Pane fx:id="bankCardContainer" layoutX="95.0" layoutY="540.0" onMouseClicked="#selectRadioBtn2" prefHeight="84.0" prefWidth="720.0">
+      <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#selectRadioBtn2" text="Mastercard ****6742" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" />
-      <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0" onMouseClicked="#methodCardClickEvent" pickOnBounds="true" preserveRatio="true">
+      <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#selectRadioBtn2"/>
+      <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0" onMouseClicked="#selectRadioBtn2" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/mastercard.png" />
       </ImageView>
-      <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#bankcardMethodClickEvent" text="Expires on 9/26" textFill="#838383">
+      <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#selectRadioBtn2" text="Expires on 9/26" textFill="#838383">
          <font>
             <Font size="14.0" />
          </font>

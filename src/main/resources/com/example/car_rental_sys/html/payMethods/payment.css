@@ -1,0 +1,224 @@
+body {
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: inter;
+}
+
+#payment-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.payment-left,
+.payment-right {
+
+    width: 50%;
+    height: 100%;
+}
+
+.payment-left {
+    background-color: #468dff;
+}
+
+/* .payment-right {
+    text-align: center;
+} */
+
+.payment-right-container {
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.fa-arrow-left {
+    color: black;
+}
+
+#arraw-left {
+    width: 25px;
+}
+
+#arraw-left:hover {
+    cursor: pointer;
+}
+
+.payment-left-text-container {
+    color: white;
+    font-family: inter;
+    margin-top: 100px;
+    margin-left: 150px;
+}
+
+.payment-left-brand-text {
+    position: relative;
+    bottom: 7px;
+    left: 10px;
+    line-height: 30px;
+}
+
+.payment-left-plan-type {
+    margin: 20px 0px 20px 45px;
+
+}
+
+.payment-left-plan-price {
+    margin-left: 41px;
+    font-size: 60px;
+}
+
+.contact-title,
+.pay-title {
+    font-size: 20px;
+}
+
+.pay-title {
+    margin-bottom: 10px;
+}
+
+
+.contact-content {
+    width: 400px;
+    height: 45px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #e0e0e0, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    position: relative;
+    text-align: center;
+}
+
+.contact-title,
+.contact-content {
+    margin: 20px 0px 20px 0px;
+}
+
+
+.contact-email-title {
+    display: inline-block;
+    line-height: 45px;
+    position: absolute;
+    left: 10px;
+}
+
+
+.contact-email-text {
+    display: inline-block;
+    line-height: 45px;
+
+}
+
+.pay-content {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.pay-content-image {
+    height: 20px;
+    padding: 5px;
+}
+
+.pay-content-card-bank,
+.pay-content-paypal {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #e0e0e0;
+    height: 60px;
+    width: 130px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.pay-content-card-bank:hover {
+    cursor: pointer;
+}
+
+.pay-content-paypal:hover {
+    cursor: pointer;
+}
+
+.cardinfo-content-line1,
+.cardinfo-content-line2 {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.cardinfo-content-line1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cardinfo-content-line2 {
+    border-top: solid #e0e0e0 1px;
+}
+
+.cardinfo-content-line2-r {
+    border-left: solid #e0e0e0 1px;
+}
+
+.visa-img {
+    height: 20px;
+}
+
+.cardinfo-content {
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #e0e0e0, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 400px;
+}
+
+.cardname-content {
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #e0e0e0, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    height: 40px;
+    width: 400px;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 185px;
+}
+
+button {
+    width: 400px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #468dff;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.cardinfo-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cardinfo-title,
+.cardname-title {
+    margin-bottom: 5px;
+}
+
+#cardname {
+    width: 380px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.paypalInfo {
+    display: none;
+}
+
+.paypalInfo .cardname-title {
+    margin-top: 10px;
+}
+
+.paypalInfo input {
+    margin-left: 10px;
+}

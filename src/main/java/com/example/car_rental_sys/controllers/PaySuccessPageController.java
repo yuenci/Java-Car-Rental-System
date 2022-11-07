@@ -64,9 +64,15 @@ public class PaySuccessPageController {
             }
         });
 
+    }
+
+    @FXML
+    private void navBarClickEvent(){
+        System.out.println( "navBarClickEvent" );
+    }
+// TODO can‘t stop video when press navigation button
 
 
-}
 }
 
 

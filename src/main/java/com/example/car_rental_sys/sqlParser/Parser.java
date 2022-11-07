@@ -40,7 +40,7 @@ public class Parser {
     // configs of the database
     //
     ////////////////////////////////////////
-    public static String dataFilesPath = "src/";
+    public static String dataFilesPath = "src/main/resources/com/example/car_rental_sys/data/";
 
     // region # validatation
     ////////////////////////

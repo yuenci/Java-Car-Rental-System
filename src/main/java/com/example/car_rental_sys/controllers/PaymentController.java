@@ -1,22 +1,36 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.ui_components.BankCard;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.BrowserModal;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.frame.Frame;
+import com.teamdev.jxbrowser.js.ConsoleMessage;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
+
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class PaymentController {
     @FXML
@@ -57,6 +71,9 @@ public class PaymentController {
 
     @FXML
     ImageView bankcardImage;
+
+    @FXML
+    Label totalPrice;
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
 
@@ -123,28 +140,8 @@ public class PaymentController {
     private void initRadioEvent(){
         ToggleGroup group = new ToggleGroup();
         radioBtn1.setToggleGroup(group);
-        radioBtn1.setSelected(true);
+        selectRadioBtn1();
         radioBtn2.setToggleGroup(group);
-    }
-
-    @FXML
-    private  void methodCardClickEvent(MouseEvent event){
-        String target = event.getTarget().toString();
-        //System.out.println(target);
-        if(Objects.equals(target, "Pane[id=methodPaypal]") || Objects.equals(target, "ImageView[id=paypalImage, styleClass=image-view]")){
-            radioBtn1.setSelected(true);
-        }
-        else  if(Objects.equals(target, "Pane[id=methodBankcard]") || Objects.equals(target, "ImageView[id=bankcardImage, styleClass=image-view]")){
-            radioBtn2.setSelected(true);
-        }
-    }
-
-    @FXML void paypalMethodClickEvent( ) {
-        radioBtn1.setSelected(true);
-    }
-
-    @FXML void bankcardMethodClickEvent() {
-        radioBtn2.setSelected(true);
     }
 
     @FXML
@@ -207,8 +204,112 @@ public class PaymentController {
 
     @FXML
     private  void makePaymentBtnClickEvent(){
-        //System.out.println( "makePaymentBtnClickEvent" );
-        Tools.changeScene("paySuccessPage.fxml");
+        String payMethod = StatusContainer.currentPaymentMethod;
+        //System.out.println(payMethod);
+        if(Objects.equals(payMethod, "paypal")){
+            showPayPalCheckoutPage();
+        }else if (Objects.equals(payMethod, "visa") || Objects.equals(payMethod, "mastercard")){
+            showBankCardCheckoutPage();
+        }
     }
 
+    @FXML
+    private void selectRadioBtn1(){
+        radioBtn1.setSelected(true);
+        StatusContainer.currentPaymentMethod = "paypal";
+    }
+
+    @FXML
+    private void selectRadioBtn2(){
+        radioBtn2.setSelected(true);
+        String cardTypeAndCardNum = cardTypeAndNum.getText();
+        System.out.println(cardTypeAndCardNum);
+        if(cardTypeAndCardNum.contains("Visa")){
+            StatusContainer.currentPaymentMethod = "visa";
+        }else if (cardTypeAndCardNum.contains("Mastercard")){
+            StatusContainer.currentPaymentMethod = "mastercard";
+        }
+        //System.out.println( StatusContainer.currentPaymentMethod);
+    }
+
+    private void showPayPalCheckoutPage(){
+        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+        Browser browser = engine.newBrowser();
+        Stage primaryStage = new Stage();
+
+
+//        browser.navigation().loadUrl("https://html5test.com");
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/loginToPaypal.html").getAbsolutePath());
+        //browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/PayPalCheckout.html").getAbsolutePath());
+
+        browser.on(ConsoleMessageReceived.class, event -> {
+            ConsoleMessage consoleMessage = event.consoleMessage();
+            String message = consoleMessage.message();
+            System.out.println(message);
+            if(message.equalsIgnoreCase("consentButton clicked")){
+                Platform.runLater(() -> {
+                    primaryStage.close();
+                    Tools.changeScene("paySuccessPage.fxml");
+                });
+            }else if(message.equals("login success")){
+                Platform.runLater(() -> primaryStage.setTitle("PayPal Checkout"));
+            }
+        });
+
+        BrowserView view = BrowserView.newInstance(browser);
+        Scene scene = new Scene(new BorderPane(view), 800, 700);
+
+        primaryStage.setTitle("Login in to your PayPal account");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
+            browser.close();
+            engine.close();
+        });
+    }
+
+    private void showBankCardCheckoutPage() {
+        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+        Browser browser = engine.newBrowser();
+        Stage primaryStage = new Stage();
+
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.html").getAbsolutePath());
+        //addData(100, "1575270674@qq.com", "1234567890123456");
+        String price = "'" + totalPrice.getText() + "'";
+        String email = StatusContainer.currentUserEmail ;
+        String cardNum = StatusContainer.currentChooseBankCardNum;
+
+
+        String jsArgs = String.format("addData(%s, '%s', '%s')", price,email,cardNum);
+        // jxBrowser execute JavaScript
+        Frame frame = browser.frames().get(0);
+        frame.executeJavaScript(jsArgs);
+
+
+        browser.on(ConsoleMessageReceived.class, event -> {
+            ConsoleMessage consoleMessage = event.consoleMessage();
+            String message = consoleMessage.message();
+            System.out.println(message);
+            if(message.equalsIgnoreCase("payBtn click")){
+                Platform.runLater(() -> {
+                    primaryStage.close();
+                    Tools.changeScene("paySuccessPage.fxml");
+                });
+            }else if(message.equals("backBtn click")){
+                Platform.runLater(primaryStage::close);
+            }
+        });
+
+        BrowserView view = BrowserView.newInstance(browser);
+        Scene scene = new Scene(new BorderPane(view), 1100, 700);
+
+        primaryStage.setTitle("Checkout");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
+            browser.close();
+            engine.close();
+        });
+
+    }
 }
