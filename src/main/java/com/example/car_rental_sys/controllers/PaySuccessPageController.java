@@ -1,6 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.funtions.JsInvoke;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -11,15 +14,18 @@ import javafx.scene.web.WebView;
 import javafx.concurrent.Worker.State;
 
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import netscape.javascript.JSObject;
+import org.w3c.dom.events.MouseEvent;
 
 public class PaySuccessPageController {
     @FXML
     WebView webview;
 
     @FXML
-    Pane mainPane;
+    Pane mainPane, navPane;
 
     private WebEngine webEngine;
 
@@ -28,6 +34,7 @@ public class PaySuccessPageController {
         //System.out.println("Hello World!");
         initWebView();
         initPaneEvent();
+        initNavBarClickEvent();
     }
 
     @FXML
@@ -67,11 +74,21 @@ public class PaySuccessPageController {
     }
 
     @FXML
-    private void navBarClickEvent(){
-        System.out.println( "navBarClickEvent" );
-    }
-// TODO can‘t stop video when press navigation button
+    private void initNavBarClickEvent(){
+        Timer timer = new Timer();
 
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    if(mainPane.getScene() == null){
+                        webEngine.executeScript("stopVideo();");
+                        timer.cancel();
+                    }
+                });
+            }
+        },0,200);
+    }
 
 }
 

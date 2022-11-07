@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Counter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+    <div id="payment-container">
+        <div class="payment-left">
+            <div class="payment-left-text-container">
+                <div class="payment-left-brand">
+                    <img src="arrow-left-w.svg" alt="left" id="arraw-left">
+                    <span class="payment-left-brand-text">Rent</span>
+                </div>
+                <div class="payment-left-plan-type">Personal Plan</div>
+                <div class="payment-left-plan-price">RM 0000</div>
+            </div>
+        </div>
+
+        <div class="payment-right">
+            <div class="payment-right-container">
+                <div class="contact-container">
+                    <div class="contact-title">Contact</div>
+                    <div class="contact-content">
+                        <div class="contact-email-title">Email</div>
+                        <div class="contact-email-text"></div>
+                    </div>
+                </div>
+                <div class="pay-method-container">
+                    <div class="pay-title">Pay Method</div>
+                    <div class="pay-content">
+                        <div class="pay-content-card-bank">
+                            <img src="bankCard.svg" class="pay-content-image">
+                            <div>Bank Card</div>
+                        </div>
+                        <div class="pay-content-paypal">
+                            <img src="paypal.svg" class="pay-content-image">
+                            <div>PayPal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pay-method-container">
+                    <div class="cardinfo-container">
+                        <div class="cardinfo-title">Card info</div>
+                        <div class="cardinfo-content">
+                            <div class="cardinfo-content-line1">
+                                <input type="text" placeholder="1234 1234 1234 1234" id="card-cardID">
+                                <img src="visa.png" class="visa-img">
+                            </div>
+                            <div class="cardinfo-content-line2">
+                                <div class="cardinfo-content-line2-l">
+                                    <input type="text" class="cardinfo-content-line2-left" placeholder="Month/Year"
+                                        id="card-year">
+                                </div>
+                                <div class="cardinfo-content-line2-r">
+                                    <input type="text" class="cardinfo-content-line2-right" placeholder="CVC"
+                                        id="card-cvc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cardname-container">
+                        <div class="cardname-title">Name On Card</div>
+                        <div class="cardname-content">
+                            <input type="text" placeholder="" id="cardname">
+                        </div>
+                    </div>
+
+                    <div>
+
+                    </div>
+                    <div class="paypalInfo">
+                        <div class="cardname-title">PayPal Account</div>
+                        <div class="cardname-content">
+                            <input type="text" placeholder="" id="paypal-account">
+                        </div>
+
+                        <div class="cardname-title">PayPal Passwprd</div>
+                        <div class="cardname-content">
+                            <input type="password" placeholder="" id="paypal-pws">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pay-button">
+                    <button id="pay-btn">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="payment.js"></script>
+    <script>
+        function addData(price, email, cardID) {
+            document.getElementsByClassName("payment-left-plan-price")[0].innerHTML = price;
+            document.getElementsByClassName("contact-email-title")[0].innerHTML = email;
+            document.getElementById("card-cardID").value = cardID;
+        }
+        //addData(100, "1575270674@qq.com", "1234567890123456");
+        addData("RM10000", '1575270dad@qq.com', '123121122121');
+    </script>
+</body>
+
+</html>

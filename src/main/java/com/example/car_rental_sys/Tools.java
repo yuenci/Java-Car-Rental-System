@@ -46,11 +46,11 @@ public class Tools {
      * @return void
      */
     public void reSetScene(String fxmlName) {
-
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/"+ fxmlName));
         try {
             Scene scene = new Scene( fxmlLoader.load());
             Application.stageInstance.setScene(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,6 +67,7 @@ public class Tools {
         try {
             Scene scene = new Scene( fxmlLoader.load());
             Application.stageInstance.setScene(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
