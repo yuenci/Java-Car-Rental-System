@@ -11,7 +11,7 @@ public class SQL {
         return new ArrayList<>();
     }
 
-    public static boolean excute(String sql) {
+    public static boolean execute(String sql) {
         Parser.validateSQL(sql);
         String operateType = Parser.checkSQLOperateType(sql);
         switch (operateType) {

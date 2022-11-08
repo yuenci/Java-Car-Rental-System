@@ -1,7 +1,6 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.funtions.Encryption;
-import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
@@ -17,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,6 +74,19 @@ public class Tools {
     }
 
     public static Image  getImageObjFromPath(String path){
+
+        File file = new File(path);
+        try{
+            return new Image(file.toURI().toString());
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public static Image  getImageObjFromImageName(String path){
+        path = "src/main/resources/com/example/car_rental_sys/image/" + path;
         File file = new File(path);
         try{
             return new Image(file.toURI().toString());
@@ -224,7 +237,7 @@ public class Tools {
         try{
             String userID = result.get(0)[0];
             String newPasswordMD5 = Encryption.med5Encrypt(newPassword);
-            SQL.excute("UPDATE password SET password = '"+ newPasswordMD5 +"' WHERE userID = "+ userID);
+            SQL.execute("UPDATE password SET password = '"+ newPasswordMD5 +"' WHERE userID = "+ userID);
             //SendEmail.sendEmail(email, "Your new password", "Your new password is: " + newPassword);
             return true;
         }
@@ -233,5 +246,78 @@ public class Tools {
             return false;
         }
 
+    }
+
+    public static Date stringToDateObje(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateObj = null;
+        try {
+            dateObj = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateObj;
+    }
+
+    public static String dateToString(Date date, String format){
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(date);
+    }
+
+    public static String getCarModelFromCarID(int carID){
+        String sql = "SELECT carModel FROM carInfo WHERE carID = "+ carID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if(result.size() ==1){
+            return result.get(0)[0];
+        }
+        else{
+            return null;
+        }
+    }
+
+    public static String getCarColorFromCarID(int carID){
+        String sql = "SELECT color FROM carInfo WHERE carID = "+ carID;
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if(result.size() ==1){
+            return capitalizeWord(result.get(0)[0]);
+        }
+        else{
+            return null;
+        }
+    }
+
+    public static String getGradientColorFromCarID(int carID){
+        String model = getCarModelFromCarID(carID);
+
+        ArrayList<String[]> result = SQL.query("SELECT darkColor,lightColor FROM carModels WHERE carModel = '"+ model +"'");
+
+        if(result.size() ==1){
+            return result.get(0)[0] + "," + result.get(0)[1];
+        }
+        else{
+            return null;
+        }
+    }
+
+    // capitalize  a word
+    public static String capitalizeWord(String str) {
+        if(str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+
+
+    // capitalize a sentence of words
+    public static String capitalizeFirstLetter(String str){
+        String[] words = str.split(" ");
+        StringBuilder result = new StringBuilder();
+        for(String word: words){
+            result.append(word.substring(0, 1).toUpperCase()).append(word.substring(1)).append(" ");
+        }
+        return result.toString().trim();
     }
 }

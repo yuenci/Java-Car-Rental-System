@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Maker</title>
+    <style>
+        span {
+            margin-left: 20px;
+        }
+
+        span:hover {
+            cursor: pointer;
+        }
+
+        select {
+            height: 30px;
+            width: 200px;
+            margin: 0 20px;
+        }
+
+        input {
+            font-size: 20px;
+            padding: 0px 10px;
+            height: 30px;
+            width: 200px;
+            margin: 0 20px;
+        }
+
+        .field {
+            margin: 10px 0;
+            user-select: none;
+        }
+
+
+
+
+        #input-container {
+            margin: 20px;
+        }
+
+        #makeBtn {
+            margin-top: 20px;
+            margin-left: 40px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        #makeBtn:hover {
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 40px;
+            width: 900px;
+            margin-left: 40px;
+            border: 1px solid black;
+            padding: 10px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="input-container">
+        <div class="field">
+            <input type="text" placeholder="Field name">
+            <select name="FieldType" id="fieldType">
+                <option value="text">String</option>
+                <option value="number">Number</option>
+                <option value="date">Date</option>
+                <option value="checkbox">DateTime</option>
+            </select>
+            <input type="text" placeholder="Field default value">
+            <span class="addBtn">➕</span>
+            <span class="removeBtn">➖</span>
+        </div>
+    </div>
+    <Button id="makeBtn">Generate</Button>
+    <div id="result"></div>
+
+    <script>
+        let makeBtnObj = document.getElementById("makeBtn");
+        let resultPObj = document.getElementById("result");
+        addBtnObj = document.getElementsByClassName("addBtn")[0];
+        removeBtnObj = document.getElementsByClassName("removeBtn")[0];
+
+        addBtnObj.addEventListener("click", addANewFieldInput);
+        removeBtnObj.addEventListener("click", removeField);
+
+        function addANewFieldInput(e) {
+            let newFieldInput = document.createElement("div");
+            newFieldInput.className = "field"
+            newFieldInput.innerHTML = `
+            <input type="text" placeholder="Field name">
+            <select name="FieldType" id="fieldType">
+                <option value="text">String</option>
+                <option value="number">Number</option>
+                <option value="date">Date</option>
+                <option value="checkbox">DateTime</option>
+            </select>
+            <input type="text" placeholder="Field default value">
+            <span>➕</span>
+            <span>➖</span>
+            `;
+            let spans = newFieldInput.getElementsByTagName("span");
+
+            spans[0].addEventListener("click", addANewFieldInput);
+            spans[1].addEventListener("click", removeField);
+
+            insertAfter(newFieldInput, e.currentTarget.parentElement);
+        }
+
+        function removeField(e) {
+            console.log("remove");
+            e.currentTarget.parentElement.remove();
+        }
+
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentElement.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        makeBtnObj.addEventListener("click", generateResualt)
+
+        function generateResualt() {
+            let fields = document.getElementsByClassName("field");
+            let result = "";
+            for (let i = 0; i < fields.length; i++) {
+                let field = fields[i];
+                let fieldName = field.children[0].value;
+                let fieldTypeSelectObj = field.children[1];
+                let fieldType = getTxtDataType(fieldTypeSelectObj.options[fieldTypeSelectObj.selectedIndex].text);
+                let fieldDefaultValue = field.children[2].value;
+
+                if (fieldName == "" || fieldDefaultValue == "") {
+                    alert("Please fill all fields");
+                    return;
+                }
+
+                result += `${fieldName}:${fieldType}=${fieldDefaultValue},`;
+            }
+            result = result.substring(0, result.length - 1);
+            resultPObj.innerHTML = result;
+        }
+
+        function getTxtDataType(type) {
+            if (type == "String") {
+                return "str";
+            } else if (type == "Number") {
+                return "num";
+            } else if (type == "Date") {
+                return "date";
+            }
+            else if (type == "DateTime") {
+                return "datetime";
+            }
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- #TODO add result to indexDB -->
+<!-- #give default value automaticlly -->

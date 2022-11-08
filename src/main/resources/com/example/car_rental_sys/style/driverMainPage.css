@@ -1,0 +1,20 @@
+#callIcon{
+    -fx-graphic: url("../image/UI/phoneCall.png");
+}
+
+.phoneCall{
+    -fx-background-image: url("../image/UI/phoneCall.png");
+}
+
+#messageIcon{
+    -fx-graphic: url("../image/UI/sendMessage.png");
+    -fx-font-size: 20px;
+}
+
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}

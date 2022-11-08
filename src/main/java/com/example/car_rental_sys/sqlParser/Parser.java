@@ -676,8 +676,16 @@ public class Parser {
 
     public static int[] getQualifiedRowsIndexLogicAnd(String tableName, String[] whereCondition) {
         String path = getFilePathFromTableName(tableName);
-        ArrayList<String[]> data = FileOperate.readFileToArray(path);
+        ArrayList<String[]> dataOriginal = FileOperate.readFileToArray(path);
+        // build a new data array without empty line
+        ArrayList<String[]> data = new ArrayList<>();
+        for (String[] strings : dataOriginal) {
+            if (strings.length != 1 || strings[0].length() != 0) {
+                data.add(strings);
+            }
+        }
         ArrayList<Integer> qualifiedRowsIndex = new ArrayList<>();
+
 
 //        for (String[] line:data
 //             ) {

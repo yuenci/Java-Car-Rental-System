@@ -89,7 +89,7 @@ public class CarDetailsPageController {
 
     }
     private void initData(){
-        String sql = "SELECT * FROM cars WHERE carModel = '"+ StatusContainer.currentCarChose +"'";
+        String sql = "SELECT * FROM carModels WHERE carModel = '"+ StatusContainer.currentCarChose +"'";
         ArrayList<String[]> result = SQL.query(sql);
         carDetailsData = result.get(0);
         //System.out.println(Arrays.toString(carDetailsdata));
@@ -113,7 +113,7 @@ public class CarDetailsPageController {
     private  void initLogo(){
         Thread thread = new Thread(() -> {
             String logoFileRoot = "src/main/resources/com/example/car_rental_sys/image/cars/logo/";
-            String sql = "select carBrand from cars where carModel = '" + StatusContainer.currentCarChose + "'";
+            String sql = "select carBrand from carModels where carModel = '" + StatusContainer.currentCarChose + "'";
             String brand = SQL.query(sql).get(0)[0];
             //System.out.println(brand);
 
@@ -252,17 +252,17 @@ public class CarDetailsPageController {
     private void changeCar(int index){
         //System.out.println("changeCar:" + index);
         String model = StatusContainer.currentCarChose;
-        String sql = "select modelID from cars where carModel='" + model + "'";
+        String sql = "select modelID from carModels where carModel='" + model + "'";
         //System.out.println(sql);
         int modelID = Integer.parseInt(SQL.query(sql).get(0)[0]);
 
-        String sqlFirstModel = "select carModel from cars where modelID = 1 " ;
+        String sqlFirstModel = "select carModel from carModels where modelID = 1 " ;
         String firstCarModel = SQL.query(sqlFirstModel).get(0)[0];
 
         if(modelID + index ==0){
             StatusContainer.currentCarChose = firstCarModel;
         }else{
-            String sqlNewModel = "select carModel from cars where modelID = " + (modelID + index);
+            String sqlNewModel = "select carModel from carModels where modelID = " + (modelID + index);
             try{
                 StatusContainer.currentCarChose = SQL.query(sqlNewModel).get(0)[0];
             }catch (Exception e){

@@ -1,5 +1,7 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.ui_components.OrderCard;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -18,11 +20,12 @@ public class Application extends javafx.application.Application {
     public void init() throws Exception {
         registerJxBrowserLicence();
         //StartHttpServer();
+        //ormObjTest(new OrderCard(new Order(1)));
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-       // String fxmlName = "mainPage.fxml";
+        //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -30,8 +33,10 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
-        String fxmlName = "paySuccessPage.fxml";
+        //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage.fxml";
+        //String fxmlName = "driverMainPage.fxml";
+        String fxmlName = "test.fxml";
 
         stageInstance = stage;
 
@@ -79,4 +84,10 @@ public class Application extends javafx.application.Application {
     private static void registerJxBrowserLicence(){
         System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
     }
+
+    private void ormObjTest(Object obj){
+        System.out.println(obj.toString());
+    }
 }
+
+// # drive license id
