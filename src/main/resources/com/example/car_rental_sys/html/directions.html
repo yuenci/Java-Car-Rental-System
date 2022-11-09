@@ -13,7 +13,7 @@
             border: none;
         }
 
-        body{
+        body {
             overflow: hidden;
         }
     </style>
@@ -22,6 +22,7 @@
 <body>
     <iframe id="iframe1" referrerpolicy="no-referrer-when-downgrade" src="" allowfullscreen>
     </iframe>
+    <!-- <button id="btn1">Click me</button> -->
 
     <script>
         let ifr1 = document.getElementById("iframe1");
@@ -37,6 +38,26 @@
         console.log(url);
         ifr1.src = url;
 
+        // document.getElementById("btn1").addEventListener("click", function () {
+        //     changeDirections("Endah+Regal+Condominium", "Asia+Pacific+University+of+Technology");
+        // });
+
+        function changeDirections(start, end) {
+            start = start.replace(" ", "+");
+            end = end.replace(" ", "+");
+            let ifr1 = document.getElementById("iframe1");
+            let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+            let mode = "directions";
+            let parameter = `&origin=${start}`
+                + `&destination=${end}`
+                + "&language=en"
+                + "&mode=driving"
+            // notice : no space and no brackets
+
+            let url = "https://www.google.com/maps/embed/v1/" + mode + "?key=" + key + parameter;
+            console.log(url);
+            ifr1.src = url;
+        }
     </script>
 </body>
 

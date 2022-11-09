@@ -110,6 +110,22 @@ private  void initialize(){
 ```
 继承Controller类，然后公开最外面的pan之后，将当前page实例设置为当前pane的controller
 
+## confirm messageBox demo
+```java
+ MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "Do you want to accept this order?");
+        messageFrame.setSuccessCallbackFunc((i) -> {
+            System.out.println(" accept order");
+            return null;
+        });
+
+        messageFrame.setFailedCallbackFunc((i) -> {
+            System.out.println(" reject order");
+            messageFrame.close();
+            return null;
+        });
+        messageFrame.show();
+```
+
 # Modal Winow
 ```java
 String url = ConfigFile.backendPost +  "slideVerify/index.html";

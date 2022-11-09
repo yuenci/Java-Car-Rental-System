@@ -14,14 +14,15 @@ import javafx.scene.text.FontWeight;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class OrderCard extends Pane {
-    String carModel = "";
+    public String carModel = "";
     String color = "";
     int status = -1;
-    int orderID = -1;
-    int userID = -1;
+    public int orderID = -1;
+    public int userID = -1;
     String darkColor = "#000000";
     String lightColor = "#ffffff";
     Date pickUpDateTime = null;
@@ -38,12 +39,15 @@ public class OrderCard extends Pane {
     Pane carImagePaneC = null;
     Label carModelLabelC = null;
 
+    public Order order = null;
+
     DriverMainPageController driverMainIns = DriverMainPageController.driverMainPageInstance;
 
     public OrderCard(Order order) {
         initData(order);
         initUI();
         initEvent();
+        this.order = order;
     }
 
     private  void initData(Order order){
@@ -184,51 +188,26 @@ public class OrderCard extends Pane {
     }
 
     private  void  initEvent(){
-        carImagePaneC.setOnMouseClicked(mouseEvent -> {
-            showLocation();
-            changeAvatar();
-        });
-        carModelLabelC.setOnMouseClicked(mouseEvent -> {
-            showLocation();
-            changeAvatar();
-        });
-        hideImagePane.setOnMouseClicked(mouseEvent ->System.out.println( "hide clicked"));
-        chooseImagePane.setOnMouseClicked(mouseEvent ->System.out.println( "choose clicked"));
+        carImagePaneC.setOnMouseClicked(mouseEvent -> changeInfo());
+        carModelLabelC.setOnMouseClicked((mouseEvent -> changeInfo()));
+
+        hideImagePane.setOnMouseClicked(mouseEvent ->hideCard());
+        chooseImagePane.setOnMouseClicked(mouseEvent ->chooseCard());
     }
 
-    private void showLocation(){
-
-        driverMainIns.startLabel.setText(pickUpLocation);
-        driverMainIns.destinationLabel.setText(parkingLocation);
-
-        String[] data = getCarInfo();
-        assert data != null;
-
-        driverMainIns.speedLabel.setText(data[1] + " km/h");
-        driverMainIns.powerLabel.setText(data[2] + " L");
-        driverMainIns.seatsLabel.setText(data[0] );
-
-        String url= "src/main/resources/com/example/car_rental_sys/image/cars/" + carModel + ".png";
-        driverMainIns.carImageView.setImage(Tools.getImageObjFromPath(url));
+    private void changeInfo(){
+        driverMainIns.currentOrderCard = this;
+        driverMainIns.setRentInfo();
     }
 
-    private void changeAvatar(){
-        driverMainIns.renterAvatar.setImage(Tools.getImageObjFromUserID(this.userID));
-
-//        driverMainIns.renterPost.setText(DataTools.getRenterNameAndPostFromUserID(this.userID)[0]);
-//        driverMainIns.renterName.setText(DataTools.getRenterNameAndPostFromUserID(this.userID)[1]);
+    private void hideCard(){
+        driverMainIns.hideCard(this.orderID);
     }
 
-    private String[] getCarInfo(){
-        String sql = "SELECT seats,speed,power FROM carModels WHERE carModel = '" + carModel + "'";
-        ArrayList<String[]> result = SQL.query(sql);
-        if (result.size() == 0){
-            System.out.println("No car found");
-        }else {
-           return result.get(0);
-        }
-        return null;
+    private void chooseCard(){
+        driverMainIns.chooseCard(this.orderID);
     }
+
 
     @Override
     public String toString() {

@@ -221,12 +221,7 @@
       <ImageView fx:id="renterAvatar" fitHeight="80.0" fitWidth="60.0" layoutX="30.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/avatar/1.png" />
       </ImageView>
-      <Label layoutX="33.0" layoutY="25.0" text="Renter">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="renterName" layoutX="118.0" layoutY="62.0" text="Innis Yu">
+      <Label fx:id="renterName" layoutX="118.0" layoutY="62.0" text="User Name">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -299,9 +294,27 @@
       <Line endX="83.0" layoutX="174.0" layoutY="705.0" startX="-100.0" stroke="#e3e3e399" />
       <Line endX="161.0" layoutX="120.0" layoutY="570.0" startX="-100.0" stroke="#e5e5e599" />
    </Pane>
+   <WebView fx:id="webview" layoutX="280.0" prefHeight="832.0" prefWidth="700.0" />
+   <ScrollPane fx:id="scrollPane" layoutX="288.0" layoutY="675.0" prefHeight="150.0" prefWidth="695.0" style="-fx-background-color: transparent;" />
+   <Pane fx:id="processTipPane" layoutX="670.0" layoutY="20.0" prefHeight="81.0" prefWidth="316.0" style="-fx-background-color: white;">
+      <children>
+         <Pane fx:id="processImagePane" layoutX="250.0" layoutY="16.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #722ED1; -fx-background-radius: 30;">
+            <children>
+               <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../image/UI/car.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </Pane>
+         <Label fx:id="processTipLabel" layoutX="39.0" layoutY="31.0" text="An order is in progress...">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
    <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
       <fx:include source="navigationBarShort.fxml" />
    </Pane>
-   <WebView fx:id="webview" layoutX="280.0" prefHeight="832.0" prefWidth="700.0" />
-   <ScrollPane fx:id="scrollPane" layoutX="280.0" layoutY="675.0" prefHeight="150.0" prefWidth="700.0" style="-fx-background-color: transparent;" />
 </Pane>

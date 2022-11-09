@@ -13,9 +13,18 @@ public class DataTools {
             return null;
         }
         else{
-            System.out.println(Arrays.toString(res.get(0)));
             return res.get(0);
         }
+    }
 
+    public static String[] getCarSeatsSpeedPowerFromCarModel(String carModel){
+        String sql = "SELECT seats,speed,power FROM carModels WHERE carModel = '" + carModel + "'";
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0){
+            System.out.println("No car found");
+        }else {
+            return result.get(0);
+        }
+        return null;
     }
 }
