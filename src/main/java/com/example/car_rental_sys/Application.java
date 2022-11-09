@@ -1,9 +1,12 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.controllers.UIPaginationController;
+import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,24 +28,38 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        String css = this.getClass().getResource("pagination.css").toExternalForm();
 //        String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
         //String fxmlName = "paymentPage.fxml";
-        String fxmlName = "contactUsPage.fxml";
+        //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
 
         stageInstance = stage;
 
+        //startStage(fxmlName);
 
-        startStage(fxmlName);
+        testComponent(stage,css);
+    }
 
+    private static void testComponent(Stage stage, String css){
+        //UIPagination01 pagination = new UIPagination01();
+        UIPagination pagination2 = new UIPagination();
+        //set the resource style sheets
+        UIPaginationController test = new UIPaginationController();
 
-
-
-
+        Pane pane = new Pane();
+        pane.setPrefSize(500,500);
+        //pane.getChildren().addAll(pagination);
+        pane.getChildren().addAll(pagination2);
+        Scene scene = new Scene(pane,500,500);
+        scene.getStylesheets().add(css);
+        stage.setTitle("Test Component");
+        stage.setScene(scene);
+        stage.show();
 
     }
 

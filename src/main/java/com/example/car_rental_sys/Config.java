@@ -9,4 +9,5 @@ public class Config {
     public static String myEmailPassword = "GBZYHLHTFOYUAXAP";
     public static String myEmailSMTPHost = "smtp.163.com";
     public static String logoAddress  = "https://utoolsfigurebed.oss-cn-hangzhou.aliyuncs.com/logo_light_green_cloud.png";
+    public static String fakeData = "src/main/resources/com/example/car_rental_sys/data/fakeData.txt";
 }
