@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -319,5 +322,24 @@ public class Tools {
             result.append(word.substring(0, 1).toUpperCase()).append(word.substring(1)).append(" ");
         }
         return result.toString().trim();
+    }
+
+    public static void  yAxisFlip(ImageView imageView,double a1, double a2){
+        Translate flipTranslation = new Translate(imageView.getImage().getWidth() - a1,0);
+        Rotate flipRotation = new Rotate(a2,Rotate.Y_AXIS);
+        imageView.getTransforms().addAll(flipTranslation,flipRotation);
+    }
+
+    public static Pane getView(String fileName) {
+        Pane view = new Pane();
+        try{
+            String path = "src/main/resources/com/example/car_rental_sys/fxml/" + fileName ;
+            URL url = new File(path).toURI().toURL();
+            view = new FXMLLoader().load(url);
+        }
+        catch ( IOException e) {
+            e.printStackTrace();
+        }
+        return view;
     }
 }

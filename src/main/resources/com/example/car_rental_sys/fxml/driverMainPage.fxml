@@ -7,15 +7,14 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<Pane prefHeight="832.0" prefWidth="1280.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.DriverMainPageController">
+<Pane fx:id="mainPane" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.DriverMainPageController">
 
    <Pane prefHeight="830.0" prefWidth="280.0" style="-fx-background-color: white;">
       <ImageView fitHeight="114.0" fitWidth="80.0" layoutX="100.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/avatar/1.png" />
       </ImageView>
    </Pane>
-   <WebView fx:id="webview" layoutX="280.0" prefHeight="832.0" prefWidth="700.0" />
-   <Pane layoutX="980.0" layoutY="1.0" prefHeight="830.0" prefWidth="300.0" style="-fx-background-color: white;">
+   <Pane fx:id="sidePane" layoutX="980.0" layoutY="1.0" prefHeight="830.0" prefWidth="300.0" style="-fx-background-color: white;">
       <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="30.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/avatar/1.png" />
       </ImageView>
@@ -34,23 +33,23 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="33.0" layoutY="161.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #7EB712; -fx-background-radius: 15;">
+      <Pane fx:id="messagePane" layoutX="33.0" layoutY="161.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #7EB712; -fx-background-radius: 15;">
          <ImageView fitHeight="150.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/sendMessage.png" />
          </ImageView>
       </Pane>
-      <Pane layoutX="123.0" layoutY="161.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #165DFF; -fx-background-radius: 15;">
+      <Pane fx:id="phonePane" layoutX="123.0" layoutY="161.0" onMouseClicked="#phoneClick" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #165DFF; -fx-background-radius: 15;">
          <ImageView fitHeight="150.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/phoneCall.png" />
          </ImageView>
       </Pane>
       <Line endX="161.0" layoutX="120.0" layoutY="251.0" startX="-100.0" />
-      <Pane layoutX="213.0" layoutY="161.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #e3e4e8; -fx-background-radius: 15;">
+      <Pane fx:id="closeSideBarPane" layoutX="213.0" layoutY="161.0" onMouseClicked="#closeSideBarPaneClick" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #e3e4e8; -fx-background-radius: 15;">
          <ImageView fitHeight="150.0" fitWidth="25.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/closeIcon.png" />
          </ImageView>
       </Pane>
-      <ImageView fitHeight="125.0" fitWidth="181.0" layoutX="61.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="carImageView" fitHeight="125.0" fitWidth="181.0" layoutX="61.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/cars/Chevrolet_Corvette_ZR1.png" />
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="218.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
@@ -59,20 +58,20 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="38.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/seats-black.png" />
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="131.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/power-black.png" />
       </ImageView>
-      <Label layoutX="54.0" layoutY="503.0" text="4">
+      <Label fx:id="seatsLabel" layoutX="54.0" layoutY="503.0" text="4">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="136.0" layoutY="503.0" text="VIP1">
+      <Label fx:id="powerLabel" layoutX="133.0" layoutY="503.0" text="4.0 L">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="503.0" text="VIP1">
+      <Label fx:id="speedLabel" layoutX="206.0" layoutY="503.0" text="330 km/h">
          <font>
             <Font size="14.0" />
          </font>
@@ -84,12 +83,12 @@
       </ImageView>
       <Label layoutX="76.0" layoutY="604.0" text="Start" textFill="#bcbcbc" />
       <Label layoutX="77.0" layoutY="748.0" text="Destination" textFill="#bcbcbc" />
-      <Label layoutX="76.0" layoutY="624.0" text="Start">
+      <Label fx:id="startLabel" layoutX="76.0" layoutY="624.0" prefHeight="22.0" prefWidth="184.0" text="Start">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="77.0" layoutY="768.0" text="Destination">
+      <Label fx:id="destinationLabel" layoutX="77.0" layoutY="768.0" prefHeight="22.0" prefWidth="184.0" text="Destination">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -100,5 +99,6 @@
    <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
       <fx:include source="navigationBarShort.fxml" />
    </Pane>
+   <WebView fx:id="webview" layoutX="280.0" prefHeight="832.0" prefWidth="700.0" />
    <ScrollPane fx:id="scrollPane" layoutX="280.0" layoutY="675.0" prefHeight="150.0" prefWidth="700.0" style="-fx-background-color: transparent;" />
 </Pane>

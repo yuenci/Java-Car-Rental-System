@@ -12,6 +12,9 @@ public class Order {
     public Date orderTime = null;
     public Date pickUpTime = null;
     public Date returnTime = null;
+    public String pickUpLocation = "";
+    public String parkingLocation = "";
+
     public int userID = 0;
     public int price = 0;
     public String paymentMethod = "";
@@ -36,12 +39,14 @@ public class Order {
             this.orderTime = Tools.stringToDateObje(orderInfo[2]);
             this.pickUpTime = Tools.stringToDateObje(orderInfo[3]);
             this.returnTime = Tools.stringToDateObje(orderInfo[4]);
-            this.userID = Integer.parseInt(orderInfo[5]);
-            this.price = Integer.parseInt(orderInfo[6]);
-            this.paymentMethod = orderInfo[7];
-            this.account = orderInfo[8];
-            this.status = Integer.parseInt(orderInfo[9]);
-            this.star = Integer.parseInt(orderInfo[10]);
+            this.pickUpLocation = orderInfo[5];
+            this.parkingLocation = orderInfo[6];
+            this.userID = Integer.parseInt(orderInfo[7]);
+            this.price = Integer.parseInt(orderInfo[8]);
+            this.paymentMethod = orderInfo[9];
+            this.account = orderInfo[10];
+            this.status = Integer.parseInt(orderInfo[11]);
+            this.star = Integer.parseInt(orderInfo[12]);
         }
     }
 
@@ -131,6 +136,22 @@ public class Order {
 
     public void setStar(int star) {
         this.star = star;
+    }
+
+    public String getPickUpLocation() {
+        return pickUpLocation;
+    }
+
+    public void setPickUpLocation(String pickUpLocation) {
+        this.pickUpLocation = pickUpLocation;
+    }
+
+    public String getParkingLocation() {
+        return parkingLocation;
+    }
+
+    public void setParkingLocation(String parkingLocation) {
+        this.parkingLocation = parkingLocation;
     }
 
     @Override

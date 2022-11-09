@@ -7,55 +7,50 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane layoutX="115.0" layoutY="75.0" prefHeight="150.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 15;" styleClass="mainPane">
-         <children>
-            <Pane layoutX="7.0" layoutY="72.0" prefHeight="60.0" prefWidth="123.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" styleClass="carPane">
-               <children>
-                  <ImageView fitHeight="60.0" fitWidth="80.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" styleClass="carImage">
-                     <image>
-                        <Image url="@../image/cars/Chevrolet_Corvette_ZR1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label layoutX="174.0" layoutY="113.0" text="2022-11-08">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="174.0" layoutY="72.0" styleClass="endDate" text="2022-11-10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Pane layoutX="149.0" layoutY="15.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #78909c; -fx-background-radius: 10;" styleClass="hidePane">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="60.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" styleClass="hideImage">
-                     <image>
-                        <Image url="@../image/UI/hide.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="206.0" layoutY="15.0" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #34a853; -fx-background-radius: 10;" styleClass="donePane">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="60.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="doneImage">
-                     <image>
-                        <Image url="@../image/UI/choose.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label layoutX="7.0" layoutY="15.0" prefHeight="22.0" prefWidth="140.0" styleClass="model" text="ABC-1254">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="48.0" styleClass="color" text="White" />
-            <Label layoutX="203.0" layoutY="94.0" text="To" textFill="#bcbcbc" />
-         </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0"
+      prefWidth="500.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19"
+      xmlns:fx="http://javafx.com/fxml/1">
+   <Pane layoutX="115.0" layoutY="75.0" prefHeight="150.0" prefWidth="270.0"
+         style="-fx-background-color: white; -fx-background-radius: 15;" styleClass="mainPane">
+      <Pane layoutX="7.0" layoutY="72.0" prefHeight="60.0" prefWidth="123.0"
+            style="-fx-background-color: yellow; -fx-background-radius: 10;" styleClass="carPane">
+         <ImageView fitHeight="60.0" fitWidth="80.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true"
+                    preserveRatio="true" styleClass="carImage">
+            <Image url="@../image/cars/Chevrolet_Corvette_ZR1.png"/>
+         </ImageView>
       </Pane>
-   </children>
+      <Label layoutX="174.0" layoutY="113.0" text="2022-11-08">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="72.0" styleClass="endDate" text="2022-11-10">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Pane layoutX="149.0" layoutY="15.0" prefHeight="40.0" prefWidth="50.0"
+            style="-fx-background-color: #78909c; -fx-background-radius: 10;" styleClass="hidePane">
+         <ImageView fitHeight="35.0" fitWidth="60.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true"
+                    preserveRatio="true" styleClass="hideImage">
+            <image>
+               <Image url="@../image/UI/hide.png"/>
+            </image>
+         </ImageView>
+      </Pane>
+      <Pane layoutX="206.0" layoutY="15.0" prefHeight="40.0" prefWidth="50.0"
+            style="-fx-background-color: #34a853; -fx-background-radius: 10;" styleClass="donePane">
+         <ImageView fitHeight="30.0" fitWidth="60.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true"
+                    preserveRatio="true" styleClass="doneImage">
+            <Image url="@../image/UI/choose.png"/>
+         </ImageView>
+      </Pane>
+      <Label layoutX="7.0" layoutY="15.0" prefHeight="22.0" prefWidth="140.0" styleClass="model" text="ABC-1254">
+         <font>
+            <Font name="System Bold" size="16.0"/>
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="48.0" styleClass="color" text="White"/>
+      <Label layoutX="203.0" layoutY="94.0" text="To" textFill="#bcbcbc"/>
+   </Pane>
 </Pane>

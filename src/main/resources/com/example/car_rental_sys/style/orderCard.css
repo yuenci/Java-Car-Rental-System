@@ -1,0 +1,33 @@
+.mainPane{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #E5E5E5;
+    -fx-border-width: 1px;
+}
+
+.carImagePane{
+    -fx-background-radius: 10;
+}
+
+.carImagePane:hover{
+    -fx-cursor: hand;
+}
+
+.buttonHidePane{
+    -fx-background-color: #79809c;
+    -fx-background-radius: 10;
+}
+
+.buttonDonePane{
+    -fx-background-color: #24a853;
+    -fx-background-radius: 10;
+}
+
+.buttonHidePane:hover,.buttonDonePane:hover{
+    -fx-cursor: hand;
+}
+
+.carModelLabel:hover{
+    -fx-cursor: hand;
+}

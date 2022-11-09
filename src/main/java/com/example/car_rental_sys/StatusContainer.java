@@ -23,4 +23,5 @@ public class StatusContainer {
     public static String currentPaymentMethod = null;
     public static String currentUserEmail = "1575270dad@qq.com";
     public static String currentChooseBankCardNum = "1234567890123456";
+    public static Boolean isHideDriverSideBar = false;
 }

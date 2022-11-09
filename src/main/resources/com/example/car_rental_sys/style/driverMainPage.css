@@ -18,3 +18,16 @@
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
+
+#closeSideBarPane:hover{
+    -fx-cursor: hand;
+}
+
+#phonePane:hover{
+    -fx-cursor: hand;
+}
+
+
+#messagePane:hover{
+    -fx-cursor: hand;
+}
