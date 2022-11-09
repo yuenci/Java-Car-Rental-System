@@ -1,10 +1,8 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.Tools;
-import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
-import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,13 +11,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 public class OrderCard extends Pane {
     public String carModel = "";
-    String color = "";
+    public String carNumber = "";
     int status = -1;
     public int orderID = -1;
     public int userID = -1;
@@ -52,7 +48,7 @@ public class OrderCard extends Pane {
 
     private  void initData(Order order){
         this.carModel = Tools.getCarModelFromCarID(order.carID);
-        this.color = Tools.getCarColorFromCarID(order.carID);
+        this.carNumber = Tools.getCarNumberFromCarID(order.carID);
         this.status = order.getStatus();
         this.orderID = order.getOrderID();
         this.userID = order.getUserID();
@@ -92,7 +88,7 @@ public class OrderCard extends Pane {
         carModelLabelC = carModelLabel;
 
 
-        Label colorLabel = new Label(color);
+        Label colorLabel = new Label(carNumber);
         setLabelsStyle(colorLabel,14 +offsetX,48);
 
 
@@ -143,7 +139,7 @@ public class OrderCard extends Pane {
         String carStyle =
                 "-fx-background-color: " +
                 "linear-gradient(to left," + this.darkColor +"," + this.lightColor + ");";
-        Tools.yAxisFlip(carImageView,585,180);
+        Tools.yAxisFlip(carImageView,590,180);
         setPane(carImagePane,7 +offsetX,71,123,60,carStyle);
 
         String hideImageAddress = UIImageRoot + "hide.png";
@@ -213,7 +209,7 @@ public class OrderCard extends Pane {
     public String toString() {
         return  "OrderCard{" +
                 "carModel='" + carModel + '\'' +
-                ", color='" + color + '\'' +
+                ", carNumber='" + carNumber + '\'' +
                 ", status=" + status +
                 ", orderID=" + orderID +
                 ", darkColor='" + darkColor + '\'' +

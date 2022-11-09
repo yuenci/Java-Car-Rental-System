@@ -19,32 +19,28 @@
          </font></Label>
       <Line endX="109.0" layoutX="147.0" layoutY="245.0" startX="-123.0" stroke="#e3e3e399" />
       <Line endX="109.0" layoutX="147.0" layoutY="415.0" startX="-123.0" stroke="#e3e3e399" />
-      <Pane layoutX="24.0" layoutY="442.0" prefHeight="60.0" prefWidth="233.0"
-            style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
-         <Pane fx:id="item1" layoutY="10.0" prefHeight="40.0" prefWidth="180.0"
-               style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+      <Pane layoutX="24.0" layoutY="442.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+         <Pane fx:id="item1" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
             <children>
                <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
                   <children>
-                     <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true"
-                                preserveRatio="true">
+                     <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../image/UI/profile.png"/>
+                           <Image url="@../image/UI/profile.png" />
                         </image>
                      </ImageView>
                   </children>
                </Pane>
                <Label layoutX="83.0" layoutY="10.0" text="Profile">
                   <font>
-                     <Font name="System Bold" size="15.0"/>
+                     <Font name="System Bold" size="15.0" />
                   </font>
                </Label>
             </children>
          </Pane>
-         <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true"
-                    preserveRatio="true" styleClass="leftIcon">
+         <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <image>
-               <Image url="@../image/UI/right1.png"/>
+               <Image url="@../image/UI/right1.png" />
             </image>
          </ImageView>
       </Pane>
@@ -249,29 +245,29 @@
             <Image url="@../image/UI/closeIcon.png" />
          </ImageView>
       </Pane>
-      <ImageView fx:id="carImageView" fitHeight="125.0" fitWidth="181.0" layoutX="61.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="carImageView" fitHeight="125.0" fitWidth="181.0" layoutX="58.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/cars/Chevrolet_Corvette_ZR1.png" />
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="218.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="218.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/speed-black.png" />
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="38.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="38.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/seats-black.png" />
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/power-black.png" />
       </ImageView>
-      <Label fx:id="seatsLabel" layoutX="54.0" layoutY="503.0" text="4">
+      <Label fx:id="seatsLabel" layoutX="54.0" layoutY="539.0" text="4">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="powerLabel" layoutX="133.0" layoutY="503.0" text="4.0 L">
+      <Label fx:id="powerLabel" layoutX="133.0" layoutY="539.0" text="4.0 L">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="speedLabel" layoutX="206.0" layoutY="503.0" text="330 km/h">
+      <Label fx:id="speedLabel" layoutX="206.0" layoutY="539.0" text="330 km/h">
          <font>
             <Font size="14.0" />
          </font>
@@ -295,9 +291,18 @@
       </Label>
       <Line endX="83.0" layoutX="174.0" layoutY="705.0" startX="-100.0" stroke="#e3e3e399" />
       <Line endX="161.0" layoutX="120.0" layoutY="570.0" startX="-100.0" stroke="#e5e5e599" />
+      <Pane layoutX="88.0" layoutY="273.0" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: white; -fx-border-color: #cdcdcd; -fx-border-radius: 5; -fx-border-width: 1;">
+         <children>
+            <Label fx:id="carNumberLabel" prefHeight="40.0" prefWidth="120.0" style="-fx-text-fill: #bcbcbc;" text="WC8888D">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </Pane>
    <WebView fx:id="webview" layoutX="280.0" prefHeight="832.0" prefWidth="700.0" />
-   <ScrollPane fx:id="scrollPane" layoutX="288.0" layoutY="675.0" prefHeight="150.0" prefWidth="695.0" style="-fx-background-color: transparent;" />
+   <ScrollPane fx:id="scrollPane" layoutX="288.0" layoutY="681.0" prefHeight="150.0" prefWidth="695.0" style="-fx-background-color: transparent;" />
    <Pane fx:id="processTipPane" layoutX="670.0" layoutY="20.0" prefHeight="81.0" prefWidth="316.0" style="-fx-background-color: white;">
       <children>
          <Pane fx:id="processImagePane" layoutX="250.0" layoutY="16.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #722ED1; -fx-background-radius: 30;">

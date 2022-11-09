@@ -278,8 +278,8 @@ public class Tools {
         }
     }
 
-    public static String getCarColorFromCarID(int carID) {
-        String sql = "SELECT color FROM carInfo WHERE carID = " + carID;
+    public static String getCarNumberFromCarID(int carID) {
+        String sql = "SELECT carNumber FROM carInfo WHERE carID = " + carID;
         //System.out.println(sql);
         ArrayList<String[]> result = SQL.query(sql);
         if (result.size() == 1) {

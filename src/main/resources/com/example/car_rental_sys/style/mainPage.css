@@ -76,3 +76,7 @@
     -fx-cursor: hand;
 
 }
+
+#logoImage:hover{
+    -fx-cursor: hand;
+}

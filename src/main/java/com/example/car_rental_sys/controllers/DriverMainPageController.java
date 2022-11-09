@@ -34,7 +34,7 @@ public class DriverMainPageController extends  Controller{
 
     @FXML
     public Label startLabel, destinationLabel, speedLabel, powerLabel, seatsLabel,postLabel,nameLabel,
-            renterName,renterPost,processTipLabel;
+            renterName,renterPost,processTipLabel,carNumberLabel;
 
     @FXML
     public ImageView carImageView,renterAvatar;
@@ -137,7 +137,7 @@ public class DriverMainPageController extends  Controller{
         int i = 0;
         Collection<OrderCard> orderCards = orderCardHashMap.values();
         for (OrderCard orderCard : orderCards) {
-            orderCard.setLayoutX(i * 300);
+            orderCard.setLayoutX(i * 300 +15);
             pane.getChildren().add(orderCard);
             i++;
         }
@@ -200,6 +200,7 @@ public class DriverMainPageController extends  Controller{
        // label set text align center
         postLabel.setAlignment(Pos.CENTER);
         nameLabel.setAlignment(Pos.CENTER);
+        carNumberLabel.setAlignment(Pos.CENTER);
     }
 
     private void initMenuEvent() {
@@ -267,6 +268,7 @@ public class DriverMainPageController extends  Controller{
         this.speedLabel.setText(data[1] + " km/h");
         this.powerLabel.setText(data[2] + " L");
         this.seatsLabel.setText(data[0] );
+        this.carNumberLabel.setText(currentOrderCard.carNumber);
 
         String url= "src/main/resources/com/example/car_rental_sys/image/cars/" + currentOrderCard.carModel + ".png";
         this.carImageView.setImage(Tools.getImageObjFromPath(url));

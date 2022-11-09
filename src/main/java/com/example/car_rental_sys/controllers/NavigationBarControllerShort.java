@@ -14,7 +14,7 @@ import java.io.File;
 
 public class NavigationBarControllerShort {
     @FXML
-    private ImageView closeIconBtn;
+    private ImageView closeIconBtn,logoImage;
 
     @FXML
     private Pane navBarPanel;
@@ -34,17 +34,15 @@ public class NavigationBarControllerShort {
     private final String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
     private void initIconShowEvent(){
-        closeIconBtn.setVisible(false);
-        navBarPanel.setOnMouseEntered(mouseEvent -> closeIconBtn.setVisible(true));
+        //navBarPanel.setVisible(false);
+        navBarPanel.setOnMouseEntered(mouseEvent -> {
+            closeIconBtn.setVisible(true);
+            logoImage.setVisible(true);
+        });
 
         navBarPanel.setOnMouseExited(mouseEvent -> {
             closeIconBtn.setVisible(false);
-//            try {
-//                Thread.sleep(1000);
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            logoImage.setVisible(false);
         });
     }
 
@@ -70,7 +68,13 @@ public class NavigationBarControllerShort {
     //changeImageToClose
     @FXML
     public void changeImageToClose(MouseEvent mouseDragEvent) {
-        changeImage(imagefolderRoot +"/closeIcon.png",closeIconBtn);
+        changeImage(imagefolderRoot +"/closeIconBlack.png",closeIconBtn);
+    }
+
+    @FXML
+    public void LogoClickEvent(){
+        Tools.changeScene("mainPage.fxml");
+
     }
 
     private double locationX,locationY;
