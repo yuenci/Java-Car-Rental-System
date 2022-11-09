@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
@@ -24,10 +25,10 @@ import java.util.*;
 import java.util.function.Function;
 
 
-public class MainPageController {
+public class MainPageController extends Controller{
     public static MainPageController mainPageController;
     @FXML
-    private Pane mainPane;
+    public Pane mainPane;
 
     @FXML
     private ImageView carImage;
@@ -80,6 +81,7 @@ public class MainPageController {
         initDateTimeLabel();
         initIntroLabel();
         mainPageController = this;
+        StatusContainer.currentPageController = this;
     }
     private void initIntroLabel(){
         introLabel.setWrapText(true);
@@ -362,7 +364,7 @@ public class MainPageController {
     }
 
     void showDatePicker(){
-        String url = "http://127.0.0.1:8080/datePicker/index.html";
+        String url = ConfigFile.backendPost +  "datePicker/index.html";
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {

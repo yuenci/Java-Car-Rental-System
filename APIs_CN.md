@@ -76,3 +76,37 @@ Function func = (Function<String,Void>) (message) -> {
 browserModal.setFunction(func);
 browserModal.show();
 ```
+
+# MessageBox
+```java
+MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "This is a notification message.This is a notification messageThis is a notification messageThis is a notification message");
+messageFrame.setCallbackfunc((Integer i) -> {
+    System.out.println("callback called!!!!!!!!!!!!!!");
+    return null;
+});
+messageFrame.show();
+```
+一共有五种类型： CONFIRM, ERROR, INFO, SUCCESS, WARNING
+构造器有两种：
+一种是只有类型和message 的（标题为默认）
+另一种是类型，message，标题，
+
+## 如何让页面支持messagebox
+```java
+SignUpPageController extends Controller
+```
+```java
+
+```java
+
+@FXML
+public Pane mainPane;
+
+
+@FXML
+private  void initialize(){
+    StatusContainer.currentPageController = this;
+}
+```
+继承Controller类，然后公开最外面的pan之后，将当前page实例设置为当前pane的controller
+

@@ -1,7 +1,11 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.funtions.SendEmail;
+import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +17,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Tools {
     /**
@@ -40,11 +46,11 @@ public class Tools {
      * @return void
      */
     public void reSetScene(String fxmlName) {
-
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/"+ fxmlName));
         try {
             Scene scene = new Scene( fxmlLoader.load());
             Application.stageInstance.setScene(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,6 +67,7 @@ public class Tools {
         try {
             Scene scene = new Scene( fxmlLoader.load());
             Application.stageInstance.setScene(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +116,7 @@ public class Tools {
     public static void StartHttpServer(){
         Thread thread = new Thread(() -> {
             String projectPath = Tools.getProjectPath();
-            String cmdStr = "http-server \""+ projectPath +"\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8080";
+            String cmdStr = "http-server \""+ projectPath +"\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8174";
             //System.out.println(cmdStr);
             Tools.exebat(cmdStr);
         });
@@ -156,5 +163,75 @@ public class Tools {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public static int getNewUserID(){
+        ArrayList<String[]> result = FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/userInfo.txt");
+        //System.out.println(result.size() );
+        return result.size();
+    }
+
+    public static  String getFormatDateTime(){
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    public static boolean checkPassword(String password){
+        if(password.length() < 8){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[A-Z].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[a-z].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[0-9].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
+            messageFrame.show();
+            return false;
+        }
+        else if(!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
+            messageFrame.show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean checkEmail(String email){
+        if(!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Please enter a valid email address");
+            messageFrame.show();
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public static boolean resetPassword(String email,String newPassword){
+        ArrayList<String[]> result = SQL.query("SELECT userID FROM userInfo WHERE email = '"+ email +"'");
+        if(result.size() == 0)  return false ; // email not found return 100
+
+        try{
+            String userID = result.get(0)[0];
+            String newPasswordMD5 = Encryption.med5Encrypt(newPassword);
+            SQL.excute("UPDATE password SET password = '"+ newPasswordMD5 +"' WHERE userID = "+ userID);
+            //SendEmail.sendEmail(email, "Your new password", "Your new password is: " + newPassword);
+            return true;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
     }
 }

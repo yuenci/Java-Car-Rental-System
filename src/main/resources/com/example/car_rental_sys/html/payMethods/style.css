@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+#contianer-paypal {
+    width: 460px;
+    height: 710px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    border: 1px solid #eaeced;
+    color: black;
+    font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+}
+
+.paypal-logo-long {
+    background: transparent url(https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-mark-color.svg) top center no-repeat;
+    width: 34px;
+    height: 40px;
+}
+
+#logo {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pay-with-paypal {
+    font-size: 24px;
+
+}
+
+#with-a-payal {
+    font-size: 15px;
+    margin-top: 16px;
+    margin-bottom: 38px;
+    font-weight: 500;
+    color: #2c2e2f;
+    ;
+}
+
+#paypal-acc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #2c2e2f;
+}
+
+#change {
+    color: #1072eb;
+    font-weight: 400;
+}
+
+.pay-content-paypal,
+.payment-left-plan-type {
+    display: none;
+}

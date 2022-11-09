@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay sccess</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000000;
+            -webkit-user-select: none;
+            user-select: none;
+            font-family: sans-serif;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 22px;
+            display: none;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        button {
+            color: white;
+            background-color: #3c7eff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #306fff;
+            cursor: pointer;
+        }
+
+        p:hover {
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body>
+    <video src="./video2.mp4" autoplay></video>
+    <script>
+        function buttonClickEvent() {
+            window.invoke.world();
+        }
+    </script>
+    <div id="container">
+        <img src="success.png" alt="success">
+        <p>Transaction completed</p>
+        <p>Your car is on the way !</p>
+        <button onclick="buttonClickEvent()">Check Payment</button>
+    </div>
+
+    <script>
+        // 延迟16s
+        setTimeout(() => {
+            document.getElementById('container').style.display = 'block';
+        }, 16000)
+
+        function stopVideo() {
+            document.querySelector('video').remove();
+            document.getElementById('container').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

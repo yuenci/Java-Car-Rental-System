@@ -1,108 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0"
-      prefWidth="1280.0" stylesheets="@../style/general.css" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.example.car_rental_sys.controllers.loginPageController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" stylesheets="@../style/general.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.loginPageController">
    <ImageView fitHeight="832.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../image/UI/loginPageBg.png"/>
+      <Image url="@../image/UI/loginPageBg.png" />
    </ImageView>
-   <Button layoutX="499.0" layoutY="532.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="282.0"
-           style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: #484848; -fx-border-width: 2px; -fx-border-radius: 15;"
-           styleClass="btnSignUp" text="Sign Up" textFill="WHITE"
-           fx:id="signUpBtn" onMouseClicked="#signUpBtnClick">
+   <Button fx:id="signUpBtn" layoutX="499.0" layoutY="532.0" mnemonicParsing="false" onMouseClicked="#signUpBtnClick" prefHeight="45.0" prefWidth="282.0" style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: #484848; -fx-border-width: 2px; -fx-border-radius: 15;" styleClass="btnSignUp" text="Sign Up" textFill="WHITE">
       <font>
-         <Font name="Segoe UI Semibold" size="14.0"/>
+         <Font name="Segoe UI Semibold" size="14.0" />
       </font>
    </Button>
-   <Button layoutX="499.0" layoutY="468.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="282.0"
-           style="-fx-background-color: #1D90F4; -fx-cursor: hand; -fx-background-radius: 15; -fx-border-radius: 15;"
-           styleClass="btnLogin" text="Login" textFill="WHITE">
+   <Button fx:id="loginBtn" layoutX="499.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#loginBtnClick" prefHeight="45.0" prefWidth="282.0" style="-fx-background-color: #1D90F4; -fx-cursor: hand; -fx-background-radius: 15; -fx-border-radius: 15;" styleClass="btnLogin" text="Login" textFill="WHITE">
       <font>
-         <Font name="Segoe UI Semibold" size="14.0"/>
+         <Font name="Segoe UI Semibold" size="14.0" />
       </font>
    </Button>
-   <Label layoutX="667.0" layoutY="433.0" style="-fx-cursor: hand;"
-          text="Recovery password" textFill="#bedaff">
+   <Button fx:id="resetBtn" layoutX="499.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#resetBtnClick" prefHeight="45.0" prefWidth="282.0" style="-fx-background-color: #1D90F4; -fx-cursor: hand; -fx-background-radius: 15; -fx-border-radius: 15;" styleClass="btnLogin" text="Reset password" textFill="WHITE">
       <font>
-         <Font name="Segoe UI Semibold" size="13.0"/>
+         <Font name="Segoe UI Semibold" size="14.0" />
+      </font>
+   </Button>
+   <Label fx:id="recoveryLabel" layoutX="667.0" layoutY="433.0" onMouseClicked="#recoveryPassword" style="-fx-cursor: hand;" text="Recovery password" textFill="#bedaff">
+      <font>
+         <Font name="Segoe UI Semibold" size="13.0" />
       </font>
    </Label>
-   <Label layoutX="529.0" layoutY="433.0" text="Remember me" textFill="#818181">
+   <Label fx:id="rememberMeLabel" layoutX="529.0" layoutY="433.0" text="Remember me" textFill="#818181">
       <font>
-         <Font name="Segoe UI Semibold" size="13.0"/>
+         <Font name="Segoe UI Semibold" size="13.0" />
       </font>
    </Label>
-   <CheckBox layoutX="502.0" layoutY="433.0" mnemonicParsing="false"/>
-   <TextField layoutX="500.0" layoutY="362.0" prefColumnCount="1" prefHeight="50.0" prefWidth="282.0"
-              promptText="********"
-              style="-fx-background-color: #1B1B1B; -fx-text-fill: white; -fx-background-radius: 15px;"
-              styleClass="txtField">
+   <CheckBox fx:id="checkBox" layoutX="502.0" layoutY="433.0" mnemonicParsing="false" />
+   <TextField fx:id="passwordInputText" layoutX="500.0" layoutY="362.0" prefColumnCount="1" prefHeight="50.0" prefWidth="282.0" promptText="********" style="-fx-background-color: #1B1B1B; -fx-text-fill: white; -fx-background-radius: 15px;" styleClass="txtField">
       <font>
-         <Font name="Candara Italic" size="16.0"/>
+         <Font name="Candara Italic" size="16.0" />
       </font>
       <opaqueInsets>
-         <Insets/>
+         <Insets />
       </opaqueInsets>
       <padding>
-         <Insets left="17.0" right="12.0" top="17.0"/>
+         <Insets left="17.0" right="12.0" top="17.0" />
       </padding>
    </TextField>
-   <TextField layoutX="500.0" layoutY="288.0" prefColumnCount="1" prefHeight="50.0" prefWidth="282.0"
-              promptText="Sample@anywhere.co"
-              style="-fx-background-color: #1B1B1B; -fx-text-fill: white; -fx-background-radius: 15px;"
-              styleClass="txtField">
+   <PasswordField fx:id="passwordInputPass" layoutX="500.0" layoutY="362.0" prefColumnCount="1" prefHeight="50.0" prefWidth="282.0" promptText="********" style="-fx-background-color: #1B1B1B; -fx-text-fill: white; -fx-background-radius: 15px;" styleClass="txtField">
       <font>
-         <Font name="Candara Italic" size="16.0"/>
+         <Font name="Candara Italic" size="16.0" />
       </font>
       <opaqueInsets>
-         <Insets/>
+         <Insets />
       </opaqueInsets>
       <padding>
-         <Insets left="17.0" right="12.0" top="17.0"/>
+         <Insets left="17.0" right="12.0" top="17.0" />
+      </padding>
+   </PasswordField>
+   <TextField fx:id="emailInput" layoutX="500.0" layoutY="288.0" prefColumnCount="1" prefHeight="50.0" prefWidth="282.0" promptText="Sample@anywhere.com" style="-fx-background-color: #1B1B1B; -fx-text-fill: white; -fx-background-radius: 15px;" styleClass="txtField">
+      <font>
+         <Font name="Candara Italic" size="16.0" />
+      </font>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <padding>
+         <Insets left="17.0" right="12.0" top="17.0" />
       </padding>
    </TextField>
-   <Label layoutX="517.0" layoutY="292.0" text="Email" textFill="#848b98">
+   <Label fx:id="emailLabel" layoutX="517.0" layoutY="292.0" text="Email" textFill="#848b98">
       <font>
-         <Font name="Calibri Bold" size="14.0"/>
+         <Font name="Calibri Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="517.0" layoutY="366.0" text="Password" textFill="#848b98">
+   <Label fx:id="passwordLabel" layoutX="517.0" layoutY="366.0" text="Password" textFill="#848b98">
       <font>
-         <Font name="Calibri Bold" size="14.0"/>
+         <Font name="Calibri Bold" size="14.0" />
       </font>
    </Label>
-   <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../image/UI/mailIcon.png"/>
+   <ImageView fx:id="emailImageView" fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../image/UI/mailIcon.png" />
    </ImageView>
-   <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true"
-              style="-fx-cursor: hand;">
-      <Image url="@../image/UI/viewIcon.png"/>
+   <ImageView  fitHeight="20.0" fitWidth="20.0" layoutX="747.0" layoutY="377.0" onMouseClicked="#showPasswordIconClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+      <Image url="@../image/UI/viewIcon.png" />
    </ImageView>
-   <Label layoutX="469.0" layoutY="210.0" prefHeight="31.0" prefWidth="345.0"
-          text="To keep connect with please login with" textFill="#818181">
+   <Label fx:id="tipLabel" layoutX="419.0" layoutY="203.0" prefHeight="67.0" prefWidth="443.0" text="To keep connect with please login with your personal info" textAlignment="CENTER" textFill="#818181" wrapText="true">
       <font>
-         <Font size="20.0"/>
+         <Font size="20.0" />
       </font>
    </Label>
-   <Label layoutX="559.0" layoutY="234.0" prefHeight="17.0" prefWidth="164.0" text="your personal info"
-          textFill="#818181">
-      <font>
-         <Font size="20.0"/>
-      </font>
-   </Label>
-   <ImageView fitHeight="33.0" fitWidth="261.0" layoutX="511.0" layoutY="150.0" pickOnBounds="true"
-              preserveRatio="true">
-      <Image url="@../image/UI/welcomeSlogan.png"/>
+   <ImageView fitHeight="33.0" fitWidth="261.0" layoutX="511.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../image/UI/welcomeSlogan.png" />
    </ImageView>
    <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
-      <fx:include source="navigationBar.fxml"/>
+      <fx:include source="navigationBar.fxml" />
    </Pane>
 </Pane>
