@@ -102,12 +102,16 @@ public class MessageFrame {
             case MessageFrameType.NOTIFICATION:
                 iconPath = iconPathRoot + "notification.png";
                 break;
+            default:
+                System.out.println("MessageFrame.addIcon() called with invalid type:" + type);
+                throw new IllegalStateException("Unexpected value: " + type);
         }
     }
 
 
     private void addTitle(){
 //        String titleText = title;
+        System.out.println(iconPath);
         String titleText;
         if(Objects.equals(title, "")){
             StringBuilder titleSpaceStr = new StringBuilder();
@@ -178,7 +182,7 @@ public class MessageFrame {
         btn2.getStyleClass().add("btnRed");
         btn2.setPrefSize(100, 30);
 
-        btn1.setOnMouseClicked(e ->callFailedCallback());
+        btn2.setOnMouseClicked(e ->callFailedCallback());
 
         HBox hBox = new HBox();
         HBox.setMargin(btn1, new Insets(40, 20, 0, 20));
@@ -193,7 +197,7 @@ public class MessageFrame {
         messageVPane.getChildren().add(borderPane);
     }
 
-    private void close(){
+    public void close(){
         mainPane.getChildren().remove(mainBGCPane);
     }
 

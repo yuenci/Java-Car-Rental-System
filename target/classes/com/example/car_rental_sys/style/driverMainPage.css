@@ -1,0 +1,50 @@
+#callIcon{
+    -fx-graphic: url("../image/UI/phoneCall.png");
+}
+
+.phoneCall{
+    -fx-background-image: url("../image/UI/phoneCall.png");
+}
+
+#messageIcon{
+    -fx-graphic: url("../image/UI/sendMessage.png");
+    -fx-font-size: 20px;
+}
+
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+#closeSideBarPane:hover{
+    -fx-cursor: hand;
+}
+
+#phonePane:hover{
+    -fx-cursor: hand;
+}
+
+
+#messagePane:hover{
+    -fx-cursor: hand;
+}
+
+.leftIcon:hover{
+    -fx-cursor: hand;
+}
+
+.menuItem:hover{
+    -fx-cursor: hand;
+}
+
+.menuItemActive{
+    -fx-background-color:  #d9e993 !important;
+}
+
+.menuImagePane{
+    -fx-background-color: #d9e993;
+    -fx-background-radius: 8px;
+}

@@ -109,7 +109,7 @@ public class PaymentController {
     }
 
     private  void initPrice(){
-        String sql = "SELECT price FROM cars WHERE carModel = '"+StatusContainer.currentCarChose +"'";
+        String sql = "SELECT price FROM carModels WHERE carModel = '"+StatusContainer.currentCarChose +"'";
         ArrayList<String[]> result = SQL.query(sql);
         priceText.setText("RM" + result.get(0)[0]);
     }

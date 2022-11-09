@@ -13,12 +13,12 @@ public class Main {
 
     public  static  void insertTest(){
         String sqlInsert = "insert into testTable values ('Innis1', 99, 'USA')";
-        SQL.excute(sqlInsert);
+        SQL.execute(sqlInsert);
     }
 
     public  static  void deleteTest(){
         String sqlDelete = "delete from testTable where name = 'Innis1'";
-        SQL.excute(sqlDelete);
+        SQL.execute(sqlDelete);
     }
 
     public static  void selectTest(){
@@ -32,7 +32,7 @@ public class Main {
 
     public static  void updateTest(){
         String sqlUpdate = "update testTable set name = 'Innis_2022', age = 520, address = 'China' where name = 'Innis1'";
-        SQL.excute(sqlUpdate);
+        SQL.execute(sqlUpdate);
     }
 
 

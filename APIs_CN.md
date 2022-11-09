@@ -110,3 +110,64 @@ private  void initialize(){
 ```
 继承Controller类，然后公开最外面的pan之后，将当前page实例设置为当前pane的controller
 
+## confirm messageBox demo
+```java
+ MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "Do you want to accept this order?");
+        messageFrame.setSuccessCallbackFunc((i) -> {
+            System.out.println(" accept order");
+            return null;
+        });
+
+        messageFrame.setFailedCallbackFunc((i) -> {
+            System.out.println(" reject order");
+            messageFrame.close();
+            return null;
+        });
+        messageFrame.show();
+```
+
+# Modal Winow
+```java
+String url = ConfigFile.backendPost +  "slideVerify/index.html";
+BrowserModal browserModal = new BrowserModal(375, 450, url) ;
+// modal
+browserModal.setModality();
+Function<String, Void> func =(message) -> {
+    if (Objects.equals(message, "Verification succeeded")) {
+        StatusContainer.ifVerify = true;
+        System.out.println(message);
+        Platform.runLater(() -> {
+            //code
+            try {
+                Thread.sleep(2 * 1000);
+                storeNewCustomerInfo();
+                browserModal.stage.close();
+                showSuccessMessage();
+
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        });
+    }
+    return null;
+};
+// callback base on console message
+browserModal.setFunction(func);
+browserModal.show();
+```
+
+
+carInfo - status
+- 0: not exist
+- 1: ready
+- 2: in rent
+- 3: reserved
+- 4: repairing
+
+order - status
+- 0: not paid
+- 1: paid
+- 2: canceled
+- 3: delivering
+- 4: driving
+- 4: finished

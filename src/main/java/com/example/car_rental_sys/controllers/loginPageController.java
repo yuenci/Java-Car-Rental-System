@@ -201,3 +201,4 @@ public class loginPageController extends Controller{
     }
 }
 // DONE: back to login page, input email automatically
+// TODO : can't receiver email, use security question instead

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #iframe1 {
+            width: 700px;
+            height: 835px;
+            border: none;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="iframe1" referrerpolicy="no-referrer-when-downgrade" src="" allowfullscreen>
+    </iframe>
+    <!-- <button id="btn1">Click me</button> -->
+
+    <script>
+        let ifr1 = document.getElementById("iframe1");
+        let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+        let mode = "directions";
+        let parameter = "&origin=Asia+Pacific+University+of+Technology+"
+            + "&destination=Endah+Regal+Condominium"
+            + "&language=en"
+            + "&mode=driving"
+        // notice : no space and no brackets
+
+        let url = "https://www.google.com/maps/embed/v1/" + mode + "?key=" + key + parameter;
+        console.log(url);
+        ifr1.src = url;
+
+        // document.getElementById("btn1").addEventListener("click", function () {
+        //     changeDirections("Endah+Regal+Condominium", "Asia+Pacific+University+of+Technology");
+        // });
+
+        function changeDirections(start, end) {
+            start = start.replace(" ", "+");
+            end = end.replace(" ", "+");
+            let ifr1 = document.getElementById("iframe1");
+            let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+            let mode = "directions";
+            let parameter = `&origin=${start}`
+                + `&destination=${end}`
+                + "&language=en"
+                + "&mode=driving"
+            // notice : no space and no brackets
+
+            let url = "https://www.google.com/maps/embed/v1/" + mode + "?key=" + key + parameter;
+            console.log(url);
+            ifr1.src = url;
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- 
+https://www.google.com/maps/embed/v1/directions
+  ?key=YOUR_API_KEY
+  &origin=Oslo+Norway
+  &destination=Telemark+Norway
+  &avoid=tolls|highways
+
+
+
+
+
+ -->
