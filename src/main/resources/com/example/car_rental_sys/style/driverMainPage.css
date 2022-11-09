@@ -31,3 +31,20 @@
 #messagePane:hover{
     -fx-cursor: hand;
 }
+
+.leftIcon:hover{
+    -fx-cursor: hand;
+}
+
+.menuItem:hover{
+    -fx-cursor: hand;
+}
+
+.menuItemActive{
+    -fx-background-color:  #d9e993 !important;
+}
+
+.menuImagePane{
+    -fx-background-color: #d9e993;
+    -fx-background-radius: 8px;
+}

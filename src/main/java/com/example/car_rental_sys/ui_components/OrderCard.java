@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -20,6 +21,7 @@ public class OrderCard extends Pane {
     String color = "";
     int status = -1;
     int orderID = -1;
+    int userID = -1;
     String darkColor = "#000000";
     String lightColor = "#ffffff";
     Date pickUpDateTime = null;
@@ -36,6 +38,8 @@ public class OrderCard extends Pane {
     Pane carImagePaneC = null;
     Label carModelLabelC = null;
 
+    DriverMainPageController driverMainIns = DriverMainPageController.driverMainPageInstance;
+
     public OrderCard(Order order) {
         initData(order);
         initUI();
@@ -47,6 +51,7 @@ public class OrderCard extends Pane {
         this.color = Tools.getCarColorFromCarID(order.carID);
         this.status = order.getStatus();
         this.orderID = order.getOrderID();
+        this.userID = order.getUserID();
 
         String gradientColor = Tools.getGradientColorFromCarID(order.carID);
         assert gradientColor != null;
@@ -179,14 +184,20 @@ public class OrderCard extends Pane {
     }
 
     private  void  initEvent(){
-        carImagePaneC.setOnMouseClicked(mouseEvent -> showLocation());
-        carModelLabelC.setOnMouseClicked(mouseEvent -> showLocation());
+        carImagePaneC.setOnMouseClicked(mouseEvent -> {
+            showLocation();
+            changeAvatar();
+        });
+        carModelLabelC.setOnMouseClicked(mouseEvent -> {
+            showLocation();
+            changeAvatar();
+        });
         hideImagePane.setOnMouseClicked(mouseEvent ->System.out.println( "hide clicked"));
         chooseImagePane.setOnMouseClicked(mouseEvent ->System.out.println( "choose clicked"));
     }
 
     private void showLocation(){
-        DriverMainPageController driverMainIns = DriverMainPageController.driverMainPageInstance;
+
         driverMainIns.startLabel.setText(pickUpLocation);
         driverMainIns.destinationLabel.setText(parkingLocation);
 
@@ -199,6 +210,13 @@ public class OrderCard extends Pane {
 
         String url= "src/main/resources/com/example/car_rental_sys/image/cars/" + carModel + ".png";
         driverMainIns.carImageView.setImage(Tools.getImageObjFromPath(url));
+    }
+
+    private void changeAvatar(){
+        driverMainIns.renterAvatar.setImage(Tools.getImageObjFromUserID(this.userID));
+
+//        driverMainIns.renterPost.setText(DataTools.getRenterNameAndPostFromUserID(this.userID)[0]);
+//        driverMainIns.renterName.setText(DataTools.getRenterNameAndPostFromUserID(this.userID)[1]);
     }
 
     private String[] getCarInfo(){

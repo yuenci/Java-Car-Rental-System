@@ -8,6 +8,7 @@ import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.OrderCard;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -30,13 +31,16 @@ public class DriverMainPageController {
     private ScrollPane scrollPane;
 
     @FXML
-    public Label startLabel, destinationLabel, speedLabel, powerLabel, seatsLabel;
+    public Label startLabel, destinationLabel, speedLabel, powerLabel, seatsLabel,postLabel,nameLabel,renterName,renterPost;
 
     @FXML
-    public ImageView carImageView;
+    public ImageView carImageView,renterAvatar;
 
     @FXML
     Pane mainPane, closeSideBarPane, phonePane, messagePane, sidePane;
+
+    @FXML
+    Pane item1, item2, item3, item4, item5, item6;
 
 
     private int[] orderIDs;
@@ -46,13 +50,15 @@ public class DriverMainPageController {
 
     @FXML
     public void initialize() {
+        driverMainPageInstance = this;
         initData();
         initBrowser();
         initSideBar();
         initOrderCards();
         initWebview();
         initScrollPaneEvent();
-        driverMainPageInstance = this;
+        initMenuEvent();
+
     }
 
     private void initWebview() {
@@ -120,21 +126,21 @@ public class DriverMainPageController {
 
     @FXML
     private void closeSideBarPaneClick() {
-//        System.out.println( "closeSideBarPaneClick");
-        //sidePane.setVisible(false);
-//        mainPane.getChildren().remove(sidePane);
-//        mainPane.getChildren().remove(webview);
-//
-//        WebView newWebview = new WebView();
-//        WebEngine engine = newWebview.getEngine();
-//        String path = "/com/example/car_rental_sys/html/directions.html";
-//        engine.load(Objects.requireNonNull(getClass().getResource(path)).toString());
-//        newWebview.resize(1000, 500);
-//        newWebview.setLayoutX(280);
-//        newWebview.setLayoutY(0);
-//        mainPane.getChildren().add(newWebview);
-        StatusContainer.isHideDriverSideBar = true;
-        Tools.changeScene("driverMainPage.fxml");
+////        System.out.println( "closeSideBarPaneClick");
+//        //sidePane.setVisible(false);
+////        mainPane.getChildren().remove(sidePane);
+////        mainPane.getChildren().remove(webview);
+////
+////        WebView newWebview = new WebView();
+////        WebEngine engine = newWebview.getEngine();
+////        String path = "/com/example/car_rental_sys/html/directions.html";
+////        engine.load(Objects.requireNonNull(getClass().getResource(path)).toString());
+////        newWebview.resize(1000, 500);
+////        newWebview.setLayoutX(280);
+////        newWebview.setLayoutY(0);
+////        mainPane.getChildren().add(newWebview);
+//        StatusContainer.isHideDriverSideBar = true;
+//        Tools.changeScene("driverMainPage.fxml");
 
     }
 
@@ -147,8 +153,43 @@ public class DriverMainPageController {
     }
 
     private void initSideBar() {
-        sidePane.setVisible(!StatusContainer.isHideDriverSideBar);
+       // label set text align center
+        postLabel.setAlignment(Pos.CENTER);
+        nameLabel.setAlignment(Pos.CENTER);
+    }
 
+    private void initMenuEvent() {
+        item1.setOnMouseClicked(event -> {
+            changeMenuStyle(item1);
+        });
+        item2.setOnMouseClicked(event -> {
+            changeMenuStyle(item2);
+        });
+        item3.setOnMouseClicked(event -> {
+            changeMenuStyle(item3);
+        });
+        item4.setOnMouseClicked(event -> {
+            changeMenuStyle(item4);
+        });
+        item5.setOnMouseClicked(event -> {
+            changeMenuStyle(item5);
+        });
+        item6.setOnMouseClicked(event -> {
+            changeMenuStyle(item6);
+        });
+
+    }
+
+    private void changeMenuStyle(Pane activePane) {
+        System.out.println(activePane.toString() + "changeMenuStyle");
+        item1.getStyleClass().remove("menuItemActive");
+        item2.getStyleClass().remove("menuItemActive");
+        item3.getStyleClass().remove("menuItemActive");
+        item4.getStyleClass().remove("menuItemActive");
+        item5.getStyleClass().remove("menuItemActive");
+        item6.getStyleClass().remove("menuItemActive");
+
+        activePane.getStyleClass().add("menuItemActive");
     }
 
 }

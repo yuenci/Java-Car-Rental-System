@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -23,6 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Tools {
     /**
@@ -341,5 +343,34 @@ public class Tools {
             e.printStackTrace();
         }
         return view;
+    }
+    public static String getGenderFromUserID(int userID){
+        String sql = "Select gender FROM userInfo WHERE userID = "+ userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if(result.size() == 1){
+            return result.get(0)[0];
+        }
+        else{
+            return null;
+        }
+    }
+
+    public static Image getImageObjFromUserID(int userID){
+        String avatarRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        File file = new File(avatarRoot);
+        String path;
+        if(file.exists()){
+            path = "file:" + avatarRoot;
+            return ImageTools.getCircleImages(path);
+        }
+        else{
+            if(Objects.equals(getGenderFromUserID(userID), "female")){
+                path =avatarRoot + "avatar_female.png";
+                return new Image(path);
+            }
+            path = avatarRoot + "avatar_male.png";
+            return ImageTools.getCircleImages(path);
+        }
+
     }
 }

@@ -8,6 +8,7 @@ module com.example.car_rental_sys {
     requires java.mail;
     requires org.apache.commons.codec;
     requires jdk.jsobject;
+    requires java.desktop;
 
 
     opens com.example.car_rental_sys to javafx.fxml;
