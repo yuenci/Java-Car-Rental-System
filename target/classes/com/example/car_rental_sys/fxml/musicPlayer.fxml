@@ -51,8 +51,7 @@
          </font>
       </Label>
       <Pane layoutX="10.0" layoutY="56.0" prefHeight="9.0" prefWidth="280.0" style="-fx-background-color: #565c61; -fx-background-radius: 5;">
-         <children>
-            <Pane fx:id="processBarPane" prefHeight="9.0" prefWidth="0.0" style="-fx-background-color: #2aff8a; -fx-background-radius: 5;" />
-         </children></Pane>
+         <Pane fx:id="processBarPane" prefHeight="9.0" prefWidth="0.0" style="-fx-background-color: #2aff8a; -fx-background-radius: 5;" />
+      </Pane>
    </Pane>
 </Pane>
