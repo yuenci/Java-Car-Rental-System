@@ -1,0 +1,41 @@
+
+.default-style, .dot-style {
+    -fx-background-color: #ffffff ;
+    -fx-text-fill: #4080ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.default-style:focused{
+    -fx-background-color: #6aa1ff !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+.focus-style {
+    -fx-background-color: #6aa1ff ;
+    -fx-text-fill: #ffffff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.icon-style{
+    -fx-background-color: #ffffff ;
+    -fx-text-fill: #4080ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.control-style {
+    -fx-background-color: #ffffff ;
+    -fx-text-fill: #94bfff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 13px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}

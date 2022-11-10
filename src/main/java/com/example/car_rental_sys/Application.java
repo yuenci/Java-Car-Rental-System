@@ -1,15 +1,17 @@
 package com.example.car_rental_sys;
 
-import com.example.car_rental_sys.ToolsLib.DataTools;
-import com.example.car_rental_sys.orm.Order;
-import com.example.car_rental_sys.ui_components.OrderCard;
+import com.example.car_rental_sys.controllers.UIPaginationController;
+import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+
 import java.io.IOException;
 
 // https://github.com/users/yuenci/projects/3
@@ -21,12 +23,13 @@ public class Application extends javafx.application.Application {
     public void init() throws Exception {
         registerJxBrowserLicence();
         //StartHttpServer();
-        //ormObjTest(new OrderCard(new Order(1)));
+
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        //String fxmlName = "mainPage.fxml";
+        String css = this.getClass().getResource("pagination.css").toExternalForm();
+//        String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -34,15 +37,29 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
-        //String fxmlName = "paySuccessPage.fxml";
-        //String fxmlName = "aboutUsPage.fxml";
-        String fxmlName = "driverMainPage.fxml";
-        //String fxmlName = "test.fxml";
-        //String fxmlName = "drivingModePage.fxml";
 
         stageInstance = stage;
 
-        startStage(fxmlName);
+        //startStage(fxmlName);
+
+        testComponent(stage,css);
+    }
+
+    private static void testComponent(Stage stage, String css){
+        //UIPagination01 pagination = new UIPagination01();
+        UIPagination pagination2 = new UIPagination();
+        //set the resource style sheets
+        UIPaginationController test = new UIPaginationController();
+
+        Pane pane = new Pane();
+        pane.setPrefSize(500,500);
+        //pane.getChildren().addAll(pagination);
+        pane.getChildren().addAll(pagination2);
+        Scene scene = new Scene(pane,500,500);
+        scene.getStylesheets().add(css);
+        stage.setTitle("Test Component");
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -79,17 +96,25 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
+
     public static void StartHttpServer() {
         Tools.StartHttpServer();
     }
 
     private static void registerJxBrowserLicence(){
-        System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
+        System.setProperty("jxbrowser.license.key", Config.jxBrowserLicense);
     }
 
-    private void ormObjTest(Object obj){
-        System.out.println(obj.toString());
+
+    private  static  void orderDetails(Stage stage,String fxmlfile) throws IOException {
+        String fxmlName = "OrderDetailsComponent.fxml";
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        stage.setTitle("orderDetails!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
+
 }
-
-// # drive license id
