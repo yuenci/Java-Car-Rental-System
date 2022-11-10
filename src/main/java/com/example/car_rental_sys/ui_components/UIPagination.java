@@ -1,6 +1,6 @@
 package com.example.car_rental_sys.ui_components;
 
-import com.example.car_rental_sys.Config;
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -55,7 +55,7 @@ public class UIPagination extends Pane {
         //select the data from database with query
         //count the total number of data
         //ArrayList<String[]> data = UIPaginationController.selectData();
-        ArrayList<String[]> data = FileOperate.readFileToArray(Config.fakeData);
+        ArrayList<String[]> data = FileOperate.readFileToArray(ConfigFile.fakeData);
         int total = data.size();
         totalPageNumber = (int)Math.ceil((double)total/12);
         System.out.println("totalData: " + total);
@@ -93,7 +93,7 @@ public class UIPagination extends Pane {
         }
         nodes.add(minPageButton);
         //
-        Button dotPreviousButton = null;
+        Button dotPreviousButton;
         if(showDotPrevious || currentPageNumber > 5){
             dotPreviousButton = new UIPaginationCard(-1);
             nodes.add(dotPreviousButton);
@@ -102,7 +102,7 @@ public class UIPagination extends Pane {
         flowPane = initFlowPane();
         nodes.add(flowPane);
         //
-        Button dotNextButton = null;
+        Button dotNextButton;
         if(showDotNext || currentPageNumber < totalPageNumber - 4){
             dotNextButton = new UIPaginationCard(-2);
             nodes.add(dotNextButton);

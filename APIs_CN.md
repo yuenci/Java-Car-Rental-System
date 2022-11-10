@@ -170,4 +170,4 @@ order - status
 - 2: canceled
 - 3: delivering
 - 4: driving
-- 4: finished
+- 5: finished
