@@ -48,3 +48,21 @@
     -fx-background-color: #d9e993;
     -fx-background-radius: 8px;
 }
+
+#processImagePane:hover{
+    -fx-cursor: hand;
+}
+
+.sidebarIconActive{
+    -fx-background-color: #04aa4e !important;
+    -fx-effect:  dropshadow(gaussian, rgba(202, 233, 67,0.3), 40, 0.3, 0, 0) !important;
+}
+
+.sidebarIconNormal:hover{
+    -fx-cursor: hand;
+}
+
+#userAvatar:hover{
+    -fx-cursor: hand;
+}
+

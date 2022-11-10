@@ -171,3 +171,34 @@ order - status
 - 3: delivering
 - 4: driving
 - 4: finished
+
+# create a jxBrowser windows
+
+```java
+Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+
+Browser browser = engine.newBrowser();
+
+//navigation.loadUrl(new File("src/.../index.html").getAbsolutePath());
+browser.navigation().loadUrl("https://html5test.com");
+
+BrowserView view = BrowserView.newInstance(browser);
+
+Scene scene = new Scene(new BorderPane(view), 1280, 800);
+primaryStage.setTitle("JxBrowser JavaFX");
+primaryStage.setScene(scene);
+primaryStage.show();
+
+primaryStage.setOnCloseRequest(event -> engine.close());
+
+//execute js
+Frame frame = browser.frames().get(0);
+frame.executeJavaScript(jsArgs);
+
+// get js console message
+browser.on(ConsoleMessageReceived.class, event -> {
+ConsoleMessage consoleMessage = event.consoleMessage();
+String message = consoleMessage.message();
+System.out.println(message);
+});
+```

@@ -154,15 +154,7 @@ public class DriverMainPageController extends  Controller{
 
     @FXML
     public void phoneClick() {
-        String num = "601110715226";
-        String url = "https://api.whatsapp.com/send/?phone=" + num;
-        BrowserModal browserModal = new BrowserModal(500, 450, url);
-        Function<String, Void> func = (message) -> {
-            //System.out.println(message);
-            return null;
-        };
-        browserModal.setFunction(func);
-        browserModal.show();
+        Tools.callWhatsApp("601110715226");
     }
 
     private void initScrollPaneEvent() {
@@ -326,6 +318,10 @@ public class DriverMainPageController extends  Controller{
         processImagePane.setOnMouseExited(event -> {
             showProcessTip();
         });
+
+        processImagePane.setOnMouseClicked(event -> {
+            changeToDriveMode();
+        });
     }
 
     private void showProcessTip(){
@@ -337,6 +333,10 @@ public class DriverMainPageController extends  Controller{
     private  void HoverProcessTip(){
         processTipLabel.setVisible(true);
         processTipPane.setStyle("-fx-background-color:#ffffff");
+    }
+
+    private void changeToDriveMode(){
+        Tools.changeScene("drivingModePage.fxml");
     }
 
 }

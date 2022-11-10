@@ -4,6 +4,7 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class Tools {
     /**
@@ -370,4 +372,16 @@ public class Tools {
         String regEx = "[\n`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥（）【】‘；：”“’。， 、？]";
         return str.replaceAll(regEx, " ");
     }
+
+    public static void callWhatsApp(String phoneNumber) {
+        String url = "https://api.whatsapp.com/send/?phone=" + phoneNumber;
+        BrowserModal browserModal = new BrowserModal(500, 450, url);
+        Function<String, Void> func = (message) -> {
+            //System.out.println(message);
+            return null;
+        };
+        browserModal.setFunction(func);
+        browserModal.show();
+    }
+
 }

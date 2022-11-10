@@ -9,6 +9,7 @@ module com.example.car_rental_sys {
     requires org.apache.commons.codec;
     requires jdk.jsobject;
     requires java.desktop;
+    requires javafx.media;
 
 
     opens com.example.car_rental_sys to javafx.fxml;

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        /* 
+ * Optional: Makes the sample page fill the window. 
+ */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <html>
+
+    <head>
+        <title>Directions Service</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <!-- jsFiddle will insert css and js -->
+    </head>
+
+    <body>
+        <div id="map"></div>
+        <!-- <button id="btn" onclick="change()">Click</button> -->
+        <script>
+            let start = ""
+            let end = ""
+            function change() {
+                getDirections("Asia Pacific University of Technology & Innovation", "endah regal condo")
+            }
+
+
+            function getDirections(startStr, endStr) {
+                start = startStr
+                end = endStr
+                initMap()
+            }
+
+
+            function initMap() {
+                const directionsService = new google.maps.DirectionsService();
+                const directionsRenderer = new google.maps.DirectionsRenderer();
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: { lat: 3.055516619270974, lng: 101.70076565249217 },
+                    disableDefaultUI: true,
+                    styles: [
+                        {
+                            "featureType": "all",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "saturation": 36
+                                },
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 40
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                },
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 20
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "administrative",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 17
+                                },
+                                {
+                                    "weight": 1.2
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "saturation": "-100"
+                                },
+                                {
+                                    "lightness": "-80"
+                                },
+                                {
+                                    "gamma": "1.04"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "saturation": "-100"
+                                },
+                                {
+                                    "lightness": "-76"
+                                },
+                                {
+                                    "gamma": "1.11"
+                                },
+                                {
+                                    "weight": "1.03"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 21
+                                },
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 17
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 29
+                                },
+                                {
+                                    "weight": 0.2
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 18
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.local",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 19
+                                },
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#000000"
+                                },
+                                {
+                                    "lightness": 17
+                                },
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+                directionsRenderer.setMap(map);
+
+                const onChangeHandler = function () {
+                    calculateAndDisplayRoute(directionsService, directionsRenderer);
+                };
+                if (start == "" || end == "") {
+                    return;
+                }
+                onChangeHandler();
+            }
+
+            function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+
+
+                directionsService
+                    .route({
+                        origin: {
+                            query: start,
+                        },
+                        destination: {
+                            query: end,
+                        },
+                        travelMode: google.maps.TravelMode.DRIVING,
+                        drivingOptions: {
+                            departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+                            trafficModel: 'pessimistic'
+                        }
+                    })
+                    .then((response) => {
+                        directionsRenderer.setDirections(response);
+                        // directionsRenderer set color
+                        directionsRenderer.setOptions({
+                            polylineOptions: {
+                                strokeColor: "#1ed570",
+                                strokeOpacity: 0.8,
+                                strokeWeight: 6,
+                            },
+                            preserveViewport: true
+
+                        });
+
+                        console.log(response.routes[0].legs[0].duration_in_traffic.text + " left," + response.routes[0].legs[0].distance.text);
+                    })
+                    .catch((e) => window.alert("Directions request failed due to " + status));
+            }
+
+            window.initMap = initMap;
+        </script>
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig&callback=initMap&v=weekly&language=en"
+            defer></script>
+    </body>
+
+    </html>

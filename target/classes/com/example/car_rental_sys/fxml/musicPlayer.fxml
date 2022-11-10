@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="250.0" prefWidth="300.0" style="-fx-background-color: #111111;" stylesheets="@../style/musicPlayer.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.MusicPlayerController">
+   <Pane prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #292d32; -fx-background-radius: 30;">
+      <Pane fx:id="musicCoverPane" layoutX="14.0" layoutY="16.0" prefHeight="90.0" prefWidth="90.0" style="-fx-background-color: #292d32;" />
+      <Label layoutX="114.0" layoutY="16.0" text="Speakers" textFill="#474b50">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="songsterLabel" layoutX="114.0" layoutY="36.0" prefHeight="29.0" prefWidth="175.0" text="songster" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="songNameLabel" layoutX="114.0" layoutY="71.0" prefHeight="29.0" prefWidth="175.0" text="song Name" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </Pane>
+   <Pane layoutY="130.0" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #292d32; -fx-background-radius: 30;">
+      <ImageView fx:id="backwardIcon" fitHeight="40.0" fitWidth="40.0" layoutX="15.0" layoutY="73.0" onMouseClicked="#minus10" pickOnBounds="true" preserveRatio="true" styleClass="controlBtn">
+         <Image url="@../image/UI/playIcon_01.gif" />
+      </ImageView>
+      <ImageView fx:id="previousIcon" fitHeight="40.0" fitWidth="40.0" layoutX="74.0" layoutY="73.0" onMouseClicked="#previousClickEvent" pickOnBounds="true" preserveRatio="true" styleClass="controlBtn">
+         <Image url="@../image/UI/playIcon_03.gif" />
+      </ImageView>
+      <ImageView fx:id="pauseIcon" fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="73.0" onMouseClicked="#pauseClickEvent" pickOnBounds="true" preserveRatio="true" styleClass="controlBtn">
+         <Image url="@../image/UI/pause.png" />
+      </ImageView>
+      <ImageView fx:id="nextIcon" fitHeight="40.0" fitWidth="40.0" layoutX="186.0" layoutY="73.0" onMouseClicked="#nextClickEvent" pickOnBounds="true" preserveRatio="true" styleClass="controlBtn">
+         <Image url="@../image/UI/playIcon_07.gif" />
+      </ImageView>
+      <ImageView fx:id="forwardIcon" fitHeight="40.0" fitWidth="40.0" layoutX="245.0" layoutY="73.0" onMouseClicked="#add10" pickOnBounds="true" preserveRatio="true" styleClass="controlBtn">
+         <Image url="@../image/UI/playIcon_09.png" />
+      </ImageView>
+      <Label fx:id="playedTimeLabel" layoutX="14.0" layoutY="19.0" text="00:00" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalTimeLabel" layoutX="244.0" layoutY="19.0" text="00:00" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Pane layoutX="10.0" layoutY="56.0" prefHeight="9.0" prefWidth="280.0" style="-fx-background-color: #565c61; -fx-background-radius: 5;">
+         <children>
+            <Pane fx:id="processBarPane" prefHeight="9.0" prefWidth="0.0" style="-fx-background-color: #2aff8a; -fx-background-radius: 5;" />
+         </children></Pane>
+   </Pane>
+</Pane>
