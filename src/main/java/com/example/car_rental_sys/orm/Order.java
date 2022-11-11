@@ -1,6 +1,6 @@
 package com.example.car_rental_sys.orm;
 
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 
 import java.util.ArrayList;
@@ -36,9 +36,9 @@ public class Order {
         else{
             String[] orderInfo = result.get(0);
             this.carID = Integer.parseInt(orderInfo[1]);
-            this.orderTime = Tools.stringToDateObje(orderInfo[2]);
-            this.pickUpTime = Tools.stringToDateObje(orderInfo[3]);
-            this.returnTime = Tools.stringToDateObje(orderInfo[4]);
+            this.orderTime = DateTools.stringToDateObje(orderInfo[2]);
+            this.pickUpTime = DateTools.stringToDateObje(orderInfo[3]);
+            this.returnTime = DateTools.stringToDateObje(orderInfo[4]);
             this.pickUpLocation = orderInfo[5];
             this.parkingLocation = orderInfo[6];
             this.userID = Integer.parseInt(orderInfo[7]);

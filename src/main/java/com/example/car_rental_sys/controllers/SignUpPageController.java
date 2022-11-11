@@ -3,37 +3,28 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
-import com.teamdev.jxbrowser.browser.Browser;
-import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
-import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.js.ConsoleMessage;
-import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.function.Function;
-
-import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 
 public class SignUpPageController extends Controller {
@@ -60,7 +51,7 @@ public class SignUpPageController extends Controller {
     @FXML
     void loginClicked(MouseEvent event) {
 //        System.out.println("login clicked");
-        Tools.changeScene("loginPage.fxml");
+        FXTools.changeScene("loginPage.fxml");
     }
 
     @FXML
@@ -202,7 +193,7 @@ public class SignUpPageController extends Controller {
     private void showSuccessMessage(){
         MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Account created successfully");
         messageFrame.setSuccessCallbackFunc((i) -> {
-            Tools.changeScene("loginPage.fxml");
+            FXTools.changeScene("loginPage.fxml");
             return null;
         });
         messageFrame.show();
@@ -263,7 +254,7 @@ public class SignUpPageController extends Controller {
 
     // password strong check
     private boolean checkPassword(){
-         return Tools.checkPassword(passwordStr);
+         return DataTools.checkPassword(passwordStr);
     }
 
     // check if the email is valid
@@ -279,7 +270,7 @@ public class SignUpPageController extends Controller {
             return false;
         }
 
-        return  Tools.checkEmail(email);
+        return  DataTools.checkEmail(email);
 
     }
 
@@ -291,8 +282,8 @@ public class SignUpPageController extends Controller {
                 newCustomer.setUserLastName(lastNameStr);
                 newCustomer.setPassword(Encryption.med5Encrypt(passwordStr));
                 newCustomer.setEmail(emailStr);
-                newCustomer.setUserID(Tools.getNewUserID());
-                newCustomer.setRegTime(Tools.getFormatDateTime());
+                newCustomer.setUserID(DataTools.getNewUserID());
+                newCustomer.setRegTime(DateTools.getFormatDateTime());
             } catch (Exception e) {
                 e.printStackTrace();
             }

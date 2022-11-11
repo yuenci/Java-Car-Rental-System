@@ -10,15 +10,15 @@ public class UserFactory {
     }
 
 
-    public static User getUser(String userType) {
+    public static User getUser(String userType, String email) {
         String type = userType.toLowerCase(Locale.ROOT);
         switch (type) {
             case "driver":
-                return new Admin();
+                return new Admin(email);
             case "admin":
-                return new Driver();
+                return new Driver(email);
             case "customer":
-                return new Customer();
+                return new Customer(email);
             default:
                 return null;
         }

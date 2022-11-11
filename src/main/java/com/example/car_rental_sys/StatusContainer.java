@@ -2,6 +2,7 @@ package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.controllers.Controller;
 import com.example.car_rental_sys.controllers.PaymentController;
+import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.orm.UserFactory;
 import javafx.scene.control.RadioButton;
 
@@ -24,7 +25,9 @@ public class StatusContainer {
     public static String currentUserEmail = "1575270dad@qq.com";
     public static String currentChooseBankCardNum = "1234567890123456";
     public static Boolean isHideDriverSideBar = false;
-    public static UserFactory currentUser = null;
+    public static User currentUser = new User("1575270674@qq.com");
+    public static String loginMethod = "password";
+    public static String deviceType = "desktop";
 
 
 

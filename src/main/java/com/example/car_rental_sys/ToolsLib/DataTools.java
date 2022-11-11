@@ -1,10 +1,13 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -89,6 +92,104 @@ public class DataTools {
     }
 
     public static String encryptErrorMessage = null;
+
+    public static String getProjectPath() {
+        return System.getProperty("user.dir");
+        //E:\Materials\Semester 3\CRS-version0.2
+    }
+
+    public static int getNewUserID() {
+        ArrayList<String[]> result = com.example.car_rental_sys.sqlParser.FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/userInfo.txt");
+        //System.out.println(result.size() );
+        return result.size();
+    }
+
+    public static boolean checkPassword(String password) {
+        if (password.length() < 8) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
+            messageFrame.show();
+            return false;
+        } else if (!password.matches(".*[A-Z].*")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
+            messageFrame.show();
+            return false;
+        } else if (!password.matches(".*[a-z].*")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
+            messageFrame.show();
+            return false;
+        } else if (!password.matches(".*[0-9].*")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
+            messageFrame.show();
+            return false;
+        } else if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
+            messageFrame.show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean checkEmail(String email) {
+        if (!email.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Please enter a valid email address");
+            messageFrame.show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean resetPassword(String email, String newPassword) {
+        ArrayList<String[]> result = SQL.query("SELECT userID FROM userInfo WHERE email = '" + email + "'");
+        if (result.size() == 0) return false; // email not found return 100
+
+        try {
+            String userID = result.get(0)[0];
+            String newPasswordMD5 = Encryption.med5Encrypt(newPassword);
+            SQL.execute("UPDATE password SET password = '" + newPasswordMD5 + "' WHERE userID = " + userID);
+            //SendEmail.sendEmail(email, "Your new password", "Your new password is: " + newPassword);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
+    public static String getCarModelFromCarID(int carID) {
+        String sql = "SELECT carModel FROM carInfo WHERE carID = " + carID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
+    public static String getCarNumberFromCarID(int carID) {
+        String sql = "SELECT carNumber FROM carInfo WHERE carID = " + carID;
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return StringTools.capitalizeWord(result.get(0)[0]);
+        } else {
+            return null;
+        }
+    }
+
+    public static String getGradientColorFromCarID(int carID) {
+        String model = getCarModelFromCarID(carID);
+
+        ArrayList<String[]> result = SQL.query("SELECT darkColor,lightColor FROM carModels WHERE carModel = '" + model + "'");
+
+        if (result.size() == 1) {
+            return result.get(0)[0] + "," + result.get(0)[1];
+        } else {
+            return null;
+        }
+    }
+
     public boolean encryptDataFiles(){
         String[] dataFiles = ConfigFile.sensitiveDataFileList;
         StringBuilder errorMessages = new StringBuilder();
@@ -130,6 +231,20 @@ public class DataTools {
     }
 
     public static boolean logLogin(){
-        return true;
+        int userID = StatusContainer.currentUser.getUserID();
+        String loginUIP =NetTools.getExternalHostIP();
+        String loginMethod = StatusContainer.loginMethod;
+        String deviceType = StatusContainer.deviceType;
+        String deviceName = NetTools.getLocalHostIP("hostName");
+        String IpGeo = NetTools.getGeoIPInfo();
+        String time = DateTools.getNow();
+
+        String sql = "INSERT INTO loginLog VALUES (" +
+                userID + ",'" + loginUIP + "','" + loginMethod + "','" + deviceType + "','" + deviceName + "','" + IpGeo + "','" + time + "')";
+        System.out.println(sql);
+        return SQL.execute(sql);
     }
 }
+
+// TODO: No comma "," content is allowed.
+// TODO: add table view for all data

@@ -42,16 +42,18 @@ regTime:str=null
     private String regTime = "null";
 
     public Customer() {
+        super();
     }
 
     public Customer(String email) {
+        super(email);
         this.email = email;
-        //initCustomer();
     }
 
     public Customer(String userFirstName, String userLastName, String password, String userGroup, String post,
                     String securityProblem, String securityAnswer, String birthday, String gender, String country,
                     String idNumber, String phone, String email, String address, String about, String regTime) {
+        super(email);
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userGroup = userGroup;

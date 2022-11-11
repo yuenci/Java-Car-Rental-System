@@ -1,6 +1,7 @@
 package com.example.car_rental_sys;
 
-import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.NetTools;
 import com.example.car_rental_sys.controllers.UIPaginationController;
 import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.ui_components.UIPagination;
@@ -15,6 +16,7 @@ import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 // https://github.com/users/yuenci/projects/3
 
@@ -31,7 +33,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String css = this.getClass().getResource("pagination.css").toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
         //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
@@ -79,7 +81,7 @@ public class Application extends javafx.application.Application {
         if (fxmlName.contains("Page")) {
             startPrimaryStage(fxmlName) ;
         } else {
-            Tools.componentTest(fxmlName,800,700);
+            FXTools.componentTest(fxmlName,800,700);
         }
 
     }
@@ -111,7 +113,7 @@ public class Application extends javafx.application.Application {
         stage.setHeight(height);
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/loadingPage.fxml" ));
-        Tools.setStageShowCenterOfScreen(stage);
+        FXTools.setStageShowCenterOfScreen(stage);
         Scene scene = new Scene(fxmlLoader.load(), width, height);
 
         stage.initStyle(StageStyle.UNDECORATED);
@@ -127,7 +129,7 @@ public class Application extends javafx.application.Application {
 
 
     public static void StartHttpServer() {
-        Tools.StartHttpServer();
+        NetTools.StartHttpServer();
     }
 
     private static void registerJxBrowserLicence(){

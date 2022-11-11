@@ -14,7 +14,7 @@ import java.net.*;
 import java.util.Objects;
 
 public class NetTools {
-    private static String getExternalHostIP() {
+    public static String getExternalHostIP() {
         URL whatIsMyIP = null;
         try {
             whatIsMyIP = new URL("http://checkip.amazonaws.com");
@@ -85,10 +85,10 @@ public class NetTools {
             resArr[3] = latLon;
 
         }catch (JSONException err){
-            System.out.println( err.toString());
+            System.out.println( err);
         }
         // join
-        return String.join(",", resArr);
+        return String.join("','", resArr);
     }
 
     public static String sendRequest(String urlParam,String requestType) {
@@ -138,5 +138,16 @@ public class NetTools {
             StatusContainer.errorMessage = e.toString();
             return false;
         }
+    }
+
+    public static void StartHttpServer() {
+        Thread thread = new Thread(() -> {
+            String projectPath = DataTools.getProjectPath();
+            String cmdStr = "http-server \"" + projectPath + "\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8174";
+            //System.out.println(cmdStr);
+            PlatformTools.exebat(cmdStr);
+        });
+        thread.start();
+        // http-server "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\html\datePicker"
     }
 }

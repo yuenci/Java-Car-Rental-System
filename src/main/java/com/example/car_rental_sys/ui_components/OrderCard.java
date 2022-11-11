@@ -1,6 +1,8 @@
 package com.example.car_rental_sys.ui_components;
 
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
 import javafx.scene.control.Label;
@@ -35,7 +37,7 @@ public class OrderCard extends Pane {
     Pane carImagePaneC = null;
     Label carModelLabelC = null;
 
-    public Order order = null;
+    public Order order;
 
     DriverMainPageController driverMainIns = DriverMainPageController.driverMainPageInstance;
 
@@ -47,13 +49,13 @@ public class OrderCard extends Pane {
     }
 
     private  void initData(Order order){
-        this.carModel = Tools.getCarModelFromCarID(order.carID);
-        this.carNumber = Tools.getCarNumberFromCarID(order.carID);
+        this.carModel = DataTools.getCarModelFromCarID(order.carID);
+        this.carNumber = DataTools.getCarNumberFromCarID(order.carID);
         this.status = order.getStatus();
         this.orderID = order.getOrderID();
         this.userID = order.getUserID();
 
-        String gradientColor = Tools.getGradientColorFromCarID(order.carID);
+        String gradientColor = DataTools.getGradientColorFromCarID(order.carID);
         assert gradientColor != null;
         this.darkColor = gradientColor.split(",")[0];
         this.lightColor = gradientColor.split(",")[1];
@@ -92,7 +94,7 @@ public class OrderCard extends Pane {
         setLabelsStyle(colorLabel,14 +offsetX,48);
 
 
-        Label startDateLabel = new Label(Tools.dateToString(pickUpDateTime,"yyyy-MM-dd"));
+        Label startDateLabel = new Label(DateTools.dateToString(pickUpDateTime,"yyyy-MM-dd"));
         setLabelsStyle(startDateLabel,174 +offsetX,72);
 
 
@@ -101,7 +103,7 @@ public class OrderCard extends Pane {
 
 
 
-        Label endDateLabel = new Label(Tools.dateToString(returnDateTime,"yyyy-MM-dd"));
+        Label endDateLabel = new Label(DateTools.dateToString(returnDateTime,"yyyy-MM-dd"));
         setLabelsStyle(endDateLabel,174 +offsetX,113);
 
 
@@ -139,7 +141,7 @@ public class OrderCard extends Pane {
         String carStyle =
                 "-fx-background-color: " +
                 "linear-gradient(to left," + this.darkColor +"," + this.lightColor + ");";
-        Tools.yAxisFlip(carImageView,590,180);
+        FXTools.yAxisFlip(carImageView,590,180);
         setPane(carImagePane,7 +offsetX,71,123,60,carStyle);
 
         String hideImageAddress = UIImageRoot + "hide.png";

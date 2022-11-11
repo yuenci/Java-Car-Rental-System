@@ -2,7 +2,8 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
-import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
@@ -86,7 +87,7 @@ public class loginPageController extends Controller{
             new MessageFrame(MessageFrameType.ERROR,"Email or password can not be empty" ).show();
             return false;
         }
-        if(!Tools.checkEmail(emailValue))  return false;
+        if(!DataTools.checkEmail(emailValue))  return false;
 
         int validCode = Tools.loginValidation(emailValue,passwordValue);
 
@@ -169,7 +170,7 @@ public class loginPageController extends Controller{
 
 
         String path = "src/main/resources/com/example/car_rental_sys/image/UI/"+imageNameValue;
-        emailImageView.setImage(Tools.getImageObjFromPath(path));
+        emailImageView.setImage(ImageTools.getImageObjFromPath(path));
         checkBox.setVisible(boolValue1);
         rememberMeLabel.setVisible(boolValue1);
         recoveryLabel.setVisible(boolValue1);
@@ -182,13 +183,13 @@ public class loginPageController extends Controller{
     private void resetBtnClick(MouseEvent mouseEvent) {
         String verifyCode = emailInput.getText();
         String newPassword = getPasswordInput();
-        if(!Tools.checkPassword(newPassword)){
+        if(!DataTools.checkPassword(newPassword)){
             return;
         }
 
         if(Objects.equals(verifyCode, StatusContainer.currentPinCode) ){
             loginToReset(false);
-            Tools.resetPassword(StatusContainer.currentResetPassWordEmail,getPasswordInput());
+            DataTools.resetPassword(StatusContainer.currentResetPassWordEmail,getPasswordInput());
         }else {
             new MessageFrame(MessageFrameType.WARNING,"Verification code is incorrect" ).show();
         }

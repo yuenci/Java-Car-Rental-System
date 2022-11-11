@@ -7,14 +7,19 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
+import java.util.Objects;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
-        BufferedImage avatarImage = null;
+        BufferedImage avatarImage;
         try {
             avatarImage = ImageIO.read(new URL(fileUrl));
             avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(),  avatarImage.getWidth());
+            if (avatarImage == null) {
+                throw new RuntimeException("avatarImage is null");
+            }
             int width = avatarImage.getWidth();
             BufferedImage formatAvatarImage = new BufferedImage(width, width, BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D graphics = formatAvatarImage.createGraphics();
@@ -33,15 +38,12 @@ public class ImageTools {
             graphics.drawOval(border1, border1, width - border1 * 2, width - border1 * 2);
             graphics.dispose();
 
-            BufferedImage bf = formatAvatarImage;
             WritableImage wr = null;
-            if (bf != null) {
-                wr = new WritableImage(bf.getWidth(), bf.getHeight());
-                PixelWriter pw = wr.getPixelWriter();
-                for (int x = 0; x < bf.getWidth(); x++) {
-                    for (int y = 0; y < bf.getHeight(); y++) {
-                        pw.setArgb(x, y, bf.getRGB(x, y));
-                    }
+            wr = new WritableImage(formatAvatarImage.getWidth(), formatAvatarImage.getHeight());
+            PixelWriter pw = wr.getPixelWriter();
+            for (int x = 0; x < formatAvatarImage.getWidth(); x++) {
+                for (int y = 0; y < formatAvatarImage.getHeight(); y++) {
+                    pw.setArgb(x, y, formatAvatarImage.getRGB(x, y));
                 }
             }
             return wr;
@@ -69,5 +71,35 @@ public class ImageTools {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Image getImageObjFromPath(String path) {
+
+        File file = new File(path);
+        try {
+            return new Image(file.toURI().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public static Image getImageObjFromUserID(int userID) {
+        String avatarRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        File file = new File(avatarRoot);
+        String path;
+        if (file.exists()) {
+            path = "file:" + avatarRoot;
+            return getCircleImages(path);
+        } else {
+            if (Objects.equals(FXTools.getGenderFromUserID(userID), "female")) {
+                path = avatarRoot + "avatar_female.png";
+                return new Image(path);
+            }
+            path = avatarRoot + "avatar_male.png";
+            return getCircleImages(path);
+        }
+
     }
 }

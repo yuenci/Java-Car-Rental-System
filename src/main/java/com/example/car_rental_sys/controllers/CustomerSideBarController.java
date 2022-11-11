@@ -1,6 +1,6 @@
 package com.example.car_rental_sys.controllers;
 
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -29,7 +29,7 @@ public class CustomerSideBarController {
         item5.setOnMouseClicked(event -> changeMenuStyle(item5));
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
-            Tools.changeScene("mainPage.fxml");
+            FXTools.changeScene("mainPage.fxml");
         });
 
     }

@@ -2,9 +2,8 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.Loading;
-import com.example.car_rental_sys.ui_components.MessageFrame;
-import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -39,7 +38,7 @@ public class NavigationBarController {
 
     @FXML
     private void contactBtnClick() {
-        Tools.changeScene("contactUsPage.fxml");
+        FXTools.changeScene("contactUsPage.fxml");
     }
 
     @FXML

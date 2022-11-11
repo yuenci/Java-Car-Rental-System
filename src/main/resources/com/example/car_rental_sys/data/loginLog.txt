@@ -1,1 +1,2 @@
-useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,deviceType:str=desktop,deviceName:str=null,country:str=null,region:str=null,city:str=null,time:datetime=2020-11-01_00:00:00
+useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,deviceType:str=desktop,deviceName:str=null,country:str=null,region:str=null,city:str=null,latLon:str=null,time:datetime=2020-11-01_00:00:00
+1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 20:08:41

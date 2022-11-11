@@ -4,6 +4,8 @@ import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
+import com.example.car_rental_sys.ToolsLib.PlatformTools;
+import com.example.car_rental_sys.orm.User;
 
 public class Test {
     public static void test(){
@@ -14,7 +16,9 @@ public class Test {
 //        deleteFileTest();
 //        getAllFileNameFromPathTest();
         //startWindowSettingTest();
-        getLocalHostIPTest();
+//        getLocalHostIPTest();
+//        userObjTest();
+        loginLogTest();
     }
 
 
@@ -57,10 +61,21 @@ public class Test {
     }
 
     private static void startWindowSettingTest(){
-        Tools.startWindowSetting();
+        PlatformTools.startWindowSetting();
     }
 
     private static void getLocalHostIPTest(){
         NetTools.getLocalHostIP("hostName");
     }
+
+    private static void userObjTest(){
+        User user1 = new User("1575270674@qq.com");
+        System.out.println(user1);
+    }
+
+    private static void loginLogTest(){
+        DataTools.logLogin();
+        System.out.println("done");
+    }
+
 }

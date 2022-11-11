@@ -1,0 +1,33 @@
+package com.example.car_rental_sys.ToolsLib;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateTools {
+
+    public static String getFormatDateTime() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    public static String getNow() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    public static Date stringToDateObje(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateObj = null;
+        try {
+            dateObj = sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateObj;
+    }
+
+    public static String dateToString(Date date, String format) {
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(date);
+    }
+}

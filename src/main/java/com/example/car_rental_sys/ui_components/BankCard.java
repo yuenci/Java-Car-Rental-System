@@ -1,7 +1,7 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -76,9 +76,9 @@ public class BankCard extends Pane {
         ImageView cardTypeImage = new ImageView();
         Image image = null;
         if(this.cardType.equalsIgnoreCase("visa")){
-            image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/visa.png");
+            image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/visa.png");
         }else if(this.cardType.equalsIgnoreCase("mastercard")){
-            image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/mastercard.png");
+            image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/mastercard.png");
         }
         cardTypeImage.setImage(image);
         cardTypeImage.setFitHeight(44);
@@ -87,7 +87,7 @@ public class BankCard extends Pane {
         cardTypeImage.setLayoutY(20);
 
         choseDone = new ImageView();
-        choseDone.setImage(Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/chose.png"));
+        choseDone.setImage(ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/chose.png"));
         choseDone.setFitHeight(25);
         choseDone.setFitWidth(25);
         choseDone.setLayoutX(650);
