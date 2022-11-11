@@ -43,3 +43,12 @@
     -fx-background-color:#f54e4e;
     -fx-cursor: hand;
 }
+
+
+#screenShotImage:hover{
+    -fx-cursor: hand;
+}
+
+#diagnosticLabel:hover{
+    -fx-cursor: hand;
+}

@@ -5,12 +5,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import javax.swing.text.html.ImageView;
+
 public class NetworkIssueController {
     @FXML
     Button cancelBtn,okBtn;
 
     @FXML
     Label tipLabel;
+
+
 
     private static boolean isCancel = false;
 

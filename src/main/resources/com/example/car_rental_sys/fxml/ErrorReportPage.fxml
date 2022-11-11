@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="mainPane" prefHeight="800.0" prefWidth="550.0" style="-fx-background-color: white;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.ErrorReportPageController">
+   <children>
+      <ImageView fitHeight="129.0" fitWidth="131.0" layoutX="410.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/UI/loadingErrors.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="tipLabel" layoutX="41.0" layoutY="88.0" prefHeight="144.0" prefWidth="379.0" text="Some errors occurred during the initialization of the program. Do you want to report the errors to help us improve the product?" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="okBtn" layoutX="123.0" layoutY="751.0" mnemonicParsing="false" onMouseClicked="#okBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="Send" />
+      <Button fx:id="cancelBtn" layoutX="360.0" layoutY="751.0" mnemonicParsing="false" onMouseClicked="#cancelBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnRed" text="Cancel" />
+      <Label layoutX="46.0" layoutY="240.0" text="Describe what's happening">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="399.0" text="How should we contact you?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="514.0" text="Send">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Line endX="284.5" layoutX="266.0" layoutY="88.0" startX="-266.0" stroke="#dddddd" />
+      <TextArea layoutX="43.0" layoutY="266.0" prefHeight="119.0" prefWidth="475.0" />
+      <TextArea layoutX="46.0" layoutY="426.0" prefHeight="68.0" prefWidth="475.0" />
+      <RadioButton fx:id="radioBtn1" layoutX="46.0" layoutY="545.0" mnemonicParsing="false" text="Allow (ecommonded)" />
+      <RadioButton fx:id="radioBtn2" layoutX="284.0" layoutY="545.0" mnemonicParsing="false" text="Don't Allow" />
+      <CheckBox layoutX="46.0" layoutY="578.0" mnemonicParsing="false" text="Include this screenshot" />
+      <HBox layoutX="46.0" layoutY="607.0" prefHeight="130.0" prefWidth="475.0" style="-fx-border-color: #d6d6d6;">
+         <children>
+            <ImageView fx:id="screenShotImage" fitHeight="130.0" fitWidth="300.0" onMouseClicked="#screenShotImageClick" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <Label layoutX="193.0" layoutY="514.0" prefHeight="19.0" prefWidth="145.0" text=" to Rent.Inc">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="diagnosticLabel" layoutX="86.0" layoutY="514.0" onMouseClicked="#diagnosticLabelClick" prefHeight="19.0" prefWidth="113.0" text="diagnostic data" textFill="#366efc" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Pane fx:id="dropPane" prefHeight="85.0" prefWidth="550.0">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/UI/logoCircle.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="134.0" layoutY="28.0" text="Send feedback">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

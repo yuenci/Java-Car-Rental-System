@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ui_components.BrowserModal;
+import javafx.scene.image.Image;
 
 import java.awt.*;
 import java.io.IOException;
@@ -9,7 +10,6 @@ import java.util.function.Function;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
@@ -59,7 +59,7 @@ public class PlatformTools {
         return props.getProperty("os.name");
     }
 
-    public static String screenShot(){
+    public static String getScreenShot(){
         String path = "src/main/resources/com/example/car_rental_sys/image/others/screenshot.png";
         try {
             Robot robot = new Robot();
@@ -75,6 +75,15 @@ public class PlatformTools {
             return null;
         }
 
+    }
+
+    public static Image getScreenShotImageObj(){
+        String path = getScreenShot();
+        if (path != null){
+            return new Image("file:" + path);
+        }else {
+            return null;
+        }
     }
 
     public static void openScreenShotWithMsPaint(){

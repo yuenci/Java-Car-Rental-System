@@ -5,6 +5,7 @@ import com.example.car_rental_sys.controllers.PaymentController;
 import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.orm.UserFactory;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
 
 public class StatusContainer {
     public static boolean isLogin = true;
@@ -29,6 +30,7 @@ public class StatusContainer {
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
     public static boolean ifRememberMe = false;
+    public static Stage currentStage = null;
 
 
 

@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -80,12 +81,18 @@ public class FXTools {
 
     private static void  showAStage(double width, double height, String fxmlName) throws IOException {
         Stage stage = new Stage();
+        StatusContainer.currentStage = stage;
+        //System.out.println("1:" + StatusContainer.currentStage);
+
+
         stage.setWidth(width);
         stage.setHeight(height);
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
         FXTools.setStageShowCenterOfScreen(stage);
         Scene scene = new Scene(fxmlLoader.load(), width, height);
+
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
@@ -94,11 +101,16 @@ public class FXTools {
         stage.show();
     }
 
+
     public static void startLoadingStage() throws IOException {
         showAStage(640, 416, "loadingPage.fxml");
     }
 
     public static void showNetworkErrorPage() throws IOException {
         showAStage(550, 340, "networkIssuePage.fxml");
+    }
+
+    public static void showErrorsPage() throws IOException {
+        showAStage(550, 800, "ErrorReportPage.fxml");
     }
 }

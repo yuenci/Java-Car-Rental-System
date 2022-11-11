@@ -129,7 +129,8 @@ public class Application extends javafx.application.Application {
 
     private static void startApplication() throws IOException {
         //FXTools.startLoadingStage();
-        FXTools.showNetworkErrorPage();
+        //FXTools.showNetworkErrorPage();
+        FXTools.showErrorsPage();
 
         // init program
         //// start the http server

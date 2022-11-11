@@ -5,7 +5,6 @@ import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
-import com.example.car_rental_sys.ToolsLib.SelfTestTools;
 import com.example.car_rental_sys.orm.User;
 
 public class Test {
@@ -24,7 +23,7 @@ public class Test {
         //loginLogTest();
         //SelfTestTools.isBackendServerRunning();
 //        screenShotTest();
-        openScreenShotWithMsPaintTest();
+        //openScreenShotWithMsPaintTest();
     }
 
 
@@ -89,7 +88,7 @@ public class Test {
     }
 
     public static void screenShotTest(){
-        System.out.println(PlatformTools.screenShot());
+        System.out.println(PlatformTools.getScreenShot());
     }
 
     //openScreenShotWithMsPaint
