@@ -41,7 +41,8 @@
             margin: 20px;
         }
 
-        #makeBtn {
+        #makeBtn,
+        #makeBtn1 {
             margin-top: 20px;
             margin-left: 40px;
             background-color: #4CAF50;
@@ -57,33 +58,79 @@
             cursor: pointer;
         }
 
-        #result {
+        #result,
+        #result1,
+        #result2 {
             margin-top: 40px;
-            width: 900px;
+            width: 750px;
             margin-left: 40px;
             border: 1px solid black;
             padding: 10px 50px;
+        }
+
+        #headerInput {
+            margin-left: 40px;
+            margin-top: 20px;
+            width: 850px;
+            height: 100px;
+            display: block;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+        .app {
+            background-color: #dee2e6;
+            border-radius: 30px;
+            margin: 20px;
+            box-sizing: border-box;
+            padding-right: 40px;
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            margin-left: 40px;
         }
     </style>
 </head>
 
 <body>
-    <div id="input-container">
-        <div class="field">
-            <input type="text" placeholder="Field name">
-            <select name="FieldType" id="fieldType">
-                <option value="text">String</option>
-                <option value="number">Number</option>
-                <option value="date">Date</option>
-                <option value="checkbox">DateTime</option>
-            </select>
-            <input type="text" placeholder="Field default value">
-            <span class="addBtn">➕</span>
-            <span class="removeBtn">➖</span>
+    <div id="container">
+        <div id="app1" class="app">
+            <h3>Header Generate</h3>
+            <div id="input-container">
+                <div class="field">
+                    <input type="text" placeholder="Field name">
+                    <select name="FieldType" id="fieldType">
+                        <option value="text">String</option>
+                        <option value="number">Number</option>
+                        <option value="date">Date</option>
+                        <option value="checkbox">DateTime</option>
+                    </select>
+                    <input type="text" placeholder="Field default value">
+                    <span class="addBtn">➕</span>
+                    <span class="removeBtn">➖</span>
+                </div>
+            </div>
+            <Button id="makeBtn">Generate</Button>
+            <div id="result"></div>
+        </div>
+
+        <div id="app2" class="app">
+            <h3>Header Parser</h3>
+            <textarea name="" id="headerInput"></textarea>
+            <Button id="makeBtn1">Generate</Button>
+            <div id="result1"></div>
+            <div id="result2"></div>
         </div>
     </div>
-    <Button id="makeBtn">Generate</Button>
-    <div id="result"></div>
+
+
 
     <script>
         let makeBtnObj = document.getElementById("makeBtn");
@@ -161,6 +208,38 @@
                 return "datetime";
             }
 
+        }
+
+        let makeBtnObj1 = document.getElementById("makeBtn1");
+        let resultPObj1 = document.getElementById("result1");
+        let resultPObj2 = document.getElementById("result2");
+
+
+        makeBtnObj1.addEventListener("click", generateResualt1)
+
+        function generateResualt1() {
+            resultPObj1.innerHTML = "";
+            value = document.getElementById("headerInput").value;
+            let fieldList = value.split(",");
+            if (fieldList.length === 0) {
+                return;
+            }
+
+            let fieldNames = [];
+            for (let i = 0; i < fieldList.length; i++) {
+                let fieldText = fieldList[i];
+
+                let fieldName = fieldText.split(":")[0];
+                fieldNames.push(fieldName);
+
+
+                let div = document.createElement("div");
+                div.innerHTML = fieldText;
+                resultPObj1.appendChild(div);
+            }
+            // join
+            let res2 = fieldNames.join(",");
+            resultPObj2.innerHTML = res2;
         }
     </script>
 </body>

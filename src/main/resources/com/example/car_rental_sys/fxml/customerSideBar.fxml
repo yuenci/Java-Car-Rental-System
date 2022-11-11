@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css"
+      xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.CustomerSideBarController">
+    <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../image/avatar/1.png" />
+    </ImageView>
+    <Label fx:id="nameTextLabel" layoutX="-1.0" layoutY="170.0" prefHeight="40.0" prefWidth="250.0" text="Orizon Travel">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <Label fx:id="emailTextLabel" layoutX="4.0" layoutY="140.0" prefHeight="25.0" prefWidth="243.0" text="4856415478@gmail.com">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Label>
+    <Line endX="109.0" layoutX="132.0" layoutY="224.0" startX="-123.0" stroke="#e3e3e399" />
+    <Line endX="109.0" layoutX="147.0" layoutY="415.0" startX="-123.0" stroke="#e3e3e399" />
+    <Pane layoutX="24.0" layoutY="442.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item1" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/profile.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Profile">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right1.png" />
+        </ImageView>
+    </Pane>
+    <Pane layoutX="24.0" layoutY="502.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item2" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/message1.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Message">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png" />
+        </ImageView>
+    </Pane>
+    <Pane layoutX="24.0" layoutY="562.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item3" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/wallet1.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Wallet">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png" />
+        </ImageView>
+    </Pane>
+    <Pane layoutX="24.0" layoutY="622.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item4" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/history.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="History">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png" />
+        </ImageView>
+    </Pane>
+    <Pane layoutX="24.0" layoutY="682.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item5" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/seetting.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Setting">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png" />
+        </ImageView>
+    </Pane>
+    <Pane layoutX="24.0" layoutY="742.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item6" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/UI/logout1.png" />
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Logout">
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png" />
+        </ImageView>
+    </Pane>
+   <ImageView fitHeight="150.0" fitWidth="230.0" layoutX="15.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/UI/vip1card.png" />
+      </image>
+   </ImageView>
+   <Pane layoutX="19.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane layoutX="65.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane layoutX="153.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane layoutX="198.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane layoutX="108.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Button fx:id="customerSideBarUpdateBtn" layoutX="172.0" layoutY="330.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 5;" text="Update" />
+   <ImageView fitHeight="23.0" fitWidth="50.0" layoutX="149.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/UI/vip1.png" />
+      </image>
+   </ImageView>
+</Pane>

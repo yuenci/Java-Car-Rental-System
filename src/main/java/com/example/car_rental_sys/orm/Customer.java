@@ -3,7 +3,7 @@ package com.example.car_rental_sys.orm;
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 
-public class Customer {
+public class Customer extends User{
     /*
 
 

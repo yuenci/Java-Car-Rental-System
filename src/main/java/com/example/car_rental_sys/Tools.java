@@ -1,5 +1,6 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.sqlParser.FileOperate;
@@ -9,6 +10,7 @@ import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -16,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -109,7 +112,8 @@ public class Tools {
 
 
     public static void exebat(String strcmd) {
-        strcmd = "cmd /c start " + strcmd;
+        strcmd = "cmd /k start " + strcmd;
+        System.out.println(strcmd);
         Runtime rt = Runtime.getRuntime(); //Runtime.getRuntime() return current runtime object
         Process ps = null;  //Process can track the execution of the child process or get the information of the child process.
         try {
@@ -147,6 +151,11 @@ public class Tools {
         thread.start();
 
         // http-server "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\html\datePicker"
+    }
+
+    public static void startWindowSetting(){
+        String windowsSettingPath = "ms-settings:network-wifi";
+        Tools.exebat(windowsSettingPath);
     }
 
     /**
@@ -197,6 +206,10 @@ public class Tools {
     }
 
     public static String getFormatDateTime() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
+
+    public static String getNow() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
@@ -384,4 +397,29 @@ public class Tools {
         browserModal.show();
     }
 
+    public static double[] getCenterOfScreen() {
+        double[] center = new double[2];
+        center[0] = Screen.getPrimary().getBounds().getWidth() / 2;
+        center[1] = Screen.getPrimary().getBounds().getHeight() / 2;
+        return center;
+    }
+
+    public static void setStageShowCenterOfScreen(Stage stage) {
+        double[] center = getCenterOfScreen();
+        stage.setX(center[0] - stage.getWidth() / 2);
+        stage.setY(center[1] - stage.getHeight() / 2);
+    }
+
+    public static void logError(Exception e){
+        String error = e.toString();
+        String errorID = String.valueOf(DataTools.getID("systemLog"));
+        String errorType =error.split(":")[0];
+        String errorContent = error.split(":")[1];
+        String errorPosition =  e.getStackTrace()[0].toString().split("/")[1];
+        String errorTime = getNow();
+
+        String sql = "INSERT INTO systemLog VALUES ("+errorID+",'"+errorType+"','"+errorContent+"','"+errorPosition+"','"+errorTime+"')";
+        //System.out.println(sql);
+        SQL.execute(sql);
+    }
 }

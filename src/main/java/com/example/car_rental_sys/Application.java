@@ -1,6 +1,8 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.controllers.UIPaginationController;
+import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -21,15 +23,16 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() throws Exception {
-        registerJxBrowserLicence();
+        //registerJxBrowserLicence();
         //StartHttpServer();
-
+        //dataFilesDecrypt();
+        Test.test();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
         String css = this.getClass().getResource("pagination.css").toExternalForm();
-//        String fxmlName = "mainPage.fxml";
+        //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -41,11 +44,14 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "aboutUsPage.fxml";
         //String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
-        String fxmlName = "drivingModePage.fxml";
+        //String fxmlName = "drivingModePage.fxml";
+        //String fxmlName = "customerServicePage.fxml";
 
         stageInstance = stage;
 
-        startStage(fxmlName);
+        //startStage(fxmlName);
+
+        //startLoadingStage();
 
         //testComponent(stage,css);
     }
@@ -91,7 +97,25 @@ public class Application extends javafx.application.Application {
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
-        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    private static void startLoadingStage() throws IOException {
+        double width = 640;
+        double height = 416;
+
+        Stage stage = new Stage();
+        stage.setWidth(width);
+        stage.setHeight(height);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/loadingPage.fxml" ));
+        Tools.setStageShowCenterOfScreen(stage);
+        Scene scene = new Scene(fxmlLoader.load(), width, height);
+
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -108,18 +132,6 @@ public class Application extends javafx.application.Application {
 
     private static void registerJxBrowserLicence(){
         System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
-    }
-
-
-    private  static  void orderDetails(Stage stage,String fxmlfile) throws IOException {
-        String fxmlName = "OrderDetailsComponent.fxml";
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
-        stage.setTitle("orderDetails!");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
     }
 
 }

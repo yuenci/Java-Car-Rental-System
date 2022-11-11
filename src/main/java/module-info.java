@@ -10,10 +10,11 @@ module com.example.car_rental_sys {
     requires jdk.jsobject;
     requires java.desktop;
     requires javafx.media;
+    requires org.json;
 
+    exports com.example.car_rental_sys.orm;
 
     opens com.example.car_rental_sys to javafx.fxml;
-//    opens com.example.javafxwebview to javafx.fxml;
     exports com.example.car_rental_sys;
     exports com.example.car_rental_sys.controllers;
     opens com.example.car_rental_sys.controllers to javafx.fxml;

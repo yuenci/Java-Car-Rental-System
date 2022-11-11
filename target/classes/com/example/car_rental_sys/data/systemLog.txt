@@ -1,0 +1,5 @@
+errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,errorTime:datetime=null
+1,java.lang.ArithmeticException, / by zero,com.example.car_rental_sys/com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:19),2022-11-11 16:24:43
+2,java.lang.Exception, Test,com.example.car_rental_sys/com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:25:17
+3,java.lang.Exception, Test,com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:26:48
+4,java.lang.Exception, Test,com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:27:13

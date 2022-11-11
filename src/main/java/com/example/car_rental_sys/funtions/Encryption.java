@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.funtions;
 
+import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.Tools;
 import org.apache.commons.codec.digest.DigestUtils;
 
 
@@ -47,10 +49,43 @@ public class Encryption {
             return new String(cipherText);
         } catch (Exception e) {
             throw new RuntimeException(
-                    "Error occured while decrypting data", e);
+                    "Error occurred while decrypting data", e);
         }
     }
 
+    // String[] encryptFiles = ConfigFile.sensitiveDataFileList
+    public static boolean dataFileEncrypt(String fileName){
+        try{
+            String path= ConfigFile.dataFilesRootPath + fileName;
+            String fileContent = FileOperate.readFileToString(path);
+            System.out.println(fileContent);
+
+            String decryptedContent = AESEncrypt(ConfigFile.AESKey, fileContent);
+            FileOperate.rewriteFile(path + ".secret",decryptedContent);
+        }catch (Exception e){
+            Tools.logError(e);
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean dataFileDecrypt(String fileName){
+        try {
+            String path= ConfigFile.dataFilesRootPath + fileName  + ".secret";
+            String fileContent = FileOperate.readFileToString(path);
+            fileContent = fileContent.replace("\n","");
+            System.out.println(fileContent);
+
+            String decryptedContent = AESDecrypt(ConfigFile.AESKey, fileContent);
+            System.out.println(decryptedContent);
+            //FileOperate.rewriteFile(path + ".txt",decryptedContent);
+            FileOperate.rewriteFile(path.replace( ".secret",""),decryptedContent);
+        }catch (Exception e){
+            Tools.logError(e);
+            return false;
+        }
+        return true;
+    }
 }
 
 

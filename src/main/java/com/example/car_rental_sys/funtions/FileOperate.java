@@ -1,8 +1,8 @@
 package com.example.car_rental_sys.funtions;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import com.example.car_rental_sys.Tools;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +18,7 @@ public class FileOperate {
             fOut.close();
             return true;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Tools.logError(e);
             return false;
         }
     }
@@ -65,6 +65,34 @@ public class FileOperate {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+
+    public static String readFileToString(String path) {
+        StringBuilder content = new StringBuilder();
+        try {
+            File myObj = new File(path);
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                content.append(data).append("\n");
+            }
+            myReader.close();
+            return content.toString();
+        } catch (Exception e) {
+            Tools.logError(e);
+            return content.toString();
+        }
+    }
+
+    public static int getFileLineNum(String filePath) {
+        try (LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(filePath))){
+            lineNumberReader.skip(Long.MAX_VALUE);
+            int lineNumber = lineNumberReader.getLineNumber();
+            return lineNumber + 1;//实际上是读取换行符数量 , 所以需要+1
+        } catch (IOException e) {
+            return -1;
         }
     }
 }
