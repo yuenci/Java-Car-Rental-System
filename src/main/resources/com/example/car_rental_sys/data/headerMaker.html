@@ -60,7 +60,8 @@
 
         #result,
         #result1,
-        #result2 {
+        #result2,
+        #result3 {
             margin-top: 40px;
             width: 750px;
             margin-left: 40px;
@@ -169,6 +170,8 @@
             </table>
             <h3>Field Name view</h3>
             <div id="result2"></div>
+            <h3>Property view</h3>
+            <div id="result3"></div>
         </div>
     </div>
 
@@ -255,6 +258,7 @@
         let makeBtnObj1 = document.getElementById("makeBtn1");
         let resultPObj1 = document.getElementById("result1");
         let resultPObj2 = document.getElementById("result2");
+        let resultPObj3 = document.getElementById("result3");
         let tableViewObj = document.getElementById("tableBody");
         console.log(tableViewObj);
 
@@ -279,9 +283,7 @@
                 let fieldNameTypeValueList = fieldText.split(":")[0];
                 let fieldName = fieldNameTypeValueList;
                 let fielTypedValue = fieldText.split(":")[1];
-
                 let fieldType = fielTypedValue.split("=")[0];
-
                 let fieldDefaultValue = fielTypedValue.split("=")[1];
 
 
@@ -299,12 +301,34 @@
                 <td>${fieldDefaultValue}</td>
                 `;
                 tableViewObj.appendChild(tr);
+
+                let div2 = document.createElement("div");
+                div2.innerHTML = getPropertyFromText(fieldText);
+                resultPObj3.appendChild(div2);
             }
 
 
             // join
             let res2 = fieldNames.join(",");
             resultPObj2.innerHTML = res2;
+        }
+
+        function getPropertyFromText(fieldText) {
+            name = fieldText.split(":")[0];
+            type = fieldText.split(":")[1].split("=")[0];
+
+            javaType = "";
+            if (type == "str") {
+                javaType = "String";
+            } else if (type == "num") {
+                javaType = "int";
+            } else if (type == "date") {
+                javaType = "Date";
+            } else if (type == "datetime") {
+                javaType = "Date";
+            }
+
+            return `private ${javaType} ${name};`;
         }
 
     </script>
