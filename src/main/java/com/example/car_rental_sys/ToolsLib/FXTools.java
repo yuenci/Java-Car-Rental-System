@@ -113,4 +113,8 @@ public class FXTools {
     public static void showErrorsPage() throws IOException {
         showAStage(550, 800, "ErrorReportPage.fxml");
     }
+
+    public static void showDiagnosticDataPage() throws IOException {
+        showAStage(550, 800, "diagnosticDataPage.fxml");
+    }
 }

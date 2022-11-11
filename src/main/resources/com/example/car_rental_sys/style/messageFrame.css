@@ -52,3 +52,16 @@
 #diagnosticLabel:hover{
     -fx-cursor: hand;
 }
+
+.testSuccessPane{
+    -fx-background-color: #d6e982 !important;
+}
+
+.testFailPane{
+    -fx-background-color: #f59d9d !important;
+}
+
+#errorCardsScrollPane .viewport {
+    -fx-background-color: transparent;
+
+}

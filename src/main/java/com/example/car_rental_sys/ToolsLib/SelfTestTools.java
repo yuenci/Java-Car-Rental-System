@@ -4,6 +4,8 @@ import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.controllers.LoadingPageController;
 import com.teamdev.jxbrowser.engine.Engine;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,20 +15,43 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 public class SelfTestTools {
     public static ArrayList<Test> testList = new ArrayList<>();
 
-    static class Test {
+    public static class Test {
         public String name;
         public boolean isPass;
         public String description;
+        public Pane pane;
 
         public Test(String name, boolean isPass, String description) {
             this.name = name;
             this.isPass = isPass;
             this.description = description;
             registerTest();
+            initPane();
         }
 
         private void registerTest() {
             testList.add(this);
+        }
+
+        private void initPane(){
+            pane = new Pane();
+            pane.setPrefWidth(455);
+            pane.setMaxHeight(200);
+//            pane.setPrefHeight(70);
+            pane.setStyle("-fx-background-color:orange; -fx-border-color: #dddddd; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px;");
+            Label name = new Label(this.name);
+            name.setWrapText(true);
+            name.setLayoutX(10);
+            name.setLayoutY(10);
+            name.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+            Label description = new Label(this.description);
+            description.setWrapText(true);
+            description.setLayoutX(10);
+            description.setLayoutY(40);
+            description.setMaxWidth(455);
+
+            pane.getChildren().addAll(name, description);
         }
     }
 
@@ -41,7 +66,7 @@ public class SelfTestTools {
         isBackendServerRunning();
         isSecretFilesDecrypted();
         isAllFilesDecrypted();
-//        isSecretFileExist();
+        isSecretFileExist();
         isOriginalSecretFileExist();
         isJxBrowserLicensed();
 
@@ -64,13 +89,14 @@ public class SelfTestTools {
         boolean res =  NetTools.netIsAvailable(ConfigFile.connectTestUrl);
 
 //        boolean res = NetTools.netIsAvailable(ConfigFile.connectTestUrl);
+        res = true;
         if (res) {
             new Test("Network Connection", true, "Network connection is available.");
         } else {
             new Test("Network Connection", false, NetTools.netErrorMsg);
         }
 
-        System.out.println("Network Connection: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Network Connection: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
         showSelfTestMessage("Connecting to the network...");
     }
 
@@ -88,13 +114,14 @@ public class SelfTestTools {
             }
         }
 
+        isPass = false;
         if (isPass) {
             new Test("Data integrity", true, "Data files are complete.");
         } else {
             new Test("Data integrity", false, description.toString());
         }
 
-        System.out.println("Data integrity: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Data integrity: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
         showSelfTestMessage("Checking data files integrity...");
     }
@@ -103,13 +130,15 @@ public class SelfTestTools {
     private static void isBackendServerRunning() {
         setStarTime();
         boolean res = NetTools.netIsAvailable(ConfigFile.backendPost);
+
+        res = true;
         if (res) {
             new Test("Backend Server", true, "Backend server is running.");
         } else {
             new Test("Backend Server", false, StatusContainer.backEndErrorMessage);
         }
 
-        System.out.println("Backend Server: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Backend Server: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
         showSelfTestMessage("Checking backend server running status...");
     }
@@ -117,13 +146,18 @@ public class SelfTestTools {
     private static void isSecretFilesDecrypted(){
         setStarTime();
         boolean res = StatusContainer.isDataDecrypted;
+
+        res = false;
         if (res) {
             new Test("Secret File Decrypted", true, "Secret files are decrypted.");
         } else {
-            new Test("Secret File Decrypted", false, "Secret files are not decrypted.");
+            new Test("Secret File Decrypted", false, "Secret files are not decrypted."
+            + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted."
+            + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted."
+            + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted.");
         }
 
-        System.out.println("Secret File Decrypted: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Secret File Decrypted: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
         showSelfTestMessage("Checking secret file...");
     }
@@ -144,13 +178,14 @@ public class SelfTestTools {
             }
         }
 
+        isPass = false;
         if (isPass) {
             new Test("Secret File", true, "Secret files are not exist.");
         } else {
             new Test("Secret File", false, description.toString());
         }
 
-        System.out.println("Secret original File exist: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Secret original File exist: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
         showSelfTestMessage("Checking secret files...");
     }
@@ -170,6 +205,7 @@ public class SelfTestTools {
             }
         }
 
+        isPass = false;
         if (isPass) {
             new Test("Secret File", true, "Secret files are exist.");
         } else {
@@ -184,13 +220,15 @@ public class SelfTestTools {
     private static void isAllFilesDecrypted() {
         setStarTime();
         String decryptedErrorMsg = DataTools.encryptErrorMessage;
+
+        StatusContainer.isDataDecrypted = false;
         if (StatusContainer.isDataDecrypted) {
             new Test("Encrypted data decryption status", true, "Data files are complete.");
         } else {
             new Test("Encrypted data decryption status", false, decryptedErrorMsg);
         }
 
-        System.out.println("Encrypted data decryption status: " + StatusContainer.isDataDecrypted + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println("Encrypted data decryption status: " + StatusContainer.isDataDecrypted + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
         showSelfTestMessage("Checking data files decryption status...");
     }
@@ -207,17 +245,17 @@ public class SelfTestTools {
             System.out.println("JxBrowser is not licensed.");
         }
 
-        System.out.println( "JxBrowser: " + true + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //System.out.println( "JxBrowser: " + true + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
         showSelfTestMessage("Checking necessary license...");
     }
 
     private static void showTestMsg(){
         long costTimeWholeTest=System.currentTimeMillis() - startTimeWholeTest;
-        System.out.println("Test Number: " + testList.size() +  "|| whole Test cost: " +  costTimeWholeTest + " ms"  );
+        //System.out.println("Test Number: " + testList.size() +  "|| whole Test cost: " +  costTimeWholeTest + " ms"  );
     }
 
     private static void showSelfTestMessage(String text){
-        LoadingPageController.instance.setLoadingTest(text);
+        //LoadingPageController.instance.setLoadingTest(text);
 
     }
 
