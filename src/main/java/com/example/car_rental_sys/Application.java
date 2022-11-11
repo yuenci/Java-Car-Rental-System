@@ -1,8 +1,11 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
+import com.example.car_rental_sys.ToolsLib.SelfTestTools;
 import com.example.car_rental_sys.controllers.UIPaginationController;
+import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +28,8 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() throws Exception {
-        //registerJxBrowserLicence();
-        //StartHttpServer();
+        NetTools.registerJxBrowserLicence();
+        //NetTools.StartHttpServer();
         //dataFilesDecrypt();
         Test.test();
     }
@@ -53,7 +56,7 @@ public class Application extends javafx.application.Application {
 
         //startStage(fxmlName);
 
-        //startLoadingStage();
+        startApplication();
 
         //testComponent(stage,css);
     }
@@ -104,36 +107,53 @@ public class Application extends javafx.application.Application {
         stage.show();
     }
 
-    private static void startLoadingStage() throws IOException {
-        double width = 640;
-        double height = 416;
 
-        Stage stage = new Stage();
-        stage.setWidth(width);
-        stage.setHeight(height);
+    /*
+    star loading page
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/loadingPage.fxml" ));
-        FXTools.setStageShowCenterOfScreen(stage);
-        Scene scene = new Scene(fxmlLoader.load(), width, height);
+    init data
+    - start http server
+    - decrypt data files
+    - Register JxBrowser Licence
 
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+
+    check
+    - backend working status - danger
+    - encrypt data files status - danger
+    - JxBrowser Licence status - danger
+    - network connection - warning
+    - data files integrity - danger
+
+    render to login page
+     */
+
+    private static void startApplication() throws IOException {
+        //FXTools.startLoadingStage();
+        FXTools.showNetworkErrorPage();
+
+        // init program
+        //// start the http server
+//        try {
+//            //NetTools.StartHttpServer();
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+//        DataTools.decryptDataFiles();
+//        NetTools.registerJxBrowserLicence();
+//        // self checking
+//
+//        for (int i = 0; i <1 ; i++) {
+//            SelfTestTools.executeSelfTest();
+//        }
+
+
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-
-    public static void StartHttpServer() {
-        NetTools.StartHttpServer();
-    }
-
-    private static void registerJxBrowserLicence(){
-        System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
-    }
 
 }

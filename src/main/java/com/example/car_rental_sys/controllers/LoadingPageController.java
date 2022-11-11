@@ -1,28 +1,29 @@
 package com.example.car_rental_sys.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-import java.net.URL;
 import java.util.Objects;
-
-import static com.example.car_rental_sys.Application.stageInstance;
 
 public class LoadingPageController {
     @FXML
     WebView webView;
 
     @FXML
-    Label loadingTest;
+    Label loadingText;
+
+    public static LoadingPageController instance;
 
     public void initialize() {
         loadWebPage();
         webView.setVisible(false);
+        loadingText.setAlignment(Pos.CENTER);
+        instance = this;
     }
 
     private void loadWebPage(){
@@ -43,7 +44,11 @@ public class LoadingPageController {
         });
     }
 
-    public void setLoadingTest(String test){
-        loadingTest.setText(test);
+    public void setLoadingTest(String text){
+        Platform.runLater(() -> {
+            loadingText.setText(text);
+        });
+
+
     }
 }

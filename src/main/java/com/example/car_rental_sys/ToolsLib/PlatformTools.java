@@ -2,8 +2,16 @@ package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ui_components.BrowserModal;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.function.Function;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 
 public class PlatformTools {
     public static void exebat(String strcmd) {
@@ -30,7 +38,7 @@ public class PlatformTools {
         ps.destroy();  //destroy  process
     }
 
-    public static void startWindowSetting(){
+    public static void startWindowNetworkSetting() {
         String windowsSettingPath = "ms-settings:network-wifi";
         exebat(windowsSettingPath);
     }
@@ -44,5 +52,36 @@ public class PlatformTools {
         };
         browserModal.setFunction(func);
         browserModal.show();
+    }
+
+    public static String getPropertyOsName() {
+        Properties props = System.getProperties(); //get platform information
+        return props.getProperty("os.name");
+    }
+
+    public static String screenShot(){
+        String path = "src/main/resources/com/example/car_rental_sys/image/others/screenshot.png";
+        try {
+            Robot robot = new Robot();
+            // get screen size
+            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            //Rectangle screenRect = new Rectangle(1280, 832);
+            BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
+            ImageIO.write(screenFullImage, "png", new File(path));
+            System.out.println("A full screenshot saved!");
+            return path;
+        } catch (AWTException | IOException ex) {
+            System.err.println(ex);
+            return null;
+        }
+
+    }
+
+    public static void openScreenShotWithMsPaint(){
+        String path = "src/main/resources/com/example/car_rental_sys/image/others/screenshot.png";
+        String filePath = new File(path).getAbsolutePath();
+        //System.out.println(filePath);
+        String cmd = "mspaint " + "\"" + filePath + "\"";
+        exebat(cmd);
     }
 }

@@ -51,7 +51,7 @@ public class MessageFrame {
         addTitle();
         addMessage();
         addBtn();
-        System.out.println("MessageFrame.show() called");
+        //System.out.println("MessageFrame.show() called");
     }
 
     private void addBackgroundPane() {

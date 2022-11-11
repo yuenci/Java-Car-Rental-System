@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
+import com.example.car_rental_sys.ToolsLib.StringTools;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -84,6 +85,7 @@ public class DrivingModeController {
 
         //execute JavaScript code in the context of the loaded web page
         String origin = "'Asia Pacific University of Technology & Innovation'";
+        origin = StringTools.replaceSpacialChar(origin);
         String destination = "'endah regal condo'";
 
         String jsArgs = "getDirections(" + origin + "," + destination + ")";

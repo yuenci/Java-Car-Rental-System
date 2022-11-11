@@ -1,1 +1,10 @@
-useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,deviceType:str=desktop,deviceName:str=null,country:str=null,region:str=null,city:str=null,latLon:str=null,time:datetime=2020-11-01_00:00:00
+loginID:num=0,useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,platform:str=windows,deviceName:str=null,country:str=null,region:str=null,city:str=null,latLon:str=null,time:datetime=2020-01-01_00:00:00,EXP:datetime=2020-01-01_00:00:00
+1,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 20:08:41,2022-11-11 20:08:41
+2,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 20:29:50,2022-11-11 20:29:50
+3,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 21:14:38,2022-11-11 21:14:38
+4,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 21:17:12,2022-11-11 21:17:12
+5,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 22:18:47,2022-11-11 22:18:47
+6,1,161.142.85.223,password,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 22:21:29,2022-11-11 22:21:29
+7,1,161.142.85.223,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,,2022-11-11 23:26:17
+8,1,161.142.85.223,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 23:26:48,2022-11-11 23:26:48
+9,1,161.142.85.223,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Puchong Batu Dua Belas,3.0732 101.6219,2022-11-11 23:27:15,2022-11-18 23:27:15

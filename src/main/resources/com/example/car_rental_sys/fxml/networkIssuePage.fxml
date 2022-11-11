@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="340.0" prefWidth="550.0" style="-fx-background-color: white;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.NetworkIssueController">
+   <children>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="113.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/UI/warningWhite.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="192.0" layoutY="25.0" text="Warning notification">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="227.0" layoutX="200.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/UI/networkIssue.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="tipLabel" layoutX="67.0" layoutY="203.0" prefHeight="64.0" prefWidth="454.0" text="Seems that you have lost the internet. Do you want to reconnect?" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="okBtn" layoutX="113.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#okBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="OK" />
+      <Button fx:id="cancelBtn" layoutX="350.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#cancelBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnRed" text="Cancel" />
+   </children>
+</AnchorPane>

@@ -28,13 +28,20 @@ public class StatusContainer {
     public static User currentUser = new User("1575270674@qq.com");
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
+    public static boolean ifRememberMe = false;
 
 
 
     // self-test statues during loading
-    public static String errorMessage = null;
-    public static boolean isNetworkConnected = false;
+    public static boolean idBackEndServerStart = false;
     public static boolean isDataDecrypted = false;
+    public static String backEndErrorMessage = null;
+
+
+
+
+    public static boolean isNetworkConnected = false;
+    //public static boolean isDataDecrypted = false;
     public static boolean isConfigComplete = false;
     public static boolean isJxBrowserRegistered  = false;
     public static boolean isTestResetPassword = false;

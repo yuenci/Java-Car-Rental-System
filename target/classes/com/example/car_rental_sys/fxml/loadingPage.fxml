@@ -5,14 +5,11 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<Pane prefHeight="416.0" prefWidth="640.0" style="-fx-background-color: #faf7f7;"
-      xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.LoadingPageController">
-   <WebView fx:id="webView" prefHeight="416.0" prefWidth="640.0"/>
-   <Label fx:id="loadingTest" layoutX="230.0" layoutY="343.0" prefHeight="28.0" prefWidth="180.0"
-          style="-fx-background-color: transparent;" text="Laoding">
+<Pane prefHeight="416.0" prefWidth="640.0" style="-fx-background-color: #faf7f7;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.LoadingPageController">
+   <WebView fx:id="webView" prefHeight="416.0" prefWidth="640.0" />
+   <Label fx:id="loadingText" layoutX="91.0" layoutY="349.0" prefHeight="28.0" prefWidth="458.0" style="-fx-background-color: transparent;" text="Laoding...">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Label>
 </Pane>

@@ -3,3 +3,27 @@ errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,er
 2,java.lang.Exception, Test,com.example.car_rental_sys/com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:25:17
 3,java.lang.Exception, Test,com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:26:48
 4,java.lang.Exception, Test,com.example.car_rental_sys.funtions.Test.errorLogTest(Test.java:18),2022-11-11 16:27:13
+5,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 00:53:56
+6,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/bankCardInfo1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 00:53:56
+7,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 00:53:56
+8,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/password1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 00:53:56
+9,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 00:53:56
+10,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/userInfo1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 00:53:56
+11,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:07:10
+12,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/bankCardInfo1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 02:07:10
+13,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:07:10
+14,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/password1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 02:07:10
+15,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:07:10
+16,java.lang.Exception, src/main/resources/com/example/car_rental_sys/data/userInfo1.txt.secret Delete file failed,com.example.car_rental_sys.ToolsLib.DataTools.deleteFile(DataTools.java:53),2022-11-12 02:07:10
+17,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:08:14
+18,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:08:14
+19,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:08:14
+20,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:00
+21,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:00
+22,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:00
+23,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:39
+24,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:39
+25,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:11:39
+26,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50
+27,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50
+28,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50

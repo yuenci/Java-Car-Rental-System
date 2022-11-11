@@ -125,6 +125,8 @@ public class NetTools {
         return "";
     }
 
+    public static String netErrorMsg = "";
+
     public static boolean netIsAvailable(String urlParam) {
         try {
             final URL url = new URL(urlParam);
@@ -135,19 +137,33 @@ public class NetTools {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            StatusContainer.errorMessage = e.toString();
+            netErrorMsg = e.getMessage();
             return false;
         }
     }
 
     public static void StartHttpServer() {
-        Thread thread = new Thread(() -> {
-            String projectPath = DataTools.getProjectPath();
-            String cmdStr = "http-server \"" + projectPath + "\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8174";
-            //System.out.println(cmdStr);
-            PlatformTools.exebat(cmdStr);
-        });
-        thread.start();
+        try{
+            Thread thread = new Thread(() -> {
+                String projectPath = DataTools.getProjectPath();
+                String cmdStr = "http-server \"" + projectPath + "\\src\\main\\resources\\com\\example\\car_rental_sys\\html\" -p 8174";
+                //System.out.println(cmdStr);
+                PlatformTools.exebat(cmdStr);
+            });
+            thread.start();
+            StatusContainer.idBackEndServerStart = true;
+        }catch (Exception e){
+            Tools.logError(e);
+            StatusContainer.backEndErrorMessage = e.toString();
+            e.printStackTrace();
+        }
+
         // http-server "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\html\datePicker"
     }
+
+    public static void registerJxBrowserLicence(){
+        System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
+    }
+
+
 }

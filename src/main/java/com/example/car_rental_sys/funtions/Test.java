@@ -5,6 +5,7 @@ import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
+import com.example.car_rental_sys.ToolsLib.SelfTestTools;
 import com.example.car_rental_sys.orm.User;
 
 public class Test {
@@ -18,7 +19,12 @@ public class Test {
         //startWindowSettingTest();
 //        getLocalHostIPTest();
 //        userObjTest();
-        loginLogTest();
+//        loginLogTest();
+        //platformTypeTest();
+        //loginLogTest();
+        //SelfTestTools.isBackendServerRunning();
+//        screenShotTest();
+        openScreenShotWithMsPaintTest();
     }
 
 
@@ -61,7 +67,7 @@ public class Test {
     }
 
     private static void startWindowSettingTest(){
-        PlatformTools.startWindowSetting();
+        PlatformTools.startWindowNetworkSetting();
     }
 
     private static void getLocalHostIPTest(){
@@ -78,4 +84,17 @@ public class Test {
         System.out.println("done");
     }
 
+    private static void platformTypeTest(){
+        System.out.println(PlatformTools.getPropertyOsName());
+    }
+
+    public static void screenShotTest(){
+        System.out.println(PlatformTools.screenShot());
+    }
+
+    //openScreenShotWithMsPaint
+
+    public static void openScreenShotWithMsPaintTest(){
+        PlatformTools.openScreenShotWithMsPaint();
+    }
 }

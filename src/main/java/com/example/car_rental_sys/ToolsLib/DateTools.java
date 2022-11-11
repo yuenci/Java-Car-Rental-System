@@ -30,4 +30,20 @@ public class DateTools {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(date);
     }
+
+    public static String getDataTimeAfterAWeek(){
+        Date date = new Date();
+        date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);
+        return dateToString(date, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    public static long startTime ;
+    public static void setStarTime(){
+        startTime=System.currentTimeMillis();
+    }
+
+    public static String getTimeCost(){
+        long endTime=System.currentTimeMillis();
+        return " runtime： "+(endTime-startTime)+" ms";
+    }
 }

@@ -153,7 +153,7 @@
       </Label>
    </Pane>
    <Pane fx:id="sidePane" layoutX="980.0" layoutY="1.0" prefHeight="830.0" prefWidth="300.0" style="-fx-background-color: white;">
-      <ImageView fx:id="renterAvatar" fitHeight="80.0" fitWidth="60.0" layoutX="30.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="renterAvatar" fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/avatar/1.png" />
       </ImageView>
       <Label fx:id="renterName" layoutX="118.0" layoutY="62.0" text="User Name">

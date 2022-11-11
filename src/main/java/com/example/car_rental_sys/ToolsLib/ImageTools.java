@@ -1,8 +1,12 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -91,7 +95,7 @@ public class ImageTools {
         String path;
         if (file.exists()) {
             path = "file:" + avatarRoot;
-            return getCircleImages(path);
+            return new Image(path);
         } else {
             if (Objects.equals(FXTools.getGenderFromUserID(userID), "female")) {
                 path = avatarRoot + "avatar_female.png";
@@ -100,6 +104,23 @@ public class ImageTools {
             path = avatarRoot + "avatar_male.png";
             return getCircleImages(path);
         }
+    }
 
+    public static void setImageShape(ImageView imageView, double radius) {
+        double imageWidth =  imageView.getFitWidth();
+        double imageHeight =  imageView.getFitHeight();
+
+        javafx.scene.shape.Rectangle rectangle = new Rectangle(imageWidth,imageHeight);
+        rectangle.setArcHeight(radius);
+        rectangle.setArcWidth(radius);
+        imageView.setClip(rectangle);
+    }
+
+    public static  void setImageShapeToCircle(ImageView imageView) {
+        double imageWidth =  imageView.getFitWidth();
+        double imageHeight =  imageView.getFitHeight();
+        double circleRadius = imageHeight >= imageWidth ? imageWidth / 2 : imageHeight / 2;
+        Circle circle = new Circle(circleRadius,imageWidth/2,imageHeight/2);
+        imageView.setClip(circle);
     }
 }

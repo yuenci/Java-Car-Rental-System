@@ -190,7 +190,7 @@ public class DataTools {
         }
     }
 
-    public boolean encryptDataFiles(){
+    public static boolean encryptDataFiles(){
         String[] dataFiles = ConfigFile.sensitiveDataFileList;
         StringBuilder errorMessages = new StringBuilder();
 
@@ -210,7 +210,7 @@ public class DataTools {
         return ifAllSuccess;
     }
 
-    public boolean decryptDataFiles(){
+    public static boolean decryptDataFiles(){
         String[] dataFiles = ConfigFile.sensitiveDataFileList;
         StringBuilder errorMessages = new StringBuilder();
 
@@ -220,27 +220,38 @@ public class DataTools {
         for (String dataFile : dataFiles) {
             boolean res = Encryption.dataFileDecrypt(dataFile);
             if (res){
-                deleteDataFile(dataFile + ".secret");
+                //deleteDataFile(dataFile + ".secret");
             }else{
                 errorMessages.append(dataFile).append(" decrypt failed, ");
                 ifAllSuccess = false;
             }
         }
-        encryptErrorMessage = errorMessages.toString();
+
+        if(ifAllSuccess){
+            StatusContainer.isDataDecrypted = true;
+        }else{
+            encryptErrorMessage = errorMessages.toString();
+        }
+
         return ifAllSuccess;
     }
 
     public static boolean logLogin(){
+        int loginID = DataTools.getID("loginLog");
         int userID = StatusContainer.currentUser.getUserID();
         String loginUIP =NetTools.getExternalHostIP();
-        String loginMethod = StatusContainer.loginMethod;
+        String platformType =PlatformTools.getPropertyOsName();
         String deviceType = StatusContainer.deviceType;
         String deviceName = NetTools.getLocalHostIP("hostName");
         String IpGeo = NetTools.getGeoIPInfo();
         String time = DateTools.getNow();
+        String EXP =time;
 
-        String sql = "INSERT INTO loginLog VALUES (" +
-                userID + ",'" + loginUIP + "','" + loginMethod + "','" + deviceType + "','" + deviceName + "','" + IpGeo + "','" + time + "')";
+        if (StatusContainer.ifRememberMe) EXP = DateTools.getDataTimeAfterAWeek();
+
+        String sql = "INSERT INTO loginLog VALUES (" + loginID +"," +
+                userID + ",'" + loginUIP + "','" + platformType + "','" + deviceType + "','" + deviceName + "','" +
+                IpGeo + "','"+time + "','" +  EXP + "')";
         System.out.println(sql);
         return SQL.execute(sql);
     }
@@ -248,3 +259,4 @@ public class DataTools {
 
 // TODO: No comma "," content is allowed.
 // TODO: add table view for all data
+// TODO: logLogin is ture then can login

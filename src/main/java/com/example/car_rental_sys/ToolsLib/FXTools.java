@@ -4,12 +4,14 @@ import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,5 +76,29 @@ public class FXTools {
         double[] center = getCenterOfScreen();
         stage.setX(center[0] - stage.getWidth() / 2);
         stage.setY(center[1] - stage.getHeight() / 2);
+    }
+
+    private static void  showAStage(double width, double height, String fxmlName) throws IOException {
+        Stage stage = new Stage();
+        stage.setWidth(width);
+        stage.setHeight(height);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
+        FXTools.setStageShowCenterOfScreen(stage);
+        Scene scene = new Scene(fxmlLoader.load(), width, height);
+
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public static void startLoadingStage() throws IOException {
+        showAStage(640, 416, "loadingPage.fxml");
+    }
+
+    public static void showNetworkErrorPage() throws IOException {
+        showAStage(550, 340, "networkIssuePage.fxml");
     }
 }

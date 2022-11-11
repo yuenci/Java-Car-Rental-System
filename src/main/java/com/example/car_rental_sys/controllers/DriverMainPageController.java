@@ -265,6 +265,7 @@ public class DriverMainPageController extends  Controller{
 
     private void setRenterInfo(){
         this.renterAvatar.setImage(ImageTools.getImageObjFromUserID(currentOrderCard.userID));
+        ImageTools.setImageShapeToCircle(this.renterAvatar);
 
         String[] nameAndPost = DataTools.getRenterNameAndPostFromUserID(currentOrderCard.userID);
         assert nameAndPost != null;
