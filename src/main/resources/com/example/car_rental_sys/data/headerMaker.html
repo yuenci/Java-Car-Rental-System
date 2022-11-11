@@ -54,7 +54,7 @@
             font-size: 16px;
         }
 
-        #makeBtn:hover {
+        Button:hover {
             cursor: pointer;
         }
 
@@ -163,7 +163,7 @@
                         <th>Default value</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
 
                 </tbody>
             </table>
@@ -255,12 +255,16 @@
         let makeBtnObj1 = document.getElementById("makeBtn1");
         let resultPObj1 = document.getElementById("result1");
         let resultPObj2 = document.getElementById("result2");
+        let tableViewObj = document.getElementById("tableBody");
+        console.log(tableViewObj);
 
 
         makeBtnObj1.addEventListener("click", generateResualt1)
 
         function generateResualt1() {
             resultPObj1.innerHTML = "";
+            tableViewObj.innerHTML = "";
+
             value = document.getElementById("headerInput").value;
             let fieldList = value.split(",");
             if (fieldList.length === 0) {
@@ -294,7 +298,7 @@
                 <td>${fieldType}</td>
                 <td>${fieldDefaultValue}</td>
                 `;
-                document.getElementById("tableView").appendChild(tr);
+                tableViewObj.appendChild(tr);
             }
 
 
@@ -302,6 +306,7 @@
             let res2 = fieldNames.join(",");
             resultPObj2.innerHTML = res2;
         }
+
     </script>
 </body>
 
