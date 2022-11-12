@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 
 public class ErrorReportPageController {
@@ -32,6 +35,8 @@ public class ErrorReportPageController {
 
     @FXML
     RadioButton radioBtn1, radioBtn2;
+
+    private Stage currentStage = null;
 
     @FXML
     private void  initialize(){
@@ -66,15 +71,17 @@ public class ErrorReportPageController {
 
     @FXML
     void dragAndDrop() {
-        Stage stage = StatusContainer.currentStage;
         dropPane.setOnMousePressed((MouseEvent event) -> {
-            locationX = stage.getX() - event.getScreenX();
-            locationY = stage.getY() - event.getScreenY();
+            if(currentStage == null){
+                currentStage = (Stage) dropPane.getScene().getWindow();
+            }
+            locationX = currentStage.getX() - event.getScreenX();
+            locationY = currentStage.getY() - event.getScreenY();
         });
 
         dropPane.setOnMouseDragged((MouseEvent event) -> {
-            stage.setX(event.getScreenX() + locationX);
-            stage.setY(event.getScreenY() + locationY);
+            currentStage.setX(event.getScreenX() + locationX);
+            currentStage.setY(event.getScreenY() + locationY);
         });
     }
 
@@ -87,6 +94,11 @@ public class ErrorReportPageController {
     @FXML
     private void diagnosticLabelClick(){
         //
-        System.out.println( "diagnosticLabelClick");
+        //System.out.println( "diagnosticLabelClick");
+        try {
+            FXTools.showDiagnosticDataPage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

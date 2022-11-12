@@ -226,3 +226,4 @@ regTime:str=null
     }
 }
 
+//  TODO: add bankCard list property

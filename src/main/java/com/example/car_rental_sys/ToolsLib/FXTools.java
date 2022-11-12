@@ -114,7 +114,12 @@ public class FXTools {
         showAStage(550, 800, "ErrorReportPage.fxml");
     }
 
+    public static boolean ifShowDiagnosticDataPageOpen = false;
     public static void showDiagnosticDataPage() throws IOException {
-        showAStage(550, 800, "diagnosticDataPage.fxml");
+        if(!ifShowDiagnosticDataPageOpen){
+            showAStage(550, 800, "diagnosticDataPage.fxml");
+            ifShowDiagnosticDataPageOpen = true;
+        }
+
     }
 }

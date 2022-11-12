@@ -6,6 +6,7 @@ import com.example.car_rental_sys.controllers.LoadingPageController;
 import com.teamdev.jxbrowser.engine.Engine;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -20,6 +21,7 @@ public class SelfTestTools {
         public boolean isPass;
         public String description;
         public Pane pane;
+        public VBox vBox;
 
         public Test(String name, boolean isPass, String description) {
             this.name = name;
@@ -34,24 +36,28 @@ public class SelfTestTools {
         }
 
         private void initPane(){
-            pane = new Pane();
-            pane.setPrefWidth(455);
-            pane.setMaxHeight(200);
+            vBox= new VBox();
+            vBox.setPrefWidth(455);
+            vBox.setMaxHeight(200);
 //            pane.setPrefHeight(70);
-            pane.setStyle("-fx-background-color:orange; -fx-border-color: #dddddd; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-background-radius: 5px;");
+            vBox.setStyle("-fx-background-color:orange; -fx-border-color: #dddddd; " +
+                    "-fx-border-width: 1px; -fx-border-radius: 5px; " +
+                    "-fx-background-radius: 5px; -fx-padding: 10px;");
             Label name = new Label(this.name);
             name.setWrapText(true);
             name.setLayoutX(10);
             name.setLayoutY(10);
             name.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+            VBox.setMargin(name, new javafx.geometry.Insets(0, 0, 10, 0));
 
             Label description = new Label(this.description);
             description.setWrapText(true);
             description.setLayoutX(10);
             description.setLayoutY(40);
             description.setMaxWidth(455);
+            description.setStyle("-fx-font-size: 15px;");
 
-            pane.getChildren().addAll(name, description);
+            vBox.getChildren().addAll(name, description);
         }
     }
 
