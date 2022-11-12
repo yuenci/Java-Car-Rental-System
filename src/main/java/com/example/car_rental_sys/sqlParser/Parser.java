@@ -41,6 +41,7 @@ public class Parser {
     //
     ////////////////////////////////////////
     public static String dataFilesPath = "src/main/resources/com/example/car_rental_sys/data/";
+    public static boolean enableSecurityMode = false;
 
     // region # validatation
     ////////////////////////

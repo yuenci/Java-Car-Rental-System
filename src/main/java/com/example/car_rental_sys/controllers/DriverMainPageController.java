@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.*;
+import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
@@ -34,7 +35,7 @@ public class DriverMainPageController extends  Controller{
             renterName,renterPost,processTipLabel,carNumberLabel;
 
     @FXML
-    public ImageView carImageView,renterAvatar;
+    public ImageView carImageView,renterAvatar,avatarImageView;
 
     @FXML
     Pane mainPane, closeSideBarPane, phonePane, messagePane, sidePane ,processTipPane,processImagePane;
@@ -43,6 +44,8 @@ public class DriverMainPageController extends  Controller{
     Pane item1, item2, item3, item4, item5, item6;
 
     private String renterNameCache;
+
+    private Driver driver = (Driver) StatusContainer.currentUser;
 
 
     private int[] orderIDs;
@@ -187,9 +190,17 @@ public class DriverMainPageController extends  Controller{
 
     private void initSideBar() {
        // label set text align center
+        postLabel.setText(StringTools.capitalizeFirstLetter(driver.getPost()));
         postLabel.setAlignment(Pos.CENTER);
+
+        nameLabel.setText(StringTools.capitalizeFirstLetter(driver.getUserName()));
         nameLabel.setAlignment(Pos.CENTER);
+
         carNumberLabel.setAlignment(Pos.CENTER);
+
+        avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
+        ImageTools.setImageShapeToCircle(avatarImageView);
+
     }
 
     private void initMenuEvent() {

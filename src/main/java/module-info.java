@@ -11,6 +11,7 @@ module com.example.car_rental_sys {
     requires java.desktop;
     requires javafx.media;
     requires org.json;
+    requires javafx.swing;
 
     exports com.example.car_rental_sys.orm;
 

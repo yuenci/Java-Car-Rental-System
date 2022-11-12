@@ -13,15 +13,30 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import javafx.embed.swing.SwingFXUtils;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
-        BufferedImage avatarImage;
         try {
-            avatarImage = ImageIO.read(new URL(fileUrl));
+            BufferedImage  avatarImage = ImageIO.read(new URL(fileUrl));
+            return circleImage(avatarImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Image getCircleImages(Image image) {
+        BufferedImage  avatarImage = SwingFXUtils.fromFXImage(image, null);
+        return circleImage(avatarImage);
+    }
+
+    private static Image circleImage(BufferedImage avatarImage){
+        try {
             avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(), avatarImage.getWidth());
             if (avatarImage == null) {
                 throw new RuntimeException("avatarImage is null");
@@ -161,5 +176,9 @@ public class ImageTools {
         } else {
             return getUIImageObjFromName(badges[4]);
         }
+    }
+
+    public static Image getAvatarFromUserID(int userID){
+        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/"+userID+".png");
     }
 }

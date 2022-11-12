@@ -7,8 +7,7 @@
     <ImageView fx:id="closeIconBtn" fitHeight="150.0" fitWidth="25.0" layoutX="1229.0" layoutY="3.0" onMouseClicked="#closeIconBtnClicked" onMouseEntered="#changeImageToHover" onMouseExited="#changeImageToClose" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/UI/closeIconBlack.png" />
     </ImageView>
-    <ImageView fx:id="logoImage" fitHeight="30.0" fitWidth="137.0" layoutX="85.0" layoutY="1.0"
-               pickOnBounds="true" preserveRatio="true" onMouseClicked="#LogoClickEvent">
-        <Image url="@../image/UI/logo_light_green.png"/>
+    <ImageView fx:id="logoImage" fitHeight="30.0" fitWidth="137.0" layoutX="80.0" layoutY="1.0" onMouseClicked="#LogoClickEvent" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../image/UI/logo_light_green.png" />
     </ImageView>
 </Pane>

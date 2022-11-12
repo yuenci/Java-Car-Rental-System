@@ -181,12 +181,14 @@ public class DataTools {
     public static String getGradientColorFromCarID(int carID) {
         String model = getCarModelFromCarID(carID);
 
-        ArrayList<String[]> result = SQL.query("SELECT darkColor,lightColor FROM carModels WHERE carModel = '" + model + "'");
+        String sql = "SELECT darkColor,lightColor FROM carModels WHERE carModel = '" + model + "'";
+
+        ArrayList<String[]> result = SQL.query(sql);
 
         if (result.size() == 1) {
             return result.get(0)[0] + "," + result.get(0)[1];
         } else {
-            return null;
+            return "#7EB712,#CAE943";
         }
     }
 

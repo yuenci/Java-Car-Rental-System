@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.orm;
 
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.image.Image;
 
@@ -26,6 +27,7 @@ public class User {
     protected String address;
     protected String about;
     protected String regTime;
+    protected Image avatar;
 
     public User(){
         // do nothing
@@ -82,6 +84,7 @@ public class User {
         this.address = user[12];
         this.about = user[13];
         this.regTime = user[14];
+        this.avatar = ImageTools.getAvatarFromUserID(userID);
     }
 
     public int getUserID() {
@@ -226,6 +229,14 @@ public class User {
 
     public void setRegTime(String regTime) {
         this.regTime = regTime;
+    }
+
+    public Image getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Image avatar) {
+        this.avatar = avatar;
     }
 
     @Override
