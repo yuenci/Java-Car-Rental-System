@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="670.0" prefWidth="530.0" style="-fx-background-radius: 10; -fx-background-color: #ffffff;"
+      stylesheets="@../style/orderComponent.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.OrderListComponentController">
+   <Label layoutX="37.0" layoutY="46.0" text="Orders" textFill="#1d2129">
+      <font>
+         <Font name="System Bold" size="24.0"/>
+      </font>
+   </Label>
+   <Label id="lblTotalOrder" fx:id="numOrder" layoutX="40.0" layoutY="76.0" text="4 orders" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Button fx:id="btnAllOrder" layoutX="33.0" layoutY="110.0" mnemonicParsing="false"
+           onMouseClicked="#btnAllOrderClicked" prefHeight="30.0" prefWidth="90.0"
+           style="-fx-background-color: transparent;" styleClass="controlBtn" text="All Orders" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnComplete" layoutX="127.0" layoutY="110.0" mnemonicParsing="false"
+           onMouseClicked="#btnCompletedClicked" prefHeight="30.0" prefWidth="100.0"
+           style="-fx-background-color: transparent;" styleClass="controlBtn" text="Completed" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnContinue" layoutX="230.0" layoutY="110.0" mnemonicParsing="false"
+           onMouseClicked="#btnContinueClicked" prefHeight="30.0" prefWidth="100.0"
+           style="-fx-background-color: transparent;" styleClass="controlBtn" text="Continuing" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnCancel" layoutX="332.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#btnCancelClicked"
+           prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: transparent;" styleClass="controlBtn"
+           text="Cancelled" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Label layoutX="45.0" layoutY="224.0" text="Order ID" textFill="#4080ff">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </Label>
+   <Label layoutX="140.0" layoutY="224.0" text="Product" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </Label>
+   <Label layoutX="250.0" layoutY="224.0" text="Date" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </Label>
+   <Label layoutX="339.0" layoutY="224.0" text="Pricing" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </Label>
+   <Label layoutX="432.0" layoutY="224.0" text="Status" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </Label>
+   <Pane fx:id="tableContainer" layoutX="35.0" layoutY="257.0" prefHeight="360.0" prefWidth="460.0"/>
+   <Line endX="260.0" layoutX="235.0" layoutY="251.0" startX="-200.0" stroke="#d9d9d9"/>
+   <Pane fx:id="pagContainer" layoutX="100.0" layoutY="617.0" prefHeight="30.0" prefWidth="330.0"/>
+   <Pane layoutX="33.0" layoutY="158.0" prefHeight="35.0" prefWidth="465.0">
+      <fx:include source="SearchBar.fxml"/>
+   </Pane>
+   <Pane fx:id="paneFilterBox" layoutX="276.0" layoutY="202.0" prefHeight="260.0" prefWidth="220.0"/>
+</Pane>

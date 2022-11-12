@@ -2,6 +2,7 @@ package com.example.car_rental_sys.ui_components;
 
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Objects;
 
@@ -52,6 +53,7 @@ public class UIPaginationCard extends Button {
         }
 
     private void addClickEvent(){
+        //this.addEventFilter(MouseEvent.MOUSE_CLICKED, event ->{
         this.setOnAction(event -> {
             //UIPagination01.minButton.getStyleClass().remove("focus-style");
             UIPagination.minPageButton.getStyleClass().remove("focus-style");
