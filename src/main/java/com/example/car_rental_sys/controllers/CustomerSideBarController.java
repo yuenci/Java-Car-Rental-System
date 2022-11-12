@@ -24,6 +24,8 @@ public class CustomerSideBarController {
     @FXML
     Pane bar1,bar2,bar3,bar4,bar5;
 
+
+
     @FXML
     private void initialize() {
         initUserData();
@@ -85,5 +87,10 @@ public class CustomerSideBarController {
         for (int i = 0; i < remainder; i++) {
             bans[i].getStyleClass().add("barActive");
         }
+    }
+
+    @FXML
+    private  void updateBtnClick(){
+       System.out.println("updateBtnClick");
     }
 }

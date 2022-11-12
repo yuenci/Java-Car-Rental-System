@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CustomerSideBarController">
+<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CustomerSideBarController">
     <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/avatar/1.png" />
     </ImageView>
@@ -134,7 +135,9 @@
    <Pane fx:id="bar4" layoutX="153.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
    <Pane fx:id="bar5" layoutX="198.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
    <Pane fx:id="bar3" layoutX="108.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
-   <Button fx:id="customerSideBarUpdateBtn" layoutX="172.0" layoutY="330.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 5;" text="Update" />
+   <Button fx:id="customerSideBarUpdateBtn" layoutX="172.0" layoutY="330.0"
+           mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 5;"
+           text="Update" onMouseClicked="#updateBtnClick"/>
    <ImageView fx:id="vipBadgeImageView" fitHeight="23.0" fitWidth="50.0" layoutX="149.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../image/UI/vip1.png" />

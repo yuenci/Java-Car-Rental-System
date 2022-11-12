@@ -47,11 +47,12 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage.fxml";
-        String fxmlName = "driverMainPage.fxml";
+        //String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        //String fxmlName = "customerServicePage.fxml";
+        String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "addBankCardPage.fxml";
+        //String fxmlName = "adminServicePage.fxml";
         //
         stageInstance = stage;
 

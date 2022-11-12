@@ -1,22 +1,40 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.orm.Admin;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class AdminSideBarController {
     @FXML
-    Pane item1, item2, item3, item4, item5, item6;
+    Pane item1, item2, item3, item4, item5, item6, item7;
 
     @FXML
     Label nameTextLabel,emailTextLabel;
 
     @FXML
+    ImageView avatarImageView;
+
+    private Admin admin = (Admin) StatusContainer.currentUser;
+
+    @FXML
     private void initialize() {
+        initUserData();
         initMenuEvent();
         initLabelEvent();
+    }
+    private void initUserData() {
+        nameTextLabel.setText(admin.getUserName());
+        emailTextLabel.setText(admin.getEmail());
+
+        Image circleImage = ImageTools.getCircleImages(admin.getAvatar());
+        avatarImageView.setImage(circleImage);
     }
 
 
@@ -26,7 +44,8 @@ public class AdminSideBarController {
         item3.setOnMouseClicked(event -> changeMenuStyle(item3));
         item4.setOnMouseClicked(event -> changeMenuStyle(item4));
         item5.setOnMouseClicked(event -> changeMenuStyle(item5));
-        item6.setOnMouseClicked(event -> {
+        item6.setOnMouseClicked(event -> changeMenuStyle(item6));
+        item7.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             FXTools.changeScene("mainPage.fxml");
         });
@@ -48,7 +67,6 @@ public class AdminSideBarController {
     private  void  initLabelEvent(){
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
-
     }
 
 }
