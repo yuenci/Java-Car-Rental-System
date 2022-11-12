@@ -36,7 +36,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
+        //String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
         //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
@@ -49,10 +49,11 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "aboutUsPage.fxml";
 //        String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
-        String fxmlName = "drivingModePage.fxml";
+//        String fxmlName = "drivingModePage.fxml";
         //String fxmlName = "customerServicePage.fxml";
 //        String fxmlName = "addBankCardPagSe.fxml";
 //        String fxmlName = "adminServicePage.fxml";
+        String fxmlName = "showOrderComponent.fxml";
         //
         stageInstance = stage;
 
@@ -130,7 +131,7 @@ public class Application extends javafx.application.Application {
      */
 
     private static void startApplication() throws IOException {
-        //FXTools.startLoadingStage();
+        FXTools.startLoadingStage();
         //FXTools.showNetworkErrorPage();
         //FXTools.showErrorsPage();
 

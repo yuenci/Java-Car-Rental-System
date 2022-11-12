@@ -22,9 +22,12 @@ public class OrderListComponentController {
 
     private static String initQuery = "SELECT * FROM orders WHERE userID = 1";
 
+    public static OrderListComponentController instance;
+
     @FXML
     public void initialize() {
         // TODO
+        instance = this;
         initPagination();
         initButtonStyle();
         //addFilterPane();
@@ -33,7 +36,7 @@ public class OrderListComponentController {
     //Function<> is a functional interface, which means it can be used as a lambda expression
     private Function<String, String> queryBuilder = (String query) -> query;
 
-    public void addFilterPane(){
+    public  void addFilterPane(){
         //paneFilterBox = new Pane();
         UIFilter filter = new UIFilter();
         filter.setLayoutX(0);

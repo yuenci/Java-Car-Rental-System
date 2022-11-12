@@ -7,5 +7,6 @@ public class SearchBarController {
         //OrderListComponentController.add();
         //OrderListComponentController.addFilterPane();
         System.out.println("hi");
+        OrderListComponentController.instance.addFilterPane();
     }
 }
