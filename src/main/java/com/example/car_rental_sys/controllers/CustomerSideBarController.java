@@ -6,6 +6,7 @@ import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -16,15 +17,18 @@ public class CustomerSideBarController {
     Pane item1, item2, item3, item4, item5, item6;
 
     @FXML
-    Label nameTextLabel,emailTextLabel;
+    Label nameTextLabel, emailTextLabel,orderNumLabel;
 
     @FXML
-    ImageView avatarImageView,vipBadgeImageView,vipCardImageView;
+    ImageView avatarImageView, vipBadgeImageView, vipCardImageView;
 
     @FXML
-    Pane bar1,bar2,bar3,bar4,bar5;
+    Pane bar1, bar2, bar3, bar4, bar5;
 
+    @FXML
+    Button customerSideBarUpdateBtn;
 
+    Customer customer = (Customer) StatusContainer.currentUser;
 
     @FXML
     private void initialize() {
@@ -60,18 +64,18 @@ public class CustomerSideBarController {
         activePane.getStyleClass().add("menuItemActive");
     }
 
-    private  void  initLabelEvent(){
+    private void initLabelEvent() {
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
     }
 
-    private void initUserData(){
-       User user = StatusContainer.currentUser;
-       //user.get
+    private void initUserData() {
+        User user = StatusContainer.currentUser;
+        //user.get
     }
 
-    private void intCustomerImages(){
-        Customer customer = (Customer) StatusContainer.currentUser;
+    private void intCustomerImages() {
+
         nameTextLabel.setText(customer.getUserName());
         emailTextLabel.setText(customer.getEmail());
 
@@ -79,18 +83,32 @@ public class CustomerSideBarController {
         vipBadgeImageView.setImage(customer.getVipBadge());
         vipCardImageView.setImage(customer.getVipCard());
 
-        // Take remainder
-        int remainder = customer.getOrderNum() % 5;
-        remainder = remainder == 0 ? 5 : remainder;
-        System.out.println("remainder: " + remainder);
-        Pane[] bans = {bar1,bar2,bar3,bar4,bar5};
-        for (int i = 0; i < remainder; i++) {
-            bans[i].getStyleClass().add("barActive");
+        setVipCard(customer.getOrderNum());
+    }
+
+    private void setVipCard(int orderNum) {
+        orderNumLabel.setVisible(false);
+        Pane[] bans = {bar1, bar2, bar3, bar4, bar5};
+        if (orderNum > 20) {
+            for (Pane ban : bans) {
+                ban.setVisible(false);
+            }
+            orderNumLabel.setText(String.valueOf(customer.getOrderNum()));
+            orderNumLabel.setVisible(true);
+            customerSideBarUpdateBtn.setVisible(false);
+        } else {
+            // Take remainder
+            int remainder = customer.getOrderNum() % 5;
+            remainder = remainder == 0 ? 5 : remainder;
+            for (int i = 0; i < remainder; i++) {
+                bans[i].getStyleClass().add("barActive");
+            }
         }
+
     }
 
     @FXML
-    private  void updateBtnClick(){
-       System.out.println("updateBtnClick");
+    private void updateBtnClick() {
+        System.out.println("updateBtnClick");
     }
 }

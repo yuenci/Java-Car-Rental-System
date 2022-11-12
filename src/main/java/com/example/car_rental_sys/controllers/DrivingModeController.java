@@ -1,8 +1,11 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import com.example.car_rental_sys.ToolsLib.StringTools;
+import com.example.car_rental_sys.orm.Driver;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -12,6 +15,7 @@ import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 
@@ -27,9 +31,20 @@ public class DrivingModeController {
     Label distanceLeftLabel, timeLeftLabel;
 
     @FXML
+    ImageView userAvatar;
+
+    private Driver driver = (Driver) StatusContainer.currentUser;
+
+    @FXML
     private void initialize() {
+        initAvatar();
         initSideIconsEvent();
         initBorwserEvent();
+    }
+
+    private void initAvatar() {
+        userAvatar.setImage(driver.getAvatar());
+        ImageTools.setImageShapeToCircle(userAvatar);
     }
 
     private void initSideIconsEvent() {

@@ -47,12 +47,12 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage.fxml";
-        //String fxmlName = "driverMainPage.fxml";
+//        String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
-        //String fxmlName = "drivingModePage.fxml";
-        String fxmlName = "customerServicePage.fxml";
-        //String fxmlName = "addBankCardPage.fxml";
-        //String fxmlName = "adminServicePage.fxml";
+        String fxmlName = "drivingModePage.fxml";
+        //String fxmlName = "customerServicePage.fxml";
+//        String fxmlName = "addBankCardPagSe.fxml";
+//        String fxmlName = "adminServicePage.fxml";
         //
         stageInstance = stage;
 
@@ -132,9 +132,9 @@ public class Application extends javafx.application.Application {
     private static void startApplication() throws IOException {
         //FXTools.startLoadingStage();
         //FXTools.showNetworkErrorPage();
-        FXTools.showErrorsPage();
+        //FXTools.showErrorsPage();
 
-        SelfTestTools.executeSelfTest();
+        //SelfTestTools.executeSelfTest();
         //FXTools.showDiagnosticDataPage();
 
         // init program

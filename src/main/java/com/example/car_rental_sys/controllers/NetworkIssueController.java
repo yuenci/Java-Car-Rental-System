@@ -4,6 +4,7 @@ import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 import javax.swing.text.html.ImageView;
 
@@ -32,6 +33,15 @@ public class NetworkIssueController {
 
     @FXML
     public void okBtnClick(){
-        PlatformTools.startWindowNetworkSetting();
+        new Thread(() -> {
+            try {
+                PlatformTools.startWindowNetworkSetting();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+        // get stage from okBtn
+        okBtn.getScene().getWindow().hide();
     }
 }
