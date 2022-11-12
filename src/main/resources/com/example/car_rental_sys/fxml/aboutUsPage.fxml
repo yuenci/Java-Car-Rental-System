@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AboutUsPageController">
+<Pane prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AboutUsPageController">
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBar.fxml" />
     </Pane>
-    <Pane layoutY="100.0" prefHeight="732.0" prefWidth="1280.0" fx:id="paneContainer">
-
-    </Pane>
+    <Pane fx:id="paneContainer" layoutY="100.0" prefHeight="732.0" prefWidth="1280.0">
+      <children>
+         <Pane fx:id="wordsContainer" layoutX="113.0" layoutY="42.0" prefHeight="412.0" prefWidth="1028.0">
+            <children>
+               <Label layoutX="291.0" layoutY="39.0" text="The interesection" textFill="WHITE">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="62.0" />
+                  </font>
+               </Label>
+               <Label layoutX="61.0" layoutY="149.0" prefHeight="79.0" prefWidth="929.0" text="between design, programming" textFill="WHITE">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="62.0" />
+                  </font>
+               </Label>
+               <Label layoutX="317.0" layoutY="269.0" prefHeight="79.0" prefWidth="395.0" text="and business" textFill="WHITE">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="62.0" />
+                  </font>
+               </Label>
+            </children></Pane>
+      </children></Pane>
 </Pane>

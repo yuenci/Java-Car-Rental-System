@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -180,5 +181,17 @@ public class ImageTools {
 
     public static Image getAvatarFromUserID(int userID){
         return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/"+userID+".png");
+    }
+
+    public static   int[]  getImageSize(String path){
+//        File picture = new File("src/main/resources/com/example/demos/123456.jpg");
+        File picture = new File(path);
+        BufferedImage sourceImg = null;
+        try {
+            sourceImg = ImageIO.read(new FileInputStream(picture));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  new int[]{sourceImg.getWidth(),sourceImg.getHeight()};
     }
 }

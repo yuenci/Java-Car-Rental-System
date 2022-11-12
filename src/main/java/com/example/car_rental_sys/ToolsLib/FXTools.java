@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.robot.Robot;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Screen;
@@ -121,5 +122,12 @@ public class FXTools {
             ifShowDiagnosticDataPageOpen = true;
         }
 
+    }
+
+    public static double[] getMousePosition() {
+            Robot robot = new Robot();
+//            System.out.println("X is: " + robot.getMousePosition().getX());
+//            System.out.println("Y is: " + robot.getMousePosition().getY());
+            return new double[]{robot.getMousePosition().getX(), robot.getMousePosition().getY()};
     }
 }
