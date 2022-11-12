@@ -42,7 +42,7 @@ public class ImageTools {
             graphics.drawOval(border1, border1, width - border1 * 2, width - border1 * 2);
             graphics.dispose();
 
-            WritableImage wr = null;
+            WritableImage wr;
             wr = new WritableImage(formatAvatarImage.getWidth(), formatAvatarImage.getHeight());
             PixelWriter pw = wr.getPixelWriter();
             for (int x = 0; x < formatAvatarImage.getWidth(); x++) {
@@ -78,7 +78,6 @@ public class ImageTools {
     }
 
     public static Image getImageObjFromPath(String path) {
-
         File file = new File(path);
         try {
             return new Image(file.toURI().toString());
@@ -86,7 +85,11 @@ public class ImageTools {
             e.printStackTrace();
             return null;
         }
+    }
 
+    public static Image getUIImageObjFromName(String name) {
+        String rootPath ="src/main/resources/com/example/car_rental_sys/image/UI/";
+        return  getImageObjFromPath(rootPath + name);
     }
 
     public static Image getImageObjFromUserID(int userID) {

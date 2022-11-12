@@ -50,4 +50,25 @@ public class ConfigFile {
     // bankCardThemes
     public  static  String[] bankCardTheme1 =  {"#dddddd", "#000000"};
     public  static  String[] bankCardTheme2 = {"#dddddd", "#000000"};
+
+    // add bank card
+    public static String[] banks = {
+            " Alliance Bank",
+            " BNP Paribas",
+            " Bank Islam",
+            " Bank of America",
+            " Bank of China",
+            " BigPay",
+            " China Construction Bank",
+            " Citibank",
+            " Deutsche Bank",
+            " HSBC Bank",
+            " JP Morgan",
+            " MBSB Bank",
+            " MUFG Bank",
+            " Maybank",
+            " Public Bank",
+            " Paypal",
+            " RHB Bank"
+    };
 }

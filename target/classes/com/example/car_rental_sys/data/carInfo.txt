@@ -1,4 +1,4 @@
-carID:num=0,carModel:str=null,chassisNumber:str=0,carNumber:str=null,manufacturingDate:date=1970-01-01,AddedDate:datetime=2022-01-01 00:00:00,status:int=1
+carID:num=0,carModel:str=null,chassisNumber:str=0,carNumber:str=null,manufacturingDate:date=1970-01-01,addedDate:datetime=2022-01-01 00:00:00,status:int=1
 1,Huracan_EVO,15316515616,o2an3e,2021-01-01,2021-01-01 01:01:01,1
 2,Mclaren_720s,45165416,wh2i3te,2021-01-01,2021-01-01 01:01:01,1
 3,McLaren_620R,54465654615,o2a43ge,2021-01-01,2021-01-01 01:01:01,1

@@ -50,13 +50,14 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        //String fxmlName = "customerServicePage.fxml";
-
+        String fxmlName = "customerServicePage.fxml";
+        //String fxmlName = "addBankCardPage.fxml";
+        //
         stageInstance = stage;
 
-        //startStage(fxmlName);
+        startStage(fxmlName);
 
-        startApplication();
+        //startApplication();
 
         //testComponent(stage,css);
     }
