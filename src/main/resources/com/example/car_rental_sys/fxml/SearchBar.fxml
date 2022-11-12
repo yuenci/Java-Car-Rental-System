@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="35.0" prefWidth="465.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.SearchBarController">
+   <Pane prefHeight="35.0" prefWidth="370.0">
+      <TextField prefHeight="35.0" prefWidth="370.0" promptText="Search for ID, status or something..."
+                 style="-fx-background-color: #F7F8FA; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4; -fx-background-insets: 0; -fx-border-insets: 0;">
+         <padding>
+            <Insets left="40.0"/>
+         </padding>
+         <font>
+            <Font name="Arial" size="13.0"/>
+         </font>
+      </TextField>
+      <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../image/UI/searchIcon.png"/>
+      </ImageView>
+   </Pane>
+   <Pane layoutX="375.0" prefHeight="35.0" prefWidth="90.0">
+      <Button layoutX="5.0" mnemonicParsing="false" onMouseClicked="#filterBtnClicked" prefHeight="35.0"
+              prefWidth="80.0"
+              style="-fx-background-color: #ffffff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-color: #D9D9D9; -fx-border-radius: 4px; -fx-border-insets: 0; -fx-cursor: hand;"
+              text="Filter" textFill="#86909c">
+         <font>
+            <Font name="Arial" size="14.0"/>
+         </font>
+         <padding>
+            <Insets left="15.0"/>
+         </padding>
+      </Button>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="13.0" layoutY="9.0" pickOnBounds="true"
+                 preserveRatio="true" style="-fx-cursor: hand">
+         <Image url="@../image/UI/filterIcon.png"/>
+      </ImageView>
+   </Pane>
+</Pane>

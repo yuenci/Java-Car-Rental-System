@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane prefHeight="35.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <Label layoutX="397.0" layoutY="9.0" text="Completed">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label layoutX="321.0" layoutY="9.0" text="-RM4999" textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label layoutX="248.0" layoutY="10.0" text="14:34:50" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label layoutX="151.0" layoutY="10.0" text="Oct 30, 2022" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label layoutX="52.0" layoutY="10.0" text="Rental Fee" textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Pane layoutX="15.0" layoutY="6.0" prefHeight="24.0" prefWidth="24.0"
+         style="-fx-border-color: #D9D9D9; -fx-border-radius: 4;">
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true"
+                 preserveRatio="true"/>
+   </Pane>
+</Pane>

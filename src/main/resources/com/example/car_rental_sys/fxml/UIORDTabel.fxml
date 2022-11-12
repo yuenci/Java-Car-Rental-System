@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="30.0" prefWidth="460.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1">
+   <Label id="eleOrderID" layoutX="11.0" layoutY="6.0" text="334902461" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label id="eleCarName" layoutX="97.0" layoutY="6.0" text="Lamborghini" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label id="eleDate" layoutX="205.0" layoutY="6.0" text="Oct 30, 2022" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label id="elePrice" layoutX="295.0" layoutY="6.0" text="RM4999.00" textFill="#86909c">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <Label id="eleStatus" layoutX="385.0" layoutY="6.0" text="In Progress">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+</Pane>
