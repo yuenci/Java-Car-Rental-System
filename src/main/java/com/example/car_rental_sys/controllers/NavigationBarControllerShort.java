@@ -1,9 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
-import com.example.car_rental_sys.Tools;
-import com.example.car_rental_sys.ui_components.Loading;
-import javafx.event.ActionEvent;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,7 +71,7 @@ public class NavigationBarControllerShort {
 
     @FXML
     public void LogoClickEvent(){
-        Tools.changeScene("mainPage.fxml");
+        FXTools.changeScene("mainPage.fxml");
 
     }
 

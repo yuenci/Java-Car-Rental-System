@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SQL {
     public static ArrayList<String[]> query(String sql) {
-        Parser.validateSQL(sql);
+        if(Parser.enableSecurityMode) Parser.validateSQL(sql);
         if (Parser.checkSQLOperateType(sql).equals("SELECT")) {
             return new sqlSelect(sql).query();
         }
@@ -12,7 +12,7 @@ public class SQL {
     }
 
     public static boolean execute(String sql) {
-        Parser.validateSQL(sql);
+        if(Parser.enableSecurityMode) Parser.validateSQL(sql);
         String operateType = Parser.checkSQLOperateType(sql);
         switch (operateType) {
             case "DELETE":

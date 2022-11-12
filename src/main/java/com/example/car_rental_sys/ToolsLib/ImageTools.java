@@ -1,20 +1,46 @@
 package com.example.car_rental_sys.ToolsLib;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
+import javafx.embed.swing.SwingFXUtils;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
-        BufferedImage avatarImage = null;
         try {
-            avatarImage = ImageIO.read(new URL(fileUrl));
-            avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(),  avatarImage.getWidth());
+            BufferedImage  avatarImage = ImageIO.read(new URL(fileUrl));
+            return circleImage(avatarImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Image getCircleImages(Image image) {
+        BufferedImage  avatarImage = SwingFXUtils.fromFXImage(image, null);
+        return circleImage(avatarImage);
+    }
+
+    private static Image circleImage(BufferedImage avatarImage){
+        try {
+            avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(), avatarImage.getWidth());
+            if (avatarImage == null) {
+                throw new RuntimeException("avatarImage is null");
+            }
             int width = avatarImage.getWidth();
             BufferedImage formatAvatarImage = new BufferedImage(width, width, BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D graphics = formatAvatarImage.createGraphics();
@@ -33,15 +59,12 @@ public class ImageTools {
             graphics.drawOval(border1, border1, width - border1 * 2, width - border1 * 2);
             graphics.dispose();
 
-            BufferedImage bf = formatAvatarImage;
-            WritableImage wr = null;
-            if (bf != null) {
-                wr = new WritableImage(bf.getWidth(), bf.getHeight());
-                PixelWriter pw = wr.getPixelWriter();
-                for (int x = 0; x < bf.getWidth(); x++) {
-                    for (int y = 0; y < bf.getHeight(); y++) {
-                        pw.setArgb(x, y, bf.getRGB(x, y));
-                    }
+            WritableImage wr;
+            wr = new WritableImage(formatAvatarImage.getWidth(), formatAvatarImage.getHeight());
+            PixelWriter pw = wr.getPixelWriter();
+            for (int x = 0; x < formatAvatarImage.getWidth(); x++) {
+                for (int y = 0; y < formatAvatarImage.getHeight(); y++) {
+                    pw.setArgb(x, y, formatAvatarImage.getRGB(x, y));
                 }
             }
             return wr;
@@ -51,7 +74,7 @@ public class ImageTools {
         return null;
     }
 
-    private static BufferedImage scaleByPercentage(BufferedImage inputImage, int newWidth, int newHeight){
+    private static BufferedImage scaleByPercentage(BufferedImage inputImage, int newWidth, int newHeight) {
         try {
             int type = inputImage.getColorModel().getTransparency();
             int width = inputImage.getWidth();
@@ -65,9 +88,97 @@ public class ImageTools {
             graphics2d.dispose();
             return img;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Image getImageObjFromPath(String path) {
+        File file = new File(path);
+        try {
+            return new Image(file.toURI().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Image getUIImageObjFromName(String name) {
+        String rootPath = "src/main/resources/com/example/car_rental_sys/image/UI/";
+        return getImageObjFromPath(rootPath + name);
+    }
+
+    public static Image getImageObjFromUserID(int userID) {
+        String avatarRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        File file = new File(avatarRoot);
+        String path;
+        if (file.exists()) {
+            path = "file:" + avatarRoot;
+            return new Image(path);
+        } else {
+            if (Objects.equals(FXTools.getGenderFromUserID(userID), "female")) {
+                path = avatarRoot + "avatar_female.png";
+                return new Image(path);
+            }
+            path = avatarRoot + "avatar_male.png";
+            return getCircleImages(path);
+        }
+    }
+
+    public static void setImageShape(ImageView imageView, double radius) {
+        double imageWidth = imageView.getFitWidth();
+        double imageHeight = imageView.getFitHeight();
+
+        javafx.scene.shape.Rectangle rectangle = new Rectangle(imageWidth, imageHeight);
+        rectangle.setArcHeight(radius);
+        rectangle.setArcWidth(radius);
+        imageView.setClip(rectangle);
+    }
+
+    public static void setImageShapeToCircle(ImageView imageView) {
+        double imageWidth = imageView.getFitWidth();
+        double imageHeight = imageView.getFitHeight();
+        double circleRadius = imageHeight >= imageWidth ? imageWidth / 2 : imageHeight / 2;
+        Circle circle = new Circle(circleRadius, imageWidth / 2, imageHeight / 2);
+        imageView.setClip(circle);
+    }
+
+    public static Image getBadgeImage(int UserID) {
+        String[] badges = {"vip1.png", "vip2.png", "vip3.png", "vip4.png", "svip.png"};
+        int orderCount = DataTools.getCustomerOrderNum(UserID);
+
+        if (orderCount <= 5) {
+            return getUIImageObjFromName(badges[0]);
+        } else if (orderCount <= 10) {
+            return getUIImageObjFromName(badges[1]);
+        } else if (orderCount <= 15) {
+            return getUIImageObjFromName(badges[2]);
+        } else if (orderCount <= 20) {
+            return getUIImageObjFromName(badges[3]);
+        } else {
+            return getUIImageObjFromName(badges[4]);
+        }
+    }
+
+    public static Image getVIPCardImage(int UserID) {
+        String[] badges = {"vip1Card.png", "vip2Card.png", "vip3Card.png", "vip4Card.png", "svipCard.png"};
+        int orderCount = DataTools.getCustomerOrderNum(UserID);
+
+        if (orderCount <= 5) {
+            return getUIImageObjFromName(badges[0]);
+        } else if (orderCount <= 10) {
+            return getUIImageObjFromName(badges[1]);
+        } else if (orderCount <= 15) {
+            return getUIImageObjFromName(badges[2]);
+        } else if (orderCount <= 20) {
+            return getUIImageObjFromName(badges[3]);
+        } else {
+            return getUIImageObjFromName(badges[4]);
+        }
+    }
+
+    public static Image getAvatarFromUserID(int userID){
+        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/"+userID+".png");
     }
 }

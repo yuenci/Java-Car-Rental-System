@@ -1,7 +1,12 @@
 package com.example.car_rental_sys;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.NetTools;
+import com.example.car_rental_sys.ToolsLib.SelfTestTools;
 import com.example.car_rental_sys.controllers.UIPaginationController;
-import com.example.car_rental_sys.ui_components.UIFilter;
+import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -14,6 +19,7 @@ import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 // https://github.com/users/yuenci/projects/3
 
@@ -22,15 +28,16 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() throws Exception {
-        registerJxBrowserLicence();
-        //StartHttpServer();
-
+        NetTools.registerJxBrowserLicence();
+        //NetTools.StartHttpServer();
+        //dataFilesDecrypt();
+        Test.test();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        String css = this.getClass().getResource("style/pagination.css").toExternalForm();
-//        String fxmlName = "mainPage.fxml";
+        String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
+        //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -43,11 +50,15 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        String fxmlName = "showOrderComponent.fxml";
-
+        String fxmlName = "customerServicePage.fxml";
+        //String fxmlName = "addBankCardPage.fxml";
+        //String fxmlName = "adminServicePage.fxml";
+        //
         stageInstance = stage;
 
         startStage(fxmlName);
+
+        //startApplication();
 
         //testComponent(stage,css);
     }
@@ -58,14 +69,10 @@ public class Application extends javafx.application.Application {
         //set the resource style sheets
         UIPaginationController test = new UIPaginationController();
 
-        UIFilter filter = new UIFilter();
-        filter.setLayoutX(0);
-        filter.setLayoutY(45);
-
         Pane pane = new Pane();
         pane.setPrefSize(500,500);
         //pane.getChildren().addAll(pagination);
-        pane.getChildren().addAll(pagination2,filter);
+        pane.getChildren().addAll(pagination2);
         Scene scene = new Scene(pane,500,500);
         scene.getStylesheets().add(css);
         stage.setTitle("Test Component");
@@ -79,7 +86,7 @@ public class Application extends javafx.application.Application {
         if (fxmlName.contains("Page")) {
             startPrimaryStage(fxmlName) ;
         } else {
-            Tools.componentTest(fxmlName,800,700);
+            FXTools.componentTest(fxmlName,800,700);
         }
 
     }
@@ -97,35 +104,62 @@ public class Application extends javafx.application.Application {
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/logoIcon.png"));
-        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+    }
+
+
+    /*
+    star loading page
+
+    init data
+    - start http server
+    - decrypt data files
+    - Register JxBrowser Licence
+
+
+    check
+    - backend working status - danger
+    - encrypt data files status - danger
+    - JxBrowser Licence status - danger
+    - network connection - warning
+    - data files integrity - danger
+
+    render to login page
+     */
+
+    private static void startApplication() throws IOException {
+        //FXTools.startLoadingStage();
+        //FXTools.showNetworkErrorPage();
+        FXTools.showErrorsPage();
+
+        SelfTestTools.executeSelfTest();
+        //FXTools.showDiagnosticDataPage();
+
+        // init program
+        //// start the http server
+//        try {
+//            //NetTools.StartHttpServer();
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+//        DataTools.decryptDataFiles();
+//        NetTools.registerJxBrowserLicence();
+//        // self checking
+//
+//        for (int i = 0; i <1 ; i++) {
+//            SelfTestTools.executeSelfTest();
+//        }
+
+
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-
-    public static void StartHttpServer() {
-        Tools.StartHttpServer();
-    }
-
-    private static void registerJxBrowserLicence(){
-        System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
-    }
-
-
-    private  static  void orderDetails(Stage stage,String fxmlfile) throws IOException {
-        String fxmlName = "OrderDetailsComponent.fxml";
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
-        stage.setTitle("orderDetails!");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
 
 }

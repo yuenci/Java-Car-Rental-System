@@ -1,11 +1,10 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
-import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.*;
+import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.sqlParser.SQL;
-import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import com.example.car_rental_sys.ui_components.OrderCard;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.function.Function;
 
 public class DriverMainPageController extends  Controller{
     @FXML
@@ -37,7 +35,7 @@ public class DriverMainPageController extends  Controller{
             renterName,renterPost,processTipLabel,carNumberLabel;
 
     @FXML
-    public ImageView carImageView,renterAvatar;
+    public ImageView carImageView,renterAvatar,avatarImageView;
 
     @FXML
     Pane mainPane, closeSideBarPane, phonePane, messagePane, sidePane ,processTipPane,processImagePane;
@@ -46,6 +44,8 @@ public class DriverMainPageController extends  Controller{
     Pane item1, item2, item3, item4, item5, item6;
 
     private String renterNameCache;
+
+    private Driver driver = (Driver) StatusContainer.currentUser;
 
 
     private int[] orderIDs;
@@ -154,7 +154,7 @@ public class DriverMainPageController extends  Controller{
 
     @FXML
     public void phoneClick() {
-        Tools.callWhatsApp("601110715226");
+        PlatformTools.callWhatsApp("601110715226");
     }
 
     private void initScrollPaneEvent() {
@@ -190,9 +190,17 @@ public class DriverMainPageController extends  Controller{
 
     private void initSideBar() {
        // label set text align center
+        postLabel.setText(StringTools.capitalizeFirstLetter(driver.getPost()));
         postLabel.setAlignment(Pos.CENTER);
+
+        nameLabel.setText(StringTools.capitalizeFirstLetter(driver.getUserName()));
         nameLabel.setAlignment(Pos.CENTER);
+
         carNumberLabel.setAlignment(Pos.CENTER);
+
+        avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
+        ImageTools.setImageShapeToCircle(avatarImageView);
+
     }
 
     private void initMenuEvent() {
@@ -213,7 +221,7 @@ public class DriverMainPageController extends  Controller{
         });
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
-            Tools.changeScene("mainPage.fxml");
+            FXTools.changeScene("mainPage.fxml");
         });
 
     }
@@ -245,8 +253,8 @@ public class DriverMainPageController extends  Controller{
         setLocationInfo();
     }
     private void setMapinfo(){
-        String start = "'" + Tools.replaceSpacialChar(currentOrderCard.order.parkingLocation) + "'";
-        String end = "'" +Tools.replaceSpacialChar(currentOrderCard.order.pickUpLocation) + "'";
+        String start = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.parkingLocation) + "'";
+        String end = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.pickUpLocation) + "'";
 
         String jsFunc = "changeDirections(" + start+","+  end +")";
         //System.out.println(jsFunc);
@@ -263,11 +271,12 @@ public class DriverMainPageController extends  Controller{
         this.carNumberLabel.setText(currentOrderCard.carNumber);
 
         String url= "src/main/resources/com/example/car_rental_sys/image/cars/" + currentOrderCard.carModel + ".png";
-        this.carImageView.setImage(Tools.getImageObjFromPath(url));
+        this.carImageView.setImage(ImageTools.getImageObjFromPath(url));
     }
 
     private void setRenterInfo(){
-        this.renterAvatar.setImage(Tools.getImageObjFromUserID(currentOrderCard.userID));
+        this.renterAvatar.setImage(ImageTools.getImageObjFromUserID(currentOrderCard.userID));
+        ImageTools.setImageShapeToCircle(this.renterAvatar);
 
         String[] nameAndPost = DataTools.getRenterNameAndPostFromUserID(currentOrderCard.userID);
         assert nameAndPost != null;
@@ -336,7 +345,7 @@ public class DriverMainPageController extends  Controller{
     }
 
     private void changeToDriveMode(){
-        Tools.changeScene("drivingModePage.fxml");
+        FXTools.changeScene("drivingModePage.fxml");
     }
 
 }

@@ -1,214 +1,77 @@
 package com.example.car_rental_sys.orm;
 
 import com.example.car_rental_sys.ConfigFile;
-import com.example.car_rental_sys.sqlParser.FileOperate;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.funtions.FileOperate;
+import javafx.scene.image.Image;
 
-public class Customer {
-    /*
-
-
-userID:num=0,
-userName:str=null,
-userGroup:str=customer,
-post:str=null,
-securityProblem:str=null,
-securityAnswer:str=null,
-birthday:str=null,
-gender:str=null,
-Country:str=null,
-phone:str=0123456789,
-email:str=rent@mail.com,
-address:str=null,
-about:str=null,
-regTime:str=null
-
- */
-    private int userID = 0;
-    private String userFirstName = "null";
-    private String userLastName = "null";
-    private String password = "null";
-    private String userGroup = "customer";
-    private String post = "null";
-    private String securityProblem = "null";
-    private String securityAnswer = "null";
-    private String birthday = "null";
-    private String gender = "null";
-    private String country = "null";
-    private String idNumber = "null";
-    private String phone = "null";
-    private String email = "null";
-    private String address = "null";
-    private String about = "null";
-    private String regTime = "null";
+public class Customer extends User{
+    private int  orderNum;
+    private String[] bankCardList;
+    private Image vipBadge;
+    private Image vipCard;
 
     public Customer() {
+        super();
     }
 
     public Customer(String email) {
-        this.email = email;
-        //initCustomer();
+        super(email);
+        initCustomerData();
+    }
+
+    private void initCustomerData() {
+        this.orderNum = DataTools.getCustomerOrderNum(userID);
+        //System.out.println("orderNum: " + orderNum);
+        this.bankCardList = DataTools.getCustomerBankCardsList(userID);
+        this.vipBadge = ImageTools.getBadgeImage(userID);
+        this.vipCard =ImageTools.getVIPCardImage(userID);
     }
 
     public Customer(String userFirstName, String userLastName, String password, String userGroup, String post,
                     String securityProblem, String securityAnswer, String birthday, String gender, String country,
-                    String idNumber, String phone, String email, String address, String about, String regTime) {
-        this.userFirstName = userFirstName;
-        this.userLastName = userLastName;
-        this.userGroup = userGroup;
-        this.post = post;
-        this.securityProblem = securityProblem;
-        this.securityAnswer = securityAnswer;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.country = country;
-        this.idNumber = idNumber;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.about = about;
-        this.regTime = regTime;
-    }
-    public int getUserID() {
-        return userID;
+                    String DLNumber, String phone, String email, String address, String about, String regTime) {
+        super(userFirstName,userLastName,password,userGroup,post,securityProblem,securityAnswer,birthday,gender,country,DLNumber,phone,email,address,about,regTime);
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public int getOrderNum() {
+        return orderNum;
     }
 
-    public String getUserFirstName() {
-        return userFirstName;
+    public void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
     }
 
-    public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;
+    public Image getAvatar() {
+        return avatar;
     }
 
-    public String getUserLastName() {
-        return userLastName;
+    public void setAvatar(Image avatar) {
+        this.avatar = avatar;
     }
 
-    public void setUserLastName(String userLastName) {
-        this.userLastName = userLastName;
+    public Image getVipBadge() {
+        return vipBadge;
     }
 
-    public String getPassword() {
-        return password;
+    public void setVipBadge(Image vipBadge) {
+        this.vipBadge = vipBadge;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public Image getVipCard() {
+        return vipCard;
     }
 
-    public String getUserGroup() {
-        return userGroup;
+    public void setVipCard(Image vipCard) {
+        this.vipCard = vipCard;
     }
 
-    public void setUserGroup(String userGroup) {
-        this.userGroup = userGroup;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public String getSecurityProblem() {
-        return securityProblem;
-    }
-
-    public void setSecurityProblem(String securityProblem) {
-        this.securityProblem = securityProblem;
-    }
-
-    public String getSecurityAnswer() {
-        return securityAnswer;
-    }
-
-    public void setSecurityAnswer(String securityAnswer) {
-        this.securityAnswer = securityAnswer;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
-    }
-
-    public String getRegTime() {
-        return regTime;
-    }
-
-    public void setRegTime(String regTime) {
-        this.regTime = regTime;
-    }
-
-    public boolean storeCustomerInfo(){
-        String userID = String.valueOf(this.userID);
+        public boolean storeCustomerInfo(){
+        String userID = String.valueOf(super.getUserID());
         String[] userinfo= new String[]{
             userID,  userFirstName+"-"+userLastName,   userGroup,  post,   securityProblem,   securityAnswer,
-                birthday,gender,country,idNumber,phone,email,address,about,regTime
+                birthday,gender,country,DLNumber,phone,email,address,about,regTime
         };
         String userAndPassword = userID +"," + password ;
 
@@ -224,3 +87,4 @@ regTime:str=null
     }
 }
 
+//  TODO: add bankCard list property

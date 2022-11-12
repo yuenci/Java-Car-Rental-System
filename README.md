@@ -72,6 +72,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [JxBrowser](https://www.teamdev.com/jxbrowser) - a Chromium web browser for javaFX
 * [Apache Commons Codec](https://mvnrepository.com/artifact/commons-codec/commons-codec) - Md5 encryption
 * [vue-monoplasty-slide-verify](https://github.com/monoplasty/vue-monoplasty-slide-verify) - slide verify 
+* [IP API](https://ip-api.com/) - IP Geolocation API
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

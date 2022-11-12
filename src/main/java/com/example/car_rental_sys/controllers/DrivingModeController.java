@@ -1,6 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.PlatformTools;
+import com.example.car_rental_sys.ToolsLib.StringTools;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -9,10 +11,7 @@ import com.teamdev.jxbrowser.js.ConsoleMessage;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 
@@ -86,6 +85,7 @@ public class DrivingModeController {
 
         //execute JavaScript code in the context of the loaded web page
         String origin = "'Asia Pacific University of Technology & Innovation'";
+        origin = StringTools.replaceSpacialChar(origin);
         String destination = "'endah regal condo'";
 
         String jsArgs = "getDirections(" + origin + "," + destination + ")";
@@ -119,13 +119,13 @@ public class DrivingModeController {
     @FXML
     private void backToDriverMainPage() {
         System.out.println("backToDriverMainPage");
-        Tools.changeScene("driverMainPage.fxml");
+        FXTools.changeScene("driverMainPage.fxml");
     }
 
     @FXML
     private void backToMainPage() {
         System.out.println("backToMainPage");
-        Tools.changeScene("mainPage.fxml");
+        FXTools.changeScene("mainPage.fxml");
     }
 
     @FXML
@@ -137,7 +137,7 @@ public class DrivingModeController {
     @FXML
     private void phoneIconClicked() {
         System.out.println("phoneIconClicked");
-        Tools.callWhatsApp("601110715226");
+        PlatformTools.callWhatsApp("601110715226");
     }
 
     private void setVolume(){

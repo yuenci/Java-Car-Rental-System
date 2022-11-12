@@ -2,6 +2,8 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.CommentCard;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.application.Platform;
@@ -117,11 +119,11 @@ public class CarDetailsPageController {
             String brand = SQL.query(sql).get(0)[0];
             //System.out.println(brand);
 
-            Image image = Tools.getImageObjFromPath(logoFileRoot + brand + "-logo.png");
+            Image image = ImageTools.getImageObjFromPath(logoFileRoot + brand + "-logo.png");
             if(image != null){
                 logImageView.setImage(image);
             }else{
-                logImageView.setImage(Tools.getImageObjFromPath(logoFileRoot + "default-logo.png"));
+                logImageView.setImage(ImageTools.getImageObjFromPath(logoFileRoot + "default-logo.png"));
             }
         });
         thread.start();
@@ -175,18 +177,18 @@ public class CarDetailsPageController {
 
     private void backBtnClickEvent(){
         backBtnImageView.setOnMouseEntered(event -> {
-            Image image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-blue.png");
+            Image image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-blue.png");
             backBtnImageView.setImage(image);
             backBtnImageView.getScene().setCursor(javafx.scene.Cursor.HAND);
         });
 
         backBtnImageView.setOnMouseExited(event -> {
-            Image image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-white.png");
+            Image image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/back-white.png");
             backBtnImageView.setImage(image);
             backBtnImageView.getScene().setCursor(javafx.scene.Cursor.DEFAULT);
         });
 
-        backBtnImageView.setOnMouseClicked(event -> Tools.changeScene("carsListPage.fxml"));
+        backBtnImageView.setOnMouseClicked(event -> FXTools.changeScene("carsListPage.fxml"));
 
 
     }
@@ -270,7 +272,7 @@ public class CarDetailsPageController {
             }
         }
 
-        Tools.changeScene("carDetailsPage.fxml");
+        FXTools.changeScene("carDetailsPage.fxml");
     }
 
     @FXML

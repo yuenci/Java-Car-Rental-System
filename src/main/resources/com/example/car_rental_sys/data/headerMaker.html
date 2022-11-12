@@ -41,7 +41,8 @@
             margin: 20px;
         }
 
-        #makeBtn {
+        #makeBtn,
+        #makeBtn1 {
             margin-top: 20px;
             margin-left: 40px;
             background-color: #4CAF50;
@@ -53,37 +54,128 @@
             font-size: 16px;
         }
 
-        #makeBtn:hover {
+        Button:hover {
             cursor: pointer;
         }
 
-        #result {
+        .resaultArea {
             margin-top: 40px;
-            width: 900px;
+            width: 750px;
             margin-left: 40px;
             border: 1px solid black;
             padding: 10px 50px;
+            word-wrap: break-word;
+        }
+
+        #headerInput {
+            margin-left: 40px;
+            margin-top: 20px;
+            width: 850px;
+            height: 100px;
+            display: block;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+        .app {
+            background-color: #dee2e6;
+            border-radius: 30px;
+            margin: 20px;
+            box-sizing: border-box;
+            padding-right: 40px;
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            margin-left: 40px;
+        }
+
+        #tableView {
+            margin-left: 40px;
+            margin-top: 20px;
+            width: 850px;
+            text-align: center;
+        }
+
+        /* thead {
+            border: solid #585858;
+            border-width: 1px 1px 1px 1px;
+        } */
+
+        td,
+        th {
+            border: solid #585858;
+            border-width: 0px 1px 1px 0px;
+            padding: 10px 0px;
+        }
+
+        table {
+            border: solid #585858;
+            border-width: 1px 1px 0px 1px;
         }
     </style>
 </head>
 
 <body>
-    <div id="input-container">
-        <div class="field">
-            <input type="text" placeholder="Field name">
-            <select name="FieldType" id="fieldType">
-                <option value="text">String</option>
-                <option value="number">Number</option>
-                <option value="date">Date</option>
-                <option value="checkbox">DateTime</option>
-            </select>
-            <input type="text" placeholder="Field default value">
-            <span class="addBtn">➕</span>
-            <span class="removeBtn">➖</span>
+    <div id="container">
+        <div id="app1" class="app">
+            <h3>Header Generate</h3>
+            <div id="input-container">
+                <div class="field">
+                    <input type="text" placeholder="Field name">
+                    <select name="FieldType" id="fieldType">
+                        <option value="text">String</option>
+                        <option value="number">Number</option>
+                        <option value="date">Date</option>
+                        <option value="checkbox">DateTime</option>
+                    </select>
+                    <input type="text" placeholder="Field default value">
+                    <span class="addBtn">➕</span>
+                    <span class="removeBtn">➖</span>
+                </div>
+            </div>
+            <Button id="makeBtn">Generate</Button>
+            <div id="result"></div>
+        </div>
+
+        <div id="app2" class="app">
+            <h3>Header Parser</h3>
+            <textarea name="" id="headerInput"></textarea>
+            <Button id="makeBtn1">Generate</Button>
+            <h3>Default view</h3>
+            <div id="result1" class="resaultArea"></div>
+            <!-- table -->
+            <h3>Table view</h3>
+            <!-- creat a table -->
+            <table id="tableView">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Default value</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+
+                </tbody>
+            </table>
+            <h3>Field Name view</h3>
+            <div id="result2" class="resaultArea"></div>
+            <h3>Property view</h3>
+            <div id="result3" class="resaultArea"></div>
+
+            <h3>Constructors view</h3>
+            <div id="result4" class="resaultArea"></div>
         </div>
     </div>
-    <Button id="makeBtn">Generate</Button>
-    <div id="result"></div>
+
+
 
     <script>
         let makeBtnObj = document.getElementById("makeBtn");
@@ -162,6 +254,92 @@
             }
 
         }
+
+        let makeBtnObj1 = document.getElementById("makeBtn1");
+        let resultPObj1 = document.getElementById("result1");
+        let resultPObj2 = document.getElementById("result2");
+        let resultPObj3 = document.getElementById("result3");
+        let resultConstructor = document.getElementById("result4");
+        let tableViewObj = document.getElementById("tableBody");
+        console.log(tableViewObj);
+
+
+        makeBtnObj1.addEventListener("click", generateResualt1)
+
+        function generateResualt1() {
+            resultPObj1.innerHTML = "";
+            tableViewObj.innerHTML = "";
+
+            value = document.getElementById("headerInput").value;
+            let fieldList = value.split(",");
+            if (fieldList.length === 0) {
+                return;
+            }
+
+            let fieldNames = [];
+            let constructorArgs = [];
+            for (let i = 0; i < fieldList.length; i++) {
+                let fieldText = fieldList[i];
+
+
+                let fieldNameTypeValueList = fieldText.split(":")[0];
+                let fieldName = fieldNameTypeValueList;
+                let fielTypedValue = fieldText.split(":")[1];
+                let fieldType = fielTypedValue.split("=")[0];
+                let fieldDefaultValue = fielTypedValue.split("=")[1];
+
+
+                fieldNames.push(fieldName);
+
+
+                let div = document.createElement("div");
+                div.innerHTML = fieldText;
+                resultPObj1.appendChild(div);
+
+                let tr = document.createElement("tr");
+                tr.innerHTML = `
+                <td>${fieldName}</td>
+                <td>${fieldType}</td>
+                <td>${fieldDefaultValue}</td>
+                `;
+                tableViewObj.appendChild(tr);
+
+                let div2 = document.createElement("div");
+                let propertyFromTexts = getPropertyFromText(fieldText);
+                div2.innerHTML = propertyFromTexts;
+                resultPObj3.appendChild(div2);
+
+
+                constructorArgs.push(propertyFromTexts.replace("private ", "").replace(";", ""));
+            }
+
+
+            // join
+            let res2 = fieldNames.join(",");
+            resultPObj2.innerHTML = res2;
+
+            let res3 = constructorArgs.join(", ");
+            resultConstructor.innerHTML = res3;
+        }
+
+        function getPropertyFromText(fieldText) {
+            name = fieldText.split(":")[0];
+            type = fieldText.split(":")[1].split("=")[0];
+
+            javaType = "";
+            if (type == "str") {
+                javaType = "String";
+            } else if (type == "num") {
+                javaType = "int";
+            } else if (type == "date") {
+                javaType = "Date";
+            } else if (type == "datetime") {
+                javaType = "Date";
+            }
+
+            return `private ${javaType} ${name};`;
+        }
+
     </script>
 </body>
 

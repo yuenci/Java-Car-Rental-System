@@ -1,8 +1,6 @@
 package com.example.car_rental_sys.ui_components;
 
-import com.example.car_rental_sys.Application;
-import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.JavaObject;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.callback.InjectJsCallback;
@@ -11,9 +9,6 @@ import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
 import com.teamdev.jxbrowser.js.JsObject;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -22,16 +17,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.function.Function;
-
-import java.util.Objects;
 
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
@@ -120,8 +110,8 @@ public class BrowserFrame {
         closeIcon.setFitWidth(20);
         closeIcon.setFitHeight(20);
 
-        Image image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/closeIconFrame.png");
-        Image imageHover = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/closeIconHoverFrame.png");
+        Image image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/closeIconFrame.png");
+        Image imageHover = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/closeIconHoverFrame.png");
 
         closeIcon.setImage(image);
 

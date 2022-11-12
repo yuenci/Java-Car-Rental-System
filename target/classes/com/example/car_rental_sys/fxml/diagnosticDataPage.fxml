@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="mainPane" prefHeight="800.0" prefWidth="550.0" style="-fx-background-color: white;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.DiagnosticDataController">
+   <children>
+      <Button fx:id="okBtn" layoutX="225.0" layoutY="751.0" mnemonicParsing="false" onMouseClicked="#okBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="OK" />
+      <Line endX="284.5" layoutX="266.0" layoutY="88.0" startX="-266.0" stroke="#dddddd" />
+      <Pane fx:id="dropPane" prefHeight="85.0" prefWidth="550.0">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="76.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/UI/logoCircle.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="134.0" layoutY="28.0" text="Diagnostic data">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane fx:id="errorCardsScrollPane" layoutX="38.0" layoutY="88.0" prefHeight="648.0" prefWidth="475.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+   </children>
+</Pane>

@@ -1,11 +1,10 @@
 package com.example.car_rental_sys.controllers;
 
-import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.BankCard;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.sqlParser.SQL;
-import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -19,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
@@ -146,7 +144,7 @@ public class PaymentController {
 
     @FXML
     private void viewCarDetailBtnClickEvent(){
-       Tools.changeScene("carDetailsPage.fxml");
+       FXTools.changeScene("carDetailsPage.fxml");
     }
 
     private void textAlignment(){
@@ -155,7 +153,7 @@ public class PaymentController {
 
     @FXML
     private void goToCarListPage(){
-        Tools.changeScene("carsListPage.fxml");
+        FXTools.changeScene("carsListPage.fxml");
     }
 
     @FXML
@@ -194,9 +192,9 @@ public class PaymentController {
 
         Image image = null;
         if(cardType.equalsIgnoreCase("visa")){
-            image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/visa.png");
+            image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/visa.png");
         }else if(cardType.equalsIgnoreCase("mastercard")){
-            image = Tools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/mastercard.png");
+            image = ImageTools.getImageObjFromPath("src/main/resources/com/example/car_rental_sys/image/UI/mastercard.png");
         }
         bankcardImage.setImage(image);
     }
@@ -249,7 +247,7 @@ public class PaymentController {
             if(message.equalsIgnoreCase("consentButton clicked")){
                 Platform.runLater(() -> {
                     primaryStage.close();
-                    Tools.changeScene("paySuccessPage.fxml");
+                    FXTools.changeScene("paySuccessPage.fxml");
                 });
             }else if(message.equals("login success")){
                 Platform.runLater(() -> primaryStage.setTitle("PayPal Checkout"));
@@ -293,7 +291,7 @@ public class PaymentController {
             if(message.equalsIgnoreCase("payBtn click")){
                 Platform.runLater(() -> {
                     primaryStage.close();
-                    Tools.changeScene("paySuccessPage.fxml");
+                    FXTools.changeScene("paySuccessPage.fxml");
                 });
             }else if(message.equals("backBtn click")){
                 Platform.runLater(primaryStage::close);

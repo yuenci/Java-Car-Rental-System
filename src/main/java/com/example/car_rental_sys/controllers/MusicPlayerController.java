@@ -96,7 +96,7 @@ public class MusicPlayerController {
         imageView.setClip(rectangle);
 
         String name = getNameFromPath(musicName);
-        System.out.println("name:" + name);
+        //System.out.println("name:" + name);
         String songName = name.split("-")[0].replace("_"," ");
         String songster = name.split("-")[1].replace("_"," ");
         songsterLabel.setText(songName);
@@ -112,7 +112,7 @@ public class MusicPlayerController {
     }
 
     public  ArrayList<String> getFiles(String path) {
-        ArrayList<String> files = new ArrayList<String>();
+        ArrayList<String> files = new ArrayList<>();
         File file = new File(path);
         File[] tempList = file.listFiles();
 
@@ -152,13 +152,13 @@ public class MusicPlayerController {
             pauseIcon.setImage(paused);
             player.pause();
             stopProcessBar();
-            System.out.println("pause");
+            //System.out.println("pause");
         }else{
             // do play
             pauseIcon.setImage(playing);
             player.play();
             addProcessBar();
-            System.out.println("play");
+            //System.out.println("play");
         }
         //System.out.println(path);
     }
