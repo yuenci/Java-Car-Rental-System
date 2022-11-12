@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #container {
+            background-color: #111111;
+            width: 1280px;
+            height: 732px;
+            box-sizing: border-box;
+        }
+
+        #textContainer {
+            position: relative;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 40px;
+            color: #ffffff;
+            font-family: "Microsoft Tai Le";
+            z-index: 999;
+        }
+
+        #imageContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="imageContainer"></div>
+        <div id="textContainer">
+            <h1>The interesection</h1>
+            <h1>between design, programming</h1>
+            <h1>and business</h1>
+        </div>
+
+    </div>
+    <script>
+        // config
+        const imageNumber = 20;
+        const times = 20;
+        ////
+
+
+
+        let mousePosition = {
+            x: 0,
+            y: 0
+        }
+
+        let prev = "";
+        let currentTimes = 0;
+        let imageNoList = getRandomIntListWithoutRepeat(1, imageNumber, imageNumber);
+
+        const imageContainer = document.getElementById("imageContainer");
+        const textContainer = document.getElementById("textContainer");
+
+
+
+        container.addEventListener("mousemove", (e) => {
+            if (currentTimes >= times) return;
+
+            let now = Date.now()
+            if (prev != "" && now - prev < 200) return;
+
+            // log mouse position
+            mousePosition.x = event.clientX;
+            mousePosition.y = event.clientY;
+            if (mousePosition.x > 1280 || mousePosition.y > 732) return;
+
+
+            // add image to position
+            addImage();
+            prev = now;
+            currentTimes++;
+        });
+
+
+
+        function addImage() {
+            const image = document.createElement("img");
+            image.src = getImageUrl();
+
+            const originWidth = image.width;
+            const originHeight = image.height;
+
+
+
+            if (originWidth[0] > originHeight[1]) {
+                // imageView.setFitHeight(230);
+                // imageView.setFitWidth(230 * size[0] / size[1]);
+
+                image.style.height = "230px";
+                image.style.width = 230 * originWidth / originHeight + "px";
+
+            } else {
+                // imageView.setFitWidth(280);
+                // imageView.setFitHeight(280 * size[1] / size[0]);
+
+                image.style.width = "280px";
+                image.style.height = 280 * originHeight / originWidth + "px";
+            }
+
+            image.style.position = "absolute";
+            image.style.left = mousePosition.x + "px";
+            image.style.top = mousePosition.y + "px";
+            // image.style.width = "100px";
+            // image.style.height = "100px";
+            image.style.pointerEvents = "none";
+            imageContainer.appendChild(image);
+        }
+
+        function getImageUrl() {
+            let imageNo = imageNoList[currentTimes];
+            return "./image/" + imageNo + ".jpg";
+        }
+
+        function randomIntFromInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function getRandomIntListWithoutRepeat(min, max, count) {
+            let list = [];
+            while (list.length < count) {
+                let random = randomIntFromInterval(min, max);
+                if (!list.includes(random)) {
+                    list.push(random);
+                }
+            }
+            return list;
+        }
+    </script>
+</body>
+
+</html>

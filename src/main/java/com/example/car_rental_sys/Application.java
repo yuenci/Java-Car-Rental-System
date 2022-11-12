@@ -54,7 +54,7 @@ public class Application extends javafx.application.Application {
 //        String fxmlName = "addBankCardPagSe.fxml";
 //        String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
-        String fxmlName = "aboutUsPage.fxml";
+        String fxmlName = "aboutUsPage1.fxml";
         stageInstance = stage;
 
         startStage(fxmlName);

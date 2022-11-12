@@ -14,9 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class AboutUsPageController {
     //configuration
@@ -27,6 +30,9 @@ public class AboutUsPageController {
     @FXML
     Pane paneContainer,wordsContainer;
 
+    @FXML
+    WebView webView;
+
     //private double[] mouseCurrentCoordinate = new double[2];
 
     @FXML
@@ -34,6 +40,14 @@ public class AboutUsPageController {
         //logMouseCoordinate();
         //startDetect();
         //addImage();
+        initWeb();
+    }
+
+    private void  initWeb(){
+        // load web page webview
+        WebEngine engine = webView.getEngine();
+        URL url = this.getClass().getResource("/com/example/car_rental_sys/html/aboutUs/index.html");
+        engine.load(url.toString());
     }
 
 //    private void logMouseCoordinate() {
