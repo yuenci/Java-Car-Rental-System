@@ -69,3 +69,8 @@
 #customerSideBarUpdateBtn:hover{
     -fx-cursor: hand;
 }
+
+
+.barActive{
+    -fx-background-color: #FFB84D !important;
+}

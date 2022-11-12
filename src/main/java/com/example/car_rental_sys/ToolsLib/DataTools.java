@@ -255,6 +255,31 @@ public class DataTools {
         System.out.println(sql);
         return SQL.execute(sql);
     }
+
+    public   static  int getCustomerOrderNum(int customerID){
+        String sql = "select count(orderID) from orders where userID = " + customerID;
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return 0;
+        } else {
+            return  Double.valueOf( result.get(0)[0]).intValue();
+        }
+    }
+
+    public  static  String[] getCustomerBankCardsList(int customerID){
+        String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return null;
+        } else {
+            String[] bankCardsList = new String[result.size()];
+            for (int i = 0; i < result.size(); i++) {
+                bankCardsList[i] = result.get(i)[0];
+            }
+            return bankCardsList;
+        }
+    }
 }
 
 // TODO: No comma "," content is allowed.

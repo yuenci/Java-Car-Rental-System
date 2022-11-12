@@ -58,10 +58,7 @@
             cursor: pointer;
         }
 
-        #result,
-        #result1,
-        #result2,
-        #result3 {
+        .resaultArea {
             margin-top: 40px;
             width: 750px;
             margin-left: 40px;
@@ -152,7 +149,7 @@
             <textarea name="" id="headerInput"></textarea>
             <Button id="makeBtn1">Generate</Button>
             <h3>Default view</h3>
-            <div id="result1"></div>
+            <div id="result1" class="resaultArea"></div>
             <!-- table -->
             <h3>Table view</h3>
             <!-- creat a table -->
@@ -169,9 +166,12 @@
                 </tbody>
             </table>
             <h3>Field Name view</h3>
-            <div id="result2"></div>
+            <div id="result2" class="resaultArea"></div>
             <h3>Property view</h3>
-            <div id="result3"></div>
+            <div id="result3" class="resaultArea"></div>
+
+            <h3>Constructors view</h3>
+            <div id="result4" class="resaultArea"></div>
         </div>
     </div>
 
@@ -259,6 +259,7 @@
         let resultPObj1 = document.getElementById("result1");
         let resultPObj2 = document.getElementById("result2");
         let resultPObj3 = document.getElementById("result3");
+        let resultConstructor = document.getElementById("result4");
         let tableViewObj = document.getElementById("tableBody");
         console.log(tableViewObj);
 
@@ -276,6 +277,7 @@
             }
 
             let fieldNames = [];
+            let constructorArgs = [];
             for (let i = 0; i < fieldList.length; i++) {
                 let fieldText = fieldList[i];
 
@@ -303,14 +305,21 @@
                 tableViewObj.appendChild(tr);
 
                 let div2 = document.createElement("div");
-                div2.innerHTML = getPropertyFromText(fieldText);
+                let propertyFromTexts = getPropertyFromText(fieldText);
+                div2.innerHTML = propertyFromTexts;
                 resultPObj3.appendChild(div2);
+
+
+                constructorArgs.push(propertyFromTexts.replace("private ", "").replace(";", ""));
             }
 
 
             // join
             let res2 = fieldNames.join(",");
             resultPObj2.innerHTML = res2;
+
+            let res3 = constructorArgs.join(", ");
+            resultConstructor.innerHTML = res3;
         }
 
         function getPropertyFromText(fieldText) {

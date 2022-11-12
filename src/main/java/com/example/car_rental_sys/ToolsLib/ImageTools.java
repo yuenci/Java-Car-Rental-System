@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.ToolsLib;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -13,6 +14,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ImageTools {
@@ -20,7 +22,7 @@ public class ImageTools {
         BufferedImage avatarImage;
         try {
             avatarImage = ImageIO.read(new URL(fileUrl));
-            avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(),  avatarImage.getWidth());
+            avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(), avatarImage.getWidth());
             if (avatarImage == null) {
                 throw new RuntimeException("avatarImage is null");
             }
@@ -57,7 +59,7 @@ public class ImageTools {
         return null;
     }
 
-    private static BufferedImage scaleByPercentage(BufferedImage inputImage, int newWidth, int newHeight){
+    private static BufferedImage scaleByPercentage(BufferedImage inputImage, int newWidth, int newHeight) {
         try {
             int type = inputImage.getColorModel().getTransparency();
             int width = inputImage.getWidth();
@@ -71,7 +73,7 @@ public class ImageTools {
             graphics2d.dispose();
             return img;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -88,8 +90,8 @@ public class ImageTools {
     }
 
     public static Image getUIImageObjFromName(String name) {
-        String rootPath ="src/main/resources/com/example/car_rental_sys/image/UI/";
-        return  getImageObjFromPath(rootPath + name);
+        String rootPath = "src/main/resources/com/example/car_rental_sys/image/UI/";
+        return getImageObjFromPath(rootPath + name);
     }
 
     public static Image getImageObjFromUserID(int userID) {
@@ -110,20 +112,54 @@ public class ImageTools {
     }
 
     public static void setImageShape(ImageView imageView, double radius) {
-        double imageWidth =  imageView.getFitWidth();
-        double imageHeight =  imageView.getFitHeight();
+        double imageWidth = imageView.getFitWidth();
+        double imageHeight = imageView.getFitHeight();
 
-        javafx.scene.shape.Rectangle rectangle = new Rectangle(imageWidth,imageHeight);
+        javafx.scene.shape.Rectangle rectangle = new Rectangle(imageWidth, imageHeight);
         rectangle.setArcHeight(radius);
         rectangle.setArcWidth(radius);
         imageView.setClip(rectangle);
     }
 
-    public static  void setImageShapeToCircle(ImageView imageView) {
-        double imageWidth =  imageView.getFitWidth();
-        double imageHeight =  imageView.getFitHeight();
+    public static void setImageShapeToCircle(ImageView imageView) {
+        double imageWidth = imageView.getFitWidth();
+        double imageHeight = imageView.getFitHeight();
         double circleRadius = imageHeight >= imageWidth ? imageWidth / 2 : imageHeight / 2;
-        Circle circle = new Circle(circleRadius,imageWidth/2,imageHeight/2);
+        Circle circle = new Circle(circleRadius, imageWidth / 2, imageHeight / 2);
         imageView.setClip(circle);
+    }
+
+    public static Image getBadgeImage(int UserID) {
+        String[] badges = {"vip1.png", "vip2.png", "vip3.png", "vip4.png", "svip.png"};
+        int orderCount = DataTools.getCustomerOrderNum(UserID);
+
+        if (orderCount <= 5) {
+            return getUIImageObjFromName(badges[0]);
+        } else if (orderCount <= 10) {
+            return getUIImageObjFromName(badges[1]);
+        } else if (orderCount <= 15) {
+            return getUIImageObjFromName(badges[2]);
+        } else if (orderCount <= 20) {
+            return getUIImageObjFromName(badges[3]);
+        } else {
+            return getUIImageObjFromName(badges[4]);
+        }
+    }
+
+    public static Image getVIPCardImage(int UserID) {
+        String[] badges = {"vip1Card.png", "vip2Card.png", "vip3Card.png", "vip4Card.png", "svipCard.png"};
+        int orderCount = DataTools.getCustomerOrderNum(UserID);
+
+        if (orderCount <= 5) {
+            return getUIImageObjFromName(badges[0]);
+        } else if (orderCount <= 10) {
+            return getUIImageObjFromName(badges[1]);
+        } else if (orderCount <= 15) {
+            return getUIImageObjFromName(badges[2]);
+        } else if (orderCount <= 20) {
+            return getUIImageObjFromName(badges[3]);
+        } else {
+            return getUIImageObjFromName(badges[4]);
+        }
     }
 }

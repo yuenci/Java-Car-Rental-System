@@ -1,27 +1,31 @@
 package com.example.car_rental_sys.orm;
 
 import com.example.car_rental_sys.sqlParser.SQL;
+import javafx.scene.image.Image;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class User {
-    private int userID;
-    private String userName;
-    private String userGroup;
-    private String post;
-    private String securityProblem;
-    private String securityAnswer;
-    private String birthday;
-    private String gender;
-    private String country;
-    private String DLNumber;
-    private String phone;
-    private String email;
-    private String address;
-    private String about;
-    private String regTime;
+    protected int userID;
+    protected String userName;
+    protected String userFirstName;
+    protected String userLastName;
+    protected String password;
+    protected String userGroup;
+    protected String post;
+    protected String securityProblem;
+    protected String securityAnswer;
+    protected String birthday;
+    protected String gender;
+    protected String country;
+    protected String DLNumber;
+    protected String phone;
+    protected String email;
+    protected String address;
+    protected String about;
+    protected String regTime;
 
     public User(){
         // do nothing
@@ -30,6 +34,29 @@ public class User {
     public User(String email) {
         this.email = email;
         initUser();
+    }
+
+
+
+    // for creating new user
+    public User(String userFirstName, String userLastName, String password, String userGroup, String post, String securityProblem,
+                String securityAnswer, String birthday, String gender, String country, String DLNumber,
+                String phone, String email, String address, String about, String regTime){
+        this.userName = userFirstName + "-" + userLastName;
+        this.password = password;
+        this.userGroup = userGroup;
+        this.post = post;
+        this.securityProblem = securityProblem;
+        this.securityAnswer = securityAnswer;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.country = country;
+        this.DLNumber = DLNumber;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.about = about;
+        this.regTime = regTime;
     }
 
     private void initUser() {
@@ -41,7 +68,7 @@ public class User {
         }
         String[] user = userInfo.get(0);
         this.userID = Integer.parseInt(user[0]);
-        this.userName = user[1];
+        this.userName = user[1].replace("-", " ");
         this.userGroup = user[2];
         this.post = user[3];
         this.securityProblem = user[4];
@@ -71,6 +98,30 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUserGroup() {

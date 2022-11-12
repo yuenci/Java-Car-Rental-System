@@ -71,3 +71,6 @@
 }
 
 
+.barActive{
+    -fx-background-color: #FFB84D !important;
+}
