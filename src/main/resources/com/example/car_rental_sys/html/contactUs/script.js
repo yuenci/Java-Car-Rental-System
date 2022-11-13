@@ -1,62 +1,156 @@
-let servicers = ["Nigel Walsh",
-    "Kirk Gallacher",
-    "Blair Christopher",
-    "Gerald Buckle",
-    "Boyd Chamberlain",
-    "Louis Gresham",
-    "Marcia Mary",
-    "Janet Wordsworth",
-    "Yedda Dierser",
-    "Veromca Harry",
-    "Vanessa Lambert",
-    "Olga Nick"]
-let index = Math.round(Math.random() * (11));
-let servicer = servicers[index];
+class Servicer {
+    static servicers =
+        ["Nigel Walsh",
+            "Kirk Gallacher",
+            "Blair Christopher",
+            "Gerald Buckle",
+            "Boyd Chamberlain",
+            "Louis Gresham",
+            "Marcia Mary",
+            "Janet Wordsworth",
+            "Yedda Dierser",
+            "Veromca Harry",
+            "Vanessa Lambert",
+            "Olga Nick"]
+
+    static getRandomServicer() {
+        let index = Math.round(Math.random() * (11));
+        return Servicer.servicers[index];
+    }
+}
+
+class Tools {
+    static getTime() {
+        let newDate = new Date();
+        let format = (x) => x.toString().padStart(2, "0");
+        let time = format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
+        return time;
+    }
+
+    static cleanResponse(response) {
+        if (response[0] === ",") response = response.slice(1);
+
+        nowords = [".Human: "]
+        for (let i = 0; i < nowords.length; i++) {
+            response = response.replace(nowords[i], "");
+        }
+
+    }
+}
+
+class Message {
+    constructor(message, sender, isViewer, time = Tools.getTime()) {
+        this.message = message;
+        this.sender = sender;
+        this.isViewer = isViewer;
+        this.time = time
+        this.addMsg();
+    }
+
+    addMsg() {
+        if (this.isViewer) {
+            this.addCustomerMessage();
+        } else {
+            this.addServerMessage();
+        }
+    }
+
+    addServerMessage() {
+        let messageRes = `
+                        <div class="message-container-left">
+                            <div class="avatar">
+                                <img src="./logo.png" alt="Logo" class="logoImage">
+                            </div>
+                            <div class="message-area">
+                                <div class="message-topic">
+                                    <div class="message-sender">${this.sender}</div>
+                                    <div class="message-time">${this.time}</div>
+                                </div>
+                                <div class="message">${this.message}</div>
+                            </div>
+                        </div>
+                        `
+        $("#char-area-bottom").before(messageRes);
+        scrollToBottom();
+    }
+
+    addCustomerMessage() {
+
+        let messageRes = `
+                        <div class="message-container-right">
+                            <div class="message-area">
+                                <div class="message-topic">
+                                    <div class="message-time">${this.time}</div>
+                                </div>
+                                <div class="message">${this.message}</div>
+                            </div>
+                        </div>
+                        `
+        $("#char-area-bottom").before(messageRes);
+    }
+
+}
+
+
+// let servicers = ["Nigel Walsh",
+//     "Kirk Gallacher",
+//     "Blair Christopher",
+//     "Gerald Buckle",
+//     "Boyd Chamberlain",
+//     "Louis Gresham",
+//     "Marcia Mary",
+//     "Janet Wordsworth",
+//     "Yedda Dierser",
+//     "Veromca Harry",
+//     "Vanessa Lambert",
+//     "Olga Nick"]
+// let index = Math.round(Math.random() * (11));
+// let servicer = servicers[index];
 
 // let message = "hihiiiiiiii"
-addServerMessage(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`);
+let servicer = Servicer.getRandomServicer();
+let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false);
 
-function addServerMessage(message) {
+// function addServerMessage(message) {
+//     let messageRes = `
+//     <div class="message-container-left">
+//         <div class="avatar">
+//             <img src="./logo.png" alt="Logo" class="logoImage">
+//         </div>
+//         <div class="message-area">
+//             <div class="message-topic">
+//                 <div class="message-sender">${servicer}</div>
+//                 <div class="message-time">${getTime()}</div>
+//             </div>
+//             <div class="message">${message}</div>
+//         </div>
+//     </div>
+//     `
+//     $("#char-area-bottom").before(messageRes);
+//     scrollToBottom();
+// }
 
-    let messageRes = `
-    <div class="message-container-left">
-        <div class="avatar">
-            <img src="./logo.png" alt="Logo" class="logoImage">
-        </div>
-        <div class="message-area">
-            <div class="message-topic">
-                <div class="message-sender">${servicer}</div>
-                <div class="message-time">${getTime()}</div>
-            </div>
-            <div class="message">${message}</div>
-        </div>
-    </div>
-    `
-    $("#char-area-bottom").before(messageRes);
-    scrollToBottom();
-}
+// function getTime() {
+//     let newDate = new Date();
+//     let format = (x) => x.toString().padStart(2, "0");
+//     let time = format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
+//     return time;
+// }
 
-function getTime() {
-    let newDate = new Date();
-    let format = (x) => x.toString().padStart(2, "0");
-    let time = format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
-    return time;
-}
+// function addCustomerMessage(message) {
 
-function addCustomerMessage(message) {
-
-    let messageRes = `
-    <div class="message-container-right">
-        <div class="message-area">
-            <div class="message-topic">
-                <div class="message-time">${getTime()}</div>
-            </div>
-            <div class="message">${message}</div>
-        </div>
-    </div>
-    `
-    $("#char-area-bottom").before(messageRes);
-}
+//     let messageRes = `
+//     <div class="message-container-right">
+//         <div class="message-area">
+//             <div class="message-topic">
+//                 <div class="message-time">${getTime()}</div>
+//             </div>
+//             <div class="message">${message}</div>
+//         </div>
+//     </div>
+//     `
+//     $("#char-area-bottom").before(messageRes);
+// }
 
 
 $("#sendBtn").click(function () {
@@ -76,12 +170,15 @@ async function sendMessage() {
     if (message.length === 0) {
         return;
     }
-    addCustomerMessage(message);
+    //// addCustomerMessage(message);
+    let newMessage = new Message(message, "me", true);
     $inputBox.val("");
     scrollToBottom();
 
     await getResponse().then(function (data) {
-        addServerMessage(data["response"]);
+        //// addServerMessage(data["response"]);
+
+        let newMessage = new Message(data["response"], servicer, false);
     }).catch(function (error) {
         netWorkError();
     });
@@ -151,4 +248,4 @@ function netWorkError() {
         <div class="error-message-container"><p class="error-message">${message}</p></div>
     `
     $("#char-area-bottom").before(messageRes);
-} 
+}
