@@ -356,13 +356,17 @@ public class DataTools {
 
                 int isFromMe = strings[3].equals(String.valueOf(userID)) ? 1 : 0;
                 //msg.put("receiverID",Integer.valueOf(strings[1]));
-                String chatterName = isFromMe == 1 ? DataTools.getUserNameFromUserID(Integer.valueOf(strings[4])) : DataTools.getUserNameFromUserID(Integer.valueOf(strings[3]));
-                msg.put("chatterName", chatterName);
+                int  chatterID = isFromMe == 1 ? Integer.valueOf(strings[4]) : Integer.valueOf(strings[3]);
+                String chatterName = DataTools.getUserNameFromUserID(chatterID);
+                if(chatterName ==null){
+                    chatterName = "System";
+                }
 
+                msg.put("chatter", chatterName);
+                msg.put("chatterID", chatterID);
                 msg.put("time", strings[5]);
                 msg.put("message", strings[6]);
                 msg.put("isFromMe", isFromMe);
-
                 msgRes.put(strings[0], msg);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -373,7 +377,13 @@ public class DataTools {
         String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.json";
         FileOperate.rewriteFile(path,json);
 
-        // print arraylist
+        File avatarFile =new File( "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
+        String avatarPath = "let currentUserAvatarPath='" +  avatarFile.toURI() + "';";
+        String avatarSettingFilepath = "src/main/resources/com/example/car_rental_sys/html/contactUs/avatarFilepath.js";
+        FileOperate.rewriteFile(avatarSettingFilepath,avatarPath);
+        //System.out.println(avatarPath);
+
+
 //        for (String[] strings : result) {
 //            System.out.println(Arrays.toString(strings));
 //        }

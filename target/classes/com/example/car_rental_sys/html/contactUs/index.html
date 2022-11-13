@@ -12,8 +12,19 @@
 
 <body>
     <div id="contact-list">
-        <div id="topbar">
-            <div></div>
+        <div id="top-bar">
+            <div id="current-user-avatar"><img src="./9.png" class="top-bar-icon hand" id="current-user-avatar-img">
+            </div>
+            <div id="back-icon"><img src="./back.png" class="top-bar-icon hand" id="back-icon-img"></div>
+        </div>
+        <div id="search-bar">
+            <div>
+                <img src="./search.png" alt="" id="search-icon" class="hand">
+                <input type="text" id="search-input" class="hand" placeholder="Search or start new chat">
+            </div>
+        </div>
+        <div id="message-container">
+
         </div>
 
 
@@ -31,6 +42,7 @@
 
             <button id="sendBtn">➤</button>
         </div>
+        <script src="./avatarFilepath.js"></script>
         <script src="./script.js"></script>
     </div>
 </body>

@@ -18,12 +18,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+
 import javafx.embed.swing.SwingFXUtils;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.io.ByteArrayOutputStream;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
         try {
-            BufferedImage  avatarImage = ImageIO.read(new URL(fileUrl));
+            BufferedImage avatarImage = ImageIO.read(new URL(fileUrl));
             return circleImage(avatarImage);
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,11 +38,11 @@ public class ImageTools {
     }
 
     public static Image getCircleImages(Image image) {
-        BufferedImage  avatarImage = SwingFXUtils.fromFXImage(image, null);
+        BufferedImage avatarImage = SwingFXUtils.fromFXImage(image, null);
         return circleImage(avatarImage);
     }
 
-    private static Image circleImage(BufferedImage avatarImage){
+    private static Image circleImage(BufferedImage avatarImage) {
         try {
             avatarImage = scaleByPercentage(avatarImage, avatarImage.getWidth(), avatarImage.getWidth());
             if (avatarImage == null) {
@@ -179,11 +185,11 @@ public class ImageTools {
         }
     }
 
-    public static Image getAvatarFromUserID(int userID){
-        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/"+userID+".png");
+    public static Image getAvatarFromUserID(int userID) {
+        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
     }
 
-    public static   int[]  getImageSize(String path){
+    public static int[] getImageSize(String path) {
 //        File picture = new File("src/main/resources/com/example/demos/123456.jpg");
         File picture = new File(path);
         BufferedImage sourceImg = null;
@@ -192,6 +198,18 @@ public class ImageTools {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return  new int[]{sourceImg.getWidth(),sourceImg.getHeight()};
+        return new int[]{sourceImg.getWidth(), sourceImg.getHeight()};
+    }
+
+    public static boolean covertImageToPng(String inputFile, String outputFile) {
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new File(inputFile));
+            ImageIO.write(bufferedImage, "png", new File(outputFile));
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
