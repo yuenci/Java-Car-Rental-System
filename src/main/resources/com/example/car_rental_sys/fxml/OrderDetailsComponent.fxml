@@ -179,7 +179,7 @@
                 <Insets left="10.0"/>
             </padding>
         </Button>
-        <Button id="invoiceBtn" layoutX="6.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0"
+        <Button fx:id="invoiceBtn" layoutX="6.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0"
                 prefWidth="120.0"
                 style="-fx-background-color: white; -fx-cursor: hand; -fx-border-color: #DFDFDF; -fx-border-radius: 6;"
                 text="Invoice" textFill="#4e5969">
