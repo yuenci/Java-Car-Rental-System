@@ -12,6 +12,7 @@ import com.example.car_rental_sys.ui_components.MessageFrameType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class DataTools {
     public  static String[] getRenterNameAndPostFromUserID(int userID){
@@ -281,6 +282,12 @@ public class DataTools {
             }
             return bankCardsList;
         }
+    }
+
+    public static int getRandomInt(int min, int max) {
+        //int num = min + (int)(Math.random() * (max-min+1));
+        Random random = new Random();
+        return random.nextInt(max) % (max - min + 1) + min;
     }
 }
 

@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
-<Pane prefHeight="832.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AboutUsPageController">
+<Pane fx:id="mainPane" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #111111;" stylesheets="@../style/aboutUs.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AboutUsPageController">
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBar.fxml" />
     </Pane>
-    <Pane layoutY="100.0" prefHeight="732.0" prefWidth="1280.0" fx:id="paneContainer">
-
-    </Pane>
+   <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutY="100.0" prefHeight="732.0" prefWidth="1280.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+      <content>
+         <VBox prefHeight="1700.0" prefWidth="1280.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <children>
+               <WebView fx:id="webView" prefHeight="732.0" prefWidth="1280.0" />
+               <Pane prefHeight="310.0" prefWidth="1280.0" style="-fx-background-color: #000000;">
+                  <children>
+                     <Label layoutX="98.0" layoutY="121.0" text="About us" textFill="WHITE">
+                        <font>
+                           <Font name="Microsoft Tai Le" size="50.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+               <ImageView fitHeight="456.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../image/UI/team.png" />
+                  </image>
+               </ImageView>
+               <Pane prefHeight="286.0" prefWidth="1280.0" style="-fx-background-color: #000000;">
+                  <children>
+                     <Label fx:id="per" layoutX="34.0" layoutY="62.0" text="#Perfectionism" textFill="#999999">
+                        <font>
+                           <Font size="39.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="eng" layoutX="959.0" layoutY="62.0" text="#Engineeers" textFill="#999999">
+                        <font>
+                           <Font size="39.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="bra" layoutX="753.0" layoutY="180.0" text="#Brandspecialists" textFill="#999999">
+                        <font>
+                           <Font size="39.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="des" layoutX="265.0" layoutY="180.0" text="#Designthinking" textFill="#999999">
+                        <font>
+                           <Font size="39.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="use" layoutX="518.0" layoutY="62.0" text="#Useradvocate" textFill="#999999">
+                        <font>
+                           <Font size="39.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+            </children>
+         </VBox>
+      </content>
+   </ScrollPane>
 </Pane>

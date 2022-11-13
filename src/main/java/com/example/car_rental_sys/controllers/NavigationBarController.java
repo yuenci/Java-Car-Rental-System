@@ -43,9 +43,8 @@ public class NavigationBarController {
 
     @FXML
     private void aboutBtnClick() {
-        System.out.println("aboutBtnClick");
-        //Tools.changeScene("aboutUsPage.fxml");
-        Loading.show();
+        FXTools.changeScene("aboutUsPage.fxml");
+//        Loading.show();
     }
 
     @FXML
