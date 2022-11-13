@@ -301,34 +301,5 @@ public class UIPagination extends Pane {
                 refreshMainBox();
             }
         });
-
-//        leftButton.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-//            if (currentPageNumber >= 1) {
-//                currentPageNumber--;
-//                refreshMainBox();
-//            }
-//        });
-//
-//        minPageButton.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-//            currentPageNumber = 1;
-//            checkShowDotPrevious();
-//            //System.out.println("currentPageNumber: " + currentPageNumber);
-//        });
-//
-//        maxPageButton.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-//            //System.out.println("is here");
-//            showDotNext = false;
-//            currentPageNumber = totalPageNumber;
-//            focusMaxButton = true;
-//            refreshMainBox();
-//        });
-//
-//        rightButton.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-//            if(currentPageNumber < totalPageNumber){
-//                currentPageNumber+=1;
-//                UIPagination.focusOnFirst = true;
-//                refreshMainBox();
-//            }
-//        });
     }
 }
