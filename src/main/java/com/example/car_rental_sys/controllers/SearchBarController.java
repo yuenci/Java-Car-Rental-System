@@ -3,10 +3,26 @@ package com.example.car_rental_sys.controllers;
 import javafx.scene.input.MouseEvent;
 
 public class SearchBarController {
+
+    public int filterState = 0;
+
+    public static SearchBarController instance;
+
+    public SearchBarController() {
+        instance = this;
+    }
+
+    public void setFilterState(int state){
+        filterState = state;
+    }
     public void filterBtnClicked(MouseEvent mouseEvent) {
-        //OrderListComponentController.add();
-        //OrderListComponentController.addFilterPane();
         System.out.println("hi");
-        OrderListComponentController.instance.addFilterPane();
+        if (filterState == 0){
+            filterState = 1;
+            OrderListComponentController.instance.addFilterPane();
+        }else{
+            filterState = 0;
+            OrderListComponentController.instance.removeFilterPane();
+        }
     }
 }

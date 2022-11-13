@@ -1,11 +1,14 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.controllers.OrderListComponentController;
+import com.example.car_rental_sys.controllers.SearchBarController;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.util.Objects;
@@ -16,12 +19,12 @@ public class UIFilter extends Pane {
     private RadioButton rbPriceRec, rbPriceDesc, rbPriceAsc;
 
     public UIFilter(){
-        // TODO
         this.setLayoutX(0);
         this.setLayoutY(0);
         this.setPrefSize(240, 260);
         initStyle();
         initComponents();
+        initEvent();
     }
 
     private void initStyle(){
@@ -112,11 +115,11 @@ public class UIFilter extends Pane {
 
     private void initEvent(){
         if(filCancel != null){
-            // TODO
+            filCancel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> OrderListComponentController.instance.removeFilterPane());
         }
 
         if (filDone != null){
-            // TODO
+            filDone.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> OrderListComponentController.instance.removeFilterPane());
         }
 
         if (rbPriceRec != null){

@@ -1,7 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.ui_components.UIFilter;
 import com.example.car_rental_sys.ui_components.UIPagination;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +14,7 @@ import java.util.function.Function;
 
 public class OrderListComponentController {
 
+    private int totalOrders = 0;
     public Label numOrder;
     public Button btnAllOrder,btnComplete,btnContinue,btnCancel;
     public Pane paneFilterBox;
@@ -20,24 +23,20 @@ public class OrderListComponentController {
     @FXML
     private Pane tableContainer;
 
-    private static String initQuery = "SELECT * FROM orders WHERE userID = 1";
+    //private static String initQuery = "SELECT * FROM orders WHERE userID = " + User.instance.getUserID();
 
     public static OrderListComponentController instance;
 
     @FXML
     public void initialize() {
-        // TODO
         instance = this;
+        initTotalOrder();
         initPagination();
         initButtonStyle();
-        //addFilterPane();
+        //System.out.println(User.instance.getUserID());
     }
 
-    //Function<> is a functional interface, which means it can be used as a lambda expression
-    private Function<String, String> queryBuilder = (String query) -> query;
-
-    public  void addFilterPane(){
-        //paneFilterBox = new Pane();
+    public void addFilterPane(){
         UIFilter filter = new UIFilter();
         filter.setLayoutX(0);
         filter.setLayoutY(0);
@@ -45,9 +44,11 @@ public class OrderListComponentController {
         System.out.println("here");
     }
 
-//    public static void removeFilterPane(){
-//        paneFilterBox.getChildren().clear();
-//    }
+    public void removeFilterPane(){
+        SearchBarController.instance.setFilterState(0);
+        Thread thread = new Thread(() -> Platform.runLater(() -> paneFilterBox.getChildren().clear()));
+        thread.start();
+    }
 
     private void initPagination(){
         pagContainer.getChildren().add(new UIPagination());
@@ -58,11 +59,8 @@ public class OrderListComponentController {
         btnAllOrder.getStyleClass().remove("controlBtn");
     }
 
-    private void initTableData(){
-        // TODO
-        //get ArrayList<Order> from database
-        //init table
-        //use a for loop to add each order to the tableContainer
+    private void initTotalOrder(){
+        numOrder.setText(totalOrders + " orders");
     }
 
     @FXML

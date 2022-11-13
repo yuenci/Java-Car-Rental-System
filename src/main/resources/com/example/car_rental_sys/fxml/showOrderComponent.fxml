@@ -77,5 +77,5 @@
    <Pane layoutX="33.0" layoutY="158.0" prefHeight="35.0" prefWidth="465.0">
       <fx:include source="SearchBar.fxml"/>
    </Pane>
-   <Pane fx:id="paneFilterBox" layoutX="276.0" layoutY="202.0" prefHeight="260.0" prefWidth="220.0"/>
+   <Pane fx:id="paneFilterBox" layoutX="256.0" layoutY="202.0" prefHeight="260.0" prefWidth="220.0"/>
 </Pane>
