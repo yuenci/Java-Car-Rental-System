@@ -214,3 +214,14 @@ class Application {
     }
 }
 Application.start();
+
+
+let jsonDataInsert = document.createElement("script")
+jsonDataInsert.src = "./messageData.json"
+jsonDataInsert.type = "text/javascript";
+document.body.appendChild(jsonDataInsert);
+
+function getJson(data) {
+    //console.log(data);
+    //localStorage.setItem("indexJson", JSON.stringify(data));
+}

@@ -369,7 +369,7 @@ public class DataTools {
             }
         }
 
-        String json = msgRes.toString();
+        String json = "getJson(" + msgRes.toString() + ")";
         String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.json";
         FileOperate.rewriteFile(path,json);
 
