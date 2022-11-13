@@ -51,7 +51,7 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "test.fxml";
 //        String fxmlName = "drivingModePage.fxml";
         String fxmlName = "customerServicePage.fxml";
-//        String fxmlName = "addBankCardPagSe.fxml";
+        //String fxmlName = "addBankCardPage.fxml";
 //        String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
 //        String fxmlName = "aboutUsPage.fxml";

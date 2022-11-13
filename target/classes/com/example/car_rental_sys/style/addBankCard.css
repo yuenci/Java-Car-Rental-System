@@ -4,15 +4,17 @@
 
 .panContainer{
     -fx-border-style: hidden  hidden solid hidden;
-    -fx-border-color: #dddddd;
+    -fx-border-color: #2a283b;
 }
 
 .borderStyle{
     -fx-border-style: solid;
-    -fx-border-color: #dddddd;
+    -fx-border-color: #2a283b;
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
-    -fx-background-color: transparent;
+    -fx-background-color: #282637;
+    -fx-text-fill: #ffffff;
+
 }
 
 .themeBtn{
@@ -27,8 +29,49 @@
 
 .scroll-pane {
     -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
 
 .choice-box .context-menu {
     -fx-pref-width: 300;
 }
+
+.bgcTransparent{
+    -fx-background-color: #1c1a26;
+}
+
+.choice-box .list-cell {
+    -fx-background-color: #282637;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area {
+    text-area-background:#282637 ;
+}
+
+.text-area .content {
+    -fx-background-color:#282637 ;
+}
+
+.check-box .box {
+
+    -fx-background-color: #282637 ;
+    -fx-border-radius:3px;
+
+}
+
+/*.check-box:selected .mark {*/
+
+/*    -fx-background-color: white;*/
+
+/*}*/
+
+/*.check-box:selected .box {*/
+
+/*    -fx-background-color: #28a3f4;*/
+/*}*/
