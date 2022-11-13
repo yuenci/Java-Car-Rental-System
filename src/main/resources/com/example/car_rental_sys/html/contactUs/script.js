@@ -321,6 +321,10 @@ class Application {
             container.classList.remove("comtainer-active");
         });
 
+        $("#back-icon-img").click(function () {
+            console.log("back to service");
+        });
+
     }
 
     static sendWelcomeMessage() {

@@ -98,12 +98,14 @@ class Tools {
 
         for (let i = 0; i < messageDataIDList.length; i++) {
             let messgae = data[messageDataIDList[i]];
+            let chatterID = messgae["chatterID"];
+
             if (messgae["chatter"] === chatterName) {
                 if (messgae.isFromMe === 0) {
                     let message = new Message(messgae.message, messgae.chatter, true, messgae.time);
                     message.send();
                 } else {
-                    let message = new Message(messgae.message, messgae.chatter, false, messgae.time,);
+                    let message = new Message(messgae.message, messgae.chatter, false, messgae.time, chatterID);
                     message.send();
                 }
             }
@@ -134,16 +136,16 @@ class Tools {
 }
 
 class Message {
-    constructor(message, sender, isViewer, time = Tools.getTime(), avatarPath = "./logo.png") {
+    constructor(message, sender, isViewer, time = Tools.getTime(), chatterID = 0) {
         this.message = message;
         this.sender = sender;
         this.isViewer = isViewer;
         this.time = time;
-        this.avatarPath = avatarPath;
+        this.chatterID = chatterID;
     }
 
     send() {
-        console.log("yes, send");
+        //console.log("yes, send");
         if (this.isViewer) {
             this.addCustomerMessage();
         } else {
@@ -153,10 +155,12 @@ class Message {
 
     addServerMessage() {
         this.message = Tools.cleanResponse(this.message);
+        let avatarPath = Tools.avatarRootPath + this.chatterID + ".png";
+        console.warn(avatarPath)
         let messageRes = `
                         <div class="message-container-left">
                             <div class="avatar">
-                                <img src="${this.avatarPath}" alt="Logo" class="logoImage">
+                                <img src="${avatarPath}" alt="Logo" class="avatarImage">
                             </div>
                             <div class="message-area">
                                 <div class="message-topic">
@@ -198,6 +202,7 @@ class Message {
             //console.log(messageID);
 
             let chatter = messageData[messageID]["chatter"];
+            let chatterID = messageData[messageID]["chatterID"];
             let unreadNum = unreadMsgMap[chatter];
             if (!chatterList.includes(chatter)) {
                 chatterList.push(chatter);
@@ -208,7 +213,7 @@ class Message {
 
             let messageRes = `
                         <div class="message-box">
-                <img class="message-box-avatar" src="./13.png">
+                <img class="message-box-avatar" src="${Tools.avatarRootPath}${chatterID}.png">
                 <div class="message-box-right">
                     <div class="sender-name">${chatter}</div>
                     <div class="message-box-text">${messageText}</div>
@@ -287,9 +292,9 @@ class OpenAI {
 class Application {
     static start() {
         Application.initEvent();
+        Tools.initAvatars();
         Application.sendWelcomeMessage();
         //Tools.loadMessageData();
-        Tools.initAvatars();
         Message.addMessageList();
     }
 
@@ -316,11 +321,15 @@ class Application {
             container.classList.remove("comtainer-active");
         });
 
+        $("#back-icon-img").click(function () {
+            console.log("back to service");
+        });
+
     }
 
     static sendWelcomeMessage() {
         let servicer = Servicer.getRandomServicer();
-        let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false);
+        let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false, 0);
         welcomeMessage.send();
     }
 }

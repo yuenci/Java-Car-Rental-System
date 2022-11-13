@@ -6,21 +6,21 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CustomerSideBarController">
+<Pane prefHeight="832.0" prefWidth="260.0" style="-fx-background-color: #111111;" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CustomerSideBarController">
     <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/avatar/1.png" />
     </ImageView>
-    <Label fx:id="nameTextLabel" layoutX="-1.0" layoutY="170.0" prefHeight="40.0" prefWidth="250.0" text="Orizon Travel">
+    <Label fx:id="nameTextLabel" layoutX="-1.0" layoutY="170.0" prefHeight="40.0" prefWidth="250.0" text="Orizon Travel" textFill="WHITE">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label fx:id="emailTextLabel" layoutX="4.0" layoutY="140.0" prefHeight="25.0" prefWidth="243.0" text="4856415478@gmail.com">
+    <Label fx:id="emailTextLabel" layoutX="4.0" layoutY="140.0" prefHeight="25.0" prefWidth="243.0" text="4856415478@gmail.com" textFill="#909090">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Line endX="109.0" layoutX="132.0" layoutY="224.0" startX="-123.0" stroke="#e3e3e399" />
+    <Line endX="109.0" layoutX="147.0" layoutY="223.0" startX="-123.0" stroke="#e3e3e399" />
     <Line endX="109.0" layoutX="147.0" layoutY="415.0" startX="-123.0" stroke="#e3e3e399" />
     <Pane layoutX="24.0" layoutY="442.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
         <Pane fx:id="item1" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
@@ -29,7 +29,7 @@
                     <Image url="@../image/UI/profile.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="Profile">
+            <Label layoutX="83.0" layoutY="10.0" text="Profile" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -46,7 +46,7 @@
                     <Image url="@../image/UI/message1.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="Message">
+            <Label layoutX="83.0" layoutY="10.0" text="Message" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -63,7 +63,7 @@
                     <Image url="@../image/UI/wallet1.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="Wallet">
+            <Label layoutX="83.0" layoutY="10.0" text="Wallet" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -80,7 +80,7 @@
                     <Image url="@../image/UI/history.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="History">
+            <Label layoutX="83.0" layoutY="10.0" text="History" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -97,7 +97,7 @@
                     <Image url="@../image/UI/seetting.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="Setting">
+            <Label layoutX="83.0" layoutY="10.0" text="Setting" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -114,7 +114,7 @@
                     <Image url="@../image/UI/logout1.png" />
                 </ImageView>
             </Pane>
-            <Label layoutX="83.0" layoutY="10.0" text="Logout">
+            <Label layoutX="83.0" layoutY="10.0" text="Logout" textFill="#b9b9b9">
                 <font>
                     <Font name="System Bold" size="15.0" />
                 </font>
@@ -124,23 +124,23 @@
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
-   <ImageView fx:id="vipCardImageView" fitHeight="150.0" fitWidth="230.0" layoutX="15.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="vipCardImageView" fitHeight="150.0" fitWidth="230.0" layoutX="25.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../image/UI/vip1card.png" />
       </image>
    </ImageView>
-   <Pane fx:id="bar1" layoutX="19.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
-   <Pane fx:id="bar2" layoutX="65.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
-   <Pane fx:id="bar4" layoutX="153.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
-   <Pane fx:id="bar5" layoutX="198.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
-   <Pane fx:id="bar3" layoutX="108.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane fx:id="bar1" layoutX="33.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane fx:id="bar2" layoutX="79.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane fx:id="bar4" layoutX="167.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane fx:id="bar5" layoutX="212.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
+   <Pane fx:id="bar3" layoutX="122.0" layoutY="372.0" prefHeight="4.0" prefWidth="35.0" style="-fx-background-color: eeeeee; -fx-background-radius: 5;" />
    <Button fx:id="customerSideBarUpdateBtn" layoutX="172.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#updateBtnClick" style="-fx-background-color: white; -fx-background-radius: 5;" text="Update" />
-   <ImageView fx:id="vipBadgeImageView" fitHeight="23.0" fitWidth="50.0" layoutX="149.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="vipBadgeImageView" fitHeight="30.0" fitWidth="54.0" layoutX="140.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../image/UI/vip1.png" />
       </image>
    </ImageView>
-   <Label fx:id="orderNumLabel" layoutX="175.0" layoutY="276.0" style="-fx-text-fill: #FCDF7B;" text="00" textFill="WHITE">
+   <Label fx:id="orderNumLabel" layoutX="196.0" layoutY="276.0" style="-fx-text-fill: #FCDF7B;" text="00" textFill="WHITE">
       <font>
          <Font size="30.0" />
       </font>

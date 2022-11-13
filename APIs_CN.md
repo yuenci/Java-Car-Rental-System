@@ -179,7 +179,7 @@ Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
 
 Browser browser = engine.newBrowser();
 
-//navigation.loadUrl(new File("src/.../index.html").getAbsolutePath());
+//browser.navigation().loadUrl(new File("src/.../index.html").getAbsolutePath());
 browser.navigation().loadUrl("https://html5test.com");
 
 BrowserView view = BrowserView.newInstance(browser);

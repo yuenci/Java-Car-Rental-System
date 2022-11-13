@@ -69,7 +69,7 @@ body {
     cursor: pointer;
 }
 
-.avatar {
+/* .avatar {
     background-color: #7EB712;
     display: inline-block;
     width: 40px;
@@ -78,14 +78,19 @@ body {
     text-align: center;
     margin-top: 10px;
     margin-right: 10px;
+} */
+.avatar {
+    margin-right: 5px;
 }
 
 
-.logoImage {
-    width: 30px;
-    height: 30px;
+.avatarImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     position: relative;
     top: 5px;
+
 }
 
 #message-container {

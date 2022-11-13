@@ -209,6 +209,7 @@ public class DriverMainPageController extends  Controller{
         });
         item2.setOnMouseClicked(event -> {
             changeMenuStyle(item2);
+            FXTools.changeScene("messagePage.fxml");
         });
         item3.setOnMouseClicked(event -> {
             changeMenuStyle(item3);

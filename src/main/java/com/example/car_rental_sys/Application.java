@@ -31,7 +31,7 @@ public class Application extends javafx.application.Application {
         NetTools.registerJxBrowserLicence();
         //NetTools.StartHttpServer();
         //dataFilesDecrypt();
-        Test.test();
+        //Test.test();
     }
 
     @Override
@@ -50,14 +50,16 @@ public class Application extends javafx.application.Application {
 //        String fxmlName = "driverMainPage.fxml";
         //String fxmlName = "test.fxml";
 //        String fxmlName = "drivingModePage.fxml";
-        //String fxmlName = "customerServicePage.fxml";
+        String fxmlName = "customerServicePage.fxml";
 //        String fxmlName = "addBankCardPagSe.fxml";
 //        String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
-        String fxmlName = "aboutUsPage.fxml";
+//        String fxmlName = "aboutUsPage.fxml";
+        //String fxmlName = "messagePage.fxml";
+
         stageInstance = stage;
 
-        //startStage(fxmlName);
+        startStage(fxmlName);
 
         //startApplication();
 
