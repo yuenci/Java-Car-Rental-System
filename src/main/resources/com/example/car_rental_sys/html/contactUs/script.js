@@ -15,6 +15,8 @@ class Servicer {
 
     static getRandomServicer() {
         let index = Math.round(Math.random() * (11));
+        // set the servicer as global variable
+        window.servicer = Servicer.servicers[index];
         return Servicer.servicers[index];
     }
 }
@@ -32,7 +34,7 @@ class Tools {
         if (charater.includes(response[0])) response = response.slice(1);
 
 
-        let nowords = [".Human: "]
+        let nowords = [".Human: ", "Human:"]
         for (let i = 0; i < nowords.length; i++) {
             response = response.replace(nowords[i], "");
         }
@@ -47,6 +49,28 @@ class Tools {
             res.push(messageList[i].innerHTML);
         }
         return res;
+    }
+
+    static heightToTop(ele) {
+        //ele为指定跳转到该位置的DOM节点
+        let root = document.body;
+        let height = 0;
+        do {
+            height += ele.offsetTop;
+            ele = ele.offsetParent;
+        } while (ele !== root)
+        return height;
+    }
+
+
+    static scrollToBottom() {
+
+        let bottom = document.getElementById("char-area-bottom");
+        let chatArea = document.getElementById("chat-area");
+        chatArea.scrollTo({
+            top: Tools.heightToTop(bottom),
+            behavior: 'smooth'
+        })
     }
 }
 
@@ -84,7 +108,7 @@ class Message {
                         </div>
                         `
         $("#char-area-bottom").before(messageRes);
-        scrollToBottom();
+        Tools.scrollToBottom();
     }
 
     addCustomerMessage() {
@@ -106,6 +130,7 @@ class Message {
 
 class OpenAI {
     static async sendMessage() {
+        let $inputBox = $("#inputBox");
         let message = $inputBox.val();
         if (message.length === 0) {
             return;
@@ -113,7 +138,7 @@ class OpenAI {
         //// addCustomerMessage(message);
         let newMessage = new Message(message, "me", true);
         $inputBox.val("");
-        scrollToBottom();
+        Tools.scrollToBottom();
 
         await OpenAI.getResponse().then(function (data) {
             //// addServerMessage(data["response"]);
@@ -152,108 +177,40 @@ class OpenAI {
     }
 }
 
+class Application {
+    static start() {
+        Application.initEvent();
+        Application.sendWelcomeMessage();
 
-
-let servicer = Servicer.getRandomServicer();
-let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false);
-
-
-
-$("#sendBtn").click(function () {
-    sendMessage();
-});
-
-let $inputBox = $("#inputBox");
-
-$inputBox.keypress(function (e) {
-    if (e.which === 13) {
-        OpenAI.sendMessage();
-    }
-});
-
-// async function sendMessage() {
-//     let message = $inputBox.val();
-//     if (message.length === 0) {
-//         return;
-//     }
-//     //// addCustomerMessage(message);
-//     let newMessage = new Message(message, "me", true);
-//     $inputBox.val("");
-//     scrollToBottom();
-
-//     await getResponse().then(function (data) {
-//         //// addServerMessage(data["response"]);
-
-//         let newMessage = new Message(data["response"], servicer, false);
-//     }).catch(function (error) {
-//         netWorkError();
-//     });
-
-// }
-
-// function getResponse() {
-//     return new Promise(function (resolve, reject) {
-//         $.ajax({
-//             type: 'POST',
-//             url: `http://101.43.138.40:81/response`,
-//             data: JSON.stringify({ "sentences": getMessageList() }),
-//             success: function (data) {
-//                 console.log(data);
-//                 resolve(data);
-//             },
-//             error: function (jqXHR, textStatus, errorThrown) {
-//                 reject(errorThrown);
-//             },
-//             contentType: "application/json",
-//             dataType: 'json'
-//         });
-//     });
-// }
-
-// function getMessageList() {
-//     let res = [];
-//     let messageList = document.getElementsByClassName("message");
-//     for (let i = 0; i < messageList.length; i++) {
-//         res.push(messageList[i].innerHTML);
-//     }
-//     return res;
-// }
-
-
-
-function scrollToBottom() {
-    function heightToTop(ele) {
-        //ele为指定跳转到该位置的DOM节点
-        let root = document.body;
-        let height = 0;
-        do {
-            height += ele.offsetTop;
-            ele = ele.offsetParent;
-        } while (ele !== root)
-        return height;
     }
 
-    let bottom = document.getElementById("char-area-bottom");
-    let chatArea = document.getElementById("chat-area");
-    chatArea.scrollTo({
-        top: heightToTop(bottom),
-        behavior: 'smooth'
-    })
+    static initEvent() {
+
+        $("#sendBtn").click(function () {
+            sendMessage();
+        });
+
+        let $inputBox = $("#inputBox");
+
+        $inputBox.keypress(function (e) {
+            if (e.which === 13) {
+                OpenAI.sendMessage();
+            }
+        });
+
+        $inputBox.focus(function () {
+            let container = document.getElementById("inputBox-comtainer");
+            // add css class
+            container.classList.add("comtainer-active");
+        }).blur(function () {
+            let container = document.getElementById("inputBox-comtainer");
+            container.classList.remove("comtainer-active");
+        });
+    }
+
+    static sendWelcomeMessage() {
+        let servicer = Servicer.getRandomServicer();
+        let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false);
+    }
 }
-
-$inputBox.focus(function () {
-    let container = document.getElementById("inputBox-comtainer");
-    // add css class
-    container.classList.add("comtainer-active");
-}).blur(function () {
-    let container = document.getElementById("inputBox-comtainer");
-    container.classList.remove("comtainer-active");
-});
-
-// function netWorkError() {
-//     let message = "Network error, please try again later";
-//     let messageRes = `
-//         <div class="error-message-container"><p class="error-message">${message}</p></div>
-//     `
-//     $("#char-area-bottom").before(messageRes);
-// }
+Application.start();
