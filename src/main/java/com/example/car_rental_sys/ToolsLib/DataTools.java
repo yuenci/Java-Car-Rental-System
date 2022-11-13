@@ -11,6 +11,7 @@ import com.example.car_rental_sys.ui_components.MessageFrameType;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -288,6 +289,22 @@ public class DataTools {
         //int num = min + (int)(Math.random() * (max-min+1));
         Random random = new Random();
         return random.nextInt(max) % (max - min + 1) + min;
+    }
+
+    public static boolean generateMessageJSON(int userID) {
+        String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+
+
+
+//        return result.size() != 0;
+
+        // print arraylist
+//        for (String[] strings : result) {
+//            System.out.println(Arrays.toString(strings));
+//        }
+
+        return true;
     }
 }
 

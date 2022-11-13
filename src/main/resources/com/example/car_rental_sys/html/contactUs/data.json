@@ -1,0 +1,18 @@
+{
+    "system": {
+        "messageID": {
+            "status": 0,
+            "type": "system",
+            "time": "2019-01-01 00:00:00",
+            "message": "Message ID: 0x00000000",
+            "isFromMe": 0
+        },
+        "messageID1": {
+            "status": 0,
+            "type": "system",
+            "time": "2019-01-01 00:00:00",
+            "message": "Message ID: 0x00000000",
+            "isFromMe": 1
+        }
+    }
+}

@@ -57,7 +57,7 @@ public class Application extends javafx.application.Application {
         String fxmlName = "aboutUsPage.fxml";
         stageInstance = stage;
 
-        startStage(fxmlName);
+        //startStage(fxmlName);
 
         //startApplication();
 

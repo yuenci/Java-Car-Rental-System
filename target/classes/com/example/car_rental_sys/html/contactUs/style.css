@@ -14,6 +14,12 @@ body {
     background-color: #292929;
 }
 
+.chat-container-with-sidebar {
+    width: 1000px !important;
+    position: absolute;
+    left: 280px;
+}
+
 #lower-container {
     display: flex;
     flex-direction: row;
@@ -145,4 +151,13 @@ body {
     border-radius: 10px;
     background-color: #999999;
     padding: 3px 20px;
+}
+
+
+#contact-list {
+    position: absolute;
+    width: 280px;
+    height: 731px;
+    background-color: orange;
+    overflow: auto;
 }

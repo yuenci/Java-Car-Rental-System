@@ -156,6 +156,7 @@
             <table id="tableView">
                 <thead>
                     <tr>
+                        <th>Index</th>
                         <th>Field</th>
                         <th>Type</th>
                         <th>Default value</th>
@@ -298,6 +299,7 @@
 
                 let tr = document.createElement("tr");
                 tr.innerHTML = `
+                <td>${i}</td>
                 <td>${fieldName}</td>
                 <td>${fieldType}</td>
                 <td>${fieldDefaultValue}</td>
