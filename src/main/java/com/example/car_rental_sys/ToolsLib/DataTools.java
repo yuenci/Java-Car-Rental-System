@@ -8,88 +8,87 @@ import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class DataTools {
-    public  static String[] getRenterNameAndPostFromUserID(int userID){
+    public static String[] getRenterNameAndPostFromUserID(int userID) {
         String sql = "select userName,post from userInfo where userID = " + userID;
         ArrayList<String[]> res = SQL.query(sql);
-        if (res.size() == 0){
+        if (res.size() == 0) {
             return null;
-        }
-        else{
+        } else {
             return res.get(0);
         }
     }
 
-    public static String[] getCarSeatsSpeedPowerFromCarModel(String carModel){
+    public static String[] getCarSeatsSpeedPowerFromCarModel(String carModel) {
         String sql = "SELECT seats,speed,power FROM carModels WHERE carModel = '" + carModel + "'";
         ArrayList<String[]> result = SQL.query(sql);
-        if (result.size() == 0){
+        if (result.size() == 0) {
             System.out.println("No car found");
-        }else {
+        } else {
             return result.get(0);
         }
         return null;
     }
 
-    public static boolean ifFileExist(String filePath){
+    public static boolean ifFileExist(String filePath) {
         File file = new File(filePath);
         return file.exists();
     }
 
-    public static boolean ifDataFileExist(String filePath){
+    public static boolean ifDataFileExist(String filePath) {
         String path = ConfigFile.dataFilesRootPath + filePath;
         return ifFileExist(path);
     }
 
-    public static boolean deleteFile(String filePath){
-        try{
+    public static boolean deleteFile(String filePath) {
+        try {
             File file = new File(filePath);
-            if(!file.delete()){
+            if (!file.delete()) {
                 throw new Exception(filePath + " Delete file failed");
             }
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             Tools.logError(e);
             e.printStackTrace();
         }
         return false;
     }
 
-    public static boolean deleteDataFile(String filePath){
+    public static boolean deleteDataFile(String filePath) {
         String path = ConfigFile.dataFilesRootPath + filePath;
         return deleteFile(path);
     }
-    public static String[] getAllFileNameFromPath(String path){
+
+    public static String[] getAllFileNameFromPath(String path) {
         File file = new File(path);
-        if(!file.exists()){
+        if (!file.exists()) {
             return null;
         }
 
         File[] files = file.listFiles();
-        if(Objects.requireNonNull(files).length == 0){
+        if (Objects.requireNonNull(files).length == 0) {
             return null;
         }
         String[] res = new String[files.length];
-        for (int i = 0; i < files.length; i++){
+        for (int i = 0; i < files.length; i++) {
             res[i] = files[i].getName();
         }
         return res;
     }
 
-    public static String[] getAllFileNameFromPath(){
-        String path  = ConfigFile.dataFilesRootPath;
-        return  getAllFileNameFromPath(path);
+    public static String[] getAllFileNameFromPath() {
+        String path = ConfigFile.dataFilesRootPath;
+        return getAllFileNameFromPath(path);
     }
 
-    public static int getID(String tableName){
-        int lastID =  FileOperate.getFileLineNum(ConfigFile.dataFilesRootPath + tableName + ".txt");
+    public static int getID(String tableName) {
+        int lastID = FileOperate.getFileLineNum(ConfigFile.dataFilesRootPath + tableName + ".txt");
         return lastID - 1;
     }
 
@@ -194,7 +193,7 @@ public class DataTools {
         }
     }
 
-    public static boolean encryptDataFiles(){
+    public static boolean encryptDataFiles() {
         String[] dataFiles = ConfigFile.sensitiveDataFileList;
         StringBuilder errorMessages = new StringBuilder();
 
@@ -203,9 +202,9 @@ public class DataTools {
         // encrypt all .txt to .secret files and delete .txt files
         for (String dataFile : dataFiles) {
             boolean res = Encryption.dataFileEncrypt(dataFile);
-            if (res){
+            if (res) {
                 deleteDataFile(dataFile);
-            }else{
+            } else {
                 errorMessages.append(dataFile).append(" encrypt failed, ");
                 ifAllSuccess = false;
             }
@@ -214,7 +213,7 @@ public class DataTools {
         return ifAllSuccess;
     }
 
-    public static boolean decryptDataFiles(){
+    public static boolean decryptDataFiles() {
         String[] dataFiles = ConfigFile.sensitiveDataFileList;
         StringBuilder errorMessages = new StringBuilder();
 
@@ -223,55 +222,55 @@ public class DataTools {
         // decrypt all .secret to .txt files and delete .secret files
         for (String dataFile : dataFiles) {
             boolean res = Encryption.dataFileDecrypt(dataFile);
-            if (res){
+            if (res) {
                 //deleteDataFile(dataFile + ".secret");
-            }else{
+            } else {
                 errorMessages.append(dataFile).append(" decrypt failed, ");
                 ifAllSuccess = false;
             }
         }
 
-        if(ifAllSuccess){
+        if (ifAllSuccess) {
             StatusContainer.isDataDecrypted = true;
-        }else{
+        } else {
             encryptErrorMessage = errorMessages.toString();
         }
 
         return ifAllSuccess;
     }
 
-    public static boolean logLogin(){
+    public static boolean logLogin() {
         int loginID = DataTools.getID("loginLog");
         int userID = StatusContainer.currentUser.getUserID();
-        String loginUIP =NetTools.getExternalHostIP();
-        String platformType =PlatformTools.getPropertyOsName();
+        String loginUIP = NetTools.getExternalHostIP();
+        String platformType = PlatformTools.getPropertyOsName();
         String deviceType = StatusContainer.deviceType;
         String deviceName = NetTools.getLocalHostIP("hostName");
         String IpGeo = NetTools.getGeoIPInfo();
         String time = DateTools.getNow();
-        String EXP =time;
+        String EXP = time;
 
         if (StatusContainer.ifRememberMe) EXP = DateTools.getDataTimeAfterAWeek();
 
-        String sql = "INSERT INTO loginLog VALUES (" + loginID +"," +
+        String sql = "INSERT INTO loginLog VALUES (" + loginID + "," +
                 userID + ",'" + loginUIP + "','" + platformType + "','" + deviceType + "','" + deviceName + "','" +
-                IpGeo + "','"+time + "','" +  EXP + "')";
+                IpGeo + "','" + time + "','" + EXP + "')";
         System.out.println(sql);
         return SQL.execute(sql);
     }
 
-    public   static  int getCustomerOrderNum(int customerID){
+    public static int getCustomerOrderNum(int customerID) {
         String sql = "select count(orderID) from orders where userID = " + customerID;
         //System.out.println(sql);
         ArrayList<String[]> result = SQL.query(sql);
         if (result.size() == 0) {
             return 0;
         } else {
-            return  Double.valueOf( result.get(0)[0]).intValue();
+            return Double.valueOf(result.get(0)[0]).intValue();
         }
     }
 
-    public  static  String[] getCustomerBankCardsList(int customerID){
+    public static String[] getCustomerBankCardsList(int customerID) {
         String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
         ArrayList<String[]> result = SQL.query(sql);
         if (result.size() == 0) {
@@ -291,13 +290,88 @@ public class DataTools {
         return random.nextInt(max) % (max - min + 1) + min;
     }
 
+    private static JSONObject converArrayToJSON(int userID, String[] strings) {
+        JSONObject msgContent = new JSONObject();
+        JSONObject msg = new JSONObject();
+        try {
+            msgContent.put("status", strings[1]);
+            msgContent.put("type", strings[2]);
+            msgContent.put("time", strings[5]);
+            msgContent.put("message", strings[6]);
+
+            int isFromMe = strings[3].equals(String.valueOf(userID)) ? 1 : 0;
+            msgContent.put("isFromMe", isFromMe);
+
+            msg.put("msgContent", msgContent);
+
+            return msg;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static int[] removeRepetition(int[] noList) {
+        int[] newList = new int[noList.length];
+        int count = 0;
+        for (int k : noList) {
+            boolean isRepetition = false;
+            for (int i : newList) {
+                if (k == i) {
+                    isRepetition = true;
+                    break;
+                }
+            }
+            if (!isRepetition) {
+                newList[count] = k;
+                count++;
+            }
+        }
+        int[] result = new int[count];
+        System.arraycopy(newList, 0, result, 0, count);
+        return result;
+    }
+
+    public static String getUserNameFromUserID(int userID) {
+        String sql = "SELECT userName FROM userInfo WHERE userID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
     public static boolean generateMessageJSON(int userID) {
-        String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID;
+        String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID + " ORDER BY time ASC";
         ArrayList<String[]> result = SQL.query(sql);
 
+        JSONObject msgRes = new JSONObject();
 
+        for (String[] strings : result) {
+            JSONObject msg = new JSONObject();
+            try {
+                msg.put("status", Integer.valueOf(strings[1]));
+                msg.put("type", Integer.valueOf(strings[2]));
 
-//        return result.size() != 0;
+                int isFromMe = strings[3].equals(String.valueOf(userID)) ? 1 : 0;
+                //msg.put("receiverID",Integer.valueOf(strings[1]));
+                String chatterName = isFromMe == 1 ? DataTools.getUserNameFromUserID(Integer.valueOf(strings[4])) : DataTools.getUserNameFromUserID(Integer.valueOf(strings[3]));
+                msg.put("chatterName", chatterName);
+
+                msg.put("time", strings[5]);
+                msg.put("message", strings[6]);
+                msg.put("isFromMe", isFromMe);
+
+                msgRes.put(strings[0], msg);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        String json = msgRes.toString();
+        String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.json";
+        FileOperate.rewriteFile(path,json);
 
         // print arraylist
 //        for (String[] strings : result) {
