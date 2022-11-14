@@ -123,15 +123,15 @@ public class UIFilter extends Pane {
         }
 
         if (rbPriceRec != null){
-            // TODO
+            rbPriceRec.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceRec"));
         }
 
         if (rbPriceDesc != null){
-            // TODO
+            rbPriceDesc.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceDesc"));
         }
 
         if (rbPriceAsc != null){
-            // TODO
+            rbPriceAsc.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceAsc"));
         }
 
         if (filDateStart != null){
