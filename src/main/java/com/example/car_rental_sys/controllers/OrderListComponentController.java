@@ -38,8 +38,6 @@ public class OrderListComponentController {
 
     public void addFilterPane(){
         UIFilter filter = new UIFilter();
-        filter.setLayoutX(0);
-        filter.setLayoutY(0);
         paneFilterBox.getChildren().add(filter);
         System.out.println("here");
     }
