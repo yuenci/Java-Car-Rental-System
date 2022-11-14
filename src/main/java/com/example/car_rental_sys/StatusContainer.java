@@ -38,17 +38,30 @@ public class StatusContainer {
 
 
     // self-test statues during loading
-    public static boolean idBackEndServerStart = false;
-    public static boolean isDataDecrypted = false;
+    public static boolean selfTestResult = false;
+    public static boolean isRunable = false;
+    // selfTestResult isRunable
+    // t t, all 4 is running
+    // f t, just net not working
+    // f f , 1/3 have serious issues
+
+
+    public static boolean isNetworkConnected = true;
+    public static boolean isDataFileComplete = true;
+    public static boolean idBackEndServerStart = true;
+    public static boolean isJxBrowserRegistered  = true;
+
+
+
     public static String backEndErrorMessage = null;
 
 
 
 
-    public static boolean isNetworkConnected = false;
+    public static boolean isDataDecrypted = true;
     //public static boolean isDataDecrypted = false;
     public static boolean isConfigComplete = false;
-    public static boolean isJxBrowserRegistered  = false;
+    //public static boolean isJxBrowserRegistered  = false;
     public static boolean isTestResetPassword = false;
     public static boolean isTestCarList = false;
     public static boolean isTestCarDetail = false;

@@ -45,8 +45,8 @@
             </font>
         </Label>
     </Pane>
-    <Pane layoutX="327.0" layoutY="157.0" prefHeight="70.0" prefWidth="141.0">
-        <Label layoutX="82.0" text="INVOICE:" textFill="#86909c">
+    <Pane layoutX="308.0" layoutY="157.0" prefHeight="70.0" prefWidth="160.0">
+        <Label layoutX="99.0" text="INVOICE:" textFill="#86909c">
             <font>
                 <Font name="Arial Black" size="11.0" />
             </font>
@@ -56,12 +56,12 @@
                 <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
-        <Label fx:id="ivPaymentDate" layoutX="38.0" layoutY="40.0" prefWidth="100.0" text="November 13, 2022" textFill="#86909c">
+        <Label fx:id="ivPaymentDate" layoutX="54.0" layoutY="40.0" prefWidth="100.0" text="November 13, 2022" textFill="#86909c">
             <font>
                 <Font name="Arial Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="ivOrderID" layoutX="75.0" layoutY="20.0" text="392685222" textFill="#4080ff">
+        <Label fx:id="ivOrderID" layoutX="88.0" layoutY="20.0" text="392685222" textFill="#4080ff">
             <font>
                 <Font name="Arial Bold" size="13.0" />
             </font>

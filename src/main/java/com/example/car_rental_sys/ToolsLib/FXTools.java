@@ -127,4 +127,8 @@ public class FXTools {
             job.endJob();
         }
     }
+
+    public static Stage getStageFromFXNode(Node node){
+        return (Stage) node.getScene().getWindow();
+    }
 }

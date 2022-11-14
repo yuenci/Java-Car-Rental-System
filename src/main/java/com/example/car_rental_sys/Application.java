@@ -25,6 +25,7 @@ import java.util.Objects;
 
 public class Application extends javafx.application.Application {
     public static Stage stageInstance;
+    public static Application instance ;
 
     @Override
     public void init() throws Exception {
@@ -60,9 +61,9 @@ public class Application extends javafx.application.Application {
         String fxmlName = "Invoice.fxml";
         stageInstance = stage;
 
-        startStage(fxmlName);
+        //startStage(fxmlName);
 
-        //startApplication();
+        startApplication();
 
         //testComponent(stage,css);
     }
@@ -85,7 +86,7 @@ public class Application extends javafx.application.Application {
 
     }
 
-    private static void startStage(String fxmlName) throws IOException {
+    public static void startStage(String fxmlName) throws IOException {
 
         if (fxmlName.contains("Page")) {
             startPrimaryStage(fxmlName) ;
@@ -114,7 +115,10 @@ public class Application extends javafx.application.Application {
     }
 
 
-    /*
+
+
+    private static void startApplication() throws IOException {
+         /*
     star loading page
 
     init data
@@ -132,34 +136,7 @@ public class Application extends javafx.application.Application {
 
     render to login page
      */
-
-    private static void startApplication() throws IOException {
-        FXTools.startLoadingStage();
-        SelfTestTools.executeSelfTest();
-        //FXTools.showNetworkErrorPage();
-        FXTools.showErrorsPage();
-
-
-        //FXTools.showDiagnosticDataPage();
-
-        // init program
-        //// start the http server
-//        try {
-//            //NetTools.StartHttpServer();
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-//        DataTools.decryptDataFiles();
-//        NetTools.registerJxBrowserLicence();
-//        // self checking
-//
-//        for (int i = 0; i <1 ; i++) {
-//            SelfTestTools.executeSelfTest();
-//        }
-
-
+    FXTools.startLoadingStage();
     }
 
     public static void main(String[] args) {

@@ -12,6 +12,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 public class NetTools {
     public static String getExternalHostIP() {
@@ -128,6 +131,18 @@ public class NetTools {
     public static String netErrorMsg = "";
 
     public static boolean netIsAvailable(String urlParam) {
+        //automatic return false after 5 second
+
+        FutureTask<Boolean> future = new FutureTask<>(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                Thread.sleep(1500);
+                return false;
+            }
+        });
+        future.run();
+
+
         try {
             final URL url = new URL(urlParam);
             final URLConnection conn = url.openConnection();
@@ -137,7 +152,7 @@ public class NetTools {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            netErrorMsg = e.getMessage();
+            netErrorMsg = e.toString();
             return false;
         }
     }
@@ -153,6 +168,7 @@ public class NetTools {
             thread.start();
             StatusContainer.idBackEndServerStart = true;
         }catch (Exception e){
+            StatusContainer.idBackEndServerStart = false;
             Tools.logError(e);
             StatusContainer.backEndErrorMessage = e.toString();
             e.printStackTrace();

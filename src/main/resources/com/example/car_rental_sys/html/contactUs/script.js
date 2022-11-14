@@ -42,11 +42,11 @@ class Tools {
     }
 
     static cleanResponse(response) {
-        let charater = [",", "!", "?", ".", ":", ";"];
+        //let charater = [",", "!", "?", ".", ":", ";"];
         if (charater.includes(response[0])) response = response.slice(1);
 
 
-        let nowords = [".Human: ", "Human:"]
+        //let nowords = [".Human: ", "Human:"]
         for (let i = 0; i < nowords.length; i++) {
             response = response.replace(nowords[i], "");
         }
