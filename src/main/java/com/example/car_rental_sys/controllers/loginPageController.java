@@ -57,20 +57,22 @@ public class loginPageController extends Controller{
     private void loginBtnClick() {
         //System.out.println( "loginBtnClick" );
         if(checkEmailAndPassword()){
-            System.out.println( "login success" );
             String emailValue = emailInput.getText();
             String userRole = DataTools.getUserRoleFromUserEmail(emailValue);
-            if(userRole.equals("customer")){
+            System.out.println( "userRole: " + userRole );
+            if(Objects.equals(userRole, "customer")){
+                System.out.println( "customer login" );
                 StatusContainer.currentUser = new Customer(emailValue);
                 FXTools.changeScene("customerServicePage.fxml");}
-            else if(userRole.equals("driver")){
+            else if(Objects.equals(userRole, "driver")){
+                System.out.println( "driver login" );
                 StatusContainer.currentUser = new Driver(emailValue);
                 FXTools.changeScene("driverServicePage.fxml");
-            }else if(userRole.equals("admin")){
+            }else if(Objects.equals(userRole, "admin")){
+                System.out.println( "admin login" );
                 StatusContainer.currentUser = new Admin(emailValue);
                 FXTools.changeScene("adminServicePage.fxml");
             }
-
         }else{
             System.out.println( "login fail" );
         }

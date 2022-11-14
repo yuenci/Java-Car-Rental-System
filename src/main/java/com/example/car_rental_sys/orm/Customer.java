@@ -6,8 +6,8 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.FileOperate;
 import javafx.scene.image.Image;
 
-public class Customer extends User{
-    private int  orderNum;
+public class Customer extends User {
+    private int orderNum;
     private String[] bankCardList;
     private Image vipBadge;
     private Image vipCard;
@@ -26,13 +26,13 @@ public class Customer extends User{
         //System.out.println("orderNum: " + orderNum);
         this.bankCardList = DataTools.getCustomerBankCardsList(userID);
         this.vipBadge = ImageTools.getBadgeImage(userID);
-        this.vipCard =ImageTools.getVIPCardImage(userID);
+        this.vipCard = ImageTools.getVIPCardImage(userID);
     }
 
     public Customer(String userFirstName, String userLastName, String password, String userGroup, String post,
                     String securityProblem, String securityAnswer, String birthday, String gender, String country,
                     String DLNumber, String phone, String email, String address, String about, String regTime) {
-        super(userFirstName,userLastName,password,userGroup,post,securityProblem,securityAnswer,birthday,gender,country,DLNumber,phone,email,address,about,regTime);
+        super(userFirstName, userLastName, password, userGroup, post, securityProblem, securityAnswer, birthday, gender, country, DLNumber, phone, email, address, about, regTime);
     }
 
     public int getOrderNum() {
@@ -67,18 +67,18 @@ public class Customer extends User{
         this.vipCard = vipCard;
     }
 
-        public boolean storeCustomerInfo(){
-        String userID = String.valueOf(super.getUserID());
-        String[] userinfo= new String[]{
-            userID,  userFirstName+"-"+userLastName,   userGroup,  post,   securityProblem,   securityAnswer,
-                birthday,gender,country,DLNumber,phone,email,address,about,regTime
+    public boolean storeCustomerInfo() {
+        String userID = String.valueOf(DataTools.getNewUserID());
+        String[] userinfo = new String[]{
+                userID, userFirstName + "-" + userLastName, userGroup, post, securityProblem, securityAnswer,
+                birthday, gender, country, DLNumber, phone, email, address, about, regTime
         };
-        String userAndPassword = userID +"," + password ;
+        String userAndPassword = userID + "," + password;
 
-        String userinfoStr = String.join(",",userinfo) ;
+        String userinfoStr = String.join(",", userinfo);
         try {
-            FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "userinfo.txt",userinfoStr);
-            FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "password.txt",userAndPassword);
+            FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "userinfo.txt", userinfoStr);
+            FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "password.txt", userAndPassword);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

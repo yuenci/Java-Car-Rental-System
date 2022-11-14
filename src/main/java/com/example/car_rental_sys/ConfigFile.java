@@ -49,9 +49,9 @@ public class ConfigFile {
     };
 
     public static final String[] sensitiveDataFileList = {
-            "bankCardInfo1.txt",
-            "password1.txt",
-            "userInfo1.txt"
+            "bankCardInfo.txt",
+            "password.txt",
+            "userInfo.txt"
     };
 
 

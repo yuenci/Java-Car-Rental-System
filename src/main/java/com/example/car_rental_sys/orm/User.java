@@ -9,24 +9,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class User {
-    protected int userID;
-    protected String userName;
-    protected String userFirstName;
-    protected String userLastName;
-    protected String password;
-    protected String userGroup;
-    protected String post;
-    protected String securityProblem;
-    protected String securityAnswer;
-    protected String birthday;
-    protected String gender;
-    protected String country;
-    protected String DLNumber;
-    protected String phone;
-    protected String email;
-    protected String address;
-    protected String about;
-    protected String regTime;
+    protected int userID = 0;
+    protected String userName ="null";
+    protected String userFirstName ="null";
+    protected String userLastName ="null";
+    protected String password = "0123456789";
+    protected String userGroup = "customer";
+    protected String post = "null";
+    protected String securityProblem = "null";
+    protected String securityAnswer = "null";
+    protected String birthday = "2022-01-01 00:00:00";
+    protected String gender = "null";
+    protected String country = "null";
+    protected String DLNumber   = "null";
+    protected String phone = "0123456789";
+    protected String email = "rent@mail.com";
+    protected String address = "null";
+    protected String about = "null";
+    protected String regTime = "null";
     protected Image avatar;
 
     public User(){
