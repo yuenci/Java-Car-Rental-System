@@ -373,8 +373,8 @@ public class DataTools {
             }
         }
 
-        String json = "getJson(" + msgRes.toString() + ")";
-        String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.json";
+        String json = "let messageData= '" + msgRes.toString() + "'";
+        String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.js";
         FileOperate.rewriteFile(path,json);
 
         File avatarFile =new File( "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");

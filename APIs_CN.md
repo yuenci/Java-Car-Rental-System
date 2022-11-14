@@ -195,6 +195,9 @@ primaryStage.setOnCloseRequest(event -> engine.close());
 Frame frame = browser.frames().get(0);
 frame.executeJavaScript(jsArgs);
 
+//dev
+browser.devTools().show();
+
 // get js console message
 browser.on(ConsoleMessageReceived.class, event -> {
 ConsoleMessage consoleMessage = event.consoleMessage();

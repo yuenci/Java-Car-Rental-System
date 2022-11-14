@@ -8,10 +8,12 @@ import com.example.car_rental_sys.orm.Driver;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.frame.Frame;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -22,7 +24,7 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class MessagePageController {
     @FXML
-    Pane mainPane;
+    Pane mainPane,navBarPane;
 
     @FXML
     public void initialize() {
@@ -41,7 +43,10 @@ public class MessagePageController {
         view.setPrefSize(1280,832);
         mainPane.getChildren().add(view);
 
-        browser.devTools().show();
+        navBarPane.toFront();
+
+        Frame frame = browser.frames().get(0);
+        frame.localStorage().putItem("Name", "Tom");
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
@@ -49,9 +54,12 @@ public class MessagePageController {
             System.out.println(message);
             if(Objects.equals(message, "back to service")){
                 backToService();
+            }else if (Objects.equals(message, "close")){
+                System.exit(0);
             }
         });
     }
+
 
     private void backToService(){
         Platform.runLater(() -> {
@@ -69,3 +77,5 @@ public class MessagePageController {
         });
     }
 }
+
+// TODO: drag bar

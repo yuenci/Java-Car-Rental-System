@@ -1,3 +1,5 @@
+
+
 class Servicer {
     static servicers =
         ["Nigel Walsh",
@@ -23,6 +25,7 @@ class Servicer {
 
 class Tools {
     static messageToLocalStorage = null;
+    static messageDataJson = null;
     static avatarRootPath = null;
     static getTime() {
         let newDate = new Date();
@@ -85,12 +88,14 @@ class Tools {
     }
 
     static getMessageDataFromLcalStorage() {
-        Tools.messageToLocalStorage = JSON.parse(localStorage.getItem("messageData"));
+        let data = localStorage.getItem("messageData");
+        console.warn(data)
+        Tools.messageToLocalStorage = JSON.parse(data);
         return Tools.messageToLocalStorage;
     }
 
     static addMessages(chatterName) {
-        let data = Tools.messageToLocalStorage;
+        let data = JSON.parse(messageData);
         let messageDataIDList = Object.keys(data);
 
         $(".message-container-left").remove();
@@ -113,7 +118,7 @@ class Tools {
     }
 
     static getUnreadMessageCount() {
-        let data = Tools.messageToLocalStorage;
+        let data = JSON.parse(messageData);
         let messageDataIDList = Object.keys(data);
         let res = {};
 
@@ -191,8 +196,9 @@ class Message {
     }
 
     static addMessageList() {
-        let messageData = Tools.getMessageDataFromLcalStorage();
-        let messageDataIDList = Object.keys(Tools.getMessageDataFromLcalStorage());
+        console.log("addMessageList");
+        let messageDataJson = JSON.parse(messageData);
+        let messageDataIDList = Object.keys(messageDataJson);
         let chatterList = []
         let unreadMsgMap = Tools.getUnreadMessageCount();
 
@@ -201,15 +207,15 @@ class Message {
             let messageID = messageDataIDList[i];
             //console.log(messageID);
 
-            let chatter = messageData[messageID]["chatter"];
-            let chatterID = messageData[messageID]["chatterID"];
+            let chatter = messageDataJson[messageID]["chatter"];
+            let chatterID = messageDataJson[messageID]["chatterID"];
             let unreadNum = unreadMsgMap[chatter];
             if (!chatterList.includes(chatter)) {
                 chatterList.push(chatter);
             } else {
                 continue;
             }
-            let messageText = messageData[messageID]["message"];
+            let messageText = messageDataJson[messageID]["message"];
 
             let messageRes = `
                         <div class="message-box">
@@ -328,6 +334,10 @@ class Application {
         $("#current-user-avatar").click(function () {
             console.log("back to service");
         });
+
+        $("#closeIcon").click(function () {
+            console.log("close");
+        });
     }
 
     static sendWelcomeMessage() {
@@ -338,17 +348,6 @@ class Application {
 }
 
 
-let jsonDataInsert = document.createElement("script")
-jsonDataInsert.src = "./messageData.json"
-jsonDataInsert.type = "text/javascript";
-document.body.appendChild(jsonDataInsert);
-
-
-
-function getJson(data) {
-    console.log(data);
-    localStorage.setItem("messageData", JSON.stringify(data));
-}
 
 Application.start();
 
@@ -358,4 +357,3 @@ if (window.screen.height > 800) {
     $("#contact-list").css("height", 832);
     $("#chat-container").css("height", 832);
 }
-alert(window.screen.height);
