@@ -6,7 +6,8 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<Pane fx:id="cardDetailsPageContainer" prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #1d1f20;" stylesheets="@../style/carDetailsPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CarDetailsPageController">
+<Pane fx:id="mainPane" prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #1d1f20;"
+      stylesheets="@../style/carDetailsPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.CarDetailsPageController">
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBar.fxml" />
     </Pane>
