@@ -1,10 +1,12 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.sqlParser.SQL;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -29,7 +31,7 @@ public class MessagePageController {
     @FXML
     public void initialize() {
         initBrowser();
-        System.out.println("MessagePageController initialize");
+        //System.out.println("MessagePageController initialize");
     }
 
     private void initBrowser() {
@@ -51,13 +53,33 @@ public class MessagePageController {
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
             String message = consoleMessage.message();
-            System.out.println(message);
+            //System.out.println(message);
             if(Objects.equals(message, "back to service")){
                 backToService();
             }else if (Objects.equals(message, "close")){
                 System.exit(0);
+            }else if (message.startsWith("[") && message.endsWith("]")){
+                //System.out.println("message is: "+message);
+                generateMessage(message);
             }
         });
+    }
+
+    private void generateMessage(String message){
+        int id = DataTools.getID("messages") ;
+        int status = 0;
+
+        message = message.substring(1,message.length()-1);
+
+        String[] messageArray = message.split(",");
+        // insert to db with sql
+        //  (id,status, type,senderID, receiverID, message)
+        String sql = "INSERT INTO messages VALUES ("+id+", " +status+ ", "
+                +messageArray[0]+", "+messageArray[1]+", "+messageArray[2]+", '"
+                +messageArray[3] +"', '" + messageArray[4] +"')";
+
+        SQL.execute(sql);
+        System.out.println(sql);
     }
 
 

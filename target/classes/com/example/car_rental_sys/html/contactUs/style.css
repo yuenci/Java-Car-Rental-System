@@ -254,6 +254,14 @@ body {
 }
 
 .message-box:hover {
+    background-color: #2a3942;
+}
+
+.message-box-selected {
+    background-color: #2a3942 !important;
+}
+
+.message-box:hover {
     cursor: pointer;
 }
 

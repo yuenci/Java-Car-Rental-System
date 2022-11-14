@@ -24,13 +24,21 @@ class Servicer {
 }
 
 class Tools {
-    static messageToLocalStorage = null;
     static messageDataJson = null;
     static avatarRootPath = null;
+    static chatterNameIDMap = {};
+    static currentChatWith = null;
+    static currentServicer = null;
     static getTime() {
         let newDate = new Date();
         let format = (x) => x.toString().padStart(2, "0");
         return format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
+    }
+
+    static getDataTime() {
+        let newDate = new Date();
+        let format = (x) => x.toString().padStart(2, "0");
+        return newDate.getFullYear() + "-" + format(newDate.getMonth() + 1) + "-" + format(newDate.getDate()) + " " + format(newDate.getHours()) + ":" + format(newDate.getMinutes()) + ":" + format(newDate.getSeconds());
     }
 
     static cleanResponse(response) {
@@ -87,16 +95,12 @@ class Tools {
         document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
     }
 
-    static getMessageDataFromLcalStorage() {
-        let data = localStorage.getItem("messageData");
-        console.warn(data)
-        Tools.messageToLocalStorage = JSON.parse(data);
-        return Tools.messageToLocalStorage;
-    }
+
 
     static addMessages(chatterName) {
         let data = JSON.parse(messageData);
         let messageDataIDList = Object.keys(data);
+
 
         $(".message-container-left").remove();
         $(".message-container-right").remove();
@@ -106,7 +110,7 @@ class Tools {
             let chatterID = messgae["chatterID"];
 
             if (messgae["chatter"] === chatterName) {
-                if (messgae.isFromMe === 0) {
+                if (messgae.isFromMe === 1) {
                     let message = new Message(messgae.message, messgae.chatter, true, messgae.time);
                     message.send();
                 } else {
@@ -137,6 +141,30 @@ class Tools {
         }
         //console.log(res);
         return res;
+    }
+
+    static getCurrentInput() {
+        let input = document.getElementById("inputBox");
+        let res = input.value;
+        input.value = "";
+        input.focus();
+        return res;
+    }
+
+    static sendMessage() {
+        let time = Tools.getTime();
+        if (Tools.currentChatWith === "System") {
+            //console.log("sent to System");
+            OpenAI.sendCustomerMessage();
+        } else if (Tools.currentChatWith === Tools.currentServicer) {
+            // console.log("sent to Customer service");
+            let message = new Message(Tools.getCurrentInput(), "me", true, time);
+            message.sendCustomerMessage();
+        } else {
+            // console.log("sent to other Customer");
+            let message = new Message(Tools.getCurrentInput(), "me", true, time);
+            message.sendCustomerMessage();
+        }
     }
 }
 
@@ -195,11 +223,47 @@ class Message {
         $("#char-area-bottom").before(messageRes);
     }
 
+    sendCustomerMessage() {
+
+        let messageRes = `
+                        <div class="message-container-right">
+                            <div class="message-area">
+                                <div class="message-topic">
+                                    <div class="message-time">${this.time}</div>
+                                </div>
+                                <div class="message">${this.message}</div>
+                            </div>
+                        </div>
+                        `
+        $("#char-area-bottom").before(messageRes);
+
+        let type = 2;
+        if (Tools.currentChatWith === "System") {
+            type = 0;
+        } else if (Tools.currentChatWith = Tools.currentServicer) {
+            type = 1;
+        }
+        let senderID = currentUserID;
+        let status = 0;
+
+        let chatwith = $("#message-container").find(".message-box-selected .sender-name").text();
+        chatwith = chatwith.replace(" ", "-");
+
+        let reciverID = Tools.chatterNameIDMap[chatwith];
+
+        let time1 = Tools.getDataTime();
+        let message1 = this.message;
+
+        let data = [type, senderID, reciverID, time1, message1];
+        let res = "[" + data.join(",") + "]";
+        console.log(res);
+    }
+
     static addMessageList() {
-        console.log("addMessageList");
         let messageDataJson = JSON.parse(messageData);
         let messageDataIDList = Object.keys(messageDataJson);
-        let chatterList = []
+        let chatterNameList = []
+        let chatterIDList = []
         let unreadMsgMap = Tools.getUnreadMessageCount();
 
         for (let i = messageDataIDList.length - 1; i >= 0; i--) {
@@ -210,8 +274,9 @@ class Message {
             let chatter = messageDataJson[messageID]["chatter"];
             let chatterID = messageDataJson[messageID]["chatterID"];
             let unreadNum = unreadMsgMap[chatter];
-            if (!chatterList.includes(chatter)) {
-                chatterList.push(chatter);
+            if (!chatterNameList.includes(chatter)) {
+                chatterNameList.push(chatter);
+                chatterIDList.push(chatterID);
             } else {
                 continue;
             }
@@ -221,7 +286,7 @@ class Message {
                         <div class="message-box">
                 <img class="message-box-avatar" src="${Tools.avatarRootPath}${chatterID}.png">
                 <div class="message-box-right">
-                    <div class="sender-name">${chatter}</div>
+                    <div class="sender-name">${chatter.replace("-", " ")}</div>
                     <div class="message-box-text">${messageText}</div>
                     <div class="unread">${unreadNum}</div>
                 </div>
@@ -231,7 +296,14 @@ class Message {
             // add click event
             newMessageItem.click(function () {
                 let chatter = $(this).find(".sender-name").text()
-                //console.log(chatter);
+                $("#message-container").find(".message-box").removeClass("message-box-selected");
+
+                $(this).addClass("message-box-selected");
+
+
+
+                Tools.currentChatWith = chatter;
+                chatter = chatter.replace(" ", "-");
                 Tools.addMessages(chatter);
             });
 
@@ -239,6 +311,9 @@ class Message {
             $("#message-container").append(newMessageItem);
         }
 
+        for (let i = 0; i < chatterNameList.length; i++) {
+            Tools.chatterNameIDMap[chatterNameList[i]] = chatterIDList[i];
+        }
 
     }
 }
@@ -299,7 +374,7 @@ class Application {
     static start() {
         Application.initEvent();
         Tools.initAvatars();
-        Application.sendWelcomeMessage();
+        //Application.sendWelcomeMessage();
         //Tools.loadMessageData();
         Message.addMessageList();
     }
@@ -307,14 +382,15 @@ class Application {
     static initEvent() {
 
         $("#sendBtn").click(function () {
-            OpenAI.sendMessage();
+            Tools.sendMessage();
+
         });
 
         let $inputBox = $("#inputBox");
 
         $inputBox.keypress(function (e) {
             if (e.which === 13) {
-                OpenAI.sendMessage();
+                Tools.sendMessage();
             }
         });
 
@@ -342,6 +418,7 @@ class Application {
 
     static sendWelcomeMessage() {
         let servicer = Servicer.getRandomServicer();
+        Tools.currentServicer = servicer;
         let welcomeMessage = new Message(`Hi, welcome to Rent, I'm ${servicer}, how can I help you?`, servicer, false, 0);
         welcomeMessage.send();
     }
@@ -357,3 +434,5 @@ if (window.screen.height > 800) {
     $("#contact-list").css("height", 832);
     $("#chat-container").css("height", 832);
 }
+
+//console.log(currentUserID);

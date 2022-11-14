@@ -31,7 +31,7 @@ public class Application extends javafx.application.Application {
         NetTools.registerJxBrowserLicence();
         //NetTools.StartHttpServer();
         //dataFilesDecrypt();
-        //Test.test();
+        Test.test();
     }
 
     @Override

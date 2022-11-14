@@ -373,7 +373,7 @@ public class DataTools {
             }
         }
 
-        String json = "let messageData= '" + msgRes.toString() + "'";
+        String json = "let messageData= '" + msgRes.toString() + "';let currentUserID = " + userID + ";";
         String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.js";
         FileOperate.rewriteFile(path,json);
 
