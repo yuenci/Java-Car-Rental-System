@@ -1,17 +1,28 @@
 package com.example.car_rental_sys.controllers;
+import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.ui_components.InvoiceBox;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class OrderDetailsComponentController {
 
-    public static OrderDetailsComponentController orderDetailsComponentController;
+    public static OrderDetailsComponentController instance;
 
-
+    @FXML
+    private Button invoiceBtn;
 
     @FXML
     private Label orderNum;
-
 
     @FXML
     private Label orderDate;
@@ -52,6 +63,18 @@ public class OrderDetailsComponentController {
     @FXML
     public void initialize() {
         System.out.println("OrderDetailsComponentController");
+        initBtnEvent();
+    }
+
+    private void initBtnEvent() {
+        invoiceBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            try {
+                InvoiceBox invoiceBox = new InvoiceBox();
+                invoiceBox.showInvoiceStage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void setOrderNum(String orderNum) {
@@ -68,5 +91,7 @@ public class OrderDetailsComponentController {
         this.carName.setText(carName);
         System.out.println("setCarName");
     }
+
+
 }
 

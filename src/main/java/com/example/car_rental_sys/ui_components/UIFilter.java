@@ -18,7 +18,7 @@ public class UIFilter extends Pane {
     private Button filCancel, filDone, filDateStart, filDateEnd;
     private RadioButton rbPriceRec, rbPriceDesc, rbPriceAsc;
 
-    public UIFilter(){
+    public UIFilter() {
         this.setLayoutX(0);
         this.setLayoutY(0);
         this.setPrefSize(240, 260);
@@ -27,11 +27,11 @@ public class UIFilter extends Pane {
         initEvent();
     }
 
-    private void initStyle(){
+    private void initStyle() {
         this.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #D9D9D9; -fx-border-width: 1px;");
     }
 
-    private void initComponents(){
+    private void initComponents() {
         Label lblDate = new Label("Date");
         lblDate.setStyle("-fx-font-size: 14px; -fx-text-fill: #86909C; -fx-font-weight: bold;");
         lblDate.setLayoutX(11);
@@ -89,57 +89,57 @@ public class UIFilter extends Pane {
         filCancel.setStyle("-fx-font-size: 12px; -fx-background-color: #E5E6EB; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 0px; -fx-text-fill: #4E5969; -fx-font-weight: bold;");
         filCancel.setLayoutX(28);
         filCancel.setLayoutY(215);
-        filCancel.setPrefSize(80,25);
+        filCancel.setPrefSize(80, 25);
 
         filDone = new Button("Done");
         filDone.setStyle("-fx-font-size: 12px; -fx-background-color: #4080FF; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 0px; -fx-text-fill: #ffffff; -fx-font-weight: bold;");
         filDone.setLayoutX(128);
         filDone.setLayoutY(215);
-        filDone.setPrefSize(80,25);
+        filDone.setPrefSize(80, 25);
 
         //Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("file:src/main/resources/com/example/car_rental_sys/image/UI/calendarGrey.png")));
         filDateStart = new Button("Nov 12, 2022");
         filDateStart.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 1px; -fx-border-color: #D9D9D9; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-font-size: 11px; -fx-text-fill: #4E5969; -fx-font-weight: bold; -fx-padding: 0 0 0 8;");
         filDateStart.setLayoutX(11);
         filDateStart.setLayoutY(45);
-        filDateStart.setPrefSize(90,25);
+        filDateStart.setPrefSize(90, 25);
 
         filDateEnd = new Button("Nov 13, 2022");
         filDateEnd.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 1px; -fx-border-color: #D9D9D9; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-font-size: 11px; -fx-text-fill: #4E5969; -fx-font-weight: bold; -fx-padding: 0 0 0 8;");
         filDateEnd.setLayoutX(118);
         filDateEnd.setLayoutY(45);
-        filDateEnd.setPrefSize(90,25);
+        filDateEnd.setPrefSize(90, 25);
 
         this.getChildren().addAll(lblDate, lblTo, lblPricing, lblRecommend, lblPriceAsc, lblPriceDesc, rbPriceRec, rbPriceDesc, rbPriceAsc, filCancel, filDone, filDateStart, filDateEnd);
     }
 
-    private void initEvent(){
-        if(filCancel != null){
+    private void initEvent() {
+        if (filCancel != null) {
             filCancel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> OrderListComponentController.instance.removeFilterPane());
         }
 
-        if (filDone != null){
+        if (filDone != null) {
             filDone.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> OrderListComponentController.instance.removeFilterPane());
         }
 
-        if (rbPriceRec != null){
+        if (rbPriceRec != null) {
             rbPriceRec.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceRec"));
         }
-
-        if (rbPriceDesc != null){
+        if (rbPriceDesc != null) {
             rbPriceDesc.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceDesc"));
         }
 
-        if (rbPriceAsc != null){
+        if (rbPriceAsc != null) {
             rbPriceAsc.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> System.out.println("rbPriceAsc"));
         }
 
-        if (filDateStart != null){
+        if (filDateStart != null) {
             // TODO
         }
 
-        if (filDateEnd != null){
+        if (filDateEnd != null) {
             // TODO
         }
     }
 }
+
