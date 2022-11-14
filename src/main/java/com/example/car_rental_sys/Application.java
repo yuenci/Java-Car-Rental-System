@@ -44,7 +44,7 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "carDetailsPage.fxml";
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
-        String fxmlName = "OrderDetailsComponent.fxml";
+        //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage2.fxml";
 //        String fxmlName = "driverMainPage.fxml";
@@ -53,7 +53,7 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "customerServicePage.fxml";
 //        String fxmlName = "addBankCardPagSe.fxml";
 //        String fxmlName = "adminServicePage.fxml";
-        //String fxmlName = "showOrderComponent.fxml";
+        String fxmlName = "showOrderComponent.fxml";
         //String fxmlName = "aboutUsPage.fxml";
         //String fxmlName = "Invoice.fxml";
 
