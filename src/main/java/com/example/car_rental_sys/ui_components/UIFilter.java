@@ -22,7 +22,7 @@ public class UIFilter extends Pane {
 
     private Button filCancel, filDone, filDateStart, filDateEnd;
     private RadioButton rbPriceRec, rbPriceDesc, rbPriceAsc;
-    private int selectedState = 1;
+    private static int selectedState = 1;
 
     public static UIFilter instance;
 
