@@ -47,6 +47,7 @@ public class BrowserFrame {
     private void initBrowser() {
         Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
         browser = engine.newBrowser();
+        //browser.devTools().show();
 
         if(url.startsWith("http")){
             browser.navigation().loadUrl(this.url);

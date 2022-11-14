@@ -191,7 +191,7 @@ public class UIFilter extends Pane {
         if(ifExist){
             return;
         }
-        String url = ConfigFile.backendPost +  "datePicker/index.html";
+        String url = ConfigFile.backendPost +  "datePicker/index_white.html";
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
