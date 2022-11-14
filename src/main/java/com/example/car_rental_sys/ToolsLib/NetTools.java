@@ -136,7 +136,7 @@ public class NetTools {
         FutureTask<Boolean> future = new FutureTask<>(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                Thread.sleep(1500);
+                Thread.sleep(ConfigFile.netDetectMaxTime);
                 return false;
             }
         });

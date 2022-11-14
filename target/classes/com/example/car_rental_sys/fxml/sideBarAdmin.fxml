@@ -6,22 +6,25 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AdminSideBarController">
+<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AdminSideBarController">
     <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/avatar/1.png" />
     </ImageView>
-    <Label fx:id="nameTextLabel" layoutX="-1.0" layoutY="170.0" prefHeight="40.0" prefWidth="250.0" text="Orizon Travel">
+   <Label fx:id="postLabel" layoutY="200.0" prefHeight="15.0" prefWidth="260.0" text="Post">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+    <Label fx:id="nameTextLabel" layoutX="-1.0" layoutY="160.0" prefHeight="40.0" prefWidth="260.0" text="Orizon Travel">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
-    <Label fx:id="emailTextLabel" layoutX="4.0" layoutY="140.0" prefHeight="25.0" prefWidth="243.0" text="4856415478@gmail.com">
+    <Label fx:id="emailTextLabel" layoutY="135.0" prefHeight="25.0" prefWidth="260.0" text="4856415478@gmail.com">
         <font>
             <Font size="14.0" />
         </font>
     </Label>
-    <Line endX="109.0" layoutX="132.0" layoutY="224.0" startX="-123.0" stroke="#e3e3e399" />
+    <Line endX="109.0" layoutX="132.0" layoutY="230.0" startX="-123.0" stroke="#e3e3e399" />
     <Line endX="109.0" layoutX="137.0" layoutY="373.0" startX="-123.0" stroke="#e3e3e399" />
     <Pane layoutX="24.0" layoutY="382.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
         <Pane fx:id="item1" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">

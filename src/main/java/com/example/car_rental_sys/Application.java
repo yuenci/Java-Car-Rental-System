@@ -41,14 +41,14 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
-        //String fxmlName = "loginPage.fxml";
+        String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
         //String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage2.fxml";
-//        String fxmlName = "driverMainPage.fxml";
+//        String fxmlName = "driverServicePage.fxml";
         //String fxmlName = "test.fxml";
 //        String fxmlName = "drivingModePage.fxml";
         //String fxmlName = "customerServicePage.fxml";
@@ -58,12 +58,12 @@ public class Application extends javafx.application.Application {
 //        String fxmlName = "aboutUsPage.fxml";
         //String fxmlName = "messagePage.fxml";
         //String fxmlName = "showCardDetails.fxml";
-        String fxmlName = "Invoice.fxml";
+        //String fxmlName = "Invoice.fxml";
         stageInstance = stage;
 
-        //startStage(fxmlName);
+        startStage(fxmlName);
 
-        startApplication();
+        //startApplication();
 
         //testComponent(stage,css);
     }

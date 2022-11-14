@@ -105,7 +105,7 @@ public class MessagePageController {
                 if(StatusContainer.currentUser instanceof Admin){
                     FXTools.changeScene("adminServicePage.fxml");
                 }else if (StatusContainer.currentUser instanceof Driver){
-                    FXTools.changeScene("driverMainPage.fxml");
+                    FXTools.changeScene("driverServicePage.fxml");
                 }else if (StatusContainer.currentUser instanceof Customer){
                     FXTools.changeScene("customerServicePage.fxml");
                 }

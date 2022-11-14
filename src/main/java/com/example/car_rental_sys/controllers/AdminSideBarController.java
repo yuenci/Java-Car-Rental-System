@@ -16,7 +16,7 @@ public class AdminSideBarController {
     Pane item1, item2, item3, item4, item5, item6, item7;
 
     @FXML
-    Label nameTextLabel,emailTextLabel;
+    Label nameTextLabel,emailTextLabel,postLabel;
 
     @FXML
     ImageView avatarImageView;
@@ -32,6 +32,7 @@ public class AdminSideBarController {
     private void initUserData() {
         nameTextLabel.setText(admin.getUserName());
         emailTextLabel.setText(admin.getEmail());
+        postLabel.setText(admin.getPost());
 
         Image circleImage = ImageTools.getCircleImages(admin.getAvatar());
         avatarImageView.setImage(circleImage);
@@ -70,6 +71,7 @@ public class AdminSideBarController {
     private  void  initLabelEvent(){
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
+        postLabel.setAlignment(Pos.CENTER);
     }
 
 }

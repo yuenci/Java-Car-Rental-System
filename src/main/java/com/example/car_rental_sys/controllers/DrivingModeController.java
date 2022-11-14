@@ -134,7 +134,7 @@ public class DrivingModeController {
     @FXML
     private void backToDriverMainPage() {
         System.out.println("backToDriverMainPage");
-        FXTools.changeScene("driverMainPage.fxml");
+        FXTools.changeScene("driverServicePage.fxml");
     }
 
     @FXML

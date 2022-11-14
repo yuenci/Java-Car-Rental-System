@@ -107,23 +107,35 @@ public class DataTools {
     }
 
     public static boolean checkPassword(String password) {
-        if (password.length() < 8) {
+        if (password.length() < 8 ) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[A-Z].*")) {
+        }
+        if (ConfigFile.passwordStrength == 1) return true;
+
+        if (!password.matches(".*[A-Z].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[a-z].*")) {
+        }
+        if (ConfigFile.passwordStrength == 2) return true;
+
+        if (!password.matches(".*[a-z].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[0-9].*")) {
+        }
+        if (ConfigFile.passwordStrength == 3) return true;
+
+        if (!password.matches(".*[0-9].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*")) {
+        }
+        if (ConfigFile.passwordStrength == 4) return true;
+
+        if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
             messageFrame.show();
             return false;
@@ -335,6 +347,16 @@ public class DataTools {
 
     public static String getUserNameFromUserID(int userID) {
         String sql = "SELECT userName FROM userInfo WHERE userID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
+    public static String getUserRoleFromUserEmail(String userEmail) {
+        String sql = "SELECT userGroup FROM userInfo WHERE email = '" + userEmail + "'";
         ArrayList<String[]> result = SQL.query(sql);
         if (result.size() == 1) {
             return result.get(0)[0];
