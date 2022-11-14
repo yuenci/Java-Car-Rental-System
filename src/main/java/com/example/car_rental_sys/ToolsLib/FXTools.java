@@ -52,22 +52,6 @@ public class FXTools {
         stage.show();
     }
 
-    public static void yAxisFlip(ImageView imageView, double a1, double a2) {
-        Translate flipTranslation = new Translate(imageView.getImage().getWidth() - a1, 0);
-        Rotate flipRotation = new Rotate(a2, Rotate.Y_AXIS);
-        imageView.getTransforms().addAll(flipTranslation, flipRotation);
-    }
-
-
-    public static String getGenderFromUserID(int userID) {
-        String sql = "Select gender FROM userInfo WHERE userID = " + userID;
-        ArrayList<String[]> result = SQL.query(sql);
-        if (result.size() == 1) {
-            return result.get(0)[0];
-        } else {
-            return null;
-        }
-    }
 
     public static double[] getCenterOfScreen() {
         double[] center = new double[2];

@@ -29,6 +29,8 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
@@ -128,7 +130,7 @@ public class ImageTools {
             path = "file:" + avatarRoot;
             return new Image(path);
         } else {
-            if (Objects.equals(FXTools.getGenderFromUserID(userID), "female")) {
+            if (Objects.equals(DataTools.getGenderFromUserID(userID), "female")) {
                 path = avatarRoot + "avatar_female.png";
                 return new Image(path);
             }
@@ -242,4 +244,9 @@ public class ImageTools {
         return matrixImage.getImage();
     }
 
+    public static void yAxisFlip(ImageView imageView, double a1, double a2) {
+        Translate flipTranslation = new Translate(imageView.getImage().getWidth() - a1, 0);
+        Rotate flipRotation = new Rotate(a2, Rotate.Y_AXIS);
+        imageView.getTransforms().addAll(flipTranslation, flipRotation);
+    }
 }

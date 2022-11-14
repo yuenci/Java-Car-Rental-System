@@ -2,7 +2,7 @@ package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
-import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
 import javafx.scene.control.Label;
@@ -141,7 +141,7 @@ public class OrderCard extends Pane {
         String carStyle =
                 "-fx-background-color: " +
                 "linear-gradient(to left," + this.darkColor +"," + this.lightColor + ");";
-        FXTools.yAxisFlip(carImageView,590,180);
+        ImageTools.yAxisFlip(carImageView,590,180);
         setPane(carImagePane,7 +offsetX,71,123,60,carStyle);
 
         String hideImageAddress = UIImageRoot + "hide.png";

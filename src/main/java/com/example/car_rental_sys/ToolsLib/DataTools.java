@@ -42,8 +42,8 @@ public class DataTools {
         return file.exists();
     }
 
-    public static boolean ifDataFileExist(String filePath) {
-        String path = ConfigFile.dataFilesRootPath + filePath;
+    public static boolean ifDataFileExist(String fileName) {
+        String path = ConfigFile.dataFilesRootPath + fileName;
         return ifFileExist(path);
     }
 
@@ -61,8 +61,8 @@ public class DataTools {
         return false;
     }
 
-    public static boolean deleteDataFile(String filePath) {
-        String path = ConfigFile.dataFilesRootPath + filePath;
+    public static boolean deleteDataFile(String fileName) {
+        String path = ConfigFile.dataFilesRootPath + fileName;
         return deleteFile(path);
     }
 
@@ -374,7 +374,7 @@ public class DataTools {
             }
         }
 
-        String json = "let messageData= '" + msgRes.toString() + "';let currentUserID = " + userID + ";";
+        String json = "let messageData= '" + msgRes + "';let currentUserID = " + userID + ";";
         String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.js";
         FileOperate.rewriteFile(path,json);
 
@@ -411,6 +411,16 @@ public class DataTools {
             return price /24;
         }else {
             return 0;
+        }
+    }
+
+    public static String getGenderFromUserID(int userID) {
+        String sql = "Select gender FROM userInfo WHERE userID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
         }
     }
 }
