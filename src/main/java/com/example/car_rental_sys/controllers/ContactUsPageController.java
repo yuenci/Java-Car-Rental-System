@@ -15,7 +15,7 @@ public class ContactUsPageController {
         // inint webview
         //System.out.println("hiiii");
         WebEngine engine = webview.getEngine();
-        String path = "/com/example/car_rental_sys/html/contactUs/index.html";
+        String path = "/com/example/car_rental_sys/html/contactUs/index1.html";
         engine.load( Objects.requireNonNull(getClass().getResource(path)).toString() );
         //engine.load("https://www.google.com");
     }

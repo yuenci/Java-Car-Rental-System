@@ -41,6 +41,7 @@ public class MessagePageController {
         view.setPrefSize(1280,832);
         mainPane.getChildren().add(view);
 
+        browser.devTools().show();
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();

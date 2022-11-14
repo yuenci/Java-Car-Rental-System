@@ -130,7 +130,7 @@ class Tools {
                 }
             }
         }
-        console.log(res);
+        //console.log(res);
         return res;
     }
 }
@@ -156,7 +156,7 @@ class Message {
     addServerMessage() {
         this.message = Tools.cleanResponse(this.message);
         let avatarPath = Tools.avatarRootPath + this.chatterID + ".png";
-        console.warn(avatarPath)
+        //console.warn(avatarPath)
         let messageRes = `
                         <div class="message-container-left">
                             <div class="avatar">
@@ -225,7 +225,7 @@ class Message {
             // add click event
             newMessageItem.click(function () {
                 let chatter = $(this).find(".sender-name").text()
-                console.log(chatter);
+                //console.log(chatter);
                 Tools.addMessages(chatter);
             });
 
@@ -325,6 +325,9 @@ class Application {
             console.log("back to service");
         });
 
+        $("#current-user-avatar").click(function () {
+            console.log("back to service");
+        });
     }
 
     static sendWelcomeMessage() {
@@ -343,8 +346,16 @@ document.body.appendChild(jsonDataInsert);
 
 
 function getJson(data) {
-    //console.log(data);
+    console.log(data);
     localStorage.setItem("messageData", JSON.stringify(data));
 }
 
 Application.start();
+
+
+
+if (window.screen.height > 800) {
+    $("#contact-list").css("height", 832);
+    $("#chat-container").css("height", 832);
+}
+alert(window.screen.height);
