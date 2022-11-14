@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+#chat-container {
+    width: 1280px;
+    height: 730px;
+    /*background-color: aqua;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #292929;
+}
+
+#lower-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+#chat-area {
+    height: 100%;
+    background-color: #1f1f1f;
+    overflow: auto;
+}
+
+#inputBox-comtainer {
+    width: 100%;
+    height: 40px;
+    background-color: #292929;
+    box-sizing: border-box;
+    /*position: relative;*/
+}
+
+#inputBox {
+    /*position: absolute;*/
+    width: 100%;
+    height: 35px;
+    background-color: #292929;
+    border: none;
+    outline: none;
+    color: #e8e8e8;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.comtainer-active {
+    border-bottom: 5px solid #7EB712;
+}
+
+#sendBtn {
+    width: 40px;
+    height: 40px;
+    background-color: #165DFF;
+    color: white;
+    border: none;
+}
+
+#sendBtn:hover {
+    cursor: pointer;
+}
+
+.avatar {
+    background-color: #7EB712;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+.logoImage {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 5px;
+}
+
+.message-container-left {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 10px 20px;
+}
+
+.message-container-right {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.message-area {
+    background-color: #292929;
+    border-radius: 10px;
+    color: #e8e8e8;
+    box-sizing: border-box;
+    padding: 20px;
+    max-width: 700px;
+}
+
+.message-topic {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.message-sender {
+    margin-right: 20px;
+}
+
+.message-time {
+    color: #999999;
+}
+
+.message {
+    word-wrap: break-word;
+    max-width: 660px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari */
+}
+
+.error-message-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    box-sizing: border-box;
+
+}
+
+
+.error-message {
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: #999999;
+    padding: 3px 20px;
+}
