@@ -223,6 +223,7 @@ public class DriverMainPageController extends  Controller{
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             StatusContainer.currentUser = null;
+            DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
 

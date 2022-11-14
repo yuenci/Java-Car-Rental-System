@@ -1,4 +1,4 @@
-messageID:num=0,status:num=0,type:str=null,senderID:num=0,receiverID:num=0,time:datetime=2022-01-01 00:00:00,message:str=null
+messageID:num=0,status:num=0,type:num=-1,senderID:num=0,receiverID:num=0,time:datetime=2022-01-01 00:00:00,message:str=null
 1,1,1,6,9,2022-11-05 22:22:41,Series whether that election according
 2,0,0,0,1,2022-11-03 22:16:59,Improve debate tree to
 3,0,2,5,6,2022-10-29 21:11:27,Career itself three window left such chair

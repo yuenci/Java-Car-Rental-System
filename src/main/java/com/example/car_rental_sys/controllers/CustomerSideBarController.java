@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
@@ -53,6 +54,7 @@ public class CustomerSideBarController {
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             StatusContainer.currentUser = null;
+            DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
 
@@ -92,10 +94,13 @@ public class CustomerSideBarController {
         vipCardImageView.setImage(customer.getVipCard());
 
         setVipCard(customer.getOrderNum());
+
     }
 
     private void setVipCard(int orderNum) {
         orderNumLabel.setVisible(false);
+        if(orderNum ==0) return;
+
         Pane[] bans = {bar1, bar2, bar3, bar4, bar5};
         if (orderNum > 20) {
             for (Pane ban : bans) {

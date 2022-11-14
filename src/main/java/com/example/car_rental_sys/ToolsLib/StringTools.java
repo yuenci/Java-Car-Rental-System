@@ -23,4 +23,9 @@ public class StringTools {
         String regEx = "[\n`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥（）【】‘；：”“’。， 、？]";
         return str.replaceAll(regEx, " ");
     }
+
+    public static boolean ifStringContainsNumberAndSpecialCharacter(String str) {
+        String regEx = "[\n`~!@#$%^&*()+=|{}':;,\\[\\].<>/?！￥（）【】‘；：”“’。， 、？]";
+        return str.matches(".*\\d+.*") || str.matches(regEx);
+    }
 }

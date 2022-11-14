@@ -167,10 +167,11 @@ carInfo - status
 order - status
 - 0: not paid
 - 1: paid
-- 2: canceled
-- 3: delivering
+- -1: canceled
+- 2: delivering
+- 3: delivered
 - 4: driving
-- 4: finished
+- 5: finished
 
 # create a jxBrowser windows
 

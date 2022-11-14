@@ -7,7 +7,6 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 public class StatusContainer {
-    public static boolean isLogin = true;
     public static String currentCarChose = "Huracan_EVO";
     //Porsche_718
 
@@ -33,7 +32,6 @@ public class StatusContainer {
     public static Order currentOrder = new Order(7);
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
-    public static boolean ifRememberMe = false;
     public static Stage currentStage = null;
 
 

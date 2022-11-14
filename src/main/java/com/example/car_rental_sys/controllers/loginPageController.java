@@ -55,11 +55,11 @@ public class loginPageController extends Controller{
 
     @FXML
     private void loginBtnClick() {
+        boolean rememberMe = checkBox.isSelected();
         //System.out.println( "loginBtnClick" );
         if(checkEmailAndPassword()){
             String emailValue = emailInput.getText();
             String userRole = DataTools.getUserRoleFromUserEmail(emailValue);
-            System.out.println( "userRole: " + userRole );
             if(Objects.equals(userRole, "customer")){
                 System.out.println( "customer login" );
                 StatusContainer.currentUser = new Customer(emailValue);
@@ -73,6 +73,7 @@ public class loginPageController extends Controller{
                 StatusContainer.currentUser = new Admin(emailValue);
                 FXTools.changeScene("adminServicePage.fxml");
             }
+            DataTools.logLogin(rememberMe);
         }else{
             System.out.println( "login fail" );
         }

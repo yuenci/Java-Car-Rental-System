@@ -26,6 +26,28 @@ public class Order {
 
     private String invoiceNo = "";
 
+    public Order() {
+    }
+
+    /*
+    public static void getNewOrder(){
+        Order newOrder = new Order();
+        newOrder.setOrderID(getID("orders"));
+        newOrder.setCarID();
+        newOrder.setOrderTime(DateTools.stringToDateObje(DateTools.getNow()));
+        newOrder.setPickUpTime();
+        newOrder.setReturnTime();
+        newOrder.setParkingLocation();
+        newOrder.setPickUpLocation();
+        newOrder.setUserID();
+        newOrder.setPrice();
+        newOrder.setPaymentMethod();
+        newOrder.setAccount();
+        newOrder.setStatus();
+        newOrder.setStar();
+    }
+    * */
+
     public Order(int orderID) {
         this.orderID = orderID;
         initOrder();

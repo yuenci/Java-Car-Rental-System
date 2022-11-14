@@ -2,10 +2,13 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.CommentCard;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
@@ -27,7 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CarDetailsPageController {
+public class CarDetailsPageController extends  Controller{
     @FXML
     ImageView carImageView;
 
@@ -71,7 +74,7 @@ public class CarDetailsPageController {
     Pane containPane;
 
     @FXML
-    Pane cardDetailsPageContainer;
+    Pane mainPane;
 
 
     private String[] carDetailsData = null;
@@ -88,7 +91,7 @@ public class CarDetailsPageController {
         backBtnClickEvent();
         initKeyTips();
         initWebView();
-
+        StatusContainer.currentPageController = this;
     }
     private void initData(){
         String sql = "SELECT * FROM carModels WHERE carModel = '"+ StatusContainer.currentCarChose +"'";
@@ -241,7 +244,7 @@ public class CarDetailsPageController {
     }
 
     private void initContainPaneEvent(){
-        cardDetailsPageContainer.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+        mainPane.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             if(keyEvent.getCode() == KeyCode.LEFT){
                 changeCar(-1);
             }else if(keyEvent.getCode() == KeyCode.RIGHT){
@@ -277,8 +280,23 @@ public class CarDetailsPageController {
 
     @FXML
     private void rentNowBtnClickEvent(){
-        if (StatusContainer.isLogin) {
-            new Tools().reSetScene("paymentPage.fxml");
+        if (StatusContainer.currentUser != null) {
+            if(DataTools.ifCurrentCustomerHasDLNumber()){
+                FXTools.changeScene("paymentPage.fxml");
+            }else{
+                MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You have not upload your driving license number, do you want to upload it now?");
+                messageFrame.setSuccessCallbackFunc((i) -> {
+                    System.out.println("go to setting page");
+                    return null;
+                });
+
+                messageFrame.setFailedCallbackFunc((i) -> {
+                    System.out.println("don't go to setting page upload dl number");
+                    messageFrame.close();
+                    return null;
+                });
+                messageFrame.show();
+            }
         } else {
             //System.out.println("Please login first");
             new Tools().reSetScene("loginPage.fxml");

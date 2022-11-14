@@ -5,6 +5,10 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.FileOperate;
+import com.example.car_rental_sys.funtions.SendEmail;
+import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.orm.UserFactory;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
@@ -236,7 +240,7 @@ public class DataTools {
         for (String dataFile : dataFiles) {
             boolean res = Encryption.dataFileDecrypt(dataFile);
             if (res) {
-                //deleteDataFile(dataFile + ".secret");
+                deleteDataFile(dataFile + ".secret");
             } else {
                 errorMessages.append(dataFile).append(" decrypt failed, ");
                 ifAllSuccess = false;
@@ -252,7 +256,7 @@ public class DataTools {
         return ifAllSuccess;
     }
 
-    public static boolean logLogin() {
+    public static boolean logLogin(Boolean ifRememberMe) {
         int loginID = DataTools.getID("loginLog");
         int userID = StatusContainer.currentUser.getUserID();
         String loginUIP = NetTools.getExternalHostIP();
@@ -263,12 +267,12 @@ public class DataTools {
         String time = DateTools.getNow();
         String EXP = time;
 
-        if (StatusContainer.ifRememberMe) EXP = DateTools.getDataTimeAfterAWeek();
+        if (ifRememberMe) EXP = DateTools.getDataTimeAfterDays(ConfigFile.remeberMeDays);
 
         String sql = "INSERT INTO loginLog VALUES (" + loginID + "," +
                 userID + ",'" + loginUIP + "','" + platformType + "','" + deviceType + "','" + deviceName + "','" +
                 IpGeo + "','" + time + "','" + EXP + "')";
-        System.out.println(sql);
+        //System.out.println(sql);
         return SQL.execute(sql);
     }
 
@@ -365,6 +369,21 @@ public class DataTools {
         }
     }
 
+    public static String getUserRoleFromUserID(int userID) {
+        String email = getEmailFromUserID(userID);
+        return getUserRoleFromUserEmail(email);
+    }
+
+    public static String getEmailFromUserID(int  userID) {
+        String sql = "SELECT email FROM userInfo WHERE userID = " + userID ;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
     public static boolean generateMessageJSON(int userID) {
         String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID + " ORDER BY time ASC";
         ArrayList<String[]> result = SQL.query(sql);
@@ -444,6 +463,121 @@ public class DataTools {
         } else {
             return null;
         }
+    }
+
+    public static boolean ifCurrentCustomerHasDLNumber(){
+        if(StatusContainer.currentUser instanceof Customer){
+            String sql = "SELECT DLNumber FROM userInfo WHERE userID = " + StatusContainer.currentUser.getUserID();
+            ArrayList<String[]> result = SQL.query(sql);
+            if(result.size() == 1){
+                String DLNumber = result.get(0)[0];
+                return !Objects.equals(DLNumber, "null") && !DLNumber.equals("");
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public static boolean keepUserLoggedIn(){
+        ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
+        for (int i =result.size()-1; i >=0 ; i--) {
+            String startTime = result.get(i)[10];
+            String endTime = result.get(i)[11];
+
+            if (!Objects.equals(startTime, endTime)){
+                String timeNow = DateTools.getNow();
+                int diff = DateTools.getHourDiff(timeNow,endTime);
+                if(diff >0){
+                    int userID = Integer.parseInt(result.get(i)[1]);
+                    StatusContainer.currentUser = UserFactory.getUser(userID);
+                    //System.out.println("User " + userID + " is logged in");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean logOut(){
+        ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
+
+        StringBuilder newResult = new StringBuilder();
+        new Thread(() -> {
+            for (String[] strings : result) {
+                if (!Objects.equals(strings[10], strings[11])) {
+                    strings[11] = strings[10];
+                }
+                newResult.append(String.join(",", strings)).append("\n");
+            }
+
+            FileOperate.rewriteFile(ConfigFile.dataFilesRootPath + "loginLog.txt", newResult.toString());
+        }).start();
+
+        return true;
+    }
+
+    public static boolean setOrderStatus(int orderID,int status ){
+        String relate = "null";
+        return setOrderStatus( orderID, status, relate );
+    }
+    /*
+    order - status
+    - 0: not paid
+    - 1: paid
+    - -1: canceled
+    - 2: delivering
+    - 3: delivered
+    - 4: driving
+    - 5: finished
+    */
+
+    public static boolean setOrderStatus(int orderID,int status,String relate ){
+        // log event
+        String time = DateTools.getNow();
+        String sql = "Insert into schedule   VALUES (" + orderID + "," + status + ",'" + relate + "','" + time + "')";
+
+        // update car status
+        String sql2 = "SELECT carID FROM orders WHERE orderID = " + orderID ;
+        String carID = SQL.query(sql2).get(0)[0];
+        int carIDInt = Integer.parseInt(carID);
+        updateCarStatus(carIDInt,status);
+
+        // sent system message
+        int messageID = getID("messages");
+        String message =getStatusMessage(status,orderID);
+        String sql3 = "SELECT userID FROM orders WHERE orderID = " + orderID ;
+        String userID = SQL.query(sql3).get(0)[0];
+        String sql4 = "INSERT INTO messages VALUES (" +messageID +",0,1,0," + userID +",'" + time + "','" + message + "')";
+        SQL.execute(sql4);
+
+        return SQL.execute(sql);
+    }
+
+    public static boolean updateCarStatus(int carID,int status){
+        String sql = "UPDATE cars SET status = " + status + " WHERE carID = " + carID;
+        return SQL.execute(sql);
+    }
+
+    public static String getStatusMessage(int orderID, int status){
+        switch (status){
+            case 0:
+                return "Thank you for choosing our service, please complete the payment within three hours.";
+            case 1:
+                return "Your payment has been received and we will prepare your Car as soon as possible.";
+            case -1:
+                return "Order:"+ orderID +"was cancelled successfully. Please comment on our service.";
+            case 2:
+                return "You car has already left and will arrive in half an hour.";
+            case 3:
+                return "Your vehicle has arrived, please go to the appointed place to get it.";
+            case 4:
+                return "Your confirmation has been received. Enjoy driving";
+            case 5:
+                return "Order:"+ orderID +" has been finished, and we look forward to serving you next time.";
+            default:
+                return "Unknown";
+        }
+
     }
 }
 

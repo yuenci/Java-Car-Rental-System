@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Admin;
@@ -52,6 +53,7 @@ public class AdminSideBarController {
         item7.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             StatusContainer.currentUser = null;
+            DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
 
