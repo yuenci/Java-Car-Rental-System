@@ -8,6 +8,7 @@ import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
+import com.teamdev.jxbrowser.deps.org.checkerframework.checker.units.qual.A;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -389,6 +390,28 @@ public class DataTools {
 //        }
 
         return true;
+    }
+
+    public static String generateRandomInvoiceNo(int OrderNumber){
+        String[] numbers = new String[10];
+        Random random = new Random(OrderNumber);
+        for (int i = 0; i < 10; i++) {
+            int number = random.nextInt(10);
+            numbers[i] =  String.valueOf(number);
+        }
+        return String.join("", numbers);
+    }
+
+    public static int  getCarUnitPriceFromCarID(int carID){
+        String model = getCarModelFromCarID(carID);
+        String sql = "SELECT price FROM carModels WHERE carModel = '" + model + "'";
+        ArrayList<String[]> result = SQL.query(sql);
+        if(result.size() == 1){
+            int price = Integer.parseInt(result.get(0)[0]);
+            return price /24;
+        }else {
+            return 0;
+        }
     }
 }
 

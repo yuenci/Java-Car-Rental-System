@@ -4,6 +4,8 @@ import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXMLLoader;
+import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -129,5 +131,16 @@ public class FXTools {
 //            System.out.println("X is: " + robot.getMousePosition().getX());
 //            System.out.println("Y is: " + robot.getMousePosition().getY());
             return new double[]{robot.getMousePosition().getX(), robot.getMousePosition().getY()};
+    }
+
+    public static void  printJavaFXNode(Node node){
+        PrinterJob job = PrinterJob.createPrinterJob();
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+        job.getJobSettings().setPageLayout(pageLayout);
+        boolean success = job.printPage(node);
+        if (success) {
+            job.endJob();
+        }
     }
 }

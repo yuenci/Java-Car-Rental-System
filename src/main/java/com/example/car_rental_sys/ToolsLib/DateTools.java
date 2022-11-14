@@ -46,4 +46,9 @@ public class DateTools {
         long endTime=System.currentTimeMillis();
         return " runtime： "+(endTime-startTime)+" ms";
     }
+
+    public static int getHourDiff(Date start, Date end){
+        long diff = end.getTime() - start.getTime();
+        return (int) (diff / (1000 * 60 * 60));
+    }
 }

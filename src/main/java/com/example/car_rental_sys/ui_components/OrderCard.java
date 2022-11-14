@@ -49,13 +49,13 @@ public class OrderCard extends Pane {
     }
 
     private  void initData(Order order){
-        this.carModel = DataTools.getCarModelFromCarID(order.carID);
-        this.carNumber = DataTools.getCarNumberFromCarID(order.carID);
+        this.carModel = DataTools.getCarModelFromCarID(order.getCarID());
+        this.carNumber = DataTools.getCarNumberFromCarID(order.getCarID());
         this.status = order.getStatus();
         this.orderID = order.getOrderID();
         this.userID = order.getUserID();
 
-        String gradientColor = DataTools.getGradientColorFromCarID(order.carID);
+        String gradientColor = DataTools.getGradientColorFromCarID(order.getCarID());
         assert gradientColor != null;
         this.darkColor = gradientColor.split(",")[0];
         this.lightColor = gradientColor.split(",")[1];

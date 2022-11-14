@@ -174,7 +174,7 @@ class Tools {
 class Message {
     constructor(message, sender, isViewer, time = Tools.getTime(), chatterID = 0) {
         this.message = message;
-        this.sender = sender;
+        this.sender = sender.replace("-", " ");
         this.isViewer = isViewer;
         this.time = time;
         this.chatterID = chatterID;

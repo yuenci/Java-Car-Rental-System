@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="340.0" prefWidth="550.0" style="-fx-background-color: white;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.NetworkIssueController">
+<AnchorPane prefHeight="340.0" prefWidth="550.0" style="-fx-background-color: white;"
+            stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.NetworkIssueController">
    <children>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="113.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>

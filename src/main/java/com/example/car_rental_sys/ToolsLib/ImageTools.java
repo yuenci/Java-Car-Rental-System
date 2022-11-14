@@ -1,6 +1,6 @@
 package com.example.car_rental_sys.ToolsLib;
 
-import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.funtions.MatrixImage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -16,15 +16,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import javafx.embed.swing.SwingFXUtils;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
@@ -212,4 +216,30 @@ public class ImageTools {
             return false;
         }
     }
+
+    public static void  generateQRCode(ImageView imageView, String content, int width, int height) {
+        try {
+            Image image = getQRCode(content, width, height);
+            imageView.setImage(image);
+        } catch (WriterException | IOException e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("QrcodeHtml.initialize");
+    }
+
+    private static Image getQRCode(String content, int width, int height) throws WriterException, IOException {
+//        int width = 200;
+//        int height = 200;
+        Map<EncodeHintType, Object> encodeHints = new HashMap<EncodeHintType, Object>();
+        encodeHints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        encodeHints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L); // L, M, Q, H
+        encodeHints.put(EncodeHintType.MARGIN, 0); // default = 4 ,0-10
+
+        BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, encodeHints);
+        MatrixImage matrixImage = new MatrixImage(bitMatrix);
+        return matrixImage.getImage();
+    }
+
 }

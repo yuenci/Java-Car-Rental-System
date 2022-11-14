@@ -254,8 +254,8 @@ public class DriverMainPageController extends  Controller{
         setLocationInfo();
     }
     private void setMapinfo(){
-        String start = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.parkingLocation) + "'";
-        String end = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.pickUpLocation) + "'";
+        String start = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.getParkingLocation()) + "'";
+        String end = "'" + StringTools.replaceSpacialChar(currentOrderCard.order.getPickUpLocation()) + "'";
 
         String jsFunc = "changeDirections(" + start+","+  end +")";
         //System.out.println(jsFunc);

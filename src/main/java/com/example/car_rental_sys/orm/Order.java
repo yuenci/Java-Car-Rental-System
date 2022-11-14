@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.orm;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 
@@ -7,20 +8,23 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Order {
-    public int orderID;
-    public int carID;
-    public Date orderTime = null;
-    public Date pickUpTime = null;
-    public Date returnTime = null;
-    public String pickUpLocation = "";
-    public String parkingLocation = "";
+    private int orderID;
+    private int carID;
+    private Date orderTime = null;
+    private Date pickUpTime = null;
+    private Date returnTime = null;
+    private String pickUpLocation = "";
+    private String parkingLocation = "";
 
-    public int userID = 0;
-    public int price = 0;
-    public String paymentMethod = "";
-    public String account = "";
-    public int status = -1;
-    public int star = 0;
+
+    private int userID = 0;
+    private int price = 0;
+    private String paymentMethod = "";
+    private String account = "";
+    private int status = -1;
+    private int star = 0;
+
+    private String invoiceNo = "";
 
     public Order(int orderID) {
         this.orderID = orderID;
@@ -47,6 +51,7 @@ public class Order {
             this.account = orderInfo[10];
             this.status = Integer.parseInt(orderInfo[11]);
             this.star = Integer.parseInt(orderInfo[12]);
+            this.invoiceNo = DataTools.generateRandomInvoiceNo(this.orderID);
         }
     }
 
@@ -154,6 +159,14 @@ public class Order {
         this.parkingLocation = parkingLocation;
     }
 
+    public String getInvoiceNo() {
+        return invoiceNo;
+    }
+
+    public void setInvoiceNo(String invoiceNo) {
+        this.invoiceNo = invoiceNo;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -168,6 +181,7 @@ public class Order {
                 ", account='" + account + '\'' +
                 ", status=" + status +
                 ", star=" + star +
+                ", invoiceNo='" + invoiceNo + '\'' +
                 '}';
     }
 }
