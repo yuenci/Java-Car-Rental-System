@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<style>
+    html {
+        box-sizing: border-box;
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%
+    }
+
+    *,
+    :after,
+    :before {
+        box-sizing: inherit
+    }
+
+    body,
+    html {
+        height: 100%;
+        font-family: PayPalSansBig-Regular, Helvetica Neue, Arial, sans-serif;
+        color: #2c2e2f
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
+
+    a {
+        background-color: transparent
+    }
+
+    b {
+        font-weight: bolder
+    }
+
+    button {
+        font-family: inherit;
+        line-height: 1.15;
+        margin: 0
+    }
+
+    button {
+        text-transform: none
+    }
+
+    [type=submit],
+    [type=button],
+    button {
+        -webkit-appearance: button
+    }
+
+    ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit
+    }
+</style>
+<title>PayPal Checkout - Review your payment</title>
+<style>
+    @-webkit-keyframes rotation {
+        from {
+            -webkit-transform: rotate(0)
+        }
+
+        to {
+            -webkit-transform: rotate(359deg)
+        }
+    }
+
+    @-moz-keyframes rotation {
+        from {
+            -moz-transform: rotate(0)
+        }
+
+        to {
+            -moz-transform: rotate(359deg)
+        }
+    }
+
+    @-o-keyframes rotation {
+        from {
+            -o-transform: rotate(0)
+        }
+
+        to {
+            -o-transform: rotate(359deg)
+        }
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0)
+        }
+
+        to {
+            transform: rotate(359deg)
+        }
+    }
+
+    body {
+        color: #2c2e2f;
+        font-family: Helvetica Neue, HelveticaNeue, HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        font-size: 95%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.35em;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    }
+
+    [dir] body {
+        background-color: #fff;
+        margin: 0
+    }
+
+    .App__app--3P8ep {
+        position: relative
+    }
+
+   
+
+    .ReviewPage__review--3HkNU {
+        min-height: 250px;
+        position: relative
+    }
+
+    .ReviewPage__reviewBody--8ULu6 {
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        z-index: 1
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        [dir] .ReviewPage__reviewBody--8ULu6 {
+            padding: 0 25px
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .ReviewPage__reviewBody--8ULu6 {
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            min-height: 0
+        }
+
+        [dir] .ReviewPage__reviewBody--8ULu6 {
+            margin-bottom: 0;
+            padding: 0 20px
+        }
+    }
+
+    .ReviewPage__reviewForm--3uh0h {
+        display: inline-block;
+        width: 54.446808498%
+    }
+
+    [dir] .ReviewPage__reviewForm--3uh0h {
+        padding-bottom: 15px
+    }
+
+    [dir=ltr] .ReviewPage__reviewForm--3uh0h {
+        float: left
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        .ReviewPage__reviewForm--3uh0h {
+            width: 100%
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .ReviewPage__reviewForm--3uh0h {
+            width: 100%
+        }
+
+        [dir] .ReviewPage__reviewForm--3uh0h {
+            float: none
+        }
+
+        [dir=ltr] .ReviewPage__reviewForm--3uh0h {
+            margin-left: 0
+        }
+    }
+
+    [dir] .ReviewPage__review--3HkNU .ReviewPage__reviews--1qJxx:first-child,
+    [dir] .ReviewPage__review--3HkNU .ReviewPage__reviews--1qJxx:first-of-type {
+        border-top: 0;
+        margin-top: 15px;
+        padding-top: 0
+    }
+
+    [dir] .ReviewPage__review--3HkNU .ReviewPage__reviews--1qJxx {
+        border-top: 1px solid #e3e3e3;
+        padding: 10px 0
+    }
+
+    [dir] .ReviewPage__reviews--1qJxx {
+        border-bottom: 1px solid #e3e3e3;
+        margin-top: 15px
+    }
+
+    .ReviewPage__merchantMsg--GPBQA {
+        word-wrap: break-word
+    }
+
+    [dir] .ReviewPage__merchantMsg--GPBQA {
+        margin-top: 10px;
+        padding-bottom: 10px
+    }
+
+    [dir=ltr] .ReviewPage__trayDefaultStyle--29oQ7 {
+        transition: margin-right .3s ease-out
+    }
+
+    .Logo__paypalLogo--1d3Hw {
+        background-image: var(--sf-img-4);
+        background-repeat: no-repeat;
+        background-position: 0-47px;
+        clear: both;
+        height: 29px;
+        margin-top: 0;
+        width: 112px
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .Logo__paypalLogo--1d3Hw {
+            background-image: var(--sf-img-5);
+            background-size: 250px 350px;
+            background-repeat: no-repeat
+        }
+    }
+
+    [dir=ltr] .Logo__paypalLogo--1d3Hw {
+        float: left
+    }
+
+    .ally__accessAid--3Ci8b {
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px !important;
+        overflow: hidden;
+        position: absolute !important;
+        width: 1px !important
+    }
+
+    [dir] .ally__accessAid--3Ci8b {
+        border: 0 !important;
+        padding: 0 !important
+    }
+
+    .PaypalHeader__paypalHeader--2rLWq {
+        width: 54.446808498%;
+        display: table
+    }
+
+    [dir] .PaypalHeader__paypalHeader--2rLWq {
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 20px
+    }
+
+    [dir=ltr] .PaypalHeader__paypalHeader--2rLWq {
+        margin-left: 0
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        .PaypalHeader__paypalHeader--2rLWq {
+            width: 100%
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .PaypalHeader__paypalHeader--2rLWq {
+            width: 100%
+        }
+    }
+
+    @media (max-width:41.3125em) {
+        [dir=ltr] .PaypalHeader__paypalHeader--2rLWq>div {
+            margin: 15px 0 0 30px
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0) {
+        [dir=ltr] .PaypalHeader__paypalHeader--2rLWq>div {
+            margin: 15px 0 0 20px
+        }
+    }
+
+    .Props__propImg--35PgX {
+        height: 150px
+    }
+
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {}
+
+    .Props__subTitle--1mQdl {
+        color: #757575;
+        font-size: .9em;
+        font-weight: 400;
+        line-height: 1.35em
+    }
+
+    [dir] .Props__subTitle--1mQdl {
+        margin: 5px 0
+    }
+
+    .Props__span10--JYhXh {
+        box-sizing: border-box;
+        display: inline-block;
+        width: 40.425531906%
+    }
+
+    [dir] .Props__span10--JYhXh {
+        clear: both;
+        text-align: center
+    }
+
+    [dir=ltr] .Props__span10--JYhXh {
+        margin-left: 4%;
+        padding: 0 0 0 5px
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        .Props__span10--JYhXh {
+            display: none
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .Props__span10--JYhXh {
+            display: none
+        }
+    }
+
+    [dir] .common__editable--3NWE6 {
+        cursor: pointer
+    }
+
+    .common__full--2dDTc {
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%
+    }
+
+    .common__heading1--s4AXN {
+        color: #2c2e2f;
+        font-family: HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        font-size: 1.5em;
+        font-weight: lighter;
+        line-height: 1.154em
+    }
+
+    [dir] .common__heading1--s4AXN {
+        margin: .5em 0
+    }
+
+    .common__heading3--1UDz0 {
+        color: #2c2e2f;
+        font-family: HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        line-height: 1.5em;
+        font-size: 1.3em;
+        font-weight: lighter
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .common__heading3--1UDz0 {
+            font-size: 1.2em
+        }
+    }
+
+    .common__heading4--1Bh2G {
+        color: #2c2e2f;
+        font-family: HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        font-size: 1.25em;
+        font-weight: lighter
+    }
+
+    [dir] .common__noHead--1XoKM {
+        margin-top: 0
+    }
+
+    [dir] .common__noBottom--1LG9w {
+        margin-bottom: 0
+    }
+
+    @-webkit-keyframes common__fadeInUp--2yDrB {
+        0% {
+            opacity: 0;
+            transform: translateY(6.25rem)
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes common__fadeInUp--2yDrB {
+        0% {
+            opacity: 0;
+            transform: translateY(6.25rem)
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+
+    @-webkit-keyframes common__slideUp--1Faf8 {
+        0% {
+            transform: translateY(100%)
+        }
+
+        to {
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes common__slideUp--1Faf8 {
+        0% {
+            transform: translateY(100%)
+        }
+
+        to {
+            transform: translateY(0)
+        }
+    }
+
+    @-webkit-keyframes common__slideDown--2HOfO {
+        0% {
+            transform: translateY(0)
+        }
+
+        to {
+            transform: translateY(100%)
+        }
+    }
+
+    @keyframes common__slideDown--2HOfO {
+        0% {
+            transform: translateY(0)
+        }
+
+        to {
+            transform: translateY(100%)
+        }
+    }
+
+    .Greeting__defaultBannerStyle--3iI31 {
+        color: #000;
+        font-family: Helvetica Neue, HelveticaNeue, HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400
+    }
+
+    [dir] .Greeting__defaultBannerStyle--3iI31 {
+        margin: 15px 0
+    }
+
+    .Greeting__message--2htoc:after {
+        content: " "
+    }
+
+    .ChangeLink__edits--tuaU9 {
+        color: #0070ba;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .2)
+    }
+
+    .ChangeLink__edits--tuaU9 {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-size: .85em;
+        position: absolute;
+        top: -4px
+    }
+
+    [dir] .ChangeLink__edits--tuaU9 {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 7px 10px 4px
+    }
+
+    [dir=ltr] .ChangeLink__edits--tuaU9 {
+        right: 0
+    }
+
+    .ChangeLink__frontArrow--3MNlc {
+        display: inline-block;
+        height: 15px;
+        position: absolute;
+        top: 8px;
+        width: 9px
+    }
+
+    [dir] .ChangeLink__frontArrow--3MNlc {
+        background-image: var(--sf-img-4);
+        background-repeat: no-repeat;
+        background-position: -196px -177px
+    }
+
+    [dir=ltr] .ChangeLink__frontArrow--3MNlc {
+        right: 0
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .ChangeLink__frontArrow--3MNlc {
+            background-image: var(--sf-img-5);
+            background-size: 250px 350px;
+            background-repeat: no-repeat
+        }
+    }
+
+    [dir] .PayWith__paymentMethodWrapper--3K2rJ {
+        padding: 20px 0
+    }
+
+    .PayWith__paymentMethod--2G7lR {
+        position: relative
+    }
+
+    [dir] .PayWith__label--quZlw {
+        margin-bottom: 20px
+    }
+
+    .PayWith__singleFi--md5ug {
+        display: inline-block;
+        width: 100%
+    }
+
+    [dir] .PayWith__singleFi--md5ug {
+        margin-bottom: -10px
+    }
+
+    .PayWith__charges--uqTCP {
+        display: table;
+        width: 100%
+    }
+
+    [dir] .PayWith__charges--uqTCP {
+        margin: 10px 0 0
+    }
+
+    .PayWith__charges--uqTCP li {
+        list-style: none
+    }
+
+    [dir] .PayWith__charges--uqTCP li {
+        margin-bottom: 7px
+    }
+
+    .PayWith__focusable--2mWZV:focus {
+        outline: 2px solid #009cde
+    }
+
+    [dir] .PayWith__ppBalanceBannerBottom--1mhWn {
+        margin-top: .75rem
+    }
+
+    [dir] .BillingAgreement__billingTxt--DgEr5 {
+        margin-bottom: 1em
+    }
+
+    .BillingAgreement__billingTxt--DgEr5 {
+        font-size: .85em;
+        line-height: 1.2em;
+        color: #6c7378
+    }
+
+    [dir] .BillingAgreement__billingTxt--DgEr5 {
+        margin-top: 13px
+    }
+
+    [dir=ltr] .BillingAgreement__billingTxt--DgEr5 {
+        text-align: left
+    }
+
+    .BillingAgreement__extraDiv--1oeXx a {
+        color: #0070ba;
+        font-weight: 700;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .2);
+        text-decoration: none
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__standardCardIcon--2VHkY {
+        position: static;
+        top: 0
+    }
+
+    [dir] .FIPanel__fsPanel--2Ife6 .FIPanel__standardCardIcon--2VHkY {
+        margin: 0
+    }
+
+    [dir=ltr] .FIPanel__fsPanel--2Ife6 .FIPanel__standardCardIcon--2VHkY {
+        left: 0
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelLeft--1OX5U {
+        width: 3rem;
+        height: 2rem
+    }
+
+    [dir=ltr] .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelLeft--1OX5U {
+        float: left;
+        margin-left: 0
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX {
+        line-height: 18px;
+        overflow: hidden
+    }
+
+    [dir=ltr] .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX {
+        padding-left: .75rem
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX .FIPanel__fsPanelName--3b13E {
+        font-weight: 400
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX .FIPanel__fsPanelSecondLine--1K8Uu {
+        color: #6c7378;
+        font-size: .85em
+    }
+
+    [dir] .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX .FIPanel__fsPanelSecondLine--1K8Uu .FIPanel__cardMask--YdcWS span {
+        background-color: #6c7378;
+        border: 1px solid #6c7378
+    }
+
+    [dir=ltr] .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX .FIPanel__fsPanelSecondLine--1K8Uu .FIPanel__cardMask--YdcWS span:last-of-type {
+        margin-right: 1px
+    }
+
+    .FIPanel__fsPanel--2Ife6 .FIPanel__fsPanelRight--1AnHX .FIPanel__fsPanelChildren--1gi3Z {
+        line-height: 20px
+    }
+
+    .FIPanel__cardMask--YdcWS span {
+        display: inline-block;
+        height: 2px;
+        position: relative;
+        top: -2px;
+        vertical-align: middle;
+        width: 2px
+    }
+
+    [dir] .FIPanel__cardMask--YdcWS span {
+        border-radius: 8px
+    }
+
+    [dir=ltr] .FIPanel__cardMask--YdcWS span {
+        margin-right: 2px
+    }
+
+    [dir=ltr] .fundingIcons__fsIcons--2X-0o {
+        padding-right: 6px
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .fundingIcons__fsIcons--2X-0o {
+            background-image: var(--sf-img-8);
+            background-size: 37px 643px;
+            background-repeat: no-repeat
+        }
+    }
+
+    .fundingIcons__fsIcon--3nuPo {
+        display: block;
+        min-width: 32px
+    }
+
+
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .fundingIcons__fsIcon--3nuPo {
+            background-image: var(--sf-img-8);
+            background-size: 37px 643px;
+            background-repeat: no-repeat
+        }
+    }
+
+    .Footer__APAC--MsClx {
+        display: none;
+    }
+
+    .fundingIcons__standardCardIcon--b55dC.fundingIcons__fsIcon--3nuPo {
+        height: 24.36px;
+        width: 37.12px
+    }
+
+    [dir] .fundingIcons__standardCardIcon--b55dC.fundingIcons__fsIcon--3nuPo {
+        background-size: 42.92px 745.88px
+    }
+
+    [dir] .fundingIcons__standardCardIcon--b55dC.fundingIcons__fsIcon--3nuPo.fundingIcons__CHINA_UNION_PAY--2YNLO {
+        background-position: 0-653.08px
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min--moz-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2) {
+        .fundingIcons__fsIcons--2X-0o {
+            height: 20px
+        }
+    }
+
+    @media only screen and (-o-min-device-pixel-ratio:2),
+    only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min--moz-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2) {
+        .fundingIcons__fsIcons--2X-0o {
+            height: 20px
+        }
+    }
+
+    .styles__ppBalanceBanner--_PtBi {
+        align-items: center;
+        color: #2c2e2f;
+        display: flex;
+        font-size: 12px
+    }
+
+    [dir] .styles__ppBalanceBanner--_PtBi {
+        background-color: #f5f7fa;
+        border: 1px solid #f5f7fa;
+        padding: 5px 0
+    }
+
+    .styles__infoIconWrapper--28aGq {
+        width: 20px
+    }
+
+    [dir] .styles__infoIconWrapper--28aGq {
+        margin: 5px 8px 0
+    }
+
+    .styles__infoIconWrapper--28aGq span {
+        font-size: 1.3rem
+    }
+
+    .styles__infoIcon--1ogmf {
+        display: inline-block;
+        height: 20px;
+        width: 20px
+    }
+
+    [dir] .styles__infoIcon--1ogmf {
+        background-position: -139px 0;
+        background-image: var(--sf-img-4);
+        background-repeat: no-repeat
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .styles__infoIcon--1ogmf {
+            background-image: var(--sf-img-5);
+            background-size: 250px 350px;
+            background-repeat: no-repeat
+        }
+    }
+
+    .styles__infoContent--34ADY {
+        line-height: 18px
+    }
+
+    @-webkit-keyframes ppvx_shimmer__animation___1-4-10-beta-0-ltr {
+        0% {
+            background-position: 100%0
+        }
+
+        to {
+            background-position: -100%0
+        }
+    }
+
+    @-webkit-keyframes ppvx_shimmer__animation___1-4-10-beta-0-rtl {
+        0% {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: 200%0
+        }
+    }
+
+    @keyframes ppvx_shimmer__animation___1-4-10-beta-0-ltr {
+        0% {
+            background-position: 100%0
+        }
+
+        to {
+            background-position: -100%0
+        }
+    }
+
+    @keyframes ppvx_shimmer__animation___1-4-10-beta-0-rtl {
+        0% {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: 200%0
+        }
+    }
+
+    a {
+        color: #0070ba;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .2);
+        text-decoration: none
+    }
+
+    .Button__reviewButton--1AU_j {
+        overflow: hidden
+    }
+
+    [dir] .Button__reviewButton--1AU_j {
+        margin-bottom: 2px;
+        margin-top: 12px
+    }
+
+    .buttons__btn--2JlTE {
+        background-color: #0070ba;
+        border: 1px solid #0070ba;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: inherit;
+        font-size: 1em;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 700;
+        height: 44px;
+        line-height: 42px;
+        margin-bottom: 0;
+        outline: none;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 5px;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        background-clip: padding-box;
+        transition: background-color .4s ease-out 0s
+    }
+
+    [dir] .buttons__btn--2JlTE:focus,
+    [dir] .buttons__btn--2JlTE:hover {
+        background-color: #005ea6
+    }
+
+    .buttons__btn--2JlTE:focus {
+        text-decoration: underline
+    }
+
+    .buttons__btn--2JlTE.buttons__active--u_5Ov,
+    .buttons__btn--2JlTE:active {
+        outline: 0
+    }
+
+    [dir] .buttons__btn--2JlTE.buttons__active--u_5Ov,
+    [dir] .buttons__btn--2JlTE:active {
+        background-color: #005ea6
+    }
+
+    .Footer__footer--1YIXm {
+        font-size: .75em;
+        max-width: 780px
+    }
+
+    [dir] .Footer__footer--1YIXm {
+        margin: 10px auto
+    }
+
+    [dir] .Footer__cancelUrl--3b4l6 {
+        clear: both;
+        margin: 0 0 1em;
+        padding: 0
+    }
+
+    [dir=ltr] .Footer__cancelUrl--3b4l6 {
+        float: left
+    }
+
+    [dir=ltr] .Footer__footerWrapper--3rYCe {
+        text-align: left
+    }
+
+    @media screen and (min-width:41em) {
+        [dir=ltr] .Footer__footerWrapper--3rYCe {
+            float: right
+        }
+    }
+
+    [dir] .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo {
+        border: none;
+        clear: both;
+        margin: 0;
+        padding: 0
+    }
+
+    [dir=ltr] .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo {
+        float: left;
+        margin-right: 1em;
+        text-align: left
+    }
+
+    @media screen and (min-width:41em) {
+        [dir=ltr] .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo {
+            margin-right: 1em
+        }
+    }
+
+    .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo li {
+        color: #6c7378;
+        display: inline-block
+    }
+
+    [dir] .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo li {
+        padding: 0 .5em
+    }
+
+    [dir=ltr] .Footer__footerWrapper--3rYCe .Footer__footerLinks--3uiMo li:first-child {
+        padding-left: 0
+    }
+
+    .Footer__policyInfoWrapper--1Id3o {
+        color: #6c7378
+    }
+
+    [dir] .Footer__policyInfoWrapper--1Id3o p.Footer__moreInfo--3_W07 {
+        padding: 15px 0 20px
+    }
+
+    [dir=ltr] .Footer__policyInfoWrapper--1Id3o p.Footer__moreInfo--3_W07 {
+        float: left
+    }
+
+    .Footer__copyright--2wNks {
+        color: #6c7378;
+        display: inline;
+        vertical-align: top;
+        width: auto
+    }
+
+    [dir] .Footer__copyright--2wNks {
+        margin: 0
+    }
+
+    [dir=ltr] .Footer__copyright--2wNks {
+        float: right
+    }
+
+    @media screen and (min-width:41em) {
+        [dir=ltr] .Footer__copyright--2wNks {
+            float: left
+        }
+    }
+
+    .Footer__secureIcon--11Gvw {
+        display: inline-block;
+        height: 12px;
+        vertical-align: top;
+        width: 10px
+    }
+
+    [dir] .Footer__secureIcon--11Gvw {
+        background-image: var(--sf-img-4);
+        background-repeat: no-repeat;
+        margin-top: 3px
+    }
+
+    [dir=ltr] .Footer__secureIcon--11Gvw {
+        background-position: 0-33px;
+        margin-left: 3px;
+        margin-right: 3px
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2),
+    only screen and (min-device-pixel-ratio:2),
+    only screen and (min-resolution:2dppx),
+    only screen and (min-resolution:192dpi) {
+        [dir] .Footer__secureIcon--11Gvw {
+            background-image: var(--sf-img-5);
+            background-size: 250px 350px;
+            background-repeat: no-repeat
+        }
+    }
+
+    .Footer__footer--1YIXm .Footer__policyInfoWrapper--1Id3o p {
+        line-height: 1.3em
+    }
+
+    [dir] .Footer__APAC--MsClx .Footer__policyInfoWrapper--1Id3o {
+        padding: 5px 0 10px
+    }
+
+    .Footer__APAC--MsClx .Footer__policyInfoWrapper--1Id3o p.Footer__moreInfo--3_W07 {
+        line-height: 1.3em
+    }
+
+    @media (max-width:41.25em) {
+        [dir] .Footer__footer--1YIXm {
+            border-top: 1px solid #ccc;
+            margin-top: 10px;
+            padding: 5px 20px
+        }
+
+        [dir] .Footer__footer--1YIXm .Footer__policyInfoWrapper--1Id3o {
+            padding: 0 10px
+        }
+
+        [dir] .Footer__footerWrapper--3rYCe {
+            margin: 0;
+            padding: 0
+        }
+
+        .Footer__footerWrapper--3rYCe:after {
+            content: " ";
+            display: block;
+            height: 0;
+            line-height: 0;
+            overflow: auto;
+            visibility: hidden
+        }
+
+        [dir] .Footer__footerWrapper--3rYCe:after {
+            clear: both
+        }
+
+        .Footer__footerLinks--3uiMo {
+            width: 70%
+        }
+
+        [dir=ltr] .Footer__footerLinks--3uiMo {
+            float: left;
+            text-align: left
+        }
+
+        [dir] .Footer__cancelUrl--3b4l6 {
+            float: none;
+            margin: 5px 0
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0) {
+        [dir] .Footer__footer--1YIXm {
+            margin-top: 0;
+            padding: .5em 2em
+        }
+
+        [dir] .Footer__footer--1YIXm .Footer__policyInfoWrapper--1Id3o {
+            padding: 0
+        }
+
+        .Footer__cancelUrl--3b4l6,
+        .Footer__footerWrapper--3rYCe {
+            width: 100%
+        }
+
+        [dir] .Footer__cancelUrl--3b4l6,
+        [dir] .Footer__footerWrapper--3rYCe {
+            margin: 5px 0;
+            padding: 0
+        }
+
+        .Footer__footerLinks--3uiMo {
+            width: 65%
+        }
+
+        [dir] .Footer__footerLinks--3uiMo li {
+            padding: 0
+        }
+
+        [dir=ltr] .Footer__footerLinks--3uiMo li {
+            margin-right: 10px
+        }
+    }
+
+    .Footer__cancelUrl--3b4l6 a:hover {
+        text-decoration: underline
+    }
+
+    .Footer__footerLinks--3uiMo {
+        display: inline-block
+    }
+
+    [dir=ltr] .Footer__footerLinks--3uiMo li:first-child {
+        padding-left: 0
+    }
+
+    @media (max-width:41.25em) {
+        .Footer__footerLinks--3uiMo {
+            width: 70%
+        }
+
+        [dir=ltr] .Footer__footerLinks--3uiMo {
+            float: left;
+            text-align: left
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0) {
+        .Footer__footerLinks--3uiMo {
+            width: 65%
+        }
+    }
+
+    .Footer__footerLinks--3uiMo a,
+    .Footer__footerLinks--3uiMo button {
+        color: #6c7378;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .2);
+        text-decoration: none
+    }
+
+    [dir] .Footer__footerLinks--3uiMo a,
+    [dir] .Footer__footerLinks--3uiMo button {
+        cursor: pointer
+    }
+
+    .Footer__footerLinks--3uiMo button {
+        font-size: inherit
+    }
+
+    [dir] .Footer__footerLinks--3uiMo button {
+        background-repeat: no-repeat;
+        border: none;
+        margin: inherit;
+        padding: inherit
+    }
+
+    [dir=ltr] .Footer__footerLinks--3uiMo button {
+        margin-left: 5px
+    }
+
+    .Footer__footerLinks--3uiMo button:focus {
+        text-decoration: underline
+    }
+
+    .Footer__footerLinks--3uiMo button:hover {
+        text-decoration: underline
+    }
+
+    .Footer__footerLinks--3uiMo a:hover {
+        text-decoration: underline
+    }
+
+    .PageWrapper__outerWrapper--3cCXe {
+        position: relative
+    }
+
+    [dir] .PageWrapper__outerWrapper--3cCXe {
+        background-color: #fff
+    }
+
+    .PageWrapper__slidingArea--3QjN6 {
+        max-width: 780px;
+        position: relative
+    }
+
+    [dir] .PageWrapper__slidingArea--3QjN6 {
+        margin: 0 auto
+    }
+
+    @media (min-width:41.3125em) {
+        .PageWrapper__slidingArea--3QjN6 {
+            width: 95%;
+            min-height: 0
+        }
+    }
+
+    .PageWrapper__merchantHeaderWrapper--14-C2 {
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+        overflow-y: visible;
+        outline: none;
+        display: block
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        .PageWrapper__merchantHeaderWrapper--14-C2 {
+            display: none
+        }
+    }
+
+    @media (max-width:41.3125em) {
+        .PageWrapper__merchantHeaderWrapper--14-C2 {
+            display: none
+        }
+    }
+
+    .PageWrapper__contentWrapper--3222S {
+        display: block;
+        position: relative;
+        width: 100%;
+        outline: none;
+        overflow-x: inherit;
+        overflow-y: inherit;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        transition: margin .3s ease-out
+    }
+
+    [dir] .PageWrapper__contentWrapper--3222S {
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        background-clip: padding-box
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        [dir] .PageWrapper__contentWrapper--3222S {
+            margin: 0;
+            border: none;
+            padding: 0
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .PageWrapper__contentWrapper--3222S {
+            width: auto;
+            z-index: 2
+        }
+
+        [dir] .PageWrapper__contentWrapper--3222S {
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            margin: 0;
+            background-clip: padding-box
+        }
+    }
+
+    .PageWrapper__contents--3Twuc {
+        width: 100%;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        transition: margin .3s ease-out
+    }
+
+    [dir] .PageWrapper__contents--3Twuc {
+        padding: 25px 30px 15px
+    }
+
+    [dir=ltr] .PageWrapper__contents--3Twuc {
+        float: right
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        [dir] .PageWrapper__contents--3Twuc {
+            margin: 0;
+            border: none;
+            padding: 0
+        }
+    }
+
+    @media (max-width:30em) and (min-width:0),
+    (max-width:40em) and (orientation:landscape) {
+        .PageWrapper__contents--3Twuc {
+            z-index: 2
+        }
+
+        [dir] .PageWrapper__contents--3Twuc {
+            padding: 0;
+            background: none;
+            margin: 0;
+            background-clip: padding-box
+        }
+    }
+
+    .MerchantHeader__header--3EynM {
+        color: #2c2e2f;
+        display: inline-block;
+        font-family: Helvetica Neue, HelveticaNeue, HelveticaNeue-Light, Helvetica Neue Light, helvetica, arial, sans-serif;
+        font-size: 1.6em;
+        font-weight: 400;
+        line-height: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 575px;
+        z-index: 2
+    }
+
+    @media (max-width:41.25em) and (min-width:30.0625em) {
+        .MerchantHeader__header--3EynM {
+            display: none
+        }
+    }
+
+    @media (max-width:41.3125em) {
+        .MerchantHeader__header--3EynM {
+            display: none
+        }
+    }
+
+    .MerchantHeader__headerWrapper--3er2n {
+        height: auto
+    }
+
+    a:hover {
+        text-decoration: underline
+    }
+
+    /*!
+ * Waves v0.7.5
+ * http://fian.my.id/Waves
+ * 
+ * Copyright 2014-2016 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
+ */
+    @-webkit-keyframes srFadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes srFadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+    }
+
+    @-webkit-keyframes srFadeInDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+    }
+
+    @keyframes srFadeInDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+    }
+
+    @-webkit-keyframes fadeOutUp {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            margin-top: 0;
+            padding: 0;
+            height: 0;
+            min-height: 0;
+            opacity: 0;
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0)
+        }
+    }
+
+    @keyframes fadeOutUp {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            margin-top: 0;
+            padding: 0;
+            height: 0;
+            min-height: 0;
+            opacity: 0;
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0)
+        }
+    }
+
+    :root {
+        --sr-annote-color-0: #b4d9fb;
+        --sr-annote-color-1: #ffeb3b;
+        --sr-annote-color-2: #a2e9f2;
+        --sr-annote-color-3: #a1e0ff;
+        --sr-annote-color-4: #a8ea68;
+        --sr-annote-color-5: #ffb7da
+    }
+
+    @-webkit-keyframes sr-annote-slideInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes sr-annote-slideInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes sr-annote-slideInDown {
+        0% {
+            opacity: 1;
+            visibility: visible
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes sr-annote-slideInDown {
+        0% {
+            opacity: 1;
+            visibility: visible
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes scaleAnimation {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }
+
+    @keyframes scaleAnimation {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @-webkit-keyframes swing {
+        20% {
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+
+        40% {
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg)
+        }
+
+        60% {
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg)
+        }
+
+        80% {
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg)
+        }
+
+        to {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+    }
+
+    @keyframes swing {
+        20% {
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+
+        40% {
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg)
+        }
+
+        60% {
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg)
+        }
+
+        80% {
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg)
+        }
+
+        to {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+    }
+
+    @-webkit-keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+</style>
+<link rel=canonical
+    href="https://www.paypal.com/webapps/hermes?flow=1-P&amp;ulReturn=true&amp;token=EC-7AD109434D786903J&amp;rcache=1&amp;cookieBannerVariant=1&amp;targetService4174=hermesnodeweb&amp;country.x=C2&amp;locale.x=en_US&amp;billingLite=1#/billingweb/review">
+<meta http-equiv=content-security-policy
+    content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;">
+<style>
+    img[src="data:,"],
+    source[src="data:,"] {
+        display: none !important
+    }
+</style>
+
+<body dir=ltr><noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id=root>
+        <div class=App__app--3P8ep>
+            <div class=PageWrapper__outerWrapper--3cCXe>
+                <div class=PageWrapper__slidingArea--3QjN6>
+                    <div class=PageWrapper__merchantHeaderWrapper--14-C2>
+                        <header class=MerchantHeader__headerWrapper--3er2n>
+                            <div><span class=MerchantHeader__header--3EynM>Rent, INC</span></div>
+                        </header>
+                    </div>
+                    <div class=PageWrapper__contentWrapper--3222S>
+                        <div class=PageWrapper__contents--3Twuc>
+                            <div class=ReviewPage__trayDefaultStyle--29oQ7>
+                                <div class=PaypalHeader__paypalHeader--2rLWq>
+                                    <div>
+                                        <div></div>
+                                        <div class=Logo__paypalLogo--1d3Hw>
+                                            <img src="./paypal.png" style="position: relative;bottom: 15px;">
+                                            <span class=ally__accessAid--3Ci8b>PayPal
+                                                Checkout</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <section class=ReviewPage__review--3HkNU>
+                                    <div class=ReviewPage__reviewBody--8ULu6>
+                                        <div class=ReviewPage__reviewForm--3uh0h>
+                                            <div class=Greeting__defaultBannerStyle--3iI31><span
+                                                    class=Greeting__message--2htoc>Hi User.</span></div>
+                                            <form>
+                                                <div class=ReviewPage__reviews--1qJxx>
+                                                    <h2
+                                                        class="common__heading3--1UDz0 common__noHead--1XoKM common__noBottom--1LG9w">
+                                                        Information from Rent, INC</h2>
+                                                    <div class="facebookFlow common__heading1--s4AXN"></div>
+                                                    <div class=ReviewPage__merchantMsg--GPBQA><span>Rent</span>
+                                                    </div>
+                                                </div>
+                                                <div class=PayWith__paymentMethodWrapper--3K2rJ>
+                                                    <div id=paymentMethod class=PayWith__paymentMethod--2G7lR>
+                                                        <div focusable=true
+                                                            class="PayWith__singleFi--md5ug PayWith__focusable--2mWZV common__editable--3NWE6"
+                                                            tabindex=0>
+                                                            <h2
+                                                                class="common__heading4--1Bh2G common__noBottom--1LG9w common__noHead--1XoKM PayWith__label--quZlw">
+                                                                <span><span><span>Pay with</span></span></span>
+                                                            </h2>
+                                                            <div class=PayWith__charges--uqTCP>
+                                                                <li class="clearfix fs false">
+                                                                    <div class=FIPanel__fsPanel--2Ife6>
+                                                                        <div class=FIPanel__fsPanelLeft--1OX5U>
+                                                                            <img src="./unipay.png"
+                                                                                style="position:relative ;bottom: 5px;">
+                                                                            <span>
+                                                                                <div
+                                                                                    class="FIPanel__standardCardIcon--2VHkY fundingIcons__standardCardIcon--b55dC fundingIcons__fsIcon--3nuPo fundingIcons__fsIcons--2X-0o undefined fundingIcons__CHINA_UNION_PAY--2YNLO">
+                                                                                </div>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="FIPanel__fsPanelRight--1AnHX false">
+                                                                            <div><span data-test-id=fsPanelName
+                                                                                    class=FIPanel__fsPanelName--3b13E>Union
+                                                                                    Pay</span>‏</div>
+                                                                            <div
+                                                                                class=FIPanel__fsPanelSecondLine--1K8Uu>
+                                                                                <div>Debit <span
+                                                                                        class=FIPanel__cardMask--YdcWS><span></span><span></span><span></span><span></span></span>3673
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class=FIPanel__fsPanelChildren--1gi3Z>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                        </div>
+                                                        <div id=ppBalanceBannerBottom
+                                                            class=PayWith__ppBalanceBannerBottom--1mhWn>
+                                                            <div id=ppBalanceBanner
+                                                                class=styles__ppBalanceBanner--_PtBi>
+                                                                <div id=infoIconWrapper
+                                                                    class=styles__infoIconWrapper--28aGq>
+                                                                    <span class=styles__infoIcon--1ogmf>
+                                                                        <img src="./dot.png"
+                                                                            style="position:relative ;bottom: 3px;">
+                                                                    </span>
+                                                                </div>
+                                                                <div class=styles__infoContent--34ADY>If you hold a
+                                                                    balance with PayPal, we’ll use it first.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div id=extraDiv class=BillingAgreement__extraDiv--1oeXx>
+                                                            <p id=baAgreement data-test-id=baAgreement
+                                                                class=BillingAgreement__billingTxt--DgEr5><span
+                                                                    id=mibBillingAgreement></span>
+                                                            <div>Save PayPal for payments authorized to <b>RETN,
+                                                                    INC</b>. If your balance or chosen payment method is
+                                                                unavailable, PayPal can use the other payment methods
+                                                                linked to your account, according to <a class=popup
+                                                                    target=_blank href="#" pa-marked=1>PayPal
+                                                                    Policies</a>. You can change your
+                                                                selected payment method or cancel this merchant in your
+                                                                account settings.</div>
+                                                            <p></p>
+                                                        </div><button class=ChangeLink__edits--tuaU9
+                                                            aria-label="Change payment method" id=changeFI type=button
+                                                            pa-marked=1>Change <span
+                                                                class=ChangeLink__frontArrow--3MNlc></span></button>
+                                                    </div>
+                                                </div>
+                                                <div class=Button__reviewButton--1AU_j><button
+                                                        class="buttons__btn--2JlTE common__full--2dDTc" type=submit
+                                                        name="Agree and Continue" id=consentButton
+                                                        value="Agree and Continue" pa-marked=1>Agree and
+                                                        Continue</button></div>
+                                            </form>
+                                        </div>
+                                        <div class=Props__span10--JYhXh style="position:relative ;">
+                                            <img src="./scr_vp_fprd_shield_bags.png" style="">
+                                            <div class=Props__propImg--35PgX style="display: none;"></div>
+                                            <h1 class=common__heading1--s4AXN> PayPal is the safer, faster way to pay
+                                            </h1>
+                                            <p class=Props__subTitle--1mQdl>No matter where you shop, we help keep your
+                                                financial information secure.</p>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Footer__footer--1YIXm Footer__APAC--MsClx" role=contentinfo>
+                        <p id=defaultCancelLink class=Footer__cancelUrl--3b4l6><a
+                                href="https://api.recurly.com/js/v1/paypal/cancel?event=recurly-frame-ZrSRthdeRoLYnm05-gW4TkdbOrryVCeCa&amp;key=ewr1-l6n976k4LaE3z2cKWNhfjn&amp;result_key=65c0ae4ef0dac2bc08067c4126b1214e&amp;token=EC-7AD109434D786903J"
+                                role=button id=cancelLink pa-marked=1><span>Cancel and return to Rent,
+                                    LLC</span></a>
+                        <div class=Footer__footerWrapper--3rYCe>
+                            <ul class=Footer__footerLinks--3uiMo>
+                                <li class=first>
+                                    <div><a href="https://www.paypal.com/webapps/mpp/ua/legalhub-full?country.x=c2&amp;locale.x=en_c2"
+                                            class=popup target=_blank pa-marked=1>Terms</a></div>
+                                <li class=first>
+                                    <div><a href=https://www.paypal.com/en/webapps/mpp/ua/useragreement-full class=popup
+                                            target=_blank pa-marked=1>User Agreement</a></div>
+                                <li class=first>
+                                    <div><a href="https://www.paypal.com/webapps/mpp/ua/privacy-full?country.x=c2&amp;locale.x=en_c2"
+                                            class=popup target=_blank pa-marked=1>Privacy</a></div>
+                                <li><button id=footer_sfLink pa-marked=1>Feedback</button>
+                            </ul>
+                            <p class=Footer__copyright--2wNks>© 1999-2022<span
+                                    class=Footer__secureIcon--11Gvw></span><span class=ally__accessAid--3Ci8b>PayPal is
+                                    the safer, faster way to pay</span></p>
+                        </div>
+                        <div class=Footer__policyInfoWrapper--1Id3o>
+                            <p class=Footer__moreInfo--3_W07>
+                            <div>PayPal Pte. Ltd. (“3PL”) has applied for a license under the Singapore Payment Services
+                                Act (“PS Act”) with the Monetary Authority of Singapore. During this statutory
+                                transitional period, 3PL is operating under an exemption from holding a license and is
+                                allowed to continue to provide specific payment services.</div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>;
+        </div>
+    </div> <iframe id=ppfnfnclspbfiframe title=pbf
+        style=width:0px;height:0px;border:0px;position:absolute;z-index:-999;top:-10000px;left:-10000px aria-hidden=true
+        sandbox="allow-popups allow-top-navigation allow-top-navigation-by-user-activation"
+        srcdoc="<html><meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;&quot;><style>img[src=&quot;data:,&quot;],source[src=&quot;data:,&quot;]{display:none!important}</style>"></iframe><iframe
+        allow=geolocation id=ppfnfnclsiframe title=ppfniframe aria-hidden=true
+        style=width:0px;height:0px;border:0px;position:absolute;z-index:-999;top:-10000px;left:-10000px
+        sandbox="allow-popups allow-top-navigation allow-top-navigation-by-user-activation" srcdoc="<!DOCTYPE html> <html><meta charset=utf-8>
+<title>PayPal</title>
+<meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;&quot;><style>img[src=&quot;data:,&quot;],source[src=&quot;data:,&quot;]{display:none!important}</style></head>
+<body>
+"></iframe>
+    <script>
+        let consentButton = document.getElementById('consentButton');
+        consentButton.addEventListener('click', function () {
+            console.log('consentButton clicked');
+        });
+    </script>

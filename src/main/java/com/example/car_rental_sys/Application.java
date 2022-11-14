@@ -41,10 +41,10 @@ public class Application extends javafx.application.Application {
         //String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
         //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
-        String fxmlName = "signUpPage.fxml";
+        //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
         //String fxmlName = "carDetailsPage.fxml";
-        //String fxmlName = "paymentPage.fxml";
+        String fxmlName = "paymentPage.fxml";
         //String fxmlName = "contactUsPage.fxml";
         //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";

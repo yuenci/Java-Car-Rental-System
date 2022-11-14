@@ -237,7 +237,7 @@ public class PaymentController {
 
 
 //        browser.navigation().loadUrl("https://html5test.com");
-        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/loginToPaypal.html").getAbsolutePath());
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/new/loginToPaypal.html").getAbsolutePath());
         //browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/PayPalCheckout.html").getAbsolutePath());
 
         browser.on(ConsoleMessageReceived.class, event -> {
