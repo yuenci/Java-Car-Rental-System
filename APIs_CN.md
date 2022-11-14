@@ -179,7 +179,7 @@ Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
 
 Browser browser = engine.newBrowser();
 
-//navigation.loadUrl(new File("src/.../index.html").getAbsolutePath());
+//browser.navigation().loadUrl(new File("src/.../index.html").getAbsolutePath());
 browser.navigation().loadUrl("https://html5test.com");
 
 BrowserView view = BrowserView.newInstance(browser);
@@ -202,3 +202,17 @@ String message = consoleMessage.message();
 System.out.println(message);
 });
 ```
+
+# Message
+status:
+- 0: not read
+- 1: read
+
+type:
+- 0: system(blue)
+- 1: customer service(green)
+- 2: user chat
+
+system userID = 0
+customer service userID = 0
+

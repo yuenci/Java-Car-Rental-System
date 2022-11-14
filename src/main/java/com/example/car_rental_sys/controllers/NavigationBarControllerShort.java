@@ -1,7 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,6 +22,7 @@ public class NavigationBarControllerShort {
     @FXML
     public static NavigationBarControllerShort navigationBarControllerInstance;
 
+
     @FXML
     private void initialize() {
 //        System.out.println("Hello World!");
@@ -31,8 +34,16 @@ public class NavigationBarControllerShort {
     @FXML
     private final String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
+    private String iconPath = imagefolderRoot +"closeIconBlack.png";
+
     private void initIconShowEvent(){
         //navBarPanel.setVisible(false);
+        if(StatusContainer.currentUser instanceof Customer){
+            //System.out.println("yes is customer");
+            iconPath = imagefolderRoot +"closeIconWhite.png";
+            changeImage(iconPath,closeIconBtn);
+        }
+
         navBarPanel.setOnMouseEntered(mouseEvent -> {
             closeIconBtn.setVisible(true);
             logoImage.setVisible(true);
@@ -66,7 +77,7 @@ public class NavigationBarControllerShort {
     //changeImageToClose
     @FXML
     public void changeImageToClose(MouseEvent mouseDragEvent) {
-        changeImage(imagefolderRoot +"/closeIconBlack.png",closeIconBtn);
+        changeImage(iconPath,closeIconBtn);
     }
 
     @FXML

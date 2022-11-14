@@ -113,6 +113,7 @@ public class AddBankCardPageController {
         String[] bankList = ConfigFile.banks;
 
         banksComboBox.setPromptText("Choose the bank");
+        banksComboBox.setStyle("-fx-prompt-text-fill: #e4e4e4");
         for(String bank : bankList){
             banksComboBox.getItems().add(bank);
         }

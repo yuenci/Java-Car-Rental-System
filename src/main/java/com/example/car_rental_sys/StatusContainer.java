@@ -25,8 +25,8 @@ public class StatusContainer {
     public static String currentUserEmail = "1575270dad@qq.com";
     public static String currentChooseBankCardNum = "1234567890123456";
     public static Boolean isHideDriverSideBar = false;
-//    public static User currentUser = new Customer("1575270674@qq.com");
-    public static User currentUser = new Driver("cervantesmichael@yahoo.com");
+    public static User currentUser = new Customer("1575270674@qq.com");
+//    public static User currentUser = new Driver("cervantesmichael@yahoo.com");
 //    public static User currentUser =  new Admin("david32@hotmail.com");
     public static String loginMethod = "password";
     public static String deviceType = "desktop";

@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="mainPane" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../style/addBankCard.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AddBankCardPageController">
+<Pane fx:id="mainPane" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #111111;"
+      stylesheets="@../style/addBankCard.css" xmlns="http://javafx.com/javafx/11.0.2"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AddBankCardPageController">
     <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBarShort.fxml" />
     </Pane>
@@ -31,59 +33,59 @@
    </ImageView>
    <ImageView fitHeight="50.0" fitWidth="38.0" layoutX="1220.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" styleClass="hand">
       <image>
-         <Image url="@../image/UI/backBlack.png" />
+         <Image url="@../image/UI/back-blue.png" />
       </image>
    </ImageView>
-   <ScrollPane fx:id="testScrollPane" hbarPolicy="NEVER" layoutX="270.0" layoutY="610.0" prefHeight="570.0" prefWidth="820.0" style="-fx-border-color: transparent; -fx-background-color: white;" vbarPolicy="NEVER">
+   <ScrollPane fx:id="testScrollPane" hbarPolicy="NEVER" layoutX="270.0" layoutY="610.0" prefHeight="570.0" prefWidth="820.0" style="-fx-border-color: blue; -fx-border-width: 0;" vbarPolicy="NEVER">
       <content>
-         <VBox prefHeight="975.0" prefWidth="820.0" style="-fx-background-color: white;">
+         <VBox prefHeight="975.0" prefWidth="820.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
             <children>
-               <Pane prefHeight="71.0" prefWidth="820.0" style="-fx-border-style: hidden  hidden solid hidden; -fx-border-color: #dddddd;">
+               <Pane prefHeight="71.0" prefWidth="820.0" style="-fx-border-style: hidden  hidden solid hidden; -fx-border-color: #2a273a;" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutY="16.0" text="Add your card">
+                     <Label layoutY="16.0" text="Add your card" textFill="WHITE">
                         <font>
                            <Font size="30.0" />
                         </font>
                      </Label>
                   </children>
                </Pane>
-               <Pane prefHeight="110.0" prefWidth="820.0" styleClass="panContainer">
+               <Pane prefHeight="110.0" prefWidth="820.0" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="8.0" layoutY="44.0" text="Card type" textFill="#818181">
+                     <Label layoutX="8.0" layoutY="44.0" text="Card type" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Pane fx:id="typeMastercard" layoutX="109.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #dddddd; -fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <Pane fx:id="typeMastercard" layoutX="109.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #2a283b; -fx-background-color: #282634; -fx-background-radius: 10; -fx-border-radius: 10;">
                         <children>
-                           <RadioButton fx:id="mastercardRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" text="Mastercard">
+                           <RadioButton fx:id="mastercardRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" style="-fx-text-fill: white;" text="Mastercard">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </RadioButton>
                         </children>
                      </Pane>
-                     <Pane fx:id="visaType" layoutX="643.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #dddddd; -fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <Pane fx:id="visaType" layoutX="643.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #2a283b; -fx-background-color: #282634; -fx-background-radius: 10; -fx-border-radius: 10;">
                         <children>
-                           <RadioButton fx:id="visaRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" text="Visa">
+                           <RadioButton fx:id="visaRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" style="-fx-text-fill: white;" text="Visa">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </RadioButton>
                         </children>
                      </Pane>
-                     <Pane fx:id="tngType" layoutX="292.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #dddddd; -fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <Pane fx:id="tngType" layoutX="292.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #2a283b; -fx-background-color: #282634; -fx-background-radius: 10; -fx-border-radius: 10;">
                         <children>
-                           <RadioButton fx:id="tngRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" text="TouchnGo">
+                           <RadioButton fx:id="tngRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" style="-fx-text-fill: white;" text="TouchnGo">
                               <font>
                                  <Font size="14.0" />
                               </font>
                            </RadioButton>
                         </children>
                      </Pane>
-                     <Pane fx:id="paypalType" layoutX="468.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #dddddd; -fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;">
+                     <Pane fx:id="paypalType" layoutX="468.0" layoutY="30.0" prefHeight="50.0" prefWidth="152.0" style="-fx-border-color: #2a283b; -fx-background-color: #282634; -fx-background-radius: 10; -fx-border-radius: 10;">
                         <children>
-                           <RadioButton fx:id="paypalRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" text="Paypal">
+                           <RadioButton fx:id="paypalRadio" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cardRadioClick" style="-fx-text-fill: white;" text="Paypal">
                               <font>
                                  <Font size="14.0" />
                               </font>
@@ -92,34 +94,34 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane layoutX="10.0" layoutY="81.0" prefHeight="110.0" prefWidth="820.0" style="-fx-border-color: transparent;" styleClass="panContainer">
+               <Pane layoutX="10.0" layoutY="81.0" prefHeight="110.0" prefWidth="820.0" style="-fx-border-color: transparent;" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="8.0" layoutY="44.0" text="Give a name to this card" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="44.0" text="Give a name to this card" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <TextField layoutX="292.0" layoutY="35.0" prefHeight="40.0" prefWidth="330.0" style="-fx-background-color: transparent;" styleClass="borderStyle" />
+                     <TextField layoutX="292.0" layoutY="35.0" prefHeight="40.0" prefWidth="330.0" styleClass="borderStyle" />
                   </children>
                </Pane>
-               <Pane layoutX="10.0" layoutY="191.0" prefHeight="306.0" prefWidth="820.0" styleClass="panContainer">
+               <Pane layoutX="10.0" layoutY="191.0" prefHeight="306.0" prefWidth="820.0" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="8.0" layoutY="45.0" text="Bank name" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="45.0" text="Bank name" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Label layoutX="8.0" layoutY="110.0" prefHeight="22.0" prefWidth="101.0" text="Card holder" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="110.0" prefHeight="22.0" prefWidth="101.0" text="Card holder" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Label layoutX="8.0" layoutY="175.0" prefHeight="22.0" prefWidth="101.0" text="Valid date" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="175.0" prefHeight="22.0" prefWidth="101.0" text="Valid date" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Label layoutX="8.0" layoutY="235.0" prefHeight="22.0" prefWidth="101.0" text="Card number" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="235.0" prefHeight="22.0" prefWidth="101.0" text="Card number" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -133,27 +135,27 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <ComboBox fx:id="banksComboBox" layoutX="292.0" layoutY="35.0" prefHeight="40.0" prefWidth="330.0" style="-fx-background-color: white;" styleClass="borderStyle" />
+                     <ComboBox fx:id="banksComboBox" layoutX="292.0" layoutY="35.0" prefHeight="40.0" prefWidth="330.0" styleClass="borderStyle" />
                   </children>
                </Pane>
-               <Pane layoutX="10.0" layoutY="301.0" prefHeight="159.0" prefWidth="820.0" styleClass="panContainer">
+               <Pane layoutX="10.0" layoutY="301.0" prefHeight="159.0" prefWidth="820.0" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="8.0" layoutY="44.0" text="Billing address" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="44.0" text="Billing address" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <TextArea layoutX="290.0" layoutY="22.0" prefHeight="66.0" prefWidth="337.0" styleClass="borderStyle" />
-                     <CheckBox layoutX="290.0" layoutY="111.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="267.0" text="Send me physical bills" textFill="#a8a6a6">
+                     <TextArea fx:id="billTextArea" layoutX="290.0" layoutY="22.0" prefHeight="66.0" prefWidth="337.0" style="-fx-background-color: #282637;" styleClass="borderStyle" />
+                     <CheckBox fx:id="sendMeCheckBox" layoutX="290.0" layoutY="111.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="267.0" text="Send me physical bills" textFill="#a8a6a6">
                         <font>
                            <Font size="14.0" />
                         </font>
                      </CheckBox>
                   </children>
                </Pane>
-               <Pane layoutX="10.0" layoutY="301.0" prefHeight="110.0" prefWidth="820.0" styleClass="panContainer">
+               <Pane layoutX="10.0" layoutY="301.0" prefHeight="110.0" prefWidth="820.0" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="8.0" layoutY="44.0" text="Bank theme" textFill="#686868">
+                     <Label layoutX="8.0" layoutY="44.0" text="Bank theme" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -165,14 +167,14 @@
                      <Pane layoutX="595.0" layoutY="40.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: transparent; -fx-background-color: #f99057;" styleClass="hand" />
                   </children>
                </Pane>
-               <Pane layoutX="10.0" layoutY="301.0" prefHeight="110.0" prefWidth="820.0" styleClass="panContainer">
+               <Pane layoutX="10.0" layoutY="301.0" prefHeight="110.0" prefWidth="820.0" styleClass="bgcTransparent">
                   <children>
-                     <Label layoutX="7.0" layoutY="44.0" text="The card will be activated whitin a few moments" textFill="#686868">
+                     <Label layoutX="7.0" layoutY="44.0" text="The card will be activated whitin a few moments" textFill="#e4e4e4">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Button layoutX="547.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: #1d90f4; -fx-text-fill: white;" styleClass="hand" text="Add Card">
+                     <Button fx:id="addCardButton" layoutX="547.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: #1d90f4; -fx-text-fill: white;" styleClass="hand" text="Add Card">
                         <font>
                            <Font size="18.0" />
                         </font>

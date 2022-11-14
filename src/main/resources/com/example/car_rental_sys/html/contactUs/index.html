@@ -11,22 +11,40 @@
 </head>
 
 <body>
-<div id="chat-container">
-    <div id="chat-area">
-        <div id="char-area-bottom"></div>
-    </div>
+    <div id="contact-list">
+        <div id="top-bar">
+            <div id="current-user-avatar"><img src="./9.png" class="top-bar-icon hand" id="current-user-avatar-img">
+            </div>
+            <div id="back-icon"><img src="./back.png" class="top-bar-icon hand" id="back-icon-img"></div>
+        </div>
+        <div id="search-bar">
+            <div>
+                <img src="./search.png" alt="" id="search-icon" class="hand">
+                <input type="text" id="search-input" class="hand" placeholder="Search or start new chat">
+            </div>
+        </div>
+        <div id="message-container">
 
-    <div id="lower-container">
-        <div id="inputBox-comtainer">
-            <input type="text" id="inputBox" placeholder="Type your message here...">
         </div>
 
-        <button id="sendBtn">➤</button>
+
+
     </div>
+    <div id="chat-container" class="chat-container-with-sidebar">
+        <div id="chat-area">
+            <div id="char-area-bottom"></div>
+        </div>
 
+        <div id="lower-container">
+            <div id="inputBox-comtainer">
+                <input type="text" id="inputBox" placeholder="Type your message here...">
+            </div>
 
-    <script src="./script.js"></script>
-</div>
+            <button id="sendBtn">➤</button>
+        </div>
+        <script src="./avatarFilepath.js"></script>
+        <script src="./script.js"></script>
+    </div>
 </body>
 
 </html>

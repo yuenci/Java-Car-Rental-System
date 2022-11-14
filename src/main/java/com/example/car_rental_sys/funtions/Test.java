@@ -24,6 +24,7 @@ public class Test {
         //SelfTestTools.isBackendServerRunning();
 //        screenShotTest();
         //openScreenShotWithMsPaintTest();
+        getMessageJson();
     }
 
 
@@ -95,5 +96,9 @@ public class Test {
 
     public static void openScreenShotWithMsPaintTest(){
         PlatformTools.openScreenShotWithMsPaint();
+    }
+
+    public static void  getMessageJson(){
+        DataTools.generateMessageJSON(9);
     }
 }
