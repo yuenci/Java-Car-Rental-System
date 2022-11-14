@@ -140,6 +140,9 @@ class Tools {
             }
         }
         //console.log(res);
+        if (res.length === 0) {
+            return null;
+        }
         return res;
     }
 
@@ -171,7 +174,7 @@ class Tools {
 class Message {
     constructor(message, sender, isViewer, time = Tools.getTime(), chatterID = 0) {
         this.message = message;
-        this.sender = sender;
+        this.sender = sender.replace("-", " ");
         this.isViewer = isViewer;
         this.time = time;
         this.chatterID = chatterID;
@@ -266,6 +269,7 @@ class Message {
         let chatterIDList = []
         let unreadMsgMap = Tools.getUnreadMessageCount();
 
+
         for (let i = messageDataIDList.length - 1; i >= 0; i--) {
 
             let messageID = messageDataIDList[i];
@@ -293,17 +297,30 @@ class Message {
             </div>
                         `
             let newMessageItem = $(messageRes);
+
+            //remove if no unread message
+            if (unreadNum === undefined) {
+                //console.warn("remove ing");
+                newMessageItem.find(".unread").remove();
+            }
+
+
+
             // add click event
             newMessageItem.click(function () {
-                let chatter = $(this).find(".sender-name").text()
+                let $this = $(this);
+                let chatter = $this.find(".sender-name").text()
                 $("#message-container").find(".message-box").removeClass("message-box-selected");
 
-                $(this).addClass("message-box-selected");
+                $this.addClass("message-box-selected");
 
+                $this.find(".unread").remove();
 
 
                 Tools.currentChatWith = chatter;
                 chatter = chatter.replace(" ", "-");
+
+                console.log(`chatWith:${currentUserID}:${Tools.chatterNameIDMap[chatter]}`);
                 Tools.addMessages(chatter);
             });
 

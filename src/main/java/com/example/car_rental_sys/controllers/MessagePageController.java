@@ -61,6 +61,9 @@ public class MessagePageController {
             }else if (message.startsWith("[") && message.endsWith("]")){
                 //System.out.println("message is: "+message);
                 generateMessage(message);
+            }else if(message.startsWith("chatWith:")){
+                //System.out.println("message is: "+message);
+                removeUnread(message);
             }
         });
     }
@@ -81,6 +84,19 @@ public class MessagePageController {
         SQL.execute(sql);
         System.out.println(sql);
     }
+
+    private void removeUnread(String message){
+        String[] messageArray = message.split(":");
+        String senderID = messageArray[1];
+        String receiverID = messageArray[2];
+
+        String sql = "UPDATE messages SET status = 1 WHERE senderID = "+senderID+" AND receiverID = "+receiverID;
+        SQL.execute(sql);
+        sql = "UPDATE messages SET status = 1 WHERE senderID = "+receiverID+" AND receiverID = "+senderID;
+        SQL.execute(sql);
+        System.out.println("remove unread");
+    }
+
 
 
     private void backToService(){
