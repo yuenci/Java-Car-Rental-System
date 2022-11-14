@@ -195,7 +195,7 @@ public class UIFilter extends Pane {
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
-        if(message.length() == 33 || message.length() == 34){
+        if(message.length() == 25){
                 System.out.println("hiii");
                 String[] messageArray = message.split(";");
 
