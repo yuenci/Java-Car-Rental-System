@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.web.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.dashboardController">
-   <children>
-      <WebView fx:id="webview" prefHeight="750.0" prefWidth="1000.0" />
-   </children>
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.car_rental_sys.controllers.dashboardController">
+   <Pane fx:id="browserPane" prefHeight="750.0" prefWidth="1000.0"/>
 </AnchorPane>
