@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <Pane prefHeight="160.0" prefWidth="460.0"
-      style="-fx-background-color: #000000; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4;"
+      style="-fx-background-color: #101010; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4;"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.car_rental_sys.controllers.showCardDetailsController">
     <Label layoutX="12.0" layoutY="10.0" text="Card Details" textFill="#f7f8fa">

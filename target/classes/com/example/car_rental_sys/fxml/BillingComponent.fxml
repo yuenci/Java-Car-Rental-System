@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="670.0" prefWidth="530.0" style="-fx-background-color: #101010;" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../style/billingComponent.css"
+      fx:controller="com.example.car_rental_sys.controllers.BillingComponentController">
+   <Label layoutX="33.0" layoutY="52.0" text="Billing &amp; Wallet" textFill="#fffbfb">
+      <font>
+         <Font name="Arial Bold" size="24.0"/>
+      </font>
+   </Label>
+   <Label layoutX="33.0" layoutY="82.0" text="Update your payment information or check transaction actvities"
+          textFill="#f2f3f5">
+      <font>
+         <Font name="Arial Bold" size="12.0"/>
+      </font>
+   </Label>
+   <ScrollPane fx:id="billCardList" layoutX="33.0" layoutY="140.0" prefHeight="90.0" prefWidth="464.0"
+               style="-fx-background: #101010; -fx-border-color: #101010;"/>
+   <Pane fx:id="billCardDetailBox" layoutX="35.0" layoutY="255.0" prefHeight="160.0" prefWidth="460.0">
+      <fx:include source="showCardDetails.fxml"/>
+   </Pane>
+   <Label layoutX="38.0" layoutY="441.0" text="Recent Activity" textFill="#fffbfb">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Button fx:id="billYearBtn" layoutX="278.0" layoutY="443.0" mnemonicParsing="false"
+           onMouseClicked="#billYearBtnClicked" prefHeight="18.0" prefWidth="70.0"
+           style="-fx-background-insets: 0; -fx-border-insets: 0; -fx-cursor: hand; -fx-background-color: transparent;"
+           styleClass="cusBillButton" text="Yearly" textFill="SILVER">
+      <font>
+         <Font name="Arial Bold" size="12.0"/>
+      </font>
+   </Button>
+   <Button fx:id="billMonthBtn" layoutX="350.0" layoutY="443.0" mnemonicParsing="false"
+           onMouseClicked="#billMonthBtnClicked" prefHeight="18.0" prefWidth="70.0"
+           style="-fx-background-insets: 0; -fx-border-insets: 0; -fx-cursor: hand; -fx-background-color: transparent;"
+           styleClass="cusBillButton" text="Monthly" textFill="SILVER">
+      <font>
+         <Font name="Arial Bold" size="12.0"/>
+      </font>
+   </Button>
+   <Button fx:id="billWeekBtn" layoutX="422.0" layoutY="443.0" mnemonicParsing="false"
+           onMouseClicked="#billWeekBtnClicked" prefHeight="18.0" prefWidth="70.0"
+           style="-fx-background-insets: 0; -fx-border-insets: 0; -fx-cursor: hand; -fx-background-color: transparent;"
+           styleClass="cusBillButton" text="Weekly" textFill="SILVER">
+      <font>
+         <Font name="Arial Bold" size="12.0"/>
+      </font>
+   </Button>
+   <Pane fx:id="cusBillTable" layoutX="33.0" layoutY="472.0" prefHeight="140.0" prefWidth="470.0"/>
+   <Pane fx:id="pagContainer" layoutX="100.0" layoutY="620.0" prefHeight="30.0" prefWidth="330.0"/>
+</Pane>
