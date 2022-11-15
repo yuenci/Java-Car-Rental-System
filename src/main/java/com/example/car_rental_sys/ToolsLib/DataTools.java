@@ -13,10 +13,13 @@ import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import com.teamdev.jxbrowser.deps.org.checkerframework.checker.units.qual.A;
+import javafx.stage.FileChooser;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class DataTools {
@@ -610,6 +613,30 @@ public class DataTools {
         String sql = "INSERT INTO todos VALUES (" + todoID + ",'"+content+ "',"+ StatusContainer.currentUser.getUserID() +  ",'" + due + "'"+ ",0" +")";
         //System.out.println(sql);
     return SQL.execute(sql);
+    }
+
+    public  static void fileChooser(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                //new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+                //new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                //new FileChooser.ExtensionFilter("All Files", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+//            welcomeText.setText(selectedFile.getAbsolutePath());
+            System.out.println(selectedFile.getAbsolutePath());
+            System.out.println(selectedFile.getAbsolutePath());
+            //copyFileUsingApacheCommonsIO(selectedFile.getAbsolutePath(), "C:\\Users\\Public\\Pictures\\Sample Pictures\\test.jpg");
+        }
+    }
+
+    public static void copyFileUsingApacheCommonsIO(String sourceAbsolutePath, String destAbsolutePath) throws IOException {
+        File source = new File(sourceAbsolutePath);
+        File dest = new File(destAbsolutePath);
+        FileUtils.copyFile(source, dest);
     }
 
 }
