@@ -1,0 +1,10 @@
+.cardButton:hover{
+    -fx-background-color: #f7f8fa !important;
+    -fx-background-insets: 0;
+    -fx-text-fill: #165dff;
+}
+
+.cardButton:focused{
+    -fx-background-insets: 0;
+    -fx-text-fill: #165dff !important;
+}

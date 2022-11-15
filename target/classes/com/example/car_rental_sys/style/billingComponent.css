@@ -1,0 +1,109 @@
+.cusBillButton{
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-cursor: hand;
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #c0c0c0 !important;
+}
+
+.cusBillButton:hover{
+    -fx-background-color: #e0e0e0 !important;
+    -fx-text-fill: black !important;
+    -fx-border-insets: 0px;
+    -fx-background-insets: 0;
+}
+
+.focusCusBillButton{
+    -fx-border-insets: 0;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-background-color: #332d5f !important;
+    -fx-text-fill: white !important;
+}
+
+
+/* Pagination css style */
+.default-style, .dot-style {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.default-style:focused{
+    -fx-background-color: #2971cf !important;
+    -fx-text-fill: #eaf8ff !important;
+}
+
+.focus-style {
+    -fx-background-color: #2971cf ;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.icon-style{
+    -fx-background-color: transparent ;
+    -fx-text-fill: #404040 !important;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.control-style {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 13px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+/*.default-style, .dot-style {*/
+/*    -fx-background-color: #ffffff ;*/
+/*    -fx-text-fill: #4080ff ;*/
+/*    -fx-background-radius: 0px ;*/
+/*    -fx-font-size: 12px ;*/
+/*    -fx-border-insets: 0px ;*/
+/*    -fx-background-insets: 0px ;*/
+/*}*/
+
+/*.default-style:focused{*/
+/*    -fx-background-color: #6aa1ff !important;*/
+/*    -fx-text-fill: #ffffff !important;*/
+/*}*/
+
+/*.focus-style {*/
+/*    -fx-background-color: #6aa1ff ;*/
+/*    -fx-text-fill: #ffffff ;*/
+/*    -fx-background-radius: 0px ;*/
+/*    -fx-font-size: 12px ;*/
+/*    -fx-border-insets: 0px ;*/
+/*    -fx-background-insets: 0px ;*/
+/*}*/
+
+/*.icon-style{*/
+/*    -fx-background-color: #ffffff ;*/
+/*    -fx-text-fill: #4080ff ;*/
+/*    -fx-background-radius: 0px ;*/
+/*    -fx-font-size: 12px ;*/
+/*    -fx-border-insets: 0px ;*/
+/*    -fx-background-insets: 0px ;*/
+/*}*/
+
+/*.control-style {*/
+/*    -fx-background-color: #ffffff ;*/
+/*    -fx-text-fill: #94bfff ;*/
+/*    -fx-background-radius: 0px ;*/
+/*    -fx-font-size: 13px ;*/
+/*    -fx-border-insets: 0px ;*/
+/*    -fx-background-insets: 0px ;*/
+/*}*/
