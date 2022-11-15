@@ -8,6 +8,10 @@
     <Pane prefHeight="240.0" prefWidth="180.0" style="-fx-background-color: transparent;">
         <fx:include source="sideBarCustomer.fxml" />
     </Pane>
+    <Pane fx:id="centerContainer" layoutX="312.0" layoutY="68.0" prefHeight="670.0" prefWidth="530.0"
+          style="-fx-effect: dropshadow(three-pass-box, #f7f8fa, 10, 0, 0, 0); -fx-background-color: #ffffff; -fx-background-radius: 10px;"/>
+    <Pane fx:id="rightContainer" layoutX="870.0" layoutY="68.0" prefHeight="670.0" prefWidth="350.0"
+          style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, #f7f8fa, 10, 0, 0, 0); -fx-background-radius: 10px;"/>
     <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBarShortForBlack.fxml" />
     </Pane>
