@@ -65,13 +65,13 @@ public class OrderListComponentController {
     private void headerButtonClickEvent(MouseEvent e){
         Object source = e.getSource();
         Button btn = (Button) source;
-        clearFocuStyle();
+        clearFocusStyle();
         btn.getStyleClass().add("btnFocusStyle");
         btn.getStyleClass().remove("controlBtn");
     }
 
 
-    private void clearFocuStyle(){
+    private void clearFocusStyle(){
         Button[] btns = {btnAllOrder,btnComplete,btnContinue,btnCancel};
         for (Button btn : btns) {
             btn.getStyleClass().remove("btnFocusStyle");

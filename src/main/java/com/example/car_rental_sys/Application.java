@@ -10,6 +10,7 @@ import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.ui_components.PaymentCard;
 import com.example.car_rental_sys.ui_components.UICusBillRow;
 import com.example.car_rental_sys.ui_components.UIPagination;
+import com.example.car_rental_sys.ui_components.VehicleCard;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -62,15 +63,17 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "messagePage.fxml";
         //String fxmlName = "showCardDetails.fxml";
         //String fxmlName = "Invoice.fxml";
-        String fxmlName = "customerServicePage.fxml";
+        //String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "BillingComponent.fxml";
+        String fxmlName = "AdminVehiclePage.fxml";
+
         stageInstance = stage;
 
         startStage(fxmlName);
 
         //startApplication();
 
-        //testComponent(stage,css);
+        //testComponent(stage,"css");
     }
 
     private static void testComponent(Stage stage, String css){
@@ -102,11 +105,17 @@ public class Application extends javafx.application.Application {
         row2.setLayoutX(10);
         row2.setLayoutY(150);
 
+        String[] theme = {"#ffffff","#000000"};
+        VehicleCard card = new VehicleCard("Lamborghini_Super","1000", theme[0], theme[1]);
+        card.setLayoutX(10);
+        card.setLayoutY(100);
+
         Pane pane = new Pane();
         pane.setPrefSize(500,500);
         //pane.getChildren().addAll(pagination);
-        pane.getChildren().addAll(row1,row2);
+        //pane.getChildren().addAll(row1,row2);
         //pane.getChildren().addAll(pagination2, paymentCard, empty, visa, master);
+        pane.getChildren().addAll(card);
         Scene scene = new Scene(pane,500,500);
         //scene.getStylesheets().add(css);
         stage.setTitle("Test Component");
