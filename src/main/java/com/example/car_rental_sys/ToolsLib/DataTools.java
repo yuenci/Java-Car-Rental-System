@@ -517,6 +517,7 @@ public class DataTools {
     }
 
     public static boolean setOrderStatus(int orderID,int status ){
+        System.out.println("Order " + orderID + " status is set to " + status);
         String relate = "null";
         return setOrderStatus( orderID, status, relate );
     }
@@ -534,7 +535,8 @@ public class DataTools {
     public static boolean setOrderStatus(int orderID,int status,String relate ){
         // log event
         String time = DateTools.getNow();
-        String sql = "Insert into schedule   VALUES (" + orderID + "," + status + ",'" + relate + "','" + time + "')";
+        int scheduleID = getID("schedule");
+        String sql = "Insert into schedule   VALUES (" +scheduleID + "," + orderID + "," + status + ",'" + relate + "','" + time + "')";
 
         // update car status
         String sql2 = "SELECT carID FROM orders WHERE orderID = " + orderID ;
@@ -554,7 +556,7 @@ public class DataTools {
     }
 
     public static boolean updateCarStatus(int carID,int status){
-        String sql = "UPDATE cars SET status = " + status + " WHERE carID = " + carID;
+        String sql = "UPDATE carInfo SET status = " + status + " WHERE carID = " + carID;
         return SQL.execute(sql);
     }
 
@@ -579,6 +581,37 @@ public class DataTools {
         }
 
     }
+
+    public static ArrayList<String[]> getAdminToDo(){
+        String sql = "SELECT * FROM todos WHERE status = 0 and userID = " + StatusContainer.currentUser.getUserID() + " ORDER BY due DESC";
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+
+        ArrayList<String[]> newResult = new ArrayList<>();
+
+        if(result.size()>=2){
+            newResult.add(result.get(0));
+            newResult.add(result.get(1));
+        }else if(result.size() ==1){
+            newResult.add(result.get(0));
+        }
+
+        return newResult;
+    }
+
+    public static boolean setTaskAsDone(int todoID){
+        String sql = "UPDATE todos SET status = 1 WHERE todoID = " + todoID;
+        return SQL.execute(sql);
+    }
+
+
+    public static boolean addTask(String content,String due){
+        int todoID = getID("todos");
+        String sql = "INSERT INTO todos VALUES (" + todoID + ",'"+content+ "',"+ StatusContainer.currentUser.getUserID() +  ",'" + due + "'"+ ",0" +")";
+        //System.out.println(sql);
+    return SQL.execute(sql);
+    }
+
 }
 
 // TODO: No comma "," content is allowed.

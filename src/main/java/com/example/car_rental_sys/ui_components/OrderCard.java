@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
@@ -204,6 +205,12 @@ public class OrderCard extends Pane {
 
     private void chooseCard(){
         driverMainIns.chooseCard(this.orderID);
+        StatusContainer.currentOrderCard = this;
+    }
+
+    public void saveEventToSchedule(){
+        String driverID = String.valueOf(StatusContainer.currentUser.getUserID());
+        DataTools.setOrderStatus(orderID,2, driverID);
     }
 
 

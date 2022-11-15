@@ -3,6 +3,7 @@ package com.example.car_rental_sys;
 import com.example.car_rental_sys.controllers.Controller;
 import com.example.car_rental_sys.controllers.PaymentController;
 import com.example.car_rental_sys.orm.*;
+import com.example.car_rental_sys.ui_components.OrderCard;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
@@ -24,15 +25,16 @@ public class StatusContainer {
     public static String currentUserEmail = "1575270dad@qq.com";
     public static String currentChooseBankCardNum = "1234567890123456";
     public static Boolean isHideDriverSideBar = false;
-    public static User currentUser = null;
+//    public static User currentUser = null;
 //    public static User currentUser = new Customer("1575270674@qq.com");
 //    public static User currentUser = new Driver("cervantesmichael@yahoo.com");
-//    public static User currentUser =  new Admin("david32@hotmail.com");
+    public static User currentUser =  new Admin("david32@hotmail.com");
 
     public static Order currentOrder = new Order(7);
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
     public static Stage currentStage = null;
+    public static OrderCard currentOrderCard = null;
 
 
 

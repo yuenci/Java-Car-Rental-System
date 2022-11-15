@@ -1,7 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.*;
+import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -56,6 +58,8 @@ public class DriverMainPageController extends  Controller{
 
     private HashMap<Integer, OrderCard> orderCardHashMap = new HashMap<>();
 
+    private int continueOrderID = -1;
+
     @FXML
     public void initialize() {
         driverMainPageInstance = this;
@@ -91,29 +95,33 @@ public class DriverMainPageController extends  Controller{
                 orderIDs[i] = Integer.parseInt(result.get(i)[0]);
             }
         }
+        getContinueOrderID();
+    }
+
+    private void getContinueOrderID(){
+        String driverID = String.valueOf(driver.getUserID());
+        ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "schedule.txt");
+        String lastID = "";
+        // from end to start loop
+        for (int i = result.size() - 1; i >= 0; i--) {
+            if ( result.get(i)[3].equals(driverID)) {
+                lastID = result.get(i)[1];
+            }
+        }
+
+        String sql = "select max(status) from schedule where orderID = " + lastID;
+        String maxStatus =  SQL.query(sql).get(0)[0];
+        int status = Double.valueOf(maxStatus).intValue();
+
+        if (status == 2) {
+            continueOrderID =Double.valueOf(lastID).intValue();
+            System.out.println( "continue order id is " + continueOrderID);
+        }
+
     }
 
     private void initOrderCards() {
-//        Pane pane = new Pane();
-//        double width = orderIDs.length * 300;
-//        pane.setPrefWidth(width);
-//        pane.setPrefHeight(180);
-//        pane.setStyle("-fx-background-color: transparent");
 
-        // get map values
-
-
-
-//        currentOrderCard = new OrderCard(new Order(orderIDs[0]));
-//
-//        for (int i = 0; i < orderIDs.length; i++) {
-//            OrderCard orderCard = new OrderCard(new Order(orderIDs[i]));
-//            orderCard.setLayoutX(i * 300 + 15);
-//            pane.getChildren().add(orderCard);
-//        }
-//        scrollPane.setFitToHeight(true);
-//        //scrollPane.setPrefViewportWidth(width);
-//        scrollPane.setContent(pane);
         setOrderCardMapData();
         addOrderCardToPane();
 
@@ -242,7 +250,14 @@ public class DriverMainPageController extends  Controller{
     }
 
     private void initFirstOrderCard(){
-        currentOrderCard = new OrderCard(new Order(orderIDs[0]));
+        if (continueOrderID ==-1) {
+            currentOrderCard = new OrderCard(new Order(orderIDs[0]));
+        }else{
+            currentOrderCard = new OrderCard(new Order(continueOrderID));
+            StatusContainer.currentOrderCard = currentOrderCard;
+            generalChosedEvent();
+        }
+
         setCarInfo();
         setRenterInfo();
         setLocationInfo();
@@ -303,9 +318,10 @@ public class DriverMainPageController extends  Controller{
         String message = "Do you want to accept "+ renterNameCache +"'s order?";
         MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, message);
         messageFrame.setSuccessCallbackFunc((i) -> {
-            this.scrollPane.setVisible(false);
-            showProcessTip();
+            generalChosedEvent();
+
             showSuccessMessage();
+
             return null;
         });
 
@@ -314,6 +330,12 @@ public class DriverMainPageController extends  Controller{
             return null;
         });
         messageFrame.show();
+    }
+
+    private void generalChosedEvent(){
+        this.scrollPane.setVisible(false);
+        showProcessTip();
+        StatusContainer.currentOrderCard.saveEventToSchedule();
     }
 
     private  void   showSuccessMessage(){

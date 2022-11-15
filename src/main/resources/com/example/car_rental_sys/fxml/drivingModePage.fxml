@@ -101,7 +101,7 @@
       <children>
          <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../image/UI/volume.png" />
+               <Image url="@../image/UI/orderFinish.png" />
             </image></ImageView>
       </children></Pane>
    <Pane fx:id="sideIconPhone" layoutX="35.0" layoutY="520.0" onMouseClicked="#phoneIconClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #292d32; -fx-background-radius: 30;" styleClass="sidebarIconNormal">
@@ -120,7 +120,7 @@
       </children></Pane>
    <Pane layoutX="447.0" layoutY="119.0" prefHeight="41.0" prefWidth="159.0" style="-fx-background-color: #111111;" />
    <Pane prefHeight="39.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
-      <fx:include source="navigationBarShort.fxml" />
+      <fx:include source="navigationBarShortForBlack.fxml" />
    </Pane>
    <Pane fx:id="browserContainer" layoutX="955.0" layoutY="42.0" prefHeight="490.0" prefWidth="300.0" style="-fx-background-color: white;" />
    <Pane fx:id="distanceDataPane" layoutX="395.0" layoutY="527.0" prefHeight="69.0" prefWidth="245.0" style="-fx-background-color: #121b26; -fx-background-radius: 20;">

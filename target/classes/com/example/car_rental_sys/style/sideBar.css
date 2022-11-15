@@ -1,0 +1,15 @@
+#pane1:hover, #pane2:hover{
+    -fx-cursor: hand;
+}
+
+.delete .text {
+    -fx-strikethrough: true;
+}
+
+#addBtn:hover{
+    -fx-cursor: hand;
+}
+
+.hand:hover{
+    -fx-cursor: hand;
+}

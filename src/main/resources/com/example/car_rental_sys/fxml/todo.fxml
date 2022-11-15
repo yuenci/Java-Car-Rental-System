@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="130.0" prefWidth="250.0" style="-fx-background-color: white;" stylesheets="@../style/sideBar.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.UIToDoController">
+   <children>
+      <Pane fx:id="pane1" layoutX="5.0" layoutY="10.0" prefHeight="50.0" prefWidth="240.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
+         <children>
+            <CheckBox fx:id="checkBox1" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" />
+            <Label fx:id="label1" layoutX="41.0" layoutY="8.0" prefHeight="19.0" prefWidth="197.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="time1" layoutX="41.0" layoutY="27.0" prefHeight="19.0" prefWidth="197.0" text="Label" textFill="#979797" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane2" layoutX="5.0" layoutY="70.0" prefHeight="50.0" prefWidth="240.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 10;">
+         <children>
+            <CheckBox fx:id="checkBox2" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" />
+            <Label fx:id="label2" layoutX="43.0" layoutY="7.0" prefHeight="19.0" prefWidth="197.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="time2" layoutX="43.0" layoutY="25.0" prefHeight="19.0" prefWidth="197.0" text="Label" textFill="#979797" />
+         </children>
+      </Pane>
+      <ImageView fx:id="addBtn" fitHeight="51.0" fitWidth="40.0" layoutX="225.0" layoutY="45.0"
+                 pickOnBounds="true" preserveRatio="true" onMouseClicked="#showAddTaskPane">
+         <image>
+            <Image url="@../image/UI/addTodo.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="addTaskPane" layoutX="307.0" prefHeight="130.0" prefWidth="289.0" style="-fx-background-color: white;">
+         <children>
+            <DatePicker fx:id="datePicker" layoutX="6.0" layoutY="97.0" prefHeight="23.0" prefWidth="168.0" />
+            <TextArea fx:id="taskContent" layoutX="6.0" layoutY="7.0" prefHeight="76.0" prefWidth="277.0" />
+            <Button layoutX="208.0" layoutY="97.0" mnemonicParsing="false"
+                    style="-fx-background-color: #cae943;" styleClass="hand" text="Add task" onMouseClicked="#addTaskBtnClick" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

@@ -25,7 +25,8 @@ public class Test {
 //        screenShotTest();
         //openScreenShotWithMsPaintTest();
         //getMessageJson();
-        keepLoginTest();
+        //keepLoginTest();
+        gettodoListTest();
     }
 
 
@@ -105,5 +106,9 @@ public class Test {
 
     private static void keepLoginTest(){
         DataTools.keepUserLoggedIn();
+    }
+
+    private static void gettodoListTest(){
+        DataTools.getAdminToDo();
     }
 }
