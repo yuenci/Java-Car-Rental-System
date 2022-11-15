@@ -9,6 +9,7 @@ import com.example.car_rental_sys.orm.Driver;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.RenderingMode;
 import com.teamdev.jxbrowser.frame.Frame;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
@@ -84,7 +85,7 @@ public class DrivingModeController {
     }
 
     private void initBorwserEvent() {
-        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+        Engine engine = Engine.newInstance(RenderingMode.OFF_SCREEN);
 
         Browser browser = engine.newBrowser();
         //browser.navigation().loadUrl("https://www.google.com/maps");
@@ -114,6 +115,8 @@ public class DrivingModeController {
             System.out.println(message);
             Platform.runLater(() -> updateDistanceData(message));
         });
+
+        distanceDataPane.toFront();
     }
 
     private void updateDistanceData(String distanceAndTime) {

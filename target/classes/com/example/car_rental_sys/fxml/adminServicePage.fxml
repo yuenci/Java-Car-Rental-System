@@ -9,7 +9,11 @@
     <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBarShort.fxml" />
     </Pane>
-    <Pane layoutY="240.0" prefHeight="130.0" prefWidth="250.0" style="-fx-background-color: transparent;">
+    
+    <Pane layoutX="270.0" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: transparent;">
+        <fx:include source="dashboard.fxml" />
+    </Pane>
+    <Pane layoutX="10.0" layoutY="240.0" prefHeight="130.0" prefWidth="250.0" style="-fx-background-color: transparent;">
         <fx:include source="todo.fxml" />
     </Pane>
 </AnchorPane>

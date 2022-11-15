@@ -122,29 +122,31 @@
    <Pane prefHeight="39.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
       <fx:include source="navigationBarShortForBlack.fxml" />
    </Pane>
-   <Pane fx:id="browserContainer" layoutX="955.0" layoutY="42.0" prefHeight="490.0" prefWidth="300.0" style="-fx-background-color: white;" />
-   <Pane fx:id="distanceDataPane" layoutX="395.0" layoutY="527.0" prefHeight="69.0" prefWidth="245.0" style="-fx-background-color: #121b26; -fx-background-radius: 20;">
+   <Pane fx:id="browserContainer" layoutX="955.0" layoutY="42.0" prefHeight="490.0" prefWidth="300.0" style="-fx-background-color: white;">
       <children>
-         <Pane layoutX="12.0" layoutY="41.0" prefHeight="8.0" prefWidth="222.0" style="-fx-background-color: #30fa8f; -fx-background-radius: 10;">
+         <Pane fx:id="distanceDataPane" layoutX="28.0" layoutY="387.0" prefHeight="69.0" prefWidth="245.0" style="-fx-background-color: #121b26; -fx-background-radius: 20;">
             <children>
-               <ImageView fitHeight="41.0" fitWidth="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../image/UI/toRight.png" />
-                  </image>
-               </ImageView>
+               <Pane layoutX="12.0" layoutY="41.0" prefHeight="8.0" prefWidth="222.0" style="-fx-background-color: #30fa8f; -fx-background-radius: 10;">
+                  <children>
+                     <ImageView fitHeight="41.0" fitWidth="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../image/UI/toRight.png" />
+                        </image>
+                     </ImageView>
+                  </children>
+               </Pane>
+               <Label fx:id="distanceLeftLabel" layoutX="21.0" layoutY="12.0" text="0 km left" textFill="WHITE">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="timeLeftLabel" layoutX="175.0" layoutY="12.0" text="00 mins" textFill="WHITE">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
             </children>
          </Pane>
-         <Label fx:id="distanceLeftLabel" layoutX="21.0" layoutY="12.0" text="0 km left" textFill="WHITE">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-         <Label fx:id="timeLeftLabel" layoutX="175.0" layoutY="12.0" text="00 mins" textFill="WHITE">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Label>
-      </children>
-   </Pane>
+      </children></Pane>
    <Pane layoutX="30.0" layoutY="42.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 35;" styleClass="hand" />
 </Pane>

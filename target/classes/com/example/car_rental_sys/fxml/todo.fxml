@@ -29,18 +29,16 @@
             <Label fx:id="time2" layoutX="43.0" layoutY="25.0" prefHeight="19.0" prefWidth="197.0" text="Label" textFill="#979797" />
          </children>
       </Pane>
-      <ImageView fx:id="addBtn" fitHeight="51.0" fitWidth="40.0" layoutX="225.0" layoutY="45.0"
-                 pickOnBounds="true" preserveRatio="true" onMouseClicked="#showAddTaskPane">
+      <ImageView fx:id="addBtn" fitHeight="51.0" fitWidth="40.0" layoutX="223.0" layoutY="45.0" onMouseClicked="#showAddTaskPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/UI/addTodo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="addTaskPane" layoutX="307.0" prefHeight="130.0" prefWidth="289.0" style="-fx-background-color: white;">
+      <Pane fx:id="addTaskPane" layoutX="300.0" prefHeight="130.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 5;">
          <children>
             <DatePicker fx:id="datePicker" layoutX="6.0" layoutY="97.0" prefHeight="23.0" prefWidth="168.0" />
             <TextArea fx:id="taskContent" layoutX="6.0" layoutY="7.0" prefHeight="76.0" prefWidth="277.0" />
-            <Button layoutX="208.0" layoutY="97.0" mnemonicParsing="false"
-                    style="-fx-background-color: #cae943;" styleClass="hand" text="Add task" onMouseClicked="#addTaskBtnClick" />
+            <Button layoutX="208.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#addTaskBtnClick" style="-fx-background-color: #cae943;" styleClass="hand" text="Add task" />
          </children>
       </Pane>
    </children>
