@@ -37,6 +37,12 @@ public class DateTools {
         return dateToString(date, "yyyy-MM-dd HH:mm:ss");
     }
 
+    public static String getDataTimeAfterDays(int days){
+        Date date = new Date();
+        date.setTime(date.getTime() + (long) days * 24 * 60 * 60 * 1000);
+        return dateToString(date, "yyyy-MM-dd HH:mm:ss");
+    }
+
     public static long startTime ;
     public static void setStarTime(){
         startTime=System.currentTimeMillis();
@@ -45,5 +51,18 @@ public class DateTools {
     public static String getTimeCost(){
         long endTime=System.currentTimeMillis();
         return " runtime： "+(endTime-startTime)+" ms";
+    }
+
+    public static int getHourDiff(Date start, Date end){
+        long diff = end.getTime() - start.getTime();
+        return (int) (diff / (1000 * 60 * 60));
+    }
+
+    public static int getHourDiff(String startStr, String endStr){
+        Date start = stringToDateObje(startStr);
+        Date end = stringToDateObje(endStr);
+
+        long diff = end.getTime() - start.getTime();
+        return (int) (diff / (1000 * 60 * 60));
     }
 }

@@ -1,13 +1,16 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -50,6 +53,8 @@ public class CustomerSideBarController {
         item5.setOnMouseClicked(event -> changeMenuStyle(item5));
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
+            StatusContainer.currentUser = null;
+            DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
 
@@ -82,15 +87,20 @@ public class CustomerSideBarController {
         nameTextLabel.setText(customer.getUserName());
         emailTextLabel.setText(customer.getEmail());
 
-        avatarImageView.setImage(customer.getAvatar());
+        Image useAvatar =  ImageTools.getCircleImages(customer.getAvatar());
+        avatarImageView.setImage(useAvatar);
+
         vipBadgeImageView.setImage(customer.getVipBadge());
         vipCardImageView.setImage(customer.getVipCard());
 
         setVipCard(customer.getOrderNum());
+
     }
 
     private void setVipCard(int orderNum) {
         orderNumLabel.setVisible(false);
+        if(orderNum ==0) return;
+
         Pane[] bans = {bar1, bar2, bar3, bar4, bar5};
         if (orderNum > 20) {
             for (Pane ban : bans) {
@@ -112,6 +122,7 @@ public class CustomerSideBarController {
 
     @FXML
     private void updateBtnClick() {
-        System.out.println("updateBtnClick");
+//        System.out.println("updateBtnClick");
+        FXTools.changeScene("carsListPage.fxml");
     }
 }

@@ -1,8 +1,9 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
-import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
 import javafx.scene.control.Label;
@@ -49,13 +50,13 @@ public class OrderCard extends Pane {
     }
 
     private  void initData(Order order){
-        this.carModel = DataTools.getCarModelFromCarID(order.carID);
-        this.carNumber = DataTools.getCarNumberFromCarID(order.carID);
+        this.carModel = DataTools.getCarModelFromCarID(order.getCarID());
+        this.carNumber = DataTools.getCarNumberFromCarID(order.getCarID());
         this.status = order.getStatus();
         this.orderID = order.getOrderID();
         this.userID = order.getUserID();
 
-        String gradientColor = DataTools.getGradientColorFromCarID(order.carID);
+        String gradientColor = DataTools.getGradientColorFromCarID(order.getCarID());
         assert gradientColor != null;
         this.darkColor = gradientColor.split(",")[0];
         this.lightColor = gradientColor.split(",")[1];
@@ -141,7 +142,7 @@ public class OrderCard extends Pane {
         String carStyle =
                 "-fx-background-color: " +
                 "linear-gradient(to left," + this.darkColor +"," + this.lightColor + ");";
-        FXTools.yAxisFlip(carImageView,590,180);
+        ImageTools.yAxisFlip(carImageView,590,180);
         setPane(carImagePane,7 +offsetX,71,123,60,carStyle);
 
         String hideImageAddress = UIImageRoot + "hide.png";
@@ -204,6 +205,12 @@ public class OrderCard extends Pane {
 
     private void chooseCard(){
         driverMainIns.chooseCard(this.orderID);
+        StatusContainer.currentOrderCard = this;
+    }
+
+    public void saveEventToSchedule(){
+        String driverID = String.valueOf(StatusContainer.currentUser.getUserID());
+        DataTools.setOrderStatus(orderID,2, driverID);
     }
 
 

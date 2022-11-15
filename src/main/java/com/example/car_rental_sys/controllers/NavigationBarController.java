@@ -1,8 +1,13 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.orm.Admin;
+import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.ui_components.Loading;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,7 +59,15 @@ public class NavigationBarController {
 
     @FXML
     private void serviceBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScene(actionEvent,"signUpPage.fxml");
+        if (StatusContainer.currentUser instanceof Admin){
+            FXTools.changeScene("adminServicePage.fxml");
+        }else if (StatusContainer.currentUser instanceof Customer){
+            FXTools.changeScene("customerServicePage.fxml");
+        }else  if (StatusContainer.currentUser instanceof Driver){
+            FXTools.changeScene("driverServicePage.fxml");
+        }else {
+            FXTools.changeScene("loginPage.fxml");
+        }
     }
 
     @FXML

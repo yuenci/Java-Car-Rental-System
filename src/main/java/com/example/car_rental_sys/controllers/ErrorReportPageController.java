@@ -89,6 +89,8 @@ public class ErrorReportPageController {
         ToggleGroup group = new ToggleGroup();
         radioBtn1.setToggleGroup(group);
         radioBtn2.setToggleGroup(group);
+        // set default selected
+        radioBtn1.setSelected(true);
     }
 
     @FXML

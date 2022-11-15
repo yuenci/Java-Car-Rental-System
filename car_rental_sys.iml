@@ -39,5 +39,6 @@
     <orderEntry type="library" name="Maven: com.teamdev.jxbrowser:jxbrowser-win64:7.28.1" level="project" />
     <orderEntry type="library" name="Maven: com.teamdev.jxbrowser:jxbrowser:7.28.1" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: com.google.zxing:core:3.3.2" level="project" />
   </component>
 </module>

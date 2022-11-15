@@ -28,7 +28,7 @@ function addServerMessage(message) {
                 <div class="message-sender">${servicer}</div>
                 <div class="message-time">${getTime()}</div>
             </div>
-            <div class="message">${message}</div>
+            <div class="message">${cleanResponse(message)}</div>
         </div>
     </div>
     `
@@ -151,4 +151,16 @@ function netWorkError() {
         <div class="error-message-container"><p class="error-message">${message}</p></div>
     `
     $("#char-area-bottom").before(messageRes);
-} 
+}
+
+function cleanResponse(response) {
+    //let charater = [",", "!", "?", ".", ":", ";"];
+    if (charater.includes(response[0])) response = response.slice(1);
+
+    //let nowords = [".Human: ", "Human:"]
+    for (let i = 0; i < nowords.length; i++) {
+        response = response.replace(nowords[i], "");
+    }
+    return response;
+
+}

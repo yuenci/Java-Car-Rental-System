@@ -3,8 +3,12 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.SendEmail;
+import com.example.car_rental_sys.orm.Admin;
+import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
@@ -46,13 +50,32 @@ public class loginPageController extends Controller{
         StatusContainer.currentPageController = this;
         passwordInputText.setVisible(false);
         resetBtn.setVisible(false);
+        initEnterEvent();
     }
 
     @FXML
     private void loginBtnClick() {
+        boolean rememberMe = checkBox.isSelected();
         //System.out.println( "loginBtnClick" );
         if(checkEmailAndPassword()){
-            System.out.println( "login success" );
+            String emailValue = emailInput.getText();
+            String userRole = DataTools.getUserRoleFromUserEmail(emailValue);
+            if(Objects.equals(userRole, "customer")){
+                System.out.println( "customer login" );
+                StatusContainer.currentUser = new Customer(emailValue);
+                FXTools.changeScene("customerServicePage.fxml");}
+            else if(Objects.equals(userRole, "driver")){
+                System.out.println( "driver login" );
+                StatusContainer.currentUser = new Driver(emailValue);
+                FXTools.changeScene("driverServicePage.fxml");
+            }else if(Objects.equals(userRole, "admin")){
+                System.out.println( "admin login" );
+                StatusContainer.currentUser = new Admin(emailValue);
+                FXTools.changeScene("adminServicePage.fxml");
+            }
+            DataTools.logLogin(rememberMe);
+        }else{
+            System.out.println( "login fail" );
         }
     }
 
@@ -77,6 +100,14 @@ public class loginPageController extends Controller{
             passwordInputPass.requestFocus();
         }
     }
+    private void initEnterEvent(){
+        mainPane.setOnKeyPressed(event -> {
+            if(event.getCode().toString().equals("ENTER")){
+                //System.out.println("yes");
+                loginBtnClick();
+            }
+        });
+    }
 
     private boolean  checkEmailAndPassword(){
         String emailValue = emailInput.getText();
@@ -98,14 +129,19 @@ public class loginPageController extends Controller{
         // 400: unknown error
         if(validCode == 100){
             new MessageFrame(MessageFrameType.WARNING,"Email doesn't exist" ).show();
+            return false;
 
         }else if(validCode == 300){
             new MessageFrame(MessageFrameType.WARNING,"Password is incorrect" ).show();
+            return false;
 
         }else if(validCode == 400){
             new MessageFrame(MessageFrameType.ERROR,"Unknown error occurred." ).show();
             new Tools().reSetScene( "mainPage.fxml");
+            return false;
         }
+
+
 
         return true;
     }

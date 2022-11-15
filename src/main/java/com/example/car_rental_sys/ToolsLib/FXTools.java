@@ -4,6 +4,8 @@ import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXMLLoader;
+import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,22 +52,6 @@ public class FXTools {
         stage.show();
     }
 
-    public static void yAxisFlip(ImageView imageView, double a1, double a2) {
-        Translate flipTranslation = new Translate(imageView.getImage().getWidth() - a1, 0);
-        Rotate flipRotation = new Rotate(a2, Rotate.Y_AXIS);
-        imageView.getTransforms().addAll(flipTranslation, flipRotation);
-    }
-
-
-    public static String getGenderFromUserID(int userID) {
-        String sql = "Select gender FROM userInfo WHERE userID = " + userID;
-        ArrayList<String[]> result = SQL.query(sql);
-        if (result.size() == 1) {
-            return result.get(0)[0];
-        } else {
-            return null;
-        }
-    }
 
     public static double[] getCenterOfScreen() {
         double[] center = new double[2];
@@ -129,5 +115,20 @@ public class FXTools {
 //            System.out.println("X is: " + robot.getMousePosition().getX());
 //            System.out.println("Y is: " + robot.getMousePosition().getY());
             return new double[]{robot.getMousePosition().getX(), robot.getMousePosition().getY()};
+    }
+
+    public static void  printJavaFXNode(Node node){
+        PrinterJob job = PrinterJob.createPrinterJob();
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+        job.getJobSettings().setPageLayout(pageLayout);
+        boolean success = job.printPage(node);
+        if (success) {
+            job.endJob();
+        }
+    }
+
+    public static Stage getStageFromFXNode(Node node){
+        return (Stage) node.getScene().getWindow();
     }
 }

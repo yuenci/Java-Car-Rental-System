@@ -17,9 +17,29 @@
                <WebView fx:id="webView" prefHeight="732.0" prefWidth="1280.0" />
                <Pane prefHeight="310.0" prefWidth="1280.0" style="-fx-background-color: #000000;">
                   <children>
-                     <Label layoutX="98.0" layoutY="121.0" text="About us" textFill="WHITE">
+                     <Label layoutX="88.0" layoutY="59.0" text="About us" textFill="WHITE">
                         <font>
                            <Font name="Microsoft Tai Le" size="50.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="640.0" layoutY="69.0" prefHeight="153.0" prefWidth="598.0" text="We started our own software company because we believed there was always a better way to do things. We are passionate about experiences, user interfaces and developing the best possible digital products. In a short period of time, we have gathered very talented people to help us on our journey - designing and programming the world we want to live in." textFill="WHITE" wrapText="true">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="640.0" layoutY="238.0" text="Innis &amp; KK " textFill="WHITE">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="88.0" layoutY="134.0" text="From APU, Kuala Lumpur, Malaysia" textFill="#bfbfbf">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="735.0" layoutY="237.0" text="— Co-founders" textFill="#bfbfbf">
+                        <font>
+                           <Font size="18.0" />
                         </font>
                      </Label>
                   </children>

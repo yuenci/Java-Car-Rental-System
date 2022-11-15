@@ -56,7 +56,7 @@ public class BrowserFrame {
         }
         // browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/googleMap.html").getAbsolutePath());
         //browser.navigation().loadUrl("https://www.google.com");
-        System.out.println("initBrowser");
+        //System.out.println("initBrowser");
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
             String message = consoleMessage.message();

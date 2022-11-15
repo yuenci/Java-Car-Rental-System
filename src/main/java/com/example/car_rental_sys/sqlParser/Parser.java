@@ -1,4 +1,5 @@
 package com.example.car_rental_sys.sqlParser;
+import com.example.car_rental_sys.ConfigFile;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.BinaryExpression;
 import net.sf.jsqlparser.expression.Expression;
@@ -40,8 +41,8 @@ public class Parser {
     // configs of the database
     //
     ////////////////////////////////////////
-    public static String dataFilesPath = "src/main/resources/com/example/car_rental_sys/data/";
-    public static boolean enableSecurityMode = false;
+    public static String dataFilesPath = ConfigFile.dataFilesPath;
+    public static boolean enableSecurityMode = ConfigFile.enableSQLParserSecurityMode;
 
     // region # validatation
     ////////////////////////

@@ -8,9 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static com.example.car_rental_sys.StatusContainer.isNetworkConnected;
+import static com.example.car_rental_sys.StatusContainer.isDataFileComplete;
+import static com.example.car_rental_sys.StatusContainer.idBackEndServerStart;
+import static com.example.car_rental_sys.StatusContainer.isJxBrowserRegistered;
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class SelfTestTools {
@@ -19,14 +25,16 @@ public class SelfTestTools {
     public static class Test {
         public String name;
         public boolean isPass;
+        public String message;
         public String description;
         public Pane pane;
         public VBox vBox;
 
-        public Test(String name, boolean isPass, String description) {
+        public Test(String name, boolean isPass,String message, String description) {
             this.name = name;
             this.isPass = isPass;
             this.description = description;
+            this.message = message;
             registerTest();
             initPane();
         }
@@ -65,18 +73,14 @@ public class SelfTestTools {
 
     public static void executeSelfTest() {
         startTimeWholeTest  = System.currentTimeMillis();
-
-
         isNetworkConnected();
         isDataFileComplete();
         isBackendServerRunning();
-        isSecretFilesDecrypted();
-        isAllFilesDecrypted();
-        isSecretFileExist();
-        isOriginalSecretFileExist();
+//        isSecretFilesDecrypted();
+//        isAllFilesDecrypted();
+//        isSecretFileExist();
+        //isOriginalSecretFileExist();
         isJxBrowserLicensed();
-
-
         showTestMsg();
     }
     private static long startTime ;
@@ -95,15 +99,17 @@ public class SelfTestTools {
         boolean res =  NetTools.netIsAvailable(ConfigFile.connectTestUrl);
 
 //        boolean res = NetTools.netIsAvailable(ConfigFile.connectTestUrl);
-        res = true;
+
+        String message = "Connecting to the network...";
         if (res) {
-            new Test("Network Connection", true, "Network connection is available.");
+            new Test("Network Connection", true,message, "Network connection is available.");
         } else {
-            new Test("Network Connection", false, NetTools.netErrorMsg);
+            isNetworkConnected  = false;
+            new Test("Network Connection", false,message, NetTools.netErrorMsg);
         }
 
-        //System.out.println("Network Connection: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
-        showSelfTestMessage("Connecting to the network...");
+        System.out.println("Network Connection: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //showSelfTestMessage("Connecting to the network...");
     }
 
     private static void isDataFileComplete() {
@@ -119,17 +125,17 @@ public class SelfTestTools {
                 description.append("File ").append(fileName).append(" is missing. ");
             }
         }
-
-        isPass = false;
+        String message = "Checking data files integrity...";
         if (isPass) {
-            new Test("Data integrity", true, "Data files are complete.");
+            new Test("Data integrity", true,message, "Data files are complete.");
         } else {
-            new Test("Data integrity", false, description.toString());
+            StatusContainer.isDataFileComplete =false;
+            new Test("Data integrity", false, message,description.toString());
         }
 
-        //System.out.println("Data integrity: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        System.out.println("Data integrity: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
-        showSelfTestMessage("Checking data files integrity...");
+        //showSelfTestMessage("Checking data files integrity...");
     }
 
     // is backend server running
@@ -137,27 +143,27 @@ public class SelfTestTools {
         setStarTime();
         boolean res = NetTools.netIsAvailable(ConfigFile.backendPost);
 
-        res = true;
+        String message = "Checking backend server running status...";
         if (res) {
-            new Test("Backend Server", true, "Backend server is running.");
+            new Test("Backend Server", true,message, "Backend server is running.");
         } else {
-            new Test("Backend Server", false, StatusContainer.backEndErrorMessage);
+            new Test("Backend Server", false,message, StatusContainer.backEndErrorMessage);
         }
 
-        //System.out.println("Backend Server: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        System.out.println("Backend Server: " + res + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
 
-        showSelfTestMessage("Checking backend server running status...");
+        //showSelfTestMessage("Checking backend server running status...");
     }
 
     private static void isSecretFilesDecrypted(){
         setStarTime();
         boolean res = StatusContainer.isDataDecrypted;
-
+        String message = "Checking secret file...";
         res = false;
         if (res) {
-            new Test("Secret File Decrypted", true, "Secret files are decrypted.");
+            new Test("Secret File Decrypted", true, message,"Secret files are decrypted.");
         } else {
-            new Test("Secret File Decrypted", false, "Secret files are not decrypted."
+            new Test("Secret File Decrypted", false, message,"Secret files are not decrypted."
             + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted."
             + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted."
             + " Please contact the administrator to decrypt the files." + "Secret files are not decrypted.");
@@ -183,12 +189,12 @@ public class SelfTestTools {
                 description.append("File ").append(fileName).append(" should exist but not  exist. ");
             }
         }
-
+        String message = "Checking secret files...";
         isPass = false;
         if (isPass) {
-            new Test("Secret File", true, "Secret files are not exist.");
+            new Test("Secret File", true,message, "Secret files are not exist.");
         } else {
-            new Test("Secret File", false, description.toString());
+            new Test("Secret File", false, message,description.toString());
         }
 
         //System.out.println("Secret original File exist: " + isPass + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
@@ -210,12 +216,11 @@ public class SelfTestTools {
                 description.append("File ").append(fileName).append(" should not exist but exist. ");
             }
         }
-
-        isPass = false;
+        String message = "Checking secret files...";
         if (isPass) {
-            new Test("Secret File", true, "Secret files are exist.");
+            new Test("Secret File", true,message, "Secret files are exist.");
         } else {
-            new Test("Secret File", false, description.toString());
+            new Test("Secret File", false, message,description.toString());
         }
 
         showSelfTestMessage("Checking secret files...");
@@ -228,10 +233,12 @@ public class SelfTestTools {
         String decryptedErrorMsg = DataTools.encryptErrorMessage;
 
         StatusContainer.isDataDecrypted = false;
+
+        String message = "Checking data files decryption status...";
         if (StatusContainer.isDataDecrypted) {
-            new Test("Encrypted data decryption status", true, "Data files are complete.");
+            new Test("Encrypted data decryption status", true, message,"Data files are complete.");
         } else {
-            new Test("Encrypted data decryption status", false, decryptedErrorMsg);
+            new Test("Encrypted data decryption status", false, message,decryptedErrorMsg);
         }
 
         //System.out.println("Encrypted data decryption status: " + StatusContainer.isDataDecrypted + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
@@ -241,23 +248,45 @@ public class SelfTestTools {
 
     private static void isJxBrowserLicensed() {
         setStarTime();
+        String message = "Checking necessary license...";
         try {
-            new Thread(() -> {
-                Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
-                new Test("JxBrowser", true, "JxBrowser is licensed.");
-            }).start();
+            Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+            new Test("JxBrowser", true, message,"JxBrowser is licensed.");
         } catch (Exception e) {
-            new Test("JxBrowser", false, "JxBrowser is not licensed.");
+            StatusContainer.isJxBrowserRegistered =false;
+            new Test("JxBrowser", false, message,"JxBrowser is not licensed.");
             System.out.println("JxBrowser is not licensed.");
         }
 
-        //System.out.println( "JxBrowser: " + true + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
-        showSelfTestMessage("Checking necessary license...");
+        System.out.println( "JxBrowser: " + true + "||" + DateTools.getNow() + "||" + getTimeCost()) ;
+        //showSelfTestMessage("Checking necessary license...");
     }
 
     private static void showTestMsg(){
         long costTimeWholeTest=System.currentTimeMillis() - startTimeWholeTest;
-        //System.out.println("Test Number: " + testList.size() +  "|| whole Test cost: " +  costTimeWholeTest + " ms"  );
+        System.out.println("Test Number: " + testList.size() +  "|| whole Test cost: " +  costTimeWholeTest + " ms"  );
+
+        if(isDataFileComplete && idBackEndServerStart&& isJxBrowserRegistered){
+            if(isNetworkConnected){
+                StatusContainer.selfTestResult = true;
+                StatusContainer.isRunable = true;
+            }else{
+                StatusContainer.selfTestResult = false;
+                StatusContainer.isRunable = true;
+            }
+        }else{
+            StatusContainer.selfTestResult = false;
+            StatusContainer.isRunable = false;
+        }
+        // selfTestResult isRunable
+        // t t, all 4 is running
+        // f t, just net not working
+        // f f , 1/3 have serious issues
+
+
+
+
+
     }
 
     private static void showSelfTestMessage(String text){

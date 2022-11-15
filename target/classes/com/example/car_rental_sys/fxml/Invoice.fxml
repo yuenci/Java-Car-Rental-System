@@ -1,156 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #ffffff;"
-      xmlns="http://javafx.com/javafx/11.0.2"
-      fx:controller="com.example.car_rental_sys.controllers.InvoiceController" xmlns:fx="http://javafx.com/fxml/1">
-    <Line endX="240.0" layoutX="225.0" layoutY="2.0" startX="-190.0" stroke="#3498db" strokeWidth="4.0"/>
-    <Pane id="qrcodePane" fx:id="ivQrCodePane" layoutX="368.0" layoutY="26.0" prefHeight="100.0" prefWidth="100.0"
-          style="-fx-background-color: #000000;"/>
+<Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.InvoiceController">
+    <Pane fx:id="printAreaPane" layoutY="6.0" prefHeight="549.0" prefWidth="500.0">
+    <Line endX="240.0" layoutX="225.0" layoutY="2.0" startX="-190.0" stroke="#3498db" strokeWidth="4.0" />
+    <Pane id="qrcodePane" fx:id="ivQrCodePane" layoutX="368.0" layoutY="26.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #000000;">
+         <children>
+            <ImageView fx:id="qrCodeImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children></Pane>
     <Pane layoutX="33.0" layoutY="26.0" prefHeight="100.0" prefWidth="179.0">
         <Label fx:id="ivUserName" layoutY="5.0" text="Cody Fisher" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="18.0"/>
+                <Font name="Arial Bold" size="18.0" />
             </font>
         </Label>
-        <Label fx:id="ivAddressOne" layoutY="33.0" text="this is address line one" textFill="#86909c"/>
-        <Label fx:id="ivAddressTwo" layoutY="52.0" text="this is address line two" textFill="#86909c"/>
+        <Label fx:id="ivAddressOne" layoutY="33.0" text="this is address line one" textFill="#86909c" />
+        <Label fx:id="ivAddressTwo" layoutY="52.0" text="this is address line two" textFill="#86909c" />
     </Pane>
-    <Line endX="240.0" fill="#f2f3f5" layoutX="225.0" layoutY="144.0" startX="-190.0" stroke="#f2f3f5"
-          strokeWidth="2.0"/>
+    <Line endX="240.0" fill="#f2f3f5" layoutX="225.0" layoutY="144.0" startX="-190.0" stroke="#f2f3f5" strokeWidth="2.0" />
     <Pane layoutX="34.0" layoutY="157.0" prefHeight="75.0" prefWidth="111.0">
         <Label text="BILL TO:" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="11.0"/>
+                <Font name="Arial Black" size="11.0" />
             </font>
         </Label>
         <Label layoutY="19.0" text="RENT.Inc" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="15.0"/>
+                <Font name="Arial Bold" size="15.0" />
             </font>
         </Label>
         <Label layoutY="39.0" text="Bukit Jalil, Malaysia" textFill="#86909c">
             <font>
-                <Font name="Arial Bold" size="11.0"/>
+                <Font name="Arial Bold" size="11.0" />
             </font>
         </Label>
         <Label layoutY="55.0" text="www.rent.com" textFill="#86909c">
             <font>
-                <Font name="Arial Bold" size="11.0"/>
+                <Font name="Arial Bold" size="11.0" />
             </font>
         </Label>
     </Pane>
-    <Pane layoutX="327.0" layoutY="157.0" prefHeight="70.0" prefWidth="141.0">
-        <Label layoutX="82.0" text="INVOICE:" textFill="#86909c">
+    <Pane layoutX="308.0" layoutY="157.0" prefHeight="70.0" prefWidth="160.0">
+        <Label layoutX="99.0" text="INVOICE:" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="11.0"/>
+                <Font name="Arial Black" size="11.0" />
             </font>
         </Label>
         <Label layoutY="20.0" text="Invoice No:" textFill="#4080ff">
             <font>
-                <Font name="Arial Bold" size="13.0"/>
+                <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
-        <Label fx:id="ivPaymentDate" layoutX="38.0" layoutY="40.0" text="November 13, 2022" textFill="#86909c">
+        <Label fx:id="ivPaymentDate" layoutX="54.0" layoutY="40.0" prefWidth="100.0" text="November 13, 2022" textFill="#86909c">
             <font>
-                <Font name="Arial Bold" size="11.0"/>
+                <Font name="Arial Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="ivOrderID" layoutX="75.0" layoutY="20.0" text="392685222" textFill="#4080ff">
+        <Label fx:id="ivOrderID" layoutX="88.0" layoutY="20.0" text="392685222" textFill="#4080ff">
             <font>
-                <Font name="Arial Bold" size="13.0"/>
+                <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
     </Pane>
-    <Button layoutX="35.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#ivDownloadClicked" prefHeight="35.0"
-            prefWidth="430.0" style="-fx-background-color: #4080ff;" text="DOWNLOAD INVOICE" textFill="WHITE">
+    <Button layoutX="35.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#ivDownloadClicked" prefHeight="35.0" prefWidth="430.0" style="-fx-background-color: #4080ff;" text="INVOICE" textFill="WHITE">
         <font>
-          <Font name="Arial Black" size="12.0"/>
+          <Font name="Arial Black" size="12.0" />
         </font>
     </Button>
     <Pane layoutX="35.0" layoutY="300.0" prefHeight="75.0" prefWidth="430.0">
         <Label layoutY="8.0" text="QUANTITY" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="10.0"/>
+                <Font name="Arial Black" size="10.0" />
             </font>
         </Label>
         <Label layoutX="98.0" layoutY="8.0" text="DESCRIPTION" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="10.0"/>
+                <Font name="Arial Black" size="10.0" />
             </font>
         </Label>
         <Label layoutX="262.0" layoutY="7.0" text="UNIT PRICE" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="10.0"/>
+                <Font name="Arial Black" size="10.0" />
             </font>
         </Label>
         <Label layoutX="388.0" layoutY="7.0" text="PRICE" textFill="#86909c">
             <font>
-                <Font name="Arial Black" size="10.0"/>
+                <Font name="Arial Black" size="10.0" />
             </font>
         </Label>
         <Label fx:id="ivQuantity" layoutY="38.0" text="100 Hours" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="12.0"/>
+                <Font name="Arial Bold" size="12.0" />
             </font>
         </Label>
         <Label fx:id="ivCarName" layoutX="98.0" layoutY="38.0" text="Myvi 1.5" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="12.0"/>
+                <Font name="Arial Bold" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="ivUnitPrice" layoutX="268.0" layoutY="38.0" text="RM 60.00" textFill="#4e5969">
+        <Label fx:id="ivUnitPrice" layoutX="260.0" layoutY="38.0" prefWidth="70.0" text="RM 60.00" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="12.0"/>
+                <Font name="Arial Bold" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="ivPrice" layoutX="357.0" layoutY="38.0" text="RM 6000.00" textFill="#4e5969">
+        <Label fx:id="ivPrice" layoutX="357.0" layoutY="38.0" prefWidth="70.0" text="RM 6000.00" textFill="#4e5969">
             <font>
-                <Font name="Arial Bold" size="12.0"/>
+                <Font name="Arial Bold" size="12.0" />
             </font>
         </Label>
     </Pane>
-    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="376.0" startX="-190.0" stroke="#f2f3f5"
-          strokeWidth="2.0"/>
+    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="376.0" startX="-190.0" stroke="#f2f3f5" strokeWidth="2.0" />
     <Label layoutX="35.0" layoutY="394.0" text="SUBTOTAL" textFill="#86909c">
         <font>
-          <Font name="Arial Black" size="10.0"/>
+          <Font name="Arial Black" size="10.0" />
         </font>
     </Label>
-    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="424.0" startX="-190.0" stroke="#f2f3f5"
-          strokeWidth="2.0"/>
-    <Label fx:id="ivSubTotal" layoutX="392.0" layoutY="394.0" text="RM 6000.00" textFill="#4080ff">
+    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="424.0" startX="-190.0" stroke="#f2f3f5" strokeWidth="2.0" />
+    <Label fx:id="ivSubTotal" layoutX="392.0" layoutY="394.0" prefWidth="70.0" text="RM 6000.00" textFill="#4080ff">
         <font>
-          <Font name="Arial Bold" size="12.0"/>
+          <Font name="Arial Bold" size="12.0" />
         </font>
     </Label>
     <Label layoutX="35.0" layoutY="442.0" text="(+) TAX" textFill="#86909c">
         <font>
-          <Font name="Arial Black" size="10.0"/>
+          <Font name="Arial Black" size="10.0" />
         </font>
     </Label>
-    <Label layoutX="411.0" layoutY="442.0" text="RM 0.00" textFill="#4080ff">
+    <Label fx:id="taxLabel" layoutX="392.0" layoutY="442.0" prefWidth="70.0" text="RM 0.00" textFill="#4080ff">
         <font>
-          <Font name="Arial Bold" size="12.0"/>
+          <Font name="Arial Bold" size="12.0" />
         </font>
     </Label>
-    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="476.0" startX="-190.0" stroke="#f2f3f5"
-          strokeWidth="2.0"/>
+    <Line endX="240.0" fill="#f2f3f5" layoutX="224.0" layoutY="476.0" startX="-190.0" stroke="#f2f3f5" strokeWidth="2.0" />
     <Label layoutX="35.0" layoutY="492.0" text="TOTAL" textFill="#86909c">
         <font>
-          <Font name="Arial Black" size="10.0"/>
+          <Font name="Arial Black" size="10.0" />
         </font>
     </Label>
-    <Label fx:id="ivTotalPrice" layoutX="393.0" layoutY="492.0" text="RM 6000.00" textFill="#4080ff">
+    <Label fx:id="ivTotalPrice" layoutX="393.0" layoutY="492.0" prefWidth="70.0" text="RM 6000.00" textFill="#4080ff">
         <font>
-          <Font name="Arial Bold" size="12.0"/>
+          <Font name="Arial Bold" size="12.0" />
         </font>
     </Label>
-    <Line endX="240.0" fill="#94bfff" layoutX="225.0" layoutY="523.0" startX="-190.0" stroke="#94bfff"
-          strokeWidth="2.0"/>
+    <Line endX="240.0" fill="#94bfff" layoutX="225.0" layoutY="523.0" startX="-190.0" stroke="#94bfff" strokeWidth="2.0" />
+    </Pane>
+ <Button fx:id="okBtn" layoutX="228.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#downloadBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="Download" />
+ <Button fx:id="cancelBtn" layoutX="369.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#cancelBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnRed" text="Cancel" />
 </Pane>

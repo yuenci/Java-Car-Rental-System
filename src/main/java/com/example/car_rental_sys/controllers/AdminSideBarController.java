@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Admin;
@@ -16,7 +17,7 @@ public class AdminSideBarController {
     Pane item1, item2, item3, item4, item5, item6, item7;
 
     @FXML
-    Label nameTextLabel,emailTextLabel;
+    Label nameTextLabel,emailTextLabel,postLabel;
 
     @FXML
     ImageView avatarImageView;
@@ -32,6 +33,7 @@ public class AdminSideBarController {
     private void initUserData() {
         nameTextLabel.setText(admin.getUserName());
         emailTextLabel.setText(admin.getEmail());
+        postLabel.setText(admin.getPost());
 
         Image circleImage = ImageTools.getCircleImages(admin.getAvatar());
         avatarImageView.setImage(circleImage);
@@ -50,6 +52,8 @@ public class AdminSideBarController {
         item6.setOnMouseClicked(event -> changeMenuStyle(item6));
         item7.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
+            StatusContainer.currentUser = null;
+            DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
 
@@ -70,6 +74,7 @@ public class AdminSideBarController {
     private  void  initLabelEvent(){
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
+        postLabel.setAlignment(Pos.CENTER);
     }
 
 }

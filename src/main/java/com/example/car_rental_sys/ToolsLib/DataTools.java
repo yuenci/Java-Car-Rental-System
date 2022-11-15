@@ -5,9 +5,14 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.FileOperate;
+import com.example.car_rental_sys.funtions.SendEmail;
+import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.orm.UserFactory;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
+import com.teamdev.jxbrowser.deps.org.checkerframework.checker.units.qual.A;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,8 +46,8 @@ public class DataTools {
         return file.exists();
     }
 
-    public static boolean ifDataFileExist(String filePath) {
-        String path = ConfigFile.dataFilesRootPath + filePath;
+    public static boolean ifDataFileExist(String fileName) {
+        String path = ConfigFile.dataFilesRootPath + fileName;
         return ifFileExist(path);
     }
 
@@ -60,8 +65,8 @@ public class DataTools {
         return false;
     }
 
-    public static boolean deleteDataFile(String filePath) {
-        String path = ConfigFile.dataFilesRootPath + filePath;
+    public static boolean deleteDataFile(String fileName) {
+        String path = ConfigFile.dataFilesRootPath + fileName;
         return deleteFile(path);
     }
 
@@ -106,23 +111,35 @@ public class DataTools {
     }
 
     public static boolean checkPassword(String password) {
-        if (password.length() < 8) {
+        if (password.length() < 8 ) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[A-Z].*")) {
+        }
+        if (ConfigFile.passwordStrength == 1) return true;
+
+        if (!password.matches(".*[A-Z].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one uppercase letter");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[a-z].*")) {
+        }
+        if (ConfigFile.passwordStrength == 2) return true;
+
+        if (!password.matches(".*[a-z].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one lowercase letter");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[0-9].*")) {
+        }
+        if (ConfigFile.passwordStrength == 3) return true;
+
+        if (!password.matches(".*[0-9].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one number");
             messageFrame.show();
             return false;
-        } else if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*")) {
+        }
+        if (ConfigFile.passwordStrength == 4) return true;
+
+        if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*")) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must contain at least one special character");
             messageFrame.show();
             return false;
@@ -223,7 +240,7 @@ public class DataTools {
         for (String dataFile : dataFiles) {
             boolean res = Encryption.dataFileDecrypt(dataFile);
             if (res) {
-                //deleteDataFile(dataFile + ".secret");
+                deleteDataFile(dataFile + ".secret");
             } else {
                 errorMessages.append(dataFile).append(" decrypt failed, ");
                 ifAllSuccess = false;
@@ -239,7 +256,7 @@ public class DataTools {
         return ifAllSuccess;
     }
 
-    public static boolean logLogin() {
+    public static boolean logLogin(Boolean ifRememberMe) {
         int loginID = DataTools.getID("loginLog");
         int userID = StatusContainer.currentUser.getUserID();
         String loginUIP = NetTools.getExternalHostIP();
@@ -250,12 +267,12 @@ public class DataTools {
         String time = DateTools.getNow();
         String EXP = time;
 
-        if (StatusContainer.ifRememberMe) EXP = DateTools.getDataTimeAfterAWeek();
+        if (ifRememberMe) EXP = DateTools.getDataTimeAfterDays(ConfigFile.remeberMeDays);
 
         String sql = "INSERT INTO loginLog VALUES (" + loginID + "," +
                 userID + ",'" + loginUIP + "','" + platformType + "','" + deviceType + "','" + deviceName + "','" +
                 IpGeo + "','" + time + "','" + EXP + "')";
-        System.out.println(sql);
+        //System.out.println(sql);
         return SQL.execute(sql);
     }
 
@@ -342,6 +359,31 @@ public class DataTools {
         }
     }
 
+    public static String getUserRoleFromUserEmail(String userEmail) {
+        String sql = "SELECT userGroup FROM userInfo WHERE email = '" + userEmail + "'";
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
+    public static String getUserRoleFromUserID(int userID) {
+        String email = getEmailFromUserID(userID);
+        return getUserRoleFromUserEmail(email);
+    }
+
+    public static String getEmailFromUserID(int  userID) {
+        String sql = "SELECT email FROM userInfo WHERE userID = " + userID ;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
     public static boolean generateMessageJSON(int userID) {
         String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID + " ORDER BY time ASC";
         ArrayList<String[]> result = SQL.query(sql);
@@ -373,8 +415,8 @@ public class DataTools {
             }
         }
 
-        String json = "getJson(" + msgRes.toString() + ")";
-        String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.json";
+        String json = "let messageData= '" + msgRes + "';let currentUserID = " + userID + ";";
+        String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.js";
         FileOperate.rewriteFile(path,json);
 
         File avatarFile =new File( "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
@@ -390,6 +432,186 @@ public class DataTools {
 
         return true;
     }
+
+    public static String generateRandomInvoiceNo(int OrderNumber){
+        String[] numbers = new String[10];
+        Random random = new Random(OrderNumber);
+        for (int i = 0; i < 10; i++) {
+            int number = random.nextInt(10);
+            numbers[i] =  String.valueOf(number);
+        }
+        return String.join("", numbers);
+    }
+
+    public static int  getCarUnitPriceFromCarID(int carID){
+        String model = getCarModelFromCarID(carID);
+        String sql = "SELECT price FROM carModels WHERE carModel = '" + model + "'";
+        ArrayList<String[]> result = SQL.query(sql);
+        if(result.size() == 1){
+            int price = Integer.parseInt(result.get(0)[0]);
+            return price /24;
+        }else {
+            return 0;
+        }
+    }
+
+    public static String getGenderFromUserID(int userID) {
+        String sql = "Select gender FROM userInfo WHERE userID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
+    public static boolean ifCurrentCustomerHasDLNumber(){
+        if(StatusContainer.currentUser instanceof Customer){
+            String sql = "SELECT DLNumber FROM userInfo WHERE userID = " + StatusContainer.currentUser.getUserID();
+            ArrayList<String[]> result = SQL.query(sql);
+            if(result.size() == 1){
+                String DLNumber = result.get(0)[0];
+                return !Objects.equals(DLNumber, "null") && !DLNumber.equals("");
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public static boolean keepUserLoggedIn(){
+        ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
+        for (int i =result.size()-1; i >=0 ; i--) {
+            String startTime = result.get(i)[10];
+            String endTime = result.get(i)[11];
+
+            if (!Objects.equals(startTime, endTime)){
+                String timeNow = DateTools.getNow();
+                int diff = DateTools.getHourDiff(timeNow,endTime);
+                if(diff >0){
+                    int userID = Integer.parseInt(result.get(i)[1]);
+                    StatusContainer.currentUser = UserFactory.getUser(userID);
+                    //System.out.println("User " + userID + " is logged in");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean logOut(){
+        ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
+
+        StringBuilder newResult = new StringBuilder();
+        new Thread(() -> {
+            for (String[] strings : result) {
+                if (!Objects.equals(strings[10], strings[11])) {
+                    strings[11] = strings[10];
+                }
+                newResult.append(String.join(",", strings)).append("\n");
+            }
+
+            FileOperate.rewriteFile(ConfigFile.dataFilesRootPath + "loginLog.txt", newResult.toString());
+        }).start();
+
+        return true;
+    }
+
+    public static boolean setOrderStatus(int orderID,int status ){
+        System.out.println("Order " + orderID + " status is set to " + status);
+        String relate = "null";
+        return setOrderStatus( orderID, status, relate );
+    }
+    /*
+    order - status
+    - 0: not paid
+    - 1: paid
+    - -1: canceled
+    - 2: delivering
+    - 3: delivered
+    - 4: driving
+    - 5: finished
+    */
+
+    public static boolean setOrderStatus(int orderID,int status,String relate ){
+        // log event
+        String time = DateTools.getNow();
+        int scheduleID = getID("schedule");
+        String sql = "Insert into schedule   VALUES (" +scheduleID + "," + orderID + "," + status + ",'" + relate + "','" + time + "')";
+
+        // update car status
+        String sql2 = "SELECT carID FROM orders WHERE orderID = " + orderID ;
+        String carID = SQL.query(sql2).get(0)[0];
+        int carIDInt = Integer.parseInt(carID);
+        updateCarStatus(carIDInt,status);
+
+        // sent system message
+        int messageID = getID("messages");
+        String message =getStatusMessage(status,orderID);
+        String sql3 = "SELECT userID FROM orders WHERE orderID = " + orderID ;
+        String userID = SQL.query(sql3).get(0)[0];
+        String sql4 = "INSERT INTO messages VALUES (" +messageID +",0,1,0," + userID +",'" + time + "','" + message + "')";
+        SQL.execute(sql4);
+
+        return SQL.execute(sql);
+    }
+
+    public static boolean updateCarStatus(int carID,int status){
+        String sql = "UPDATE carInfo SET status = " + status + " WHERE carID = " + carID;
+        return SQL.execute(sql);
+    }
+
+    public static String getStatusMessage(int orderID, int status){
+        switch (status){
+            case 0:
+                return "Thank you for choosing our service, please complete the payment within three hours.";
+            case 1:
+                return "Your payment has been received and we will prepare your Car as soon as possible.";
+            case -1:
+                return "Order:"+ orderID +"was cancelled successfully. Please comment on our service.";
+            case 2:
+                return "You car has already left and will arrive in half an hour.";
+            case 3:
+                return "Your vehicle has arrived, please go to the appointed place to get it.";
+            case 4:
+                return "Your confirmation has been received. Enjoy driving";
+            case 5:
+                return "Order:"+ orderID +" has been finished, and we look forward to serving you next time.";
+            default:
+                return "Unknown";
+        }
+
+    }
+
+    public static ArrayList<String[]> getAdminToDo(){
+        String sql = "SELECT * FROM todos WHERE status = 0 and userID = " + StatusContainer.currentUser.getUserID() + " ORDER BY due DESC";
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+
+        ArrayList<String[]> newResult = new ArrayList<>();
+
+        if(result.size()>=2){
+            newResult.add(result.get(0));
+            newResult.add(result.get(1));
+        }else if(result.size() ==1){
+            newResult.add(result.get(0));
+        }
+
+        return newResult;
+    }
+
+    public static boolean setTaskAsDone(int todoID){
+        String sql = "UPDATE todos SET status = 1 WHERE todoID = " + todoID;
+        return SQL.execute(sql);
+    }
+
+
+    public static boolean addTask(String content,String due){
+        int todoID = getID("todos");
+        String sql = "INSERT INTO todos VALUES (" + todoID + ",'"+content+ "',"+ StatusContainer.currentUser.getUserID() +  ",'" + due + "'"+ ",0" +")";
+        //System.out.println(sql);
+    return SQL.execute(sql);
+    }
+
 }
 
 // TODO: No comma "," content is allowed.

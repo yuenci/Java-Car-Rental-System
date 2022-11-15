@@ -6,6 +6,7 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.ToolsLib.StringTools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -71,11 +72,17 @@ public class SignUpPageController extends Controller {
         if(Objects.equals(text, "Next")){
             getAllTextFieldStr();
             if(checkTextField().equals("YYYY")){
-                if(checkEmailAndPwd()){
-                    textFieldContainer.getChildren().clear();
-                    createAccountBtn.setText("Create Account");
-                    addVerifyCodePage();
-                    setNewCustomerInfo();
+                if(!StringTools.ifStringContainsNumberAndSpecialCharacter(firstNameStr+lastNameStr)){
+                    if(checkEmailAndPwd()){
+                        textFieldContainer.getChildren().clear();
+                        createAccountBtn.setText("Create Account");
+                        addVerifyCodePage();
+                        setNewCustomerInfo();
+                    }
+                }else{
+                    String msg = "First name and last name can only contain letters";
+                    MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, msg);
+                    messageFrame.show();
                 }
             }else{
                 alarmMessage(checkTextField());

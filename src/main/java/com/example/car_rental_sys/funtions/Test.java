@@ -24,7 +24,9 @@ public class Test {
         //SelfTestTools.isBackendServerRunning();
 //        screenShotTest();
         //openScreenShotWithMsPaintTest();
-        getMessageJson();
+        //getMessageJson();
+        //keepLoginTest();
+        gettodoListTest();
     }
 
 
@@ -80,7 +82,7 @@ public class Test {
     }
 
     private static void loginLogTest(){
-        DataTools.logLogin();
+        DataTools.logLogin(true);
         System.out.println("done");
     }
 
@@ -100,5 +102,13 @@ public class Test {
 
     public static void  getMessageJson(){
         DataTools.generateMessageJSON(9);
+    }
+
+    private static void keepLoginTest(){
+        DataTools.keepUserLoggedIn();
+    }
+
+    private static void gettodoListTest(){
+        DataTools.getAdminToDo();
     }
 }
