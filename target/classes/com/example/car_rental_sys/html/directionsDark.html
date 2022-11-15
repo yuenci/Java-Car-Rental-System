@@ -344,6 +344,29 @@
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig&callback=initMap&v=weekly&language=en"
             defer></script>
+
+        <script>
+            //excute every 5 seconds
+            let serInt = setInterval(function () {
+                clearFooter();
+            }, 50);
+
+            function clearFooter() {
+                let gmnoprint = document.getElementsByClassName("gmnoprint");
+                // get partent node
+                if (gmnoprint.length > 0) {
+                    let parent = gmnoprint[0].parentNode;
+                    parent.remove();
+
+                    let alt = document.querySelectorAll('[alt="Google"]');
+                    alt[0].remove();
+                    clearInterval(serInt);
+                }
+                //cancel interval
+
+            }
+
+        </script>
     </body>
 
     </html>
