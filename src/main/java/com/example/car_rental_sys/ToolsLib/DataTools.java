@@ -615,7 +615,7 @@ public class DataTools {
     return SQL.execute(sql);
     }
 
-    public  static void fileChooser(){
+    public static String fileChooser(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(
@@ -631,6 +631,8 @@ public class DataTools {
 //            System.out.println(selectedFile.getAbsolutePath());
             //copyFileUsingApacheCommonsIO(selectedFile.getAbsolutePath(), "C:\\Users\\Public\\Pictures\\Sample Pictures\\test.jpg");
         }
+        assert selectedFile != null;
+        return selectedFile.getAbsolutePath();
     }
 
     public static void copyFileUsingApacheCommonsIO(String sourceAbsolutePath, String destAbsolutePath) throws IOException {

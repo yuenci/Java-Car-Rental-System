@@ -163,18 +163,6 @@
             <Font name="Arial Bold" size="16.0"/>
         </font>
     </Label>
-    <Pane fx:id="colorOne" layoutX="473.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; "/>
-    <Pane fx:id="colorTwo" layoutX="504.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; "/>
-    <Pane fx:id="colorThree" layoutX="534.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorFour" layoutX="565.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorFive" layoutX="594.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorSix" layoutX="621.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
     <Button layoutX="2.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#addVehicleBtnClicked"
             prefHeight="48.0" prefWidth="138.0"
             style="-fx-background-color: #165dff; -fx-background-radius: 6px; -fx-background-insets: 0;"
@@ -206,8 +194,20 @@
             <Cursor fx:constant="HAND"/>
         </cursor>
     </Label>
+    <Pane fx:id="colorOne" layoutX="473.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px; "/>
+    <Pane fx:id="colorTwo" layoutX="504.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px; "/>
+    <Pane fx:id="colorThree" layoutX="534.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px;"/>
+    <Pane fx:id="colorFour" layoutX="565.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px;"/>
+    <Pane fx:id="colorFive" layoutX="594.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px;"/>
+    <Pane fx:id="colorSix" layoutX="621.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
+          style="-fx-background-radius: 18px;"/>
     <Pane fx:id="colorEight" layoutX="675.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; -fx-background-color: #312f35;"/>
+          style="-fx-background-radius: 18px;"/>
     <Pane fx:id="colorSeven" layoutX="648.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; -fx-background-color: #d32207;"/>
+          style="-fx-background-radius: 18px;"/>
 </Pane>

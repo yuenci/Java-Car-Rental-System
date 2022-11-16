@@ -1,12 +1,18 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class EditVehiclePageController {
     private static String vehicleNameValue;
@@ -84,6 +90,15 @@ public class EditVehiclePageController {
     @FXML
     void btnBrowseClicked(MouseEvent event) {
         //open the browse window
+        imageURL = DataTools.fileChooser();
+        System.out.println(imageURL);
+        ArrayList<int[]> colorList = ImageTools.getColorSetsFromImage(imageURL);
+        showImgPane();
+        Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
+        for(int i = 0; i < Objects.requireNonNull(colorList).size(); i++){
+            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-background-color: rgb("+colorList.get(i)[0]+","
+                    +colorList.get(i)[1]+","+colorList.get(i)[2]+");");
+        }
     }
 
     @FXML
@@ -110,8 +125,9 @@ public class EditVehiclePageController {
     @FXML
     void clearBtnClicked(MouseEvent event) {
         //clear the imageURL
-        imageURL = null;
         showDragPane();
+        clearColorPlateColor();
+        imageURL = null;
     }
 
     @FXML
@@ -177,15 +193,11 @@ public class EditVehiclePageController {
         dragPane.setVisible(true);
     }
 
-    private void initColorPlate(){
-        colorOne.setStyle(colorOne.getStyle() + "-fx-background-color: #FF0000");
-        colorTwo.setStyle(colorTwo.getStyle() + "-fx-background-color: #FF7F00");
-        colorThree.setStyle(colorThree.getStyle() + "-fx-background-color: #FFFF00");
-        colorFour.setStyle(colorFour.getStyle() + "-fx-background-color: #00FF00");
-        colorFive.setStyle(colorFive.getStyle() + "-fx-background-color: #0000FF");
-        colorSix.setStyle(colorSix.getStyle() + "-fx-background-color: #4B0082");
-        colorSeven.setStyle(colorSeven.getStyle() + "-fx-background-color: #9400D3");
-        colorEight.setStyle(colorEight.getStyle() + "-fx-background-color: #FFFFFF");
+    private void clearColorPlateColor(){
+        Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
+        for(Pane pane : colorPane){
+            pane.setStyle(pane.getStyle() + "-fx-background-color: white;");
+        }
     }
 
 }
