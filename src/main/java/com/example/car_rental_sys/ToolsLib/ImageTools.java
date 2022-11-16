@@ -1,10 +1,12 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.funtions.MatrixImage;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -16,9 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import javafx.embed.swing.SwingFXUtils;
 
@@ -232,9 +232,7 @@ public class ImageTools {
     }
 
     private static Image getQRCode(String content, int width, int height) throws WriterException, IOException {
-//        int width = 200;
-//        int height = 200;
-        Map<EncodeHintType, Object> encodeHints = new HashMap<EncodeHintType, Object>();
+        Map<EncodeHintType, Object> encodeHints = new HashMap<>();
         encodeHints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         encodeHints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L); // L, M, Q, H
         encodeHints.put(EncodeHintType.MARGIN, 0); // default = 4 ,0-10
@@ -248,5 +246,141 @@ public class ImageTools {
         Translate flipTranslation = new Translate(imageView.getImage().getWidth() - a1, 0);
         Rotate flipRotation = new Rotate(a2, Rotate.Y_AXIS);
         imageView.getTransforms().addAll(flipTranslation, flipRotation);
+    }
+
+    public static ArrayList<int[]> getColorSetsFromImage(String imagePath){
+        BufferedImage bufferedImage = null;
+        int r,g,b;
+        int height,width;
+        ArrayList<int[]> rgbList = new ArrayList<>();
+        ArrayList<int[]> noColors = new ArrayList<>();
+        noColors.add(new int[]{0,0,0});
+        noColors.add(new int[]{255,255,255});
+
+        try {
+            bufferedImage = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(bufferedImage == null){
+            return null;
+        }
+        height = bufferedImage.getHeight();
+        width = bufferedImage.getWidth();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Color color = new Color(bufferedImage.getRGB(x,y));
+                r = color.getRed();
+                g = color.getGreen();
+                b = color.getBlue();
+                int[] rgb =new int[] {r,g,b};
+                // if rgb in noColors continue
+                if(ifColorInNoColors(noColors,rgb)){
+                    continue;
+                }
+                rgbList.add(rgb);
+            }
+        }
+
+        int index =  getMaxColorRangeIndex(rgbList);
+        ArrayList<int[]> srgbListSorted = sortRgbListByMaxRange(index,rgbList);
+        return getTenColors(srgbListSorted);
+    }
+    private static boolean ifColorInNoColors(ArrayList<int[]>noColors , int[] color){
+        for(int[] noColor : noColors){
+            if(Arrays.equals(noColor,color)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public  static int  getMaxColorRangeIndex(ArrayList<int[]> rgbList ){
+        int[] rangeRGB = new int[3];
+
+        int maxR = 0;
+        int maxG = 0;
+        int maxB = 0;
+
+        int minR = 255;
+        int minG = 255;
+        int minB = 255;
+
+
+        for (int[] ints : rgbList) {
+            if (ints[0] > maxR) {
+                maxR = ints[0];
+            }
+            if (ints[1] > maxG) {
+                maxG = ints[1];
+            }
+            if (ints[2] > maxB) {
+                maxB = ints[2];
+            }
+
+            if (ints[0] < minR) {
+                minR = ints[0];
+            }
+
+            if (ints[1] < minG) {
+                minG = ints[1];
+            }
+
+            if (ints[2] < minB) {
+                minB = ints[2];
+            }
+        }
+
+        rangeRGB[0] = maxR - minR;
+        rangeRGB[1] = maxG - minG;
+        rangeRGB[2] = maxB - minB;
+
+        // get max range
+        int maxRange = 0;
+        int index = 0;
+        for (int i : rangeRGB) {
+            if (i > maxRange) {
+                maxRange = i;
+            }
+        }
+        for (int i = 0; i < rangeRGB.length; i++) {
+            if (rangeRGB[i] == maxRange) {
+                index = i;
+                break;
+            }
+        }
+
+        return  index;
+    }
+
+    private static  ArrayList<int[]> sortRgbListByMaxRange(int index,ArrayList<int[]> rgbList) {
+        // copy rgbList to rgbListSorted
+        ArrayList<int[]> rgbListSorted = (ArrayList<int[]>) rgbList.clone();
+
+        // from small to big (0,0,0 to 255,255,255)
+        rgbListSorted.sort((o1, o2) -> {
+            if (o1[index] < o2[index]) {
+                return -1;
+            } else if (o1[index] > o2[index]) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        return rgbListSorted;
+    }
+
+    private static ArrayList<int[]> getTenColors(ArrayList<int[]> rgbListSorted){
+        int size = rgbListSorted.size();
+        int step = size / 10;
+        ArrayList<int[]> tenColors = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            if(i ==0 || i == 1) continue;
+            int[] rgb = rgbListSorted.get(i * step);
+            tenColors.add(rgb);
+        }
+
+        return tenColors;
     }
 }

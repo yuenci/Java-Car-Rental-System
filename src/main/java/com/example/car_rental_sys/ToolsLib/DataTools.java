@@ -628,7 +628,7 @@ public class DataTools {
         if (selectedFile != null) {
 //            welcomeText.setText(selectedFile.getAbsolutePath());
             System.out.println(selectedFile.getAbsolutePath());
-            System.out.println(selectedFile.getAbsolutePath());
+//            System.out.println(selectedFile.getAbsolutePath());
             //copyFileUsingApacheCommonsIO(selectedFile.getAbsolutePath(), "C:\\Users\\Public\\Pictures\\Sample Pictures\\test.jpg");
         }
     }
