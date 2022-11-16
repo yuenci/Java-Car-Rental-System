@@ -1,0 +1,19 @@
+.btnFocusStyle{
+    -fx-cursor: hand;
+    -fx-border-color: #003171 !important;
+    -fx-border-radius: 4px;
+    -fx-border-insets: 0px;
+    -fx-text-fill: #003171 !important;
+}
+
+.controlBtn{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #86909c;
+}
+.controlBtn:hover{
+    -fx-border-color: transparent !important;
+    -fx-background-color: #6aa1ff !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-border-insets: 0px;
+}
