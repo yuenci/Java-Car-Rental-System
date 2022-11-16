@@ -248,44 +248,6 @@ public class ImageTools {
         imageView.getTransforms().addAll(flipTranslation, flipRotation);
     }
 
-    public static ArrayList<int[]> getColorSetsFromImage(String imagePath){
-        BufferedImage bufferedImage = null;
-        int r,g,b;
-        int height,width;
-        ArrayList<int[]> rgbList = new ArrayList<>();
-        ArrayList<int[]> noColors = new ArrayList<>();
-        noColors.add(new int[]{0,0,0});
-        noColors.add(new int[]{255,255,255});
-
-        try {
-            bufferedImage = ImageIO.read(new File(imagePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(bufferedImage == null){
-            return null;
-        }
-        height = bufferedImage.getHeight();
-        width = bufferedImage.getWidth();
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                Color color = new Color(bufferedImage.getRGB(x,y));
-                r = color.getRed();
-                g = color.getGreen();
-                b = color.getBlue();
-                int[] rgb =new int[] {r,g,b};
-                // if rgb in noColors continue
-                if(ifColorInNoColors(noColors,rgb)){
-                    continue;
-                }
-                rgbList.add(rgb);
-            }
-        }
-
-        int index =  getMaxColorRangeIndex(rgbList);
-        ArrayList<int[]> srgbListSorted = sortRgbListByMaxRange(index,rgbList);
-        return getTenColors(srgbListSorted);
-    }
     private static boolean ifColorInNoColors(ArrayList<int[]>noColors , int[] color){
         for(int[] noColor : noColors){
             if(Arrays.equals(noColor,color)){
@@ -295,7 +257,7 @@ public class ImageTools {
         return false;
     }
 
-    public  static int  getMaxColorRangeIndex(ArrayList<int[]> rgbList ){
+    private static int  getMaxColorRangeIndex(ArrayList<int[]> rgbList ){
         int[] rangeRGB = new int[3];
 
         int maxR = 0;
@@ -383,4 +345,44 @@ public class ImageTools {
 
         return tenColors;
     }
+
+    public static ArrayList<int[]> getColorSetsFromImage(String imagePath){
+        BufferedImage bufferedImage = null;
+        int r,g,b;
+        int height,width;
+        ArrayList<int[]> rgbList = new ArrayList<>();
+        ArrayList<int[]> noColors = new ArrayList<>();
+        noColors.add(new int[]{0,0,0});
+        noColors.add(new int[]{255,255,255});
+
+        try {
+            bufferedImage = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(bufferedImage == null){
+            return null;
+        }
+        height = bufferedImage.getHeight();
+        width = bufferedImage.getWidth();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Color color = new Color(bufferedImage.getRGB(x,y));
+                r = color.getRed();
+                g = color.getGreen();
+                b = color.getBlue();
+                int[] rgb =new int[] {r,g,b};
+                // if rgb in noColors continue
+                if(ifColorInNoColors(noColors,rgb)){
+                    continue;
+                }
+                rgbList.add(rgb);
+            }
+        }
+
+        int index =  getMaxColorRangeIndex(rgbList);
+        ArrayList<int[]> srgbListSorted = sortRgbListByMaxRange(index,rgbList);
+        return getTenColors(srgbListSorted);
+    }
+
 }
