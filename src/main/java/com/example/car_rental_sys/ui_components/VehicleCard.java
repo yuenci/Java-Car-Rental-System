@@ -88,12 +88,12 @@ public class VehicleCard extends Pane {
         if(lblEdit != null){
             lblEdit.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
                 System.out.println("Edit");
-                Thread thread = new Thread(() -> Platform.runLater(
-                        () -> AdminVehiclePageController.instance.showEditVehiclePage()
-                ));
-
-                thread.start();
-                //AdminVehiclePageController.instance.showEditVehicleBtn();
+//                Thread thread = new Thread(() -> Platform.runLater(
+//                        () -> AdminVehiclePageController.instance.showEditVehiclePage()
+//                ));
+//
+//                thread.start();
+                AdminVehiclePageController.instance.showEditVehiclePage();
             });
         }
     }

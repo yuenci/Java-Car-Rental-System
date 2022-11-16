@@ -43,6 +43,23 @@ public class EditVehiclePageController {
     @FXML
     private TextField txtChassisNumber;
 
+    @FXML
+    private Pane colorOne;
+    @FXML
+    private Pane colorTwo;
+    @FXML
+    private Pane colorThree;
+    @FXML
+    private Pane colorFour;
+    @FXML
+    private Pane colorFive;
+    @FXML
+    private Pane colorSix;
+    @FXML
+    private Pane colorSeven;
+    @FXML
+    private Pane colorEight;
+
     private final String[] seatNum = {"2","4"};
     private final String[] category = {"Manual","Automatic"};
     private final String[] brand = {"Bugatti","Chevrolet","Ferrari","Ford","Honda","Koenigsegg","lamborghini","Maserati","McLaren","Myvi","Porsche","Wuling"};
@@ -78,10 +95,12 @@ public class EditVehiclePageController {
 
     @FXML
     void saveVehicleBtnClicked(MouseEvent event) {
+        //System.out.println(System.currentTimeMillis());
         getValue();
         if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
             AdminVehiclePageController.defaultDisplay = "overview";
             AdminVehiclePageController.instance.refreshDisplayPane();
+            AdminVehiclePageController.instance.setDefaultFocus();
         }
         //go to overview page
         //set isSaved to true
@@ -156,6 +175,17 @@ public class EditVehiclePageController {
         imgPane.setVisible(false);
         //dragPane visible true
         dragPane.setVisible(true);
+    }
+
+    private void initColorPlate(){
+        colorOne.setStyle(colorOne.getStyle() + "-fx-background-color: #FF0000");
+        colorTwo.setStyle(colorTwo.getStyle() + "-fx-background-color: #FF7F00");
+        colorThree.setStyle(colorThree.getStyle() + "-fx-background-color: #FFFF00");
+        colorFour.setStyle(colorFour.getStyle() + "-fx-background-color: #00FF00");
+        colorFive.setStyle(colorFive.getStyle() + "-fx-background-color: #0000FF");
+        colorSix.setStyle(colorSix.getStyle() + "-fx-background-color: #4B0082");
+        colorSeven.setStyle(colorSeven.getStyle() + "-fx-background-color: #9400D3");
+        colorEight.setStyle(colorEight.getStyle() + "-fx-background-color: #FFFFFF");
     }
 
 }

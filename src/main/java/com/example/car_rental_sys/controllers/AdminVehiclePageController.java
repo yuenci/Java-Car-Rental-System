@@ -44,16 +44,21 @@ public class AdminVehiclePageController{
 
     @FXML
     void overviewPageClicked(MouseEvent event) {
+        System.out.println(System.currentTimeMillis());
         if(!Objects.equals(defaultDisplay, "editVehicle")){
             headerButtonClickEvent(event);
             defaultDisplay = "overview";
+            System.out.println("In: " +System.currentTimeMillis());
             refreshDisplayPane();
         }
     }
 
     @FXML
     void addVehiclePageClicked(MouseEvent event) {
-        if(!Objects.equals(defaultDisplay, "addVehicle")){
+        //System.out.println(System.currentTimeMillis());
+        System.out.println(defaultDisplay);
+        if(!Objects.equals(defaultDisplay, "addVehicle")&&!Objects.equals(defaultDisplay, "editVehicle")){
+            System.out.println("addVehiclePageClicked");
             addVehicleBtn.setText("+ Add Vehicle");
             headerButtonClickEvent(event);
             defaultDisplay = "addVehicle";
@@ -78,7 +83,13 @@ public class AdminVehiclePageController{
         }
     }
 
+    public void setDefaultFocus(){
+        clearFocusStyle();
+        overviewBtn.getStyleClass().add("btnFocusStyle");
+    }
+
     public void showEditVehiclePage(){
+        defaultDisplay = "editVehicle";
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource
                     ("fxml/EditVehiclePage.fxml"));
@@ -87,7 +98,7 @@ public class AdminVehiclePageController{
             editVehicleBtn.setVisible(true);
             editVehicleBtn.getStyleClass().add("btnFocusStyle");
             AdVehicleMainPane.getChildren().add(fxmlLoader.load());
-            defaultDisplay = "editVehicle";
+            System.out.println(defaultDisplay);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -115,6 +126,7 @@ public class AdminVehiclePageController{
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
                 AdVehicleMainPane.getChildren().add(fxmlLoader.load());
+                System.out.println("inside: " +System.currentTimeMillis());
             } catch (IOException e) {
                 e.printStackTrace();
             }
