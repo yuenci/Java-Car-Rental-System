@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="740.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../style/adminVehiclePage.css"
+      fx:controller="com.example.car_rental_sys.controllers.AdminVehiclePageController">
+   <Label layoutX="43.0" layoutY="29.0" text="Edit Vehicle" textFill="#1d2129">
+      <font>
+         <Font name="Arial Bold" size="26.0"/>
+      </font>
+   </Label>
+   <Label layoutX="44.0" layoutY="60.0" prefHeight="58.0" prefWidth="809.0"
+          text="The most important feature in the product editing selection is the product adding part. When adding products here, do not ignore to fill in all the required fields completely and follow the product adding rules. "
+          textFill="#86909c" wrapText="true">
+      <font>
+         <Font size="14.0"/>
+      </font>
+   </Label>
+   <Button fx:id="overviewBtn" alignment="CENTER" layoutX="44.0" layoutY="135.0" mnemonicParsing="false"
+           onMouseClicked="#overviewPageClicked" prefHeight="40.0" prefWidth="107.0"
+           style="-fx-background-color: transparent; -fx-border-color: transparent;" styleClass="controlBtn"
+           text="Overview" textFill="#86909c">
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+   <Button fx:id="addVehicleBtn" alignment="CENTER" layoutX="155.0" layoutY="135.0" mnemonicParsing="false"
+           onMouseClicked="#addVehiclePageClicked" prefHeight="40.0" prefWidth="147.0"
+           style="-fx-background-color: transparent; -fx-border-color: transparent;" styleClass="controlBtn"
+           text="Add Vehicle" textFill="#86909c">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Button>
+   <Line endX="705.0" layoutX="145.0" layoutY="177.0" startX="-100.0" stroke="#e5e6eb"/>
+   <Button fx:id="editVehicleBtn" alignment="CENTER" layoutX="305.0" layoutY="135.0" mnemonicParsing="false"
+           prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: transparent; -fx-border-color: transparent;"
+           styleClass="controlBtn" text="Edit Vehicle" textFill="#86909c" visible="false">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Button>
+   <Pane fx:id="AdVehicleMainPane" layoutX="38.0" layoutY="195.0" prefHeight="510.0" prefWidth="817.0"/>
+</Pane>
