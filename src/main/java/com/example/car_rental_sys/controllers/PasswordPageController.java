@@ -1,16 +1,22 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+
+import java.io.File;
 
 public class PasswordPageController {
 
+    @FXML
+    private Pane panelSettings;
     @FXML
     private Button btnChangePwd;
     private boolean showPassword = false;
@@ -35,6 +41,7 @@ public class PasswordPageController {
 
     @FXML
     private void initialize(){
+        initTheme();
         initDefaultText();
         initAvatar();
     }
@@ -90,4 +97,11 @@ public class PasswordPageController {
         changeDisplayPwdStyle();
     }
 
+    private void initTheme(){
+        if(StatusContainer.currentUser instanceof Customer){
+            panelSettings.getStylesheets()
+                    .add(new File("src/main/resources/com/example/car_rental_sys/style/settingComponentDark.css")
+                            .toURI().toString());
+        }
+    }
 }

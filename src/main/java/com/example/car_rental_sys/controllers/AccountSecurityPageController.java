@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -8,8 +10,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+
+import java.io.File;
 
 public class AccountSecurityPageController {
+
+    @FXML
+    private Pane panelSetting;
 
     @FXML
     private TextField txtSecurityAnswer;
@@ -27,6 +35,7 @@ public class AccountSecurityPageController {
 
     @FXML
     private void initialize(){
+        initTheme();
         initDefaultText();
         initAvatar();
         initComboBox();
@@ -57,5 +66,13 @@ public class AccountSecurityPageController {
         //save the security question and answer
         System.out.println("Save security question and answer");
 
+    }
+
+    private void initTheme(){
+        if(StatusContainer.currentUser instanceof Customer){
+            panelSetting.getStylesheets()
+                    .add(new File("src/main/resources/com/example/car_rental_sys/style/settingComponentDark.css")
+                            .toURI().toString());
+        }
     }
 }

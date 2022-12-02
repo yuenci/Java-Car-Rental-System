@@ -1,0 +1,25 @@
+.lblSettingText{
+    -fx-text-fill: #ffffff !important;
+}
+
+.lblSecSettingText{
+    -fx-text-fill: #dfdfdf !important;
+}
+
+.txtBoxFocus{
+    -fx-text-fill: #f6f6f6 !important;
+    -fx-border-color: #c5c5c5 !important;
+}
+
+.txtBoxFocus:hover, .txtBoxFocus:focused{
+    -fx-border-color: #306fff !important;
+}
+
+.comboFocus:hover, .comboFocus:focused{
+    -fx-border-color: #306fff !important;
+}
+
+.btnSettingsBoxBtn{
+    -fx-text-fill: #306fff !important;
+    -fx-border-color: #306fff !important;
+}

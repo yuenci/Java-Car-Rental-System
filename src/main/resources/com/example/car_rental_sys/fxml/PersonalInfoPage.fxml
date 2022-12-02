@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<Pane id="panelSettings" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: white;"
+<Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: white;"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.PersonalPageController">
+      fx:controller="com.example.car_rental_sys.controllers.PersonalPageController"
+      stylesheets="@../style/settingComponentLight.css">
    <ImageView fx:id="ivAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="281.0" layoutY="23.0" pickOnBounds="true"
               preserveRatio="true"/>
    <Button fx:id="ivDeleteBtn" layoutX="393.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#deleteClicked"
@@ -53,7 +54,7 @@
          <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <Label layoutX="56.0" layoutY="322.0" styleClass="lblSettingText" text="Write a short introduction"
+   <Label layoutX="56.0" layoutY="322.0" styleClass="lblSecSettingText" text="Write a short introduction"
           textFill="#86909c">
       <font>
          <Font name="Arial" size="12.0"/>
@@ -77,25 +78,29 @@
       </font>
    </Label>
    <TextField fx:id="ivTxtEmail" layoutX="281.0" layoutY="460.0" prefHeight="40.0" prefWidth="300.0"
-              style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-text-fill: #4e5969; -fx-border-width: 1px;">
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
          <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
    <TextField fx:id="ivTxtPhoneNumber" layoutX="281.0" layoutY="390.0" prefHeight="40.0" prefWidth="300.0"
-              style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-text-fill: #4e5969; -fx-border-width: 1px;">
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
          <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
    <TextField fx:id="ivTxtBirthday" layoutX="281.0" layoutY="220.0" prefHeight="40.0" prefWidth="300.0"
-              style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-text-fill: #4e5969; -fx-border-width: 1px;">
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
          <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
    <TextField fx:id="ivTxtUsername" layoutX="281.0" layoutY="151.0" prefHeight="40.0" prefWidth="300.0"
-              style="-fx-background-radius: 8px; -fx-border-radius: 8px; -fx-text-fill: #4e5969; -fx-border-width: 1px;">
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
          <Font name="Arial Bold" size="14.0"/>
       </font>
@@ -111,7 +116,7 @@
       </padding>
    </TextArea>
    <TextArea fx:id="ivTxtAddress" layoutX="282.0" layoutY="535.0" prefHeight="75.0" prefWidth="300.0"
-             style="-fx-background-radius: 6px; -fx-border-radius: 10px; -fx-text-fill: #4e5969; -fx-border-width: 1px;"
+             style="-fx-background-radius: 6px; -fx-border-radius: 10px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3;"
              wrapText="true">
       <font>
          <Font name="Arial Bold" size="14.0"/>
