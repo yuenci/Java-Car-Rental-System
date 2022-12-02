@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.ui_components.UIFilter;
 import com.example.car_rental_sys.ui_components.UIPagination;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.util.function.Function;
 
 public class OrderListComponentController {
@@ -21,7 +24,7 @@ public class OrderListComponentController {
     @FXML
     private Pane pagContainer;
     @FXML
-    private Pane tableContainer;
+    private Pane tableContainer,mainPane;
 
     //private static String initQuery = "SELECT * FROM orders WHERE userID = " + User.instance.getUserID();
 
@@ -33,7 +36,16 @@ public class OrderListComponentController {
         initTotalOrder();
         initPagination();
         initButtonStyle();
+        initTheme();
         //System.out.println(User.instance.getUserID());
+    }
+
+    private void  initTheme(){
+        if(StatusContainer.currentUser instanceof Customer){
+            mainPane.getStylesheets()
+                    .add(new File("src/main/resources/com/example/car_rental_sys/style/orderComponentDark.css")
+                            .toURI().toString());
+        }
     }
 
     public void addFilterPane(){

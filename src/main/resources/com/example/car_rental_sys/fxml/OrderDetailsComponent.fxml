@@ -3,204 +3,191 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<Pane prefHeight="670.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-background-color: #ffffff;"
-      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-      fx:controller="com.example.car_rental_sys.controllers.OrderDetailsComponentController">
+
+<Pane fx:id="mainPage" prefHeight="670.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.OrderDetailsComponentController">
     <Pane layoutX="25.0" layoutY="28.0" prefHeight="620.0" prefWidth="300.0">
-        <Label layoutY="16.0" text="Order ID:" textFill="#1d2129">
+        <Label layoutY="16.0" styleClass="labelDark" text="Order ID:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="24.0"/>
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="orderNum" layoutX="111.0" layoutY="16.0" text="000000001" textFill="#1d2129">
+        <Label fx:id="orderNum" layoutX="111.0" layoutY="16.0" styleClass="labelDark" text="000000001" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="24.0"/>
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Label layoutY="60.0" text="Order date:" textFill="#86909c">
+        <Label layoutY="60.0" styleClass="labelGray" text="Order date:" textFill="#86909c">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Label fx:id="orderDate" layoutX="95.0" layoutY="60.0" text="date" textFill="#4e5969">
+        <Label fx:id="orderDate" layoutX="95.0" layoutY="60.0" styleClass="labelGray" text="date" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Line endX="200.0" layoutX="100.0" layoutY="105.0" startX="-100.0" stroke="#e5e6eb"/>
-        <Line endX="300.0" layoutY="230.0" stroke="#e5e6eb"/>
-        <Pane layoutX="2.0" layoutY="126.0" prefHeight="80.0" prefWidth="80.0"
-              style="-fx-background-color: #F2F3F5; -fx-background-radius: 4;">
-            <ImageView fx:id="carImg" fitHeight="54.0" fitWidth="80.0" layoutY="18.0" pickOnBounds="true"
-                       preserveRatio="true"/>
+        <Line endX="200.0" layoutX="100.0" layoutY="105.0" startX="-100.0" stroke="#e5e6eb" />
+        <Line endX="300.0" layoutY="230.0" stroke="#e5e6eb" />
+        <Pane layoutX="2.0" layoutY="126.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #F2F3F5; -fx-background-radius: 4;">
+            <ImageView fx:id="carImg" fitHeight="54.0" fitWidth="80.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
         </Pane>
-        <Label fx:id="carName" layoutX="92.0" layoutY="127.0" prefHeight="45.0" prefWidth="86.0" text="the_car_name"
-               textFill="#4e5969" wrapText="true">
+        <Label fx:id="carName" layoutX="92.0" layoutY="127.0" prefHeight="45.0" prefWidth="86.0" styleClass="labelGray" text="the_car_name" textFill="#4e5969" wrapText="true">
             <font>
-                <Font name="System Bold" size="11.0"/>
+                <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="carPrice" layoutX="241.0" layoutY="141.0" text="RM 9999" textFill="#1d2129">
+        <Label fx:id="carPrice" layoutX="241.0" layoutY="141.0" styleClass="labelDark" text="RM 9999" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="orderQty" layoutX="253.0" layoutY="164.0" text="Qty: 20" textFill="#86909c">
+        <Label fx:id="orderQty" layoutX="253.0" layoutY="164.0" styleClass="labelGray" text="Qty: 20" textFill="#86909c">
             <font>
-                <Font name="System Bold" size="11.0"/>
+                <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label layoutY="246.0" text="Payment Method" textFill="#1d2129">
+        <Label layoutY="246.0" styleClass="labelDark" text="Payment Method" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="167.0" layoutY="246.0" text="Location" textFill="#1d2129">
+        <Label layoutX="167.0" layoutY="246.0" styleClass="labelDark" text="Location" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="paymentType" layoutY="273.0" text="Visa **56" textFill="#4e5969"/>
-        <Line endX="300.0" layoutY="325.0" stroke="#e5e6eb"/>
-        <Label layoutY="342.0" text="Order on:" textFill="#1d2129">
+        <Label fx:id="paymentType" layoutY="273.0" styleClass="labelGray" text="Visa **56" textFill="#4e5969" />
+        <Line endX="300.0" layoutY="325.0" stroke="#e5e6eb" />
+        <Label layoutY="342.0" styleClass="labelDark" text="Order on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
-            </font>
-            <padding>
-                <Insets bottom="5.0" top="5.0"/>
-            </padding>
-        </Label>
-        <Label layoutX="-1.0" layoutY="370.0" text="Order approve:" textFill="#1d2129">
-            <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label layoutY="397.0" text="Paid on:" textFill="#1d2129">
+        <Label layoutX="-1.0" layoutY="370.0" styleClass="labelDark" text="Order approve:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label layoutX="-1.0" layoutY="424.0" text="Pick-up time:" textFill="#1d2129">
+        <Label layoutY="397.0" styleClass="labelDark" text="Paid on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label layoutY="451.0" text="Due on:" textFill="#1d2129">
+        <Label layoutX="-1.0" layoutY="424.0" styleClass="labelDark" text="Pick-up time:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label fx:id="orderTime" layoutX="181.0" layoutY="342.0" text="Oct 12, 2022 13:56" textFill="#4e5969">
+        <Label layoutY="451.0" styleClass="labelDark" text="Due on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label fx:id="approveTime" layoutX="181.0" layoutY="370.0" text="Oct 12, 2022 14:00" textFill="#4e5969">
+        <Label fx:id="orderTime" layoutX="181.0" layoutY="342.0" styleClass="labelGray" text="Oct 12, 2022 13:56" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label fx:id="paymentTime" layoutX="181.0" layoutY="397.0" text="Oct 12, 2022 14:02" textFill="#4e5969">
+        <Label fx:id="approveTime" layoutX="181.0" layoutY="370.0" styleClass="labelGray" text="Oct 12, 2022 14:00" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label fx:id="pickUpTime" layoutX="181.0" layoutY="424.0" text="Oct 12, 2022 14:30" textFill="#4e5969">
+        <Label fx:id="paymentTime" layoutX="181.0" layoutY="397.0" styleClass="labelGray" text="Oct 12, 2022 14:02" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label fx:id="dueTime" layoutX="181.0" layoutY="451.0" text="Oct 14, 2022 14:30" textFill="#4e5969">
+        <Label fx:id="pickUpTime" layoutX="181.0" layoutY="424.0" styleClass="labelGray" text="Oct 12, 2022 14:30" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Line endX="300.0" layoutY="490.0" stroke="#e5e6eb"/>
+        <Label fx:id="dueTime" layoutX="181.0" layoutY="451.0" styleClass="labelGray" text="Oct 14, 2022 14:30" textFill="#4e5969">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+            <padding>
+                <Insets bottom="5.0" top="5.0" />
+            </padding>
+        </Label>
+        <Line endX="300.0" layoutY="490.0" stroke="#e5e6eb" />
         <Label id="helpBtn" layoutY="505.0" style="-fx-cursor: hand;" text="Need help?" textFill="#4080ff">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="171.0" layoutY="500.0" text="Order Summary" textFill="#1d2129">
+        <Label layoutX="171.0" layoutY="500.0" styleClass="labelDark" text="Order Summary" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0"/>
+                <Insets bottom="5.0" top="5.0" />
             </padding>
         </Label>
-        <Label layoutX="171.0" layoutY="527.0" text="Subtotal" textFill="#4e5969">
+        <Label layoutX="171.0" layoutY="527.0" styleClass="labelDark" text="Subtotal" textFill="#4e5969">
             <font>
-                <Font size="11.0"/>
+                <Font size="11.0" />
             </font>
         </Label>
-        <Label fx:id="totalAmount" layoutX="228.0" layoutY="527.0" text="RM 49999" textFill="#4e5969">
+        <Label fx:id="totalAmount" layoutX="228.0" layoutY="527.0" styleClass="labelDark" text="RM 49999" textFill="#4e5969">
             <font>
-                <Font size="11.0"/>
+                <Font size="11.0" />
             </font>
         </Label>
-        <Button id="trackBtn" layoutX="140.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0"
-                prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;"
-                text="Track order" textFill="WHITE">
+        <Button id="trackBtn" layoutX="140.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
             <padding>
-                <Insets left="10.0"/>
+                <Insets left="10.0" />
             </padding>
         </Button>
-        <Button fx:id="invoiceBtn" layoutX="6.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0"
-                prefWidth="120.0"
-                style="-fx-background-color: white; -fx-cursor: hand; -fx-border-color: #DFDFDF; -fx-border-radius: 6;"
-                text="Invoice" textFill="#4e5969">
+        <Button fx:id="invoiceBtn" layoutX="6.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-cursor: hand; -fx-border-color: #DFDFDF; -fx-border-radius: 6;" text="Invoice" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
             <padding>
-                <Insets left="10.0"/>
+                <Insets left="10.0" />
             </padding>
         </Button>
-        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="17.0" layoutY="579.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../image/UI/invoice_grey.png"/>
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="17.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/invoice_grey.png" />
         </ImageView>
-        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="153.0" layoutY="579.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../image/UI/target_Icon.png"/>
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="153.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/target_Icon.png" />
         </ImageView>
-        <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="272.0"
-                   pickOnBounds="true" preserveRatio="true"/>
-        <Label fx:id="lblLocation" layoutX="167.0" layoutY="263.0" prefHeight="54.0" prefWidth="132.0"
-               text="Jalan Technology Park, Bukit Jalil" wrapText="true"/>
+        <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="lblLocation" layoutX="167.0" layoutY="263.0" prefHeight="54.0" prefWidth="132.0" styleClass="labelDark" text="Jalan Technology Park, Bukit Jalil" wrapText="true" />
     </Pane>
 </Pane>

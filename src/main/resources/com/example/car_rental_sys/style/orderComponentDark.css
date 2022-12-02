@@ -1,0 +1,7 @@
+#mainPane{
+    -fx-background-color: #000000 !important;
+}
+
+.labelBlack{
+    -fx-text-fill: #ffffff !important;
+}

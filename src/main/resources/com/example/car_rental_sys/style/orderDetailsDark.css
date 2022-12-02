@@ -1,0 +1,12 @@
+#mainPage{
+    -fx-background-color: #000000 !important;
+}
+
+.labelDark{
+    -fx-text-fill: #ffffff !important;
+}
+
+
+.labelGray{
+    -fx-text-fill: #bdbdbd !important;
+}

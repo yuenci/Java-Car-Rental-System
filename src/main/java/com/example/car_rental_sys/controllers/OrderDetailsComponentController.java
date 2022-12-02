@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.ui_components.InvoiceBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +11,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class OrderDetailsComponentController {
@@ -61,9 +65,21 @@ public class OrderDetailsComponentController {
     private ImageView carImg;
 
     @FXML
+    Pane mainPage;
+
+    @FXML
     public void initialize() {
-        System.out.println("OrderDetailsComponentController");
         initBtnEvent();
+        initTheme();
+    }
+
+    private void  initTheme(){
+        if(StatusContainer.currentUser instanceof Customer){
+            //System.out.println("init theme");
+            mainPage.getStylesheets()
+                    .add(new File("src/main/resources/com/example/car_rental_sys/style/orderDetailsDark.css")
+                            .toURI().toString());
+        }
     }
 
     private void initBtnEvent() {
