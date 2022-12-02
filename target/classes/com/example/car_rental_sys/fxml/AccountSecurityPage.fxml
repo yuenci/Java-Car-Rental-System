@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.AccountSecurityPageController">
+   <ImageView fx:id="ivAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="300.0" layoutY="23.0" pickOnBounds="true"
+              preserveRatio="true"/>
+   <Label fx:id="ivUsername" layoutX="421.0" layoutY="65.0" text="User name">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Line endX="620.0" layoutX="150.0" layoutY="150.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Label layoutX="55.0" layoutY="175.0" text="Driving License" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Line endX="620.0" layoutX="150.0" layoutY="220.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Label layoutX="55.0" layoutY="385.0" text="Old Password" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Line endX="620.0" layoutX="150.0" layoutY="290.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Line endX="620.0" layoutX="150.0" layoutY="360.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Label layoutX="55.0" layoutY="455.0" text="New Password" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="55.0" layoutY="525.0" text="Re-enter New Password" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="txtDrivingLicense" editable="false" layoutX="300.0" layoutY="166.0" prefHeight="40.0"
+              prefWidth="300.0" style="-fx-text-fill: #4e5969; -fx-background-radius: 6px;">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </TextField>
+   <TextField fx:id="txtOldPwd" editable="false" layoutX="300.0" layoutY="376.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-text-fill: #4e5969; -fx-background-radius: 6px;">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </TextField>
+   <TextField fx:id="txtNewPwd" layoutX="300.0" layoutY="446.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-text-fill: #4e5969; -fx-background-radius: 6px;">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </TextField>
+   <TextField fx:id="txtReEnterPwd" layoutX="300.0" layoutY="516.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-text-fill: #4e5969; -fx-background-radius: 6px;">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </TextField>
+   <Button layoutX="300.0" layoutY="575.0" mnemonicParsing="false" onMouseClicked="#changePasswordClicked"
+           prefHeight="35.0" prefWidth="160.0"
+           style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 6px;"
+           text="Change Password" textFill="WHITE">
+      <font>
+         <Font name="Arial Bold" size="13.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+   <ImageView fx:id="imgOldPwd" fitHeight="20.0" fitWidth="20.0" layoutX="616.0" layoutY="386.0"
+              onMouseClicked="#imgOldPwdClicked" pickOnBounds="true" preserveRatio="true">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+      <Image url="@../image/UI/view.png"/>
+   </ImageView>
+   <Label layoutX="55.0" layoutY="245.0" text="Security Question" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="55.0" layoutY="315.0" text="Security Answer" textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="18.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="txtSecurityAnswer" editable="false" layoutX="300.0" layoutY="306.0" prefHeight="40.0"
+              prefWidth="300.0" style="-fx-text-fill: #4e5969; -fx-background-radius: 6px;">
+      <font>
+         <Font name="Arial Bold" size="14.0"/>
+      </font>
+   </TextField>
+   <ComboBox fx:id="comboQuestion" layoutX="300.0" layoutY="236.0" prefHeight="40.0" prefWidth="300.0"
+             promptText="default question"
+             style="-fx-background-color: white; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-border-color: #c9cdd4; -fx-text-fill: #4e5969; -fx-font-size: 14px;">
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </ComboBox>
+   <Line endX="620.0" layoutX="150.0" layoutY="430.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Button fx:id="saveBtn" layoutX="500.0" layoutY="575.0" mnemonicParsing="false" onMouseClicked="#saveBtnClicked"
+           prefHeight="35.0" prefWidth="100.0"
+           style="-fx-background-color: white; -fx-background-insets: 0; -fx-background-radius: 6px; -fx-border-color: #4080ff; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-border-width: 2px;"
+           text="Save" textFill="#4080ff">
+      <font>
+         <Font name="Arial Bold" size="13.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+</Pane>

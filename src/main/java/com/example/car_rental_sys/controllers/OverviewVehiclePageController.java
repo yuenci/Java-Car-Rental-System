@@ -37,6 +37,8 @@ public class OverviewVehiclePageController {
 
         scrollPaneVehicle.setFitToWidth(true);
         scrollPaneVehicle.setContent(flowPane);
+        scrollPaneVehicle.setStyle("-fx-background: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #e0e0e0; -fx-border-width: 1px; \n" +
+                " -fx-vbar-policy : never;");
 
     }
 }
