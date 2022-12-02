@@ -40,7 +40,7 @@ public class PersonalPageController {
     private Button ivSaveBtn;
 
     @FXML
-    private TextField ivTxtEmali;
+    private TextField ivTxtEmail;
 
     @FXML
     private Button ivUploadBtn;

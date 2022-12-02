@@ -15,30 +15,15 @@ public class AccountSecurityPageController {
     private TextField txtSecurityAnswer;
     @FXML
     private ComboBox<String> comboQuestion;
-    @FXML
-    private Button saveBtn;
-    private boolean showPassword = false;
 
     @FXML
     private ImageView ivAvatar;
-
-    @FXML
-    private TextField txtOldPwd;
-
-    @FXML
-    private TextField txtReEnterPwd;
-
-    @FXML
-    private ImageView imgOldPwd;
 
     @FXML
     private Label ivUsername;
 
     @FXML
     private TextField txtDrivingLicense;
-
-    @FXML
-    private TextField txtNewPwd;
 
     @FXML
     private void initialize(){
@@ -48,8 +33,7 @@ public class AccountSecurityPageController {
     }
 
     private void initDefaultText(){
-        ivUsername.setText("");
-        changeDisplayPwdStyle();
+        ivUsername.setText("");    /// change to username
         txtDrivingLicense.setText("");
         comboQuestion.setValue("");
         txtSecurityAnswer.setText("");
@@ -62,47 +46,6 @@ public class AccountSecurityPageController {
     private void initAvatar(){
 //        Image image = new Image("file:src/main/resources/images/avatar.png");
 //        ivAvatar.setImage(image);
-    }
-
-    private void changeDisplayPwdStyle(){
-        if(showPassword){
-            txtOldPwd.setText("");
-        }else{
-            //String defaultTxt = "abcdfgsd";
-            //replace the characters with *
-            //txtOldPwd.setText(defaultTxt.replaceAll("\\.", "*"));
-        }
-    }
-
-    private void checkChangePassword(){
-        String newPwd = txtNewPwd.getText();
-        String reEnterPwd = txtReEnterPwd.getText();
-        if(!newPwd.equals("") && !reEnterPwd.equals("")){
-            if(newPwd.equals(reEnterPwd)){
-                //change password
-                System.out.println("Change password");
-            }else{
-                //show warning
-                System.out.println("Password not match or empty");
-            }
-        }
-    }
-
-    @FXML
-    void changePasswordClicked(MouseEvent event) {
-        checkChangePassword();
-    }
-
-    @FXML
-    void imgOldPwdClicked(MouseEvent event) {
-        if(showPassword){
-            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/view.png"));
-            showPassword = false;
-        }else{
-            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/hidden.png"));
-            showPassword = true;
-        }
-        changeDisplayPwdStyle();
     }
 
     @FXML

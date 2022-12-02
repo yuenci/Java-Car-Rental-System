@@ -68,7 +68,8 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "AdminVehiclePage.fxml";
         //String fxmlName = "AccountSecurityPage.fxml";
         //String fxmlName = "PersonalInfoPage.fxml";
-        String fxmlName = "SettingPage.fxml";
+        //String fxmlName = "SettingPage.fxml";
+        String fxmlName = "MiddleBar.fxml";
 
         stageInstance = stage;
 
