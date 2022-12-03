@@ -42,7 +42,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         //String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
-        String fxmlName = "mainPage.fxml";
+        //String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -63,7 +63,7 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "messagePage.fxml";
         //String fxmlName = "showCardDetails.fxml";
         //String fxmlName = "Invoice.fxml";
-        //String fxmlName = "customerServicePage.fxml";
+        String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "BillingComponent.fxml";
         //String fxmlName = "AdminVehiclePage.fxml";
         //String fxmlName = "AccountSecurityPage.fxml";
