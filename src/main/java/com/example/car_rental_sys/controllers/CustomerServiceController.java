@@ -9,6 +9,9 @@ import java.io.IOException;
 
 public class CustomerServiceController {
 
+    private String orderMain = "showOrderComponent.fxml";
+    private String orderSide = "OrderDetailsComponent.fxml";
+
     @FXML
     private Pane rightContainer;
     @FXML

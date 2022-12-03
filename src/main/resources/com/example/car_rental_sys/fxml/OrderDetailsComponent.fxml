@@ -38,8 +38,10 @@
         <Line endX="300.0" layoutY="230.0" stroke="#e5e6eb"/>
         <Pane layoutX="2.0" layoutY="126.0" prefHeight="80.0" prefWidth="80.0"
               style="-fx-background-color: #F2F3F5; -fx-background-radius: 4;">
-            <ImageView fx:id="carImg" fitHeight="54.0" fitWidth="80.0" layoutY="18.0" pickOnBounds="true"
-                       preserveRatio="true"/>
+            <children>
+                <ImageView fx:id="carImg" fitHeight="54.0" fitWidth="80.0" layoutY="18.0" pickOnBounds="true"
+                           preserveRatio="true"/>
+            </children>
         </Pane>
         <Label fx:id="carName" layoutX="92.0" layoutY="127.0" prefHeight="45.0" prefWidth="86.0"
                styleClass="lblSecondaryText" text="the_car_name" textFill="#4e5969" wrapText="true">
@@ -182,8 +184,9 @@
                 <Font size="11.0"/>
             </font>
         </Label>
-        <Button id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" prefHeight="35.0"
-                prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;"
+        <Button id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false"
+                onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0"
+                style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;"
                 text="Track order" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0"/>
@@ -193,8 +196,7 @@
             </padding>
         </Button>
         <Button id="btnCheckInvoice" fx:id="invoiceBtn" layoutX="5.0" layoutY="628.0" mnemonicParsing="false"
-                prefHeight="35.0" prefWidth="120.0" text="Invoice"
-                textFill="#4e5969">
+                prefHeight="35.0" prefWidth="120.0" text="Invoice" textFill="#4e5969">
             <font>
                 <Font name="System Bold" size="14.0"/>
             </font>
@@ -205,8 +207,8 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-        <ImageView fx:id="invoiceIcon" fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="636.0" pickOnBounds="true"
-                   preserveRatio="true">
+        <ImageView fx:id="invoiceIcon" fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="636.0"
+                   pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/invoice_grey.png"/>
         </ImageView>
         <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true"

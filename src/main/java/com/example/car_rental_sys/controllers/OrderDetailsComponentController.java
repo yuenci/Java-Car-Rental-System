@@ -172,5 +172,17 @@ public class OrderDetailsComponentController {
     }
 
 
+    public void btnTrackOrderClicked(MouseEvent mouseEvent) throws IOException {
+        Pane trackOrderPane = new Pane();
+        trackOrderPane.setPrefSize(350, 750);
+        trackOrderPane.setLayoutX(0);
+        trackOrderPane.setLayoutY(0);
+        trackOrderPane.getStyleClass().add("trackOrderPane");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/TrackOrderComponent.fxml"));
+        trackOrderPane.getChildren().add(fxmlLoader.load());
+
+        panelOrderDetails.getChildren().add(trackOrderPane);
+    }
 }
 

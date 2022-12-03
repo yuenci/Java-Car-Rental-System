@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane prefHeight="750.0" prefWidth="350.0" style="-fx-background-color: transparent; -fx-border-radius: 10;"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.TrackOrderController">
+    <Pane fx:id="mapTracking" layoutX="30.0" layoutY="416.0" prefHeight="115.0" prefWidth="290.0"/>
+    <Label layoutX="90.0" layoutY="41.0" text="Order Tracking" textFill="WHITE">
+        <font>
+          <Font name="System Bold" size="24.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="539.0" text="Collection Point" textFill="WHITE">
+        <font>
+          <Font size="14.0"/>
+        </font>
+    </Label>
+</Pane>
