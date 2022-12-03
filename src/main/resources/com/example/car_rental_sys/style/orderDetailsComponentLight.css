@@ -1,0 +1,23 @@
+#btnCheckInvoice{
+    -fx-text-fill: #DFDFDF !important;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0px;
+    -fx-border-width: 2px;
+    -fx-background-insets: 0px;
+    -fx-cursor: hand;
+    -fx-background-color: white;
+    -fx-border-color: #DFDFDF;
+    -fx-border-radius: 6px;
+}
+
+.descPane{
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+}
+
+.descText{
+    -fx-text-fill: #4E5969;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

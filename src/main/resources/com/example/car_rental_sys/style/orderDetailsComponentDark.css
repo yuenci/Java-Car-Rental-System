@@ -1,0 +1,35 @@
+.lblPrimaryText{
+    -fx-text-fill: #ffffff;
+}
+
+.lblSecondaryText{
+    -fx-text-fill: #c5c5c5;
+}
+
+.lblThirdText{
+    -fx-text-fill: #78787a;
+}
+
+#btnCheckInvoice{
+    -fx-text-fill: #c6e8fe !important;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-insets: 0px;
+    -fx-border-width: 2px;
+    -fx-background-insets: 0px;
+    -fx-background-color: #111111;
+    -fx-border-color: #c6e8fe !important;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.descPane{
+    -fx-background-color: #111111;
+    -fx-background-radius: 10px;
+}
+
+.descText{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,115 @@
+.lblPrimaryText{
+    -fx-text-fill: #ffffff;
+}
+
+.btnFocusStyle{
+    -fx-cursor: hand;
+    -fx-border-color: #4080FF !important;
+    -fx-border-radius: 4px;
+    -fx-border-insets: 0px;
+    -fx-text-fill: #4080FF !important;
+}
+
+.controlBtn{
+    -fx-cursor: hand;
+}
+
+.controlBtnFocused{
+    -fx-background-color: #ffffff !important;
+    -fx-border-color: #4080FF !important;
+    -fx-border-radius: 4px;
+    -fx-border-insets: 0px;
+    -fx-text-fill: #4080FF !important;
+}
+
+.controlBtn:hover{
+    -fx-border-color: transparent !important;
+    -fx-background-color: #6aa1ff !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-border-insets: 0px;
+}
+
+/* Pagination css style */
+.default-style, .dot-style {
+    -fx-background-color: transparent ;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.default-style:focused{
+    -fx-background-color: #2971cf !important;
+    -fx-text-fill: #eaf8ff !important;
+}
+
+.focus-style {
+    -fx-background-color: #2971cf ;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.icon-style{
+    -fx-background-color: transparent ;
+    -fx-text-fill: #404040 !important;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 12px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+.control-style {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eaf8ff ;
+    -fx-background-radius: 0px ;
+    -fx-font-size: 13px ;
+    -fx-font-weight: bold ;
+    -fx-border-insets: 0px ;
+    -fx-background-insets: 0px ;
+}
+
+/*----------------------------------- */
+
+* {
+    -fx-darkest-blue-color: #4080ff;
+}
+
+.radio-button .radio {
+    -fx-border-width: 2px;
+    -fx-border-color: -fx-darkest-blue-color;
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 3px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot:selected {
+    -fx-background-color: -fx-darkest-blue-color;
+    -fx-background-image: null;
+}
+
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 4px;
+}
