@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="userMiddleBar" prefHeight="700.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.MiddleBarController"
+      stylesheets="@../style/middleBarLight.css">
+   <Label id="lblSettings" layoutX="29.0" layoutY="35.0" text="Settings" textFill="#1d2129">
+      <font>
+         <Font name="Arial Bold" size="28.0"/>
+      </font>
+   </Label>
+   <Button fx:id="btnPersonInfo" layoutX="23.0" layoutY="138.0" mnemonicParsing="false"
+           onMouseClicked="#btnPersonInfoClicked" prefHeight="41.0" prefWidth="161.0"
+           style="-fx-background-color: transparent;" text="Personal Information"
+           textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnSysSetting" layoutX="23.0" layoutY="282.0" mnemonicParsing="false"
+           onMouseClicked="#btnSysSettingClicked" prefHeight="41.0" prefWidth="161.0"
+           style="-fx-background-color: transparent;" text="System Settings" textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+      <opaqueInsets>
+         <Insets/>
+      </opaqueInsets>
+   </Button>
+   <Button fx:id="btnAccSecurity" layoutX="23.0" layoutY="234.0" mnemonicParsing="false"
+           onMouseClicked="#btnAccSettingClicked" prefHeight="41.0" prefWidth="161.0"
+           style="-fx-background-color: transparent;" text="Account Security" textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnAccPwd" layoutX="23.0" layoutY="186.0" mnemonicParsing="false"
+           onMouseClicked="#btnAccPasswordClicked" prefHeight="41.0" prefWidth="161.0"
+           style="-fx-background-color: transparent;" text="Password" textFill="#4e5969">
+      <font>
+         <Font name="System Bold" size="14.0"/>
+      </font>
+      <opaqueInsets>
+         <Insets/>
+      </opaqueInsets>
+   </Button>
+</Pane>

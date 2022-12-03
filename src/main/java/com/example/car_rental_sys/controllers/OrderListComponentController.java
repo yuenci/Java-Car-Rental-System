@@ -4,6 +4,7 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.ui_components.UIFilter;
+import com.example.car_rental_sys.ui_components.UIOrderRow;
 import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import java.util.function.Function;
 
 public class OrderListComponentController {
 
+    @FXML
+    private Pane panelOrderList;
     private int totalOrders = 0;
     public Label numOrder;
     public Button btnAllOrder,btnComplete,btnContinue,btnCancel;
@@ -36,16 +39,9 @@ public class OrderListComponentController {
         initTotalOrder();
         initPagination();
         initButtonStyle();
+        initTable();
         initTheme();
         //System.out.println(User.instance.getUserID());
-    }
-
-    private void  initTheme(){
-        if(StatusContainer.currentUser instanceof Customer){
-            mainPane.getStylesheets()
-                    .add(new File("src/main/resources/com/example/car_rental_sys/style/orderComponentDark.css")
-                            .toURI().toString());
-        }
     }
 
     public void addFilterPane(){
@@ -71,6 +67,14 @@ public class OrderListComponentController {
 
     private void initTotalOrder(){
         numOrder.setText(totalOrders + " orders");
+    }
+
+    private void initTable(){
+        for (int i = 0; i < 15; i++) {
+            UIOrderRow orderRow = new UIOrderRow("396456852", "Myvi Pro 2021", "Dec 3, 2022", 999, 1);
+            orderRow.setLayoutY(i * 30);
+            tableContainer.getChildren().add(orderRow);
+        }
     }
 
     @FXML
@@ -113,6 +117,14 @@ public class OrderListComponentController {
     void btnCancelClicked(MouseEvent event) {
         headerButtonClickEvent(event);
         //replaceButtonStyle();
+    }
+
+    private void initTheme(){
+        if(StatusContainer.currentUser instanceof Customer){
+            panelOrderList.getStylesheets()
+                    .add(new File("src/main/resources/com/example/car_rental_sys/style/orderListComponentDark.css")
+                            .toURI().toString());
+        }
     }
 
 

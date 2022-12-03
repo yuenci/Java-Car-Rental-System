@@ -1,0 +1,21 @@
+.defaultBtnStyle{
+    -fx-background-color: transparent;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+}
+
+.btnFocusStyle, .defaultBtnStyle:hover{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-color: #57a9fb;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-padding: 0 0 0 5;
+}
+
+#lblSettings{
+    -fx-text-fill: #ffffff;
+}
