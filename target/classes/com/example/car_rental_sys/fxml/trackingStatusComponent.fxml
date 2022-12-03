@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<Pane fx:id="panelStatus" prefHeight="170.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.TrackingStatusController"
+      stylesheets="@../style/trackingComponentLight.css">
+   <Pane fx:id="pane1" layoutX="14.0" layoutY="2.0" prefHeight="24.0" prefWidth="24.0"
+         style="-fx-background-color: transparent;">
+      <ImageView fx:id="imgView1" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" layoutX="6.0" layoutY="6.0"/>
+      <Pane fx:id="dotStatus1" layoutX="8.0" layoutY="8.0" prefHeight="9.0" prefWidth="9.0"
+            style="-fx-background-radius: 10;" styleClass="dotStatus"/>
+   </Pane>
+   <Pane fx:id="pane2" layoutX="14.0" layoutY="47.0" prefHeight="24.0" prefWidth="24.0"
+         style="-fx-background-color: transparent;">
+      <ImageView fx:id="imgView2" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" layoutX="6.0" layoutY="6.0"/>
+      <Pane fx:id="dotStatus2" layoutX="8.0" layoutY="8.0" prefHeight="9.0" prefWidth="9.0"
+            style="-fx-background-radius: 10;" styleClass="dotStatus"/>
+   </Pane>
+   <Pane fx:id="pane3" layoutX="14.0" layoutY="97.0" prefHeight="24.0" prefWidth="24.0"
+         style="-fx-background-color: transparent;" >
+      <ImageView fx:id="imgView3" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" layoutX="6.0" layoutY="6.0"/>
+      <Pane fx:id="dotStatus3" layoutX="8.0" layoutY="8.0" prefHeight="9.0" prefWidth="9.0"
+            style="-fx-background-radius: 10;" styleClass="dotStatus"/>
+   </Pane>
+   <Pane fx:id="pane4" layoutX="14.0" layoutY="144.0" prefHeight="24.0" prefWidth="24.0"
+         style="-fx-background-color: transparent;">
+      <ImageView fx:id="imgView4" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true" layoutX="6.0" layoutY="6.0"/>
+      <Pane fx:id="dotStatus4" layoutX="8.0" layoutY="8.0" prefHeight="9.0" prefWidth="9.0"
+            style="-fx-background-radius: 10;" styleClass="dotStatus"/>
+   </Pane>
+   <Label fx:id="lblStatusText1" layoutX="70.0" layoutY="3.0" styleClass="lblStatusText" text="Order placed"
+          textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Label>
+   <Label fx:id="lblStatusText2" layoutX="70.0" layoutY="48.0" styleClass="lblStatusText" text="Ready to collect"
+          textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Label>
+   <Label fx:id="lblStatusText3" layoutX="70.0" layoutY="98.0" styleClass="lblStatusText" text="Order collected"
+          textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Label>
+   <Label fx:id="lblStatusText4" layoutX="70.0" layoutY="146.0" styleClass="lblStatusText" text="Order completed"
+          textFill="#4e5969">
+      <font>
+         <Font name="Arial Bold" size="16.0"/>
+      </font>
+   </Label>
+</Pane>

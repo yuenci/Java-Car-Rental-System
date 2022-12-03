@@ -29,6 +29,7 @@ public class PaymentCard extends Pane {
         this.bankName = bankName;
         this.cardBalance = cardBalance;
         selectCardType(type);
+        initEvent();
     }
 
     private void selectCardType(String type){
@@ -75,7 +76,7 @@ public class PaymentCard extends Pane {
         cardBalance.setLayoutY(40);
 
         this.getChildren().addAll(imageView,cardName,cardBalance);
-        this.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4; -fx-border-width: 1px; -fx-effect: dropshadow(three-pass-box, #e5e6eb, 10, 0, 0, 0);");
+        this.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4; -fx-border-width: 1px;");
     }
 
     private void initBankCard(String type){
@@ -138,6 +139,10 @@ public class PaymentCard extends Pane {
     private void initEvent(){
         this.setOnMouseEntered(event -> this.setCursor(Cursor.HAND));
         this.setOnMouseExited(event -> this.setCursor(Cursor.DEFAULT));
+
+        this.setOnMouseClicked(event -> System.out.println("clicked " + cardName));
+        //get the card info then send to show card details
+
 
     }
 }

@@ -23,7 +23,8 @@
             <Font name="System Bold" size="15.0"/>
         </font>
     </Label>
-    <Label layoutX="122.0" layoutY="78.0" styleClass="lblSecondTrackText" text="ID 369369369" textFill="#86909c">
+    <Label fx:id="lblOrderID" layoutX="122.0" layoutY="78.0" styleClass="lblSecondTrackText" text="ID 369369369"
+           textFill="#86909c">
         <font>
             <Font name="System Bold" size="16.0"/>
         </font>
@@ -35,7 +36,7 @@
         </cursor>
         <Image url="@../image/UI/leftGrey.png"/>
     </ImageView>
-    <Button fx:id="btnReceive" id="btnOrderReceive" layoutX="55.0" layoutY="682.0" mnemonicParsing="false"
+    <Button id="btnOrderReceive" fx:id="btnReceive" layoutX="55.0" layoutY="682.0" mnemonicParsing="false"
             prefHeight="40.0" prefWidth="240.0"
             style="-fx-background-color: #94bfff; -fx-background-insets: 0; -fx-background-radius: 4;"
             text="Order Received" textFill="WHITE">
@@ -50,13 +51,13 @@
         </font>
     </Label>
     <Line endX="320.0" layoutY="602.0" startX="40.0" stroke="#c9cdd4"/>
-    <Label layoutX="40.0" layoutY="561.0" prefHeight="25.0" prefWidth="230.0"
+    <Label fx:id="lblLocation" layoutX="40.0" layoutY="561.0" prefHeight="25.0" prefWidth="230.0"
            text="40 Jalan Techonology Park, Bukit Jalil, Malaysia" textFill="#86909c" wrapText="true">
         <font>
             <Font name="System Bold" size="10.0"/>
         </font>
     </Label>
-    <Label layoutX="41.0" layoutY="547.0" text="10:00 - 11:00" textFill="#86909c">
+    <Label fx:id="lblPickupTime" layoutX="41.0" layoutY="547.0" text="10:00 - 11:00" textFill="#86909c">
         <font>
             <Font name="System Bold" size="11.0"/>
         </font>
@@ -70,4 +71,14 @@
                preserveRatio="true" rotate="270.0">
         <Image url="@../image/UI/locationGrey.png"/>
     </ImageView>
+    <Label layoutX="124.0" layoutY="547.0" text="-" textFill="#86909c">
+        <font>
+          <Font name="System Bold" size="11.0"/>
+        </font>
+    </Label>
+    <Label fx:id="lblPickupDate" layoutX="134.0" layoutY="547.0" text="31/10/2022" textFill="#86909c">
+        <font>
+          <Font name="System Bold" size="11.0"/>
+        </font>
+    </Label>
 </Pane>
