@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+<Pane prefHeight="750.0" prefWidth="350.0" style="-fx-background-color: transparent; -fx-background-radius: 10px;"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.BillingSideBarController">
+    <Pane layoutX="35.0" layoutY="68.0" prefHeight="120.0" prefWidth="280.0"
+          style="-fx-background-color: transparent; -fx-border-color: #dfdfdf; -fx-border-width: 1.5px; -fx-border-radius: 10px;">
+        <Pane layoutX="18.0" layoutY="32.0" prefHeight="56.0" prefWidth="56.0"
+              style="-fx-background-color: #6AA1FF; -fx-background-radius: 6;">
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../image/UI/spendingIcon.png"/>
+            </ImageView>
+        </Pane>
+        <Label layoutX="102.0" layoutY="27.0" style="-fx-text-fill: #dfdfdf;" text="Monthly Spending"
+               textFill="#4e5969">
+            <font>
+                <Font name="Arial Bold" size="12.0"/>
+            </font>
+        </Label>
+        <Label fx:id="billSideText" layoutX="102.0" layoutY="51.0" style="-fx-text-fill: white;" text="RM19400.87"
+               textFill="#1d2129">
+            <font>
+                <Font name="Arial Bold" size="22.0"/>
+            </font>
+        </Label>
+    </Pane>
+    <Label layoutX="40.0" layoutY="244.0" style="-fx-text-fill: white;" text="Analytic" textFill="#1d2129">
+        <font>
+            <Font name="System Bold" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="481.0" style="-fx-text-fill: white;" text="Analytic" textFill="#1d2129">
+        <font>
+            <Font name="System Bold" size="18.0"/>
+        </font>
+    </Label>
+    <WebView fx:id="webViewMiddle" layoutX="75.0" layoutY="284.0" prefHeight="150.0" prefWidth="200.0"/>
+    <WebView fx:id="webViewBottom" layoutX="35.0" layoutY="523.0" prefHeight="160.0" prefWidth="280.0"/>
+    <Line endX="310.0" layoutX="20.0" layoutY="225.0" stroke="#c9cdd4"/>
+    <Line endX="310.0" layoutX="20.0" layoutY="465.0" stroke="#c9cdd4"/>
+</Pane>
