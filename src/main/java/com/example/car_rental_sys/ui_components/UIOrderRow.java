@@ -1,11 +1,15 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.controllers.OrderDetailsComponentController;
 import com.example.car_rental_sys.controllers.OrderListComponentController;
 import com.example.car_rental_sys.orm.Customer;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -14,7 +18,9 @@ public class UIOrderRow extends Pane {
 
     private Label lblOrderID, lblName, lblOrderDate, lblOrderAmount, lblOrderStatus;
     private String orderID, name, orderDate, orderAmount;
+    private int carID;
     private int orderStatus;
+    public Image imgCar;
 
     public UIOrderRow(){
 
@@ -33,9 +39,13 @@ public class UIOrderRow extends Pane {
         this.setLayoutX(0);
         this.setLayoutY(0);
         this.setPrefSize(460,30);
+        initData();
         initComponent();
         initTheme();
         initEvent();
+    }
+    private void initData(){
+        this.carID = Integer.parseInt(DataTools.getOrderInfoFromOrderID(orderID)[1]);
     }
 
     private void initComponent(){
@@ -110,6 +120,16 @@ public class UIOrderRow extends Pane {
 
     private void initEvent(){
         this.setCursor(Cursor.HAND);
-        this.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> OrderDetailsComponentController.instance.updateStatus(1));
+        this.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            OrderDetailsComponentController.instance.updateStatus(1);
+            loadImage();
+            OrderDetailsComponentController.instance.updateOrderDetails(this);
+                }
+
+        );
+    }
+
+    private void loadImage(){
+        imgCar= ImageTools.getCarImageObjFromCarID(this.carID);
     }
 }

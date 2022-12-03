@@ -165,13 +165,13 @@ carInfo - status
 - 4: repairing
 
 order - status
-- 0: not paid
+- 0: not paid == in progress
 - 1: paid
-- -1: canceled
+- -1: canceled == cancel
 - 2: delivering
-- 3: delivered
+- 3: delivered == continuing
 - 4: driving
-- 5: finished
+- 5: finished == complete
 
 # create a jxBrowser windows
 

@@ -385,4 +385,9 @@ public class ImageTools {
         return getTenColors(srgbListSorted);
     }
 
+    public static Image getCarImageObjFromCarID(int carID){
+        String carName = DataTools.getCarModelFromCarID(carID);
+        String carImagePath = "src/main/resources/com/example/car_rental_sys/image/cars/"+carName+".png";
+        return getImageObjFromPath(carImagePath);
+    }
 }

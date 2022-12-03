@@ -1,3 +1,9 @@
+#mainPane{
+    -fx-background-radius: 10;
+    -fx-background-color: #ffffff;
+}
+
+
 .btnFocusStyle{
     -fx-cursor: hand;
     -fx-border-color: #4080FF !important;

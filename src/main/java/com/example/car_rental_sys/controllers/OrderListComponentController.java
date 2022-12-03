@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -27,7 +28,10 @@ public class OrderListComponentController {
     @FXML
     private Pane pagContainer;
     @FXML
-    private Pane tableContainer;
+    private Pane tableContainer,mainPane;
+
+    @FXML
+    private ImageView carImg;
 
     //private static String initQuery = "SELECT * FROM orders WHERE userID = " + User.instance.getUserID();
 
@@ -71,7 +75,7 @@ public class OrderListComponentController {
 
     private void initTable(){
         for (int i = 0; i < 15; i++) {
-            UIOrderRow orderRow = new UIOrderRow("396456852", "Myvi Pro 2021", "Dec 3, 2022", 999, 1);
+            UIOrderRow orderRow = new UIOrderRow("1", "Myvi Pro 2021", "Dec 3, 2022", 999, 1);
             orderRow.setLayoutY(i * 30);
             tableContainer.getChildren().add(orderRow);
         }

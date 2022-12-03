@@ -12,7 +12,7 @@ public class ConfigFile {
     // keys
     public static final String myEmailAccount = "yv1575270674@163.com";
     public static final String myEmailPassword = "GBZYHLHTFOYUAXAP";
-    public static final String jxBrowserLicense = "1BNDHFSC1G4DC5TVZKE9U7YNLCVYB6MLFJBGX2YY77IHM90DE70M17RAXLI2TNSWDV0237";
+    public static final String jxBrowserLicense = "1BNDJDKIKI2KXPTPLDNLA1N3QFYP9655G68TOMO87HH4G8GHNXM26ZCIXGCRCB6X7J3YZ0";
     public static final String googleMapApiKey = "todo";
     public static final String  AESKey = "1234567890123456";
 

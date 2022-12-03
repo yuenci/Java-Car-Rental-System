@@ -26,7 +26,7 @@ public class Test {
         //openScreenShotWithMsPaintTest();
         //getMessageJson();
         //keepLoginTest();
-        gettodoListTest();
+        //gettodoListTest();
     }
 
 
