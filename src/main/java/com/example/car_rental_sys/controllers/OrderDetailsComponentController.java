@@ -180,7 +180,5 @@ public class OrderDetailsComponentController {
     public void updateOrderDetails(UIOrderRow uiOrderRow){
         carImg.setImage(uiOrderRow.imgCar);
     }
-
-
 }
 
