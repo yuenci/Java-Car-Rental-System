@@ -173,6 +173,28 @@ order - status
 - 4: driving
 - 5: finished == complete
 
+# create webview
+```java
+WebView webView = new WebView();
+WebEngine engine = webview.getEngine();
+URL url = this.getClass().getResource("/com/example/car_rental_sys/html/radar.html");
+// load html 
+Platform.runLater(() -> {
+   engine.setJavaScriptEnabled(true);
+   engine.getLoadWorker().stateProperty().addListener(
+   (ov, oldState, newState) -> {
+   if (newState == Worker.State.SUCCEEDED) {
+   engine.executeScript("initRadar("+radarDataStr+");");
+}
+});
+   // execute js
+   
+assert url != null;
+});
+assert url != null;
+engine.load(url.toString());
+```
+
 # create a jxBrowser windows
 
 ```java

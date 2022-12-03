@@ -3,6 +3,7 @@ package com.example.car_rental_sys.ToolsLib;
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
@@ -13,6 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.robot.Robot;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -131,4 +134,21 @@ public class FXTools {
     public static Stage getStageFromFXNode(Node node){
         return (Stage) node.getScene().getWindow();
     }
+
+    public static Pane getMapComponent(String mapName){
+        Pane pane = new Pane();
+        WebView webView = new WebView();
+        WebEngine engine = webView.getEngine();
+        engine.load("file:src/main/resources/com/example/car_rental_sys/html/directionsLight.html");
+        engine.setJavaScriptEnabled(true);
+//        engine.getLoadWorker().stateProperty().addListener(
+//                (ov, oldState, newState) -> {
+//                    if (newState == Worker.State.SUCCEEDED) {
+//                        engine.executeScript("initRadar("+radarDataStr+");");
+//                    }
+//                });
+        pane.getChildren().add(webView);
+        return pane;
+    }
+
 }
