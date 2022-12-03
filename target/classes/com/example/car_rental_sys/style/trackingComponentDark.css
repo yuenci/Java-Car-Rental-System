@@ -1,0 +1,33 @@
+.lblPriTrackText{
+    -fx-text-fill: #ffffff;
+}
+
+.lblSecondTrackText{}
+
+.lblStatusText{
+    -fx-text-fill: #dfdfdf !important;
+}
+
+.lblFocusText{
+    -fx-text-fill: #165DFF !important;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.dotStatus{
+    -fx-background-color: #689fff;
+}
+
+#lineStatus{
+    -fx-stroke: #eaf4ff !important;
+}
+
+.pane-active{
+    -fx-background-color: #165DFF !important;
+    -fx-background-radius: 4px;
+}
+
+.pane-inactive{
+    -fx-background-color: #f2f3f5 !important;
+    -fx-background-radius: 4px;
+}

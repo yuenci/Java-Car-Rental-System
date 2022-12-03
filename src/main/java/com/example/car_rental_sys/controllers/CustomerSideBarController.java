@@ -43,13 +43,22 @@ public class CustomerSideBarController {
 
 
     private void initMenuEvent() {
-        item1.setOnMouseClicked(event -> changeMenuStyle(item1));
+        item1.setOnMouseClicked(event -> {
+            changeMenuStyle(item1);
+            //CustomerServiceController.instance.showProfilePage();
+        });
         item2.setOnMouseClicked(event -> {
             changeMenuStyle(item2);
             FXTools.changeScene("messagePage.fxml");
         });
-        item3.setOnMouseClicked(event -> changeMenuStyle(item3));
-        item4.setOnMouseClicked(event -> changeMenuStyle(item4));
+        item3.setOnMouseClicked(event -> {
+            changeMenuStyle(item3);
+            CustomerServiceController.instance.showWalletPage();
+        });
+        item4.setOnMouseClicked(event -> {
+            changeMenuStyle(item4);
+            CustomerServiceController.instance.showOrderPage();
+        });
         item5.setOnMouseClicked(event -> changeMenuStyle(item5));
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);

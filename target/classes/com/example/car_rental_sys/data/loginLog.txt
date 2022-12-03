@@ -18,4 +18,4 @@ loginID:num=0,useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,platfor
 17,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Rawang,3.3114 101.5104,2020-01-01_00:00:00,2020-01-01_00:00:00
 18,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Rawang,3.3114 101.5104,2020-01-01_00:00:00,2020-01-01_00:00:00
 19,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Rawang,3.3114 101.5104,2020-01-01_00:00:00,2020-01-01_00:00:00
-20,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Rawang,3.3114 101.5104,2020-01-01_00:00:00,2022-12-03 19:29:50
+20,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Selangor,Rawang,3.3114 101.5104,2020-01-01_00:00:00,2020-01-01_00:00:00

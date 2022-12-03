@@ -1,21 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<Pane prefHeight="750.0" prefWidth="350.0" style="-fx-background-color: transparent; -fx-border-radius: 10;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.TrackOrderController">
-    <Pane fx:id="mapTracking" layoutX="30.0" layoutY="416.0" prefHeight="115.0" prefWidth="290.0"/>
-    <Label layoutX="90.0" layoutY="41.0" text="Order Tracking" textFill="WHITE">
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+<Pane fx:id="panelTracking" prefHeight="750.0" prefWidth="350.0"
+      style="-fx-background-color: transparent; -fx-border-radius: 10;"
+      stylesheets="@../style/trackingComponentLight.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.TrackOrderController">
+    <Pane fx:id="mapTracking" layoutX="30.0" layoutY="380.0" prefHeight="115.0" prefWidth="290.0"
+          style="-fx-background-color: white; -fx-background-radius: 10px;"/>
+    <Label layoutX="90.0" layoutY="41.0" styleClass="lblPriTrackText" text="Order Tracking" textFill="WHITE">
         <font>
-          <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
-    <Label layoutX="40.0" layoutY="539.0" text="Collection Point" textFill="WHITE">
+    <Label layoutX="40.0" layoutY="514.0" styleClass="lblPriTrackText" text="Collection point" textFill="WHITE">
         <font>
-          <Font size="14.0"/>
+            <Font name="System Bold" size="15.0"/>
         </font>
     </Label>
+    <Label layoutX="122.0" layoutY="78.0" styleClass="lblSecondTrackText" text="ID 369369369" textFill="#86909c">
+        <font>
+            <Font name="System Bold" size="16.0"/>
+        </font>
+    </Label>
+    <ImageView fx:id="leftIcon" fitHeight="18.0" fitWidth="18.0" layoutX="21.0" layoutY="50.0"
+               onMouseClicked="#leftIconClicked" pickOnBounds="true" preserveRatio="true">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <Image url="@../image/UI/leftGrey.png"/>
+    </ImageView>
+    <Button fx:id="btnReceive" id="btnOrderReceive" layoutX="55.0" layoutY="682.0" mnemonicParsing="false"
+            prefHeight="40.0" prefWidth="240.0"
+            style="-fx-background-color: #94bfff; -fx-background-insets: 0; -fx-background-radius: 4;"
+            text="Order Received" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Button>
+    <Label layoutX="40.0" layoutY="614.0" prefHeight="40.0" prefWidth="198.0"
+           text="Unfortunately, it's no longer possible to change the pick-up time" textFill="#86909c" wrapText="true">
+        <font>
+            <Font name="System Bold" size="11.0"/>
+        </font>
+    </Label>
+    <Line endX="320.0" layoutY="602.0" startX="40.0" stroke="#c9cdd4"/>
+    <Label layoutX="40.0" layoutY="561.0" prefHeight="25.0" prefWidth="230.0"
+           text="40 Jalan Techonology Park, Bukit Jalil, Malaysia" textFill="#86909c" wrapText="true">
+        <font>
+            <Font name="System Bold" size="10.0"/>
+        </font>
+    </Label>
+    <Label layoutX="41.0" layoutY="547.0" text="10:00 - 11:00" textFill="#86909c">
+        <font>
+            <Font name="System Bold" size="11.0"/>
+        </font>
+    </Label>
+    <Line id="lineStatus" endX="1.0" endY="145.0" layoutX="65.0" layoutY="165.0" startX="1.0"/>
+    <Pane layoutX="39.0" layoutY="150.0" prefHeight="170.0" prefWidth="220.0"
+          style="-fx-background-color: transparent;">
+        <fx:include source="trackingStatusComponent.fxml"/>
+    </Pane>
+    <ImageView fx:id="locationIcon" fitHeight="24.0" fitWidth="18.0" layoutX="295.0" layoutY="548.0" pickOnBounds="true"
+               preserveRatio="true" rotate="270.0">
+        <Image url="@../image/UI/locationGrey.png"/>
+    </ImageView>
 </Pane>
