@@ -1,0 +1,8 @@
+.txtBoxFocus:hover, .txtBoxFocus:focused{
+    -fx-border-color: #306fff !important;
+}
+
+.comboFocus:hover, .comboFocus:focused{
+    -fx-border-color: #306fff !important;
+}
+
