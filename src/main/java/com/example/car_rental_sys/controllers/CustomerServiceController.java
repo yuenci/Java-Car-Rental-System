@@ -18,7 +18,9 @@ public class CustomerServiceController {
     private Pane centerContainer;
 
     public void initialize() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/OrderDetailsComponent.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/OrderDetailsComponent.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/BillingSideBar.fxml"));
+
         FXMLLoader fxmlLoader2 = new FXMLLoader(Application.class.getResource("fxml/showOrderComponent.fxml"));
         rightContainer.getChildren().add(fxmlLoader.load());
         centerContainer.getChildren().add(fxmlLoader2.load());

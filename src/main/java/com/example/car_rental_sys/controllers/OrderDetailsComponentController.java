@@ -182,7 +182,8 @@ public class OrderDetailsComponentController {
     }
 
 
-    public void btnTrackOrderClicked(MouseEvent mouseEvent) throws IOException {
+    @FXML
+    private void btnTrackOrderClicked() throws IOException {
         Pane trackOrderPane = new Pane();
         trackOrderPane.setPrefSize(350, 750);
         trackOrderPane.setLayoutX(0);
