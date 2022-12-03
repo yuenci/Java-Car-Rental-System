@@ -1,11 +1,11 @@
-.defaultBtnStyle{
+.defaultMiddleBtnStyle{
     -fx-background-color: transparent;
     -fx-alignment: center-left;
     -fx-cursor: hand;
     -fx-text-fill: #4e5969;
 }
 
-.btnFocusStyle, .defaultBtnStyle:hover{
+.btnMiddleFocusStyle, .defaultMiddleBtnStyle:hover{
     -fx-background-color: transparent;
     -fx-cursor: hand;
     -fx-alignment: center-left;

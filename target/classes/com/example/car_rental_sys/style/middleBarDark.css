@@ -1,21 +1,23 @@
-.defaultBtnStyle{
+.defaultMiddleBtnStyle{
     -fx-background-color: transparent;
     -fx-alignment: center-left;
     -fx-cursor: hand;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #dfdfdf;
+    -fx-border-width: 0;
+    -fx-border-style: hidden hidden hidden hidden;
 }
 
-.btnFocusStyle, .defaultBtnStyle:hover{
+.btnMiddleFocusStyle, .defaultMiddleBtnStyle:hover{
     -fx-background-color: transparent;
     -fx-cursor: hand;
     -fx-alignment: center-left;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #57a9fb !important;
     -fx-border-width: 0 0 0 4;
-    -fx-border-color: #57a9fb;
+    -fx-border-color: #57a9fb !important;
     -fx-border-style: hidden hidden hidden solid;
     -fx-padding: 0 0 0 5;
 }
 
 #lblSettings{
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #ffffff !important;
 }

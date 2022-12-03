@@ -28,6 +28,10 @@ public class CustomerServiceController {
     private final String middleBar = "MiddleBar.fxml";
 
     @FXML
+    private Pane settingMainPanel;
+    @FXML
+    private Pane hugeContainer;
+    @FXML
     private Pane rightContainer;
     @FXML
     private Pane centerContainer;
@@ -42,25 +46,23 @@ public class CustomerServiceController {
 
         //FXMLLoader fxmlLoader2 = new FXMLLoader(Application.class.getResource("fxml/showOrderComponent.fxml"));
         FXMLLoader fxmlLoader2 = new FXMLLoader(Application.class.getResource("fxml/BillingComponent.fxml"));
-        rightContainer.getChildren().add(fxmlLoader.load());
-        centerContainer.getChildren().add(fxmlLoader2.load());
+        //rightContainer.getChildren().add(fxmlLoader.load());
+        //centerContainer.getChildren().add(fxmlLoader2.load());
+
+        FXMLLoader fxmlLoader3 = new FXMLLoader(Application.class.getResource("fxml/userSettingPage.fxml"));
+        hugeContainer.getChildren().add(fxmlLoader3.load());
+
     }
 
-    private void renewCenterPane(String fxml) throws IOException {
+    private void initFXML(Pane pane, String fxml)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));
-        centerContainer.getChildren().clear();
-        centerContainer.getChildren().add(fxmlLoader.load());
-    }
-
-    private void renewRightPane(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));
-        rightContainer.getChildren().clear();
-        rightContainer.getChildren().add(fxmlLoader.load());
+        pane.getChildren().clear();
+        pane.getChildren().add(fxmlLoader.load());
     }
 
     public void showTrackOrder(){
         try {
-            renewRightPane(trackPane);
+            initFXML(rightContainer, trackPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +71,7 @@ public class CustomerServiceController {
     public void closeTrackOrder(){
         try {
             rightContainer.getChildren().clear();
-            renewRightPane(orderSide);
+            initFXML(rightContainer, orderSide);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,8 +79,10 @@ public class CustomerServiceController {
 
     public void showOrderPage() {
         try {
-            renewCenterPane(orderMain);
-            renewRightPane(orderSide);
+            initFXML(centerContainer, orderMain);
+            initFXML(rightContainer, orderSide);
+            hugeContainer.getChildren().clear();
+            hugeContainer.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,8 +90,20 @@ public class CustomerServiceController {
 
     public void showWalletPage() {
         try {
-            renewCenterPane(walletMain);
-            renewRightPane(walletSide);
+            initFXML(centerContainer, walletMain);
+            initFXML(rightContainer, walletSide);
+            hugeContainer.getChildren().clear();
+            hugeContainer.setVisible(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showSettingPage(){
+        try {
+            hugeContainer.setVisible(true);
+            hugeContainer.getChildren().clear();
+            initFXML(hugeContainer, settingMain);
         } catch (IOException e) {
             e.printStackTrace();
         }

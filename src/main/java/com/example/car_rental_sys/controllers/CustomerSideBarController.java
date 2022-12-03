@@ -59,7 +59,10 @@ public class CustomerSideBarController {
             changeMenuStyle(item4);
             CustomerServiceController.instance.showOrderPage();
         });
-        item5.setOnMouseClicked(event -> changeMenuStyle(item5));
+        item5.setOnMouseClicked(event -> {
+            changeMenuStyle(item5);
+            CustomerServiceController.instance.showSettingPage();
+        });
         item6.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             StatusContainer.currentUser = null;
