@@ -641,6 +641,18 @@ public class DataTools {
         FileUtils.copyFile(source, dest);
     }
 
+    public static String[] getOrderInfoFromOrderID(String orderID){
+        String sql = "SELECT * FROM orders WHERE orderID = " + orderID;
+        ArrayList<String[]> result = SQL.query(sql);
+
+        if(result.size() == 0){
+            System.out.println("No such order");
+            throw new RuntimeException("No such order");
+        }else{
+            return result.get(0);
+        }
+    }
+
 }
 
 // TODO: No comma "," content is allowed.

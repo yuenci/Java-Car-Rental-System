@@ -1,9 +1,13 @@
 package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.ui_components.InvoiceBox;
+import com.example.car_rental_sys.ui_components.UIOrderRow;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -71,8 +75,6 @@ public class OrderDetailsComponentController {
 
     private int showingStatus = 0;
 
-    @FXML
-    Pane mainPage;
 
     @FXML
     public void initialize() {
@@ -173,6 +175,10 @@ public class OrderDetailsComponentController {
                             .toURI().toString());
             invoiceIcon.setImage(new javafx.scene.image.Image("file:src/main/resources/com/example/car_rental_sys/image/UI/invoice-light.png"));
         }
+    }
+
+    public void updateOrderDetails(UIOrderRow uiOrderRow){
+        carImg.setImage(uiOrderRow.imgCar);
     }
 
 
