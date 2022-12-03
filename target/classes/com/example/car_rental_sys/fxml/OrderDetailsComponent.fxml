@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
-
-<Pane fx:id="panelOrderDetails" prefHeight="750.0" prefWidth="350.0" style="-fx-background-radius: 10;" stylesheets="@../style/orderDetailsComponentLight.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.OrderDetailsComponentController">
+<Pane fx:id="panelOrderDetails" prefHeight="750.0" prefWidth="350.0" style="-fx-background-radius: 10;"
+      stylesheets="@../style/orderDetailsComponentLight.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.car_rental_sys.controllers.OrderDetailsComponentController">
     <Pane layoutX="25.0" layoutY="28.0" prefHeight="670.0" prefWidth="300.0">
         <Label layoutY="16.0" styleClass="lblPrimaryText" text="Order ID:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Label>
-        <Label fx:id="orderNum" layoutX="111.0" layoutY="16.0" styleClass="lblPrimaryText" text="000000001" textFill="#1d2129">
+        <Label fx:id="orderNum" layoutX="111.0" layoutY="16.0" styleClass="lblPrimaryText" text="000000001"
+               textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="System Bold" size="24.0"/>
             </font>
         </Label>
         <Label layoutY="60.0" styleClass="lblThirdText" text="Order date:" textFill="#86909c">
             <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="System Bold" size="16.0"/>
             </font>
         </Label>
-        <Label fx:id="orderDate" layoutX="95.0" layoutY="60.0" styleClass="lblSecondaryText" text="date" textFill="#4e5969">
+        <Label fx:id="orderDate" layoutX="95.0" layoutY="60.0" styleClass="lblSecondaryText" text="date"
+               textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="16.0" />
+                <Font name="System Bold" size="16.0"/>
             </font>
         </Label>
         <Line endX="200.0" layoutX="100.0" layoutY="105.0" startX="-100.0" stroke="#e5e6eb" />
@@ -35,163 +39,182 @@
         <Pane layoutX="2.0" layoutY="126.0" prefHeight="80.0" prefWidth="119.0" style="-fx-background-color: #F2F3F5; -fx-background-radius: 4;">
             <ImageView fx:id="carImg" fitHeight="80.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" />
         </Pane>
-        <Label fx:id="carName" layoutX="138.0" layoutY="126.0" prefHeight="45.0" prefWidth="86.0" styleClass="lblSecondaryText" text="the_car_name" textFill="#4e5969" wrapText="true">
+        <Label fx:id="carName" layoutX="92.0" layoutY="127.0" prefHeight="45.0" prefWidth="86.0"
+               styleClass="lblSecondaryText" text="the_car_name" textFill="#4e5969" wrapText="true">
             <font>
-                <Font name="System Bold" size="11.0" />
+                <Font name="System Bold" size="11.0"/>
             </font>
         </Label>
-        <Label fx:id="carPrice" layoutX="241.0" layoutY="141.0" styleClass="lblPrimaryText" text="RM 9999" textFill="#1d2129">
+        <Label fx:id="carPrice" layoutX="241.0" layoutY="141.0" styleClass="lblPrimaryText" text="RM 9999"
+               textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
         </Label>
-        <Label fx:id="orderQty" layoutX="253.0" layoutY="164.0" styleClass="lblThirdText" text="Qty: 20" textFill="#86909c">
+        <Label fx:id="orderQty" layoutX="253.0" layoutY="164.0" styleClass="lblThirdText" text="Qty: 20"
+               textFill="#86909c">
             <font>
-                <Font name="System Bold" size="11.0" />
+                <Font name="System Bold" size="11.0"/>
             </font>
         </Label>
         <Label layoutY="248.0" styleClass="lblPrimaryText" text="Payment Method" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
         </Label>
         <Label layoutX="167.0" layoutY="248.0" styleClass="lblPrimaryText" text="Location" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
         </Label>
-        <Label fx:id="paymentType" layoutY="280.0" styleClass="lblSecondaryText" text="Visa **56" textFill="#4e5969" />
-        <Line endX="300.0" layoutY="345.0" stroke="#e5e6eb" />
+        <Label fx:id="paymentType" layoutY="280.0" styleClass="lblSecondaryText" text="Visa **56"
+               textFill="#4e5969"/>
+        <Line endX="300.0" layoutY="345.0" stroke="#e5e6eb"/>
         <Label layoutY="367.0" styleClass="lblPrimaryText" text="Order on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
         <Label layoutX="-1.0" layoutY="395.0" styleClass="lblPrimaryText" text="Order approve:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
         <Label layoutY="427.0" styleClass="lblPrimaryText" text="Paid on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
         <Label layoutX="-1.0" layoutY="459.0" styleClass="lblPrimaryText" text="Pick-up time:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
         <Label layoutY="491.0" styleClass="lblPrimaryText" text="Due on:" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Label fx:id="orderTime" layoutX="181.0" layoutY="367.0" styleClass="lblSecondaryText" text="Oct 12, 2022 13:56" textFill="#4e5969">
+        <Label fx:id="orderTime" layoutX="181.0" layoutY="367.0" styleClass="lblSecondaryText"
+               text="Oct 12, 2022 13:56" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Label fx:id="approveTime" layoutX="181.0" layoutY="395.0" styleClass="lblSecondaryText" text="Oct 12, 2022 14:00" textFill="#4e5969">
+        <Label fx:id="approveTime" layoutX="181.0" layoutY="395.0" styleClass="lblSecondaryText"
+               text="Oct 12, 2022 14:00" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Label fx:id="paymentTime" layoutX="181.0" layoutY="427.0" styleClass="lblSecondaryText" text="Oct 12, 2022 14:02" textFill="#4e5969">
+        <Label fx:id="paymentTime" layoutX="181.0" layoutY="427.0" styleClass="lblSecondaryText"
+               text="Oct 12, 2022 14:02" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Label fx:id="pickUpTime" layoutX="181.0" layoutY="459.0" styleClass="lblSecondaryText" text="Oct 12, 2022 14:30" textFill="#4e5969">
+        <Label fx:id="pickUpTime" layoutX="181.0" layoutY="459.0" styleClass="lblSecondaryText"
+               text="Oct 12, 2022 14:30" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Label fx:id="dueTime" layoutX="181.0" layoutY="491.0" styleClass="lblSecondaryText" text="Oct 14, 2022 14:30" textFill="#4e5969">
+        <Label fx:id="dueTime" layoutX="181.0" layoutY="491.0" styleClass="lblSecondaryText"
+               text="Oct 14, 2022 14:30" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
-        <Line endX="300.0" layoutY="550.0" stroke="#e5e6eb" />
+        <Line endX="300.0" layoutY="550.0" stroke="#e5e6eb"/>
         <Label id="helpBtn" layoutY="564.0" style="-fx-cursor: hand;" text="Need help?" textFill="#4080ff">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
         </Label>
         <Label layoutX="171.0" layoutY="559.0" styleClass="lblPrimaryText" text="Order Summary" textFill="#1d2129">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="12.0"/>
             </font>
             <padding>
-                <Insets bottom="5.0" top="5.0" />
+                <Insets bottom="5.0" top="5.0"/>
             </padding>
         </Label>
         <Label layoutX="171.0" layoutY="587.0" styleClass="lblSecondaryText" text="Subtotal" textFill="#4e5969">
             <font>
-                <Font size="11.0" />
+                <Font size="11.0"/>
             </font>
         </Label>
-        <Label fx:id="totalAmount" layoutX="228.0" layoutY="587.0" styleClass="lblSecondaryText" text="RM 49999" textFill="#4e5969">
+        <Label fx:id="totalAmount" layoutX="228.0" layoutY="587.0" styleClass="lblSecondaryText" text="RM 49999"
+               textFill="#4e5969">
             <font>
-                <Font size="11.0" />
+                <Font size="11.0"/>
             </font>
         </Label>
-        <Button id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
+        <Button id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false"
+                onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0"
+                style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;"
+                text="Track order" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="14.0"/>
             </font>
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
         </Button>
-        <Button id="btnCheckInvoice" fx:id="invoiceBtn" layoutX="5.0" layoutY="628.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="Invoice" textFill="#4e5969">
+        <Button id="btnCheckInvoice" fx:id="invoiceBtn" layoutX="5.0" layoutY="628.0" mnemonicParsing="false"
+                prefHeight="35.0" prefWidth="120.0" text="Invoice" textFill="#4e5969">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="14.0"/>
             </font>
             <padding>
-                <Insets left="10.0" />
+                <Insets left="10.0"/>
             </padding>
             <cursor>
-                <Cursor fx:constant="HAND" />
+                <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-        <ImageView fx:id="invoiceIcon" fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../image/UI/invoice_grey.png" />
+        <ImageView fx:id="invoiceIcon" fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="636.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/invoice_grey.png"/>
         </ImageView>
-        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../image/UI/target_Icon.png" />
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@../image/UI/target_Icon.png"/>
         </ImageView>
-        <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="lblLocation" layoutX="167.0" layoutY="270.0" prefHeight="54.0" prefWidth="132.0" styleClass="lblSecondaryText" text="Jalan Technology Park, Bukit Jalil" textFill="#4e5969" wrapText="true" />
+        <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="272.0"
+                   pickOnBounds="true" preserveRatio="true"/>
+        <Label fx:id="lblLocation" layoutX="167.0" layoutY="270.0" prefHeight="54.0" prefWidth="132.0"
+               styleClass="lblSecondaryText" text="Jalan Technology Park, Bukit Jalil" textFill="#4e5969"
+               wrapText="true"/>
     </Pane>
 </Pane>

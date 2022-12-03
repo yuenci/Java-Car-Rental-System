@@ -21,3 +21,8 @@
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+
+.trackOrderPane{
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+}
