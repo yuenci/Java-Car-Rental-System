@@ -9,10 +9,21 @@
     <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
         <fx:include source="navigationBarShort.fxml" />
     </Pane>
+
+    <Pane fx:id="centerContainer" layoutX="311.0" layoutY="50.0" prefHeight="750.0" prefWidth="530.0"
+          style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;"/>
+    <Pane fx:id="rightContainer" layoutX="871.0" layoutY="50.0" prefHeight="750.0" prefWidth="350.0"
+          style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;"/>
+    <Pane fx:id="hugeContainer" layoutX="260.0" layoutY="50.0" prefHeight="750.0" prefWidth="1020.0"
+          style="-fx-background-color: white;">
+        <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0"/>
+        <Pane fx:id="settingMainPanel" layoutX="200.0" prefHeight="700.0" prefWidth="820.0"/>
+    </Pane>
     
-    <Pane layoutX="270.0" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: transparent;">
+    <Pane fx:id="dashboardContainer" layoutX="270.0" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: transparent;">
         <fx:include source="dashboard.fxml" />
     </Pane>
+
     <Pane layoutX="10.0" layoutY="240.0" prefHeight="130.0" prefWidth="250.0" style="-fx-background-color: transparent;">
         <fx:include source="todo.fxml" />
     </Pane>

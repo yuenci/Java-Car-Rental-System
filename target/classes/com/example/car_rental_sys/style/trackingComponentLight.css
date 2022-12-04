@@ -9,8 +9,9 @@
 }
 
 .lblFocusText{
-    -fx-text-fill: #165DFF;
+    -fx-text-fill: #165DFF !important;
     -fx-font-size: 20px;
+    -fx-font-weight: bold;
 }
 
 .dotStatus{
