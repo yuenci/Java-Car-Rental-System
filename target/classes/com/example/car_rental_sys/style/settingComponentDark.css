@@ -16,6 +16,11 @@
     -fx-border-color: #4080ff !important;
 }
 
+.comboFocus{
+    -fx-text-fill: #f6f6f6 !important;
+    -fx-font-weight: bold;
+}
+
 .comboFocus:hover, .comboFocus:focused{
     -fx-border-width: 1.5px !important;
     -fx-border-color: #4080ff !important;

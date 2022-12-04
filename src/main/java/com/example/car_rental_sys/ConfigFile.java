@@ -15,6 +15,7 @@ public class ConfigFile {
     public static final String jxBrowserLicense = "1BNDJDKIKI2KXPTPLDNLA1N3QFYP9655G68TOMO87HH4G8GHNXM26ZCIXGCRCB6X7J3YZ0";
     public static final String googleMapApiKey = "todo";
     public static final String  AESKey = "1234567890123456";
+    public static final String removebgKey = "CTJFqT2gR2jD1dntBoxYvkDZ";
 
 
     // services
