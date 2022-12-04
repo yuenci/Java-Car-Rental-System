@@ -58,7 +58,7 @@ public class PersonalPageController {
     }
 
     private void initAvatar(){
-        ivAvatar.setImage(StatusContainer.currentUser.getAvatar());
+        setCircleAvatar(StatusContainer.currentUser.getAvatar());
         ivTxtUsername.setText(StatusContainer.currentUser.getUserName());
     }
 
@@ -78,14 +78,15 @@ public class PersonalPageController {
     @FXML
     void uploadClicked() {
         newImageURL = DataTools.fileChooser();
-        //ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL));
         //remove the current image
         Image newAvatar =   ImageTools.getNewAvatar(newImageURL,StatusContainer.currentUser.getUserID());
-
-        ivAvatar.setImage(newAvatar);   /// here got unfinished
-        System.out.println(newImageURL);
-//        ivAvatar.setImage(ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL)));
+        setCircleAvatar(newAvatar);
         //save new profile
+    }
+
+    private void setCircleAvatar(Image avatar){
+        Image circleAvatar = ImageTools.getCircleImages(avatar);
+        ivAvatar.setImage(circleAvatar);
     }
 
 

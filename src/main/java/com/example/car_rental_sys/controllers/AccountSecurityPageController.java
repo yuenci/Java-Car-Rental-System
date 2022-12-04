@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -53,7 +54,8 @@ public class AccountSecurityPageController {
     }
 
     private void initAvatar(){
-        ivAvatar.setImage(StatusContainer.currentUser.getAvatar());
+        Image circleAvatar = ImageTools.getCircleImages(StatusContainer.currentUser.getAvatar());
+        ivAvatar.setImage(circleAvatar);
     }
 
     @FXML

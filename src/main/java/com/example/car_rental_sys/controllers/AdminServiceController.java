@@ -69,7 +69,7 @@ public class AdminServiceController {
             dashboardContainer.setVisible(false);
             System.out.println("showSettingPage");
             initFXML(middlePanel, settingMiddleBar);
-            initFXML(settingMainPanel, personalInfo);
+            initFXML(settingMainPanel, settingMain);
         } catch (IOException e) {
             e.printStackTrace();
         }
