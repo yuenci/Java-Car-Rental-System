@@ -26,13 +26,16 @@ public class dashboardController {
     @FXML
     Pane browserPane;
 
+    public static dashboardController instance;
 
+    private  Browser browser;
 
     @FXML
     public void initialize() {
         System.out.println("dashboardController");
 //        initWebview();
         initJxBrowser();
+        instance = this;
     }
 
 
@@ -50,7 +53,7 @@ public class dashboardController {
 
 
 
-        Browser browser = engine.newBrowser();
+        browser = engine.newBrowser();
 
         browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/dashboard/index.html").getAbsolutePath());
         BrowserView view = BrowserView.newInstance(browser);
@@ -58,6 +61,14 @@ public class dashboardController {
         browserPane.getChildren().add(view);
     }
 
-
+    public void changePage(String type){
+        if (type.equals("dashboard")){
+            browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/dashboard/index.html").getAbsolutePath());
+            AdminServiceController.instance.changeIcon("right");
+        }else if (type.equals("income")){
+            browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/incomeAnalysis/index.html").getAbsolutePath());
+            AdminServiceController.instance.changeIcon("left");
+        }
+    }
 
 }

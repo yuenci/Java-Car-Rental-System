@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AdminServiceController">
@@ -10,18 +11,24 @@
         <fx:include source="navigationBarShort.fxml" />
     </Pane>
 
-    <Pane fx:id="centerContainer" layoutX="311.0" layoutY="50.0" prefHeight="750.0" prefWidth="530.0"
-          style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;"/>
-    <Pane fx:id="rightContainer" layoutX="871.0" layoutY="50.0" prefHeight="750.0" prefWidth="350.0"
-          style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;"/>
-    <Pane fx:id="hugeContainer" layoutX="260.0" layoutY="50.0" prefHeight="750.0" prefWidth="1020.0"
-          style="-fx-background-color: white;">
-        <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0"/>
-        <Pane fx:id="settingMainPanel" layoutX="200.0" prefHeight="700.0" prefWidth="820.0"/>
+    <Pane fx:id="centerContainer" layoutX="311.0" layoutY="50.0" prefHeight="750.0" prefWidth="530.0" style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;" />
+    <Pane fx:id="rightContainer" layoutX="871.0" layoutY="50.0" prefHeight="750.0" prefWidth="350.0" style="-fx-border-color: #78787a; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-color: transparent; -fx-background-radius: 10px;" />
+    <Pane fx:id="hugeContainer" layoutX="260.0" layoutY="50.0" prefHeight="750.0" prefWidth="1020.0" style="-fx-background-color: white;">
+        <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0" />
+        <Pane fx:id="settingMainPanel" layoutX="200.0" prefHeight="700.0" prefWidth="820.0" />
     </Pane>
     
     <Pane fx:id="dashboardContainer" layoutX="270.0" layoutY="50.0" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: transparent;">
         <fx:include source="dashboard.fxml" />
+      <Pane fx:id="toRightPane" layoutX="940.0" layoutY="6.0" prefHeight="39.0" prefWidth="43.0">
+         <children>
+            <ImageView fx:id="toRightBtn" fitHeight="39.0" fitWidth="58.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/UI/right.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
     </Pane>
 
     <Pane layoutX="10.0" layoutY="240.0" prefHeight="130.0" prefWidth="250.0" style="-fx-background-color: transparent;">

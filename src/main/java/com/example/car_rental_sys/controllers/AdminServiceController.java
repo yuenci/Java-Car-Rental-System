@@ -1,8 +1,12 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -30,21 +34,44 @@ public class AdminServiceController {
     private final String trackPane = "TrackOrderComponent.fxml";
 
     @FXML
-    private Pane centerContainer;
+    private Pane centerContainer,rightContainer,hugeContainer,middlePanel,settingMainPanel, dashboardContainer,toRightPane;
+
     @FXML
-    private Pane rightContainer;
-    @FXML
-    private Pane hugeContainer;
-    @FXML
-    private Pane middlePanel;
-    @FXML
-    private Pane settingMainPanel;
-    @FXML
-    private Pane dashboardContainer;
+    ImageView toRightBtn;
+
+    private boolean ifDashboard = true;
 
     @FXML
     public void initialize() {
-        System.out.println("AdminServiceController");
+        //System.out.println("AdminServiceController");
+        initToRightBtnEvent();
+    }
+
+    private void initToRightBtnEvent(){
+
+
+
+        toRightBtn.setOnMouseClicked(event -> {
+            if(ifDashboard){
+                dashboardController.instance.changePage("income");
+                ifDashboard = false;
+            }else {
+                dashboardController.instance.changePage("dashboard");
+                ifDashboard = true;
+            }
+        });
+
+        // set hover effect
+        toRightBtn.setOnMouseEntered(event -> {
+            toRightPane.setStyle("-fx-background-color: #e7e7e7;-fx-background-radius: 5px;");
+            //hand
+            toRightPane.setCursor(Cursor.HAND);
+        });
+
+        toRightBtn.setOnMouseExited(event -> {
+            toRightPane.setStyle("-fx-background-color: #fafafa;");
+            toRightPane.setCursor(Cursor.DEFAULT);
+        });
     }
 
     public AdminServiceController() {
@@ -148,5 +175,14 @@ public class AdminServiceController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void changeIcon(String type){
+        if(type.equals("left")){
+            toRightBtn.setImage(ImageTools.getUIImageObjFromName("left.png"));
+        }else if (type.equals("right")){
+            toRightBtn.setImage(ImageTools.getUIImageObjFromName("right.png"));
+        }
+
     }
 }
