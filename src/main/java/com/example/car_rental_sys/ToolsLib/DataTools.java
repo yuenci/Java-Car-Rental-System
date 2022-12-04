@@ -104,7 +104,7 @@ public class DataTools {
 
     public static String getProjectPath() {
         return System.getProperty("user.dir");
-        //E:\Materials\Semester 3\CRS-version0.2
+        //E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs
     }
 
     public static int getNewUserID() {
