@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 </head>
 
-<body style="height: 100%; margin: 0">
+<body style="height: 100%; margin: 0; background: #111111;">
     <div id="container" style="height: 100%"></div>
 
 
@@ -19,6 +19,10 @@
         });
         var app = {};
 
+        var fontsz = 40;
+        var barWidthV = 25;
+
+
         var option;
 
         option = {
@@ -26,12 +30,12 @@
                 text: '70%',
                 textStyle: {
                     color: '#389dff',
-                    fontSize: 80
+                    fontSize: fontsz
                 },
                 subtext: 'Overall',
                 subtextStyle: {
                     color: '#909090',
-                    fontSize: 40
+                    fontSize: fontsz / 2
                 },
                 itemGap: -10, // 主副标题距离
                 left: 'center',
@@ -93,7 +97,7 @@
                 }],
                 coordinateSystem: 'polar',
                 roundCap: true,
-                barWidth: 70,
+                barWidth: barWidthV,
                 barGap: '-100%', // 两环重叠
                 z: 2,
             }, { // 灰色环
@@ -109,7 +113,7 @@
                 }],
                 coordinateSystem: 'polar',
                 roundCap: true,
-                barWidth: 70,
+                barWidth: barWidthV,
                 barGap: '-100%', // 两环重叠
                 z: 1
             }]

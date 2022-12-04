@@ -200,6 +200,11 @@ engine.load(url.toString());
 ```java
 Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
 
+// HARDWARE_ACCELERATED : 硬件加速模式
+// RenderingMode.OFF_SCREEN : 离屏渲染模式
+
+        
+
 Browser browser = engine.newBrowser();
 
 //browser.navigation().loadUrl(new File("src/.../index.html").getAbsolutePath());

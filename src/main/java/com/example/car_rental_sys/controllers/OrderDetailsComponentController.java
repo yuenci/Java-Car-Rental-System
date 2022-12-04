@@ -166,6 +166,11 @@ public class OrderDetailsComponentController {
 
     private void setCarName(String carName) {
         this.carName.setText(carName);
+
+
+
+
+
         System.out.println("setCarName");
     }
 
@@ -202,4 +207,3 @@ public class OrderDetailsComponentController {
 //        panelOrderDetails.getChildren().add(trackOrderPane);
     }
 }
-
