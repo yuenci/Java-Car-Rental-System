@@ -12,14 +12,32 @@
 }
 
 .txtBoxFocus:hover, .txtBoxFocus:focused{
-    -fx-border-color: #306fff !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-color: #4080ff !important;
 }
 
 .comboFocus:hover, .comboFocus:focused{
-    -fx-border-color: #306fff !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-color: #4080ff !important;
 }
 
 .btnSettingsBoxBtn{
-    -fx-text-fill: #306fff !important;
-    -fx-border-color: #306fff !important;
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #bedaff !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-color: #bedaff !important;
+}
+
+.lblSecSettingText{
+    -fx-text-fill: #e5e6eb !important;
+}
+
+.text-area{
+    -fx-text-fill: #f6f6f6 !important;
+    -fx-focus-color: #4080ff !important;
+    -fx-faint-focus-color: transparent;;
+}
+
+.text-area .scroll-pane .content {
+    -fx-background-color: #111111 !important;
 }

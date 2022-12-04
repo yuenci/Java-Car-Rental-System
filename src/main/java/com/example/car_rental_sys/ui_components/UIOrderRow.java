@@ -3,6 +3,8 @@ package com.example.car_rental_sys.ui_components;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.controllers.AdminServiceController;
+import com.example.car_rental_sys.controllers.CustomerServiceController;
 import com.example.car_rental_sys.controllers.OrderDetailsComponentController;
 import com.example.car_rental_sys.controllers.OrderListComponentController;
 import com.example.car_rental_sys.orm.Customer;
@@ -121,12 +123,16 @@ public class UIOrderRow extends Pane {
     private void initEvent(){
         this.setCursor(Cursor.HAND);
         this.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            if(StatusContainer.currentUser instanceof Customer){
+                CustomerServiceController.instance.closeTrackOrder();
+            }else{
+                AdminServiceController.instance.closeTrackOrder();
+            }
+
             OrderDetailsComponentController.instance.updateStatus(1);
             loadImage();
             OrderDetailsComponentController.instance.updateOrderDetails(this);
-                }
-
-        );
+        });
     }
 
     private void loadImage(){

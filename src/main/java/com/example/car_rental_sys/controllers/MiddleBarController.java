@@ -56,14 +56,22 @@ public class MiddleBarController {
     @FXML
     void btnSysSettingClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        CustomerServiceController.instance.showSettingPage();
+        if(StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showSettingPage();
+        }else{
+            AdminServiceController.instance.showSettingPage();
+        }
         //System.out.println("btnSysSettingClicked");
     }
 
     @FXML
     void btnAccSettingClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        CustomerServiceController.instance.showAccSecurity();
+        if(StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showAccSecurity();
+        }else{
+            AdminServiceController.instance.showAccSecurity();
+        }
         //System.out.println("btnAccSettingClicked");
     }
 
@@ -71,7 +79,11 @@ public class MiddleBarController {
     @FXML
     void btnAccPasswordClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        CustomerServiceController.instance.showPasswordPage();
+        if(StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showPasswordPage();
+        }else{
+            AdminServiceController.instance.showPasswordPage();
+        }
         //System.out.println("btnAccPasswordClicked");
     }
 

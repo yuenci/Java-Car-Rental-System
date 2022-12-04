@@ -66,6 +66,12 @@ public class CustomerServiceController {
         pane.getChildren().add(fxmlLoader.load());
     }
 
+    private void initHugeContainer(){
+        hugeContainer.getChildren().clear();
+        hugeContainer.setVisible(true);
+        hugeContainer.getChildren().addAll(middlePanel, settingMainPanel);
+    }
+
     public void showTrackOrder(){
         try {
             initFXML(rightContainer, trackPane);
@@ -107,9 +113,7 @@ public class CustomerServiceController {
 
     public void showSettingPage(){
         try {
-            hugeContainer.getChildren().clear();
-            hugeContainer.setVisible(true);
-            hugeContainer.getChildren().addAll(middlePanel, settingMainPanel);
+            initHugeContainer();
             middlePanel.getChildren().clear();
             settingMainPanel.getChildren().clear();
             initFXML(middlePanel, settingMiddleBar);
@@ -121,9 +125,7 @@ public class CustomerServiceController {
 
     public void showProfilePage(){
         try {
-            hugeContainer.getChildren().clear();
-            hugeContainer.setVisible(true);
-            hugeContainer.getChildren().addAll(middlePanel, settingMainPanel);
+            initHugeContainer();
             middlePanel.getChildren().clear();
             settingMainPanel.getChildren().clear();
             initFXML(middlePanel, infoMiddleBar);

@@ -1,13 +1,13 @@
 #btnCheckInvoice{
-    -fx-text-fill: #DFDFDF !important;
+    -fx-text-fill: #4e5969 !important;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-border-insets: 0px;
     -fx-border-width: 2px;
     -fx-background-insets: 0px;
     -fx-cursor: hand;
-    -fx-background-color: white;
-    -fx-border-color: #DFDFDF;
+    -fx-background-color: transparent;
+    -fx-border-color: #4e5969;
     -fx-border-radius: 6px;
 }
 

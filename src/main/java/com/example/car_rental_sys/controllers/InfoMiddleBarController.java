@@ -50,7 +50,11 @@ public class InfoMiddleBarController {
     @FXML
     void btnPersonInfoClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        CustomerServiceController.instance.showProfilePage();
+        if( StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showProfilePage();
+        }else{
+            AdminServiceController.instance.showProfilePage();
+        }
         //System.out.println("btnPersonInfoClicked");
     }
 

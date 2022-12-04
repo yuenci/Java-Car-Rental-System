@@ -87,6 +87,7 @@ public class OrderDetailsComponentController {
 
 
     private void checkShowingStatus(){
+
         if(showingStatus == 0){
             showUpperPane("Select any order to view more details");
         }else if(showingStatus == 1) {
@@ -184,7 +185,11 @@ public class OrderDetailsComponentController {
 
     @FXML
     private void btnTrackOrderClicked(){
-        CustomerServiceController.instance.showTrackOrder();
+        if (StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showTrackOrder();
+        }else{
+            AdminServiceController.instance.showTrackOrder();
+        }
 //        Pane trackOrderPane = new Pane();
 //        trackOrderPane.setPrefSize(350, 750);
 //        trackOrderPane.setLayoutX(0);

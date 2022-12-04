@@ -46,7 +46,11 @@ public class TrackOrderController {
 
     @FXML
     private void leftIconClicked() {
-        CustomerServiceController.instance.closeTrackOrder();
+        if(StatusContainer.currentUser instanceof Customer){
+            CustomerServiceController.instance.showOrderPage();
+        }else{
+            AdminServiceController.instance.showOrderPage();
+        }
     }
 
 

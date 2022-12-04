@@ -29,6 +29,7 @@ public class AdminSideBarController {
         initUserData();
         initMenuEvent();
         initLabelEvent();
+        item3.getStyleClass().add("menuItemActive");
     }
     private void initUserData() {
         nameTextLabel.setText(admin.getUserName());
@@ -41,15 +42,30 @@ public class AdminSideBarController {
 
 
     private void initMenuEvent() {
-        item1.setOnMouseClicked(event -> changeMenuStyle(item1));
+        item1.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showProfilePage();
+            changeMenuStyle(item1);
+        });
         item2.setOnMouseClicked(event -> {
             changeMenuStyle(item2);
             FXTools.changeScene("messagePage.fxml");
         });
-        item3.setOnMouseClicked(event -> changeMenuStyle(item3));
-        item4.setOnMouseClicked(event -> changeMenuStyle(item4));
-        item5.setOnMouseClicked(event -> changeMenuStyle(item5));
-        item6.setOnMouseClicked(event -> changeMenuStyle(item6));
+        item3.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showDashboardPage();
+            changeMenuStyle(item3);
+        });
+        item4.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showVehiclePage();
+            changeMenuStyle(item4);
+        });
+        item5.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showOrderPage();
+            changeMenuStyle(item5);
+        });
+        item6.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showSettingPage();
+            changeMenuStyle(item6);
+        });
         item7.setOnMouseClicked(event -> {
             changeMenuStyle(item6);
             StatusContainer.currentUser = null;
@@ -71,7 +87,7 @@ public class AdminSideBarController {
         activePane.getStyleClass().add("menuItemActive");
     }
 
-    private  void  initLabelEvent(){
+    private void  initLabelEvent(){
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
         postLabel.setAlignment(Pos.CENTER);
