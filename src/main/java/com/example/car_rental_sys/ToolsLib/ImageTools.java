@@ -219,6 +219,16 @@ public class ImageTools {
         }
     }
 
+    public static Image getNewAvatar(String inputFile, int userID){
+        String outputFilePathR = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        File file = new File(outputFilePathR);
+        String outputFilePathA = file.getAbsolutePath();
+        //System.out.println(outputFilePathA);
+        //E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\image\avatar\1.png
+        covertImageToPng(inputFile, outputFilePathA);
+        return getImageObjFromPath(outputFilePathA);
+    }
+
     public static void  generateQRCode(ImageView imageView, String content, int width, int height) {
         try {
             Image image = getQRCode(content, width, height);
@@ -390,4 +400,6 @@ public class ImageTools {
         String carImagePath = "src/main/resources/com/example/car_rental_sys/image/cars/"+carName+".png";
         return getImageObjFromPath(carImagePath);
     }
+
+
 }

@@ -1,9 +1,6 @@
 package com.example.car_rental_sys;
 
-import com.example.car_rental_sys.ToolsLib.DataTools;
-import com.example.car_rental_sys.ToolsLib.FXTools;
-import com.example.car_rental_sys.ToolsLib.NetTools;
-import com.example.car_rental_sys.ToolsLib.SelfTestTools;
+import com.example.car_rental_sys.ToolsLib.*;
 import com.example.car_rental_sys.controllers.UIPaginationController;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.Test;
@@ -37,6 +34,7 @@ public class Application extends javafx.application.Application {
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
         Test.test();
+        ImageTools.getNewAvatar("qq",100);
     }
 
     @Override
@@ -52,10 +50,10 @@ public class Application extends javafx.application.Application {
         //String fxmlName = "OrderDetailsComponent.fxml";
         //String fxmlName = "paySuccessPage.fxml";
         //String fxmlName = "aboutUsPage2.fxml";
-        //String fxmlName = "driverServicePage.fxml";
+        String fxmlName = "driverServicePage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        String fxmlName = "customerServicePage.fxml";
+        //String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "addBankCardPage.fxml";
       //  String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
