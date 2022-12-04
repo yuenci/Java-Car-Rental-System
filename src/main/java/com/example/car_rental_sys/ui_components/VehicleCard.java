@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.controllers.AdminVehiclePageController;
+import com.example.car_rental_sys.controllers.EditVehiclePageController;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,6 +15,14 @@ public class VehicleCard extends Pane {
     private String vehiclePrice;
     private String gradientLight;
     private String gradientDark;
+
+    private String chassisNumber;
+    private String plateNumber;
+    private String manufacturingDate;
+
+    private String seatNumber;
+    private String gearType;  //gear Type
+    private String carBrand;   //car brand
 
     private Label lblEdit;
 
@@ -29,6 +38,18 @@ public class VehicleCard extends Pane {
         this.gradientDark = gradientDark;
         initVehicleCard();
     }
+
+    public VehicleCard(String vehicleName, String seatNumber, String vehiclePrice, String gearType, String gradientLight, String gradientDark, String carBrand) {
+        this.vehicleName = vehicleName;
+        this.seatNumber = seatNumber;
+        this.vehiclePrice = vehiclePrice;
+        this.gearType = gearType;
+        this.gradientLight = gradientLight;
+        this.gradientDark = gradientDark;
+        this.carBrand = carBrand;
+        initVehicleCard();
+    }
+
 
     private void initVehicleCard(){
         initStyle();
@@ -94,7 +115,17 @@ public class VehicleCard extends Pane {
 //
 //                thread.start();
                 AdminVehiclePageController.instance.showEditVehiclePage();
+                EditVehiclePageController.instance.setCarData(vehicleName,plateNumber,chassisNumber,
+                        manufacturingDate,vehiclePrice,gearType,seatNumber,carBrand,gradientLight,gradientDark);
             });
         }
     }
+
+    public void setCarInfo(String chassisNumber, String plateNumber, String manufacturingDate){
+        this.chassisNumber = chassisNumber;
+        this.plateNumber = plateNumber;
+        this.manufacturingDate = manufacturingDate;
+    }
+
+
 }

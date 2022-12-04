@@ -1,213 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane prefHeight="510.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.EditVehiclePageController">
+<Pane prefHeight="510.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.EditVehiclePageController">
     <Label layoutX="4.0" layoutY="11.0" prefHeight="31.0" prefWidth="107.0" text="Vehicle Name" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <TextField fx:id="txtVehicleName" layoutX="2.0" layoutY="45.0" prefHeight="40.0" prefWidth="400.0"
-               style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
+    <TextField fx:id="txtVehicleName" layoutX="2.0" layoutY="45.0" prefHeight="40.0" prefWidth="400.0" style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </TextField>
-    <Text fill="#c9cdd4" layoutX="5.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Do not exceed 25 characters when entering the vehicle name.">
+    <Text fill="#c9cdd4" layoutX="5.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do not exceed 25 characters when entering the vehicle name.">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Text>
     <Label layoutX="4.0" layoutY="129.0" prefHeight="31.0" prefWidth="77.0" text="Category" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <ComboBox fx:id="cmbCategory" layoutX="2.0" layoutY="161.0" prefHeight="40.0" prefWidth="222.0"
-              style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px; -fx-text-fill: #4e5969; -fx-font-family: Arial; -fx-font-size: 13px;"
-              visibleRowCount="2">
+    <ComboBox fx:id="cmbCategory" layoutX="2.0" layoutY="161.0" prefHeight="40.0" prefWidth="222.0" style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px; -fx-text-fill: #4e5969; -fx-font-family: Arial; -fx-font-size: 13px;" visibleRowCount="2">
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </ComboBox>
     <Label layoutX="251.0" layoutY="129.0" prefHeight="31.0" prefWidth="115.0" text="Seats Number" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <ComboBox fx:id="cmbSeatNumber" layoutX="247.0" layoutY="161.0" prefHeight="40.0" prefWidth="154.0"
-              style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px;"
-              visibleRowCount="2">
+    <ComboBox fx:id="cmbSeatNumber" layoutX="247.0" layoutY="161.0" prefHeight="40.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px;" visibleRowCount="2">
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </ComboBox>
     <Label layoutX="4.0" layoutY="223.0" prefHeight="31.0" prefWidth="107.0" text="Brand" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
     <Label layoutX="474.0" layoutY="11.0" prefHeight="31.0" prefWidth="115.0" text="Vehicle Image" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <ComboBox fx:id="cmbCarBrand" layoutY="254.0" prefHeight="40.0" prefWidth="400.0"
-              style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px; -fx-text-fill: #4e5969; -fx-font-family: Arial; -fx-font-size: 13px;"
-              visibleRowCount="2">
+    <ComboBox fx:id="cmbCarBrand" layoutY="254.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: transparent; -fx-background-radius: 5px; -fx-background-insets: 0; -fx-border-color: #e5e6eb; -fx-border-insets: 0; -fx-border-radius: 5px; -fx-text-fill: #4e5969; -fx-font-family: Arial; -fx-font-size: 13px;" visibleRowCount="2">
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </ComboBox>
     <Pane fx:id="imgPane" layoutX="474.0" layoutY="45.0" prefHeight="226.0" prefWidth="335.0" visible="false">
-        <ImageView fx:id="imgVehicle" fitHeight="225.0" fitWidth="335.0" pickOnBounds="true" preserveRatio="true"/>
+        <ImageView fx:id="imgVehicle" fitHeight="225.0" fitWidth="335.0" pickOnBounds="true" preserveRatio="true" />
     </Pane>
-    <Pane fx:id="dragPane" layoutX="475.0" layoutY="45.0" onDragDropped="#imgVehicleDrop" prefHeight="226.0"
-          prefWidth="335.0"
-          style="-fx-background-color: transparent; -fx-background-radius: 10px; -fx-border-color: #c9cdd4; -fx-border-radius: 10px; -fx-border-width: 2px;">
-        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="153.0" layoutY="66.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../image/UI/image.png"/>
+    <Pane fx:id="dragPane" layoutX="475.0" layoutY="45.0" onDragDropped="#imgVehicleDrop" prefHeight="226.0" prefWidth="335.0" style="-fx-background-color: transparent; -fx-background-radius: 10px; -fx-border-color: #c9cdd4; -fx-border-radius: 10px; -fx-border-width: 2px;">
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="153.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/image.png" />
         </ImageView>
         <Label layoutX="91.0" layoutY="106.0" text="Drop your image here, or" textFill="#c9cdd4">
             <font>
-                <Font name="Arial Bold" size="13.0"/>
+                <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
         <Label layoutX="104.0" layoutY="127.0" text="select" textFill="#c9cdd4">
             <font>
-                <Font name="Arial Bold" size="13.0"/>
+                <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
-        <Label layoutX="146.0" layoutY="127.0" onMouseClicked="#btnBrowseClicked" text="click to browse"
-               textFill="#134ca3">
+        <Label layoutX="146.0" layoutY="127.0" onMouseClicked="#btnBrowseClicked" text="click to browse" textFill="#134ca3">
             <font>
-                <Font name="Arial Bold" size="13.0"/>
+                <Font name="Arial Bold" size="13.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Label>
     </Pane>
-    <Label layoutX="474.0" layoutY="274.0" prefHeight="40.0" prefWidth="335.0"
-           text="You must add a photo of the vehicle and make sure the background of the car is empty."
-           textAlignment="JUSTIFY" textFill="#c9cdd4" wrapText="true">
+    <Label layoutX="474.0" layoutY="274.0" prefHeight="40.0" prefWidth="335.0" text="You must add a photo of the vehicle and make sure the background of the car is empty." textAlignment="JUSTIFY" textFill="#c9cdd4" wrapText="true">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Label>
     <Label layoutX="475.0" layoutY="384.0" prefHeight="31.0" prefWidth="115.0" text="Add Unit Price" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <TextField fx:id="txtPrice" layoutX="474.0" layoutY="415.0" prefHeight="40.0" prefWidth="138.0" promptText="1000"
-               style="-fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
+    <TextField fx:id="txtPrice" layoutX="474.0" layoutY="415.0" prefHeight="40.0" prefWidth="138.0" promptText="1000" style="-fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
         <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
         </font>
         <padding>
-            <Insets left="32.0"/>
+            <Insets left="32.0" />
         </padding>
     </TextField>
     <Text fill="#4e5969" layoutX="482.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RM">
         <font>
-            <Font name="Arial Bold" size="14.0"/>
+            <Font name="Arial Bold" size="14.0" />
         </font>
     </Text>
-    <Label layoutX="642.0" layoutY="384.0" prefHeight="31.0" prefWidth="163.0" text="Manufacturing Date"
-           textFill="#165dff">
+    <Label layoutX="642.0" layoutY="384.0" prefHeight="31.0" prefWidth="163.0" text="Manufacturing Date" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <TextField fx:id="txtManufacturing" layoutX="642.0" layoutY="415.0" prefHeight="40.0" prefWidth="154.0"
-               style="-fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
+    <TextField fx:id="txtManufacturing" layoutX="642.0" layoutY="415.0" prefHeight="40.0" prefWidth="154.0" style="-fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
         <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
         </font>
     </TextField>
     <Label layoutX="6.0" layoutY="315.0" prefHeight="31.0" prefWidth="138.0" text="Chassis Number" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <TextField fx:id="txtChassisNumber" layoutX="4.0" layoutY="346.0" prefHeight="40.0" prefWidth="222.0"
-               style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
+    <TextField fx:id="txtChassisNumber" layoutX="4.0" layoutY="346.0" prefHeight="40.0" prefWidth="222.0" style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </TextField>
     <Label layoutX="251.0" layoutY="315.0" prefHeight="31.0" prefWidth="138.0" text="Plate Number" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <TextField fx:id="txtPlateNumber" layoutX="247.0" layoutY="346.0" prefHeight="40.0" prefWidth="154.0"
-               style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
+    <TextField fx:id="txtPlateNumber" layoutX="247.0" layoutY="346.0" prefHeight="40.0" prefWidth="154.0" style="-fx-text-fill: #4e5969; -fx-border-radius: 6px; -fx-background-color: transparent; -fx-border-color: #e5e6eb;">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="474.0" layoutY="315.0" prefHeight="31.0" prefWidth="147.0" text="Background Color"
-           textFill="#165dff">
+    <Label layoutX="474.0" layoutY="315.0" prefHeight="31.0" prefWidth="147.0" text="Background Color" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="16.0"/>
+            <Font name="Arial Bold" size="16.0" />
         </font>
     </Label>
-    <Button layoutX="2.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#addVehicleBtnClicked"
-            prefHeight="48.0" prefWidth="138.0"
-            style="-fx-background-color: #165dff; -fx-background-radius: 6px; -fx-background-insets: 0;"
-            text="Add Vehicle" textFill="WHITE">
+    <Button fx:id="btnOperation" layoutX="2.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#addVehicleBtnClicked" prefHeight="48.0" prefWidth="138.0" style="-fx-background-radius: 6px; -fx-background-insets: 0;" text="Add Vehicle" textFill="WHITE">
         <font>
-            <Font name="Arial Bold" size="14.0"/>
+            <Font name="Arial Bold" size="14.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Button layoutX="157.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#saveVehicleBtnClicked"
-            prefHeight="48.0" prefWidth="138.0"
-            style="-fx-background-color: transparent; -fx-border-color: #165dff; -fx-border-radius: 6px; -fx-border-insets: 0; -fx-background-insets: 0;"
-            text="Save Product" textFill="#165dff">
+    <Button fx:id="btnSaveOption" layoutX="157.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#saveVehicleBtnClicked" prefHeight="48.0" prefWidth="138.0" style="-fx-border-color: #165dff; -fx-background-color: transparent; -fx-border-radius: 6px; -fx-border-insets: 0; -fx-background-insets: 0;" text="Save Product" textFill="#165dff">
         <font>
-            <Font name="Arial Bold" size="14.0"/>
+            <Font name="Arial Bold" size="14.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Label layoutX="745.0" layoutY="19.0" onMouseClicked="#clearBtnClicked" prefHeight="16.0" prefWidth="66.0"
-           text="Clear Image" textFill="#94bfff">
+    <Label layoutX="745.0" layoutY="19.0" onMouseClicked="#clearBtnClicked" prefHeight="16.0" prefWidth="66.0" text="Clear Image" textFill="#94bfff">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Label>
-    <Pane fx:id="colorOne" layoutX="473.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; "/>
-    <Pane fx:id="colorTwo" layoutX="504.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px; "/>
-    <Pane fx:id="colorThree" layoutX="534.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorFour" layoutX="565.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorFive" layoutX="594.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorSix" layoutX="621.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorEight" layoutX="675.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
-    <Pane fx:id="colorSeven" layoutX="648.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0"
-          style="-fx-background-radius: 18px;"/>
+    <Pane fx:id="colorOne" layoutX="473.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px; " />
+    <Pane fx:id="colorTwo" layoutX="504.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px; " />
+    <Pane fx:id="colorThree" layoutX="534.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
+    <Pane fx:id="colorFour" layoutX="565.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
+    <Pane fx:id="colorFive" layoutX="594.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
+    <Pane fx:id="colorSix" layoutX="621.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
+    <Pane fx:id="colorEight" layoutX="675.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
+    <Pane fx:id="colorSeven" layoutX="648.0" layoutY="346.0" prefHeight="18.0" prefWidth="18.0" style="-fx-background-radius: 18px;" />
 </Pane>

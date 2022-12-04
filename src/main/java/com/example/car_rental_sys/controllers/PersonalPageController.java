@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class PersonalPageController {
 
@@ -49,7 +51,7 @@ public class PersonalPageController {
     }
 
     private void initAvatar(){
-        //ivAvatar.setImage(User.instance.getAvatar());
+        //ivAvatar.setImage(customer.getAvatar());
     }
 
     private void initTheme(){
@@ -61,14 +63,16 @@ public class PersonalPageController {
     }
 
     @FXML
-    void deleteClicked(MouseEvent event) {
+    void deleteClicked() {
         ivAvatar.setImage(null);
     }
 
     @FXML
-    void uploadClicked(MouseEvent event) {
+    void uploadClicked() {
         newImageURL = DataTools.fileChooser();
-        ivAvatar.setImage(new Image(newImageURL));
+        //ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL));
+        ivAvatar.setImage(ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL)));
+        //save new profile
     }
 
 

@@ -99,6 +99,8 @@ public class AdminVehiclePageController{
             editVehicleBtn.getStyleClass().add("btnFocusStyle");
             AdVehicleMainPane.getChildren().add(fxmlLoader.load());
             System.out.println(defaultDisplay);
+            System.out.println("hi here");
+            //EditVehiclePageController.instance.initTextField();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -126,7 +128,7 @@ public class AdminVehiclePageController{
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxmlName));
                 AdVehicleMainPane.getChildren().add(fxmlLoader.load());
-                System.out.println("inside: " +System.currentTimeMillis());
+               // System.out.println("inside: " +System.currentTimeMillis());
             } catch (IOException e) {
                 e.printStackTrace();
             }
