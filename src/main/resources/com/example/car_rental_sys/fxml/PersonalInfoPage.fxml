@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -7,109 +8,135 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;" stylesheets="@../style/settingComponentLight.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PersonalPageController">
-   <ImageView fx:id="ivAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="281.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
-   <Button fx:id="ivDeleteBtn" layoutX="393.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#deleteClicked" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: white; -fx-background-insets: 0; -fx-border-insets: 0; -fx-border-radius: 4px; -fx-border-color: #e5e6eb;" styleClass="btnSettingsBoxBtn" text="Delete">
+<Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;"
+      stylesheets="@../style/settingComponentLight.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PersonalPageController">
+   <ImageView fx:id="ivAvatar" fitHeight="80.0" fitWidth="80.0" layoutX="299.0" layoutY="35.0" pickOnBounds="true"
+              preserveRatio="true"/>
+   <Button fx:id="ivDeleteBtn" layoutX="393.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#deleteClicked"
+           prefHeight="35.0" prefWidth="90.0"
+           style="-fx-background-color: white; -fx-background-insets: 0; -fx-border-insets: 0; -fx-border-radius: 4px; -fx-border-color: #e5e6eb;"
+           styleClass="btnSettingsBoxBtn" text="Delete">
       <font>
-         <Font name="Arial Bold" size="13.0" />
+         <Font name="Arial Bold" size="13.0"/>
       </font>
       <cursor>
-         <Cursor fx:constant="HAND" />
+         <Cursor fx:constant="HAND"/>
       </cursor>
    </Button>
-   <Button fx:id="ivUploadBtn" layoutX="491.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#uploadClicked" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-insets: 0;" text="Upload" textFill="WHITE">
+   <Button fx:id="ivUploadBtn" layoutX="491.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#uploadClicked"
+           prefHeight="35.0" prefWidth="90.0"
+           style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-insets: 0;"
+           text="Upload" textFill="WHITE">
       <font>
-         <Font name="Arial Bold" size="13.0" />
+         <Font name="Arial Bold" size="13.0"/>
       </font>
       <cursor>
-         <Cursor fx:constant="HAND" />
+         <Cursor fx:constant="HAND"/>
       </cursor>
    </Button>
-   <Line endX="620.0" layoutX="150.0" layoutY="135.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="135.0" startX="-120.0" stroke="#e5e6eb"/>
    <Label layoutX="55.0" layoutY="160.0" styleClass="lblSecSettingText" text="User name" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="205.0" startX="-120.0" stroke="#e5e6eb" />
-   <Line endX="620.0" layoutX="150.0" layoutY="275.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="205.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Line endX="620.0" layoutX="150.0" layoutY="275.0" startX="-120.0" stroke="#e5e6eb"/>
    <Label layoutX="55.0" layoutY="229.0" styleClass="lblSecSettingText" text="Date of birth" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="375.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="375.0" startX="-120.0" stroke="#e5e6eb"/>
    <Label layoutX="55.0" layoutY="295.0" styleClass="lblSecSettingText" text="Your bio" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <Label layoutX="56.0" layoutY="322.0" styleClass="lblSecSettingText" text="Write a short introduction" textFill="#86909c">
+   <Label layoutX="56.0" layoutY="322.0" styleClass="lblSecSettingText" text="Write a short introduction"
+          textFill="#86909c">
       <font>
-         <Font name="Arial" size="12.0" />
+         <Font name="Arial" size="12.0"/>
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="445.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="445.0" startX="-120.0" stroke="#e5e6eb"/>
    <Label layoutX="55.0" layoutY="398.0" styleClass="lblSecSettingText" text="Phone number" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="515.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="515.0" startX="-120.0" stroke="#e5e6eb"/>
    <Label layoutX="55.0" layoutY="468.0" styleClass="lblSecSettingText" text="Email" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
    <Label layoutX="55.0" layoutY="535.0" styleClass="lblSecSettingText" text="Address" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0" />
+         <Font name="Arial Bold" size="18.0"/>
       </font>
    </Label>
-   <TextField fx:id="ivTxtEmail" layoutX="281.0" layoutY="460.0" prefHeight="40.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;" styleClass="txtBoxFocus">
+   <TextField fx:id="ivTxtEmail" layoutX="281.0" layoutY="460.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
-   <TextField fx:id="ivTxtPhoneNumber" layoutX="281.0" layoutY="390.0" prefHeight="40.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;" styleClass="txtBoxFocus">
+   <TextField fx:id="ivTxtPhoneNumber" layoutX="281.0" layoutY="390.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
-   <TextField fx:id="ivTxtBirthday" layoutX="281.0" layoutY="220.0" prefHeight="40.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;" styleClass="txtBoxFocus">
+   <TextField fx:id="ivTxtBirthday" layoutX="281.0" layoutY="220.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
-   <TextField fx:id="ivTxtUsername" layoutX="281.0" layoutY="151.0" prefHeight="40.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;" styleClass="txtBoxFocus">
+   <TextField fx:id="ivTxtUsername" layoutX="281.0" layoutY="151.0" prefHeight="40.0" prefWidth="300.0"
+              style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1px; -fx-border-color: #c3c3c3; -fx-background-color: transparent; -fx-border-insets: 0;"
+              styleClass="txtBoxFocus">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextField>
-   <TextArea fx:id="ivTxtAbout" layoutX="281.0" layoutY="285.0" prefHeight="75.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1.5px;" wrapText="true">
+   <TextArea fx:id="ivTxtAbout" layoutX="281.0" layoutY="285.0" prefHeight="75.0" prefWidth="300.0"
+             style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1.5px;" wrapText="true">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextArea>
-   <TextArea fx:id="ivTxtAddress" layoutX="282.0" layoutY="535.0" prefHeight="75.0" prefWidth="300.0" style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1.5px;" wrapText="true">
+   <TextArea fx:id="ivTxtAddress" layoutX="282.0" layoutY="535.0" prefHeight="75.0" prefWidth="300.0"
+             style="-fx-border-radius: 6px; -fx-text-fill: #4e5969; -fx-border-width: 1.5px;" wrapText="true">
       <font>
-         <Font name="Arial Bold" size="14.0" />
+         <Font name="Arial Bold" size="14.0"/>
       </font>
    </TextArea>
-   <Button fx:id="ivSaveBtn" layoutX="455.0" layoutY="640.0" mnemonicParsing="false" onMouseClicked="#saveChangesClicked" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-insets: 0;" text="Save Changes" textFill="WHITE">
+   <Button fx:id="ivSaveBtn" layoutX="455.0" layoutY="640.0" mnemonicParsing="false"
+           onMouseClicked="#saveChangesClicked" prefHeight="35.0" prefWidth="126.0"
+           style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-insets: 0;"
+           text="Save Changes" textFill="WHITE">
       <cursor>
-         <Cursor fx:constant="HAND" />
+         <Cursor fx:constant="HAND"/>
       </cursor>
       <font>
-         <Font name="Arial Bold" size="13.0" />
+         <Font name="Arial Bold" size="13.0"/>
       </font>
    </Button>
-   <Button fx:id="ivCancelBtn" layoutX="355.0" layoutY="640.0" mnemonicParsing="false" onMouseClicked="#cancelClicked" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: white; -fx-background-insets: 0; -fx-border-insets: 0; -fx-border-radius: 4px; -fx-border-color: #e5e6eb;" styleClass="btnSettingsBoxBtn" text="Cancel">
+   <Button fx:id="ivCancelBtn" layoutX="355.0" layoutY="640.0" mnemonicParsing="false" onMouseClicked="#cancelClicked"
+           prefHeight="35.0" prefWidth="90.0"
+           style="-fx-background-color: white; -fx-background-insets: 0; -fx-border-insets: 0; -fx-border-radius: 4px; -fx-border-color: #e5e6eb;"
+           styleClass="btnSettingsBoxBtn" text="Cancel">
       <cursor>
-         <Cursor fx:constant="HAND" />
+         <Cursor fx:constant="HAND"/>
       </cursor>
       <font>
-         <Font name="Arial Bold" size="13.0" />
+         <Font name="Arial Bold" size="13.0"/>
       </font>
    </Button>
 </Pane>

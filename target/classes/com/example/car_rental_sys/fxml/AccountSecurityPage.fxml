@@ -1,72 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.AccountSecurityPageController"
-      stylesheets="@../style/settingComponentLight.css">
-   <ImageView fx:id="ivAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="300.0" layoutY="23.0" pickOnBounds="true"
-              preserveRatio="true"/>
+<Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;" stylesheets="@../style/settingComponentLight.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AccountSecurityPageController">
+   <ImageView fx:id="ivAvatar" fitHeight="80.0" fitWidth="80.0" layoutX="320.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
    <Label fx:id="ivUsername" layoutX="421.0" layoutY="65.0" styleClass="lblSettingText" text="User name">
       <font>
-         <Font name="Arial Bold" size="18.0"/>
+         <Font name="Arial Bold" size="18.0" />
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="150.0" startX="-120.0" stroke="#e5e6eb"/>
-   <Label layoutX="55.0" layoutY="175.0" styleClass="lblSettingText" text="Driving License" textFill="#4e5969">
+   <Line endX="620.0" layoutX="150.0" layoutY="150.0" startX="-120.0" stroke="#e5e6eb" />
+   <Label layoutX="53.0" layoutY="182.0" styleClass="lblSettingText" text="Driving License" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0"/>
+         <Font name="Arial Bold" size="18.0" />
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="220.0" startX="-120.0" stroke="#e5e6eb"/>
-   <Line endX="620.0" layoutX="150.0" layoutY="290.0" startX="-120.0" stroke="#e5e6eb"/>
-   <TextField fx:id="txtDrivingLicense" editable="false" layoutX="300.0" layoutY="166.0" prefHeight="40.0"
-              prefWidth="300.0"
-              style="-fx-text-fill: #4e5969; -fx-background-color: transparent; -fx-border-radius: 6px; -fx-border-color: #c3c3c3; -fx-border-insets: 0;">
+   <Line endX="620.0" layoutX="150.0" layoutY="230.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="310.0" startX="-120.0" stroke="#e5e6eb" />
+   <TextField fx:id="txtDrivingLicense" editable="false" layoutX="300.0" layoutY="173.0" prefHeight="40.0" prefWidth="300.0" style="-fx-text-fill: #4e5969; -fx-background-color: transparent; -fx-border-radius: 6px; -fx-border-color: #c3c3c3; -fx-border-insets: 0;">
       <font>
-         <Font name="Arial Bold" size="14.0"/>
+         <Font name="Arial Bold" size="14.0" />
       </font>
    </TextField>
-   <Label layoutX="55.0" layoutY="245.0" styleClass="lblSettingText" text="Security Question" textFill="#4e5969">
+   <Label layoutX="53.0" layoutY="263.0" styleClass="lblSettingText" text="Security Question" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0"/>
+         <Font name="Arial Bold" size="18.0" />
       </font>
    </Label>
-   <Label layoutX="55.0" layoutY="315.0" styleClass="lblSettingText" text="Security Answer" textFill="#4e5969">
+   <Label layoutX="53.0" layoutY="340.0" styleClass="lblSettingText" text="Security Answer" textFill="#4e5969">
       <font>
-         <Font name="Arial Bold" size="18.0"/>
+         <Font name="Arial Bold" size="18.0" />
       </font>
    </Label>
-   <TextField fx:id="txtSecurityAnswer" layoutX="300.0" layoutY="306.0" prefHeight="40.0" prefWidth="300.0"
-              style="-fx-text-fill: #4e5969; -fx-background-radius: 6px; -fx-background-color: transparent; -fx-border-color: #c3c3c3; -fx-border-radius: 6px; -fx-border-insets: 0;"
-              styleClass="txtBoxFocus">
+   <TextField fx:id="txtSecurityAnswer" layoutX="300.0" layoutY="330.0" prefHeight="40.0" prefWidth="300.0" style="-fx-text-fill: #4e5969; -fx-background-radius: 6px; -fx-background-color: transparent; -fx-border-color: #c3c3c3; -fx-border-radius: 6px; -fx-border-insets: 0;" styleClass="txtBoxFocus">
       <font>
-         <Font name="Arial Bold" size="14.0"/>
+         <Font name="Arial Bold" size="14.0" />
       </font>
    </TextField>
-   <ComboBox fx:id="comboQuestion" layoutX="300.0" layoutY="236.0" prefHeight="40.0" prefWidth="300.0"
-             promptText="default question"
-             style="-fx-border-insets: 0; -fx-border-radius: 6px; -fx-border-color: #c9cdd4; -fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-background-color: transparent;"
-             styleClass="comboFocus">
+   <ComboBox fx:id="comboQuestion" layoutX="300.0" layoutY="253.0" prefHeight="40.0" prefWidth="300.0" promptText="default question" style="-fx-border-insets: 0; -fx-border-radius: 6px; -fx-border-color: #c9cdd4; -fx-text-fill: #4e5969; -fx-font-size: 14px; -fx-background-color: transparent;" styleClass="comboFocus">
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
    </ComboBox>
-   <Button layoutX="300.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#saveBtnClicked" prefHeight="35.0"
-           prefWidth="154.0"
-           style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 6px;" text="Save"
-           textFill="WHITE">
+   <Button layoutX="300.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#saveBtnClicked" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 6px;" text="Save" textFill="WHITE">
       <font>
-         <Font name="Arial Bold" size="13.0"/>
+         <Font name="Arial Bold" size="13.0" />
       </font>
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
 </Pane>

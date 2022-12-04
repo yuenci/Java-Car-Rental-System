@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,22 +48,26 @@ public class PasswordPageController {
     }
 
     private void initDefaultText(){
-        ivUsername.setText("");
+        ivUsername.setText(StatusContainer.currentUser.getUserName());
+        txtOldPwd.setText(StatusContainer.currentUser.getPassword());
         changeDisplayPwdStyle();
     }
 
     private void initAvatar(){
-//        Image image = new Image("file:src/main/resources/images/avatar.png");
-//        ivAvatar.setImage(image);
+        Image circleAvatar = ImageTools.getCircleImages(StatusContainer.currentUser.getAvatar());
+        ivAvatar.setImage(circleAvatar);
     }
 
     private void changeDisplayPwdStyle(){
         if(showPassword){
-            txtOldPwd.setText("");
+            txtOldPwd.setText(StatusContainer.currentUser.getPassword());
         }else{
-            //String defaultTxt = "abcdfgsd";
-            //replace the characters with *
-            //txtOldPwd.setText(defaultTxt.replaceAll("\\.", "*"));
+            String defaultTxt = StatusContainer.currentUser.getPassword();
+            //count the length of the default text and replace it with * character
+            for (int i = 0; i < defaultTxt.length(); i++) {
+                defaultTxt = defaultTxt.replace(defaultTxt.charAt(i), '*');
+            }
+            txtOldPwd.setText(defaultTxt);
         }
     }
 
