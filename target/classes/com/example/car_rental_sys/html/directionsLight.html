@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        /* 
+ * Optional: Makes the sample page fill the window. 
+ */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <!-- <button id="btn" onclick="change()">Click</button> -->
+    <script>
+
+
+        let start = ""
+        let end = ""
+        function change() {
+            getDirections("Asia Pacific University of Technology Innovation", "endah regal condo")
+        }
+
+
+        function getDirections(
+            startStr = "Asia Pacific University of Technology Innovation",
+            endStr = "endah regal condo"
+        ) {
+            start = startStr
+            end = endStr
+            initMap()
+        }
+
+
+        function initMap() {
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 19,
+                center: { lat: 3.055516619270974, lng: 101.70076565249217 },
+                disableDefaultUI: true,
+                styles: [
+                    {
+                        "featureType": "poi",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "stylers": [
+                            {
+                                "saturation": -70
+                            },
+                            {
+                                "lightness": 37
+                            },
+                            {
+                                "gamma": 1.15
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "gamma": 0.26
+                            },
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "stylers": [
+                            {
+                                "lightness": 0
+                            },
+                            {
+                                "saturation": 0
+                            },
+                            {
+                                "hue": "#ffffff"
+                            },
+                            {
+                                "gamma": 0
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "lightness": 50
+                            },
+                            {
+                                "saturation": 0
+                            },
+                            {
+                                "hue": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.province",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "lightness": -50
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.province",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.province",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    }
+                ]
+            });
+
+            directionsRenderer.setMap(map);
+
+            const onChangeHandler = function () {
+                calculateAndDisplayRoute(directionsService, directionsRenderer);
+            };
+            if (start === "" || end === "") {
+                return;
+            }
+            onChangeHandler();
+        }
+
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+
+
+            directionsService
+                .route({
+                    origin: {
+                        query: start,
+                    },
+                    destination: {
+                        query: end,
+                    },
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    drivingOptions: {
+                        departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+                        trafficModel: 'pessimistic'
+                    }
+                })
+                .then((response) => {
+                    directionsRenderer.setDirections(response);
+                    // directionsRenderer set color
+                    directionsRenderer.setOptions({
+                        polylineOptions: {
+                            strokeColor: "#1ed570",
+                            strokeOpacity: 0.8,
+                            strokeWeight: 6,
+                        },
+                        preserveViewport: true
+
+                    });
+
+                    console.log(response.routes[0].legs[0].duration_in_traffic.text + " left," + response.routes[0].legs[0].distance.text);
+                })
+                .catch((e) => window.alert("Directions request failed due to " + status));
+        }
+
+        window.initMap = initMap;
+    </script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig&callback=initMap&v=weekly&language=en"
+        defer></script>
+
+    <script>
+        //excute every 5 seconds
+        let serInt = setInterval(function () {
+            clearFooter();
+        }, 50);
+
+        function clearFooter() {
+            let gmnoprint = document.getElementsByClassName("gmnoprint");
+            // get partent node
+            if (gmnoprint.length > 0) {
+                let parent = gmnoprint[0].parentNode;
+                parent.remove();
+
+                let alt = document.querySelectorAll('[alt="Google"]');
+                alt[0].remove();
+                clearInterval(serInt);
+            }
+            //cancel interval
+
+        }
+        change();
+
+    </script>
+</body>
+
+</html>
