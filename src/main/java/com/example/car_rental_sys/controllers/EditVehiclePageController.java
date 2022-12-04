@@ -175,7 +175,8 @@ public class EditVehiclePageController {
 
             //convert rgb to hex
             String hex = String.format("#%02x%02x%02x", colorList.get(i)[0], colorList.get(i)[1], colorList.get(i)[2]);
-            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-background-color: " + hex + ";");
+            colorPane[i].setVisible(true);
+            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-cursor: hand; -fx-background-color: " + hex + ";");
             //System.out.println(hex);
         }
     }
@@ -214,11 +215,15 @@ public class EditVehiclePageController {
     }
 
     @FXML
-    void clearBtnClicked(MouseEvent event) {
+    void clearBtnClicked() {
         //clear the imageURL
         showDragPane();
         clearColorPlateColor();
         imageURL = null;
+        Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
+        for(Pane pane : colorPane){
+            pane.setVisible(false);
+        }
     }
 
     @FXML

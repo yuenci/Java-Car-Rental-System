@@ -58,7 +58,7 @@
             <Cursor fx:constant="HAND" />
         </cursor>
     </ComboBox>
-    <Pane fx:id="imgPane" layoutX="474.0" layoutY="45.0" prefHeight="226.0" prefWidth="335.0" visible="false">
+    <Pane fx:id="imgPane" layoutX="474.0" layoutY="45.0" prefHeight="226.0" prefWidth="335.0" style="-fx-background-radius: 10px;" visible="false">
         <ImageView fx:id="imgVehicle" fitHeight="225.0" fitWidth="335.0" pickOnBounds="true" preserveRatio="true" />
     </Pane>
     <Pane fx:id="dragPane" layoutX="475.0" layoutY="45.0" onDragDropped="#imgVehicleDrop" prefHeight="226.0" prefWidth="335.0" style="-fx-background-color: transparent; -fx-background-radius: 10px; -fx-border-color: #c9cdd4; -fx-border-radius: 10px; -fx-border-width: 2px;">
@@ -137,7 +137,7 @@
             <Font name="System Bold" size="14.0" />
         </font>
     </TextField>
-    <Label layoutX="474.0" layoutY="315.0" prefHeight="31.0" prefWidth="147.0" text="Background Color" textFill="#165dff">
+    <Label fx:id="ivLabelBackground" layoutX="474.0" layoutY="315.0" prefHeight="31.0" prefWidth="147.0" text="Background Color" textFill="#165dff">
         <font>
             <Font name="Arial Bold" size="16.0" />
         </font>
