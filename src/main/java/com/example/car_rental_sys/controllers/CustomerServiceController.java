@@ -25,8 +25,11 @@ public class CustomerServiceController {
     private final String accountSecurity = "AccountSecurityPage.fxml";
     private final String passwordPage = "PasswordPage.fxml";
     private final String personalInfo = "PersonalInfoPage.fxml";
-    private final String middleBar = "MiddleBar.fxml";
+    private final String settingMiddleBar = "MiddleBar.fxml";
+    private final String infoMiddleBar = "InfoMiddleBar.fxml";
 
+    @FXML
+    private Pane middlePanel;
     @FXML
     private Pane settingMainPanel;
     @FXML
@@ -49,8 +52,11 @@ public class CustomerServiceController {
         //rightContainer.getChildren().add(fxmlLoader.load());
         //centerContainer.getChildren().add(fxmlLoader2.load());
 
-        FXMLLoader fxmlLoader3 = new FXMLLoader(Application.class.getResource("fxml/userSettingPage.fxml"));
-        hugeContainer.getChildren().add(fxmlLoader3.load());
+        FXMLLoader fxmlLoader3 = new FXMLLoader(Application.class.getResource("fxml/infoMiddleBar.fxml"));
+        FXMLLoader fxmlLoader4 = new FXMLLoader(Application.class.getResource("fxml/PersonalInfoPage.fxml"));
+        hugeContainer.setVisible(true);
+        middlePanel.getChildren().add(fxmlLoader3.load());
+        settingMainPanel.getChildren().add(fxmlLoader4.load());
 
     }
 
@@ -101,9 +107,45 @@ public class CustomerServiceController {
 
     public void showSettingPage(){
         try {
-            hugeContainer.setVisible(true);
             hugeContainer.getChildren().clear();
-            initFXML(hugeContainer, settingMain);
+            hugeContainer.setVisible(true);
+            hugeContainer.getChildren().addAll(middlePanel, settingMainPanel);
+            middlePanel.getChildren().clear();
+            settingMainPanel.getChildren().clear();
+            initFXML(middlePanel, settingMiddleBar);
+            initFXML(settingMainPanel, settingMain);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showProfilePage(){
+        try {
+            hugeContainer.getChildren().clear();
+            hugeContainer.setVisible(true);
+            hugeContainer.getChildren().addAll(middlePanel, settingMainPanel);
+            middlePanel.getChildren().clear();
+            settingMainPanel.getChildren().clear();
+            initFXML(middlePanel, infoMiddleBar);
+            initFXML(settingMainPanel, personalInfo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showAccSecurity(){
+        try {
+            settingMainPanel.getChildren().clear();
+            initFXML(settingMainPanel, accountSecurity);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordPage(){
+        try {
+            settingMainPanel.getChildren().clear();
+            initFXML(settingMainPanel, passwordPage);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -16,6 +16,6 @@
     -fx-padding: 0 0 0 15;
 }
 
-#lblSettings{
+#lblSettings, #lblInformation{
     -fx-text-fill: #1d2129;
 }

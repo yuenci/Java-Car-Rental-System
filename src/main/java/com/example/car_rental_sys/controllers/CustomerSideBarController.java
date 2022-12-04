@@ -39,13 +39,14 @@ public class CustomerSideBarController {
         initMenuEvent();
         initLabelEvent();
         intCustomerImages();
+        item1.getStyleClass().add("menuItemActive");
     }
 
 
     private void initMenuEvent() {
         item1.setOnMouseClicked(event -> {
             changeMenuStyle(item1);
-            //CustomerServiceController.instance.showProfilePage();
+            CustomerServiceController.instance.showProfilePage();
         });
         item2.setOnMouseClicked(event -> {
             changeMenuStyle(item2);

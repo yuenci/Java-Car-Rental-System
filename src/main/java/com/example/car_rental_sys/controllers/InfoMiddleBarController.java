@@ -10,21 +10,16 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 import java.io.IOException;
 
-public class MiddleBarController {
+public class InfoMiddleBarController {
 
     @FXML
     private Pane userMiddleBar;
-
     @FXML
-    private Button btnSysSetting;
-    @FXML
-    private Button btnAccSecurity;
-    @FXML
-    private Button btnAccPwd;
+    private Button btnPersonInfo;
 
-    public static MiddleBarController instance;
+    public static InfoMiddleBarController instance;
 
-    public MiddleBarController() {
+    public InfoMiddleBarController() {
         instance = this;
     }
 
@@ -36,12 +31,12 @@ public class MiddleBarController {
     }
 
     private void initButtonStyle(){
-        btnSysSetting.getStyleClass().add("btnMiddleFocusStyle");
-        btnSysSetting.getStyleClass().remove("defaultMiddleBtnStyle");
-        Button[] btns = {btnAccSecurity, btnAccPwd};
-        for (Button btn : btns) {
-            btn.getStyleClass().add("defaultMiddleBtnStyle");
-        }
+        btnPersonInfo.getStyleClass().add("btnMiddleFocusStyle");
+//        btnPersonInfo.getStyleClass().remove("defaultMiddleBtnStyle");
+//        Button[] btns = {btnAccSecurity, btnAccPwd};
+//        for (Button btn : btns) {
+//            btn.getStyleClass().add("defaultMiddleBtnStyle");
+//        }
     }
 
     private void initTheme(){
@@ -52,29 +47,12 @@ public class MiddleBarController {
         }
     }
 
-
     @FXML
-    void btnSysSettingClicked(MouseEvent event) {
+    void btnPersonInfoClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        CustomerServiceController.instance.showSettingPage();
-        //System.out.println("btnSysSettingClicked");
+        CustomerServiceController.instance.showProfilePage();
+        //System.out.println("btnPersonInfoClicked");
     }
-
-    @FXML
-    void btnAccSettingClicked(MouseEvent event) {
-        barButtonClickEvent(event);
-        CustomerServiceController.instance.showAccSecurity();
-        //System.out.println("btnAccSettingClicked");
-    }
-
-
-    @FXML
-    void btnAccPasswordClicked(MouseEvent event) {
-        barButtonClickEvent(event);
-        CustomerServiceController.instance.showPasswordPage();
-        //System.out.println("btnAccPasswordClicked");
-    }
-
 
     @FXML
     private void barButtonClickEvent(MouseEvent e){
@@ -87,7 +65,7 @@ public class MiddleBarController {
 
 
     private void clearFocusStyle(){
-        Button[] btns = {btnSysSetting,btnAccSecurity, btnAccPwd};
+        Button[] btns = {btnPersonInfo};
         for (Button btn : btns) {
             btn.getStyleClass().remove("btnMiddleFocusStyle");
             btn.getStyleClass().add("defaultMiddleBtnStyle");

@@ -18,5 +18,7 @@
     </Pane>
     <Pane fx:id="hugeContainer" layoutX="260.0" layoutY="50.0" prefHeight="750.0" prefWidth="1020.0"
           style="-fx-background-color: #111111;">
+        <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0"/>
+        <Pane fx:id="settingMainPanel" layoutX="200.0" prefHeight="700.0" prefWidth="820.0"/>
     </Pane>
 </AnchorPane>

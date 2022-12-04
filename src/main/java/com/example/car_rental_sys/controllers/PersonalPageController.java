@@ -23,37 +23,17 @@ public class PersonalPageController {
     private String newImageURL;
 
     @FXML
-    private TextField ivTxtPhoneNumber;
+    private TextField ivTxtPhoneNumber, ivTxtBirthday, ivTxtUsername, ivTxtEmail;
 
     @FXML
-    private TextField ivTxtBirthday;
-
-    @FXML
-    private Button ivDeleteBtn;
+    private Button ivDeleteBtn,ivCancelBtn, ivSaveBtn, ivUploadBtn;
 
     @FXML
     private ImageView ivAvatar;
 
     @FXML
-    private TextField ivTxtUsername;
+    private TextArea ivTxtAbout, ivTxtAddress;
 
-    @FXML
-    private Button ivCancelBtn;
-
-    @FXML
-    private TextArea ivTxtAbout;
-
-    @FXML
-    private Button ivSaveBtn;
-
-    @FXML
-    private TextField ivTxtEmail;
-
-    @FXML
-    private Button ivUploadBtn;
-
-    @FXML
-    private TextArea ivTxtAddress;
 
     @FXML
     private void initialize(){
