@@ -2,7 +2,11 @@ package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
@@ -24,6 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class FXTools {
     /**
@@ -135,19 +141,22 @@ public class FXTools {
         return (Stage) node.getScene().getWindow();
     }
 
-    public static Pane getMapComponent(String mapName){
+    public static Pane getMapComponent(){
         Pane pane = new Pane();
-        WebView webView = new WebView();
-        WebEngine engine = webView.getEngine();
-        engine.load("file:src/main/resources/com/example/car_rental_sys/html/directionsLight.html");
-        engine.setJavaScriptEnabled(true);
-//        engine.getLoadWorker().stateProperty().addListener(
-//                (ov, oldState, newState) -> {
-//                    if (newState == Worker.State.SUCCEEDED) {
-//                        engine.executeScript("initRadar("+radarDataStr+");");
-//                    }
-//                });
-        pane.getChildren().add(webView);
+        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+
+        Browser browser = engine.newBrowser();
+        if(StatusContainer.currentUser instanceof Customer){
+            browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/directionsDark.html").getAbsolutePath());
+        }else{
+            browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/directionsLight.html").getAbsolutePath());
+        }
+
+
+        BrowserView view = BrowserView.newInstance(browser);
+        view.setPrefSize(290,115);
+
+        pane.getChildren().add(view);
         return pane;
     }
 

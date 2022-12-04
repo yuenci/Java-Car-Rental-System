@@ -192,8 +192,11 @@ public class OrderDetailsComponentController {
     private void btnTrackOrderClicked(){
         if (StatusContainer.currentUser instanceof Customer){
             CustomerServiceController.instance.showTrackOrder();
+
+            //System.out.println(CustomerServiceController.instance);
         }else{
             AdminServiceController.instance.showTrackOrder();
+            //System.out.println("btnTrackOrderClicked@!!");
         }
 //        Pane trackOrderPane = new Pane();
 //        trackOrderPane.setPrefSize(350, 750);

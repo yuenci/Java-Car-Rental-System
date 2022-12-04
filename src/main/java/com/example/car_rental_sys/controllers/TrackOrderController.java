@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.orm.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,6 +43,7 @@ public class TrackOrderController {
     private void initialize() {
         initTheme();
         initLabel();
+        initMap();
     }
 
     @FXML
@@ -91,5 +93,9 @@ public class TrackOrderController {
         lblLocation.setText("");
         lblPickupDate.setText("");
         lblPickupTime.setText("");
+    }
+
+    private  void initMap(){
+        mapTracking.getChildren().add(FXTools.getMapComponent());
     }
 }
