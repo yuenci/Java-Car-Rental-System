@@ -25,6 +25,7 @@ public class ConfigFile {
 
     // paths
     public static final String carsDataPath = "src/main/resources/com/example/car_rental_sys/data/carModels.txt";
+    public static final String carsInfoPath = "src/main/resources/com/example/car_rental_sys/data/carInfo.txt";
     public static final String dataFilesRootPath = "src/main/resources/com/example/car_rental_sys/data/";
     public static final String htmlComponents = "\\src\\main\\resources\\com\\example\\car_rental_sys\\html\\";
     public static final String fakeData = "src/main/resources/com/example/car_rental_sys/data/fakeData.txt";
