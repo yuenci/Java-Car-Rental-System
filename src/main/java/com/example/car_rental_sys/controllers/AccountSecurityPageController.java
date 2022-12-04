@@ -42,10 +42,10 @@ public class AccountSecurityPageController {
     }
 
     private void initDefaultText(){
-        ivUsername.setText("");    /// change to username
-        txtDrivingLicense.setText("");
-        comboQuestion.setValue("");
-        txtSecurityAnswer.setText("");
+        ivUsername.setText(StatusContainer.currentUser.getUserName());    /// change to username
+        txtDrivingLicense.setText(StatusContainer.currentUser.getDLNumber());
+        comboQuestion.setValue(StatusContainer.currentUser.getSecurityProblem());
+        txtSecurityAnswer.setText(StatusContainer.currentUser.getSecurityAnswer());
     }
 
     private void initComboBox(){
@@ -53,8 +53,7 @@ public class AccountSecurityPageController {
     }
 
     private void initAvatar(){
-//        Image image = new Image("file:src/main/resources/images/avatar.png");
-//        ivAvatar.setImage(image);
+        ivAvatar.setImage(StatusContainer.currentUser.getAvatar());
     }
 
     @FXML

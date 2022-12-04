@@ -47,13 +47,13 @@ public class PasswordPageController {
     }
 
     private void initDefaultText(){
-        ivUsername.setText("");
+        ivUsername.setText(StatusContainer.currentUser.getUserName());
+        txtOldPwd.setText(StatusContainer.currentUser.getPassword());
         changeDisplayPwdStyle();
     }
 
     private void initAvatar(){
-//        Image image = new Image("file:src/main/resources/images/avatar.png");
-//        ivAvatar.setImage(image);
+        ivAvatar.setImage(StatusContainer.currentUser.getAvatar());
     }
 
     private void changeDisplayPwdStyle(){

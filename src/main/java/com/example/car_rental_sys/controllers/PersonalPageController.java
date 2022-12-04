@@ -40,6 +40,8 @@ public class PersonalPageController {
     @FXML
     private void initialize(){
         initTheme();
+        initAvatar();
+        initText();
 //        ivTxtAbout.setFocusTraversable(false);
 //        ivTxtAddress.setFocusTraversable(false);
 //        ivTxtAbout.setMouseTransparent(true);
@@ -47,11 +49,17 @@ public class PersonalPageController {
     }
 
     private void initText(){
-
+        ivTxtUsername.setText(StatusContainer.currentUser.getUserName());
+        ivTxtEmail.setText(StatusContainer.currentUser.getEmail());
+        ivTxtPhoneNumber.setText(StatusContainer.currentUser.getPhone());
+        ivTxtBirthday.setText(StatusContainer.currentUser.getBirthday());
+        ivTxtAddress.setText(StatusContainer.currentUser.getAddress());
+        ivTxtAbout.setText(StatusContainer.currentUser.getAbout());
     }
 
     private void initAvatar(){
-        //ivAvatar.setImage(customer.getAvatar());
+        ivAvatar.setImage(StatusContainer.currentUser.getAvatar());
+        ivTxtUsername.setText(StatusContainer.currentUser.getUserName());
     }
 
     private void initTheme(){
@@ -71,6 +79,9 @@ public class PersonalPageController {
     void uploadClicked() {
         newImageURL = DataTools.fileChooser();
         //ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL));
+        //remove the current image
+        ivAvatar.setImage(null);   /// here got unfinished
+        System.out.println(newImageURL);
         ivAvatar.setImage(ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL)));
         //save new profile
     }
