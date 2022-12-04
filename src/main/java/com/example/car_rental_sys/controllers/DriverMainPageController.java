@@ -64,11 +64,11 @@ public class DriverMainPageController extends  Controller{
     public void initialize() {
         driverMainPageInstance = this;
         initData();
-        initSideBar();
+        //initSideBar();
         initOrderCards();
         initWebview();
         initScrollPaneEvent();
-        initMenuEvent();
+        //initMenuEvent();
         initFirstOrderCard();
         initProcessTip();
         StatusContainer.currentPageController = this;
@@ -196,58 +196,58 @@ public class DriverMainPageController extends  Controller{
 
     }
 
-    private void initSideBar() {
-       // label set text align center
-        postLabel.setText(StringTools.capitalizeFirstLetter(driver.getPost()));
-        postLabel.setAlignment(Pos.CENTER);
+//    private void initSideBar() {
+//       // label set text align center
+//        postLabel.setText(StringTools.capitalizeFirstLetter(driver.getPost()));
+//        postLabel.setAlignment(Pos.CENTER);
+//
+//        nameLabel.setText(StringTools.capitalizeFirstLetter(driver.getUserName()));
+//        nameLabel.setAlignment(Pos.CENTER);
+//
+//        carNumberLabel.setAlignment(Pos.CENTER);
+//
+//        avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
+//        ImageTools.setImageShapeToCircle(avatarImageView);
+//
+//    }
 
-        nameLabel.setText(StringTools.capitalizeFirstLetter(driver.getUserName()));
-        nameLabel.setAlignment(Pos.CENTER);
+//    private void initMenuEvent() {
+//        item1.setOnMouseClicked(event -> {
+//            changeMenuStyle(item1);
+//        });
+//        item2.setOnMouseClicked(event -> {
+//            changeMenuStyle(item2);
+//            FXTools.changeScene("messagePage.fxml");
+//        });
+//        item3.setOnMouseClicked(event -> {
+//            changeMenuStyle(item3);
+//        });
+//        item4.setOnMouseClicked(event -> {
+//            changeMenuStyle(item4);
+//        });
+//        item5.setOnMouseClicked(event -> {
+//            changeMenuStyle(item5);
+//        });
+//        item6.setOnMouseClicked(event -> {
+//            changeMenuStyle(item6);
+//            StatusContainer.currentUser = null;
+//            DataTools.logOut();
+//            FXTools.changeScene("mainPage.fxml");
+//        });
+//
+//    }
 
-        carNumberLabel.setAlignment(Pos.CENTER);
-
-        avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
-        ImageTools.setImageShapeToCircle(avatarImageView);
-
-    }
-
-    private void initMenuEvent() {
-        item1.setOnMouseClicked(event -> {
-            changeMenuStyle(item1);
-        });
-        item2.setOnMouseClicked(event -> {
-            changeMenuStyle(item2);
-            FXTools.changeScene("messagePage.fxml");
-        });
-        item3.setOnMouseClicked(event -> {
-            changeMenuStyle(item3);
-        });
-        item4.setOnMouseClicked(event -> {
-            changeMenuStyle(item4);
-        });
-        item5.setOnMouseClicked(event -> {
-            changeMenuStyle(item5);
-        });
-        item6.setOnMouseClicked(event -> {
-            changeMenuStyle(item6);
-            StatusContainer.currentUser = null;
-            DataTools.logOut();
-            FXTools.changeScene("mainPage.fxml");
-        });
-
-    }
-
-    private void changeMenuStyle(Pane activePane) {
-        System.out.println(activePane.toString() + "changeMenuStyle-line229");
-        item1.getStyleClass().remove("menuItemActive");
-        item2.getStyleClass().remove("menuItemActive");
-        item3.getStyleClass().remove("menuItemActive");
-        item4.getStyleClass().remove("menuItemActive");
-        item5.getStyleClass().remove("menuItemActive");
-        item6.getStyleClass().remove("menuItemActive");
-
-        activePane.getStyleClass().add("menuItemActive");
-    }
+//    private void changeMenuStyle(Pane activePane) {
+//        System.out.println(activePane.toString() + "changeMenuStyle-line229");
+//        item1.getStyleClass().remove("menuItemActive");
+//        item2.getStyleClass().remove("menuItemActive");
+//        item3.getStyleClass().remove("menuItemActive");
+//        item4.getStyleClass().remove("menuItemActive");
+//        item5.getStyleClass().remove("menuItemActive");
+//        item6.getStyleClass().remove("menuItemActive");
+//
+//        activePane.getStyleClass().add("menuItemActive");
+//    }
 
     private void initFirstOrderCard(){
         if (continueOrderID ==-1) {
@@ -287,6 +287,7 @@ public class DriverMainPageController extends  Controller{
         this.powerLabel.setText(data[2] + " L");
         this.seatsLabel.setText(data[0] );
         this.carNumberLabel.setText(currentOrderCard.carNumber);
+        this.carNumberLabel.setAlignment(Pos.CENTER);
 
         String url= "src/main/resources/com/example/car_rental_sys/image/cars/" + currentOrderCard.carModel + ".png";
         this.carImageView.setImage(ImageTools.getImageObjFromPath(url));
