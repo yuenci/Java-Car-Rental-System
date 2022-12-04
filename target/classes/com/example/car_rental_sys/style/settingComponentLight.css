@@ -1,5 +1,14 @@
+.txtBoxFocus{
+    -fx-text-fill: #4e5969 !important;
+}
+
 .txtBoxFocus:hover, .txtBoxFocus:focused{
     -fx-border-color: #306fff !important;
+}
+
+.comboFocus{
+    -fx-text-fill: #4e5969 !important;
+    -fx-font-weight: bold;
 }
 
 .comboFocus:hover, .comboFocus:focused{

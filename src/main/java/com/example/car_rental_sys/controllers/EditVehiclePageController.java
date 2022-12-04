@@ -3,13 +3,17 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,52 +33,27 @@ public class EditVehiclePageController {
     private static String imageURL;
     private static boolean isSaved = false;
 
+    private static int bgcStatus = 0;
+    private static String defaultGradientLight = "#FFFFFF";
+    private static String defaultGradientDark = "#FFFFFF";
+
     private static String gradientLight;
     private static String gradientDark;
 
+    public Label ivLabelBackground;
+
     @FXML
-    private Button btnOperation;
+    private Button btnOperation, btnSaveOption;
     @FXML
-    private Button btnSaveOption;
+    private ComboBox<String> cmbCategory,cmbSeatNumber, cmbCarBrand;
     @FXML
-    private ComboBox<String> cmbCategory;
+    private Pane imgPane, dragPane;
     @FXML
-    private ComboBox<String> cmbSeatNumber;
-    @FXML
-    private ComboBox<String> cmbCarBrand;
-    @FXML
-    private Pane imgPane;
-    @FXML
-    private Pane dragPane;
-    @FXML
-    private TextField txtManufacturing;
-    @FXML
-    private TextField txtPlateNumber;
-    @FXML
-    private TextField txtPrice;
+    private TextField txtManufacturing,txtPlateNumber,txtPrice,txtVehicleName,txtChassisNumber;
     @FXML
     private ImageView imgVehicle;
     @FXML
-    private TextField txtVehicleName;
-    @FXML
-    private TextField txtChassisNumber;
-
-    @FXML
-    private Pane colorOne;
-    @FXML
-    private Pane colorTwo;
-    @FXML
-    private Pane colorThree;
-    @FXML
-    private Pane colorFour;
-    @FXML
-    private Pane colorFive;
-    @FXML
-    private Pane colorSix;
-    @FXML
-    private Pane colorSeven;
-    @FXML
-    private Pane colorEight;
+    private Pane colorOne, colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight;
 
     private final String[] seatNum = {"2","4"};
     private final String[] category = {"Manual","Automatic"};
@@ -92,6 +71,7 @@ public class EditVehiclePageController {
         }
         initComboBox();
         initButtonText();
+        initColorPlateEvent();
         //initTextField();
         System.out.println("init");
     }
@@ -114,7 +94,53 @@ public class EditVehiclePageController {
                     "-fx-background-color: transparent; -fx-border-color: #165dff; " +
                     "-fx-border-radius: 6px; -fx-border-insets: 0; -fx-text-fill: #165dff;");
             btnSaveOption.setStyle(btnSaveOption.getStyle() + "-fx-background-color: #165dff; -fx-text-fill: white; -fx-background-radius: 6px");
+            //ivLabelBackground.setVisible(false);
         }
+    }
+
+    private void initColorPlateEvent(){
+        colorOne.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorOne);
+            setCarBgColor(color);
+        });
+        colorTwo.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorTwo);
+            setCarBgColor(color);
+        });
+        colorThree.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorThree);
+            setCarBgColor(color);
+        });
+        colorFour.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorFour);
+            setCarBgColor(color);
+        });
+        colorFive.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorFive);
+            setCarBgColor(color);
+        });
+        colorSix.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorSix);
+            setCarBgColor(color);
+        });
+        colorSeven.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorSeven);
+            setCarBgColor(color);
+        });
+        colorEight.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            String color = getNodeColor(colorEight);
+            setCarBgColor(color);
+        });
+    }
+
+    private String getNodeColor(Pane pane){
+        //get the style from pane and turn into string
+        String style = pane.getStyle();
+        //get the last 8 character from the string
+        String lastStr = style.substring(style.length() - 8);
+        //get the first 7 character from the string
+
+        return lastStr.substring(0,7);
     }
 
     public void initTextField(){
@@ -126,7 +152,13 @@ public class EditVehiclePageController {
         cmbCategory.setValue(categoryValue);
         cmbSeatNumber.setValue(seatNumberValue);
         cmbCarBrand.setValue(brandValue);
+    }
 
+    private void initVehiclePane(){
+        imgPane.setVisible(true);
+        dragPane.setVisible(false);
+        imgPane.setStyle(imgPane.getStyle() + "-fx-background-color: " + "linear-gradient(to left, " + gradientDark + ", " + gradientLight + ");");
+        imgVehicle.setImage(new Image(imageURL));
     }
 
     @FXML
@@ -138,8 +170,13 @@ public class EditVehiclePageController {
         showImgPane();
         Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
         for(int i = 0; i < Objects.requireNonNull(colorList).size(); i++){
-            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-background-color: rgb("+colorList.get(i)[0]+","
-                    +colorList.get(i)[1]+","+colorList.get(i)[2]+");");
+//            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-background-color: rgb("+colorList.get(i)[0]+","
+//                    +colorList.get(i)[1]+","+colorList.get(i)[2]+");");
+
+            //convert rgb to hex
+            String hex = String.format("#%02x%02x%02x", colorList.get(i)[0], colorList.get(i)[1], colorList.get(i)[2]);
+            colorPane[i].setStyle(colorPane[i].getStyle() + "-fx-background-color: " + hex + ";");
+            //System.out.println(hex);
         }
     }
 
@@ -285,6 +322,19 @@ public class EditVehiclePageController {
         EditVehiclePageController.gradientLight = gradientLight;
         EditVehiclePageController.gradientDark = gradientDark;
         initTextField();
+        initVehiclePane();
+    }
+
+    private void setCarBgColor(String color){
+        if(bgcStatus == 0){
+            defaultGradientDark = color;
+            bgcStatus = 1;
+        }else if(bgcStatus == 1){
+            defaultGradientLight = color;
+            bgcStatus = 0;
+        }
+        System.out.println("now dark: " + defaultGradientDark + ", now light:" + defaultGradientLight);
+        imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+defaultGradientDark+", "+defaultGradientLight+");");
     }
 
 }
