@@ -80,9 +80,11 @@ public class PersonalPageController {
         newImageURL = DataTools.fileChooser();
         //ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL));
         //remove the current image
-        ivAvatar.setImage(null);   /// here got unfinished
+        Image newAvatar =   ImageTools.getNewAvatar(newImageURL,StatusContainer.currentUser.getUserID());
+
+        ivAvatar.setImage(newAvatar);   /// here got unfinished
         System.out.println(newImageURL);
-        ivAvatar.setImage(ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL)));
+//        ivAvatar.setImage(ImageTools.getCircleImages(new javafx.scene.image.Image("file:///"+newImageURL)));
         //save new profile
     }
 

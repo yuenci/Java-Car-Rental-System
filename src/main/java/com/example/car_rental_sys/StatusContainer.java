@@ -27,8 +27,8 @@ public class StatusContainer {
     public static Boolean isHideDriverSideBar = false;
    //public static User currentUser = null;
    // public static User currentUser = new Customer("1575270674@qq.com");
-    public static User currentUser = new Driver("cervantesmichael@yahoo.com");
-    //public static User currentUser =  new Admin("david32@hotmail.com");
+   // public static User currentUser = new Driver("cervantesmichael@yahoo.com");
+    public static User currentUser =  new Admin("david32@hotmail.com");
 
     public static Order currentOrder = new Order(7);
     public static String loginMethod = "password";
