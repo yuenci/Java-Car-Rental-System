@@ -34,7 +34,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
         NetTools.registerJxBrowserLicence();
-        NetTools.StartHttpServer();
+      //  NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
         //Test.test();
@@ -78,9 +78,11 @@ public class Application extends javafx.application.Application {
 
         stageInstance = stage;
 
+        setUser("a");
         startStage(fxmlName);
-        setUser();
+        //setUser();
         //setUser("c");
+
 
         //startApplication();
 
@@ -150,9 +152,9 @@ public class Application extends javafx.application.Application {
     private static  void setUser(String type){
         if(Objects.equals(type, "c")){
             StatusContainer.currentUser  = new Customer("1575270674@qq.com");
-        }else if(Objects.equals(type, "a")){
-            StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
         }else if(Objects.equals(type, "d")){
+            StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
+        }else if(Objects.equals(type, "a")){
             StatusContainer.currentUser  = new Admin("david32@hotmail.com");
         }else{
             StatusContainer.currentUser  = null;
