@@ -6,5 +6,3 @@ carID:num=0,carModel:str=null,chassisNumber:str=0,carNumber:str=null,manufacturi
 5,McLaren_765lt,574656585,w2422te,2021-01-01,2021-01-01 01:01:01,2
 6,Ferrari_SF90_Spider,656556165,3ll432w,2021-01-01,2021-01-01 01:01:01,1
 7,Ferrari_SF90_Spider,4651654565446,3445low,2021-01-01,2021-01-01 01:01:01,1
-
-

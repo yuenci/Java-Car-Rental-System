@@ -1,9 +1,11 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.orm.Car;
+import com.example.car_rental_sys.orm.CarModel;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -13,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public class EditVehiclePageController {
     private static String seatNumberValue;
     private static String brandValue;
     private static String imageURL;
+    private static int carStatus;
     private static boolean isSaved = false;
 
     private static int bgcStatus = 0;
@@ -70,7 +72,7 @@ public class EditVehiclePageController {
             //System.out.println("isSaved");
         }
         initComboBox();
-        initButtonText();
+        initComponent();
         initColorPlateEvent();
         //initTextField();
         System.out.println("init");
@@ -83,7 +85,7 @@ public class EditVehiclePageController {
         cmbCarBrand.getItems().addAll(brand);
     }
 
-    private void initButtonText(){
+    private void initComponent(){
         if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
             btnOperation.setText("Add Vehicle");
             btnOperation.setStyle(btnOperation.getStyle() + "-fx-background-color: #165dff;");
@@ -197,9 +199,10 @@ public class EditVehiclePageController {
         //System.out.println(System.currentTimeMillis());
         getValue();
         if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
-            //get then update the vehicle
+            getValue();
             clearProperty();
         }else{
+            //getValue();
             //get value draft
         }
         //go to overview page
@@ -248,14 +251,14 @@ public class EditVehiclePageController {
 
     //clear the value
     private void clearValue(){
-        txtVehicleName.setText("");
-        txtPlateNumber.setText("");
-        txtChassisNumber.setText("");
-        txtManufacturing.setText("");
-        txtPrice.setText("");
-        cmbCategory.setValue("");
-        cmbSeatNumber.setValue("");
-        cmbCarBrand.setValue("");
+        TextField[] textFields = {txtVehicleName,txtPlateNumber,txtChassisNumber,txtManufacturing,txtPrice};
+        for(TextField textField : textFields){
+            textField.setText("");
+        }
+        ComboBox[] comboBoxes = {cmbCategory,cmbSeatNumber,cmbCarBrand};
+        for(ComboBox comboBox : comboBoxes){
+            comboBox.setValue(null);
+        }
         showDragPane();
     }
 
@@ -297,11 +300,8 @@ public class EditVehiclePageController {
     }
 
     private void showDragPane(){
-        //clear the image
         imgVehicle.setImage(null);
-        //imgPane visible false
         imgPane.setVisible(false);
-        //dragPane visible true
         dragPane.setVisible(true);
     }
 
@@ -312,20 +312,23 @@ public class EditVehiclePageController {
         }
     }
 
-    public void setCarData(String vehicleName, String plateNumber, String chassisNumber, String manufacturing,
-                           String price, String category, String seatNumber, String brand,String gradientLight, String gradientDark){
-        vehicleNameValue = vehicleName;
-        plateNumberValue = plateNumber;
-        chassisNumberValue = chassisNumber;
-        manufacturingValue = manufacturing;
-        priceValue = price;
-        categoryValue = category;
-        seatNumberValue = seatNumber;
-        brandValue = brand;
+    public void setCarData(int carID){
+        StatusContainer.currentCarInfo = new Car(carID);
+        StatusContainer.currentCarModel = new CarModel(carID);
 
-        EditVehiclePageController.imageURL = "file:src/main/resources/com/example/car_rental_sys/image/cars/"+ vehicleName + ".png";
-        EditVehiclePageController.gradientLight = gradientLight;
-        EditVehiclePageController.gradientDark = gradientDark;
+        vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
+        plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
+        chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
+        manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
+        priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
+        categoryValue = StatusContainer.currentCarModel.getGearType();
+        seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
+        brandValue = StatusContainer.currentCarModel.getCarBrand();
+        carStatus = StatusContainer.currentCarInfo.getStatus();
+
+        imageURL = StatusContainer.currentCarModel.getImageURL();
+        gradientLight = StatusContainer.currentCarModel.getLightColor();
+        gradientDark = StatusContainer.currentCarModel.getDarkColor();
         initTextField();
         initVehiclePane();
     }

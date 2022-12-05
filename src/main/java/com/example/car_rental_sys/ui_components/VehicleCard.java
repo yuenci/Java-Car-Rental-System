@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 
 public class VehicleCard extends Pane {
 
+    private int vehicleID;
     private String vehicleName;
     private String vehiclePrice;
     private String gradientLight;
@@ -39,7 +40,8 @@ public class VehicleCard extends Pane {
         initVehicleCard();
     }
 
-    public VehicleCard(String vehicleName, String seatNumber, String vehiclePrice, String gearType, String gradientLight, String gradientDark, String carBrand) {
+    public VehicleCard(String vehicleID, String vehicleName, String seatNumber, String vehiclePrice, String gearType, String gradientLight, String gradientDark, String carBrand) {
+        this.vehicleID = Integer.parseInt(vehicleID);
         this.vehicleName = vehicleName;
         this.seatNumber = seatNumber;
         this.vehiclePrice = vehiclePrice;
@@ -115,8 +117,7 @@ public class VehicleCard extends Pane {
 //
 //                thread.start();
                 AdminVehiclePageController.instance.showEditVehiclePage();
-                EditVehiclePageController.instance.setCarData(vehicleName,plateNumber,chassisNumber,
-                        manufacturingDate,vehiclePrice,gearType,seatNumber,carBrand,gradientLight,gradientDark);
+                EditVehiclePageController.instance.setCarData(vehicleID);
             });
         }
     }

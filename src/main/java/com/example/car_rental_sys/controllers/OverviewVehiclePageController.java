@@ -32,14 +32,9 @@ public class OverviewVehiclePageController {
         for (int i = 1; i < carsData.size(); i++) {
             String[] carData = carsData.get(i);
             //VehicleCard carCard = new VehicleCard(carData[1],carData[3],carData[5],carData[6]);
-            VehicleCard carCard = new VehicleCard(carData[1],carData[2],carData[3],carData[4],carData[5],carData[6],carData[7]);
+            VehicleCard carCard = new VehicleCard(carData[0],carData[1],carData[2],carData[3],carData[4],carData[5],carData[6],carData[7]);
             ArrayList<String[]> carsInfo = SQL.query("SELECT * FROM carInfo WHERE carID = " + carData[0]);
-            if (carsInfo.size() != 0) {
-                String[] carInfo = carsInfo.get(0);
-                carCard.setCarInfo(carInfo[2],carInfo[3],carInfo[4]);
-            }
-            //String[] carInfo = carsInfo.get(0);
-            //carCard.setCarInfo(carsInfo.get(0)[2],carsInfo.get(0)[3],carsInfo.get(0)[4]);
+
             flowPane.getChildren().add(carCard);
         }
 

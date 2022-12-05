@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.orm;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 
 import java.util.ArrayList;
@@ -15,13 +17,10 @@ public class CarModel {
     private String darkColor;
     private String lightColor;
     private String carBrand;
-    private int star;
+    private double star;
     private int speed;
-    private int power;
-
-    private String chassisNumber;
-    private String plateNumber;
-    private String manufacturingDate;
+    private double power;
+    private String imageURL;
 
     public CarModel(int modelID) {
         this.modelID = modelID;
@@ -36,9 +35,9 @@ public class CarModel {
     private void initData(String type){
         String sql ;
         if(Objects.equals(type, "modelID")){
-            sql = "SELECT * FROM carModel WHERE " + type + " = " + modelID;
+            sql = "SELECT * FROM carModels WHERE " + type + " = " + modelID;
         }else if (Objects.equals(type, "carModel")){
-            sql = "SELECT * FROM carModel WHERE " + type + " = " +"'" + carModel +"'";
+            sql = "SELECT * FROM carModels WHERE " + type + " = " +"'" + carModel +"'";
         }else{
             throw  new IllegalArgumentException("type must be modelID or carModel");
         }
@@ -55,15 +54,15 @@ public class CarModel {
         darkColor = carModelInfo[5];
         lightColor = carModelInfo[6];
         carBrand = carModelInfo[7];
-        star = Integer.parseInt(carModelInfo[8]);
+        star = Double.parseDouble(carModelInfo[8]);
         speed = Integer.parseInt(carModelInfo[9]);
-        power = Integer.parseInt(carModelInfo[10]);
-
+        power = Double.parseDouble(carModelInfo[10]);
+        imageURL = "file:src/main/resources/com/example/car_rental_sys/image/cars/"+ carModel + ".png";
 
     }
 
     public CarModel(int modelID, String carModel, int seats, int price, String gearType, String darkColor,
-                    String lightColor, String carBrand, int star, int speed, int power) {
+                    String lightColor, String carBrand, double star, int speed, double power) {
         this.modelID = modelID;
         this.carModel = carModel;
         this.seats = seats;
@@ -75,12 +74,6 @@ public class CarModel {
         this.star = star;
         this.speed = speed;
         this.power = power;
-    }
-
-    public void setCarInfo(String chassisNumber, String plateNumber, String manufacturingDate){
-        this.chassisNumber = chassisNumber;
-        this.plateNumber = plateNumber;
-        this.manufacturingDate = manufacturingDate;
     }
 
     public int getModelID() {
@@ -147,11 +140,11 @@ public class CarModel {
         this.carBrand = carBrand;
     }
 
-    public int getStar() {
+    public double getStar() {
         return star;
     }
 
-    public void setStar(int star) {
+    public void setStar(double star) {
         this.star = star;
     }
 
@@ -163,39 +156,51 @@ public class CarModel {
         this.speed = speed;
     }
 
-    public int getPower() {
+    public double getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(double power) {
         this.power = power;
     }
 
-    public String getChassisNumber() {
-        return chassisNumber;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setChassisNumber(String chassisNumber) {
-        this.chassisNumber = chassisNumber;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
-    public String getPlateNumber() {
-        return plateNumber;
+    public void updateCarModel(String carModel, int seats, int price, String gearType, String darkColor, String lightColor){
+        this.carModel = carModel;
+        this.seats = seats;
+        this.price = price;
+        this.gearType = gearType;
+        this.darkColor = darkColor;
+        this.lightColor = lightColor;
+        update();
     }
 
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
+    public void addCarModel(){
+        String values = DataTools.getID("carModels") + ",'" + carModel + "'," + seats + "," + price + ",'" + gearType + "','" + darkColor +
+                "','" + lightColor + "','" + carBrand + "'," + star + "," + speed + "," + power;
+        String sql = "INSERT INTO carModels VALUES (" + values + ")";
+        boolean process = SQL.execute(sql);
+        System.out.println(process);
     }
 
-    public String getManufacturingDate() {
-        return manufacturingDate;
+    public void update(){
+        String sql = "UPDATE carModels SET carModel = '" + carModel + "', seats = " + seats + ", price = " + price +
+                ", gearType = '" + gearType + "', darkColor = '" + darkColor + "', lightColor = '" + lightColor +
+                " WHERE modelID = " + modelID;
+        boolean process = SQL.execute(sql);
+        System.out.println(process);
     }
 
-    public void setManufacturingDate(String manufacturingDate) {
-        this.manufacturingDate = manufacturingDate;
-    }
-
-    public void saveCarModel(){
-
+    public void delete(){
+        String sql = "DELETE FROM carModels WHERE modelID = " + modelID;
+        SQL.execute(sql);
+        System.out.println("done");
     }
 }
