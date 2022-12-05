@@ -113,6 +113,9 @@ public class ImageTools {
     }
 
     public static Image getImageObjFromPath(String path) {
+        if(path.startsWith("file:")){
+            path = path.substring(5);
+        }
         File file = new File(path);
         try {
             return new Image(file.toURI().toString());
@@ -362,6 +365,9 @@ public class ImageTools {
     }
 
     public static ArrayList<int[]> getColorSetsFromImage(String imagePath){
+        if(imagePath.startsWith("file:")){
+            imagePath = imagePath.substring(5);
+        }
         BufferedImage bufferedImage = null;
         int r,g,b;
         int height,width;
@@ -372,6 +378,7 @@ public class ImageTools {
 
         try {
             bufferedImage = ImageIO.read(new File(imagePath));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
