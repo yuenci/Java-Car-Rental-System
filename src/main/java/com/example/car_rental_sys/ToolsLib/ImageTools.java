@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.ToolsLib;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.funtions.MatrixImage;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,6 +32,10 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+
+import org.apache.http.client.fluent.Request;
+import org.apache.http.client.fluent.Response;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 
 public class ImageTools {
     public static Image getCircleImages(String fileUrl) {
@@ -401,5 +406,35 @@ public class ImageTools {
         return getImageObjFromPath(carImagePath);
     }
 
+    public Image removeBackground(String imagePath){
+        // check if png file
+        if(!imagePath.endsWith(".png")){
+            throw new IllegalArgumentException("imagePath must be a png file");
+        }
+        Response response = null;
+        {
+            try {
+                response = Request.Post("https://api.remove.bg/v1.0/removebg")
+                        .addHeader("X-Api-Key", ConfigFile.removebgKey)
+                        .body(
+                                MultipartEntityBuilder.create()
+                                        .addBinaryBody("image_file", new File(imagePath))
+                                        //"src/main/resources/com/example/demos/demo.jpg"
+                                        .addTextBody("size", "auto")
+                                        .build()
+                        ).execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
+        try {
+            response.saveContent(new File("src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png"));
+            // need to delete the file after move to the right place(cars folder)
+            return  new Image("file:src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

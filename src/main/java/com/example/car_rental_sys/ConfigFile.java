@@ -15,12 +15,13 @@ public class ConfigFile {
     public static final String jxBrowserLicense = "1BNDJDKIKI2KXPTPLDNLA1N3QFYP9655G68TOMO87HH4G8GHNXM26ZCIXGCRCB6X7J3YZ0";
     public static final String googleMapApiKey = "todo";
     public static final String  AESKey = "1234567890123456";
+    public static final String removebgKey = "CTJFqT2gR2jD1dntBoxYvkDZ";
 
 
     // services
     public static final String myEmailSMTPHost = "smtp.163.com";
     public static final String apiGeoSP = "http://ip-api.com/json/";
-    public static final String backendPost = "http://127.0.0.1:8080/";
+    public static final String backendPost = "http://127.0.0.1:8174/";
     public static final String connectTestUrl = "http://www.google.com";
 
     // paths
