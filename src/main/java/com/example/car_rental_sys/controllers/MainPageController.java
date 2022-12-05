@@ -3,6 +3,7 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -236,7 +237,7 @@ public class MainPageController extends Controller{
 
     @FXML
     void openCatalogBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScene(actionEvent,"carsListPage.fxml");
+        FXTools.changeScene("carsListPage.fxml");
     }
 
     @FXML
@@ -360,7 +361,7 @@ public class MainPageController extends Controller{
     @FXML
     void searchBtnClick() {
         System.out.println("searchBtnClick");
-
+        FXTools.changeScene("carsListPage.fxml");
     }
 
     void showDatePicker(){

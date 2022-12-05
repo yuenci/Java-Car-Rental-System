@@ -14,8 +14,11 @@ module com.example.car_rental_sys {
     requires javafx.swing;
     requires org.apache.commons.io;
     requires core;
+    requires org.apache.httpcomponents.httpclient;
+    requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient.fluent;
     requires org.apache.httpcomponents.httpmime;
+
 
     exports com.example.car_rental_sys.orm;
 
