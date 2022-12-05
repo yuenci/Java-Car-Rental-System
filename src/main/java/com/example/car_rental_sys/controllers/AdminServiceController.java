@@ -45,12 +45,10 @@ public class AdminServiceController {
     public void initialize() {
         //System.out.println("AdminServiceController");
         initToRightBtnEvent();
+        showVehiclePage();
     }
 
     private void initToRightBtnEvent(){
-
-
-
         toRightBtn.setOnMouseClicked(event -> {
             if(ifDashboard){
                 dashboardController.instance.changePage("income");
