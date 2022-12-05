@@ -4,6 +4,10 @@ import com.example.car_rental_sys.ToolsLib.*;
 import com.example.car_rental_sys.controllers.UIPaginationController;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.Test;
+import com.example.car_rental_sys.orm.Admin;
+import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.ui_components.PaymentCard;
 import com.example.car_rental_sys.ui_components.UICusBillRow;
 import com.example.car_rental_sys.ui_components.UIPagination;
@@ -30,7 +34,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
         NetTools.registerJxBrowserLicence();
-        //NetTools.StartHttpServer();
+        NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
         //Test.test();
@@ -75,6 +79,8 @@ public class Application extends javafx.application.Application {
         stageInstance = stage;
 
         startStage(fxmlName);
+        setUser();
+        //setUser("c");
 
         //startApplication();
 
@@ -138,6 +144,23 @@ public class Application extends javafx.application.Application {
         }
 
     }
+    private static  void setUser(){
+        StatusContainer.currentUser  = null;
+    }
+    private static  void setUser(String type){
+        if(Objects.equals(type, "c")){
+            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
+        }else if(Objects.equals(type, "a")){
+            StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
+        }else if(Objects.equals(type, "d")){
+            StatusContainer.currentUser  = new Admin("david32@hotmail.com");
+        }else{
+            StatusContainer.currentUser  = null;
+        }
+
+    }
+
+
     private static void startPrimaryStage(String fxmlName) throws IOException {
         double width = 1280;
         double height = 832;
