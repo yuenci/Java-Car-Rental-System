@@ -199,7 +199,7 @@ public class EditVehiclePageController {
     }
 
     private void initColorPlate(String imageURL){
-        showImgPane();
+        //showImgPane();
         ArrayList<int[]> colorList = ImageTools.getColorSetsFromImage(imageURL);
         Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
         for(int i = 0; i < Objects.requireNonNull(colorList).size(); i++){
@@ -376,7 +376,6 @@ public class EditVehiclePageController {
         initVehiclePane();
         System.out.println(imageURL);
         initColorPlate(imageURL);
-
     }
 
     private void setCarBgColor(String color){
