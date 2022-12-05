@@ -35,7 +35,8 @@ public class StatusContainer {
     public static String deviceType = "desktop";
     public static Stage currentStage = null;
     public static OrderCard currentOrderCard = null;
-
+    public static CarModel currentCarModel = null;
+    public static Car currentCarInfo = null;
 
 
     // self-test statues during loading
