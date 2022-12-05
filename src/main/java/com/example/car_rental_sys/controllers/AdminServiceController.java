@@ -45,7 +45,7 @@ public class AdminServiceController {
     public void initialize() {
         //System.out.println("AdminServiceController");
         initToRightBtnEvent();
-        showVehiclePage();
+       // showVehiclePage();
     }
 
     private void initToRightBtnEvent(){

@@ -193,7 +193,8 @@ public class CarModel {
     public void update(){
         String sql = "UPDATE carModels SET carModel = '" + carModel + "', seats = " + seats + ", price = " + price +
                 ", gearType = '" + gearType + "', darkColor = '" + darkColor + "', lightColor = '" + lightColor +
-                " WHERE modelID = " + modelID;
+                "' WHERE modelID = " + modelID;
+        System.out.println(sql);
         boolean process = SQL.execute(sql);
         System.out.println(process);
     }

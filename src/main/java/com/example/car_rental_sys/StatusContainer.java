@@ -37,6 +37,7 @@ public class StatusContainer {
     public static OrderCard currentOrderCard = null;
     public static CarModel currentCarModel = null;
     public static Car currentCarInfo = null;
+    public static NewCar currentNewCarInfo = null;
 
 
     // self-test statues during loading

@@ -216,5 +216,8 @@
         <font>
           <Font name="Arial Bold" size="12.0"/>
         </font>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
     </Label>
 </Pane>

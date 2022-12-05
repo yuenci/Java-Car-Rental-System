@@ -5,6 +5,7 @@ import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Car;
 import com.example.car_rental_sys.orm.CarModel;
+import com.example.car_rental_sys.orm.NewCar;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -37,11 +38,9 @@ public class EditVehiclePageController {
     private static boolean isSaved = false;
 
     private static int bgcStatus = 0;
-    private static String defaultGradientLight = "#FFFFFF";
-    private static String defaultGradientDark = "#FFFFFF";
 
-    private static String gradientLight;
-    private static String gradientDark;
+    private static String gradientLight = "#FFFFFF";
+    private static String gradientDark = "#FFFFFF";
 
     public Label ivLabelBackground, lblEditVeh,btnDeleteVehicle;
 
@@ -61,12 +60,12 @@ public class EditVehiclePageController {
     private final String[] seatNum = {"2","4"};
     private final String[] category = {"Manual","Automatic"};
     private final String[] brand = {"Bugatti","Chevrolet","Ferrari","Ford","Honda","Koenigsegg","lamborghini","Maserati","McLaren","Myvi","Porsche","Wuling"};
-    private final HashMap<Integer,String> statusMap =  new HashMap<Integer,String>(){{
-        put(0,"Not Exist");
-        put(1,"Ready");
-        put(2,"In Rent");
-        put(3,"Reserved");
-        put(4,"Repairing");
+    private final HashMap<Integer,String> statusMap = new HashMap<>() {{
+        put(0, "Not Exist");
+        put(1, "Ready");
+        put(2, "In Rent");
+        put(3, "Reserved");
+        put(4, "Repairing");
     }};
 
     public EditVehiclePageController(){
@@ -82,7 +81,7 @@ public class EditVehiclePageController {
         initComboBox();
         initComponent();
         initColorPlateEvent();
-        System.out.println("init");
+        //System.out.println("init");
     }
 
     private void initComboBox(){
@@ -112,7 +111,6 @@ public class EditVehiclePageController {
             txtChassisNumber.setEditable(false);
             txtManufacturing.setEditable(false);
             initComboEvent();
-            //ivLabelBackground.setVisible(false);
         }
     }
 
@@ -214,6 +212,7 @@ public class EditVehiclePageController {
         //open the browse window
         imageURL = DataTools.fileChooser();
         //System.out.println(imageURL);
+        showImgPane();
         initColorPlate(imageURL);
     }
 
@@ -231,10 +230,15 @@ public class EditVehiclePageController {
     @FXML
     private void saveVehicleBtnClicked() {
         //System.out.println(System.currentTimeMillis());
-        getValue();
         if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
             getValue();
+            System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
+            //here
+            StatusContainer.currentCarModel.updateCarModel(vehicleNameValue, Integer.parseInt(seatNumberValue), Integer.parseInt(priceValue),
+                    categoryValue, gradientDark, gradientLight);
+
             clearProperty();
+            System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
         }else{
             //getValue();
             //get value draft
@@ -290,6 +294,10 @@ public class EditVehiclePageController {
         categoryValue = cmbCategory.getValue();
         seatNumberValue = cmbSeatNumber.getValue();
         brandValue = cmbCarBrand.getValue();
+        if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+            StatusContainer.currentNewCarInfo = new NewCar(vehicleNameValue, chassisNumberValue, plateNumberValue, manufacturingValue,
+                    priceValue, seatNumberValue, categoryValue, brandValue, gradientDark, gradientLight);
+        }
     }
 
     //clear the value
@@ -315,18 +323,26 @@ public class EditVehiclePageController {
         seatNumberValue = null;
         brandValue = null;
         imageURL = null;
+        gradientDark = "#FFFFFF";
+        gradientLight = "#FFFFFF";
     }
 
     //set all the text field value
     public void setBackAllValue(){
-        txtVehicleName.setText(vehicleNameValue);
-        txtPlateNumber.setText(plateNumberValue);
-        txtChassisNumber.setText(chassisNumberValue);
-        txtManufacturing.setText(manufacturingValue);
-        txtPrice.setText(priceValue);
-        cmbCategory.setValue(categoryValue);
-        cmbSeatNumber.setValue(seatNumberValue);
-        cmbCarBrand.setValue(brandValue);
+        txtVehicleName.setText(StatusContainer.currentNewCarInfo.getCarModel());
+        txtPlateNumber.setText(StatusContainer.currentNewCarInfo.getCarNumber());
+        txtChassisNumber.setText(StatusContainer.currentNewCarInfo.getChassisNumber());
+        txtManufacturing.setText(StatusContainer.currentNewCarInfo.getManufacturingDate());
+        txtPrice.setText(StatusContainer.currentNewCarInfo.getPrice());
+        cmbCategory.setValue(StatusContainer.currentNewCarInfo.getGearType());
+        cmbSeatNumber.setValue(StatusContainer.currentNewCarInfo.getSeatNumber());
+        cmbCarBrand.setValue(StatusContainer.currentNewCarInfo.getCarBrand());
+        if(imageURL != null){
+            showImgPane();
+            initColorPlate(imageURL);
+        }
+        gradientDark = StatusContainer.currentNewCarInfo.getGradientDark();
+        gradientLight = StatusContainer.currentNewCarInfo.getGradientLight();
         showImgPane();
     }
 
@@ -380,13 +396,13 @@ public class EditVehiclePageController {
 
     private void setCarBgColor(String color){
         if(bgcStatus == 0){
-            defaultGradientDark = color;
+            gradientDark = color;
             bgcStatus = 1;
         }else if(bgcStatus == 1){
-            defaultGradientLight = color;
+            gradientLight = color;
             bgcStatus = 0;
         }
-        System.out.println("now dark: " + defaultGradientDark + ", now light:" + defaultGradientLight);
-        imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+defaultGradientDark+", "+defaultGradientLight+");");
+        //System.out.println("now dark: " + gradientDark + ", now light:" + gradientLight);
+        imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+gradientDark+", "+gradientLight+");");
     }
 }
