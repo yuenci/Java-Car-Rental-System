@@ -488,16 +488,12 @@ public class ImageTools {
     }
 
     public static void deleteFile(String imgPath){
-        //System.out.println("filePath = " + imgPath);
         if(imgPath.startsWith("file:")){
             imgPath = imgPath.substring(5);
         }
-        //System.out.println("filePath = " + imgPath);
         File file = new File(imgPath);
         if(file.exists()){
             file.delete();
-            //boolean delete = file.delete();
-            //System.out.println("delete status = " + delete);
         }
     }
 

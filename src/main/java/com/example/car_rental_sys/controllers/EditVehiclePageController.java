@@ -232,7 +232,7 @@ public class EditVehiclePageController {
                 btnOperation.setDisable(isNull());
             });
             txtManufacturing.textProperty().addListener((observable, oldValue, newValue) -> {
-                FXTools.validInputIsDate(txtManufacturing,newValue);
+                FXTools.validInputIsDate(txtManufacturing,"-",newValue);
                 btnSaveOption.setDisable(newValue.length() <= 0);
                 btnOperation.setDisable(isNull());
             });

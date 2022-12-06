@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="740.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+<Pane fx:id="adminVehiclePane" prefHeight="740.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../style/adminVehiclePage.css"
       fx:controller="com.example.car_rental_sys.controllers.AdminVehiclePageController">
    <Label layoutX="43.0" layoutY="29.0" text="Edit Vehicle" textFill="#1d2129">

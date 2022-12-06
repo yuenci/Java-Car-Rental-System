@@ -214,16 +214,47 @@ public class FXTools {
         }
     }
 
-    public static void validInputIsDate(TextField textField, String newValue){
-        if(newValue.length() == 10){
-            if(!newValue.matches("^((19|2[0-9])[0-9]{2})-[0-1][0-9]-[0-3][0-9]$")){
-                Platform.runLater(() -> {
-                    textField.clear();
-                    textField.getStyleClass().add("txtErrorFocusStyle");
-                });
-            }else{
-                textField.getStyleClass().remove("txtErrorFocusStyle");
+    public static void validInputIsDate(TextField textField, String regex, String newValue) {
+        if (newValue.length() == 10) {
+            switch (regex) {
+                case "-":
+                    if (!newValue.matches("^((19|2[0-9])[0-9]{2})-[0-1][0-9]-[0-3][0-9]$")) {
+                        Platform.runLater(() -> {
+                            textField.clear();
+                            textField.getStyleClass().add("txtErrorFocusStyle");
+                        });
+                    } else {
+                        textField.getStyleClass().remove("txtErrorFocusStyle");
+                    }
+                    break;
+                case "/":
+                    if (!newValue.matches("^((19|2[0-9])[0-9]{2})/[0-1][0-9]/[0-3][0-9]$")) {
+                        Platform.runLater(() -> {
+                            textField.clear();
+                            textField.getStyleClass().add("txtErrorFocusStyle");
+                        });
+                    } else {
+                        textField.getStyleClass().remove("txtErrorFocusStyle");
+                        break;
+                    }
             }
+        }
+    }
+    public static boolean validInputIsEmail(TextField textField, String newValue){
+        if (!newValue.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{1,7}$")) {
+            return false;
+        }else{
+            textField.getStyleClass().remove("txtErrorFocusStyle");
+            return true;
+        }
+    }
+
+    public static boolean validInputIsPhone(TextField textField, String newValue){
+        if (!newValue.matches("^\\+[0-9]{1,2}-[0-9]{9,13}$")) {
+            return false;
+        }else{
+            textField.getStyleClass().remove("txtErrorFocusStyle");
+            return true;
         }
     }
 

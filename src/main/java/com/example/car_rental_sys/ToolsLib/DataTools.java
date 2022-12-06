@@ -161,6 +161,16 @@ public class DataTools {
         }
     }
 
+    public static boolean checkPhoneNumber(String phoneNumber) {
+        if (!phoneNumber.matches("^\\+[0-9]{1,2}-[0-9]{9,11}$")) {
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Please enter a valid phone number");
+            messageFrame.show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static boolean resetPassword(String email, String newPassword) {
         ArrayList<String[]> result = SQL.query("SELECT userID FROM userInfo WHERE email = '" + email + "'");
         if (result.size() == 0) return false; // email not found return 100

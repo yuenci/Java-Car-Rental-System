@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-
 <Pane fx:id="panelSetting" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;"
       stylesheets="@../style/settingComponentLight.css" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PersonalPageController">
@@ -139,4 +137,26 @@
          <Font name="Arial Bold" size="13.0"/>
       </font>
    </Button>
+   <Label fx:id="aboutWordCount" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="526.0" layoutY="340.0"
+          prefHeight="17.0" prefWidth="24.0" styleClass="lblFourthText" text="90" textAlignment="RIGHT">
+      <font>
+         <Font size="11.0"/>
+      </font>
+   </Label>
+   <Label layoutX="552.0" layoutY="341.0" styleClass="lblFourthText" text="/100">
+      <font>
+         <Font size="11.0"/>
+      </font>
+   </Label>
+   <Label layoutX="558.0" layoutY="174.0" styleClass="lblFourthText" text="/20">
+      <font>
+         <Font size="11.0"/>
+      </font>
+   </Label>
+   <Label fx:id="nameWordCount" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="532.0" layoutY="173.0"
+          prefHeight="17.0" prefWidth="24.0" styleClass="lblFourthText" text="20" textAlignment="RIGHT">
+      <font>
+         <Font size="11.0"/>
+      </font>
+   </Label>
 </Pane>

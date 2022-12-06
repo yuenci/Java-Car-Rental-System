@@ -46,3 +46,12 @@
 .text-area .scroll-pane .content {
     -fx-background-color: #111111 !important;
 }
+
+.txtErrorFocusStyle{
+    -fx-border-color: #f76965 !important;
+    -fx-border-width: 1.5px !important;
+}
+
+.lblFourthText{
+    -fx-text-fill: #2971cf !important;
+}
