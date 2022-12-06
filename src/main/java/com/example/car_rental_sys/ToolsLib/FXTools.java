@@ -7,11 +7,13 @@ import com.example.car_rental_sys.sqlParser.SQL;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
+import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -158,6 +160,71 @@ public class FXTools {
 
         pane.getChildren().add(view);
         return pane;
+    }
+
+    public static String getNodeBgColor(Node node){
+        String style = node.getStyle();
+        //System.out.println(style);
+        String[] styleArray = style.split(";");
+        String colorStyle = "";
+        //use a for loop to find the string which contains "-fx-background-color"
+        for (String s : styleArray) {
+            if (s.contains("-fx-background-color")) {
+                //split the string with ":" and get the color style
+                colorStyle = s.split(":")[1];
+            }
+        }
+        //System.out.println(colorStyle);
+        return colorStyle;
+    }
+
+    public static void validInputLength(TextField textField, String type, String oldValue, String newValue){
+        if(!newValue.matches("[a-zA-Z0-9]*")){
+            textField.setText(oldValue);
+        }
+        switch (type) {
+            case "carName":
+                if (newValue.length() > 25) {
+                    textField.setText(oldValue);
+                }
+                break;
+            case "carNumber":
+                if (newValue.length() > 8) {
+                    textField.setText(oldValue);
+                }
+                break;
+        }
+    }
+
+    public static void validInputNumber(TextField textField, String type, String oldValue, String newValue){
+        if(!newValue.matches("\\d*")){
+            textField.setText(newValue.replaceAll("[^\\d]", ""));
+        }
+        switch (type){
+            case "price":
+                if(newValue.length() > 5){
+                    textField.setText(oldValue);
+                }
+                break;
+            case "chassis":
+                if(newValue.length() > 10){
+                    textField.setText(oldValue);
+                }
+                break;
+        }
+    }
+
+    public static void validInputIsDate(TextField textField, String newValue){
+        if(newValue.length() == 10){
+            if(!newValue.matches("^((19|2[0-9])[0-9]{2})-[0-1][0-9]-[0-3][0-9]$")){
+                Platform.runLater(() -> {
+                    textField.clear();
+                    textField.getStyleClass().add("txtErrorFocusStyle");
+                });
+            }else{
+                textField.getStyleClass().remove("txtErrorFocusStyle");
+            }
+        }
     }
 
 }

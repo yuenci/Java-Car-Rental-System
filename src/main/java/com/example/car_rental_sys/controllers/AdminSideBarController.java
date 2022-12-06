@@ -13,6 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class AdminSideBarController {
+
+    @FXML
+    ImageView imgIcon1, imgIcon2, imgIcon3, imgIcon4, imgIcon5, imgIcon6, imgIcon7;
     @FXML
     Pane item1, item2, item3, item4, item5, item6, item7;
 
@@ -28,6 +31,7 @@ public class AdminSideBarController {
     private void initialize() {
         initUserData();
         initMenuEvent();
+        initIconEvent();
         initLabelEvent();
         item3.getStyleClass().add("menuItemActive");
     }
@@ -73,6 +77,39 @@ public class AdminSideBarController {
             FXTools.changeScene("mainPage.fxml");
         });
 
+    }
+
+    private void initIconEvent(){
+        imgIcon1.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showProfilePage();
+            changeMenuStyle(item1);
+        });
+        imgIcon2.setOnMouseClicked(event -> {
+            changeMenuStyle(item2);
+            FXTools.changeScene("messagePage.fxml");
+        });
+        imgIcon3.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showDashboardPage();
+            changeMenuStyle(item3);
+        });
+        imgIcon4.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showVehiclePage();
+            changeMenuStyle(item4);
+        });
+        imgIcon5.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showOrderPage();
+            changeMenuStyle(item5);
+        });
+        imgIcon6.setOnMouseClicked(event -> {
+            AdminServiceController.instance.showSettingPage();
+            changeMenuStyle(item6);
+        });
+        imgIcon7.setOnMouseClicked(event -> {
+            changeMenuStyle(item6);
+            StatusContainer.currentUser = null;
+            DataTools.logOut();
+            FXTools.changeScene("mainPage.fxml");
+        });
     }
 
     private void changeMenuStyle(Pane activePane) {

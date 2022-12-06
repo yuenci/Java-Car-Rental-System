@@ -2,10 +2,14 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Car;
 import com.example.car_rental_sys.orm.CarModel;
 import com.example.car_rental_sys.orm.NewCar;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,6 +23,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class EditVehiclePageController {
@@ -42,7 +47,10 @@ public class EditVehiclePageController {
     private static String gradientLight = "#FFFFFF";
     private static String gradientDark = "#FFFFFF";
 
-    public Label ivLabelBackground, lblEditVeh,btnDeleteVehicle;
+    private static Image newCarImage;
+
+    @FXML
+    private Label lblEditVeh,btnDeleteVehicle,lblClearImage;
 
     @FXML
     private Button btnOperation, btnSaveOption;
@@ -80,6 +88,7 @@ public class EditVehiclePageController {
         }
         initComboBox();
         initComponent();
+        initComponentEventListeners();
         initColorPlateEvent();
         //System.out.println("init");
     }
@@ -97,6 +106,13 @@ public class EditVehiclePageController {
 
     private void initComponent(){
         if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+            lblClearImage.setVisible(isSaved && StatusContainer.currentNewCarInfo.getNewCarImage() != null);
+            btnSaveOption.setDisable(true);
+            btnOperation.setDisable(true);
+            if(isSaved){
+                btnDeleteVehicle.setText("Delete Draft");
+                btnDeleteVehicle.setVisible(true);
+            }
             btnOperation.setText("Add Vehicle");
             btnOperation.setStyle(btnOperation.getStyle() + "-fx-background-color: #165dff;");
             btnSaveOption.setText("Save Modify");
@@ -116,35 +132,35 @@ public class EditVehiclePageController {
 
     private void initColorPlateEvent(){
         colorOne.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorOne);
+            String color = FXTools.getNodeBgColor(colorOne);
             setCarBgColor(color);
         });
         colorTwo.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorTwo);
+            String color = FXTools.getNodeBgColor(colorTwo);
             setCarBgColor(color);
         });
         colorThree.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorThree);
+            String color = FXTools.getNodeBgColor(colorThree);
             setCarBgColor(color);
         });
         colorFour.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorFour);
+            String color = FXTools.getNodeBgColor(colorFour);
             setCarBgColor(color);
         });
         colorFive.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorFive);
+            String color = FXTools.getNodeBgColor(colorFive);
             setCarBgColor(color);
         });
         colorSix.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorSix);
+            String color = FXTools.getNodeBgColor(colorSix);
             setCarBgColor(color);
         });
         colorSeven.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorSeven);
+            String color = FXTools.getNodeBgColor(colorSeven);
             setCarBgColor(color);
         });
         colorEight.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            String color = getNodeColor(colorEight);
+            String color = FXTools.getNodeBgColor(colorEight);
             setCarBgColor(color);
         });
     }
@@ -158,16 +174,6 @@ public class EditVehiclePageController {
                 }
             }
         });
-    }
-
-    private String getNodeColor(Pane pane){
-        //get the style from pane and turn into string
-        String style = pane.getStyle();
-        //get the last 8 character from the string
-        String lastStr = style.substring(style.length() - 8);
-        //get the first 7 character from the string
-
-        return lastStr.substring(0,7);
     }
 
     private void initTextField(){
@@ -194,6 +200,7 @@ public class EditVehiclePageController {
         imgPane.setStyle(imgPane.getStyle() + "-fx-background-color: " + "linear-gradient(to left, " + gradientDark + ", " + gradientLight + ");");
         System.out.println("->" + imageURL);
         imgVehicle.setImage(ImageTools.getImageObjFromPath(imageURL));
+        ImageTools.centerImage(imgVehicle);
     }
 
     private void initColorPlate(String imageURL){
@@ -207,21 +214,85 @@ public class EditVehiclePageController {
         }
     }
 
+    private void initComponentEventListeners(){
+        if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+            txtVehicleName.textProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue.length() <= 8);
+                FXTools.validInputLength(txtVehicleName, "carName",oldValue, newValue);
+                btnOperation.setDisable(isNull());
+            });
+            txtPlateNumber.textProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue.length() <= 5);
+                FXTools.validInputLength(txtPlateNumber, "carNumber",oldValue, newValue);
+                btnOperation.setDisable(isNull());
+            });
+            txtChassisNumber.textProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue.length() <= 5);
+                FXTools.validInputNumber(txtChassisNumber, "chassis", oldValue, newValue);
+                btnOperation.setDisable(isNull());
+            });
+            txtManufacturing.textProperty().addListener((observable, oldValue, newValue) -> {
+                FXTools.validInputIsDate(txtManufacturing,newValue);
+                btnSaveOption.setDisable(newValue.length() <= 0);
+                btnOperation.setDisable(isNull());
+            });
+            txtPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue.length() <= 0);
+                FXTools.validInputNumber(txtPrice, "price", oldValue, newValue);
+                btnOperation.setDisable(isNull());
+            });
+            cmbCategory.valueProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue == null);
+                btnOperation.setDisable(isNull());
+            });
+            cmbCarBrand.valueProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue == null);
+                btnOperation.setDisable(isNull());
+            });
+            cmbSeatNumber.valueProperty().addListener((observable, oldValue, newValue) -> {
+                btnSaveOption.setDisable(newValue == null);
+                btnOperation.setDisable(isNull());
+            });
+        }else{
+            //set the btnSaveOption disable when the new value is empty or same as the old value
+            txtVehicleName.textProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            txtPlateNumber.textProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            txtChassisNumber.textProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            txtManufacturing.textProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            txtPrice.textProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            cmbCategory.valueProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            cmbCarBrand.valueProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+            cmbSeatNumber.valueProperty().addListener((observable, oldValue, newValue) -> btnSaveOption.setDisable(newValue.length() <= 0 || newValue.equals(oldValue)));
+        }
+    }
+
     @FXML
     private void btnBrowseClicked() {
         //open the browse window
         imageURL = DataTools.fileChooser();
-        //System.out.println(imageURL);
-        showImgPane();
-        initColorPlate(imageURL);
+        if(imageURL != null){
+            showImgPane("image");
+            initColorPlate(imageURL);
+            btnSaveOption.setDisable(false);
+            btnOperation.setDisable(isNull());
+            lblClearImage.setVisible(true);
+        }
     }
 
     @FXML
     private void addVehicleBtnClicked() {
         if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
             getValue();
-            clearValue();
             isSaved = false;
+            String cacheUrl = "src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png";
+            StatusContainer.currentCarModel = new CarModel(vehicleNameValue, Integer.parseInt(seatNumberValue),
+                    Integer.parseInt(priceValue), categoryValue, gradientDark, gradientLight,brandValue,cacheUrl);
+            StatusContainer.currentCarModel.addCarModel();
+            StatusContainer.currentCarInfo = new Car(vehicleNameValue,chassisNumberValue,plateNumberValue,manufacturingValue,1);
+            StatusContainer.currentCarInfo.addCarInfo();
+            clearValue();
+        }else{
+            AdminVehiclePageController.instance.setButtonDisableFalse();
         }
         refreshPane();
         clearProperty();
@@ -233,29 +304,68 @@ public class EditVehiclePageController {
         if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
             getValue();
             System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
+            if(!Objects.equals(vehicleNameValue, StatusContainer.currentCarModel.getCarModel())){
+                ImageTools.renameCarImage(imageURL, vehicleNameValue);
+            }
+            StatusContainer.currentCarInfo.setCarModel(vehicleNameValue);
+            StatusContainer.currentCarModel.setCarModel(vehicleNameValue);
             //here
             StatusContainer.currentCarModel.updateCarModel(vehicleNameValue, Integer.parseInt(seatNumberValue), Integer.parseInt(priceValue),
                     categoryValue, gradientDark, gradientLight);
-
-            clearProperty();
+            StatusContainer.currentCarInfo.updateCarInfo(vehicleNameValue, chassisNumberValue, plateNumberValue, manufacturingValue, carStatus);
             System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
         }else{
-            //getValue();
+            isSaved = true;
+            getValue();
             //get value draft
         }
-        //go to overview page
-        //set isSaved to true
-        isSaved = true;
         refreshPane();
+        clearProperty();
     }
 
     @FXML
     private void btnDeleteVehicleClicked() {
-        //delete the vehicle & go to overview page
-        isSaved = false;
-        StatusContainer.currentCarModel.delete();
-        StatusContainer.currentCarInfo.delete();
+        if(!isSaved && AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
+            StatusContainer.currentCarModel.delete();
+            StatusContainer.currentCarInfo.delete();
+            AdminVehiclePageController.instance.setButtonDisableFalse();
+        }else if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+            //delete draft
+            StatusContainer.currentNewCarInfo.clearProperty();
+            isSaved = false;
+        }
         refreshPane();
+    }
+
+    @FXML
+    private void clearBtnClicked() {
+        //clear the imageURL
+        showDragPane();
+        clearColorPlateColor();
+        lblClearImage.setVisible(false);
+        imageURL = null;
+        Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
+        for(Pane pane : colorPane){
+            pane.setVisible(false);
+        }
+        if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+            btnSaveOption.setDisable(isNull());
+            btnOperation.setDisable(true);
+        }else{
+            btnSaveOption.setDisable(true);
+        }
+        gradientDark = "#FFFFFF";
+        gradientLight = "#FFFFFF";
+        imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+gradientDark+", "+gradientLight+");");
+    }
+
+    @FXML
+    private void imgVehicleDrop(DragEvent event) {
+        //get the drag image path
+        System.out.println("get!");
+        imageURL = event.getDragboard().getFiles().get(0).getAbsolutePath();
+        System.out.println(imageURL);
+        showImgPane("image");
     }
 
     private void refreshPane(){
@@ -264,28 +374,7 @@ public class EditVehiclePageController {
         AdminVehiclePageController.instance.setDefaultFocus();
     }
 
-    @FXML
-    void clearBtnClicked() {
-        //clear the imageURL
-        showDragPane();
-        clearColorPlateColor();
-        imageURL = null;
-        Pane[] colorPane = {colorOne,colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight};
-        for(Pane pane : colorPane){
-            pane.setVisible(false);
-        }
-    }
-
-    @FXML
-    void imgVehicleDrop(DragEvent event) {
-        //get the drag image path
-        System.out.println("get!");
-        imageURL = event.getDragboard().getFiles().get(0).getAbsolutePath();
-        System.out.println(imageURL);
-        showImgPane();
-    }
-
-    private void getValue(){
+    private void getValue() {
         vehicleNameValue = txtVehicleName.getText();
         plateNumberValue = txtPlateNumber.getText();
         chassisNumberValue = txtChassisNumber.getText();
@@ -293,14 +382,36 @@ public class EditVehiclePageController {
         priceValue = txtPrice.getText();
         categoryValue = cmbCategory.getValue();
         seatNumberValue = cmbSeatNumber.getValue();
-        brandValue = cmbCarBrand.getValue();
-        if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
+        if(AdminVehiclePageController.defaultDisplay.equals("addVehicle") && isSaved){
+            brandValue = cmbCarBrand.getValue();
             StatusContainer.currentNewCarInfo = new NewCar(vehicleNameValue, chassisNumberValue, plateNumberValue, manufacturingValue,
-                    priceValue, seatNumberValue, categoryValue, brandValue, gradientDark, gradientLight);
+                    priceValue, seatNumberValue, categoryValue, brandValue, gradientDark, gradientLight, imageURL, newCarImage);
+
+        }else if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
+            //get the key by value from cmbCarBrand
+            for (Map.Entry<Integer, String> entry : statusMap.entrySet()) {
+                if (Objects.equals(cmbCarBrand.getValue(), entry.getValue())) {
+                    carStatus = entry.getKey();
+                    System.out.println(carStatus);
+                }
+            }
+            //carStatus = statusMap.get(brandValue);
+        }else{
+            brandValue = cmbCarBrand.getValue();
+            System.out.println(brandValue);
         }
     }
 
-    //clear the value
+    private boolean isNull(){
+        if(txtVehicleName.getText().isEmpty() || txtPlateNumber.getText().isEmpty() || txtChassisNumber.getText().isEmpty() ||
+                txtManufacturing.getText().isEmpty() || txtPrice.getText().isEmpty() || cmbCategory.getValue() == null ||
+                cmbCarBrand.getValue() == null || cmbSeatNumber.getValue() == null || imageURL == null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private void clearValue(){
         TextField[] textFields = {txtVehicleName,txtPlateNumber,txtChassisNumber,txtManufacturing,txtPrice};
         for(TextField textField : textFields){
@@ -327,7 +438,6 @@ public class EditVehiclePageController {
         gradientLight = "#FFFFFF";
     }
 
-    //set all the text field value
     public void setBackAllValue(){
         txtVehicleName.setText(StatusContainer.currentNewCarInfo.getCarModel());
         txtPlateNumber.setText(StatusContainer.currentNewCarInfo.getCarNumber());
@@ -337,25 +447,36 @@ public class EditVehiclePageController {
         cmbCategory.setValue(StatusContainer.currentNewCarInfo.getGearType());
         cmbSeatNumber.setValue(StatusContainer.currentNewCarInfo.getSeatNumber());
         cmbCarBrand.setValue(StatusContainer.currentNewCarInfo.getCarBrand());
-        if(imageURL != null){
-            showImgPane();
-            initColorPlate(imageURL);
-        }
+        imageURL = StatusContainer.currentNewCarInfo.getImageUrl();
         gradientDark = StatusContainer.currentNewCarInfo.getGradientDark();
         gradientLight = StatusContainer.currentNewCarInfo.getGradientLight();
-        showImgPane();
+        System.out.println(gradientDark + " : " + gradientLight);
+        if(imageURL != null){
+            showImgPane("image");
+            initColorPlate(imageURL);
+        }else{
+            showImgPane("url");
+        }
+        imgPane.setStyle(imgPane.getStyle() + "-fx-background-color: " + "linear-gradient(to left, " + gradientDark + ", " + gradientLight + ");");
     }
 
-
-    private void showImgPane(){
-        if(imageURL != null){
-            imgVehicle.setImage(new javafx.scene.image.Image("file:///"+imageURL));
+    private void showImgPane(String type){
+        if(Objects.equals(type, "url")) {
+            if (imageURL != null) {
+                imgVehicle.setImage(new javafx.scene.image.Image("file:///" + imageURL));
+                imgPane.setVisible(true);
+                dragPane.setVisible(false);
+            } else {
+                imgPane.setVisible(false);
+                dragPane.setVisible(true);
+            }
+        }else if(Objects.equals(type, "image")) {
+            newCarImage = ImageTools.removeBackground(imageURL);
+            imgVehicle.setImage(newCarImage);
             imgPane.setVisible(true);
             dragPane.setVisible(false);
-        }else{
-            imgPane.setVisible(false);
-            dragPane.setVisible(true);
         }
+        ImageTools.centerImage(imgVehicle);
     }
 
     private void showDragPane(){
@@ -375,23 +496,43 @@ public class EditVehiclePageController {
         StatusContainer.currentCarInfo = new Car(carID);
         StatusContainer.currentCarModel = new CarModel(carID);
 
-        vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
-        plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
-        chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
-        manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
-        priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
-        categoryValue = StatusContainer.currentCarModel.getGearType();
-        seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
-        brandValue = StatusContainer.currentCarModel.getCarBrand();
-        carStatus = StatusContainer.currentCarInfo.getStatus();
+        Platform.runLater(() -> {
+            vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
+            plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
+            chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
+            System.out.println("chassisNum: " + chassisNumberValue);
+            manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
+            priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
+            categoryValue = StatusContainer.currentCarModel.getGearType();
+            seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
+            brandValue = StatusContainer.currentCarModel.getCarBrand();
+            carStatus = StatusContainer.currentCarInfo.getStatus();
 
-        imageURL = StatusContainer.currentCarModel.getImageURL();
-        gradientLight = StatusContainer.currentCarModel.getLightColor();
-        gradientDark = StatusContainer.currentCarModel.getDarkColor();
-        initTextField();
-        initVehiclePane();
-        System.out.println(imageURL);
-        initColorPlate(imageURL);
+            imageURL = StatusContainer.currentCarModel.getImageURL();
+            gradientLight = StatusContainer.currentCarModel.getLightColor();
+            gradientDark = StatusContainer.currentCarModel.getDarkColor();
+            initTextField();
+            initVehiclePane();
+            initColorPlate(imageURL);
+        });
+
+//        vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
+//        plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
+//        chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
+//        System.out.println("chassisNum: " + chassisNumberValue);
+//        manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
+//        priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
+//        categoryValue = StatusContainer.currentCarModel.getGearType();
+//        seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
+//        brandValue = StatusContainer.currentCarModel.getCarBrand();
+//        carStatus = StatusContainer.currentCarInfo.getStatus();
+//
+//        imageURL = StatusContainer.currentCarModel.getImageURL();
+//        gradientLight = StatusContainer.currentCarModel.getLightColor();
+//        gradientDark = StatusContainer.currentCarModel.getDarkColor();
+//        initTextField();
+//        initVehiclePane();
+//        initColorPlate(imageURL);
     }
 
     private void setCarBgColor(String color){
@@ -404,5 +545,11 @@ public class EditVehiclePageController {
         }
         //System.out.println("now dark: " + gradientDark + ", now light:" + gradientLight);
         imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+gradientDark+", "+gradientLight+");");
+    }
+
+
+    private void showErrorMessage(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Enter the correct information");
+        messageFrame.show();
     }
 }

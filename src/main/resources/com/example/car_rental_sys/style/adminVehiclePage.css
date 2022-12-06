@@ -17,3 +17,8 @@
     -fx-text-fill: #ffffff !important;
     -fx-border-insets: 0px;
 }
+
+.txtErrorFocusStyle{
+    -fx-border-color: #f53f3f !important;
+    -fx-border-width: 1.5px !important;
+}

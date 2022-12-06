@@ -18,6 +18,9 @@ public class AdminVehiclePageController{
     public static String defaultDisplay = "overview";
 
     @FXML
+    private Pane adminVehiclePane;
+
+    @FXML
     private Button overviewBtn;
     @FXML
     private Button addVehicleBtn;
@@ -33,6 +36,7 @@ public class AdminVehiclePageController{
 
     @FXML
     private void initialize(){
+        adminVehiclePane.setLayoutX(adminVehiclePane.getLayoutX() + 55);
         overviewBtn.getStyleClass().add("btnFocusStyle");
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/OverviewVehiclePage.fxml"));
@@ -44,11 +48,11 @@ public class AdminVehiclePageController{
 
     @FXML
     void overviewPageClicked(MouseEvent event) {
-        System.out.println(System.currentTimeMillis());
+        //System.out.println(System.currentTimeMillis());
         if(!Objects.equals(defaultDisplay, "editVehicle")){
             headerButtonClickEvent(event);
             defaultDisplay = "overview";
-            System.out.println("In: " +System.currentTimeMillis());
+           // System.out.println("In: " +System.currentTimeMillis());
             refreshDisplayPane();
         }
     }
@@ -91,6 +95,8 @@ public class AdminVehiclePageController{
     public void showEditVehiclePage(){
         defaultDisplay = "editVehicle";
         try {
+            addVehicleBtn.setDisable(true);
+            overviewBtn.setDisable(true);
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource
                     ("fxml/EditVehiclePage.fxml"));
             AdVehicleMainPane.getChildren().clear();
@@ -99,7 +105,7 @@ public class AdminVehiclePageController{
             editVehicleBtn.getStyleClass().add("btnFocusStyle");
             AdVehicleMainPane.getChildren().add(fxmlLoader.load());
             System.out.println(defaultDisplay);
-            System.out.println("hi here");
+           // System.out.println("hi here");
             //EditVehiclePageController.instance.initTextField();
         }catch (IOException e){
             e.printStackTrace();
@@ -134,6 +140,11 @@ public class AdminVehiclePageController{
             }
         }));
         thread.start();
+    }
+
+    public void setButtonDisableFalse(){
+        addVehicleBtn.setDisable(false);
+        overviewBtn.setDisable(false);
     }
 }
 

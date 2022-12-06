@@ -19,6 +19,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -413,10 +417,11 @@ public class ImageTools {
         return getImageObjFromPath(carImagePath);
     }
 
-    public Image removeBackground(String imagePath){
+    public static Image removeBackground(String imagePath){
         // check if png file
+        String outputPath = "src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png";
         if(!imagePath.endsWith(".png")){
-            throw new IllegalArgumentException("imagePath must be a png file");
+            covertImageToPng(imagePath,outputPath);
         }
         Response response = null;
         {
@@ -436,12 +441,64 @@ public class ImageTools {
         }
 
         try {
-            response.saveContent(new File("src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png"));
+
+            response.saveContent(new File(outputPath));
             // need to delete the file after move to the right place(cars folder)
-            return  new Image("file:src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png");
+            return  new Image("file:" + outputPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
+
+    public static void renameCarImage(String imagePath,String newCarName){
+        System.out.println("imagePath = " + imagePath);
+        System.out.println("newCarName = " + newCarName);
+
+        if(imagePath.startsWith("file:")){
+            imagePath = imagePath.substring(5);
+        }
+        Path source = Paths.get(imagePath);
+        Path target = Paths.get("src/main/resources/com/example/car_rental_sys/image/cars/"+newCarName+".png");
+
+        try {
+            Files.move(source, target, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void centerImage(ImageView imageView){
+        Image img = imageView.getImage();
+        if(img!=null){
+            double w;
+            double h;
+
+            double ratioX = imageView.getFitWidth() / img.getWidth();
+            double ratioY = imageView.getFitHeight() / img.getHeight();
+
+            double rePosition = Math.min(ratioX, ratioY);
+
+            w = img.getWidth() * rePosition;
+            h = img.getHeight() * rePosition;
+
+            imageView.setX((imageView.getFitWidth() - w) / 2);
+            imageView.setY((imageView.getFitHeight() - h) / 2);
+        }
+    }
+
+    public static void deleteFile(String imgPath){
+        //System.out.println("filePath = " + imgPath);
+        if(imgPath.startsWith("file:")){
+            imgPath = imgPath.substring(5);
+        }
+        //System.out.println("filePath = " + imgPath);
+        File file = new File(imgPath);
+        if(file.exists()){
+            file.delete();
+            //boolean delete = file.delete();
+            //System.out.println("delete status = " + delete);
+        }
+    }
+
 }

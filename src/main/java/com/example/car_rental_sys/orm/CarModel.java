@@ -2,8 +2,10 @@ package com.example.car_rental_sys.orm;
 
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -21,6 +23,10 @@ public class CarModel {
     private int speed;
     private double power;
     private String imageURL;
+
+    public CarModel(){
+
+    }
 
     public CarModel(int modelID) {
         this.modelID = modelID;
@@ -59,6 +65,17 @@ public class CarModel {
         power = Double.parseDouble(carModelInfo[10]);
         imageURL = "file:src/main/resources/com/example/car_rental_sys/image/cars/"+ carModel + ".png";
 
+    }
+
+    public CarModel(String carModel, int seats, int price, String gearType, String darkColor, String lightColor, String carBrand, String imageURL) {
+        this.carModel = carModel;
+        this.seats = seats;
+        this.price = price;
+        this.gearType = gearType;
+        this.darkColor = darkColor;
+        this.lightColor = lightColor;
+        this.carBrand = carBrand;
+        this.imageURL = imageURL;
     }
 
     public CarModel(int modelID, String carModel, int seats, int price, String gearType, String darkColor,
@@ -184,10 +201,12 @@ public class CarModel {
 
     public void addCarModel(){
         String values = DataTools.getID("carModels") + ",'" + carModel + "'," + seats + "," + price + ",'" + gearType + "','" + darkColor +
-                "','" + lightColor + "','" + carBrand + "'," + star + "," + speed + "," + power;
+                "','" + lightColor + "','" + carBrand + "'," + DataTools.getCarStar() + "," + DataTools.getCarSpeed() + "," + DataTools.getCarPower();
         String sql = "INSERT INTO carModels VALUES (" + values + ")";
-        boolean process = SQL.execute(sql);
-        System.out.println(process);
+        System.out.println(sql);
+        SQL.execute(sql);
+        System.out.println(imageURL);
+        ImageTools.renameCarImage(imageURL, carModel);
     }
 
     public void update(){
@@ -203,5 +222,6 @@ public class CarModel {
         String sql = "DELETE FROM carModels WHERE modelID = " + modelID;
         SQL.execute(sql);
         System.out.println("done");
+        ImageTools.deleteFile(imageURL);
     }
 }

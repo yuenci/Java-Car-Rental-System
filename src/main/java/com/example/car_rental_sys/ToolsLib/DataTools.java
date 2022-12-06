@@ -631,8 +631,13 @@ public class DataTools {
 //            System.out.println(selectedFile.getAbsolutePath());
             //copyFileUsingApacheCommonsIO(selectedFile.getAbsolutePath(), "C:\\Users\\Public\\Pictures\\Sample Pictures\\test.jpg");
         }
-        assert selectedFile != null;
-        return selectedFile.getAbsolutePath();
+        if( selectedFile == null) {
+            return null;
+        }
+        else{
+            return selectedFile.getAbsolutePath();
+        }
+
     }
 
     public static void copyFileUsingApacheCommonsIO(String sourceAbsolutePath, String destAbsolutePath) throws IOException {
@@ -651,6 +656,27 @@ public class DataTools {
         }else{
             return result.get(0);
         }
+    }
+
+    public static double getCarStar(){
+        double star = 3 + (5 - 3) * new Random().nextDouble();
+        star = Math.round(star * 10) / 10.0;
+        return star;
+    }
+
+    public static int getCarSpeed(){
+        return getRandomInt(200,480);
+    }
+
+    public static double getCarPower(){
+        //the power must higher than 100 and lower than 300
+        double power = 100 + (300 - 100) * new Random().nextDouble();
+        power = Math.round(power * 10) / 10.0;
+        return power;
+    }
+
+    public static int getRandomCarStatus(){
+        return new Random().nextInt(5);
     }
 
 }

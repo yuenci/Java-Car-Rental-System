@@ -1,5 +1,9 @@
 package com.example.car_rental_sys.orm;
 
+import javafx.scene.image.Image;
+
+import java.lang.reflect.Field;
+
 public class NewCar {
     private String carModel;
     private String chassisNumber;
@@ -11,10 +15,12 @@ public class NewCar {
     private String carBrand;   //car brand
     private String gradientDark;
     private String gradientLight;
+    private String imageUrl;
+    private Image newCarImage;
 
 
     public NewCar(String carModel, String chassisNumber, String carNumber, String manufacturingDate, String price,
-                  String seatNumber, String gearType, String carBrand, String gradientDark, String gradientLight) {
+                  String seatNumber, String gearType, String carBrand, String gradientDark, String gradientLight, String imageUrl, Image newCarImage) {
         this.carModel = carModel;
         this.chassisNumber = chassisNumber;
         this.carNumber = carNumber;
@@ -25,6 +31,8 @@ public class NewCar {
         this.carBrand = carBrand;
         this.gradientDark = gradientDark;
         this.gradientLight = gradientLight;
+        this.imageUrl = imageUrl;
+        this.newCarImage = newCarImage;
     }
 
     public String getCarModel() {
@@ -107,4 +115,51 @@ public class NewCar {
         this.gradientLight = gradientLight;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Image getNewCarImage() {
+        return newCarImage;
+    }
+
+    public void setNewCarImage(Image newCarImage) {
+        this.newCarImage = newCarImage;
+    }
+
+    public void clearProperty() {
+        this.carModel = null;
+        this.chassisNumber = null;
+        this.carNumber = null;
+        this.manufacturingDate = null;
+        this.price = null;
+        this.seatNumber = null;
+        this.gearType = null;
+        this.carBrand = null;
+        this.gradientDark = null;
+        this.gradientLight = null;
+        this.imageUrl = null;
+        this.newCarImage = null;
+
+        System.out.println("draft deleted");
+    }
+
+    public boolean checkAllNull() throws IllegalAccessException {
+        Field[] fields = this.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            if (field.get(this) != null) {
+                if (field.getName().equals("gradientDark") || field.getName().equals("gradientLight")) {
+                    continue;
+                }
+                return false;
+            }
+        }
+        return true;
+
+    }
 }

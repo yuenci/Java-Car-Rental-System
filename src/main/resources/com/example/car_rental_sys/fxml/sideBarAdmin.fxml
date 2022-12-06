@@ -6,9 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css"
-      xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.AdminSideBarController">
+<Pane prefHeight="832.0" prefWidth="260.0" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.AdminSideBarController">
     <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/avatar/1.png" />
     </ImageView>
@@ -41,7 +39,7 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon1" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right1.png" />
         </ImageView>
     </Pane>
@@ -58,7 +56,7 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon2" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
@@ -75,7 +73,7 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon3" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
@@ -92,7 +90,7 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon5" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
@@ -109,7 +107,7 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon6" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
@@ -126,35 +124,29 @@
                 </font>
             </Label>
         </Pane>
-        <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
+        <ImageView fx:id="imgIcon7" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
             <Image url="@../image/UI/right.png" />
         </ImageView>
     </Pane>
-   <Pane layoutX="24.0" layoutY="562.0" prefHeight="60.0" prefWidth="233.0" style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
-      <children>
-         <Pane fx:id="item4" layoutY="10.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
-            <children>
-               <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
-                  <children>
-                     <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../image/UI/carManage.png" />
-                        </image>
-                     </ImageView>
-                  </children>
-               </Pane>
-               <Label layoutX="83.0" layoutY="10.0" text="Cars">
-                  <font>
-                     <Font name="System Bold" size="15.0" />
-                  </font>
-               </Label>
-            </children>
-         </Pane>
-         <ImageView fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" styleClass="leftIcon">
-            <image>
-               <Image url="@../image/UI/right.png" />
-            </image>
-         </ImageView>
-      </children>
-   </Pane>
+    <Pane layoutX="24.0" layoutY="562.0" prefHeight="60.0" prefWidth="233.0"
+          style="-fx-border-color: #e8e8e8; -fx-border-style: hidden  hidden solid hidden;">
+        <Pane fx:id="item4" layoutY="10.0" prefHeight="40.0" prefWidth="180.0"
+              style="-fx-background-color: transparent; -fx-background-radius: 10;" styleClass="menuItem">
+            <Pane prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 10;" styleClass="menuImagePane">
+                <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <Image url="@../image/UI/carManage.png"/>
+                </ImageView>
+            </Pane>
+            <Label layoutX="83.0" layoutY="10.0" text="Cars">
+                <font>
+                    <Font name="System Bold" size="15.0"/>
+                </font>
+            </Label>
+        </Pane>
+        <ImageView fx:id="imgIcon4" fitHeight="40.0" fitWidth="30.0" layoutX="204.0" layoutY="15.0" pickOnBounds="true"
+                   preserveRatio="true" styleClass="leftIcon">
+            <Image url="@../image/UI/right.png"/>
+        </ImageView>
+    </Pane>
 </Pane>

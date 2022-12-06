@@ -16,7 +16,7 @@
 }
 
 .text-area{
-    -fx-text-fill: #f6f6f6 !important;
+    -fx-text-fill: #4e5969 !important;
     -fx-focus-color: #4080ff !important;
     -fx-faint-focus-color: transparent;;
 }

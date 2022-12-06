@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class AdminServiceController {
+public class AdminServiceController extends Controller{
 
     public static AdminServiceController instance;
 
@@ -32,6 +33,8 @@ public class AdminServiceController {
     private final String orderMain = "showOrderComponent.fxml";
     private final String orderSide = "OrderDetailsComponent.fxml";
     private final String trackPane = "TrackOrderComponent.fxml";
+    @FXML
+    Pane mainPane;
 
     @FXML
     private Pane centerContainer,rightContainer,hugeContainer,middlePanel,settingMainPanel, dashboardContainer,toRightPane;
@@ -46,6 +49,7 @@ public class AdminServiceController {
         //System.out.println("AdminServiceController");
         initToRightBtnEvent();
        // showVehiclePage();
+        StatusContainer.currentPageController = this;
     }
 
     private void initToRightBtnEvent(){

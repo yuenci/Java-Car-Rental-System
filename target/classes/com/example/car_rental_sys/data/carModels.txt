@@ -1,5 +1,5 @@
 modelID:num=0,carModel:str=None,seats:num=2,price:num=0,gearType:str=Manual,darkColor:str=#000000,lightColor:str=#ffffff,carBrand:str=None,star:num=0,speed:num=0,power:num=0
-1,Huracan_EVO,2,400,Manual,#d32207,#f16e37,Huracan,4.0,383,7.9
+1,Huracan_EVI,2,4000,Manual,#300300,#fd9137,Huracan,4.0,383,7.9
 2,Mclaren_720s,2,2952,Automatic,#81828d,#ccccce,Mclaren,4.3,494,7.4
 3,McLaren_620R,2,2702,Manual,#824d27,#caab9d,McLaren,4.3,474,4.1
 4,McLaren_Senna,2,3102,Automatic,#5b626e,#b4c2d4,McLaren,4.2,439,6.1
