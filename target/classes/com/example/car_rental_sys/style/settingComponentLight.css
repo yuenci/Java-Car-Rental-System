@@ -38,3 +38,15 @@
 .lblFourthText{
     -fx-text-fill: #7bc0fc !important;
 }
+
+.txtFieldWeak, .txtFieldWeak:hover, .txtFieldWeak:focused{
+    -fx-border-color: #ff7d00 !important;
+}
+
+.txtFieldError, .txtFieldError:hover, .txtFieldError:focused{
+    -fx-border-color: #f53f3f !important;
+}
+
+.txtFieldStrong, .txtFieldStrong:hover, .txtFieldStrong:focused{
+    -fx-border-color: #00b42a !important;
+}

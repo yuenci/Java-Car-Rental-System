@@ -165,10 +165,15 @@ public class PersonalPageController {
 
     @FXML
     void deleteClicked() {
+        System.out.println(user.getGender());
         avatar = ImageTools.getDefaultProfile(user.getGender());
-        ivAvatar.setImage(null);
-        setCircleAvatar(avatar);
-        user.setAvatar(avatar);
+        System.out.println("hi: " + avatar);
+        Platform.runLater(() -> {
+            ivAvatar.setImage(null);
+            setCircleAvatar(avatar);
+        });
+        user.setAvatar(ImageTools.getDefaultProfile(user.getGender()));
+        refreshAvatar();
     }
 
     @FXML
@@ -179,14 +184,18 @@ public class PersonalPageController {
             setCircleAvatar(newAvatar);
             avatar = newAvatar;
             user.setAvatar(avatar);
-            Platform.runLater(() -> {
-                if(user instanceof Admin){
-                    AdminSideBarController.instance.initAvatar();
-                }else if(user instanceof Customer){
-                    CustomerSideBarController.instance.initAvatar();
-                }
-            });
+            refreshAvatar();
         }
+    }
+
+    private void refreshAvatar(){
+        Platform.runLater(() -> {
+            if(user instanceof Admin){
+                AdminSideBarController.instance.initAvatar();
+            }else if(user instanceof Customer){
+                CustomerSideBarController.instance.initAvatar();
+            }
+        });
     }
 
     private void setCircleAvatar(Image avatar){
@@ -212,9 +221,12 @@ public class PersonalPageController {
 
     @FXML
     void cancelClicked() {
-        Node[] nodes = {ivTxtUsername, ivTxtBirthday, ivTxtAddress, ivTxtAbout, ivTxtEmail, ivTxtPhoneNumber};
+        Node[] nodes = {ivTxtUsername, ivTxtBirthday, ivTxtEmail, ivTxtPhoneNumber};
         for(Node node : nodes){
             node.getStyleClass().remove("txtErrorFocusStyle");
+        }
+        Node[] nodes2 = {ivTxtAddress};
+        for(Node node : nodes2){
             node.getStyleClass().remove("txtAreaErrorStyle");
         }
         initText();

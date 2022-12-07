@@ -500,11 +500,15 @@ public class ImageTools {
     public static Image getDefaultProfile(String gender){
         String type = "";
         switch (gender){
+            case "male":
             case "Male":
                 type = "male";
+                System.out.println("hi = " + type);
                 break;
+            case "female":
             case "Female":
                 type = "female";
+                System.out.println("type = " + type);
                 break;
         }
         System.out.println("type = " + type);
