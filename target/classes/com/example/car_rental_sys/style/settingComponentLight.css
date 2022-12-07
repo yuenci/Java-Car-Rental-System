@@ -30,6 +30,11 @@
     -fx-border-width: 1.5px !important;
 }
 
+.txtAreaErrorStyle, .txtAreaErrorStyle:hover, .txtAreaErrorStyle:focused{
+    -fx-border-color: #f53f3f !important;
+    -fx-focus-color: #f53f3f !important;
+}
+
 .lblFourthText{
     -fx-text-fill: #7bc0fc !important;
 }

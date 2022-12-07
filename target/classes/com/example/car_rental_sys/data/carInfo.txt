@@ -8,3 +8,4 @@ carID:num=0,carModel:str=null,chassisNumber:str=0,carNumber:str=null,manufacturi
 7,Porsche_718,4651654565446,3445low,2021-01-01,2021-01-01 01:01:01,4
 8,McLaren_P1,9525462445,3l2l2w,2021-01-01,2021-01-01 01:01:01,1
 9,Lamborghini_Centenario770,763165165,3lz02w,2021-01-01,2021-01-01 01:01:01,1
+34,AmardeepPushCar,8989520599,9as8d5,2022-12-07,2022-12-07 13:56:08,1

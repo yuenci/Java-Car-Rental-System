@@ -47,9 +47,14 @@
     -fx-background-color: #111111 !important;
 }
 
-.txtErrorFocusStyle{
+.txtErrorFocusStyle, .txtErrorFocusStyle:hover, .txtErrorFocusStyle:focused{
     -fx-border-color: #f76965 !important;
     -fx-border-width: 1.5px !important;
+}
+
+.txtAreaErrorStyle, .txtAreaErrorStyle:hover, .txtAreaErrorStyle:focused{
+    -fx-border-color: #f76965 !important;
+    -fx-focus-color: #f76965 !important;
 }
 
 .lblFourthText{

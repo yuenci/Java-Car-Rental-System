@@ -457,6 +457,31 @@ FXTools.changeScene("loginPage.fxml");
 
 打印fx 节点为pdf
 
+
+- `public static Image removeBackground(String imagePath)`
+
+传入图片路径，返回去除背景的图片
+
+
+- `public static String getNodeBgColor(Node node)`
+
+获取节点的背景颜色
+
+
+- `public static void renameCarImage(String imagePath,String newCarName)`
+
+更新车辆图片名称
+
+
+- `public static Image getDefaultProfile(String gender)`
+
+根据用户性别获得默认头像
+
+
+- `public static void centerImage(ImageView imageView)`
+
+将ImageView中图片居中
+
 ## ImageTools
 
 - `public static Image getCircleImages(String fileUrl)`

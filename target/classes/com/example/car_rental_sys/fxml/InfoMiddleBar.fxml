@@ -16,7 +16,7 @@
    </Label>
    <Button fx:id="btnPersonInfo" layoutX="23.0" layoutY="138.0" mnemonicParsing="false"
            onMouseClicked="#btnPersonInfoClicked" prefHeight="41.0" prefWidth="161.0"
-           style="-fx-background-color: transparent;" text="Personal Information" textFill="#4e5969">
+           style="-fx-background-color: transparent;" text="My Profile" textFill="#4e5969">
       <font>
          <Font name="System Bold" size="14.0"/>
       </font>
