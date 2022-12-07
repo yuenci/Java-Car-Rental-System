@@ -6,7 +6,7 @@
 }
 
 .btnMiddleFocusStyle, .defaultMiddleBtnStyle:hover{
-    -fx-background-color: transparent;
+    -fx-background-color: #e8f7ff !important;
     -fx-cursor: hand;
     -fx-alignment: center-left;
     -fx-text-fill: #4e5969;

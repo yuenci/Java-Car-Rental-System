@@ -79,6 +79,7 @@ public class Application extends javafx.application.Application {
         stageInstance = stage;
 
         setUser("a");
+        //setUser("c");
         startStage(fxmlName);
         //setUser();
         //setUser("c");

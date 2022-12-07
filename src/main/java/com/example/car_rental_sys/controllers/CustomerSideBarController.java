@@ -33,6 +33,12 @@ public class CustomerSideBarController {
 
     Customer customer = (Customer) StatusContainer.currentUser;
 
+    public static CustomerSideBarController instance;
+
+    public CustomerSideBarController(){
+        instance = this;
+    }
+
     @FXML
     private void initialize() {
         initUserData();
@@ -95,19 +101,27 @@ public class CustomerSideBarController {
         //user.get
     }
 
-    private void intCustomerImages() {
-
+    public void initUserInfo(){
         nameTextLabel.setText(customer.getUserName());
         emailTextLabel.setText(customer.getEmail());
+    }
 
-        Image useAvatar =  ImageTools.getCircleImages(customer.getAvatar());
-        avatarImageView.setImage(useAvatar);
+    private void intCustomerImages() {
+
+        initUserInfo();
+
+        initAvatar();
 
         vipBadgeImageView.setImage(customer.getVipBadge());
         vipCardImageView.setImage(customer.getVipCard());
 
         setVipCard(customer.getOrderNum());
 
+    }
+
+    public void initAvatar(){
+        Image useAvatar =  ImageTools.getCircleImages(customer.getAvatar());
+        avatarImageView.setImage(useAvatar);
     }
 
     private void setVipCard(int orderNum) {

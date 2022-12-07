@@ -26,20 +26,28 @@ public class AdminSideBarController {
     ImageView avatarImageView;
 
     private Admin admin = (Admin) StatusContainer.currentUser;
+    public static AdminSideBarController instance;
+
+    public AdminSideBarController(){
+        instance = this;
+    }
 
     @FXML
     private void initialize() {
         initUserData();
+        initAvatar();
         initMenuEvent();
         initIconEvent();
         initLabelEvent();
         item3.getStyleClass().add("menuItemActive");
     }
-    private void initUserData() {
+    public void initUserData() {
         nameTextLabel.setText(admin.getUserName());
         emailTextLabel.setText(admin.getEmail());
         postLabel.setText(admin.getPost());
+    }
 
+    public void initAvatar(){
         Image circleImage = ImageTools.getCircleImages(admin.getAvatar());
         avatarImageView.setImage(circleImage);
     }

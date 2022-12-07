@@ -497,4 +497,18 @@ public class ImageTools {
         }
     }
 
+    public static Image getDefaultProfile(String gender){
+        String type = "";
+        switch (gender){
+            case "Male":
+                type = "male";
+                break;
+            case "Female":
+                type = "female";
+                break;
+        }
+        System.out.println("type = " + type);
+        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/avatar_" + type + ".png");
+    }
+
 }

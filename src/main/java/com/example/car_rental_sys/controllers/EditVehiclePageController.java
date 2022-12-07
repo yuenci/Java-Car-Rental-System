@@ -65,6 +65,9 @@ public class EditVehiclePageController {
     @FXML
     private Pane colorOne, colorTwo,colorThree,colorFour,colorFive,colorSix,colorSeven,colorEight;
 
+    private Car carInfo = StatusContainer.currentCarInfo;
+    private CarModel carModel= StatusContainer.currentCarModel;
+
     private final String[] seatNum = {"2","4"};
     private final String[] category = {"Manual","Automatic"};
     private final String[] brand = {"Bugatti","Chevrolet","Ferrari","Ford","Honda","Koenigsegg","lamborghini","Maserati","McLaren","Myvi","Porsche","Wuling"};
@@ -285,11 +288,11 @@ public class EditVehiclePageController {
             getValue();
             isSaved = false;
             String cacheUrl = "src/main/resources/com/example/car_rental_sys/image/others/image_remove_bg_cache.png";
-            StatusContainer.currentCarModel = new CarModel(vehicleNameValue, Integer.parseInt(seatNumberValue),
+            carModel = new CarModel(vehicleNameValue, Integer.parseInt(seatNumberValue),
                     Integer.parseInt(priceValue), categoryValue, gradientDark, gradientLight,brandValue,cacheUrl);
-            StatusContainer.currentCarModel.addCarModel();
-            StatusContainer.currentCarInfo = new Car(vehicleNameValue,chassisNumberValue,plateNumberValue,manufacturingValue,1);
-            StatusContainer.currentCarInfo.addCarInfo();
+            carModel.addCarModel();
+            carInfo = new Car(vehicleNameValue,chassisNumberValue,plateNumberValue,manufacturingValue,1);
+            carInfo.addCarInfo();
             clearValue();
         }else{
             AdminVehiclePageController.instance.setButtonDisableFalse();
@@ -304,19 +307,20 @@ public class EditVehiclePageController {
         if(AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
             getValue();
             System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
-            if(!Objects.equals(vehicleNameValue, StatusContainer.currentCarModel.getCarModel())){
+            if(!Objects.equals(vehicleNameValue, carModel.getCarModel())){
                 ImageTools.renameCarImage(imageURL, vehicleNameValue);
             }
-            StatusContainer.currentCarInfo.setCarModel(vehicleNameValue);
-            StatusContainer.currentCarModel.setCarModel(vehicleNameValue);
+            carInfo.setCarModel(vehicleNameValue);
+            carModel.setCarModel(vehicleNameValue);
             //here
-            StatusContainer.currentCarModel.updateCarModel(vehicleNameValue, Integer.parseInt(seatNumberValue), Integer.parseInt(priceValue),
+            carModel.updateCarModel(vehicleNameValue, Integer.parseInt(seatNumberValue), Integer.parseInt(priceValue),
                     categoryValue, gradientDark, gradientLight);
-            StatusContainer.currentCarInfo.updateCarInfo(vehicleNameValue, chassisNumberValue, plateNumberValue, manufacturingValue, carStatus);
-            System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
+            carInfo.updateCarInfo(vehicleNameValue, chassisNumberValue, plateNumberValue, manufacturingValue, carStatus);
+            //System.out.println(vehicleNameValue + " " + seatNumberValue + " " + priceValue + " " + categoryValue + " " + gradientDark + " " + gradientLight);
         }else{
             isSaved = true;
             getValue();
+            //Platform.runLater(this::getValue);
             //get value draft
         }
         refreshPane();
@@ -326,8 +330,8 @@ public class EditVehiclePageController {
     @FXML
     private void btnDeleteVehicleClicked() {
         if(!isSaved && AdminVehiclePageController.defaultDisplay.equals("editVehicle")){
-            StatusContainer.currentCarModel.delete();
-            StatusContainer.currentCarInfo.delete();
+            carModel.delete();
+            carInfo.delete();
             AdminVehiclePageController.instance.setButtonDisableFalse();
         }else if(AdminVehiclePageController.defaultDisplay.equals("addVehicle")){
             //delete draft
@@ -362,7 +366,7 @@ public class EditVehiclePageController {
     @FXML
     private void imgVehicleDrop(DragEvent event) {
         //get the drag image path
-        System.out.println("get!");
+       // System.out.println("get!");
         imageURL = event.getDragboard().getFiles().get(0).getAbsolutePath();
         System.out.println(imageURL);
         showImgPane("image");
@@ -392,7 +396,7 @@ public class EditVehiclePageController {
             for (Map.Entry<Integer, String> entry : statusMap.entrySet()) {
                 if (Objects.equals(cmbCarBrand.getValue(), entry.getValue())) {
                     carStatus = entry.getKey();
-                    System.out.println(carStatus);
+                    //System.out.println(carStatus);
                 }
             }
             //carStatus = statusMap.get(brandValue);
@@ -493,46 +497,28 @@ public class EditVehiclePageController {
     }
 
     public void setCarData(int carID){
-        StatusContainer.currentCarInfo = new Car(carID);
-        StatusContainer.currentCarModel = new CarModel(carID);
+        carInfo = new Car(carID);
+        carModel = new CarModel(carID);
 
         Platform.runLater(() -> {
-            vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
-            plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
-            chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
-            System.out.println("chassisNum: " + chassisNumberValue);
-            manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
-            priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
-            categoryValue = StatusContainer.currentCarModel.getGearType();
-            seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
-            brandValue = StatusContainer.currentCarModel.getCarBrand();
-            carStatus = StatusContainer.currentCarInfo.getStatus();
+            vehicleNameValue = carModel.getCarModel();
+            plateNumberValue = carInfo.getCarNumber();
+            chassisNumberValue = carInfo.getChassisNumber();
+            //System.out.println("chassisNum: " + chassisNumberValue);
+            manufacturingValue = carInfo.getManufacturingDate();
+            priceValue = String.valueOf(carModel.getPrice());
+            categoryValue = carModel.getGearType();
+            seatNumberValue = String.valueOf(carModel.getSeats());
+            brandValue = carModel.getCarBrand();
+            carStatus = carInfo.getStatus();
 
-            imageURL = StatusContainer.currentCarModel.getImageURL();
-            gradientLight = StatusContainer.currentCarModel.getLightColor();
-            gradientDark = StatusContainer.currentCarModel.getDarkColor();
+            imageURL = carModel.getImageURL();
+            gradientLight = carModel.getLightColor();
+            gradientDark = carModel.getDarkColor();
             initTextField();
             initVehiclePane();
             initColorPlate(imageURL);
         });
-
-//        vehicleNameValue = StatusContainer.currentCarModel.getCarModel();
-//        plateNumberValue = StatusContainer.currentCarInfo.getCarNumber();
-//        chassisNumberValue = StatusContainer.currentCarInfo.getChassisNumber();
-//        System.out.println("chassisNum: " + chassisNumberValue);
-//        manufacturingValue = StatusContainer.currentCarInfo.getManufacturingDate();
-//        priceValue = String.valueOf(StatusContainer.currentCarModel.getPrice());
-//        categoryValue = StatusContainer.currentCarModel.getGearType();
-//        seatNumberValue = String.valueOf(StatusContainer.currentCarModel.getSeats());
-//        brandValue = StatusContainer.currentCarModel.getCarBrand();
-//        carStatus = StatusContainer.currentCarInfo.getStatus();
-//
-//        imageURL = StatusContainer.currentCarModel.getImageURL();
-//        gradientLight = StatusContainer.currentCarModel.getLightColor();
-//        gradientDark = StatusContainer.currentCarModel.getDarkColor();
-//        initTextField();
-//        initVehiclePane();
-//        initColorPlate(imageURL);
     }
 
     private void setCarBgColor(String color){

@@ -4,6 +4,7 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
 import javafx.application.Platform;
@@ -22,7 +23,11 @@ import java.io.File;
 
 public class PersonalPageController {
 
+    private Image avatar;
     private String newImageURL;
+
+    private User user = StatusContainer.currentUser;
+
 
     @FXML
     private Label aboutWordCount, nameWordCount;
@@ -52,23 +57,23 @@ public class PersonalPageController {
     }
 
     private void initText(){
-        ivTxtUsername.setText(StatusContainer.currentUser.getUserName());
-        ivTxtEmail.setText(StatusContainer.currentUser.getEmail());
-        ivTxtPhoneNumber.setText(StatusContainer.currentUser.getPhone());
-        ivTxtBirthday.setText(StatusContainer.currentUser.getBirthday());
-        ivTxtAddress.setText(StatusContainer.currentUser.getAddress());
-        ivTxtAbout.setText(StatusContainer.currentUser.getAbout());
+        ivTxtUsername.setText(user.getUserName());
+        ivTxtEmail.setText(user.getEmail());
+        ivTxtPhoneNumber.setText(user.getPhone());
+        ivTxtBirthday.setText(user.getBirthday());
+        ivTxtAddress.setText(user.getAddress());
+        ivTxtAbout.setText(user.getAbout());
         initAboutWordCount();
         initNameWordCount();
     }
 
     private void initAvatar(){
-        setCircleAvatar(StatusContainer.currentUser.getAvatar());
-        ivTxtUsername.setText(StatusContainer.currentUser.getUserName());
+        setCircleAvatar(user.getAvatar());
+        ivTxtUsername.setText(user.getUserName());
     }
 
     private void initTheme(){
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             panelSetting.getStylesheets()
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/settingComponentDark.css")
                             .toURI().toString());
@@ -86,7 +91,7 @@ public class PersonalPageController {
     private void initTextEventListener(){
         System.out.println("initTextEventListener");
         ivTxtUsername.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.equals(StatusContainer.currentUser.getUserName()) && !newValue.isBlank() && newValue.length() > 6){
+            if(!newValue.equals(user.getUserName()) && !newValue.isBlank() && newValue.length() > 6){
                 ivSaveBtn.setDisable(false);
                 if(newValue.length() > 20){
                     ivTxtUsername.setText(oldValue);
@@ -102,7 +107,7 @@ public class PersonalPageController {
             if(newValue.isBlank() || newValue.length() < 10){
                 ivSaveBtn.setDisable(true);
                 ivTxtBirthday.getStyleClass().add("txtErrorFocusStyle");
-            }else if(newValue.length() == 10 && !newValue.equals(StatusContainer.currentUser.getBirthday())){
+            }else if(newValue.length() == 10 && !newValue.equals(user.getBirthday())){
                 FXTools.validInputIsDate(ivTxtBirthday, "/", newValue);
                 ivSaveBtn.setDisable(false);
             }
@@ -110,7 +115,7 @@ public class PersonalPageController {
         ivTxtAbout.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.isBlank() || newValue.length() < 4){
                 ivSaveBtn.setDisable(true);
-            }else if(newValue.length() > 10 && !newValue.equals(StatusContainer.currentUser.getAbout())){
+            }else if(newValue.length() > 10 && !newValue.equals(user.getAbout())){
                 ivSaveBtn.setDisable(false);
                 if(newValue.length() > 90){
                     ivTxtAbout.setText(oldValue);
@@ -121,20 +126,20 @@ public class PersonalPageController {
         ivTxtAddress.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.isBlank() || newValue.length() < 5){
                 ivSaveBtn.setDisable(true);
-                ivTxtAddress.getStyleClass().add("txtErrorFocusStyle");
-            }else if(newValue.length() > 10 && !newValue.equals(StatusContainer.currentUser.getAddress())){
+                ivTxtAddress.getStyleClass().add("txtAreaErrorStyle");
+            }else if(newValue.length() > 10 && !newValue.equals(user.getAddress())){
                 ivSaveBtn.setDisable(false);
                 if(newValue.length() > 90){
                     ivTxtAddress.setText(oldValue);
                 }
-                ivTxtAddress.getStyleClass().remove("txtErrorFocusStyle");
+                ivTxtAddress.getStyleClass().remove("txtAreaErrorStyle");
             }
         });
         ivTxtEmail.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.isBlank() || newValue.length() < 5){
                 ivSaveBtn.setDisable(true);
                 ivTxtEmail.getStyleClass().add("txtErrorFocusStyle");
-            }else if(newValue.length() > 10 && !newValue.equals(StatusContainer.currentUser.getEmail())){
+            }else if(newValue.length() > 10 && !newValue.equals(user.getEmail())){
                 if(FXTools.validInputIsEmail(ivTxtEmail, newValue)){
                     ivTxtEmail.getStyleClass().remove("txtErrorFocusStyle");
                     ivSaveBtn.setDisable(false);
@@ -147,7 +152,7 @@ public class PersonalPageController {
             if(newValue.isBlank() || newValue.length() < 5){
                 ivTxtPhoneNumber.getStyleClass().add("txtErrorFocusStyle");
                 ivSaveBtn.setDisable(true);
-            }else if(newValue.length() > 9 && !newValue.equals(StatusContainer.currentUser.getPhone())){
+            }else if(newValue.length() > 9 && !newValue.equals(user.getPhone())){
                 if(FXTools.validInputIsPhone(ivTxtPhoneNumber, newValue)){
                     ivTxtPhoneNumber.getStyleClass().remove("txtErrorFocusStyle");
                     ivSaveBtn.setDisable(false);
@@ -160,16 +165,28 @@ public class PersonalPageController {
 
     @FXML
     void deleteClicked() {
+        avatar = ImageTools.getDefaultProfile(user.getGender());
         ivAvatar.setImage(null);
+        setCircleAvatar(avatar);
+        user.setAvatar(avatar);
     }
 
     @FXML
     void uploadClicked() {
         newImageURL = DataTools.fileChooser();
-        //remove the current image
-        Image newAvatar =   ImageTools.getNewAvatar(newImageURL,StatusContainer.currentUser.getUserID());
-        setCircleAvatar(newAvatar);
-        //save new profile
+        if(newImageURL != null){
+            Image newAvatar = ImageTools.getNewAvatar(newImageURL,user.getUserID());
+            setCircleAvatar(newAvatar);
+            avatar = newAvatar;
+            user.setAvatar(avatar);
+            Platform.runLater(() -> {
+                if(user instanceof Admin){
+                    AdminSideBarController.instance.initAvatar();
+                }else if(user instanceof Customer){
+                    CustomerSideBarController.instance.initAvatar();
+                }
+            });
+        }
     }
 
     private void setCircleAvatar(Image avatar){
@@ -180,6 +197,17 @@ public class PersonalPageController {
     @FXML
     void saveChangesClicked() {
         //save all
+        getValue();
+
+        Platform.runLater(() -> {
+            if(user instanceof Admin){
+                AdminSideBarController.instance.initUserData();
+            }else if(user instanceof Customer){
+                CustomerSideBarController.instance.initUserInfo();
+            }
+        });
+
+        Platform.runLater(() -> user.updateUserInfo());
     }
 
     @FXML
@@ -187,8 +215,18 @@ public class PersonalPageController {
         Node[] nodes = {ivTxtUsername, ivTxtBirthday, ivTxtAddress, ivTxtAbout, ivTxtEmail, ivTxtPhoneNumber};
         for(Node node : nodes){
             node.getStyleClass().remove("txtErrorFocusStyle");
+            node.getStyleClass().remove("txtAreaErrorStyle");
         }
         initText();
+    }
+
+    private void getValue(){
+        user.setUserName(ivTxtUsername.getText());
+        user.setBirthday(ivTxtBirthday.getText());
+        user.setAddress(ivTxtAddress.getText());
+        user.setAbout(ivTxtAbout.getText());
+        user.setEmail(ivTxtEmail.getText());
+        user.setPhone(ivTxtPhoneNumber.getText());
     }
 
 }

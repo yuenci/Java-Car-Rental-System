@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.orm;
 
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.image.Image;
@@ -258,5 +259,11 @@ public class User {
                 "about='" + about + '\'' + ",\n" +
                 "regTime='" + regTime + '\'' + ",\n" +
                 '}';
+    }
+
+    public void updateUserInfo(){
+        String sql = "UPDATE userInfo SET userName = '" + userName + "', birthday = '" + birthday + "', phone = '" + phone + "', email = '"
+                + email + "', address = '" + address + "', about = '" + about + "' WHERE userID = " + userID;
+        SQL.execute(sql);
     }
 }
