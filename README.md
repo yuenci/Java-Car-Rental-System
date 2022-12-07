@@ -15,10 +15,10 @@
   <p align="center">
     An awesome Car Rental System build with Java!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/yuenci/Java-Car-Rental-System"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="#">View Demo</a>
     ·
     <a href="https://github.com/yuenci/Java-Car-Rental-System/issues">Report Bug</a>
     ·
