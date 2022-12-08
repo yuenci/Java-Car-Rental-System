@@ -47,7 +47,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </ComboBox>
-   <Button layoutX="300.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#saveBtnClicked" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 6px;" text="Save" textFill="WHITE">
+   <Button fx:id="ivSaveButton" layoutX="300.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#saveBtnClicked" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #4080ff; -fx-background-insets: 0; -fx-background-radius: 6px;" text="Save" textFill="WHITE">
       <font>
          <Font name="Arial Bold" size="13.0" />
       </font>

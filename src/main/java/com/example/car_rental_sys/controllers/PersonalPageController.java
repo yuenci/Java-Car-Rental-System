@@ -7,6 +7,8 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,7 +18,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
@@ -216,7 +217,10 @@ public class PersonalPageController {
             }
         });
 
-        Platform.runLater(() -> user.updateUserInfo());
+        Platform.runLater(() -> {
+            user.updateUserInfo();
+            showNotification();
+        });
     }
 
     @FXML
@@ -239,6 +243,11 @@ public class PersonalPageController {
         user.setAbout(ivTxtAbout.getText());
         user.setEmail(ivTxtEmail.getText());
         user.setPhone(ivTxtPhoneNumber.getText());
+    }
+
+    private void showNotification(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Modify Changes Successfully");
+        messageFrame.show();
     }
 
 }

@@ -60,3 +60,15 @@
 .lblFourthText{
     -fx-text-fill: #2971cf !important;
 }
+
+.txtFieldWeak, .txtFieldWeak:hover, .txtFieldWeak:focused{
+    -fx-border-color: #ff9626 !important;
+}
+
+.txtFieldError, .txtFieldError:hover, .txtFieldError:focused{
+    -fx-border-color: #f76965 !important;
+}
+
+.txtFieldStrong, .txtFieldStrong:hover, .txtFieldStrong:focused{
+    -fx-border-color: #27c346 !important;
+}

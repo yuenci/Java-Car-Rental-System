@@ -3,6 +3,10 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -18,10 +22,12 @@ import java.io.File;
 public class AccountSecurityPageController {
 
     @FXML
+    private Button ivSaveButton;
+    @FXML
     private Pane panelSetting;
 
     @FXML
-    private TextField txtSecurityAnswer;
+    private TextField txtSecurityAnswer,txtDrivingLicense;
     @FXML
     private ComboBox<String> comboQuestion;
 
@@ -31,8 +37,7 @@ public class AccountSecurityPageController {
     @FXML
     private Label ivUsername;
 
-    @FXML
-    private TextField txtDrivingLicense;
+    private User user = StatusContainer.currentUser;
 
     @FXML
     private void initialize(){
@@ -40,13 +45,15 @@ public class AccountSecurityPageController {
         initDefaultText();
         initAvatar();
         initComboBox();
+        initTextEventListener();
+        ivSaveButton.setDisable(true);
     }
 
     private void initDefaultText(){
-        ivUsername.setText(StatusContainer.currentUser.getUserName());    /// change to username
-        txtDrivingLicense.setText(StatusContainer.currentUser.getDLNumber());
-        comboQuestion.setValue(StatusContainer.currentUser.getSecurityProblem());
-        txtSecurityAnswer.setText(StatusContainer.currentUser.getSecurityAnswer());
+        ivUsername.setText(user.getUserName());    /// change to username
+        txtDrivingLicense.setText(user.getDLNumber());
+        comboQuestion.setValue(user.getSecurityProblem());
+        txtSecurityAnswer.setText(user.getSecurityAnswer());
     }
 
     private void initComboBox(){
@@ -54,19 +61,15 @@ public class AccountSecurityPageController {
     }
 
     private void initAvatar(){
-        Image circleAvatar = ImageTools.getCircleImages(StatusContainer.currentUser.getAvatar());
+        Image circleAvatar = ImageTools.getCircleImages(user.getAvatar());
         ivAvatar.setImage(circleAvatar);
     }
 
     @FXML
-    public void saveBtnClicked(MouseEvent mouseEvent) {
-        //get the answer and question
-        String answer = txtSecurityAnswer.getText();
-        String question = comboQuestion.getValue();
-
-        //save the security question and answer
-        System.out.println("Save security question and answer");
-
+    public void saveBtnClicked() {
+        user.updateSecurityProblem(comboQuestion.getValue(),txtSecurityAnswer.getText());
+        ivSaveButton.setDisable(true);
+        Platform.runLater(this::showNotification);
     }
 
     private void initTheme(){
@@ -75,5 +78,25 @@ public class AccountSecurityPageController {
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/settingComponentDark.css")
                             .toURI().toString());
         }
+    }
+
+    private void initTextEventListener(){
+        txtSecurityAnswer.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(txtSecurityAnswer.getText().isBlank()){
+                ivSaveButton.setDisable(true);
+                return;
+            }
+
+            if(!newValue.equals(user.getSecurityAnswer())){
+                ivSaveButton.setDisable(false);
+            }else{
+                ivSaveButton.setDisable(true);
+            }
+        });
+    }
+
+    private void showNotification(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Modify Changes Successfully");
+        messageFrame.show();
     }
 }

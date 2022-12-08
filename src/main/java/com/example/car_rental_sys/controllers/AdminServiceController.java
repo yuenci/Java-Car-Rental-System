@@ -49,6 +49,9 @@ public class AdminServiceController extends Controller{
         //System.out.println("AdminServiceController");
         initToRightBtnEvent();
        // showVehiclePage();
+        //showSettingPage();
+        //showAccSecurity();
+        //showPasswordPage();
         StatusContainer.currentPageController = this;
     }
 

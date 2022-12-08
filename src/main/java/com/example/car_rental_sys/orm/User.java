@@ -266,4 +266,11 @@ public class User {
                 + email + "', address = '" + address + "', about = '" + about + "' WHERE userID = " + userID;
         SQL.execute(sql);
     }
+
+    public void updateSecurityProblem(String newSecurityProblem, String newSecurityAnswer){
+        this.securityProblem = newSecurityProblem;
+        this.securityAnswer = newSecurityAnswer;
+        String sql = "UPDATE userInfo SET securityProblem = '" + newSecurityProblem + "', securityAnswer = '" + newSecurityAnswer + "' WHERE userID = " + userID;
+        SQL.execute(sql);
+    }
 }

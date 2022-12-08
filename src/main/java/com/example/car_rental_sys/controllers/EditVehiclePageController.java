@@ -533,9 +533,4 @@ public class EditVehiclePageController {
         imgPane.setStyle("-fx-background-color: linear-gradient(to left, "+gradientDark+", "+gradientLight+");");
     }
 
-
-    private void showErrorMessage(){
-        MessageFrame messageFrame = new MessageFrame(MessageFrameType.ERROR, "Enter the correct information");
-        messageFrame.show();
-    }
 }

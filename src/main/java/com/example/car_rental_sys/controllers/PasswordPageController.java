@@ -1,8 +1,12 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,6 +35,8 @@ public class PasswordPageController {
     private boolean showPassword = false;
     private boolean passwordStatus = false;
 
+    private User user = StatusContainer.currentUser;
+
     @FXML
     private void initialize(){
         initTheme();
@@ -41,21 +47,21 @@ public class PasswordPageController {
     }
 
     private void initDefaultText(){
-        ivUsername.setText(StatusContainer.currentUser.getUserName());
-        txtOldPwd.setText(StatusContainer.currentUser.getPassword());
+        ivUsername.setText(user.getUserName());
+        txtOldPwd.setText(user.getPassword());
         changeDisplayPwdStyle();
     }
 
     private void initAvatar(){
-        Image circleAvatar = ImageTools.getCircleImages(StatusContainer.currentUser.getAvatar());
+        Image circleAvatar = ImageTools.getCircleImages(user.getAvatar());
         ivAvatar.setImage(circleAvatar);
     }
 
     private void changeDisplayPwdStyle(){
         if(showPassword){
-            txtOldPwd.setText(StatusContainer.currentUser.getPassword());
+            txtOldPwd.setText(user.getPassword());
         }else{
-            String defaultTxt = StatusContainer.currentUser.getPassword();
+            String defaultTxt = user.getPassword();
             for (int i = 0; i < defaultTxt.length(); i++) {
                 defaultTxt = defaultTxt.replace(defaultTxt.charAt(i), '●');
             }
@@ -68,8 +74,6 @@ public class PasswordPageController {
         String reEnterPwd = txtReEnterPwd.getText();
         if(!newPwd.equals("") && !reEnterPwd.equals("")){
             if(newPwd.equals(reEnterPwd) && passwordStatus){
-                //change password
-                System.out.println("Change password");
                 btnChangePwd.setDisable(false);
             }
         }
@@ -77,11 +81,21 @@ public class PasswordPageController {
 
     @FXML
     void changePasswordClicked() {
-        //checkChangePassword();
+        user.setPassword(txtNewPwd.getText());
+        boolean status = DataTools.resetPassword(user.getEmail(), txtNewPwd.getText());
+        System.out.println(status);
+        Platform.runLater(() -> {
+            txtNewPwd.setText("");
+            txtReEnterPwd.setText("");
+            btnChangePwd.setDisable(true);
+            txtOldPwd.setText(user.getPassword());
+        });
+
+        Platform.runLater(this::showNotification);
     }
 
     @FXML
-    void imgOldPwdClicked(MouseEvent event) {
+    void imgOldPwdClicked() {
         if(showPassword){
             imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/view.png"));
             showPassword = false;
@@ -114,21 +128,10 @@ public class PasswordPageController {
 
     private void initPasswordNotice(TextField textField, String newValue, String oldValue){
 
-//        if (newValue.length() == 0){
-//            textField.setStyle("");
-////            textField.setStyle("-fx-text-fill: #4e5969; -fx-background-color: transparent; -fx-border-radius: 6px; " +
-////                    "-fx-border-color: #c3c3c3; -fx-border-insets: 0;");
-////            Platform.runLater(() -> {
-////                textField.setStyle("");
-//                textField.setStyle("-fx-text-fill: #4e5969; -fx-background-color: transparent; -fx-border-radius: 6px; " +
-//                        "-fx-border-color: #c3c3c3 !important; -fx-border-insets: 0;");
-//                textField.getStyleClass().add("txtBoxFocus");
-//                //textField.setStyle(textField.getStyle() + "-fx-border-color: #c3c3c3 !important;");
-////            });
-//            System.out.println(textField.getStyle());
-//            System.out.println("Empty");
-//            return;
-//        }
+        textField.getStyleClass().remove("txtFieldError");
+        textField.getStyleClass().add("txtBoxFocus");
+        textField.getStyleClass().remove("txtFieldWeak");
+        textField.getStyleClass().remove("txtFieldStrong");
 
         if(!(newValue.length() > 0)){
             initNoticeVisible(false);
@@ -137,11 +140,12 @@ public class PasswordPageController {
         }
         initPasswordCount();
         textField.getStyleClass().add("txtFieldError");
+       // textField.getStyleClass().remove("txtFieldWeak");
 
         if(newValue.length() < 8) {
             lblPwdNotice.setText("Password must be at least 8 characters");
             initNoticeVisible(true);
-            textField.getStyleClass().add("txtFieldError");
+            //textField.getStyleClass().remove("txtBoxWeak");
             return;
         }
 
@@ -154,43 +158,38 @@ public class PasswordPageController {
         if(!(newValue.matches(".*[A-Z].*"))) {
             lblPwdNotice.setText("Password must contain at least one uppercase letter");
             initNoticeVisible(true);
-            textField.getStyleClass().add("txtFieldError");
             return;
         }
 
         if(!(newValue.matches(".*[a-z].*"))) {
             lblPwdNotice.setText("Password must contain at least one lowercase letter");
             initNoticeVisible(true);
-            textField.getStyleClass().add("txtFieldError");
             return;
         }
 
         if(!(newValue.matches(".*[0-9].*"))) {
             lblPwdNotice.setText("Password must contain at least one number");
             initNoticeVisible(true);
-            textField.getStyleClass().add("txtFieldError");
             return;
         }
 
         if(!(newValue.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?].*"))){
             lblPwdNotice.setText("Password must contain at least one special character");
             initNoticeVisible(true);
-            textField.getStyleClass().add("txtFieldError");
-            //return;
+            return;
         }
+
         textField.getStyleClass().remove("txtFieldError");
+        textField.getStyleClass().remove("txtFieldStrong");
+        textField.getStyleClass().add("txtFieldWeak");
 
         initNoticeVisible(true);
-        lblPwdNotice.setVisible(false);
+        lblPwdNotice.setText("Password is weak");
         passwordStatus = true;
-        if(newValue.length() > 8){
-            textField.getStyleClass().remove("txtFieldError");
-            textField.getStyleClass().add("txtFieldWeak");
-        }
 
-        if(newValue.length() == 16){
+        if(newValue.length() > 11){
             lblPwdNotice.setVisible(true);
-            lblPwdNotice.setText("Strong password");
+            lblPwdNotice.setText("Password is strong");
             textField.getStyleClass().remove("txtFieldWeak");
             textField.getStyleClass().add("txtFieldStrong");
         }
@@ -199,10 +198,15 @@ public class PasswordPageController {
 
     private void initTextEventListener(){
         txtNewPwd.textProperty().addListener((observable, oldValue, newValue) -> {
-            initPasswordNotice(txtNewPwd, txtNewPwd.getText(), oldValue);
+            initPasswordNotice(txtNewPwd, newValue, oldValue);
         });
         txtReEnterPwd.textProperty().addListener((observable, oldValue, newValue) -> {
             checkChangePassword();
         });
+    }
+
+    private void showNotification(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Password Changed Successfully");
+        messageFrame.show();
     }
 }
