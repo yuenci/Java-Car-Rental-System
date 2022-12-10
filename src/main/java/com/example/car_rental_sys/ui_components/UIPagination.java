@@ -36,6 +36,8 @@ public class UIPagination extends Pane {
 
     public static int currentPageNumber = 1;
     public static int totalPageNumber;
+    public static int totalNumber;
+    private static ArrayList<UIPaginationCard> cards;
 
 
     public UIPagination(){
@@ -46,8 +48,22 @@ public class UIPagination extends Pane {
 
     }
 
+    public UIPagination(int total, int perPage){
+        totalNumber = total;
+        System.out.println("total number: " + totalNumber);
+        totalPageNumber = (int) Math.ceil((double) totalNumber / perPage);
+        System.out.println(totalPageNumber);
+        Platform.runLater(this::initMain);
+    }
+
     private void initMain(){
-        countTotalPageNumber();
+        if(totalPageNumber > 7){
+            showDotNext = true;
+            //max;
+        }else{
+            showDotNext = false;
+        }
+        //countTotalPageNumber();
         initMainBox();
         initEvent();
     }
@@ -95,7 +111,10 @@ public class UIPagination extends Pane {
         nodes.add(minPageButton);
         //
         Button dotPreviousButton;
-        if(showDotPrevious || currentPageNumber > 5){
+        if(!showDotPrevious && totalPageNumber <= 7){
+            //do nothing
+        }
+        else if(showDotPrevious || currentPageNumber > 5){
             dotPreviousButton = new UIPaginationCard(-1);
             nodes.add(dotPreviousButton);
         }
@@ -104,12 +123,18 @@ public class UIPagination extends Pane {
         nodes.add(flowPane);
         //
         Button dotNextButton;
-        if(showDotNext || currentPageNumber < totalPageNumber - 4){
+        if(!showDotNext && totalPageNumber <= 7){
+            //do nothing
+        }
+        else if(showDotNext || currentPageNumber < totalPageNumber - 4){
             dotNextButton = new UIPaginationCard(-2);
             nodes.add(dotNextButton);
         }
         //
         maxPageButton = null;
+        if(totalPageNumber == 1){
+            //do nothing
+        }
         if(totalPageNumber >= 2){
             maxPageButton = new UIPaginationCard(totalPageNumber);
             nodes.add(maxPageButton);
@@ -129,11 +154,88 @@ public class UIPagination extends Pane {
         ArrayList<Integer> displayNumberList = new ArrayList<>();
         int maxDisplayNumber = 7;
         if(totalPageNumber < maxDisplayNumber){
-            for (int i = 2; i <= totalPageNumber; i++) {
+            checkShowDotNext();
+            for (int i = 2; i <= totalPageNumber-1 ; i++) {
                 displayNumberList.add(i);
             }
             showDotNext = false;
-        }else{
+        }
+        else if(totalPageNumber > 2 && totalPageNumber < 8){
+            checkShowDotNext();
+            for (int i = 2; i <= totalPageNumber-1 ; i++) {
+                displayNumberList.add(i);
+            }
+            System.out.println("now is 6 page");
+        }
+        else if(totalPageNumber == 8){
+            if (currentPageNumber < 4) {
+                showDotPrevious = false;
+                for (int i = 2; i <= 5; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = true;
+            }else if(currentPageNumber == 4){
+                checkShowDotPrevious();
+                System.out.println(showDotPrevious);
+                for (int i = 2; i <= 7; i++) {
+                    displayNumberList.add(i);
+                }
+                //showDotPrevious = true;
+                showDotNext = false;
+                showDotPrevious = false;
+            }else if(currentPageNumber == 5){
+                checkShowDotPrevious();
+                for (int i = 2; i <= 7; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = false;
+            }
+            else{
+                showDotPrevious = true;
+                //checkShowDotPrevious();
+                System.out.println(">5 : " + showDotPrevious);
+                for (int i = 4; i <= 7; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = false;
+
+            }
+        }
+        else if(totalPageNumber == 9){
+            if(currentPageNumber < 4){
+                for (int i = 2; i <= 5; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = true;
+            }
+            else if(currentPageNumber == 4){
+                checkShowDotPrevious();
+                for (int i = 2; i <= 6; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = true;
+            }else if(currentPageNumber == 5){
+                checkShowDotPrevious();
+                for (int i = 2; i <= 8; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = false;
+            }else if(currentPageNumber == 6){
+                for (int i = 4; i <= 8; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = false;
+                showDotPrevious = true;
+            }else{
+                for (int i = 5; i <= 8; i++) {
+                    displayNumberList.add(i);
+                }
+                showDotNext = false;
+                showDotPrevious = true;
+            }
+           // refreshMainBox();
+        }
+        else{
             if(currentPageNumber <= 3 ){
                 for (int i = 2; i <= 5; i++) {
                     displayNumberList.add(i);
@@ -165,8 +267,7 @@ public class UIPagination extends Pane {
             }
             else if(currentPageNumber == totalPageNumber - 3){
                 checkShowDotNext();
-                //print "i m 31"
-                System.out.println("i m 31");
+                System.out.println("at last -3");
 
                 for (int i = totalPageNumber - 5; i <= totalPageNumber-1; i++) {
                     displayNumberList.add(i);
@@ -195,8 +296,6 @@ public class UIPagination extends Pane {
                 showDotPrevious = true;
             }
         }
-        //print list as string
-        //System.out.println("displayNumberList: " + displayNumberList);
 
         return displayNumberList;
     }
@@ -213,12 +312,18 @@ public class UIPagination extends Pane {
     }
 
     private static FlowPane initFlowPane(){
-        ArrayList<UIPaginationCard> cards = initPaginationCardList();
+        cards = initPaginationCardList();
         flowPane = new FlowPane();
         //add all cards into flowPane
         //if focusOnCenter is true, set focus-style on the third pagination on array
+        //if cards size is not 0, set focus on the first pagination
+        if(cards.size() == 0){
+            System.out.println("cards size is 0");
+        }
         if(focusOnFirst){
-            cards.get(0).getStyleClass().add("focus-style");
+            if(cards.size() != 0){
+                cards.get(0).getStyleClass().add("focus-style");
+            }
         }
         if(focusOnSecond){
             cards.get(1).getStyleClass().add("focus-style");
@@ -272,8 +377,13 @@ public class UIPagination extends Pane {
     //initEvent
     private void initEvent(){
         leftButton.setOnAction(event -> {
+            System.out.println("left button clicked");
             //System.out.println("leftButton has clicked");
-            if(currentPageNumber >= 1){
+            if(cards.size() == 0 && totalPageNumber == 1){
+                //do nothing
+                UIPagination.focusMinButton = true;
+            }
+            if(currentPageNumber > 1){
                 currentPageNumber--;
                 refreshMainBox();
             }
@@ -285,21 +395,47 @@ public class UIPagination extends Pane {
             //System.out.println("currentPageNumber: " + currentPageNumber);
         });
 
-        maxPageButton.setOnAction(event -> {
-            //System.out.println("is here");
-            showDotNext = false;
-            currentPageNumber = totalPageNumber;
-            focusMaxButton = true;
-            refreshMainBox();
-        });
+        if(maxPageButton != null){
+            maxPageButton.setOnAction(event -> {
+                //System.out.println("is here");
+                showDotNext = false;
+                currentPageNumber = totalPageNumber;
+                focusMaxButton = true;
+                refreshMainBox();
+            });
+        }
 
         rightButton.setOnAction(event -> {
-            //System.out.println("rightButton has clicked");
+            System.out.println("rightButton has clicked");
+            if(cards.size() == 0 && totalPageNumber == 1){
+                //do nothing
+            }
+            if(cards.size() == 0 && totalPageNumber > 1){
+                currentPageNumber+=1;
+                UIPagination.focusMaxButton = true;
+                refreshMainBox();
+            }
             if(currentPageNumber < totalPageNumber){
                 currentPageNumber+=1;
                 UIPagination.focusOnFirst = true;
                 refreshMainBox();
             }
         });
+    }
+
+
+    public static void refreshUIPagination(){
+        currentPageNumber = 1;
+        clearFocusState();
+    }
+
+
+    private static void clearFocusState(){
+        focusOnFirst = false;
+        focusOnSecond = false;
+        focusOnCenter = false;
+        focusOnFourth = false;
+        focusOnLast = false;
+        focusMaxButton = false;
     }
 }

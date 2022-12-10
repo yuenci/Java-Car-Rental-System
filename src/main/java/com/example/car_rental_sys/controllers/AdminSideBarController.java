@@ -5,6 +5,7 @@ import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Admin;
+import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -121,7 +122,8 @@ public class AdminSideBarController {
     }
 
     private void changeMenuStyle(Pane activePane) {
-        System.out.println(activePane.toString() + "changeMenuStyle-line229");
+        UIPagination.refreshUIPagination();
+        //System.out.println(activePane.toString() + "changeMenuStyle-line229");
         item1.getStyleClass().remove("menuItemActive");
         item2.getStyleClass().remove("menuItemActive");
         item3.getStyleClass().remove("menuItemActive");
@@ -136,6 +138,10 @@ public class AdminSideBarController {
         nameTextLabel.setAlignment(Pos.CENTER);
         emailTextLabel.setAlignment(Pos.CENTER);
         postLabel.setAlignment(Pos.CENTER);
+    }
+
+    private void refreshPaginationPage(){
+        UIPagination.currentPageNumber = 1;
     }
 
 }

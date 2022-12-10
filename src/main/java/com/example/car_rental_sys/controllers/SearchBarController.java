@@ -1,5 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class SearchBarController {
@@ -8,6 +11,11 @@ public class SearchBarController {
 
     public static SearchBarController instance;
 
+    @FXML
+    private Button filterBtn;
+    @FXML
+    private TextField searchBar;
+
     public SearchBarController() {
         instance = this;
     }
@@ -15,8 +23,16 @@ public class SearchBarController {
     public void setFilterState(int state){
         filterState = state;
     }
-    public void filterBtnClicked(MouseEvent mouseEvent) {
-        System.out.println("hi");
+
+    @FXML
+    private void initialize(){
+        searchBar.setEditable(false);
+        filterBtn.setDisable(true);
+    }
+
+    @FXML
+    private void filterBtnClicked() {
+        //System.out.println("hi");
         if (filterState == 0){
             filterState = 1;
             OrderListComponentController.instance.addFilterPane();

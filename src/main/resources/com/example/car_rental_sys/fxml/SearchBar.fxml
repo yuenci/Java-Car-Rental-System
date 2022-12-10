@@ -12,7 +12,7 @@
 <Pane prefHeight="35.0" prefWidth="465.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.SearchBarController">
    <Pane prefHeight="35.0" prefWidth="370.0">
-      <TextField prefHeight="35.0" prefWidth="370.0" promptText="Search for ID, status or something..."
+      <TextField fx:id="searchBar" prefHeight="35.0" prefWidth="370.0" promptText="Search for ID, status or something..."
                  style="-fx-background-color: #F7F8FA; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4; -fx-background-insets: 0; -fx-border-insets: 0;">
          <padding>
             <Insets left="40.0"/>
@@ -27,7 +27,7 @@
       </ImageView>
    </Pane>
    <Pane layoutX="375.0" prefHeight="35.0" prefWidth="90.0">
-      <Button layoutX="5.0" mnemonicParsing="false" onMouseClicked="#filterBtnClicked" prefHeight="35.0"
+      <Button fx:id="filterBtn" layoutX="5.0" mnemonicParsing="false" onMouseClicked="#filterBtnClicked" prefHeight="35.0"
               prefWidth="80.0"
               style="-fx-background-color: #ffffff; -fx-background-insets: 0; -fx-background-radius: 4px; -fx-border-color: #D9D9D9; -fx-border-radius: 4px; -fx-border-insets: 0; -fx-cursor: hand;"
               text="Filter" textFill="#86909c">

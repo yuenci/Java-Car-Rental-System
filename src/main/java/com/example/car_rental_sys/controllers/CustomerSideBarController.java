@@ -6,6 +6,7 @@ import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.ui_components.UIPagination;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -80,6 +81,7 @@ public class CustomerSideBarController {
     }
 
     private void changeMenuStyle(Pane activePane) {
+        UIPagination.refreshUIPagination();
         //System.out.println(activePane.toString() + "changeMenuStyle-line229");
         item1.getStyleClass().remove("menuItemActive");
         item2.getStyleClass().remove("menuItemActive");

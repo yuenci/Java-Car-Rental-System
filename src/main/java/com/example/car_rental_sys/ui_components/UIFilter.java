@@ -106,6 +106,11 @@ public class UIFilter extends Pane {
         rbPriceAsc.setLayoutX(13);
         rbPriceAsc.setLayoutY(166);
 
+        //ban the radio button
+        rbPriceRec.setDisable(true);
+        rbPriceDesc.setDisable(true);
+        rbPriceAsc.setDisable(true);
+
         filCancel = new Button("Cancel");
         filCancel.setStyle("-fx-font-size: 12px; -fx-background-color: #E5E6EB; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 0px; -fx-text-fill: #4E5969; -fx-font-weight: bold;");
         filCancel.setLayoutX(28);
@@ -118,12 +123,17 @@ public class UIFilter extends Pane {
         filDone.setLayoutY(215);
         filDone.setPrefSize(80, 25);
 
-        //Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("file:src/main/resources/com/example/car_rental_sys/image/UI/calendarGrey.png")));
+//        ImageView imageView1 = new ImageView();
+//        imageView1.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/calendar.png"));
+//        imageView1.setFitHeight(20);
+//        imageView1.setFitWidth(20);
+
         filDateStart = new Button("Nov 12, 2022");
         filDateStart.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 1px; -fx-border-color: #D9D9D9; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-font-size: 11px; -fx-text-fill: #4E5969; -fx-font-weight: bold; -fx-padding: 0 0 0 8;");
         filDateStart.setLayoutX(11);
         filDateStart.setLayoutY(45);
         filDateStart.setPrefSize(90, 25);
+
 
         filDateEnd = new Button("Nov 13, 2022");
         filDateEnd.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 6px; -fx-background-insets: 0; -fx-border-width: 1px; -fx-border-color: #D9D9D9; -fx-border-insets: 0; -fx-border-radius: 6px; -fx-font-size: 11px; -fx-text-fill: #4E5969; -fx-font-weight: bold; -fx-padding: 0 0 0 8;");
@@ -131,7 +141,9 @@ public class UIFilter extends Pane {
         filDateEnd.setLayoutY(45);
         filDateEnd.setPrefSize(90, 25);
 
-        this.getChildren().addAll(lblDate, lblTo, lblPricing, lblRecommend, lblPriceAsc, lblPriceDesc, rbPriceRec, rbPriceDesc, rbPriceAsc, filCancel, filDone, filDateStart, filDateEnd);
+        this.getChildren().addAll(lblDate, lblTo, lblPricing, lblRecommend, lblPriceAsc, lblPriceDesc,
+                rbPriceRec, rbPriceDesc, rbPriceAsc,
+                filCancel, filDone, filDateStart, filDateEnd);
     }
 
     private void initEvent() {
@@ -187,7 +199,7 @@ public class UIFilter extends Pane {
 
     private boolean ifExist = false;
 
-    void showDatePicker(){
+    private void showDatePicker(){
         if(ifExist){
             return;
         }
@@ -196,7 +208,7 @@ public class UIFilter extends Pane {
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
         if(message.length() == 25){
-                System.out.println("hiii");
+                //System.out.println("hiii");
                 String[] messageArray = message.split(";");
 
                 Platform.runLater(() -> {
@@ -209,6 +221,10 @@ public class UIFilter extends Pane {
         ifExist = true;
         browserModal.setFunction(func);
         browserModal.show();
+    }
+
+    private void getValue(){
+
     }
 }
 

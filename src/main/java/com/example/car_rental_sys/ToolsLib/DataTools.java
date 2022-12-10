@@ -300,6 +300,17 @@ public class DataTools {
         }
     }
 
+    public static int getTotalOrderNum(){
+        String sql = "SELECT * FROM orders";   //here
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return 0;
+        } else {
+            return Double.valueOf(result.get(0)[0]).intValue();
+        }
+    }
+
     public static String[] getCustomerBankCardsList(int customerID) {
         String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
         ArrayList<String[]> result = SQL.query(sql);
