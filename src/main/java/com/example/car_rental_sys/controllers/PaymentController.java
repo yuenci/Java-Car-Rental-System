@@ -32,46 +32,20 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class PaymentController {
     @FXML
-    ImageView carImageView;
+    ImageView carImageView,bankcardImage;
 
     @FXML
-    Label modelText;
+    Label modelText,priceText,carChooseText,balanceText,cardTypeAndNum,expiresDate,totalPrice;
 
     @FXML
-    Label priceText;
+    Button carChooseBtn,downIconBtn;
 
     @FXML
-    Label carChooseText;
-
-    @FXML
-    Button carChooseBtn;
-
-    @FXML
-    RadioButton radioBtn1;
-
-    @FXML
-    RadioButton radioBtn2;
-
-    @FXML
-    Label balanceText;
+    RadioButton radioBtn1,radioBtn2;
 
     @FXML
     ScrollPane bankCardsContainer;
 
-    @FXML
-    Label cardTypeAndNum;
-
-    @FXML
-    Label expiresDate;
-
-    @FXML
-    Button downIconBtn;
-
-    @FXML
-    ImageView bankcardImage;
-
-    @FXML
-    Label totalPrice;
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
 

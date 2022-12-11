@@ -114,7 +114,7 @@ public class DataTools {
     }
 
     public static boolean checkPassword(String password) {
-        if (password.length() < 8 ) {
+        if (password.length() < 8) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
             messageFrame.show();
             return false;
@@ -197,6 +197,17 @@ public class DataTools {
             return null;
         }
     }
+
+    public static int getModelIDFromCarModel(String carModel) {
+        String sql = "SELECT modelID FROM carModels WHERE carModel = '" + carModel + "'";
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return Integer.parseInt(result.get(0)[0]);
+        } else {
+            return -1;
+        }
+    }
+
 
     public static String getCarNumberFromCarID(int carID) {
         String sql = "SELECT carNumber FROM carInfo WHERE carID = " + carID;
@@ -300,7 +311,7 @@ public class DataTools {
         }
     }
 
-    public static int getTotalOrderNum(){
+    public static int getTotalOrderNum() {
         String sql = "SELECT * FROM orders";   //here
         //System.out.println(sql);
         ArrayList<String[]> result = SQL.query(sql);
@@ -311,7 +322,7 @@ public class DataTools {
         }
     }
 
-    public static String getOrderIDStr(int orderID){
+    public static String getOrderIDStr(int orderID) {
         return String.format("%08d", orderID);
     }
 
@@ -402,8 +413,8 @@ public class DataTools {
         return getUserRoleFromUserEmail(email);
     }
 
-    public static String getEmailFromUserID(int  userID) {
-        String sql = "SELECT email FROM userInfo WHERE userID = " + userID ;
+    public static String getEmailFromUserID(int userID) {
+        String sql = "SELECT email FROM userInfo WHERE userID = " + userID;
         ArrayList<String[]> result = SQL.query(sql);
         if (result.size() == 1) {
             return result.get(0)[0];
@@ -426,9 +437,9 @@ public class DataTools {
 
                 int isFromMe = strings[3].equals(String.valueOf(userID)) ? 1 : 0;
                 //msg.put("receiverID",Integer.valueOf(strings[1]));
-                int  chatterID = isFromMe == 1 ? Integer.valueOf(strings[4]) : Integer.valueOf(strings[3]);
+                int chatterID = isFromMe == 1 ? Integer.valueOf(strings[4]) : Integer.valueOf(strings[3]);
                 String chatterName = DataTools.getUserNameFromUserID(chatterID);
-                if(chatterName ==null){
+                if (chatterName == null) {
                     chatterName = "System";
                 }
 
@@ -445,12 +456,12 @@ public class DataTools {
 
         String json = "let messageData= '" + msgRes + "';let currentUserID = " + userID + ";";
         String path = "src/main/resources/com/example/car_rental_sys/html/contactUs/messageData.js";
-        FileOperate.rewriteFile(path,json);
+        FileOperate.rewriteFile(path, json);
 
-        File avatarFile =new File( "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
-        String avatarPath = "let currentUserAvatarPath='" +  avatarFile.toURI() + "';";
+        File avatarFile = new File("src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
+        String avatarPath = "let currentUserAvatarPath='" + avatarFile.toURI() + "';";
         String avatarSettingFilepath = "src/main/resources/com/example/car_rental_sys/html/contactUs/avatarFilepath.js";
-        FileOperate.rewriteFile(avatarSettingFilepath,avatarPath);
+        FileOperate.rewriteFile(avatarSettingFilepath, avatarPath);
         //System.out.println(avatarPath);
 
 
@@ -461,24 +472,24 @@ public class DataTools {
         return true;
     }
 
-    public static String generateRandomInvoiceNo(int OrderNumber){
+    public static String generateRandomInvoiceNo(int OrderNumber) {
         String[] numbers = new String[10];
         Random random = new Random(OrderNumber);
         for (int i = 0; i < 10; i++) {
             int number = random.nextInt(10);
-            numbers[i] =  String.valueOf(number);
+            numbers[i] = String.valueOf(number);
         }
         return String.join("", numbers);
     }
 
-    public static int  getCarUnitPriceFromCarID(int carID){
+    public static int getCarUnitPriceFromCarID(int carID) {
         String model = getCarModelFromCarID(carID);
         String sql = "SELECT price FROM carModels WHERE carModel = '" + model + "'";
         ArrayList<String[]> result = SQL.query(sql);
-        if(result.size() == 1){
+        if (result.size() == 1) {
             int price = Integer.parseInt(result.get(0)[0]);
-            return price /24;
-        }else {
+            return price / 24;
+        } else {
             return 0;
         }
     }
@@ -493,11 +504,11 @@ public class DataTools {
         }
     }
 
-    public static boolean ifCurrentCustomerHasDLNumber(){
-        if(StatusContainer.currentUser instanceof Customer){
+    public static boolean ifCurrentCustomerHasDLNumber() {
+        if (StatusContainer.currentUser instanceof Customer) {
             String sql = "SELECT DLNumber FROM userInfo WHERE userID = " + StatusContainer.currentUser.getUserID();
             ArrayList<String[]> result = SQL.query(sql);
-            if(result.size() == 1){
+            if (result.size() == 1) {
                 String DLNumber = result.get(0)[0];
                 return !Objects.equals(DLNumber, "null") && !DLNumber.equals("");
             }
@@ -506,16 +517,16 @@ public class DataTools {
         return false;
     }
 
-    public static boolean keepUserLoggedIn(){
+    public static boolean keepUserLoggedIn() {
         ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
-        for (int i =result.size()-1; i >=0 ; i--) {
+        for (int i = result.size() - 1; i >= 0; i--) {
             String startTime = result.get(i)[10];
             String endTime = result.get(i)[11];
 
-            if (!Objects.equals(startTime, endTime)){
+            if (!Objects.equals(startTime, endTime)) {
                 String timeNow = DateTools.getNow();
-                int diff = DateTools.getHourDiff(timeNow,endTime);
-                if(diff >0){
+                int diff = DateTools.getHourDiff(timeNow, endTime);
+                if (diff > 0) {
                     int userID = Integer.parseInt(result.get(i)[1]);
                     StatusContainer.currentUser = UserFactory.getUser(userID);
                     //System.out.println("User " + userID + " is logged in");
@@ -526,7 +537,7 @@ public class DataTools {
         return false;
     }
 
-    public static boolean logOut(){
+    public static boolean logOut() {
         ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "loginLog.txt");
 
         StringBuilder newResult = new StringBuilder();
@@ -544,10 +555,10 @@ public class DataTools {
         return true;
     }
 
-    public static boolean setOrderStatus(int orderID,int status ){
+    public static boolean setOrderStatus(int orderID, int status) {
         System.out.println("Order " + orderID + " status is set to " + status);
         String relate = "null";
-        return setOrderStatus( orderID, status, relate );
+        return setOrderStatus(orderID, status, relate);
     }
     /*
     order - status
@@ -560,42 +571,42 @@ public class DataTools {
     - 5: finished
     */
 
-    public static boolean setOrderStatus(int orderID,int status,String relate ){
+    public static boolean setOrderStatus(int orderID, int status, String relate) {
         // log event
         String time = DateTools.getNow();
         int scheduleID = getID("schedule");
-        String sql = "Insert into schedule   VALUES (" +scheduleID + "," + orderID + "," + status + ",'" + relate + "','" + time + "')";
+        String sql = "Insert into schedule   VALUES (" + scheduleID + "," + orderID + "," + status + ",'" + relate + "','" + time + "')";
 
         // update car status
-        String sql2 = "SELECT carID FROM orders WHERE orderID = " + orderID ;
+        String sql2 = "SELECT carID FROM orders WHERE orderID = " + orderID;
         String carID = SQL.query(sql2).get(0)[0];
         int carIDInt = Integer.parseInt(carID);
-        updateCarStatus(carIDInt,status);
+        updateCarStatus(carIDInt, status);
 
         // sent system message
         int messageID = getID("messages");
-        String message =getStatusMessage(status,orderID);
-        String sql3 = "SELECT userID FROM orders WHERE orderID = " + orderID ;
+        String message = getStatusMessage(status, orderID);
+        String sql3 = "SELECT userID FROM orders WHERE orderID = " + orderID;
         String userID = SQL.query(sql3).get(0)[0];
-        String sql4 = "INSERT INTO messages VALUES (" +messageID +",0,1,0," + userID +",'" + time + "','" + message + "')";
+        String sql4 = "INSERT INTO messages VALUES (" + messageID + ",0,1,0," + userID + ",'" + time + "','" + message + "')";
         SQL.execute(sql4);
 
         return SQL.execute(sql);
     }
 
-    public static boolean updateCarStatus(int carID,int status){
+    public static boolean updateCarStatus(int carID, int status) {
         String sql = "UPDATE carInfo SET status = " + status + " WHERE carID = " + carID;
         return SQL.execute(sql);
     }
 
-    public static String getStatusMessage(int orderID, int status){
-        switch (status){
+    public static String getStatusMessage(int orderID, int status) {
+        switch (status) {
             case 0:
                 return "Thank you for choosing our service, please complete the payment within three hours.";
             case 1:
                 return "Your payment has been received and we will prepare your Car as soon as possible.";
             case -1:
-                return "Order:"+ orderID +"was cancelled successfully. Please comment on our service.";
+                return "Order:" + orderID + "was cancelled successfully. Please comment on our service.";
             case 2:
                 return "You car has already left and will arrive in half an hour.";
             case 3:
@@ -603,44 +614,44 @@ public class DataTools {
             case 4:
                 return "Your confirmation has been received. Enjoy driving";
             case 5:
-                return "Order:"+ orderID +" has been finished, and we look forward to serving you next time.";
+                return "Order:" + orderID + " has been finished, and we look forward to serving you next time.";
             default:
                 return "Unknown";
         }
 
     }
 
-    public static ArrayList<String[]> getAdminToDo(){
+    public static ArrayList<String[]> getAdminToDo() {
         String sql = "SELECT * FROM todos WHERE status = 0 and userID = " + StatusContainer.currentUser.getUserID() + " ORDER BY due DESC";
         //System.out.println(sql);
         ArrayList<String[]> result = SQL.query(sql);
 
         ArrayList<String[]> newResult = new ArrayList<>();
 
-        if(result.size()>=2){
+        if (result.size() >= 2) {
             newResult.add(result.get(0));
             newResult.add(result.get(1));
-        }else if(result.size() ==1){
+        } else if (result.size() == 1) {
             newResult.add(result.get(0));
         }
 
         return newResult;
     }
 
-    public static boolean setTaskAsDone(int todoID){
+    public static boolean setTaskAsDone(int todoID) {
         String sql = "UPDATE todos SET status = 1 WHERE todoID = " + todoID;
         return SQL.execute(sql);
     }
 
 
-    public static boolean addTask(String content,String due){
+    public static boolean addTask(String content, String due) {
         int todoID = getID("todos");
-        String sql = "INSERT INTO todos VALUES (" + todoID + ",'"+content+ "',"+ StatusContainer.currentUser.getUserID() +  ",'" + due + "'"+ ",0" +")";
+        String sql = "INSERT INTO todos VALUES (" + todoID + ",'" + content + "'," + StatusContainer.currentUser.getUserID() + ",'" + due + "'" + ",0" + ")";
         //System.out.println(sql);
-    return SQL.execute(sql);
+        return SQL.execute(sql);
     }
 
-    public static String fileChooser(){
+    public static String fileChooser() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(
@@ -656,10 +667,9 @@ public class DataTools {
 //            System.out.println(selectedFile.getAbsolutePath());
             //copyFileUsingApacheCommonsIO(selectedFile.getAbsolutePath(), "C:\\Users\\Public\\Pictures\\Sample Pictures\\test.jpg");
         }
-        if( selectedFile == null) {
+        if (selectedFile == null) {
             return null;
-        }
-        else{
+        } else {
             return selectedFile.getAbsolutePath();
         }
 
@@ -671,54 +681,79 @@ public class DataTools {
         FileUtils.copyFile(source, dest);
     }
 
-    public static String[] getOrderInfoFromOrderID(String orderID){
+    public static String[] getOrderInfoFromOrderID(String orderID) {
         String sql = "SELECT * FROM orders WHERE orderID = " + orderID;
         ArrayList<String[]> result = SQL.query(sql);
 
-        if(result.size() == 0){
+        if (result.size() == 0) {
             System.out.println("No such order");
             throw new RuntimeException("No such order");
-        }else{
+        } else {
             return result.get(0);
         }
     }
 
-    public static double getCarStar(){
+    public static double getCarStar() {
         double star = 3 + (5 - 3) * new Random().nextDouble();
         star = Math.round(star * 10) / 10.0;
         return star;
     }
 
-    public static int getCarSpeed(){
-        return getRandomInt(200,480);
+    public static int getCarSpeed() {
+        return getRandomInt(200, 480);
     }
 
-    public static double getCarPower(){
+    public static double getCarPower() {
         //the power must higher than 100 and lower than 300
         double power = 100 + (300 - 100) * new Random().nextDouble();
         power = Math.round(power * 10) / 10.0;
         return power;
     }
 
-    public static int getRandomCarStatus(){
+    public static int getRandomCarStatus() {
         return new Random().nextInt(5);
     }
 
-    public static ArrayList<Integer> getAvailableCars(){
-        String dataPath = "src/main/resources/com/example/car_rental_sys/data/carStatus.txt";
+    public static ArrayList<Integer> getAvailableCars() {
+        String dataPath = ConfigFile.carStatusPath;
         ArrayList<String[]> carStatusData =
-                FileOperate.readFileToArray(dataPath,true);
+                FileOperate.readFileToArray(dataPath, true);
+
+        return getAvailableData(carStatusData);
+    }
+
+    public static boolean ifCarAvailable(String carModel) {
+        int carID = getModelIDFromCarModel(carModel);
+        return ifCarAvailable(carID);
+    }
+
+    public static boolean ifCarAvailable(int carID) {
+        String dataPath = "src/main/resources/com/example/car_rental_sys/data/carStatus.txt";
+        ArrayList<String[]> carStatusAllData =
+                FileOperate.readFileToArray(dataPath, true);
+
+        ArrayList<String[]> carStatusData = new ArrayList<>();
+
+        for (String[] strings : carStatusAllData) {
+            if (Integer.parseInt(strings[1]) == carID) {
+                carStatusData.add(strings);
+            }
+        }
+
+        return getAvailableData(carStatusData).size() != 0;
+
+    }
+
+    private static ArrayList<Integer> getAvailableData(ArrayList<String[]> data) {
         ArrayList<Integer> availableCars = new ArrayList<>();
-
-
-        for (String[] strings : carStatusData) {
+        for (String[] strings : data) {
             // cars already in use
             long start = strings[2].length() == 0 ? 0 : Long.parseLong(strings[2]) * 1000;
             long end = strings[3].length() == 0 ? 0 : Long.parseLong(strings[3]) * 1000;
             long pickupTime = StatusContainer.pickUpTimeStamp;
             long returnTime = StatusContainer.returnTimeStamp;
 
-            if(returnTime < start || pickupTime > end){
+            if (returnTime < start || pickupTime > end) {
                 // available
                 availableCars.add(Integer.parseInt(strings[0]));
             }
@@ -726,14 +761,15 @@ public class DataTools {
         return availableCars;
     }
 
-    public static ArrayList<String[]> getTableData(ArrayList<String[]> data,int page,int max){
+
+    public static ArrayList<String[]> getTableData(ArrayList<String[]> data, int page, int max) {
         ArrayList<String[]> result = new ArrayList<>();
-        try{
+        try {
             for (int i = 0; i < max; i++) {
                 String[] row = data.get((page - 1) * max + i);
                 result.add(row);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Tools.logError(e);
         }
 

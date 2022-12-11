@@ -32,16 +32,7 @@ import java.util.Arrays;
 
 public class CarDetailsPageController extends  Controller{
     @FXML
-    ImageView carImageView;
-
-    @FXML
-    ImageView logImageView;
-
-    @FXML
-    ImageView backBtnImageView;
-
-    @FXML
-    ImageView keyTipsImageView;
+    ImageView carImageView ,logImageView,backBtnImageView,keyTipsImageView;
 
     @FXML
     WebView webview;
@@ -50,32 +41,10 @@ public class CarDetailsPageController extends  Controller{
     ScrollPane commentScrollPane;
 
     @FXML
-    Label starText;
+    Label starText,modelText,speedText,seatsText,powerText,priceText,commentsNum;
 
     @FXML
-    Label modelText;
-
-    @FXML
-    Label speedText;
-
-    @FXML
-    Label seatsText;
-
-    @FXML
-    Label powerText;
-
-    @FXML
-    Label priceText;
-
-    @FXML
-    Label commentsNum;
-
-    @FXML
-    Pane containPane;
-
-    @FXML
-    Pane mainPane;
-
+    Pane containPane,mainPane;
 
     private String[] carDetailsData = null;
 
