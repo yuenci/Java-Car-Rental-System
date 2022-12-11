@@ -703,7 +703,6 @@ public class DataTools {
     public static int getRandomCarStatus(){
         return new Random().nextInt(5);
     }
-
 }
 
 // TODO: No comma "," content is allowed.
