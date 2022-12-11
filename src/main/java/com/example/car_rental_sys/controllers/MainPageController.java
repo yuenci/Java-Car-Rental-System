@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
@@ -239,6 +240,7 @@ public class MainPageController extends Controller{
 
     @FXML
     void openCatalogBtnClick(ActionEvent actionEvent) {
+        StatusContainer.carDetailsEntrance = "catalog";
         FXTools.changeScene("carsListPage.fxml");
     }
 
@@ -258,94 +260,8 @@ public class MainPageController extends Controller{
         browserModal.setFunction(func);
         browserModal.show();
 
-
-
-
-// region
-/*
-        //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/map.html");
-        //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/jxTest.html");
-//        assert url != null;
-//        browser.navigation().loadUrl(url.toString());
-
-
-
-
-//        Frame frame = browser.frames().get(0);
-//        frame.executeJavaScript("insert();");
-
-        //browser.mainFrame.executeJavaScript("alert('hello world')");
-//
-//        String title =  browser.mainFrame().executeJavaScript("document.title");
-//
-//        browser.executeJavaScript("alert('hello world')");
-
-        //browser.navigation().loadUrl("https://www.bejson.com/httputil/clientinfo/");
-        //browser.navigation().loadUrl("http://127.0.0.1:8080/");
-
-
-        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
-
-        Browser browser = engine.newBrowser();
-
-        String lacalPath =  "src/main/resources/com/example/car_rental_sys/html/googleMap.html";
-        browser.navigation().loadUrl(new File(lacalPath).getAbsolutePath());
-
-        browser.set(InjectJsCallback.class, params -> {
-            JsObject window = params.frame().executeJavaScript("window");
-            assert window != null;
-            window.putProperty("java", new JavaObject());
-
-            return InjectJsCallback.Response.proceed();
-        });
-
-
-        BrowserView view = BrowserView.newInstance(browser);
-
-
-
-        browser.on(ConsoleMessageReceived.class, event -> {
-            ConsoleMessage consoleMessage = event.consoleMessage();
-            //ConsoleMessageLevel level = consoleMessage.level();
-            String message = consoleMessage.message();
-            System.out.println(message);
-        });
-
-        Scene scene = new Scene(new BorderPane(view),800,600);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("JxBrowser");
-        stage.setScene(scene);
-        stage.show();
-
-        updateLocation();
-
-        stage.setOnCloseRequest(event -> {
-            timer.cancel();
-            engine.close();
-        });
-
-        */
     }
 
-//    private  Timer timer;
-//
-//    private void updateLocation(){
-//        timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                Platform.runLater(() -> {
-//                    if (StatusContainer.locationChose!=null){
-//                        locationText.setText(StatusContainer.locationChose);
-//                    }
-//                });
-//
-//            }
-//        },0,200);
-//    }
-
-// endregion
 
     @FXML
     void pickUpBtnClick() {
@@ -362,10 +278,15 @@ public class MainPageController extends Controller{
 
     @FXML
     void searchBtnClick() {
+        StatusContainer.carDetailsEntrance = "search";
         if(StatusContainer.pickUpTimeStamp == 0 || StatusContainer.returnTimeStamp == 0){
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING,"Please choose pick up date and return date first");
             messageFrame.show();
-        }else{
+        }else if(DataTools.getAvailableCars().size() == 0){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING,"No available cars");
+            messageFrame.show();
+        }
+        else{
             FXTools.changeScene("carsListPage.fxml");
         }
     }

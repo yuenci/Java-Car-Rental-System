@@ -43,6 +43,8 @@ public class StatusContainer {
     public static NewCar currentNewCarInfo = null;
     public static long pickUpTimeStamp = 0;
     public static long returnTimeStamp = 0;
+    public static String carDetailsEntrance = null;
+    // search / catalog
 
 
     // self-test statues during loading
