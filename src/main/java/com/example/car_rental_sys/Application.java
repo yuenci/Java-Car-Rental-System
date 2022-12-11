@@ -37,7 +37,7 @@ public class Application extends javafx.application.Application {
         //NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
-        //Test.test();
+//        Test.test();
         //FXTools.pandaHead();
     }
 
@@ -154,7 +154,8 @@ public class Application extends javafx.application.Application {
     }
     private static  void setUser(String type){
         if(Objects.equals(type, "c")){
-            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
+//            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
+            StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
         }else if(Objects.equals(type, "d")){
             StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
         }else if(Objects.equals(type, "a")){

@@ -261,7 +261,7 @@ public class CarDetailsPageController extends  Controller{
 
 
         //check if user is login
-        System.out.println(StatusContainer.currentUser);
+        //System.out.println(StatusContainer.currentUser);
         if (StatusContainer.currentUser == null) {
             StatusContainer.loginEntrance = "carDetails";
             FXTools.changeScene("loginPage.fxml");

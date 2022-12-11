@@ -1,14 +1,17 @@
 package com.example.car_rental_sys.funtions;
 
 import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.sqlParser.SQL;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
     public static void test(){
@@ -30,7 +33,8 @@ public class Test {
         //getMessageJson();
         //keepLoginTest();
         //gettodoListTest();
-        getStampTest();
+        //getStampTest();
+        getCardInfoTest();
     }
 
 
@@ -121,5 +125,18 @@ public class Test {
         for (int i = 1; i < list.size(); i++) {
             System.out.println(DateTools.timeStampToDateTime(list.get(i)[1]));
         }
+    }
+
+    private static void getCardInfoTest(){
+        int cusID = StatusContainer.currentUser.getUserID();
+        //cusID = 4;
+        String sql = "select cardNumber,cardType,validDate from bankCardInfo where userID = " + cusID + " and cardType <> 'paypal'";
+
+        System.out.println(sql);
+        ArrayList<String[]> data= SQL.query(sql);
+        for (String[] datum : data) {
+            System.out.println(Arrays.toString(datum));
+        }
+        System.out.println(data.size());
     }
 }

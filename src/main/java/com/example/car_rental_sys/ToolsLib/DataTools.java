@@ -816,6 +816,18 @@ public class DataTools {
 
         return (int) (price * discount);
     }
+
+    public static int getBalance(){
+        String sql = "select balance from bankCardInfo where userID = " + StatusContainer.currentUser.getUserID();
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0)return 0;
+
+        int balance = 0;
+        for (String[] strings : result) {
+            balance += Integer.parseInt(strings[0]);
+        }
+        return balance;
+    }
 }
 
 // TODO: No comma "," content is allowed.

@@ -119,7 +119,7 @@
             <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="priceText" layoutX="285.0" layoutY="277.0" prefHeight="19.0" prefWidth="90.0" text="RM2000/D" textFill="#838383">
+    <Label fx:id="priceText" layoutX="285.0" layoutY="277.0" prefHeight="19.0" prefWidth="178.0" text="RM2000/D" textFill="#838383">
         <font>
             <Font name="System Bold" size="14.0" />
         </font>

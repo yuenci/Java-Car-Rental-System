@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
@@ -124,7 +125,8 @@ public class PaymentController {
     }
 
     private void initBalance(){
-
+        int balance = DataTools.getBalance();
+        balanceText.setText("RM" + balance);
     }
 
     private void  initCarChooseHoverEvent(){
@@ -188,15 +190,25 @@ public class PaymentController {
         bankCardsContainer.setFitToWidth(true);
 
         VBox vBox = new VBox();
-        BankCard bankCard1 = new BankCard("123121122121","visa","12/2020");
-        BankCard bankCard2 = new BankCard("123121122121","mastercard","12/2021");
-        BankCard bankCard3 = new BankCard("123121122121","mastercard","12/2022");
+        int cusID = StatusContainer.currentUser.getUserID();
+        String sql = "select cardNumber,cardType,validDate from bankCardInfo where userID = " + cusID + " and cardType <> 'paypal'";
+        ArrayList<String[]> data= SQL.query(sql);
+        for (String[] datum : data) {
+            BankCard bankCard = new BankCard(datum[0], datum[1], datum[2]);
+            bankCards.add(bankCard);
+            vBox.getChildren().add(bankCard);
+        }
 
-        vBox.getChildren().addAll(bankCard1,bankCard2,bankCard3);
 
-        bankCards.add(bankCard1);
-        bankCards.add(bankCard2);
-        bankCards.add(bankCard3);
+//        BankCard bankCard1 = new BankCard("123121122121","visa","12/2020");
+//        BankCard bankCard2 = new BankCard("123121122121","mastercard","12/2021");
+//        BankCard bankCard3 = new BankCard("123121122121","mastercard","12/2022");
+//
+//        vBox.getChildren().addAll(bankCard1,bankCard2,bankCard3);
+//
+//        bankCards.add(bankCard1);
+//        bankCards.add(bankCard2);
+//        bankCards.add(bankCard3);
 
         bankCardsContainer.setContent(vBox);
     }
