@@ -39,6 +39,7 @@ public class Application extends javafx.application.Application {
         DataTools.keepUserLoggedIn();
         //Test.test();
         FXTools.pandaHead();
+        //FXTools.dogHead();
     }
 
     @Override
