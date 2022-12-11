@@ -109,6 +109,12 @@ StatusContainer.currentPageController = this;
 }
 ```
 继承Controller类，然后公开最外面的pan之后，将当前page实例设置为当前pane的controller
+## WARNING messageBox demo
+```java
+MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "this is message");
+messageFrame.show();
+```
+
 
 ## confirm messageBox demo
 ```java

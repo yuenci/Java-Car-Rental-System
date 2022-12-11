@@ -156,6 +156,7 @@ public class Application extends javafx.application.Application {
         if(Objects.equals(type, "c")){
 //            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
             StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
+//            StatusContainer.currentUser  = new Customer("15705156@qq.com");
         }else if(Objects.equals(type, "d")){
             StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
         }else if(Objects.equals(type, "a")){

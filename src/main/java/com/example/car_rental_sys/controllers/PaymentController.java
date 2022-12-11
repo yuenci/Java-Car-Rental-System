@@ -8,6 +8,8 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.BankCard;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -22,6 +24,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
@@ -34,7 +37,7 @@ import java.util.Objects;
 
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
-public class PaymentController {
+public class PaymentController extends Controller{
     @FXML
     ImageView carImageView,bankcardImage,avatarImageView;
 
@@ -52,6 +55,12 @@ public class PaymentController {
 
     @FXML
     ScrollPane bankCardsContainer;
+
+    @FXML
+    public Pane mainPane;
+
+    private boolean paypalStatus = false;
+    private boolean cardStatus = false;
 
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
@@ -75,6 +84,7 @@ public class PaymentController {
 
         StatusContainer.paymentControllerInstance = this;
         StatusContainer.radioBtn2 = radioBtn2;
+        StatusContainer.currentPageController = this;
     }
     private void initAvatar(){
         Image avatar = ImageTools.getImageObjFromUserID(StatusContainer.currentUser.getUserID());
@@ -192,12 +202,25 @@ public class PaymentController {
         VBox vBox = new VBox();
         int cusID = StatusContainer.currentUser.getUserID();
         String sql = "select cardNumber,cardType,validDate from bankCardInfo where userID = " + cusID + " and cardType <> 'paypal'";
-        ArrayList<String[]> data= SQL.query(sql);
-        for (String[] datum : data) {
-            BankCard bankCard = new BankCard(datum[0], datum[1], datum[2]);
-            bankCards.add(bankCard);
-            vBox.getChildren().add(bankCard);
+        ArrayList<String[]> cardData= SQL.query(sql);
+        if (cardData.size() >0) cardStatus = true;
+
+        String sql1 = "select cardNumber from bankCardInfo where userID = " + cusID + " and cardType = 'paypal'";
+        ArrayList<String[]> paypalData= SQL.query(sql1);
+        if (paypalData.size() >0) paypalStatus = true;
+
+        if(cardStatus){
+            for (String[] datum : cardData) {
+                BankCard bankCard = new BankCard(datum[0], datum[1], datum[2]);
+                bankCards.add(bankCard);
+                vBox.getChildren().add(bankCard);
+            }
+        }else{
+            cardTypeAndNum.setText("No Card");
+            expiresDate.setText("");
+            downIconBtn.setVisible(false);
         }
+
 
 
 //        BankCard bankCard1 = new BankCard("123121122121","visa","12/2020");
@@ -232,9 +255,19 @@ public class PaymentController {
         String payMethod = StatusContainer.currentPaymentMethod;
         //System.out.println(payMethod);
         if(Objects.equals(payMethod, "paypal")){
-            showPayPalCheckoutPage();
+            if(paypalStatus){
+                showPayPalCheckoutPage();
+            }else{
+                MessageFrame messageFrame = new MessageFrame(MessageFrameType.NOTIFICATION, "You don't have a paypal account, please add one first");
+                messageFrame.show();
+            }
         }else if (Objects.equals(payMethod, "visa") || Objects.equals(payMethod, "mastercard")){
-            showBankCardCheckoutPage();
+            if(cardStatus){
+                showBankCardCheckoutPage();
+            }else{
+                MessageFrame messageFrame = new MessageFrame(MessageFrameType.NOTIFICATION, "You don't have a bank card, please add one first");
+                messageFrame.show();
+            }
         }
     }
 
