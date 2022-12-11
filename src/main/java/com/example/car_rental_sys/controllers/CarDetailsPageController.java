@@ -1,10 +1,13 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.CommentCard;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
@@ -29,6 +32,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Function;
 
 public class CarDetailsPageController extends  Controller{
     @FXML
@@ -249,27 +253,77 @@ public class CarDetailsPageController extends  Controller{
 
     @FXML
     private void rentNowBtnClickEvent(){
-        if (StatusContainer.currentUser != null) {
-            if(DataTools.ifCurrentCustomerHasDLNumber()){
-                FXTools.changeScene("paymentPage.fxml");
-            }else{
-                MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You have not upload your driving license number, do you want to upload it now?");
-                messageFrame.setSuccessCallbackFunc((i) -> {
-                    System.out.println("go to setting page");
-                    return null;
-                });
-
-                messageFrame.setFailedCallbackFunc((i) -> {
-                    System.out.println("don't go to setting page upload dl number");
-                    messageFrame.close();
-                    return null;
-                });
-                messageFrame.show();
-            }
-        } else {
-            //System.out.println("Please login first");
-            new Tools().reSetScene("loginPage.fxml");
+        //check if user choose date
+        if(StatusContainer.pickUpTimeStamp == 0 || StatusContainer.returnTimeStamp == 0){
+            showDatePicker();
+            return;
         }
+
+
+        //check if user is login
+        System.out.println(StatusContainer.currentUser);
+        if (StatusContainer.currentUser == null) {
+            StatusContainer.loginEntrance = "carDetails";
+            FXTools.changeScene("loginPage.fxml");
+            return;
+        }
+
+
+
+        //check if this car is available
+        String currentCarChose = StatusContainer.currentCarChose;
+        if(!DataTools.ifCarAvailable(currentCarChose)){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING,"This car is not available now!");
+            messageFrame.show();
+            return;
+        }
+
+
+        //check if user has a Driving License
+        if(!DataTools.ifCurrentCustomerHasDLNumber()){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You have not upload your driving license number, do you want to upload it now?");
+            messageFrame.setSuccessCallbackFunc((i) -> {
+                System.out.println("go to setting page");
+                return null;
+            });
+
+            messageFrame.setFailedCallbackFunc((i) -> {
+                System.out.println("don't go to setting page upload dl number");
+                messageFrame.close();
+                return null;
+            });
+            messageFrame.show();
+            return;
+        }
+
+        FXTools.changeScene("paymentPage.fxml");
+    }
+
+    private void showDatePicker(){
+        String url = ConfigFile.backendPost +  "datePicker/index.html";
+        BrowserModal browserModal = new BrowserModal(600, 455, url) ;
+        browserModal.setModality();
+        Function<String, Void> func = (message) -> {
+            if(message.length() == 73){
+                String[] messageArray = message.split(";");
+                StatusContainer.pickDateTime = messageArray[0];
+                StatusContainer.returnDateTime = messageArray[1];
+
+
+
+                Platform.runLater(() -> {
+                    if(DateTools.validateDate(messageArray[2],messageArray[3])){
+                        StatusContainer.pickUpTimeStamp = DateTools.dateTimeToTimestamp(messageArray[2]);
+                        StatusContainer.returnTimeStamp = DateTools.dateTimeToTimestamp(messageArray[3]);
+                    }
+
+                });
+            }
+            return null;
+        };
+
+        browserModal.setFunction(func);
+        browserModal.show();
     }
 
 }

@@ -111,7 +111,7 @@ public class MessageFrame {
 
     private void addTitle(){
 //        String titleText = title;
-        System.out.println(iconPath);
+        //System.out.println(iconPath);
         String titleText;
         if(Objects.equals(title, "")){
             StringBuilder titleSpaceStr = new StringBuilder();

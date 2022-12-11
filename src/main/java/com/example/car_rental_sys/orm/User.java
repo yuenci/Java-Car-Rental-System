@@ -85,7 +85,7 @@ public class User {
         this.address = user[12];
         this.about = user[13];
         this.regTime = user[14];
-        this.avatar = ImageTools.getAvatarFromUserID(userID);
+        this.avatar = ImageTools.getUserAvatarFromUserID(userID);
     }
 
     public int getUserID() {

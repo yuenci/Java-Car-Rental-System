@@ -291,7 +291,7 @@ public class MainPageController extends Controller{
         }
     }
 
-    void showDatePicker(){
+    public void showDatePicker(){
         String url = ConfigFile.backendPost +  "datePicker/index.html";
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();

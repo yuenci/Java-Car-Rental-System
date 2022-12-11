@@ -66,6 +66,7 @@ public class NavigationBarController {
         }else  if (StatusContainer.currentUser instanceof Driver){
             FXTools.changeScene("driverServicePage.fxml");
         }else {
+            StatusContainer.loginEntrance = "mainPage";
             FXTools.changeScene("loginPage.fxml");
         }
     }

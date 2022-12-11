@@ -104,6 +104,10 @@ public class DateTools {
         return sdf.format(new Date(time));
     }
 
+    public static int getHourDiff(long start, long end){
+        long diff = end - start;
+        return (int) (diff / (1000 * 60 * 60));
+    }
 
 
     public static boolean validateDate(String startTime, String endTime) {

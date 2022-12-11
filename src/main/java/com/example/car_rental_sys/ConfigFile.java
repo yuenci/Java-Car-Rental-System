@@ -7,6 +7,14 @@ public class ConfigFile {
     public static final int  passwordStrength = 1; //1:weak -  5:strong
     public static final int  remeberMeDays = 7;
 
+    // price
+    public static final double tax = 0.01;
+    public static final double discountLeveL0 = 0;
+    public static final double discountLeveL1 = 0.01;
+    public static final double discountLeveL2 = 0.02;
+    public static final double discountLeveL3 = 0.03;
+    public static final double discountLeveL4 = 0.04;
+
 
 
     // keys

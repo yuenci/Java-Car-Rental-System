@@ -63,7 +63,12 @@ public class loginPageController extends Controller{
             if(Objects.equals(userRole, "customer")){
                 System.out.println( "customer login" );
                 StatusContainer.currentUser = new Customer(emailValue);
-                FXTools.changeScene("customerServicePage.fxml");}
+                if(Objects.equals(StatusContainer.loginEntrance, "mainPage")){
+                    FXTools.changeScene("customerServicePage.fxml");}
+                else if(Objects.equals(StatusContainer.loginEntrance, "carDetails")){
+                    FXTools.changeScene("paymentPage.fxml");
+                }
+            }
             else if(Objects.equals(userRole, "driver")){
                 System.out.println( "driver login" );
                 StatusContainer.currentUser = new Driver(emailValue);
@@ -78,6 +83,7 @@ public class loginPageController extends Controller{
             System.out.println( "login fail" );
         }
     }
+
 
     @FXML
     private void signUpBtnClick(){

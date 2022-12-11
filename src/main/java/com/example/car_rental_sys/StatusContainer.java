@@ -22,10 +22,9 @@ public class StatusContainer {
     public static Controller currentPageController= null;
     public static String currentResetPassWordEmail = null;
     public static String currentPaymentMethod = null;
-    public static String currentUserEmail = "1575270dad@qq.com";
     public static String currentChooseBankCardNum = "1234567890123456";
     public static Boolean isHideDriverSideBar = false;
-   public static User currentUser = null;
+    public static User currentUser = null;
    // public static User currentUser = new Customer("1575270674@qq.com");
     //public static User currentUser = new Driver("cervantesmichael@yahoo.com");
     //public static User currentUser =  new Admin("david32@hotmail.com");
@@ -45,6 +44,9 @@ public class StatusContainer {
     public static long returnTimeStamp = 0;
     public static String carDetailsEntrance = null;
     // search / catalog
+    public static String loginEntrance = null;
+    // mainPage / carDetails
+
 
 
     // self-test statues during loading

@@ -5,14 +5,11 @@ import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.FileOperate;
-import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.orm.Customer;
-import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.orm.UserFactory;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
-import com.teamdev.jxbrowser.deps.org.checkerframework.checker.units.qual.A;
 import javafx.stage.FileChooser;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -311,6 +308,21 @@ public class DataTools {
         }
     }
 
+    public static int gerCustomerLevel(int customerID){
+        int orderCount = getCustomerOrderNum(customerID);
+        if (orderCount <= 5) {
+            return 0;
+        } else if (orderCount <= 10) {
+            return 1;
+        } else if (orderCount <= 15) {
+            return 2;
+        } else if (orderCount <= 20) {
+            return 3;
+        } else {
+            return 4;
+        }
+    }
+
     public static int getTotalOrderNum() {
         String sql = "SELECT * FROM orders";   //here
         //System.out.println(sql);
@@ -492,6 +504,10 @@ public class DataTools {
         } else {
             return 0;
         }
+    }
+    public static int getCarUnitPriceFromCarModel(String carModel) {
+        int carID = getModelIDFromCarModel(carModel);
+        return getCarUnitPriceFromCarID(carID);
     }
 
     public static String getGenderFromUserID(int userID) {
@@ -774,6 +790,31 @@ public class DataTools {
         }
 
         return result;
+    }
+
+    public static String getTax(){
+        int tax = (int) (ConfigFile.tax * 100);
+        return tax + "%";
+    }
+
+    public static double getDiscount(){
+        int customerLevel = gerCustomerLevel(StatusContainer.currentUser.getUserID());
+        double[] discount = {
+                ConfigFile.discountLeveL0,
+                ConfigFile.discountLeveL1,
+                ConfigFile.discountLeveL2,
+                ConfigFile.discountLeveL3,
+                ConfigFile.discountLeveL4,
+        };
+
+        return discount[customerLevel];
+    }
+
+    public static int  getDiscountNum(int unitPrice, int hours){
+        int price = unitPrice * hours;
+        double discount = getDiscount();
+
+        return (int) (price * discount);
     }
 }
 

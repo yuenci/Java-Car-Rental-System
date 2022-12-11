@@ -136,6 +136,7 @@ public class ImageTools {
 
     public static Image getImageObjFromUserID(int userID) {
         String avatarRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        System.out.println(avatarRoot);
         File file = new File(avatarRoot);
         String path;
         if (file.exists()) {
@@ -171,15 +172,16 @@ public class ImageTools {
 
     public static Image getBadgeImage(int UserID) {
         String[] badges = {"vip1.png", "vip2.png", "vip3.png", "vip4.png", "svip.png"};
-        int orderCount = DataTools.getCustomerOrderNum(UserID);
 
-        if (orderCount <= 5) {
+        int customerLevel = DataTools.gerCustomerLevel(UserID);
+
+        if (customerLevel ==0) {
             return getUIImageObjFromName(badges[0]);
-        } else if (orderCount <= 10) {
+        } else if (customerLevel ==1) {
             return getUIImageObjFromName(badges[1]);
-        } else if (orderCount <= 15) {
+        } else if (customerLevel ==2) {
             return getUIImageObjFromName(badges[2]);
-        } else if (orderCount <= 20) {
+        } else if (customerLevel ==3) {
             return getUIImageObjFromName(badges[3]);
         } else {
             return getUIImageObjFromName(badges[4]);
@@ -203,8 +205,12 @@ public class ImageTools {
         }
     }
 
-    public static Image getAvatarFromUserID(int userID) {
+    public static Image getUserAvatarFromUserID(int userID) {
         return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
+    }
+
+    public Image getUserCircleAvatarFromUserID(int userID){
+        return  new Image("src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
     }
 
     public static int[] getImageSize(String path) {
@@ -514,5 +520,6 @@ public class ImageTools {
         System.out.println("type = " + type);
         return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/avatar_" + type + ".png");
     }
+
 
 }

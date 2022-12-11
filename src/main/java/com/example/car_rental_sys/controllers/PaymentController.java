@@ -1,5 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.BankCard;
@@ -32,10 +35,13 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
 public class PaymentController {
     @FXML
-    ImageView carImageView,bankcardImage;
+    ImageView carImageView,bankcardImage,avatarImageView;
 
     @FXML
-    Label modelText,priceText,carChooseText,balanceText,cardTypeAndNum,expiresDate,totalPrice;
+    Label modelText,priceText,carChooseText,balanceText,cardTypeAndNum,expiresDate,totalPrice,customerName;
+
+    @FXML
+    Label price,pickUpTime,returnTime,duration,discount,tax;
 
     @FXML
     Button carChooseBtn,downIconBtn;
@@ -56,17 +62,49 @@ public class PaymentController {
 
     @FXML
     public void initialize() {
+        initAvatar();
         initCarImage();
         initPrice();
+        initBalance();
         initCarChooseHoverEvent();
         initRadioEvent();
         textAlignment();
         initBankCardChooser();
+        initOrderInfo();
 
         StatusContainer.paymentControllerInstance = this;
         StatusContainer.radioBtn2 = radioBtn2;
     }
+    private void initAvatar(){
+        Image avatar = ImageTools.getImageObjFromUserID(StatusContainer.currentUser.getUserID());
+        Image avatarCircle = ImageTools.getCircleImages(avatar);
+        avatarImageView.setImage(avatarCircle);
+        customerName.setText(StatusContainer.currentUser.getUserName());
+    }
 
+    private void initOrderInfo(){
+        Label[] labels = {price, pickUpTime,returnTime,duration,discount,tax};
+        for (Label label : labels) {
+            label.setAlignment(Pos.CENTER_LEFT);
+        }
+        int priceNum = DataTools.getCarUnitPriceFromCarModel(StatusContainer.currentCarChose);
+        price.setText("RM" + priceNum);
+
+        String pickUpTimeStr = DateTools.timeStampToDateTime(StatusContainer.pickUpTimeStamp);
+        String returnTimeStr = DateTools.timeStampToDateTime(StatusContainer.returnTimeStamp);
+        int durationNum = DateTools.getHourDiff(StatusContainer.pickUpTimeStamp,StatusContainer.returnTimeStamp);
+        int discountNum = DataTools.getDiscountNum(priceNum,durationNum);
+
+        pickUpTime.setText(pickUpTimeStr.substring(0,16));
+        returnTime.setText(returnTimeStr.substring(0,16));
+        duration.setText(durationNum + " Hours");
+        discount.setText(discountNum + "RM");
+        tax.setText(DataTools.getTax());
+
+        double totalPriceNum = (priceNum * durationNum - discountNum) * (1+ ConfigFile.tax);
+        int totalPriceInt = (int) totalPriceNum;
+        totalPrice.setText("RM" + totalPriceInt);
+    }
 
     private  void   initCarImage(){
         modelText.setText(StatusContainer.currentCarChose.replace("_"," "));
@@ -81,9 +119,12 @@ public class PaymentController {
     }
 
     private  void initPrice(){
-        String sql = "SELECT price FROM carModels WHERE carModel = '"+StatusContainer.currentCarChose +"'";
-        ArrayList<String[]> result = SQL.query(sql);
-        priceText.setText("RM" + result.get(0)[0]);
+        int priceNum = DataTools.getCarUnitPriceFromCarModel(StatusContainer.currentCarChose);
+        priceText.setText("RM" + priceNum + "/Hour");
+    }
+
+    private void initBalance(){
+
     }
 
     private void  initCarChooseHoverEvent(){
@@ -248,7 +289,7 @@ public class PaymentController {
         browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.html").getAbsolutePath());
         //addData(100, "1575270674@qq.com", "1234567890123456");
         String price = "'" + totalPrice.getText() + "'";
-        String email = StatusContainer.currentUserEmail ;
+        String email = StatusContainer.currentUser.getEmail() ;
         String cardNum = StatusContainer.currentChooseBankCardNum;
 
 
