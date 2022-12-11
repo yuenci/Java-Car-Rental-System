@@ -6,171 +6,172 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #0e0e10;"
-      stylesheets="@../style/paymentPage.css" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PaymentController">
+<Pane prefHeight="836.0" prefWidth="1280.0" style="-fx-background-color: #0e0e10;" stylesheets="@../style/paymentPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.PaymentController">
     <Pane layoutX="901.0" prefHeight="836.0" prefWidth="380.0" style="-fx-background-color: #15141b;">
-        <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../image/avatar/1.png"/>
+        <ImageView fx:id="avatarImageView" fitHeight="60.0" fitWidth="53.0" layoutX="50.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/avatar/1.png" />
         </ImageView>
-        <Label layoutX="120.0" layoutY="130.0" text="Innis" textFill="WHITE">
+        <Label fx:id="customerName" layoutX="120.0" layoutY="130.0" text="Innis" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="16.0"/>
+                <Font name="System Bold" size="16.0" />
             </font>
         </Label>
         <Label layoutX="120.0" layoutY="164.0" text="Car rental payment" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Line endX="202.0" layoutX="151.0" layoutY="213.0" startX="-100.0" stroke="#2f2f2f"/>
-        <Label layoutX="51.0" layoutY="248.0" text="Price/Per day" textFill="#838383">
+        <Line endX="202.0" layoutX="151.0" layoutY="213.0" startX="-100.0" stroke="#2f2f2f" />
+        <Label layoutX="50.0" layoutY="240.0" text="Price Per Hour" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="277.0" layoutY="248.0" text="RM2000/D" textFill="WHITE">
+        <Label fx:id="price" layoutX="225.0" layoutY="240.0" prefHeight="19.0" prefWidth="130.0" text="RM200/H" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="51.0" layoutY="288.0" text="Duration" textFill="#838383">
+        <Label layoutX="50.0" layoutY="360.0" text="Duration" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="277.0" layoutY="288.0" prefHeight="19.0" prefWidth="76.0" text="5 Days" textFill="WHITE">
+        <Label fx:id="duration" layoutX="225.0" layoutY="360.0" prefHeight="19.0" prefWidth="130.0" text="50 Hours" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="51.0" layoutY="322.0" text="Discount" textFill="#838383">
+        <Label layoutX="50.0" layoutY="400.0" text="Discount" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="277.0" layoutY="322.0" prefHeight="19.0" prefWidth="76.0" text="RM100/D" textFill="#838383">
+        <Label fx:id="discount" layoutX="225.0" layoutY="400.0" prefHeight="19.0" prefWidth="130.0" text="RM100/H" textFill="#838383">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="51.0" layoutY="362.0" text="Tax" textFill="#838383">
+        <Label layoutX="50.0" layoutY="440.0" text="Tax" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="277.0" layoutY="362.0" prefHeight="19.0" prefWidth="76.0" text="3%" textFill="#838383">
+        <Label fx:id="tax" layoutX="225.0" layoutY="440.0" prefHeight="19.0" prefWidth="130.0" text="3%" textFill="#838383">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Button layoutX="46.0" layoutY="497.0" mnemonicParsing="false" onAction="#makePaymentBtnClickEvent"
-                prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
+        <Button layoutX="44.0" layoutY="568.0" mnemonicParsing="false" onAction="#makePaymentBtnClickEvent" prefHeight="37.0" prefWidth="303.0" styleClass="makePaymentButton" text="Make Payment">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Line endX="202.0" layoutX="146.0" layoutY="413.0" startX="-100.0" stroke="#2f2f2f"/>
-        <Label layoutX="51.0" layoutY="446.0" text="Total amount" textFill="#838383">
+        <Line endX="202.0" layoutX="146.0" layoutY="482.0" startX="-100.0" stroke="#2f2f2f" />
+        <Label layoutX="51.0" layoutY="515.0" text="Total amount" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="totalPrice" layoutX="277.0" layoutY="446.0" prefHeight="19.0" prefWidth="76.0" text="RM10000"
-               textFill="WHITE">
+        <Label fx:id="totalPrice" layoutX="260.0" layoutY="515.0" prefHeight="19.0" prefWidth="76.0" text="RM10000" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Label>
+      <Label layoutX="50.0" layoutY="280.0" text="Pick Up Time" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="320.0" text="Return Time" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnTime" layoutX="225.0" layoutY="320.0" prefHeight="19.0" prefWidth="130.0" text="100H" textFill="#838383">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="pickUpTime" layoutX="225.0" layoutY="280.0" prefHeight="19.0" prefWidth="130.0" text="100H" textFill="#838383">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
     </Pane>
     <Pane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: transparent;">
-        <fx:include source="navigationBar.fxml"/>
+        <fx:include source="navigationBar.fxml" />
     </Pane>
-    <Button fx:id="carChooseBtn" layoutX="96.0" layoutY="137.0" mnemonicParsing="false"
-            onMouseClicked="#goToCarListPage" styleClass="chooseCarBtnDefault" text="1"/>
-    <Label fx:id="carChooseText" layoutX="149.0" layoutY="141.0" onMouseClicked="#goToCarListPage"
-           styleClass="chooseCarTextDefault" text="Choose your favorite car">
-        <Font size="14.0"/>
+    <Button fx:id="carChooseBtn" layoutX="96.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#goToCarListPage" styleClass="chooseCarBtnDefault" text="1" />
+    <Label fx:id="carChooseText" layoutX="149.0" layoutY="141.0" onMouseClicked="#goToCarListPage" styleClass="chooseCarTextDefault" text="Choose your favorite car">
+        <Font size="14.0" />
     </Label>
 
 
-    <Button layoutX="363.0" layoutY="137.0" mnemonicParsing="false" styleClass="makePaymentBtn" text="2"/>
+    <Button layoutX="363.0" layoutY="137.0" mnemonicParsing="false" styleClass="makePaymentBtn" text="2" />
     <Label layoutX="416.0" layoutY="141.0" styleClass="makePaymentText" text="Make the payment" textFill="WHITE">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Label>
     <Label fx:id="modelText" layoutX="285.0" layoutY="230.0" text="Ferrari_California" textFill="WHITE">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <Label fx:id="priceText" layoutX="285.0" layoutY="277.0" prefHeight="19.0" prefWidth="90.0" text="RM2000/D"
-           textFill="#838383">
+    <Label fx:id="priceText" layoutX="285.0" layoutY="277.0" prefHeight="19.0" prefWidth="90.0" text="RM2000/D" textFill="#838383">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
-    <Button layoutX="659.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#viewCarDetailBtnClickEvent"
-            prefHeight="37.0" prefWidth="148.0" styleClass="viewDetailsBtn" text="View details" textFill="WHITE">
+    <Button layoutX="659.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#viewCarDetailBtnClickEvent" prefHeight="37.0" prefWidth="148.0" styleClass="viewDetailsBtn" text="View details" textFill="WHITE">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Button>
-    <Line endX="612.0" layoutX="197.0" layoutY="333.0" startX="-102.0" stroke="#2f2f2f"/>
-    <Label layoutX="570.0" layoutY="353.0" text="My banlance:" textFill="#838383">
+    <Line endX="612.0" layoutX="197.0" layoutY="333.0" startX="-102.0" stroke="#2f2f2f" />
+    <Label layoutX="570.0" layoutY="353.0" text="My balance:" textFill="#838383">
         <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
         </font>
     </Label>
-    <Label fx:id="balanceText" layoutX="703.0" layoutY="353.0" prefHeight="15.0" prefWidth="104.0" text="RM10000"
-           textAlignment="RIGHT" textFill="#cae943">
+    <Label fx:id="balanceText" layoutX="703.0" layoutY="353.0" prefHeight="15.0" prefWidth="104.0" text="RM10000" textAlignment="RIGHT" textFill="#cae943">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Pane layoutX="95.0" layoutY="426.0" onMouseClicked="#selectRadioBtn1" prefHeight="84.0" prefWidth="720.0">
-        <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false"
-                     onMouseClicked="#selectRadioBtn1"/>
-        <ImageView fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#selectRadioBtn1"
-                   pickOnBounds="true" preserveRatio="true">
-            <Image url="@../image/UI/PayPal-logopng.png"/>
+        <RadioButton fx:id="radioBtn1" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#selectRadioBtn1" />
+        <ImageView fitHeight="45.0" fitWidth="133.0" layoutX="87.0" layoutY="24.0" onMouseClicked="#selectRadioBtn1" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/PayPal-logopng.png" />
         </ImageView>
     </Pane>
     <Label layoutX="95.0" layoutY="386.0" text="PAYMENT METHODS" textFill="#838383">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
     <Pane layoutX="95.0" layoutY="540.0" onMouseClicked="#selectRadioBtn2" prefHeight="84.0" prefWidth="720.0">
-        <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#selectRadioBtn2"
-               text="Mastercard ****6742" textFill="WHITE">
+        <Label fx:id="cardTypeAndNum" layoutX="159.0" layoutY="21.0" onMouseClicked="#selectRadioBtn2" text="Mastercard ****6742" textFill="WHITE">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false"
-                     onMouseClicked="#selectRadioBtn2"/>
-        <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0"
-                   onMouseClicked="#selectRadioBtn2" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../image/UI/mastercard.png"/>
+        <RadioButton fx:id="radioBtn2" layoutX="40.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#selectRadioBtn2" />
+        <ImageView fx:id="bankcardImage" fitHeight="44.0" fitWidth="56.0" layoutX="85.0" layoutY="20.0" onMouseClicked="#selectRadioBtn2" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/UI/mastercard.png" />
         </ImageView>
-        <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#selectRadioBtn2"
-               text="Expires on 9/26" textFill="#838383">
+        <Label fx:id="expiresDate" layoutX="159.0" layoutY="45.0" onMouseClicked="#selectRadioBtn2" text="Expires on 9/26" textFill="#838383">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
-        <Button fx:id="downIconBtn" layoutX="666.0" layoutY="31.0" mnemonicParsing="false"
-                onMouseClicked="#showBankCardChooser" prefHeight="20.0" prefWidth="20.0"/>
+        <Button fx:id="downIconBtn" layoutX="666.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showBankCardChooser" prefHeight="20.0" prefWidth="20.0" />
     </Pane>
-    <Pane layoutX="95.0" layoutY="211.0" prefHeight="100.0" prefWidth="164.0"
-          style="-fx-background-color: #8a8a8a; -fx-background-radius: 10;">
-        <ImageView fx:id="carImageView" fitHeight="100.0" fitWidth="164.0" layoutX="8.0"
-                   onMouseClicked="#viewCarDetailBtnClickEvent" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../image/cars/Ferrari_California.png"/>
+    <Pane layoutX="95.0" layoutY="211.0" prefHeight="100.0" prefWidth="164.0" style="-fx-background-color: #8a8a8a; -fx-background-radius: 10;">
+        <ImageView fx:id="carImageView" fitHeight="100.0" fitWidth="164.0" layoutX="8.0" onMouseClicked="#viewCarDetailBtnClickEvent" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/cars/Ferrari_California.png" />
         </ImageView>
     </Pane>
-    <ScrollPane fx:id="bankCardsContainer" layoutX="95.0" layoutY="632.0" prefHeight="202.0" prefWidth="720.0"/>
+    <ScrollPane fx:id="bankCardsContainer" layoutX="95.0" layoutY="632.0" prefHeight="202.0" prefWidth="720.0" />
 </Pane>
