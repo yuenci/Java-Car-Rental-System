@@ -97,23 +97,9 @@ public class OrderListComponentController {
         refreshTable(1);
     }
 
-    private ArrayList<String[]> getTableData(ArrayList<String[]> data,int page,int max){
-        ArrayList<String[]> result = new ArrayList<>();
-        try{
-            for (int i = 0; i < max; i++) {
-                String[] row = data.get((page - 1) * max + i);
-                result.add(row);
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        return result;
-    }
-
     public void refreshTable(int page){
         tableContainer.getChildren().clear();
-        ArrayList<String[]> orderData = getTableData(data, page, 15);
+        ArrayList<String[]> orderData = DataTools.getTableData(data, page, 15);
         //get each row's data with column 1, 2, 3, 8, 11
         for(int i = 0; i < orderData.size(); i++){
             String[] row = orderData.get(i);
@@ -123,7 +109,6 @@ public class OrderListComponentController {
             tableContainer.getChildren().add(orderRow);
         }
     }
-
 
     @FXML
     private void headerButtonClickEvent(MouseEvent e){

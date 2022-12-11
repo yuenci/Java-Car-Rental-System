@@ -703,6 +703,20 @@ public class DataTools {
     public static int getRandomCarStatus(){
         return new Random().nextInt(5);
     }
+
+    public static ArrayList<String[]> getTableData(ArrayList<String[]> data,int page,int max){
+        ArrayList<String[]> result = new ArrayList<>();
+        try{
+            for (int i = 0; i < max; i++) {
+                String[] row = data.get((page - 1) * max + i);
+                result.add(row);
+            }
+        }catch (Exception e){
+            Tools.logError(e);
+        }
+
+        return result;
+    }
 }
 
 // TODO: No comma "," content is allowed.

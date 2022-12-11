@@ -105,22 +105,6 @@ public class OrderDetailsComponentController {
         });
     }
 
-    private void setOrderNum(String orderNum) {
-        this.orderNum.setText(orderNum);
-        System.out.println("setOrderNum");
-    }
-
-    private void setOrderDate(String orderDate) {
-        this.orderDate.setText(orderDate);
-        System.out.println("setOrderDate");
-    }
-
-    private void setCarName(String carName) {
-        this.carName.setText(carName);
-
-        System.out.println("setCarName");
-    }
-
     private void initTheme(){
         if(StatusContainer.currentUser instanceof Customer){
             panelOrderDetails.getStylesheets()

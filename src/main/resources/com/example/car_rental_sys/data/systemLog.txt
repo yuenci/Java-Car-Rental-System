@@ -27,3 +27,4 @@ errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,er
 26,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\bankCardInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50
 27,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\password1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50
 28,java.io.FileNotFoundException, src\main\resources\com\example\car_rental_sys\data\userInfo1.txt.secret (系统找不到指定的文件。),java.io.FileInputStream.open0(Native Method),2022-11-12 02:12:50
+29,java.lang.IndexOutOfBoundsException, Index 5 out of bounds for length 5,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-12 02:30:23
