@@ -1,24 +1,60 @@
 package com.example.car_rental_sys.controllers;
-import com.example.car_rental_sys.Application;
+
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.orm.CarModel;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.ui_components.InvoiceBox;
 import com.example.car_rental_sys.ui_components.UIOrderRow;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+
+/*
+
+///                   _ooOoo_
+///                  o8888888o
+///                 88" .   "88
+///                 (|  -_-  |)
+///                  O\  =  /O
+///               ____/`---'\____
+///             .'  \\|     |//  `.
+///            /  \\|||  :  |||//  \
+///           /  _||||| -:- |||||-  \
+///           |   | \\\  -  /// |   |
+///           | \_|  ''\---/''  |   |
+///           \  .-\__  `-`  ___/-. /
+///         ___`. .'  /--.--\  `. . __
+///      ."" '<  `.___\_<|>_/___.'  >'"".
+///     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+///     \  \ `-.   \_ __\ /__ _/   .-` /  /
+///======`-.____`-.___\_____/___.-`____.-'======
+///                   `=---='
+///^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+//          ⣠⣤⣤⣤⡀⠀⠀⢀⣀⣀⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+//        ⠀⣾⣻⣻⣻⣻⡿⠚⠉⠉⠀⠀⠀⠀⠀⠀⠈⠙⠲⣴⣻⣻⣻⣷⣄⠀
+//        ⢸⣻⣻⣻⣻⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣻⣻⣻⣻⡆
+//        ⠀⠻⣻⣻⠏⠀⠀⠀⠀⣶⠿⠿⢿⣷⣄⢠⡿⠿⠶⠦⠀⢹⣻⣻⣻⠃
+//        ⠀⠀⢈⡏⠀⠀⠀⠀⠈⠑⠺⣻⠟⠉⠁⠈⠛⢿⠆⠀⠀⠀⢻⠋⠁⠀
+//        ⠀⠀⡼⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠂⠀⢀⠀⢠⡄⠀⠀⠀⢸⡀⠀⠀
+//        ⢀⣴⡇⠀⠀⠀⠀⠀⠀⠶⢿⣻⣉⣛⣻⣻⣛⣉⡻⣦⠀⠀⠀⣇⠀⠀
+//        ⣾⣻⡇⠀⠀⠀⠀⠀⠀⠄⢸⡟⢿⣯⣭⣭⣽⣻⠃⠈⠀⠀⠀⣻⣧⠀
+//        ⣻⣻⣻⣦⡀⠀⠀⠀⠀⠈⠈⠿⠶⣭⣭⣬⡭⠁⠀⠀⠀⢀⣼⣻⣻⣧
+//        ⣻⣻⣻⣻⣻⣶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⣻⣻⣻⣻⣻
+//        ⣻⣻⣻⣻⣻⣻⣻⣻⣻⣷⣶⣶⣶⣶⣶⣶⣾⣻⣻⣻⣻⣻⣻⣻⣻⣻
+
+/// BOBI CODE NO ERROR    \|/
+/// END INIT INFO
+*/
 
 public class OrderDetailsComponentController {
 
@@ -31,115 +67,50 @@ public class OrderDetailsComponentController {
     private Button invoiceBtn;
 
     @FXML
-    private Label orderNum;
+    private Label orderNum,orderDate,carName,orderQty,carPrice,paymentType,
+            lblLocation,orderTime,approveTime,paymentTime,
+            dueTime,pickUpTime,totalAmount;
 
     @FXML
-    private Label orderDate;
-    @FXML
-    private Label carName;
-    @FXML
-    private Label orderQty;
-    @FXML
-    private Label carPrice;
-    @FXML
-    private Label paymentType;
+    private ImageView paymentLogo,carImg,invoiceIcon;
 
-    @FXML
-    private Label lblLocation;
-
-    @FXML
-    private Label orderTime;
-
-    @FXML
-    private Label approveTime;
-
-    @FXML
-    private Label paymentTime;
-    @FXML
-    private Label dueTime;
-    @FXML
-    private Label pickUpTime;
-    @FXML
-    private Label totalAmount;
-
-
-
-    @FXML
-    private ImageView paymentLogo;
-    @FXML
-    private ImageView carImg;
-    @FXML
-    private ImageView invoiceIcon;
-
-    private Pane pane = null;
-
-    private int showingStatus = 0;
+    private CarModel carModel = StatusContainer.currentCarModel;
+    private Order order = StatusContainer.currentOrder;
 
 
     @FXML
     public void initialize() {
+        //checkShowingStatus();
+        initComponentText();
         initBtnEvent();
         initTheme();
         instance = this;
-        checkShowingStatus();
     }
 
+    public void initComponentText(){
+        orderNum.setText(DataTools.getOrderIDStr(order.getOrderID()));
 
+        orderDate.setText(order.getOrderTimeStr().substring(0,order.getOrderTimeStr().length()-5));
+        carName.setText(carModel.getCarModel());
 
-    private void checkShowingStatus(){
+        orderQty.setText("Qty: " + order.getPrice()/carModel.getPrice());
 
-        if(showingStatus == 0){
-            showUpperPane("Select any order to view more details");
-        }else if(showingStatus == 1) {
-            if(pane != null){
-                panelOrderDetails.getChildren().remove(pane);
-            }
-        }else if(showingStatus == 2) {
-            if(pane != null){
-                panelOrderDetails.getChildren().remove(pane);
-            }
-            showUpperPane("No order details can be viewed");
-        }
-    }
+        carPrice.setText("RM" + carModel.getPrice());
 
-    public void showUpperPane(String text){
-        pane = new Pane();
-        pane.setPrefSize(320, 670);
-        pane.setLayoutX(20);
-        pane.setLayoutY(28);
-        pane.getStyleClass().add("descPane");
+        String paymentTypeText = order.getPaymentMethod();
+        //change the first letter to uppercase
+        paymentTypeText = paymentTypeText.substring(0, 1).toUpperCase() + paymentTypeText.substring(1);
+        paymentType.setText(paymentTypeText + " **" + DataTools.getRandomInt(10,99));
 
-        Label label = new Label(text);
-        label.setLayoutX(32);
-        label.setLayoutY(304);
-        label.getStyleClass().add("descText");
-
-        pane.getChildren().add(label);
-        panelOrderDetails.getChildren().add(pane);
-    }
-
-    public void updateStatus(int status){
-        showingStatus = status;
-        checkShowingStatus();
-    }
-
-
-    public void initComponentText(Object[] detailsList){
-        orderNum.setText(detailsList[0].toString());
-        orderDate.setText(detailsList[1].toString());
-        carName.setText(detailsList[2].toString());
-        orderQty.setText(detailsList[3].toString());
-        carPrice.setText(detailsList[4].toString());
-        paymentType.setText(detailsList[5].toString());
-        lblLocation.setText(detailsList[6].toString());
-        orderTime.setText(detailsList[7].toString());
-        approveTime.setText(detailsList[8].toString());
-        paymentTime.setText(detailsList[9].toString());
-        pickUpTime.setText(detailsList[10].toString());
-        dueTime.setText(detailsList[11].toString());
-        totalAmount.setText(detailsList[12].toString());
-        carImg.setImage(new javafx.scene.image.Image(new File("src/main/resources/images/"+detailsList[13].toString()).toURI().toString()));
-        paymentLogo.setImage(new javafx.scene.image.Image(new File("src/main/resources/images/"+detailsList[14].toString()).toURI().toString()));
+        lblLocation.setText(order.getPickUpLocation());
+        orderTime.setText(order.getOrderTimeStr());
+        approveTime.setText("Oct 12, 2022 14:00");
+        paymentTime.setText("Oct 12, 2022 14:02");
+        pickUpTime.setText(order.getPickUpTimeStr());
+        dueTime.setText(order.getReturnTimeStr());
+        totalAmount.setText("RM" + order.getPrice());
+        carImg.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/cars/"+carModel.getCarModel()+".png"));
+        //paymentLogo.setImage(new javafx.scene.image.Image(new File("src/main/resources/images/"+detailsList[14].toString()).toURI().toString()));
     }
 
 
@@ -156,7 +127,7 @@ public class OrderDetailsComponentController {
 
     private void setOrderNum(String orderNum) {
         this.orderNum.setText(orderNum);
-        System.out.println("setOrd  erNum");
+        System.out.println("setOrderNum");
     }
 
     private void setOrderDate(String orderDate) {
@@ -166,10 +137,6 @@ public class OrderDetailsComponentController {
 
     private void setCarName(String carName) {
         this.carName.setText(carName);
-
-
-
-
 
         System.out.println("setCarName");
     }
@@ -198,15 +165,5 @@ public class OrderDetailsComponentController {
             AdminServiceController.instance.showTrackOrder();
             //System.out.println("btnTrackOrderClicked@!!");
         }
-//        Pane trackOrderPane = new Pane();
-//        trackOrderPane.setPrefSize(350, 750);
-//        trackOrderPane.setLayoutX(0);
-//        trackOrderPane.setLayoutY(0);
-//        trackOrderPane.getStyleClass().add("trackOrderPane");
-//
-//        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/TrackOrderComponent.fxml"));
-//        trackOrderPane.getChildren().add(fxmlLoader.load());
-//
-//        panelOrderDetails.getChildren().add(trackOrderPane);
     }
 }

@@ -56,9 +56,9 @@ public class Application extends javafx.application.Application {
       //  String fxmlName = "driverServicePage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        String fxmlName = "customerServicePage.fxml";
+      //  String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "addBankCardPage.fxml";
-      //  String fxmlName = "adminServicePage.fxml";
+        String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
 //        String fxmlName = "aboutUsPage.fxml";
         //String fxmlName = "messagePage.fxml";
@@ -79,8 +79,8 @@ public class Application extends javafx.application.Application {
         stageInstance = stage;
 
         //setUser("d");
-       // setUser("a");
-        setUser("c");
+        setUser("a");
+        //setUser("c");
         startStage(fxmlName);
         //setUser();
         //setUser("c");

@@ -1,16 +1,18 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.controllers.OrderListComponentController;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UIPagination extends Pane {
     //generate a self-defined pagination component
@@ -165,7 +167,7 @@ public class UIPagination extends Pane {
             for (int i = 2; i <= totalPageNumber-1 ; i++) {
                 displayNumberList.add(i);
             }
-            System.out.println("now is 6 page");
+            //System.out.println("now is 6 page");
         }
         else if(totalPageNumber == 8){
             if (currentPageNumber < 4) {
@@ -176,7 +178,7 @@ public class UIPagination extends Pane {
                 showDotNext = true;
             }else if(currentPageNumber == 4){
                 checkShowDotPrevious();
-                System.out.println(showDotPrevious);
+               // System.out.println(showDotPrevious);
                 for (int i = 2; i <= 7; i++) {
                     displayNumberList.add(i);
                 }
@@ -193,7 +195,7 @@ public class UIPagination extends Pane {
             else{
                 showDotPrevious = true;
                 //checkShowDotPrevious();
-                System.out.println(">5 : " + showDotPrevious);
+                //System.out.println(">5 : " + showDotPrevious);
                 for (int i = 4; i <= 7; i++) {
                     displayNumberList.add(i);
                 }
@@ -267,7 +269,7 @@ public class UIPagination extends Pane {
             }
             else if(currentPageNumber == totalPageNumber - 3){
                 checkShowDotNext();
-                System.out.println("at last -3");
+                //System.out.println("at last -3");
 
                 for (int i = totalPageNumber - 5; i <= totalPageNumber-1; i++) {
                     displayNumberList.add(i);
@@ -318,7 +320,8 @@ public class UIPagination extends Pane {
         //if focusOnCenter is true, set focus-style on the third pagination on array
         //if cards size is not 0, set focus on the first pagination
         if(cards.size() == 0){
-            System.out.println("cards size is 0");
+            //do nothing
+            //System.out.println("cards size is 0");
         }
         if(focusOnFirst){
             if(cards.size() != 0){
@@ -377,7 +380,7 @@ public class UIPagination extends Pane {
     //initEvent
     private void initEvent(){
         leftButton.setOnAction(event -> {
-            System.out.println("left button clicked");
+            //System.out.println("left button clicked");
             //System.out.println("leftButton has clicked");
             if(cards.size() == 0 && totalPageNumber == 1){
                 //do nothing
@@ -387,12 +390,14 @@ public class UIPagination extends Pane {
                 currentPageNumber--;
                 refreshMainBox();
             }
+            getCurrentPageNumber();
         });
 
         minPageButton.setOnAction(event -> {
             currentPageNumber = 1;
             checkShowDotPrevious();
             //System.out.println("currentPageNumber: " + currentPageNumber);
+            getCurrentPageNumber();
         });
 
         if(maxPageButton != null){
@@ -403,10 +408,11 @@ public class UIPagination extends Pane {
                 focusMaxButton = true;
                 refreshMainBox();
             });
+            getCurrentPageNumber();
         }
 
         rightButton.setOnAction(event -> {
-            System.out.println("rightButton has clicked");
+            //System.out.println("rightButton has clicked");
             if(cards.size() == 0 && totalPageNumber == 1){
                 //do nothing
             }
@@ -420,6 +426,7 @@ public class UIPagination extends Pane {
                 UIPagination.focusOnFirst = true;
                 refreshMainBox();
             }
+            getCurrentPageNumber();
         });
     }
 
@@ -429,6 +436,15 @@ public class UIPagination extends Pane {
         clearFocusState();
     }
 
+    public static void getCurrentPageNumber(){
+        if(Objects.equals(StatusContainer.paginationUsage, "order")){
+            OrderListComponentController.instance.refreshTable(UIPagination.currentPageNumber);
+        }
+        else{
+            System.out.println(UIPagination.currentPageNumber + " is the current page number");
+        }
+
+    }
 
     private static void clearFocusState(){
         focusOnFirst = false;
@@ -436,6 +452,14 @@ public class UIPagination extends Pane {
         focusOnCenter = false;
         focusOnFourth = false;
         focusOnLast = false;
+        focusMaxButton = false;
+    }
+
+    public static void refreshPaginationState(){
+        clearFocusState();
+        currentPageNumber = 1;
+        checkShowDotNext();
+        checkShowDotPrevious();
         focusMaxButton = false;
     }
 }

@@ -3,9 +3,9 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.User;
-import com.example.car_rental_sys.sqlParser.FileOperate;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.UIFilter;
 import com.example.car_rental_sys.ui_components.UIOrderRow;
@@ -35,11 +35,8 @@ public class OrderListComponentController {
     private Pane pagContainer;
     @FXML
     private Pane tableContainer,mainPane;
-
     @FXML
     private ImageView carImg;
-
-    //private static String initQuery = "SELECT * FROM orders WHERE userID = " + User.instance.getUserID();
 
     public static OrderListComponentController instance;
     private User user = StatusContainer.currentUser;
@@ -61,7 +58,6 @@ public class OrderListComponentController {
     public void addFilterPane(){
         UIFilter filter = new UIFilter();
         paneFilterBox.getChildren().add(filter);
-        System.out.println("here");
     }
 
     public void removeFilterPane(){
@@ -84,19 +80,50 @@ public class OrderListComponentController {
             totalOrders = DataTools.getCustomerOrderNum(user.getUserID());
         }else{
             //totalOrders = DataTools.getTotalOrderNum();
-            data = FileOperate.readFileToArray(ConfigFile.orderInfoPath);
-            totalOrders = data.size() -1;
+            data = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+            totalOrders = data.size();
         }
         Platform.runLater(() -> numOrder.setText(totalOrders + " Orders"));
     }
 
     private void initTable(){
-        for (int i = 0; i < 15; i++) {
-            UIOrderRow orderRow = new UIOrderRow("1", "Myvi Pro 2021", "Dec 3, 2022", 999, 1);
+        if(user instanceof Customer){
+            String sql = "SELECT * FROM orders WHERE userID = " + user.getUserID();
+            data = SQL.query(sql);
+        }else{
+            data = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+        }
+
+        refreshTable(1);
+    }
+
+    private ArrayList<String[]> getTableData(ArrayList<String[]> data,int page,int max){
+        ArrayList<String[]> result = new ArrayList<>();
+        try{
+            for (int i = 0; i < max; i++) {
+                String[] row = data.get((page - 1) * max + i);
+                result.add(row);
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+    }
+
+    public void refreshTable(int page){
+        tableContainer.getChildren().clear();
+        ArrayList<String[]> orderData = getTableData(data, page, 15);
+        //get each row's data with column 1, 2, 3, 8, 11
+        for(int i = 0; i < orderData.size(); i++){
+            String[] row = orderData.get(i);
+            UIOrderRow orderRow = new UIOrderRow(Integer.parseInt(row[0]),DataTools.getCarModelFromCarID(Integer.parseInt(row[1])),
+                    row[2], Integer.parseInt(row[8]), Integer.parseInt(row[11]));
             orderRow.setLayoutY(i * 30);
             tableContainer.getChildren().add(orderRow);
         }
     }
+
 
     @FXML
     private void headerButtonClickEvent(MouseEvent e){
@@ -119,14 +146,16 @@ public class OrderListComponentController {
     @FXML
     void btnAllOrderClicked(MouseEvent event) {
         headerButtonClickEvent(event);
-        String query;
         if(user instanceof Customer){
-            query = "SELECT * FROM orders WHERE userID = " + user.getUserID();
+            String query = "SELECT * FROM orders WHERE userID = " + user.getUserID();
+            //System.out.println(query);
+            data = SQL.query(query);
         }else{
-            query = "SELECT * FROM orders";
+            data = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
         }
-        System.out.println(query);
-        //data = SQL.query(query);
+        recountTotalOrders();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
         //replaceButtonStyle();
     }
 
@@ -139,22 +168,32 @@ public class OrderListComponentController {
         }else{
             query = "SELECT * FROM orders WHERE status = 5";
         }
-        System.out.println(query);
-        //data = SQL.query(query);
+        //System.out.println(query);
+        data = SQL.query(query);
+        recountTotalOrders();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
         //replaceButtonStyle();
     }
 
     @FXML
     void btnContinueClicked(MouseEvent event) {
         headerButtonClickEvent(event);
-        String query;
+        String query = "SELECT * FROM orders WHERE status = 3 OR status = 4 OR status = 1";
+        //System.out.println(query);
+        data = SQL.query(query);
         if(user instanceof Customer){
-            query = "SELECT * FROM orders WHERE userID = " + user.getUserID() + " AND status = 3";
-        }else{
-            query = "SELECT * FROM orders WHERE status = 3";
+            ArrayList<String[]> temp = new ArrayList<>();
+            for (String[] row : data) {
+                if(row[7].equals(user.getUserID() + "")){
+                    temp.add(row);
+                }
+            }
+            data = temp;
         }
-        System.out.println(query);
-        //data = SQL.query(query);
+        recountTotalOrders();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
         //replaceButtonStyle();
     }
 
@@ -167,8 +206,11 @@ public class OrderListComponentController {
         }else{
             query = "SELECT * FROM orders WHERE status = -1";
         }
-        System.out.println(query);
-        //data = SQL.query(query);
+        //System.out.println(query);
+        data = SQL.query(query);
+        recountTotalOrders();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
         //replaceButtonStyle();
     }
 
@@ -178,6 +220,14 @@ public class OrderListComponentController {
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/orderListComponentDark.css")
                             .toURI().toString());
         }
+    }
+
+    private void recountTotalOrders(){
+        //count the size of data
+        totalOrders = data.size();
+        pagContainer.getChildren().clear();
+        initPagination();
+        Platform.runLater(() -> numOrder.setText(totalOrders + " Orders"));
     }
 
 

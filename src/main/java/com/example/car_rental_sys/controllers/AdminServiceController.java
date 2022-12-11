@@ -3,6 +3,7 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -53,6 +54,8 @@ public class AdminServiceController extends Controller{
         //showAccSecurity();
         //showPasswordPage();
         StatusContainer.currentPageController = this;
+
+        //showOrderPage();
     }
 
     private void initToRightBtnEvent(){
@@ -120,11 +123,23 @@ public class AdminServiceController extends Controller{
 
     public void showOrderPage() {
         try {
+            StatusContainer.paginationUsage = "order";
+            rightContainer.getChildren().clear();
             dashboardContainer.setVisible(false);
             initFXML(centerContainer, orderMain);
-            initFXML(rightContainer, orderSide);
+            rightContainer.getChildren().add(new UIEmptyOrderPane("Select any order to view more details"));
+            //initFXML(rightContainer, orderSide);
             hugeContainer.getChildren().clear();
             hugeContainer.setVisible(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showOrderDetails(){
+        try {
+            rightContainer.getChildren().clear();
+            initFXML(rightContainer, orderSide);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
@@ -91,8 +93,10 @@ public class CustomerServiceController {
 
     public void showOrderPage() {
         try {
+            StatusContainer.paginationUsage = "order";
+            rightContainer.getChildren().clear();
             initFXML(centerContainer, orderMain);
-            initFXML(rightContainer, orderSide);
+            rightContainer.getChildren().add(new UIEmptyOrderPane("Select any order to view more details"));
             hugeContainer.getChildren().clear();
             hugeContainer.setVisible(false);
         } catch (IOException e) {
@@ -102,6 +106,7 @@ public class CustomerServiceController {
 
     public void showWalletPage() {
         try {
+            StatusContainer.paginationUsage = "wallet";
             initFXML(centerContainer, walletMain);
             initFXML(rightContainer, walletSide);
             hugeContainer.getChildren().clear();

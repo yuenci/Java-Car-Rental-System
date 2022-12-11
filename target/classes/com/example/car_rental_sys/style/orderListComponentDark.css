@@ -40,10 +40,10 @@
     -fx-background-insets: 0px ;
 }
 
-.default-style:focused{
-    -fx-background-color: #2971cf !important;
-    -fx-text-fill: #eaf8ff !important;
-}
+/*.default-style:focused{*/
+/*    -fx-background-color: #2971cf !important;*/
+/*    -fx-text-fill: #eaf8ff !important;*/
+/*}*/
 
 .focus-style {
     -fx-background-color: #2971cf ;

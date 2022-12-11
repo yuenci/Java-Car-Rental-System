@@ -311,6 +311,10 @@ public class DataTools {
         }
     }
 
+    public static String getOrderIDStr(int orderID){
+        return String.format("%08d", orderID);
+    }
+
     public static String[] getCustomerBankCardsList(int customerID) {
         String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
         ArrayList<String[]> result = SQL.query(sql);
