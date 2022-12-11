@@ -38,6 +38,8 @@ public class StatusContainer {
     public static CarModel currentCarModel = null;
     public static Car currentCarInfo = null;
     public static NewCar currentNewCarInfo = null;
+    public static long pickUpTimeStamp = 0;
+    public static long returnTimeStamp = 0;
 
 
     // self-test statues during loading

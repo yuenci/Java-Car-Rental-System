@@ -65,4 +65,50 @@ public class DateTools {
         long diff = end.getTime() - start.getTime();
         return (int) (diff / (1000 * 60 * 60));
     }
+
+    // 2022-09-24 02:07:32 | 2022-09-24 to timestamp
+    public static long dateTimeToTimestamp(String time) {
+        SimpleDateFormat sdf  = null;
+        if (time.length() == 19){
+            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }else{
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+        }
+
+        Date date = null;
+        try {
+            date = sdf.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
+    }
+
+    // timestamp to 2022-09-24 02:07:32
+    public static String timeStampToDateTime(long timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(new Date(timestamp));
+    }
+
+    public static String timeStampToDateTime(String timestamp) {
+        long time = Long.parseLong(timestamp);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(new Date(time * 1000));
+    }
+
+
+
+    public static boolean validateDate(String startTime, String endTime) {
+
+
+        // startTime must later than now
+//        if (dateTimeToTimestamp(startTime) < System.currentTimeMillis()){
+//            return false;
+//        }
+
+        long start = dateTimeToTimestamp(startTime);
+        long end = dateTimeToTimestamp(endTime);
+
+        return start < end;
+    }
 }

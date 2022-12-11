@@ -3,9 +3,12 @@ package com.example.car_rental_sys.funtions;
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
 import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import com.example.car_rental_sys.orm.User;
+
+import java.util.ArrayList;
 
 public class Test {
     public static void test(){
@@ -27,6 +30,7 @@ public class Test {
         //getMessageJson();
         //keepLoginTest();
         //gettodoListTest();
+        getStampTest();
     }
 
 
@@ -110,5 +114,12 @@ public class Test {
 
     private static void gettodoListTest(){
         DataTools.getAdminToDo();
+    }
+
+    private static void getStampTest(){
+        ArrayList<String[]> list = FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/carStatus.txt");
+        for (int i = 1; i < list.size(); i++) {
+            System.out.println(DateTools.timeStampToDateTime(list.get(i)[1]));
+        }
     }
 }

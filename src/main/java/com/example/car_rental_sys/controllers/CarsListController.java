@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ui_components.CarCard;
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.funtions.FileOperate;
@@ -17,6 +18,12 @@ public class CarsListController {
     public void initialize() {
         FlowPane flowPane = new FlowPane();
         flowPane.setPrefWidth(1270);
+        
+        ArrayList<Integer> availableCarIds = DataTools.getAvailableCars();
+        // print all available cars
+        for (int carId : availableCarIds) {
+            System.out.println(carId);
+        }
 
         ArrayList<String[]> carsData = FileOperate.readFileToArray(ConfigFile.carsDataPath);
         for (int i = 1; i < carsData.size(); i++) {

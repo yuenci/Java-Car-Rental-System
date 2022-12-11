@@ -699,6 +699,28 @@ public class DataTools {
     public static int getRandomCarStatus(){
         return new Random().nextInt(5);
     }
+
+    public static ArrayList<Integer> getAvailableCars(){
+        ArrayList<String[]> carStatusData =
+                FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/carStatus.txt");
+        ArrayList<Integer> availableCars = new ArrayList<>();
+
+
+        for (String[] strings : carStatusData) {
+            // cars already in use
+            long start = strings[1].length() == 0 ? 0 : Long.parseLong(strings[1]);
+            long end = strings[2].length() == 0 ? 0 : Long.parseLong(strings[2]);
+
+            long pickupTime = StatusContainer.pickUpTimeStamp;
+            long returnTime = StatusContainer.returnTimeStamp;
+
+            if(returnTime < start || pickupTime > end){
+                // available
+                availableCars.add(Integer.parseInt(strings[0]));
+            }
+        }
+        return availableCars;
+    }
 }
 
 // TODO: No comma "," content is allowed.

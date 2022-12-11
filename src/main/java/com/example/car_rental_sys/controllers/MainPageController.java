@@ -2,9 +2,11 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -259,8 +261,8 @@ public class MainPageController extends Controller{
 
 
 
-
-
+// region
+/*
         //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/map.html");
         //URL url = this.getClass().getResource("/com/example/car_rental_sys/html/jxTest.html");
 //        assert url != null;
@@ -281,7 +283,7 @@ public class MainPageController extends Controller{
         //browser.navigation().loadUrl("https://www.bejson.com/httputil/clientinfo/");
         //browser.navigation().loadUrl("http://127.0.0.1:8080/");
 
-        /*
+
         Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
 
         Browser browser = engine.newBrowser();
@@ -343,7 +345,7 @@ public class MainPageController extends Controller{
 //        },0,200);
 //    }
 
-
+// endregion
 
     @FXML
     void pickUpBtnClick() {
@@ -360,8 +362,12 @@ public class MainPageController extends Controller{
 
     @FXML
     void searchBtnClick() {
-        System.out.println("searchBtnClick");
-        FXTools.changeScene("carsListPage.fxml");
+        if(StatusContainer.pickUpTimeStamp == 0 || StatusContainer.returnTimeStamp == 0){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING,"Please choose pick up date and return date first");
+            messageFrame.show();
+        }else{
+            FXTools.changeScene("carsListPage.fxml");
+        }
     }
 
     void showDatePicker(){
@@ -369,14 +375,22 @@ public class MainPageController extends Controller{
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
-            if(message.length() == 33){
+            if(message.length() == 73){
                 String[] messageArray = message.split(";");
                 StatusContainer.pickDateTime = messageArray[0];
                 StatusContainer.returnDateTime = messageArray[1];
 
+
+
                 Platform.runLater(() -> {
-                    pickUpDateLabel.setText(StatusContainer.pickDateTime);
-                    returnDateLabel.setText(StatusContainer.returnDateTime);
+                    if(DateTools.validateDate(messageArray[2],messageArray[3])){
+                        pickUpDateLabel.setText(StatusContainer.pickDateTime);
+                        returnDateLabel.setText(StatusContainer.returnDateTime);
+
+                        StatusContainer.pickUpTimeStamp = DateTools.dateTimeToTimestamp(messageArray[2]);
+                        StatusContainer.returnTimeStamp = DateTools.dateTimeToTimestamp(messageArray[3]);
+                    }
+
                 });
             }
             return null;
@@ -385,22 +399,4 @@ public class MainPageController extends Controller{
         browserModal.setFunction(func);
         browserModal.show();
     }
-
-//    private Timer timerDatePciker ;
-//
-//    private void updatePickAndReturnDateTime(){
-//        timerDatePciker = new Timer();
-//        timerDatePciker.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                Platform.runLater(() -> {
-//                    if (StatusContainer.pickDateTime!=null){
-//                        pickUpDateLabel.setText(StatusContainer.pickDateTime);
-//                        returnDateLabel.setText(StatusContainer.returnDateTime);
-//                    }
-//                });
-//
-//            }
-//        },0,200);
-//    }
 }
