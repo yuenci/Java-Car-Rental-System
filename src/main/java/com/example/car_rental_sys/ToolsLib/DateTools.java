@@ -86,14 +86,22 @@ public class DateTools {
 
     // timestamp to 2022-09-24 02:07:32
     public static String timeStampToDateTime(long timestamp) {
+        // if timestamp is 10 bit, it is second, if 13 bit, it is millisecond
+        if (String.valueOf(timestamp).length() == 10){
+            timestamp = timestamp * 1000;
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date(timestamp));
     }
 
     public static String timeStampToDateTime(String timestamp) {
+        // if timestamp is 10 bit, it is second, if 13 bit, it is millisecond
+        if (timestamp.length() == 10){
+            timestamp = timestamp + "000";
+        }
         long time = Long.parseLong(timestamp);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return sdf.format(new Date(time * 1000));
+        return sdf.format(new Date(time));
     }
 
 

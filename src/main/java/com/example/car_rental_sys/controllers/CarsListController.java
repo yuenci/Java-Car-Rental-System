@@ -21,15 +21,19 @@ public class CarsListController {
         
         ArrayList<Integer> availableCarIds = DataTools.getAvailableCars();
         // print all available cars
-        for (int carId : availableCarIds) {
-            System.out.println(carId);
-        }
+//        for (int carId : availableCarIds) {
+//            System.out.println(carId);
+//        }
 
         ArrayList<String[]> carsData = FileOperate.readFileToArray(ConfigFile.carsDataPath);
+
         for (int i = 1; i < carsData.size(); i++) {
-            String[] carData = carsData.get(i);
-            CarCard carCard = new CarCard(carData[1],carData[2],carData[3],carData[4],carData[5],carData[6]);
-            flowPane.getChildren().add(carCard);
+            // if carData id in availableCarIds
+            if (availableCarIds.contains(Integer.parseInt(carsData.get(i)[0]))) {
+                String[] carData = carsData.get(i);
+                CarCard carCard = new CarCard(carData[1],carData[2],carData[3],carData[4],carData[5],carData[6]);
+                flowPane.getChildren().add(carCard);
+            }
         }
 
 

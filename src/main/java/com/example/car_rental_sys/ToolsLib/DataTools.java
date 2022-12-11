@@ -705,16 +705,16 @@ public class DataTools {
     }
 
     public static ArrayList<Integer> getAvailableCars(){
+        String dataPath = "src/main/resources/com/example/car_rental_sys/data/carStatus.txt";
         ArrayList<String[]> carStatusData =
-                FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/carStatus.txt");
+                FileOperate.readFileToArray(dataPath,true);
         ArrayList<Integer> availableCars = new ArrayList<>();
 
 
         for (String[] strings : carStatusData) {
             // cars already in use
-            long start = strings[1].length() == 0 ? 0 : Long.parseLong(strings[1]);
-            long end = strings[2].length() == 0 ? 0 : Long.parseLong(strings[2]);
-
+            long start = strings[2].length() == 0 ? 0 : Long.parseLong(strings[2]) * 1000;
+            long end = strings[3].length() == 0 ? 0 : Long.parseLong(strings[3]) * 1000;
             long pickupTime = StatusContainer.pickUpTimeStamp;
             long returnTime = StatusContainer.returnTimeStamp;
 
