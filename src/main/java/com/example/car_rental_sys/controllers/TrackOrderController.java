@@ -1,8 +1,11 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +19,8 @@ import java.io.File;
 public class TrackOrderController {
 
     public static TrackOrderController instance;
-    private int status = 5;
+    private Order order = StatusContainer.currentOrder;
+    private int status = order.getStatus();
 
     @FXML
     private ImageView leftIcon;
@@ -31,13 +35,7 @@ public class TrackOrderController {
     @FXML
     private Button btnReceive;
     @FXML
-    private Label lblOrderID;
-    @FXML
-    private Label lblLocation;
-    @FXML
-    private Label lblPickupTime;
-    @FXML
-    private Label lblPickupDate;
+    private Label lblOrderID, lblLocation, lblPickupTime, lblPickupDate;
 
     @FXML
     private void initialize() {
@@ -62,7 +60,7 @@ public class TrackOrderController {
 
     public void setStatus(int status){
         this.status = status;
-        if(status == 5){
+        if(status == 5 && StatusContainer.currentUser instanceof Customer){
             btnReceive.setDisable(true);
             btnReceive.setStyle(btnReceive.getStyle() + "-fx-background-color: #165dff; -fx-cursor: hand;");
             //add action to button
@@ -89,10 +87,11 @@ public class TrackOrderController {
 
     //get from ORM's Order
     private void initLabel(){
-        lblOrderID.setText("");
-        lblLocation.setText("");
-        lblPickupDate.setText("");
-        lblPickupTime.setText("");
+        lblOrderID.setText("ID " + DataTools.getOrderIDStr(order.getOrderID()));
+        lblLocation.setText(order.getPickUpLocation());
+        lblPickupDate.setText(DateTools.dateToString(order.getPickUpTime(),"dd/MM/yyyy"));
+        lblPickupTime.setText(DateTools.dateToString(order.getOrderTime(),"HH:mm") + " - " +
+                DateTools.dateToString(order.getReturnTime(),"HH:mm"));
     }
 
     private  void initMap(){

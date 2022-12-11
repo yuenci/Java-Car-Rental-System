@@ -111,4 +111,28 @@ public class DateTools {
 
         return start < end;
     }
+
+    public static String getSpecFormatDateTime(Date date) {
+        //DateTime format: Sat Jan 02 00:00:00 MYT 2022
+        //convert as Jan 02, 2022 00:00
+        String dateTimeStr = date.toString();
+        dateTimeStr = dateTimeStr.substring(4, 10) +", " + dateTimeStr.substring(24, 28) + " " + dateTimeStr.substring(11, 16);
+
+        return dateTimeStr;
+    }
+
+    public static String getDateWithSlash(Date date) {
+        //DateTIme format: Sat Jan 02 00:00:00 MYT 2022
+        //convert as 02/01/2022
+        String dateTimeStr = date.toString();
+        dateTimeStr = dateTimeStr.substring(8, 10) + "/" + dateTimeStr.substring(4, 7) + "/" + dateTimeStr.substring(24, 28);
+
+        return dateTimeStr;
+    }
+
+    public static String getSpecFormatDate(String dateStr){
+        Date date = stringToDateObje(dateStr);
+        String dateTimeStr = date.toString();
+        return dateTimeStr.substring(4, 10) +", " + dateTimeStr.substring(24, 28);
+    }
 }

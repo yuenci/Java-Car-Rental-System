@@ -22,8 +22,11 @@ public class FileOperate {
             return false;
         }
     }
+    public static ArrayList<String> readFile(String path ) {
+       return  readFile(path, false);
+    }
 
-    public static ArrayList<String> readFile(String path) {
+    public static ArrayList<String> readFile(String path,boolean removeHeader) {
         ArrayList<String> content = new ArrayList<>();
         try {
             File myObj = new File(path);
@@ -33,8 +36,9 @@ public class FileOperate {
                 String data = myReader.nextLine();
                 content.add(data);
             }
-
             myReader.close();
+            //remove the first line
+            if(removeHeader) content.remove(0);
             return content;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,7 +47,16 @@ public class FileOperate {
     }
 
     public static ArrayList<String[]> readFileToArray(String path) {
-        ArrayList<String> contentStr = readFile(path);
+        return readFileToArray(path, false);
+    }
+
+    public static ArrayList<String[]> readFileToArray(String path,boolean removeHeader){
+        ArrayList<String> contentStr;
+        if(removeHeader){
+            contentStr = readFile(path,true);
+        }else {
+            contentStr = readFile(path);
+        }
         ArrayList<String[]> content = new ArrayList<>();
         for (String ele : contentStr) {
             content.add(ele.split(","));

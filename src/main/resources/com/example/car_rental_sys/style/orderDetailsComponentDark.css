@@ -23,17 +23,6 @@
     -fx-cursor: hand;
 }
 
-.descPane{
-    -fx-background-color: #111111;
-    -fx-background-radius: 10px;
-}
-
-.descText{
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-}
-
 .trackOrderPane{
     -fx-background-color: #111111;
     -fx-background-radius: 10px;

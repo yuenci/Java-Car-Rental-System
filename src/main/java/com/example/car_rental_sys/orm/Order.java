@@ -89,12 +89,24 @@ public class Order {
         return orderTime;
     }
 
+    public String getOrderTimeStr() {
+        return DateTools.getSpecFormatDateTime(orderTime);
+    }
+
     public Date getPickUpTime() {
         return pickUpTime;
     }
 
+    public String getPickUpTimeStr() {
+        return DateTools.getSpecFormatDateTime(pickUpTime);
+    }
+
     public Date getReturnTime() {
         return returnTime;
+    }
+
+    public String getReturnTimeStr() {
+        return DateTools.getSpecFormatDateTime(returnTime);
     }
 
     public int getUserID() {

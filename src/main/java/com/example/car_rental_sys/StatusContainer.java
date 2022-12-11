@@ -30,11 +30,14 @@ public class StatusContainer {
     //public static User currentUser = new Driver("cervantesmichael@yahoo.com");
     //public static User currentUser =  new Admin("david32@hotmail.com");
 
+    public static String paginationUsage = null;
+
     public static Order currentOrder = new Order(7);
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
     public static Stage currentStage = null;
     public static OrderCard currentOrderCard = null;
+   // public static CarModel currentCarModel = new CarModel(1);
     public static CarModel currentCarModel = null;
     public static Car currentCarInfo = null;
     public static NewCar currentNewCarInfo = null;

@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,54 +14,17 @@ import java.io.File;
 public class TrackingStatusController {
     @FXML
     private Pane panelStatus;
-
     @FXML
-    private Label lblStatusText1;
-
+    private Label lblStatusText1, lblStatusText2, lblStatusText3, lblStatusText4;
     @FXML
-    private Label lblStatusText2;
-
+    private Pane dotStatus1, dotStatus2, dotStatus3, dotStatus4;
     @FXML
-    private Label lblStatusText3;
-
+    private Pane pane1, pane2, pane3, pane4;
     @FXML
-    private Label lblStatusText4;
+    private ImageView imgView1, imgView2, imgView3, imgView4;
 
-    @FXML
-    private Pane dotStatus4;
+    private Order order = StatusContainer.currentOrder;
 
-    @FXML
-    private Pane pane1;
-
-    @FXML
-    private Pane dotStatus3;
-
-    @FXML
-    private Pane pane2;
-
-    @FXML
-    private Pane pane3;
-
-    @FXML
-    private Pane pane4;
-
-    @FXML
-    private ImageView imgView2;
-
-    @FXML
-    private ImageView imgView3;
-
-    @FXML
-    private ImageView imgView1;
-
-    @FXML
-    private Pane dotStatus2;
-
-    @FXML
-    private ImageView imgView4;
-
-    @FXML
-    private Pane dotStatus1;
 
     @FXML
     private void initialize(){
@@ -94,7 +58,7 @@ public class TrackingStatusController {
             updateTextStyle(lblStatusText2);
             setInactiveImage(new ImageView[]{imgView1});
             setInactivateStatus(new Pane[]{pane1});
-        }else if(status == 3) {
+        }else if(status == 3 || status == 4){
             dotsVisible = new Pane[]{dotStatus4};
             setDotVisible();
             setFocusStatus(pane3);

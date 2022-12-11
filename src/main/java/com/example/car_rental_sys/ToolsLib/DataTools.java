@@ -311,6 +311,10 @@ public class DataTools {
         }
     }
 
+    public static String getOrderIDStr(int orderID){
+        return String.format("%08d", orderID);
+    }
+
     public static String[] getCustomerBankCardsList(int customerID) {
         String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
         ArrayList<String[]> result = SQL.query(sql);
@@ -720,6 +724,20 @@ public class DataTools {
             }
         }
         return availableCars;
+    }
+
+    public static ArrayList<String[]> getTableData(ArrayList<String[]> data,int page,int max){
+        ArrayList<String[]> result = new ArrayList<>();
+        try{
+            for (int i = 0; i < max; i++) {
+                String[] row = data.get((page - 1) * max + i);
+                result.add(row);
+            }
+        }catch (Exception e){
+            Tools.logError(e);
+        }
+
+        return result;
     }
 }
 

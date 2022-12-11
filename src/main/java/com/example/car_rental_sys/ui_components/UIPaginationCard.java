@@ -2,9 +2,9 @@ package com.example.car_rental_sys.ui_components;
 
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 
 import java.util.Objects;
+
 
 public class UIPaginationCard extends Button {
     private final int cardHeight = 30;
@@ -86,6 +86,7 @@ public class UIPaginationCard extends Button {
                         setFocusState("", "", "false", "true", "");
                     }
 
+                    UIPagination.getCurrentPageNumber();
                     UIPagination.renewRequest();
                     return;
                 case "...2":
@@ -106,6 +107,8 @@ public class UIPaginationCard extends Button {
                         UIPagination.focusMaxButton = true;
                     }
                     UIPagination.currentPageNumber+=5;
+
+                    UIPagination.getCurrentPageNumber();
                     UIPagination.renewRequest();
                     return;
                 case "<":
@@ -130,15 +133,15 @@ public class UIPaginationCard extends Button {
                         }
                         if(UIPagination.currentPageNumber == 4){
                             setFocusState("", "true", "false", "false", "");
-                            System.out.println("focus on second@@");
+                            //System.out.println("focus on second@@");
                         }
                         if(UIPagination.currentPageNumber == 5){
                             setFocusState("", "", "true", "false", "");
-                            System.out.println("focus on here##");
+                            //System.out.println("focus on here##");
                         }
                         if(UIPagination.currentPageNumber == 6){
                             setFocusState("", "", "false", "true", "false");
-                            System.out.println("focus on here@@");
+                            //System.out.println("focus on here@@");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber && UIPagination.totalPageNumber == 4){
                             setFocusState("", "true", "false", "", "");
@@ -148,23 +151,23 @@ public class UIPaginationCard extends Button {
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber && UIPagination.totalPageNumber == 6){
                             setFocusState("", "", "false", "true", "false");
-                            System.out.println("focus on here%%");
+                            //System.out.println("focus on here%%");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber && UIPagination.totalPageNumber > 7){
                             //for last -1
                             setFocusState("", "", "false", "false", "true");
                             UIPagination.focusMaxButton = false;
-                            System.out.println(UIPagination.currentPageNumber + " this last page");
+                            //System.out.println(UIPagination.currentPageNumber + " this last page");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber && UIPagination.totalPageNumber == 7){
-                            System.out.println("halo+");
+                            //System.out.println("halo+");
                             setFocusState("", "", "false", "false", "true");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber-1 && UIPagination.totalPageNumber == 7){
                             setFocusState("", "", "false", "true", "false");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber-1 && UIPagination.totalPageNumber > 7){
-                            System.out.println(UIPagination.currentPageNumber + " is last page -2");
+                            //System.out.println(UIPagination.currentPageNumber + " is last page -2");
                             setFocusState("", "", "true", "false", "false");
                         }
                         if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 2 && UIPagination.totalPageNumber == 7){
@@ -174,10 +177,12 @@ public class UIPaginationCard extends Button {
                         UIPagination.currentPageNumber-=1;
                         UIPagination.renewRequest();
                     }
+
+                    UIPagination.getCurrentPageNumber();
                     return;
                     //break;
                 case ">":
-                    System.out.println(UIPagination.currentPageNumber + " now clicked on next page");
+                    //System.out.println(UIPagination.currentPageNumber + " now clicked on next page");
                     if(UIPagination.currentPageNumber == 1 && UIPagination.totalPageNumber == 2){
                         //do nothing
                     }
@@ -187,16 +192,17 @@ public class UIPaginationCard extends Button {
                         return;
                     }
                     else{
-                        System.out.println("go to else");
+                        //System.out.println("go to else");
                         if (UIPagination.currentPageNumber == 1 && UIPagination.totalPageNumber == 2) {
-                            System.out.println("go to else 1");
+                            //do nothing
+                            //System.out.println("go to else 1");
                         }
                         if (UIPagination.currentPageNumber == 1 && UIPagination.totalPageNumber != 2) {
                             UIPagination.focusOnFirst = true;
                         }
                         if(UIPagination.currentPageNumber == 2 && UIPagination.totalPageNumber == 3){
                             setFocusState("false", "", "", "", "");
-                            System.out.println("focus on first");
+                            //System.out.println("focus on first");
                         }
                         if(UIPagination.currentPageNumber == 2 && UIPagination.totalPageNumber > 3){
                             setFocusState("false", "true", "", "", "");
@@ -220,6 +226,8 @@ public class UIPaginationCard extends Button {
                         UIPagination.currentPageNumber += 1;
                         UIPagination.renewRequest();
                     }
+
+                    UIPagination.getCurrentPageNumber();
                     return;
                     //break;
                 default:
@@ -227,12 +235,13 @@ public class UIPaginationCard extends Button {
                     break;
             }
 
+
             //print current page number
             UIPagination.currentPageNumber = Integer.parseInt(this.getText());
             //System.out.println("current page number: "+UIPagination02.currentPageNumber);
 
             if(UIPagination.currentPageNumber <= 3){
-                System.out.println("current page number: "+UIPagination.currentPageNumber);
+                //System.out.println("current page number: "+UIPagination.currentPageNumber);
                 setFocusState("", "false", "false", "false", "false");
                 if(UIPagination.currentPageNumber == 1){
                     UIPagination.focusOnFirst = false;
@@ -258,7 +267,7 @@ public class UIPaginationCard extends Button {
             }
             else if (UIPagination.currentPageNumber > 3 && UIPagination.currentPageNumber <= UIPagination.totalPageNumber-4){
                 //System.out.println("here");
-                System.out.println("current page number: "+UIPagination.currentPageNumber);
+                //System.out.println("current page number: "+UIPagination.currentPageNumber);
                 setFocusState("false", "", "", "false", "false");
                 if(UIPagination.currentPageNumber == 3){
                     setFocusState("", "true", "false", "", "");
@@ -267,10 +276,10 @@ public class UIPaginationCard extends Button {
                     setFocusState("false", "false", "true", "false", "");
                 }
                 if(UIPagination.currentPageNumber == 5){
-                    System.out.println("5 at here");
+                    //System.out.println("5 at here");
                     //UIPagination.focusOnCenter = false;
                     setFocusState("", "false", "false", "true", "");
-                    System.out.println(UIPagination.focusOnCenter);
+                    //System.out.println(UIPagination.focusOnCenter);
                     //setFocusState("", "false", "false", "true", "");
                 }
                 if(UIPagination.currentPageNumber >= 6){
@@ -292,7 +301,7 @@ public class UIPaginationCard extends Button {
                 }
                 UIPagination.renewRequest();
             }else if (UIPagination.currentPageNumber == UIPagination.totalPageNumber){
-                System.out.println("at last page");
+                //System.out.println("at last page");
                 setFocusState("false", "false", "false", "false", "false");
                 UIPagination.focusMaxButton = true;
                 UIPagination.showDotNext = false;
@@ -303,38 +312,38 @@ public class UIPaginationCard extends Button {
                     setFocusState("false", "", "false", "false", "true");
                 }
                 else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber -1 && UIPagination.totalPageNumber == 5){
-                    System.out.println("at here");
+                    //System.out.println("at here");
                     setFocusState("false", "false", "true", "false", "false");
                 }
                 else{
-                    System.out.println("at last page - 1");
-                    System.out.println(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 1);
+                    //System.out.println("at last page - 1");
+                   // System.out.println(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 1);
                     setFocusState("false", "false", "false", "true", "true");
                 }
 
                 UIPagination.renewRequest();
             }
             else if(UIPagination.currentPageNumber >= UIPagination.totalPageNumber - 3){
-                System.out.println("less than total -3 is at here");
+                //System.out.println("less than total -3 is at here");
                 if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 3 && UIPagination.totalPageNumber == 8){
                     setFocusState("false", "false", "false", "true", "false");
                 }else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 2 && UIPagination.totalPageNumber == 8){
                     setFocusState("false", "false", "true", "false", "false");
-                    System.out.println("now at here");
+                   // System.out.println("now at here");
                 }else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 3 && UIPagination.totalPageNumber == 7){
                     setFocusState("false", "false", "true", "false", "false");
-                    System.out.println("-3 now at here");
+                   // System.out.println("-3 now at here");
                 }else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 2 && UIPagination.totalPageNumber == 7){
                     setFocusState("false", "false", "false", "true", "false");
-                    System.out.println("-2 now at here");
+                   // System.out.println("-2 now at here");
                 }else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 2 && UIPagination.totalPageNumber == 6){
                     setFocusState("false", "false", "true", "false", "false");
-                    System.out.println("-1 now at here");
+                   // System.out.println("-1 now at here");
                 }
                 else if(UIPagination.currentPageNumber == UIPagination.totalPageNumber - 3 ||
                         UIPagination.currentPageNumber == UIPagination.totalPageNumber - 2){
                     setFocusState("", "", "true", "false", "false");
-                    System.out.println("less than total -3 is at here");
+                   // System.out.println("less than total -3 is at here");
                 }
                 UIPagination.renewRequest();
             }else if( UIPagination.totalPageNumber <= 8 && UIPagination.currentPageNumber >= UIPagination.totalPageNumber - 4){
@@ -343,6 +352,7 @@ public class UIPaginationCard extends Button {
             else {
                 UIPagination.renewRequest();
             }
+            UIPagination.getCurrentPageNumber();
         });
     }
 

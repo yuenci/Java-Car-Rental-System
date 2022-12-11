@@ -52,7 +52,7 @@
          <Font name="Arial Bold" size="14.0"/>
       </font>
    </Label>
-   <Label layoutX="140.0" layoutY="204.0" text="Product" textFill="#4e5969">
+   <Label layoutX="125.0" layoutY="204.0" text="Product" textFill="#4e5969">
       <font>
          <Font name="Arial Bold" size="14.0"/>
       </font>
@@ -76,9 +76,7 @@
    <Line endX="260.0" layoutX="235.0" layoutY="230.0" startX="-200.0" stroke="#d9d9d9"/>
    <Pane fx:id="pagContainer" layoutX="100.0" layoutY="700.0" prefHeight="30.0" prefWidth="330.0"/>
    <Pane layoutX="33.0" layoutY="153.0" prefHeight="35.0" prefWidth="465.0">
-      <children>
-         <fx:include source="SearchBar.fxml"/>
-      </children>
+      <fx:include source="SearchBar.fxml"/>
    </Pane>
    <Pane fx:id="paneFilterBox" layoutX="256.0" layoutY="196.0" prefHeight="260.0" prefWidth="220.0"/>
 </Pane>
