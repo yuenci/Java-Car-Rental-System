@@ -31,6 +31,11 @@ public class DateTools {
         return sdf.format(date);
     }
 
+    public static String dateToString(String date, String format) {
+        Date dateObj = stringToDateObje(date);
+        return dateToString(dateObj, format);
+    }
+
     public static String getDataTimeAfterAWeek(){
         Date date = new Date();
         date.setTime(date.getTime() + 7 * 24 * 60 * 60 * 1000);

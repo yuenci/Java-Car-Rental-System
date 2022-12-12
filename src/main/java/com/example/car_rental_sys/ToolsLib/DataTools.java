@@ -334,8 +334,30 @@ public class DataTools {
         }
     }
 
+    public static int getTotalTransactionNum(int customerID){
+        String sql = "select count(transactionID) from transactionRecord where userID = " + customerID;
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return 0;
+        } else {
+            return Double.valueOf(result.get(0)[0]).intValue();
+        }
+    }
+
     public static String getOrderIDStr(int orderID) {
         return String.format("%08d", orderID);
+    }
+
+    public static int getOrderStatusWithID(int orderID){
+        String sql = "select status from orders where orderID = " + orderID;
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return Integer.parseInt(result.get(0)[0]);
+        } else {
+            return 0;
+        }
     }
 
     public static String[] getCustomerBankCardsList(int customerID) {

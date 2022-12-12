@@ -108,6 +108,7 @@ public class OrderListComponentController {
             orderRow.setLayoutY(i * 30);
             tableContainer.getChildren().add(orderRow);
         }
+        initEmptyText();
     }
 
     @FXML
@@ -208,11 +209,23 @@ public class OrderListComponentController {
     }
 
     private void recountTotalOrders(){
-        //count the size of data
         totalOrders = data.size();
         pagContainer.getChildren().clear();
-        initPagination();
+        if(totalOrders > 0){
+            initPagination();
+        }
         Platform.runLater(() -> numOrder.setText(totalOrders + " Orders"));
+    }
+
+    private void initEmptyText(){
+        if (totalOrders == 0){
+            Label label = new Label("No Order Records Found");
+            label.setStyle("-fx-font-size: 22px; -fx-font-weight: bold;");
+            label.getStyleClass().add("lblPrimaryText");
+            label.setLayoutX(150);
+            label.setLayoutY(100);
+            tableContainer.getChildren().add(label);
+        }
     }
 
 

@@ -1,5 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.PaymentCard;
@@ -9,61 +12,104 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class BillingComponentController {
 
-    @FXML
-    private Button billYearBtn;
+    public static BillingComponentController instance;
+
+    private int totalBills = 0;
+    private ArrayList<String[]> data = null;
+    private ArrayList<String[]> cacheData = null;
+    private ArrayList<String[]> pendingData = new ArrayList<>();
+    private ArrayList<String[]> completedData = new ArrayList<>();
+    private ArrayList<String[]> cancelledData = new ArrayList<>();
+
+    private User user = StatusContainer.currentUser;
 
     @FXML
-    private Button billWeekBtn;
-
+    private Button billAllBtn, billCancelBtn, billCompleteBtn,billPendingBtn;
     @FXML
-    private Pane billCardDetailBox;
-
-    @FXML
-    private Pane cusBillTable;
-
+    private Pane billCardDetailBox,cusBillTable,pagContainer;
     @FXML
     private ScrollPane billCardList;
 
     @FXML
-    private Pane pagContainer;
-
-    @FXML
-    private Button billMonthBtn;
-
-    @FXML
     private void initialize(){
-        billYearBtn.getStyleClass().add("focusCusBillButton");
+        instance = this;
+        billAllBtn.getStyleClass().add("focusCusBillButton");
+        initTotalOrder();
         addPaymentCardToPane();
         initPagination();
-        initTableData();
+        initTable();
     }
 
     private void initPagination(){
-        pagContainer.getChildren().add(new UIPagination());
+        pagContainer.getChildren().add(new UIPagination(totalBills,6));
     }
 
-    private void initTableData(){
-        //use a thread to load the table data
+    private void initTotalOrder(){
+        totalBills = DataTools.getTotalTransactionNum(user.getUserID());
+    }
+
+    private void initTable(){
+        String sql = "SELECT * FROM transactionRecord WHERE userID = " + user.getUserID();
+        data = SQL.query(sql);
+        initUsageArray();
+
+        Platform.runLater(() -> refreshTable(1));
+
         Thread thread = new Thread(() -> Platform.runLater(() -> {
-            for (int i = 0; i < 6; i++) {
-                //UICusBillRow row = new UICusBillRow("top-up", "2020-12-12", "2:09", "1000", "1");
-                UICusBillRow row = new UICusBillRow("rental", "2020-12-12", "2:09", "1000", "2");
-                row.setLayoutX(0);
-                row.setLayoutY(i * 35);
-                cusBillTable.getChildren().add(row);
+            for (String[] row : data) {
+                if(Integer.parseInt(row[7]) == -1){
+                    cancelledData.add(row);
+                }
+                else if(Integer.parseInt(row[7]) == 1 || Integer.parseInt(row[7]) == 2 || Integer.parseInt(row[7]) == 3 ||
+                        Integer.parseInt(row[7]) == 4 || Integer.parseInt(row[7]) == 5){
+                    completedData.add(row);
+                }
+                else if(Integer.parseInt(row[7]) == 0){
+                    pendingData.add(row);
+                }
             }
         }));
         thread.start();
+    }
+
+    private void initUsageArray(){
+        ArrayList<String[]> newData = new ArrayList<>();
+        for (String[] row : data) {
+            String[] newRow = new String[row.length + 1];
+            System.arraycopy(row, 0, newRow, 0, row.length);
+            row = newRow;
+            row[row.length - 1] = String.valueOf(DataTools.getOrderStatusWithID(Integer.parseInt(row[2])));
+            newData.add(row);
+        }
+        data = newData;
+        cacheData = data;
+    }
+
+    public void refreshTable(int page){
+        cusBillTable.getChildren().clear();
+        ArrayList<String[]> billData = DataTools.getTableData(data,page,6);
+        for (int i = 0; i < billData.size(); i++) {
+            String[] row = billData.get(i);
+            UICusBillRow billRow = new UICusBillRow(row[3], DateTools.dateToString(row[6],"yyy-MM-dd"), DateTools.dateToString(row[6],"HH:mm:ss"),
+                    Integer.parseInt(row[5]), Integer.parseInt(row[7]));
+            cusBillTable.getChildren().add(billRow);
+            billRow.setLayoutY(i*35);
+        }
+        initEmptyText();
     }
 
     private void addPaymentCardToPane(){
@@ -120,18 +166,39 @@ public class BillingComponentController {
     }
 
     @FXML
-    private void billYearBtnClicked(MouseEvent event) {
+    private void billAllBtnClicked(MouseEvent event) {
         headerButtonClickEvent(event);
+        data = cacheData;
+        recountTotalBills();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
     }
 
     @FXML
-    private void billMonthBtnClicked(MouseEvent event) {
+    private void billCompleteBtnClicked(MouseEvent event) {
         headerButtonClickEvent(event);
+        data = completedData;
+        recountTotalBills();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
     }
 
     @FXML
-    private void billWeekBtnClicked(MouseEvent event) {
+    private void billPendingBtnClicked(MouseEvent event) {
         headerButtonClickEvent(event);
+        data = pendingData;
+        recountTotalBills();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
+    }
+
+    @FXML
+    private void billCancelBtnClicked(MouseEvent event) {
+        headerButtonClickEvent(event);
+        data = cancelledData;
+        recountTotalBills();
+        UIPagination.refreshPaginationState();
+        refreshTable(1);
     }
 
     @FXML
@@ -141,14 +208,33 @@ public class BillingComponentController {
         clearFocusStyle();
         btn.getStyleClass().add("focusCusBillButton");
         btn.getStyleClass().remove("cusBillButton");
+
+        data = cacheData;
     }
 
     private void clearFocusStyle(){
-        Button[] btns = {billMonthBtn, billWeekBtn, billYearBtn};
+        Button[] btns = {billCompleteBtn,billPendingBtn, billCancelBtn, billAllBtn};
         for (Button btn : btns) {
             btn.getStyleClass().remove("focusCusBillButton");
             btn.getStyleClass().add("cusBillButton");
         }
     }
 
+    private void recountTotalBills(){
+        totalBills = data.size();
+        pagContainer.getChildren().clear();
+        if(totalBills > 0){
+            initPagination();
+        }
+    }
+
+    private void initEmptyText(){
+        if (totalBills == 0){
+           Label label = new Label("No Bill Records Found");
+           label.setStyle("-fx-font-size: 22px; -fx-text-fill: #ffffff; -fx-font-weight: bold;");
+           label.setLayoutX(120);
+           label.setLayoutY(80);
+           cusBillTable.getChildren().add(label);
+        }
+    }
 }
