@@ -279,7 +279,9 @@ public class PaymentController extends Controller{
             }
         }else if (Objects.equals(payMethod, "visa") || Objects.equals(payMethod, "mastercard")){
             if(cardStatus){
-                firstBankCard.updateCurrentInfo();
+                if(Objects.equals(currentCardNumber, "")){
+                    firstBankCard.updateCurrentInfo();
+                }
                 showBankCardCheckoutPage();
             }else{
                 MessageFrame messageFrame = new MessageFrame(MessageFrameType.NOTIFICATION, "You don't have a bank card, please add one first");
@@ -405,5 +407,7 @@ public class PaymentController extends Controller{
         
         String sql = "UPDATE orders SET price = " + price + ", paymentMethod = '" + paymentMethod + "', account = '" + account + "', status = " + status + " WHERE orderID = " + StatusContainer.currentOrderID;
         System.out.println(sql);
+
+
     }
 }
