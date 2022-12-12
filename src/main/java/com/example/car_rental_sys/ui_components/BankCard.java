@@ -73,7 +73,8 @@ public class BankCard extends Pane {
         cardTypeAndNumber.setLayoutY(20);
         cardTypeAndNumber.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #000000;");
 
-        this.cardExpireDateText = "Expires on " +  this.cardExpireDate;
+//        this.cardExpireDateText = "Expires on " +  this.cardExpireDate;
+        this.cardExpireDateText =  this.cardExpireDate;
         Label cardExpireDate = new Label(cardExpireDateText);
         cardExpireDate.setLayoutX(140);
         cardExpireDate.setLayoutY(45);

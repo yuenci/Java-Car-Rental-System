@@ -252,7 +252,7 @@ public class MainPageController extends Controller{
         Function<String, Void> func =  (message) -> {
             if(!Objects.equals(message, "")){
                 Platform.runLater(() -> locationText.setText(message));
-
+                StatusContainer.pickUpLocation = message;
             }
             return null;
         };

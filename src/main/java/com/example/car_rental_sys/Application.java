@@ -39,6 +39,7 @@ public class Application extends javafx.application.Application {
         DataTools.keepUserLoggedIn();
 //        Test.test();
         //FXTools.pandaHead();
+        //System.out.println(DataTools.ifCarsAvailable("Mclaren_2018"));
     }
 
     @Override

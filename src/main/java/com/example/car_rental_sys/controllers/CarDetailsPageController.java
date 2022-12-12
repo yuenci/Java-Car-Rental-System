@@ -2,7 +2,6 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
@@ -32,6 +31,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class CarDetailsPageController extends  Controller{
@@ -193,7 +193,7 @@ public class CarDetailsPageController extends  Controller{
         String sql = "select power,comfort,handing,space,allocation,interior"
                 +" from carsRadarData where carModel = '"
                 +StatusContainer.currentCarChose +"'";
-        System.out.println(sql);
+        //System.out.println(sql);
         String[] radarData = SQL.query(sql).get(0);
         String radarDataStr = Arrays.toString(radarData);
         //System.out.println(radarDataStr);
@@ -259,6 +259,12 @@ public class CarDetailsPageController extends  Controller{
             return;
         }
 
+        //check if user choose location
+//        if(StatusContainer.pickUpLocation == null){
+//            showLocationPicker();
+//            return;
+//        }
+
 
         //check if user is login
         //System.out.println(StatusContainer.currentUser);
@@ -272,7 +278,7 @@ public class CarDetailsPageController extends  Controller{
 
         //check if this car is available
         String currentCarChose = StatusContainer.currentCarChose;
-        if(!DataTools.ifCarAvailable(currentCarChose)){
+        if(!DataTools.ifCarsAvailable(currentCarChose)){
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING,"This car is not available now!");
             messageFrame.show();
             return;
@@ -296,7 +302,48 @@ public class CarDetailsPageController extends  Controller{
             return;
         }
 
+
+
         FXTools.changeScene("paymentPage.fxml");
+        makeAPayment();
+    }
+    private void makeAPayment(){
+        // carStatus - for date
+        ArrayList<Integer>  carsAvailable = DataTools.carsAvailable(StatusContainer.currentCarChose);
+        String carID = carsAvailable.get(0).toString();
+        String modelID = DataTools.getModelIDFromCarModel(StatusContainer.currentCarChose) + "";
+        String pickUpTimeStamps = (StatusContainer.pickUpTimeStamp /1000) + "";
+        String returnTimeStamps = (StatusContainer.returnTimeStamp /1000) + "";
+        String sql1 = "update carStatus set pickUpTime = " + pickUpTimeStamps + ", returnTime = " + returnTimeStamps + " where carID = " + carID + "AND modelID = " + modelID;
+        //System.out.println(sql1);
+
+        // orders - for info
+        String orderID = DataTools.getNewID("orders") + "";
+        String orderTime = DateTools.getNow();
+        String pickUpTime = DateTools.timeStampToDateTime(StatusContainer.pickUpTimeStamp);
+        String returnTime = DateTools.timeStampToDateTime(StatusContainer.returnTimeStamp);
+        String parkingLocation = ConfigFile.parkingLocation;
+        String pickUpLocation = StatusContainer.pickUpLocation;
+        int userID = StatusContainer.currentUser.getUserID();
+        int  price = 0 ; // need to update
+        String paymentMethod = "null"; // need to update
+        String account = "null"; // need to update
+        int status = 0; // need to update
+        int star = 0; // need to update
+        String sql2 = "insert into orders values (" + orderID + ",'" + orderTime + "','" + pickUpTime + "','" + returnTime + "','" + parkingLocation + "','" + pickUpLocation + "'," + userID + "," + price + ",'" + paymentMethod + "','" + account + "'," + status + "," + star + ")";
+        //System.out.println(sql2);
+
+        // schedule - for date
+        int scheduleID = DataTools.getNewID("schedule");
+        String relate = "null";
+        String sql3 = "insert into schedule values (" + scheduleID + "," + orderID + "," + status + "," + relate + ",'" + orderTime + "')";
+        //System.out.println(sql3);
+
+        StatusContainer.currentOrderID = Integer.parseInt(orderID);
+
+//        SQL.execute(sql1);
+//        SQL.execute(sql2);
+//        SQL.execute(sql3);
     }
 
     private void showDatePicker(){
@@ -316,6 +363,21 @@ public class CarDetailsPageController extends  Controller{
                     }
 
                 });
+            }
+            return null;
+        };
+
+        browserModal.setFunction(func);
+        browserModal.show();
+    }
+
+    private void showLocationPicker(){
+        String url =  "src/main/resources/com/example/car_rental_sys/html/googleMap.html";
+        BrowserModal browserModal = new BrowserModal(800,600, url) ;
+        browserModal.setModality();
+        Function<String, Void> func =  (message) -> {
+            if(!Objects.equals(message, "")){
+                StatusContainer.pickUpLocation = message;
             }
             return null;
         };

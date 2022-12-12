@@ -1,5 +1,5 @@
 carModel:str=None,power:num=0,comfort:num=0,handing:num=0,space:num=0,allocation:num=0,interior:num=0
-Huracan_EVO,3.8,4.2,4.3,4.2,3.8,3.1
+Huracan_EVI,3.8,4.2,4.3,4.2,3.8,3.1
 Mclaren_720s,5.0,3.3,3.7,3.7,4.0,3.1
 McLaren_620R,3.1,3.5,4.5,3.9,4.0,3.1
 McLaren_Senna,4.0,3.9,3.9,4.4,3.6,3.3
