@@ -1,7 +1,6 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.ToolsLib.*;
-import com.example.car_rental_sys.controllers.UIPaginationController;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.orm.Admin;
@@ -45,7 +44,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         //String css = Objects.requireNonNull(this.getClass().getResource("pagination.css")).toExternalForm();
-        String fxmlName = "mainPage.fxml";
+       // String fxmlName = "mainPage.fxml";
         //String fxmlName = "carsListPage.fxml";
         //String fxmlName = "signUpPage.fxml";
         //String fxmlName = "loginPage.fxml";
@@ -58,7 +57,7 @@ public class Application extends javafx.application.Application {
       //  String fxmlName = "driverServicePage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        //String fxmlName = "customerServicePage.fxml";
+        String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "addBankCardPage.fxml";
       //  String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
@@ -97,7 +96,7 @@ public class Application extends javafx.application.Application {
         //UIPagination01 pagination = new UIPagination01();
         UIPagination pagination2 = new UIPagination();
         //set the resource style sheets
-        UIPaginationController test = new UIPaginationController();
+        //UIPaginationController test = new UIPaginationController();
         PaymentCard empty = new PaymentCard("empty");
         //empty.setPrefSize(150,90);
         empty.setLayoutX(10);
@@ -115,12 +114,12 @@ public class Application extends javafx.application.Application {
         paymentCard.setLayoutX(10);
         paymentCard.setLayoutY(100);
 
-        UICusBillRow row1 = new UICusBillRow("top-up", "2020-12-12", "2:09", "1000", "1");
-        row1.setLayoutX(10);
-        row1.setLayoutY(100);
-        UICusBillRow row2 = new UICusBillRow("rental", "2020-12-12", "2:09", "1000", "2");
-        row2.setLayoutX(10);
-        row2.setLayoutY(150);
+        //UICusBillRow row1 = new UICusBillRow("top-up", "2020-12-12", "2:09", "1000", "1");
+        //row1.setLayoutX(10);
+        //row1.setLayoutY(100);
+        //UICusBillRow row2 = new UICusBillRow("rental", "2020-12-12", "2:09", "1000", "2");
+        //row2.setLayoutX(10);
+        //row2.setLayoutY(150);
 
         String[] theme = {"#ffffff","#000000"};
         VehicleCard card = new VehicleCard("Lamborghini_Super","1000", theme[0], theme[1]);
@@ -155,8 +154,8 @@ public class Application extends javafx.application.Application {
     }
     private static  void setUser(String type){
         if(Objects.equals(type, "c")){
-//            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
-            StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
+            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
+            //StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
 //            StatusContainer.currentUser  = new Customer("15705156@qq.com");
         }else if(Objects.equals(type, "d")){
             StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");

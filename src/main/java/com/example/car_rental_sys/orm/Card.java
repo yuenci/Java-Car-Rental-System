@@ -11,9 +11,11 @@ public class Card {
     private String cardBankName;
     private String cardHolderName;
     private String cardValidDate;
-    private int cardNumber;
+    private String cardNumber;
     private String cardBillingAddress;
+    private String cardBalance;
     private String[] cardTheme;
+
 
     public static Card instance;
 
@@ -21,15 +23,29 @@ public class Card {
         instance = this;
     }
 
-    public String[] getCardDetails(int userID, int cardNumber){
+    public String[] getCardDetails(int userID, String cardNumber){
         // get card details from database
-        String query = "SELECT * FROM card WHERE userID = " + userID + " AND cardNumber = "+cardNumber +";";
+        String query = "SELECT * FROM bankCardInfo WHERE userID = " + userID + " AND cardNumber = "+cardNumber +";";
         ArrayList<String[]> cardDetails = SQL.query(query);
         //get the first row of the result
         return cardDetails.get(0);
     }
 
-    public Card(int userID, String cardType, String cardName, String cardBankName, String cardHolderName, String cardValidDate, int cardNumber, String cardBillingAddress, String[] cardTheme) {
+    public Card(int userID, String cardNumber){
+        String[] cardDetails = getCardDetails(userID, cardNumber);
+        this.userID = Integer.parseInt(cardDetails[0]);
+        this.cardType = cardDetails[1];
+        this.cardName = cardDetails[2];
+        this.cardBankName = cardDetails[3];
+        this.cardHolderName = cardDetails[4];
+        this.cardValidDate = cardDetails[5];
+        this.cardNumber = cardDetails[6];
+        this.cardBillingAddress = cardDetails[7];
+        this.cardTheme = cardDetails[8].split(",");
+        this.cardBalance = cardDetails[9];
+    }
+
+    public Card(int userID, String cardType, String cardName, String cardBankName, String cardHolderName, String cardValidDate, String cardNumber, String cardBillingAddress, String[] cardTheme) {
         this.userID = userID;
         this.cardType = cardType;
         this.cardName = cardName;
@@ -89,11 +105,11 @@ public class Card {
         this.cardValidDate = cardValidDate;
     }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -111,5 +127,26 @@ public class Card {
 
     public void setCardTheme(String[] cardTheme) {
         this.cardTheme = cardTheme;
+    }
+
+    public String getCardBalance() {
+        return cardBalance;
+    }
+
+    public void setCardBalance(String cardBalance) {
+        this.cardBalance = cardBalance;
+    }
+
+    public void update(){
+        String query = "UPDATE bankCardInfo SET cardName = '"+this.cardName+"', billingAddress = '"+this.cardBillingAddress+
+                "' WHERE userID = "+this.userID+" AND cardNumber = "+this.cardNumber+";";
+        //System.out.println(query);
+        SQL.execute(query);
+    }
+
+    public void delete(){
+        String query = "DELETE FROM bankCardInfo WHERE userID = "+this.userID+" AND cardNumber = "+this.cardNumber+";";
+        //System.out.println(query);
+        SQL.execute(query);
     }
 }

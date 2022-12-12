@@ -2,6 +2,7 @@ package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.controllers.BillingComponentController;
 import com.example.car_rental_sys.controllers.OrderListComponentController;
 import com.example.car_rental_sys.sqlParser.FileOperate;
 import javafx.application.Platform;
@@ -68,21 +69,6 @@ public class UIPagination extends Pane {
         //countTotalPageNumber();
         initMainBox();
         initEvent();
-    }
-
-    private void countTotalPageNumber(){
-        //select the data from database with query
-        //count the total number of data
-        //ArrayList<String[]> data = UIPaginationController.selectData();
-        ArrayList<String[]> data = FileOperate.readFileToArray(ConfigFile.fakeData);
-        int total = data.size();
-        totalPageNumber = (int)Math.ceil((double)total/12);
-        System.out.println("totalData: " + total);
-        System.out.println("totalPageNumber: " + totalPageNumber);
-        if(totalPageNumber > 7){
-            showDotNext = true;
-            //max;
-        }
     }
 
     private void initMainBox(){
@@ -441,6 +427,7 @@ public class UIPagination extends Pane {
             OrderListComponentController.instance.refreshTable(UIPagination.currentPageNumber);
         }
         else{
+            BillingComponentController.instance.refreshTable(UIPagination.currentPageNumber);
             System.out.println(UIPagination.currentPageNumber + " is the current page number");
         }
 

@@ -56,10 +56,11 @@ public class CustomerServiceController {
 
         FXMLLoader fxmlLoader3 = new FXMLLoader(Application.class.getResource("fxml/infoMiddleBar.fxml"));
         FXMLLoader fxmlLoader4 = new FXMLLoader(Application.class.getResource("fxml/PersonalInfoPage.fxml"));
-        hugeContainer.setVisible(true);
-        middlePanel.getChildren().add(fxmlLoader3.load());
-        settingMainPanel.getChildren().add(fxmlLoader4.load());
+        //hugeContainer.setVisible(true);
+        //middlePanel.getChildren().add(fxmlLoader3.load());
+        //settingMainPanel.getChildren().add(fxmlLoader4.load());
 
+        showWalletPage();
     }
 
     private void initFXML(Pane pane, String fxml)throws IOException {

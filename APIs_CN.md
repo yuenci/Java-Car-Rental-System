@@ -389,9 +389,25 @@ customer service userID = 0
 
 传入车的id，返回车每小时的价格
 
-* public static String getGenderFromUserID(int userID)
+* `public static String getGenderFromUserID(int userID)`
 
 传入用户id，返回性别
+
+
+* `public static int getTotalTransactionNum(int customerID)`
+
+传入用户id，返回用户的总交易次数
+
+
+* `public static int getOrderIDStr(int orderID)`
+
+传入订单id，返回8位数订单号
+
+
+* `public static int getOrderStatusWithID(int orderID)`
+
+传入订单id，返回订单状态
+
 
 ## DateTools
 
@@ -490,6 +506,41 @@ FXTools.changeScene("loginPage.fxml");
 - `public static void centerImage(ImageView imageView)`
 
 将ImageView中图片居中
+
+
+- `public static void validInputLength(TextField textField, String type, String oldValue, String newValue)`
+
+校验任意字符输入长度
+
+
+- `public static void validInputNumber(TextField textField, String type, String oldValue, String newValue)`
+
+监听输入框输入数字长度
+
+
+- `public static void validInputIsDate(TextField textField, String regex, String newValue)`
+
+监听输入框输入日期格式
+
+
+- `public static boolean validInputIsEmail(TextField textField, String newValue)`
+
+监听输入框输入邮箱格式
+
+
+- `public static boolean validInputIsPhone(TextField textField, String newValue)`
+
+监听输入框输入手机号格式
+
+
+- `public static void pandaHead()`
+
+terminal 中显示熊猫头
+
+
+- `public static void dogHead()`
+
+terminal 中显示狗头
 
 ## ImageTools
 

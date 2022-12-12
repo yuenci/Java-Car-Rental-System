@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.engine.RenderingMode;
@@ -24,7 +26,7 @@ public class BillingSideBarController {
 
     @FXML
     public void initialize() {
-        billSideText.setText("Billing Side");  // monthly speeding amount
+        billSideText.setText("RM "+DataTools.getTotalSpending(StatusContainer.currentUser.getUserID())+ "0");
         initWebView();
     }
 

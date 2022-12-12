@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class UICusBillRow extends Pane {
 
-    private String status;
-    private String amount;
+    private int status;
+    private int amount;
     private String time;
     private String date;
     private String type;
@@ -23,7 +23,7 @@ public class UICusBillRow extends Pane {
         initComponents();
     }
 
-    public UICusBillRow(String type, String date, String time, String amount, String status){
+    public UICusBillRow(String type, String date, String time, int amount, int status){
         this.type = type;
         this.date = date;
         this.time = time;
@@ -93,11 +93,12 @@ public class UICusBillRow extends Pane {
 
         String textColor;
         String textStatus;
-        if(Objects.equals(status, "1")){
+        if(Objects.equals(status, 1) || Objects.equals(status, 2) ||
+                Objects.equals(status, 3) || Objects.equals(status, 4) || Objects.equals(status, 5)){
             textColor = "#1db440";
             textStatus = "Completed";
         }
-        else if(Objects.equals(status, "2")){
+        else if(Objects.equals(status, -1)){
             textColor = "#f54e4e";
             textStatus = "Canceled";
         }else{

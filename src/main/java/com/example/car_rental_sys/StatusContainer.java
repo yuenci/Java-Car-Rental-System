@@ -31,6 +31,8 @@ public class StatusContainer {
 
     public static String paginationUsage = null;
 
+    public static Card currentCard = null;
+
     public static Order currentOrder = new Order(7);
     public static String loginMethod = "password";
     public static String deviceType = "desktop";
