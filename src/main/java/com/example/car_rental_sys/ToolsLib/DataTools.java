@@ -371,6 +371,12 @@ public class DataTools {
         }
     }
 
+    public static void updateOrderStatusWithID(int orderID, int status){
+        String sql = "update orders set status = " + status + " where orderID = " + orderID;
+        System.out.println(sql);
+        System.out.println(SQL.execute(sql));
+    }
+
     public static String[] getCustomerBankCardsList(int customerID) {
         String sql = "select cardNumber from bankCardInfo where userID = " + customerID;
         ArrayList<String[]> result = SQL.query(sql);

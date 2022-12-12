@@ -166,7 +166,7 @@
                 <Font size="11.0" />
             </font>
         </Label>
-        <Button id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
+        <Button fx:id="btnTrackOrder" id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -188,7 +188,7 @@
         <ImageView fx:id="invoiceIcon" fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/invoice_grey.png" />
         </ImageView>
-        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="trackIcon" fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/target_Icon.png" />
         </ImageView>
         <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />

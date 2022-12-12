@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class CustomerServiceController {
+public class CustomerServiceController extends Controller{
 
     public static CustomerServiceController instance;
 
@@ -30,6 +30,8 @@ public class CustomerServiceController {
     private final String settingMiddleBar = "MiddleBar.fxml";
     private final String infoMiddleBar = "InfoMiddleBar.fxml";
 
+    @FXML
+    Pane mainPane;
     @FXML
     private Pane middlePanel;
     @FXML
@@ -60,7 +62,12 @@ public class CustomerServiceController {
         //middlePanel.getChildren().add(fxmlLoader3.load());
         //settingMainPanel.getChildren().add(fxmlLoader4.load());
 
-        showWalletPage();
+        //showWalletPage();
+        StatusContainer.currentPageController = this;
+
+        showOrderPage();
+
+
     }
 
     private void initFXML(Pane pane, String fxml)throws IOException {

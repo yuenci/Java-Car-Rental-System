@@ -87,14 +87,18 @@ public class OrderListComponentController {
     }
 
     private void initTable(){
+        getDataArray();
+
+        refreshTable(1);
+    }
+
+    public void getDataArray(){
         if(user instanceof Customer){
             String sql = "SELECT * FROM orders WHERE userID = " + user.getUserID();
             data = SQL.query(sql);
         }else{
             data = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
         }
-
-        refreshTable(1);
     }
 
     public void refreshTable(int page){

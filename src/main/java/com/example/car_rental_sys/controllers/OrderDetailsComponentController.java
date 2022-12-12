@@ -2,12 +2,13 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
-import com.example.car_rental_sys.orm.CarModel;
-import com.example.car_rental_sys.orm.Customer;
-import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.orm.*;
 import com.example.car_rental_sys.ui_components.InvoiceBox;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import com.example.car_rental_sys.ui_components.UIOrderRow;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -39,12 +40,13 @@ import java.io.IOException;
 public class OrderDetailsComponentController {
 
     public static OrderDetailsComponentController instance;
+    private User user = StatusContainer.currentUser;
 
     @FXML
     private Pane panelOrderDetails;
 
     @FXML
-    private Button invoiceBtn;
+    private Button invoiceBtn, btnTrackOrder;
 
     @FXML
     private Label orderNum,orderDate,carName,orderQty,carPrice,paymentType,
@@ -52,7 +54,7 @@ public class OrderDetailsComponentController {
             dueTime,pickUpTime,totalAmount;
 
     @FXML
-    private ImageView paymentLogo,carImg,invoiceIcon;
+    private ImageView paymentLogo,carImg,invoiceIcon,trackIcon;
 
     private CarModel carModel = StatusContainer.currentCarModel;
     private Order order = StatusContainer.currentOrder;
@@ -60,10 +62,10 @@ public class OrderDetailsComponentController {
 
     @FXML
     public void initialize() {
-        //checkShowingStatus();
         initComponentText();
         initBtnEvent();
         initTheme();
+        checkOrderStatus();
         instance = this;
     }
 
@@ -97,16 +99,40 @@ public class OrderDetailsComponentController {
     private void initBtnEvent() {
         invoiceBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
             try {
-                InvoiceBox invoiceBox = new InvoiceBox();
-                invoiceBox.showInvoiceStage();
+                if(order.getStatus() != 0){
+                    InvoiceBox invoiceBox = new InvoiceBox();
+                    invoiceBox.showInvoiceStage();
+                }else{
+                    showNotification();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
     }
 
+
+    private void showNotification(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "The order will be canceled");
+        messageFrame.setSuccessCallbackFunc((i) -> {
+            //System.out.println(" accept order");
+            DataTools.updateOrderStatusWithID(order.getOrderID(), -1);
+            hideButton();
+            OrderListComponentController.instance.getDataArray();
+            OrderListComponentController.instance.refreshTable(1);
+            return null;
+        });
+
+        messageFrame.setFailedCallbackFunc((i) -> {
+            //System.out.println(" reject order");
+            messageFrame.close();
+            return null;
+        });
+        messageFrame.show();
+    }
+
     private void initTheme(){
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             panelOrderDetails.getStylesheets()
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/orderDetailsComponentDark.css")
                             .toURI().toString());
@@ -118,6 +144,29 @@ public class OrderDetailsComponentController {
         carImg.setImage(uiOrderRow.imgCar);
     }
 
+    private void checkOrderStatus(){
+        if(order.getStatus() == 0 && user instanceof Customer){
+            invoiceBtn.setText("Cancel Order");
+            invoiceIcon.setImage(null);
+            //set insets
+            invoiceBtn.setPadding(new Insets(0,0,0,0));
+            invoiceBtn.setStyle(invoiceBtn.getStyle() + "-fx-border-color: #f54e4e !important; -fx-text-fill: #f54e4e !important;");
+        }
+        else if(order.getStatus() == 0 && user instanceof Admin){
+            hideButton();
+        }
+        else if(order.getStatus() == -1){
+            hideButton();
+        }
+
+    }
+
+    private void hideButton(){
+        invoiceBtn.setVisible(false);
+        invoiceIcon.setVisible(false);
+        btnTrackOrder.setVisible(false);
+        trackIcon.setVisible(false);
+    }
 
     @FXML
     private void btnTrackOrderClicked(){
