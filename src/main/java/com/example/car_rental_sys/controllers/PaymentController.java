@@ -395,6 +395,7 @@ public class PaymentController extends Controller{
     }
 
     private void makePayment(){
+        // update order
         int  price = Integer.parseInt(totalPrice.getText().substring(2)) ;
         String paymentMethod =  StatusContainer.currentPaymentMethod;
         String account = "null";
@@ -404,10 +405,31 @@ public class PaymentController extends Controller{
             account = this.currentCardNumber;
         }
         int status = 1;
-        
+
+        // add new schedule event
         String sql = "UPDATE orders SET price = " + price + ", paymentMethod = '" + paymentMethod + "', account = '" + account + "', status = " + status + " WHERE orderID = " + StatusContainer.currentOrderID;
         System.out.println(sql);
 
+        String scheduleID = DataTools.getNewID("schedule") + "";
+        String orderID = StatusContainer.currentOrderID + "";
+        String statusStr = "1";
+        String relate = "null";
+        String time = DateTools.getNow();
+        String sql2 = "INSERT INTO schedule VALUES (" + scheduleID + ", " + orderID + ", " + statusStr + ", '" + relate + "', '" + time + "')";
+        System.out.println(sql2);
 
+        // add new transaction
+        String transactionID = DataTools.getNewID("transactionRecord") + "";
+        String userID = StatusContainer.currentUser.getUserID() + "";
+        String type = "rental";
+        String TRMethod = paymentMethod;
+        String  amount = price + "";
+        String TRDateTIme = time;
+        String sql3 = "INSERT INTO transactionRecord VALUES (" + transactionID + ", " + userID + ", "+ orderID+ ", '" + type + "', '" + TRMethod + "', " + amount + ", '" + TRDateTIme + "')";
+        System.out.println(sql3);
+
+//        SQL.execute(sql);
+//        SQL.execute(sql2);
+//        SQL.execute(sql3);
     }
 }
