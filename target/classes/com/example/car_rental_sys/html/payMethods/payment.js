@@ -61,8 +61,14 @@ function clearBgc() {
 
 
 let payBtn = document.getElementById("pay-btn");
+
 payBtn.onclick = async function () {
-    console.log("payBtn click");
+    let cardCVC = document.getElementById("card-cvc").value;
+    if (cardCVC !== "" && cardCVC.length === 3) {
+        console.log("payBtn click");
+    } else {
+        alert("Invalid input: CVC");
+    }
 }
 
 function getValue(type) {

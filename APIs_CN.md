@@ -176,7 +176,7 @@ order - status
 - -1: canceled == cancel
 - 2: delivering
 - 3: delivered == continuing
-- 4: driving
+- 4: driving(禁用)
 - 5: finished == complete
 
 # create webview

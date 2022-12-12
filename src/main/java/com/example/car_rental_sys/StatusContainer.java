@@ -8,7 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 public class StatusContainer {
-    public static String currentCarChose = "Huracan_EVO";
+    public static String currentCarChose = "Huracan_EVI";
     //Porsche_718
 
     public static boolean isFirstViewCar = true;
@@ -48,7 +48,8 @@ public class StatusContainer {
     // search / catalog
     public static String loginEntrance = null;
     // mainPage / carDetails
-
+    public static String pickUpLocation = null;
+    public static int currentOrderID = 0;
 
 
     // self-test statues during loading

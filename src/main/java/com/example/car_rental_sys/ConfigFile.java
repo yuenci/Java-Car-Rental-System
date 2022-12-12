@@ -32,6 +32,9 @@ public class ConfigFile {
     public static final String backendPost = "http://127.0.0.1:8174/";
     public static final String connectTestUrl = "http://www.google.com";
 
+    // location
+    public static final String parkingLocation = "Rent center parking lot";
+
     // paths
     public static final String carsDataPath = "src/main/resources/com/example/car_rental_sys/data/carModels.txt";
     public static final String carsInfoPath = "src/main/resources/com/example/car_rental_sys/data/carInfo.txt";

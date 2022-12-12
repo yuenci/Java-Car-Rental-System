@@ -5,6 +5,7 @@ import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.ui_components.BankCard;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -66,6 +67,7 @@ public class PaymentController extends Controller{
     private String currentCardNumber = "";
     private String currentCardExpireDate = "";
     private String currentCardHolder = "";
+    private BankCard firstBankCard = null;
 
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
@@ -215,11 +217,16 @@ public class PaymentController extends Controller{
         if (paypalData.size() >0) paypalStatus = true;
 
         if(cardStatus){
-            for (String[] datum : cardData) {
+            for (int i = 0; i < cardData.size(); i++) {
+                String[] datum = cardData.get(i);
                 BankCard bankCard = new BankCard(datum[0], datum[1], datum[2], datum[3]);
+                if(i == 0) {
+                    firstBankCard = bankCard;
+                }
                 bankCards.add(bankCard);
                 vBox.getChildren().add(bankCard);
             }
+
         }else{
             cardTypeAndNum.setText("No Card");
             expiresDate.setText("");
@@ -243,7 +250,7 @@ public class PaymentController extends Controller{
 
     public void updateInfo(String cardTypeAndCardNum, String expiresDate, String cardNumber,String cardType, String cardHolderName){
         this.cardTypeAndNum.setText(cardTypeAndCardNum);
-        this.expiresDate.setText(expiresDate);
+        this.expiresDate.setText("Expires on " + expiresDate);
         this.currentCardHolder = cardHolderName;
         this.currentCardType = cardType;
         this.currentCardNumber = cardNumber;
@@ -272,6 +279,9 @@ public class PaymentController extends Controller{
             }
         }else if (Objects.equals(payMethod, "visa") || Objects.equals(payMethod, "mastercard")){
             if(cardStatus){
+                if(Objects.equals(currentCardNumber, "")){
+                    firstBankCard.updateCurrentInfo();
+                }
                 showBankCardCheckoutPage();
             }else{
                 MessageFrame messageFrame = new MessageFrame(MessageFrameType.NOTIFICATION, "You don't have a bank card, please add one first");
@@ -316,7 +326,7 @@ public class PaymentController extends Controller{
             if(message.equalsIgnoreCase("consentButton clicked")){
                 Platform.runLater(() -> {
                     primaryStage.close();
-                    FXTools.changeScene("paySuccessPage.fxml");
+                    afterPaySuccess();
                 });
             }else if(message.equals("login success")){
                 Platform.runLater(() -> primaryStage.setTitle("PayPal Checkout"));
@@ -347,18 +357,13 @@ public class PaymentController extends Controller{
         String expireDate = currentCardExpireDate;
         String cardHolder = currentCardHolder;
 
+        String jsArgs = String.format("addData('%s', '%s', '%s','%s','%s');", price,email,cardNum,expireDate,cardHolder);
+        FileOperate.rewriteFile("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.js",jsArgs);
+
         browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.html").getAbsolutePath());
 
         BrowserView view = BrowserView.newInstance(browser);
         Scene scene = new Scene(new BorderPane(view), 1100, 700);
-
-        String jsArgs = String.format("addData('%s', '%s', '%s','%s','%s')", price,email,cardNum,expireDate,cardHolder);
-        //String jsArgs = String.format("addData('%s', '%s', '%s','%s','%s')", "RM10000", "1575270dad@qq.com", "123121122121", "12/22", "Yuenci");
-        // jxBrowser execute JavaScript
-        System.out.println(jsArgs);
-        Frame frame = browser.frames().get(0);
-        frame.executeJavaScript(jsArgs);
-
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
@@ -367,17 +372,12 @@ public class PaymentController extends Controller{
             if(message.equalsIgnoreCase("payBtn click")){
                 Platform.runLater(() -> {
                     primaryStage.close();
-                    FXTools.changeScene("paySuccessPage.fxml");
+                    afterPaySuccess();
                 });
             }else if(message.equals("backBtn click")){
                 Platform.runLater(primaryStage::close);
             }
         });
-
-//        browser.mainFrame().ifPresent(frame -> {
-//            frame.executeJavaScript(jsArgs);
-//        });
-
 
         primaryStage.setTitle("Checkout");
         primaryStage.setScene(scene);
@@ -387,5 +387,49 @@ public class PaymentController extends Controller{
             engine.close();
         });
 
+    }
+
+    private void afterPaySuccess(){
+        makePayment();
+        FXTools.changeScene("paySuccessPage.fxml");
+    }
+
+    private void makePayment(){
+        // update order
+        int  price = Integer.parseInt(totalPrice.getText().substring(2)) ;
+        String paymentMethod =  StatusContainer.currentPaymentMethod;
+        String account = "null";
+        if(Objects.equals(paymentMethod, "paypal")){
+            account = DataTools.getPayPalAccountFromUserID(StatusContainer.currentUser.getUserID());
+        }else{
+            account = this.currentCardNumber;
+        }
+        int status = 1;
+
+        // add new schedule event
+        String sql = "UPDATE orders SET price = " + price + ", paymentMethod = '" + paymentMethod + "', account = '" + account + "', status = " + status + " WHERE orderID = " + StatusContainer.currentOrderID;
+        System.out.println(sql);
+
+        String scheduleID = DataTools.getNewID("schedule") + "";
+        String orderID = StatusContainer.currentOrderID + "";
+        String statusStr = "1";
+        String relate = "null";
+        String time = DateTools.getNow();
+        String sql2 = "INSERT INTO schedule VALUES (" + scheduleID + ", " + orderID + ", " + statusStr + ", '" + relate + "', '" + time + "')";
+        System.out.println(sql2);
+
+        // add new transaction
+        String transactionID = DataTools.getNewID("transactionRecord") + "";
+        String userID = StatusContainer.currentUser.getUserID() + "";
+        String type = "rental";
+        String TRMethod = paymentMethod;
+        String  amount = price + "";
+        String TRDateTIme = time;
+        String sql3 = "INSERT INTO transactionRecord VALUES (" + transactionID + ", " + userID + ", "+ orderID+ ", '" + type + "', '" + TRMethod + "', " + amount + ", '" + TRDateTIme + "')";
+        System.out.println(sql3);
+
+//        SQL.execute(sql);
+//        SQL.execute(sql2);
+//        SQL.execute(sql3);
     }
 }

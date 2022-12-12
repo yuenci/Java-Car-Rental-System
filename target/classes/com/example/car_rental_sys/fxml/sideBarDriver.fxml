@@ -6,9 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="832.0" prefWidth="260.0" style="-fx-background-color: white;"
-      stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.DriverSideController">
+<Pane prefHeight="832.0" prefWidth="260.0" style="-fx-background-color: white;" stylesheets="@../style/driverMainPage.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.DriverSideController">
     <ImageView fx:id="avatarImageView" fitHeight="114.0" fitWidth="80.0" layoutX="90.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../image/avatar/1.png" />
     </ImageView>
@@ -121,27 +119,25 @@
         </ImageView>
     </Pane>
     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="21.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../image/UI/star2.png"/>
+        <Image url="@../image/UI/star2.png" />
     </ImageView>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="114.0" layoutY="300.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../image/UI/orders.png"/>
+    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="114.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../image/UI/orders.png" />
     </ImageView>
-   <Label layoutX="25.0" layoutY="347.0" text="5.0">
+   <Label fx:id="rating" layoutX="25.0" layoutY="347.0" text="5.0">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="116.0" layoutY="347.0" text="100">
+   <Label fx:id="exp" layoutX="121.0" layoutY="347.0" text="90">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="209.0" layoutY="300.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../image/UI/orders.png"/>
+    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="209.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../image/UI/slash.png" />
     </ImageView>
-   <Label layoutX="211.0" layoutY="347.0" text="100">
+   <Label fx:id="speed" layoutX="213.0" layoutY="347.0" text="2.0">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>

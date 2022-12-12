@@ -52,13 +52,17 @@ public class BankCard extends Pane {
                 bankCard.setChoseDoneInvisible();
             }
             choseDone.setVisible(true);
-            StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardNumber,this.cardType,this.cardHolderName);
+            updateCurrentInfo();
             StatusContainer.radioBtn2.setSelected(true);
         });
 
         this.setOnMouseEntered(event -> this.setStyle("-fx-background-color: #f3f3f5; -fx-background-radius: 10px; -fx-padding: 10px;"));
 
         this.setOnMouseExited(event -> this.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10px; -fx-padding: 10px;"));
+    }
+
+    public void updateCurrentInfo(){
+        StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardNumber,this.cardType,this.cardHolderName);
     }
 
     private  void  initComponents(){
@@ -69,7 +73,8 @@ public class BankCard extends Pane {
         cardTypeAndNumber.setLayoutY(20);
         cardTypeAndNumber.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #000000;");
 
-        this.cardExpireDateText = "Expires on " +  this.cardExpireDate;
+//        this.cardExpireDateText = "Expires on " +  this.cardExpireDate;
+        this.cardExpireDateText =  this.cardExpireDate;
         Label cardExpireDate = new Label(cardExpireDateText);
         cardExpireDate.setLayoutX(140);
         cardExpireDate.setLayoutY(45);

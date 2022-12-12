@@ -105,7 +105,13 @@ public class DataTools {
     }
 
     public static int getNewUserID() {
-        ArrayList<String[]> result = com.example.car_rental_sys.sqlParser.FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/userInfo.txt");
+        ArrayList<String[]> result = FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/userInfo.txt");
+        //System.out.println(result.size() );
+        return result.size();
+    }
+
+    public static int getNewID(String tableName) {
+        ArrayList<String[]> result = FileOperate.readFileToArray("src/main/resources/com/example/car_rental_sys/data/" + tableName + ".txt");
         //System.out.println(result.size() );
         return result.size();
     }
@@ -194,6 +200,7 @@ public class DataTools {
             return null;
         }
     }
+
 
     public static int getModelIDFromCarModel(String carModel) {
         String sql = "SELECT modelID FROM carModels WHERE carModel = '" + carModel + "'";
@@ -787,12 +794,18 @@ public class DataTools {
         return getAvailableData(carStatusData);
     }
 
-    public static boolean ifCarAvailable(String carModel) {
-        int carID = getModelIDFromCarModel(carModel);
-        return ifCarAvailable(carID);
+    public static boolean ifCarsAvailable(String carModel) {
+        int carModelID = getModelIDFromCarModel(carModel);
+        ArrayList<Integer> availableCars = carsAvailable(carModelID);
+        return availableCars.size() != 0;
     }
 
-    public static boolean ifCarAvailable(int carID) {
+    public static ArrayList<Integer> carsAvailable(String carModel) {
+        int carModelID = getModelIDFromCarModel(carModel);
+        return carsAvailable(carModelID);
+    }
+
+    public static ArrayList<Integer> carsAvailable(int carModelID) {
         String dataPath = "src/main/resources/com/example/car_rental_sys/data/carStatus.txt";
         ArrayList<String[]> carStatusAllData =
                 FileOperate.readFileToArray(dataPath, true);
@@ -800,13 +813,11 @@ public class DataTools {
         ArrayList<String[]> carStatusData = new ArrayList<>();
 
         for (String[] strings : carStatusAllData) {
-            if (Integer.parseInt(strings[1]) == carID) {
+            if (Integer.parseInt(strings[1]) == carModelID) {
                 carStatusData.add(strings);
             }
         }
-
-        return getAvailableData(carStatusData).size() != 0;
-
+        return getAvailableData(carStatusData);
     }
 
     private static ArrayList<Integer> getAvailableData(ArrayList<String[]> data) {
@@ -817,6 +828,8 @@ public class DataTools {
             long end = strings[3].length() == 0 ? 0 : Long.parseLong(strings[3]) * 1000;
             long pickupTime = StatusContainer.pickUpTimeStamp;
             long returnTime = StatusContainer.returnTimeStamp;
+//            System.out.println(DateTools.timeStampToDateTime(start) + " " + DateTools.timeStampToDateTime(end) );
+//            System.out.println(DateTools.timeStampToDateTime(pickupTime) + " " + DateTools.timeStampToDateTime(returnTime));
 
             if (returnTime < start || pickupTime > end) {
                 // available
@@ -876,6 +889,13 @@ public class DataTools {
             balance += Integer.parseInt(strings[0]);
         }
         return balance;
+    }
+
+    public static String getPayPalAccountFromUserID(int userID){
+        String sql = "select cardNumber from bankCardInfo where userID = " + userID;
+        ArrayList<String[]> data = SQL.query(sql);
+        if (data.size() == 0) return null;
+        return data.get(0)[0];
     }
 }
 
