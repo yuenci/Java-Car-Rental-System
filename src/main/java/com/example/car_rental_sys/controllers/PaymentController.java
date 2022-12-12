@@ -66,6 +66,7 @@ public class PaymentController extends Controller{
     private String currentCardNumber = "";
     private String currentCardExpireDate = "";
     private String currentCardHolder = "";
+    private BankCard firstBankCard = null;
 
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
@@ -215,11 +216,16 @@ public class PaymentController extends Controller{
         if (paypalData.size() >0) paypalStatus = true;
 
         if(cardStatus){
-            for (String[] datum : cardData) {
+            for (int i = 0; i < cardData.size(); i++) {
+                String[] datum = cardData.get(i);
                 BankCard bankCard = new BankCard(datum[0], datum[1], datum[2], datum[3]);
+                if(i == 0) {
+                    firstBankCard = bankCard;
+                }
                 bankCards.add(bankCard);
                 vBox.getChildren().add(bankCard);
             }
+
         }else{
             cardTypeAndNum.setText("No Card");
             expiresDate.setText("");
@@ -272,6 +278,7 @@ public class PaymentController extends Controller{
             }
         }else if (Objects.equals(payMethod, "visa") || Objects.equals(payMethod, "mastercard")){
             if(cardStatus){
+                firstBankCard.updateCurrentInfo();
                 showBankCardCheckoutPage();
             }else{
                 MessageFrame messageFrame = new MessageFrame(MessageFrameType.NOTIFICATION, "You don't have a bank card, please add one first");

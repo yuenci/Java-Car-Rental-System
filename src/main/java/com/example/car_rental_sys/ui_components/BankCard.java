@@ -52,13 +52,17 @@ public class BankCard extends Pane {
                 bankCard.setChoseDoneInvisible();
             }
             choseDone.setVisible(true);
-            StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardNumber,this.cardType,this.cardHolderName);
+            updateCurrentInfo();
             StatusContainer.radioBtn2.setSelected(true);
         });
 
         this.setOnMouseEntered(event -> this.setStyle("-fx-background-color: #f3f3f5; -fx-background-radius: 10px; -fx-padding: 10px;"));
 
         this.setOnMouseExited(event -> this.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10px; -fx-padding: 10px;"));
+    }
+
+    public void updateCurrentInfo(){
+        StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardNumber,this.cardType,this.cardHolderName);
     }
 
     private  void  initComponents(){

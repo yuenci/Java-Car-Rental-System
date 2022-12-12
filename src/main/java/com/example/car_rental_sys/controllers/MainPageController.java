@@ -296,12 +296,10 @@ public class MainPageController extends Controller{
         BrowserModal browserModal = new BrowserModal(600, 455, url) ;
         browserModal.setModality();
         Function<String, Void> func = (message) -> {
-            if(message.length() == 73){
+            if(message.length() == 73 || message.length() == 74){
                 String[] messageArray = message.split(";");
                 StatusContainer.pickDateTime = messageArray[0];
                 StatusContainer.returnDateTime = messageArray[1];
-
-
 
                 Platform.runLater(() -> {
                     if(DateTools.validateDate(messageArray[2],messageArray[3])){
