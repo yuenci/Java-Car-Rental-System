@@ -136,7 +136,7 @@ public class ImageTools {
 
     public static Image getImageObjFromUserID(int userID) {
         String avatarRoot = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
-        System.out.println(avatarRoot);
+        //System.out.println(avatarRoot);
         File file = new File(avatarRoot);
         String path;
         if (file.exists()) {

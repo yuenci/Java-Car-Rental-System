@@ -204,6 +204,9 @@ engine.load(url.toString());
 # create a jxBrowser windows
 
 ```java
+System.setProperty("jxbrowser.license.key", ConfigFile.jxBrowserLicense);
+// get jxBrowser license
+
 Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
 
 // HARDWARE_ACCELERATED : 硬件加速模式

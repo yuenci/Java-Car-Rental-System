@@ -13,15 +13,17 @@ public class BankCard extends Pane {
     private String cardNumber;
     private String cardType;
     private String cardExpireDate;
+    private String cardHolderName;
 
     private String cardTypeAndNumberText;
     private String cardExpireDateText;
 
     private  ImageView choseDone;
-    public BankCard(String cardNumber, String cardType, String cardExpireDate) {
+    public BankCard(String cardNumber, String cardType, String cardExpireDate,String cardHolder) {
         this.cardNumber = cardNumber;
         this.cardType = cardType;
         this.cardExpireDate = cardExpireDate;
+        this.cardHolderName = cardHolder;
         initialize();
     }
 
@@ -50,7 +52,7 @@ public class BankCard extends Pane {
                 bankCard.setChoseDoneInvisible();
             }
             choseDone.setVisible(true);
-            StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardType);
+            StatusContainer.paymentControllerInstance.updateInfo(this.cardTypeAndNumberText, this.cardExpireDateText,this.cardNumber,this.cardType,this.cardHolderName);
             StatusContainer.radioBtn2.setSelected(true);
         });
 

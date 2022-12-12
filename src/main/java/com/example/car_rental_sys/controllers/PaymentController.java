@@ -15,6 +15,7 @@ import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.frame.Frame;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
+import com.teamdev.jxbrowser.js.JsObject;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -61,6 +62,10 @@ public class PaymentController extends Controller{
 
     private boolean paypalStatus = false;
     private boolean cardStatus = false;
+    private String currentCardType = "";
+    private String currentCardNumber = "";
+    private String currentCardExpireDate = "";
+    private String currentCardHolder = "";
 
 
     public ArrayList<BankCard> bankCards = new ArrayList<>();
@@ -201,7 +206,7 @@ public class PaymentController extends Controller{
 
         VBox vBox = new VBox();
         int cusID = StatusContainer.currentUser.getUserID();
-        String sql = "select cardNumber,cardType,validDate from bankCardInfo where userID = " + cusID + " and cardType <> 'paypal'";
+        String sql = "select cardNumber,cardType,validDate,cardHolder from bankCardInfo where userID = " + cusID + " and cardType <> 'paypal'";
         ArrayList<String[]> cardData= SQL.query(sql);
         if (cardData.size() >0) cardStatus = true;
 
@@ -211,7 +216,7 @@ public class PaymentController extends Controller{
 
         if(cardStatus){
             for (String[] datum : cardData) {
-                BankCard bankCard = new BankCard(datum[0], datum[1], datum[2]);
+                BankCard bankCard = new BankCard(datum[0], datum[1], datum[2], datum[3]);
                 bankCards.add(bankCard);
                 vBox.getChildren().add(bankCard);
             }
@@ -236,9 +241,13 @@ public class PaymentController extends Controller{
         bankCardsContainer.setContent(vBox);
     }
 
-    public void updateInfo(String cardTypeAndCardNum, String expiresDate, String cardType){
+    public void updateInfo(String cardTypeAndCardNum, String expiresDate, String cardNumber,String cardType, String cardHolderName){
         this.cardTypeAndNum.setText(cardTypeAndCardNum);
         this.expiresDate.setText(expiresDate);
+        this.currentCardHolder = cardHolderName;
+        this.currentCardType = cardType;
+        this.currentCardNumber = cardNumber;
+        this.currentCardExpireDate = expiresDate;
 
         Image image = null;
         if(cardType.equalsIgnoreCase("visa")){
@@ -331,15 +340,22 @@ public class PaymentController extends Controller{
         Browser browser = engine.newBrowser();
         Stage primaryStage = new Stage();
 
-        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.html").getAbsolutePath());
         //addData(100, "1575270674@qq.com", "1234567890123456");
-        String price = "'" + totalPrice.getText() + "'";
+        String price = totalPrice.getText();
         String email = StatusContainer.currentUser.getEmail() ;
-        String cardNum = StatusContainer.currentChooseBankCardNum;
+        String cardNum = currentCardNumber;
+        String expireDate = currentCardExpireDate;
+        String cardHolder = currentCardHolder;
 
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/payMethods/checkout.html").getAbsolutePath());
 
-        String jsArgs = String.format("addData(%s, '%s', '%s')", price,email,cardNum);
+        BrowserView view = BrowserView.newInstance(browser);
+        Scene scene = new Scene(new BorderPane(view), 1100, 700);
+
+        String jsArgs = String.format("addData('%s', '%s', '%s','%s','%s')", price,email,cardNum,expireDate,cardHolder);
+        //String jsArgs = String.format("addData('%s', '%s', '%s','%s','%s')", "RM10000", "1575270dad@qq.com", "123121122121", "12/22", "Yuenci");
         // jxBrowser execute JavaScript
+        System.out.println(jsArgs);
         Frame frame = browser.frames().get(0);
         frame.executeJavaScript(jsArgs);
 
@@ -358,8 +374,10 @@ public class PaymentController extends Controller{
             }
         });
 
-        BrowserView view = BrowserView.newInstance(browser);
-        Scene scene = new Scene(new BorderPane(view), 1100, 700);
+//        browser.mainFrame().ifPresent(frame -> {
+//            frame.executeJavaScript(jsArgs);
+//        });
+
 
         primaryStage.setTitle("Checkout");
         primaryStage.setScene(scene);
