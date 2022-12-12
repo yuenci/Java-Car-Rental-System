@@ -391,7 +391,7 @@ public class PaymentController extends Controller{
 
     private void afterPaySuccess(){
         makePayment();
-        //FXTools.changeScene("paySuccessPage.fxml");
+        FXTools.changeScene("paySuccessPage.fxml");
     }
 
     private void makePayment(){

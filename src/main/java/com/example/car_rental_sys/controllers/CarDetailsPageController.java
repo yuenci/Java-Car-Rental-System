@@ -260,10 +260,10 @@ public class CarDetailsPageController extends  Controller{
         }
 
         //check if user choose location
-//        if(StatusContainer.pickUpLocation == null){
-//            showLocationPicker();
-//            return;
-//        }
+        if(StatusContainer.pickUpLocation == null){
+            showLocationPicker();
+            return;
+        }
 
 
         //check if user is login
