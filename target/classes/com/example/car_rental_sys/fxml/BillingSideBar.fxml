@@ -13,7 +13,7 @@
                 <Image url="@../image/UI/spendingIcon.png" />
             </ImageView>
         </Pane>
-        <Label layoutX="102.0" layoutY="27.0" style="-fx-text-fill: #dfdfdf;" text="Monthly Spending" textFill="#4e5969">
+        <Label layoutX="102.0" layoutY="27.0" style="-fx-text-fill: #dfdfdf;" text="Total Spending" textFill="#4e5969">
             <font>
                 <Font name="Arial Bold" size="12.0" />
             </font>

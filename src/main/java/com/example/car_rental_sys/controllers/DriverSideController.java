@@ -6,17 +6,23 @@ import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ToolsLib.StringTools;
 import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+
 public class DriverSideController {
     private Driver driver = (Driver) StatusContainer.currentUser;
 
     @FXML
     Label postLabel,nameLabel,carNumberLabel;
+
+    @FXML
+    Label rating,exp,speed;
 
     @FXML
     ImageView avatarImageView;
@@ -29,6 +35,7 @@ public class DriverSideController {
 //        System.out.println("DriverSideController");
         initSideBar();
         initMenuEvent();
+        InitDriverInfo();
     }
 
     private void initSideBar() {
@@ -82,6 +89,26 @@ public class DriverSideController {
         item6.getStyleClass().remove("menuItemActive");
 
         activePane.getStyleClass().add("menuItemActive");
+    }
+
+    private void InitDriverInfo() {
+        rating.setAlignment(Pos.CENTER);
+        exp.setAlignment(Pos.CENTER);
+        speed.setAlignment(Pos.CENTER);
+
+        rating.setText("3.0");
+        exp.setText("70");
+        speed.setText("5.0");
+
+        String sql = "select * from driverInfo where driverID = " + StatusContainer.currentUser.getUserID();
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() != 0) {
+            String[] info = result.get(0);
+            rating.setText(info[1]);
+            exp.setText(info[2]);
+            speed.setText(info[3]);
+        }
+
     }
 }
 
