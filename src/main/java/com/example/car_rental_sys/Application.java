@@ -1,7 +1,6 @@
 package com.example.car_rental_sys;
 
 import com.example.car_rental_sys.ToolsLib.*;
-import com.example.car_rental_sys.controllers.UIPaginationController;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.Test;
 import com.example.car_rental_sys.orm.Admin;

@@ -1,123 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane prefHeight="160.0" prefWidth="460.0"
-      style="-fx-background-color: #101010; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.showCardDetailsController">
+<Pane prefHeight="160.0" prefWidth="460.0" style="-fx-background-color: #101010; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #C9CDD4;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.showCardDetailsController">
     <Label layoutX="12.0" layoutY="10.0" text="Card Details" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Black" size="15.0"/>
+            <Font name="Arial Black" size="15.0" />
         </font>
     </Label>
     <Label layoutX="12.0" layoutY="43.0" text="Card Name" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
     <Label layoutX="12.0" layoutY="79.0" text="Valid Date" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
     <Label layoutX="12.0" layoutY="113.0" text="Card Number" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
     <Label fx:id="cardName" layoutX="12.0" layoutY="57.0" text="PayPal Balance" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
     <Label fx:id="cardValidDate" layoutX="12.0" layoutY="92.0" text="01/28" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
     <Label fx:id="cardNumber" layoutX="12.0" layoutY="126.0" text="**** **** **** 5678" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
     <Label layoutX="157.0" layoutY="43.0" text="Bank Name" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
     <Label layoutX="157.0" layoutY="79.0" text="Card Holder" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
-    <Label layoutX="157.0" layoutY="113.0" text="Card Theme" textFill="#86909c">
+    <Label fx:id="lblTheme" layoutX="157.0" layoutY="113.0" text="Card Theme" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
     <Label fx:id="cardBankName" layoutX="157.0" layoutY="57.0" text="PayPal.Inc" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
     <Label fx:id="cardHolderName" layoutX="158.0" layoutY="92.0" text="Wong Chun Wei" textFill="#f7f8fa">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
-    <Pane fx:id="themeWhite" layoutX="158.0" layoutY="127.0" onMouseClicked="#themeWhiteClicked" prefHeight="12.0"
-          prefWidth="12.0" style="-fx-background-color: #ffffff; -fx-background-radius: 14px;"/>
-    <Pane fx:id="themeRed" layoutX="175.0" layoutY="127.0" onMouseClicked="#themeRedClicked" prefHeight="13.0"
-          prefWidth="13.0" style="-fx-background-color: #A60101; -fx-background-radius: 14px;"/>
-    <Pane fx:id="themeBlue" layoutX="192.0" layoutY="127.0" onMouseClicked="#themeBlueClicked" prefHeight="13.0"
-          prefWidth="13.0" style="-fx-background-color: #165DFF; -fx-background-radius: 13px;"/>
-    <Pane fx:id="themeGreen" layoutX="210.0" layoutY="127.0" onMouseClicked="#themeGreenClicked" prefHeight="13.0"
-          prefWidth="13.0" style="-fx-background-color: #B5E241; -fx-background-radius: 13px;"/>
-    <Pane fx:id="themeOrange" layoutX="228.0" layoutY="127.0" onMouseClicked="#themeOrangeClicked" prefHeight="13.0"
-          prefWidth="13.0" style="-fx-background-color: #F99057; -fx-background-radius: 13px;"/>
+    <Pane fx:id="themeWhite" layoutX="158.0" layoutY="127.0" onMouseClicked="#themeWhiteClicked" prefHeight="12.0" prefWidth="12.0" style="-fx-background-color: #ffffff; -fx-background-radius: 14px;" />
+    <Pane fx:id="themeRed" layoutX="175.0" layoutY="127.0" onMouseClicked="#themeRedClicked" prefHeight="13.0" prefWidth="13.0" style="-fx-background-color: #A60101; -fx-background-radius: 14px;" />
+    <Pane fx:id="themeBlue" layoutX="192.0" layoutY="127.0" onMouseClicked="#themeBlueClicked" prefHeight="13.0" prefWidth="13.0" style="-fx-background-color: #165DFF; -fx-background-radius: 13px;" />
+    <Pane fx:id="themeGreen" layoutX="210.0" layoutY="127.0" onMouseClicked="#themeGreenClicked" prefHeight="13.0" prefWidth="13.0" style="-fx-background-color: #B5E241; -fx-background-radius: 13px;" />
+    <Pane fx:id="themeOrange" layoutX="228.0" layoutY="127.0" onMouseClicked="#themeOrangeClicked" prefHeight="13.0" prefWidth="13.0" style="-fx-background-color: #F99057; -fx-background-radius: 13px;" />
     <Label layoutX="296.0" layoutY="43.0" text="Billing Address" textFill="#86909c">
         <font>
-            <Font name="Arial Bold" size="10.0"/>
+            <Font name="Arial Bold" size="10.0" />
         </font>
     </Label>
-    <Label fx:id="cardBillingAddress" layoutX="295.0" layoutY="51.0" prefHeight="62.0" prefWidth="138.0"
-           text="4, Jalan Technology Park, 48600, Bukit Jalil, Malaysia" textFill="#f7f8fa" wrapText="true">
+    <Label fx:id="cardBillingAddress" alignment="TOP_LEFT" layoutX="296.0" layoutY="59.0" prefHeight="62.0" prefWidth="138.0" text="4, Jalan Technology Park, 48600, Bukit Jalil, Malaysia" textFill="#f7f8fa" wrapText="true">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Label>
-    <TextArea fx:id="txtBillingAddress" layoutX="291.0" layoutY="55.0" prefHeight="78.0" prefWidth="160.0"
-              text="4, Jalan Technology Park,&#10;48600 Bukit Jalil,&#10;Malaysia&#10;" visible="false"/>
-    <TextField fx:id="txtCardName" layoutX="12.0" layoutY="54.0" prefHeight="15.0" prefWidth="124.0"
-               text="PayPal Balance" visible="false">
+    <TextArea fx:id="txtBillingAddress" layoutX="291.0" layoutY="55.0" prefHeight="78.0" prefWidth="160.0" text="4, Jalan Technology Park,&#10;48600 Bukit Jalil,&#10;Malaysia&#10;" visible="false" />
+    <TextField fx:id="txtCardName" layoutX="12.0" layoutY="54.0" prefHeight="15.0" prefWidth="124.0" text="PayPal Balance" visible="false">
         <font>
-            <Font size="11.0"/>
+            <Font size="11.0" />
         </font>
     </TextField>
-    <Button fx:id="cardEditBtn" layoutX="397.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#cardEditClicked"
-            prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-cursor: hand;"
-            styleClass="cardButton" text="Edit" textFill="#4080ff">
+    <Button fx:id="cardEditBtn" layoutX="397.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#cardEditClicked" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-cursor: hand;" styleClass="cardButton" text="Edit" textFill="#4080ff">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Button>
-    <Button fx:id="cardSaveBtn" layoutX="316.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#cardSaveClicked"
-            prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: transparent; -fx-cursor: hand;"
-            styleClass="cardButton" text="Save" textFill="#4080ff" visible="false">
+    <Button fx:id="cardSaveBtn" layoutX="316.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#cardSaveClicked" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: transparent; -fx-cursor: hand;" styleClass="cardButton" text="Save" textFill="#4080ff" visible="false">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Button>
-    <Button fx:id="cardDeleteBtn" layoutX="371.0" layoutY="9.0" mnemonicParsing="false"
-            onMouseClicked="#cardDeleteClicked" prefHeight="25.0" prefWidth="81.0"
-            style="-fx-background-color: transparent; -fx-cursor: hand;" styleClass="cardButton" text="Delete Card"
-            textFill="#4080ff" visible="false">
+    <Button fx:id="cardDeleteBtn" layoutX="371.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#cardDeleteClicked" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: transparent; -fx-cursor: hand;" styleClass="cardButton" text="Delete Card" textFill="#4080ff" visible="false">
         <font>
-            <Font name="Arial Bold" size="11.0"/>
+            <Font name="Arial Bold" size="11.0" />
         </font>
     </Button>
 </Pane>

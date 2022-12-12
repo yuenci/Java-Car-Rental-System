@@ -1,5 +1,9 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.controllers.showCardDetailsController;
+import com.example.car_rental_sys.orm.Card;
+import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -37,7 +41,7 @@ public class PaymentCard extends Pane {
             case "visa":
                 initBankCard("visa");
                 break;
-            case "master":
+            case "mastercard":
                 initBankCard("master");
                 break;
             case "tng":
@@ -140,9 +144,12 @@ public class PaymentCard extends Pane {
         this.setOnMouseEntered(event -> this.setCursor(Cursor.HAND));
         this.setOnMouseExited(event -> this.setCursor(Cursor.DEFAULT));
 
-        this.setOnMouseClicked(event -> System.out.println("clicked " + cardName));
-        //get the card info then send to show card details
-
+        this.setOnMouseClicked(event -> {
+            //System.out.println("clicked " + cardName);
+            StatusContainer.currentCard = new Card(StatusContainer.currentUser.getUserID(),this.cardNumber);
+            //System.out.println(StatusContainer.currentCard);
+            Platform.runLater(() -> showCardDetailsController.instance.initText());
+        });
 
     }
 }

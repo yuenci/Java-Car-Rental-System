@@ -345,6 +345,17 @@ public class DataTools {
         }
     }
 
+    public static String getTotalSpending(int customerID){
+        String sql = "select sum(amount) from transactionRecord where userID = " + customerID + " and type = 'rental'";
+        //System.out.println(sql);
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return "0";
+        } else {
+            return result.get(0)[0];
+        }
+    }
+
     public static String getOrderIDStr(int orderID) {
         return String.format("%08d", orderID);
     }
@@ -371,6 +382,16 @@ public class DataTools {
                 bankCardsList[i] = result.get(i)[0];
             }
             return bankCardsList;
+        }
+    }
+
+    public static ArrayList<String[]> getCustomerBankCardsData(int customerID) {
+        String sql = "select * from bankCardInfo where userID = " + customerID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 0) {
+            return null;
+        } else {
+            return result;
         }
     }
 

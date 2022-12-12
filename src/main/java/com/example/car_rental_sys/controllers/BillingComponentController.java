@@ -115,50 +115,33 @@ public class BillingComponentController {
     private void addPaymentCardToPane(){
         FlowPane pane = new FlowPane();
 
-        PaymentCard visa = new PaymentCard("visa", "123456789123", "Yuenci", "Bank of China", "1000");
-        PaymentCard master = new PaymentCard("master", "123456789123", "My Master:)", "Bank of APU", "1000");
-        PaymentCard paymentCard = new PaymentCard("paypal", "123456789456", "My PayPal", "Bank of China", "1000");
-        PaymentCard payment = new PaymentCard("paypal", "123456789456", "My PayPal", "Bank of China", "1000");
-        PaymentCard paymentC = new PaymentCard("paypal", "123456789456", "My PayPal", "Bank of China", "1000");
-        PaymentCard[] cards = {visa, master, paymentCard, payment, paymentC};
-        for (int i = 0; i < cards.length; i++) {
-            PaymentCard card = cards[i];
-            if(i == 0){
-                card.setLayoutX(0);
-            }else{
-                card.setLayoutX(i * 150 + i*18);
+        ArrayList<String[]> cardsData = DataTools.getCustomerBankCardsData(user.getUserID());
+        int len = 0;
+        PaymentCard newCard = new PaymentCard("addNewCard");
+        if (cardsData != null){
+            for (int i = 0; i < cardsData.size(); i++) {
+                String[] row = cardsData.get(i);
+                PaymentCard card = new PaymentCard(row[1], row[6], row[2], row[3], row[8]);
+                card.setLayoutX(i * 300);
+                card.setLayoutY(0);
+                pane.getChildren().add(card);
             }
-            card.setLayoutY(0);
-            pane.getChildren().add(card);
+            len = cardsData.size();
+            newCard.setLayoutX((len+1) * 300);
+            newCard.setLayoutY(0);
+            pane.getChildren().add(newCard);
+            pane.setPrefWidth((len + 1) *180);
+        }else {
+            newCard.setLayoutX(0);
+            newCard.setLayoutY(0);
+            pane.getChildren().add(newCard);
+            pane.setPrefWidth(180);
         }
 
-        pane.setPrefWidth(cards.length * 180);
         pane.setHgap(20);
         pane.setVgap(18);
         pane.setPadding(new Insets(5,5,5,5));
         pane.setStyle("-fx-background-color: transparent;");
-        //pane.getChildren().addAll(visa, master, paymentCard);
-//        String query = "";
-//        //String query = "SELECT * FROM payment_card WHERE user_id = ";  //Customer.getID()
-//        ArrayList<String[]> cardDetails = SQL.query(query);
-//        double width = cardDetails.size() * 150;
-//        pane.setPrefWidth(width);
-//        pane.setPrefHeight(90);
-//        pane.setStyle("-fx-background-color: transparent");
-//
-//        int i = 0;
-//        for (String[] cardDetail : cardDetails) {
-//            //assumption: cardDetail[0] = card_type, cardDetail[1] = card_number, cardDetail[2] = card_name, cardDetail[3] = bank_name, cardDetail[4] = card_balance
-//            PaymentCard card = new PaymentCard(cardDetail[0], cardDetail[1], cardDetail[2], cardDetail[3], cardDetail[4]);
-//            if(i == 0){
-//                card.setLayoutX(0);
-//            }else{
-//                card.setLayoutX(i * 150 + 18);
-//            }
-//            card.setLayoutY(0);
-//            pane.getChildren().add(card);
-//            i++;
-//        }
 
         billCardList.setFitToHeight(true);
         billCardList.setContent(pane);
@@ -237,4 +220,10 @@ public class BillingComponentController {
            cusBillTable.getChildren().add(label);
         }
     }
+
+    public void refreshCardList(){
+        billCardList.setContent(null);
+        addPaymentCardToPane();
+    }
+
 }

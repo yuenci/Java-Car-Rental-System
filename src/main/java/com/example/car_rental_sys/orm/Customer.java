@@ -6,9 +6,12 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.FileOperate;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 public class Customer extends User {
     private int orderNum;
     private String[] bankCardList;
+    private ArrayList<String[]> bankCardData;
     private Image vipBadge;
     private Image vipCard;
 
@@ -25,6 +28,7 @@ public class Customer extends User {
         this.orderNum = DataTools.getCustomerOrderNum(userID);
         //System.out.println("orderNum: " + orderNum);
         this.bankCardList = DataTools.getCustomerBankCardsList(userID);
+        this.bankCardData = DataTools.getCustomerBankCardsData(userID);
         this.vipBadge = ImageTools.getBadgeImage(userID);
         this.vipCard = ImageTools.getVIPCardImage(userID);
     }
@@ -84,6 +88,14 @@ public class Customer extends User {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ArrayList<String[]> getBankCardData() {
+        return bankCardData;
+    }
+
+    public void setBankCardData(ArrayList<String[]> bankCardData) {
+        this.bankCardData = bankCardData;
     }
 }
 
