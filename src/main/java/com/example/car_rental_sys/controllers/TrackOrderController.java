@@ -8,6 +8,7 @@ import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.Order;
 import com.example.car_rental_sys.orm.User;
+import com.example.car_rental_sys.ui_components.FeedBackFrame;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
@@ -120,6 +121,8 @@ public class TrackOrderController {
             DataTools.updateOrderStatusWithID(order.getOrderID(), 5);
             OrderListComponentController.instance.getDataArray();
             OrderListComponentController.instance.refreshTable(1);
+
+            showFeedback();
             return null;
         });
 
@@ -128,5 +131,10 @@ public class TrackOrderController {
             return null;
         });
         messageFrame.show();
+    }
+
+    private void showFeedback(){
+        FeedBackFrame feedBackFrame = new FeedBackFrame(MessageFrameType.FEEDBACK);
+        feedBackFrame.show();
     }
 }

@@ -143,7 +143,7 @@
             </padding>
         </Label>
         <Line endX="300.0" layoutY="550.0" stroke="#e5e6eb" />
-        <Label id="helpBtn" layoutY="564.0" style="-fx-cursor: hand;" text="Need help?" textFill="#4080ff">
+        <Label id="helpBtn" fx:id="lblFeedback" layoutY="564.0" style="-fx-cursor: hand;" text="Feedback" textFill="#4080ff">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
@@ -166,7 +166,7 @@
                 <Font size="11.0" />
             </font>
         </Label>
-        <Button fx:id="btnTrackOrder" id="trackBtn" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
+        <Button id="trackBtn" fx:id="btnTrackOrder" layoutX="139.0" layoutY="628.0" mnemonicParsing="false" onMouseClicked="#btnTrackOrderClicked" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #0085FE; -fx-cursor: hand; -fx-background-radius: 6;" text="Track order" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -191,7 +191,7 @@
         <ImageView fx:id="trackIcon" fitHeight="20.0" fitWidth="20.0" layoutX="152.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/UI/target_Icon.png" />
         </ImageView>
-        <ImageView fx:id="paymentLogo" fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="56.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="lblLocation" alignment="TOP_LEFT" layoutX="167.0" layoutY="270.0" prefHeight="54.0" prefWidth="132.0" styleClass="lblSecondaryText" text="Jalan Technology Park, Bukit Jalil" textFill="#4e5969" wrapText="true" />
     </Pane>
 </Pane>
