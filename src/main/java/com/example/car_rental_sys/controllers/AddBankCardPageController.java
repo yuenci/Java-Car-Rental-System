@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,6 +15,10 @@ import javafx.scene.layout.Pane;
 
 public class AddBankCardPageController {
 
+    public ImageView backBtn;
+    public TextArea billTextArea;
+    public CheckBox sendMeCheckBox;
+    public Button addCardButton;
     @FXML
     Pane mainPane,tngType, visaType, paypalType ,typeMastercard;
 
@@ -40,6 +45,14 @@ public class AddBankCardPageController {
         setCardImages();
         initMainPaneEvent();
         initBanksChoiceBox();
+        initComponentEvent();
+    }
+
+    private void initComponentEvent() {
+        backBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            FXTools.changeScene("customerServicePage.fxml");
+            CustomerServiceController.instance.showWalletPage();
+        });
     }
 
     private void initRadioGroup(){

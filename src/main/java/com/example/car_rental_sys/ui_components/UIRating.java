@@ -129,11 +129,11 @@ public class UIRating extends Pane {
 
         Pane[] greyPanes = {greyPane1, greyPane2, greyPane3, greyPane4, greyPane5};
         //use a for loop to set the style of greyPanes
-        for (int i = 0; i < greyPanes.length; i++) {
-            greyPanes[i].setLayoutX(0);
-            greyPanes[i].setLayoutY(0);
-            greyPanes[i].setPrefSize(70, 70);
-            greyPanes[i].setStyle("-fx-background-color: #000000; -fx-background-radius: 10px; -fx-opacity: 0.5;");
+        for (Pane greyPane : greyPanes) {
+            greyPane.setLayoutX(0);
+            greyPane.setLayoutY(0);
+            greyPane.setPrefSize(70, 70);
+            greyPane.setStyle("-fx-background-color: #000000; -fx-background-radius: 10px; -fx-opacity: 0.5;");
         }
 
         Pane[] emojiPanes = {emojiPane1, emojiPane2, emojiPane3, emojiPane4, emojiPane5};
@@ -255,16 +255,6 @@ public class UIRating extends Pane {
     }
 
 
-    private void checkButtonStatus(){
-        if(status == 0){
-            btnPost.setDisable(false);
-            status = 1;
-        }else{
-            btnPost.setDisable(true);
-            status = 0;
-        }
-    }
-
     private void initButtonEvent(){
         btnPost.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
             if(status == 1){
@@ -284,9 +274,7 @@ public class UIRating extends Pane {
                 if (res) closeFeedback();
             }
         });
-        btnCancel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            closeFeedback();
-        });
+        btnCancel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> closeFeedback());
     }
 
     private void closeFeedback(){

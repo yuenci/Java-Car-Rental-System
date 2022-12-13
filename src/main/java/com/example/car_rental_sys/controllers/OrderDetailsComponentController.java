@@ -3,10 +3,7 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.orm.*;
-import com.example.car_rental_sys.ui_components.InvoiceBox;
-import com.example.car_rental_sys.ui_components.MessageFrame;
-import com.example.car_rental_sys.ui_components.MessageFrameType;
-import com.example.car_rental_sys.ui_components.UIOrderRow;
+import com.example.car_rental_sys.ui_components.*;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -51,10 +48,10 @@ public class OrderDetailsComponentController {
     @FXML
     private Label orderNum,orderDate,carName,orderQty,carPrice,paymentType,
             lblLocation,orderTime,approveTime,paymentTime,
-            dueTime,pickUpTime,totalAmount;
+            dueTime,pickUpTime,totalAmount, lblFeedback;
 
     @FXML
-    private ImageView paymentLogo,carImg,invoiceIcon,trackIcon;
+    private ImageView carImg,invoiceIcon,trackIcon;
 
     private CarModel carModel = StatusContainer.currentCarModel;
     private Order order = StatusContainer.currentOrder;
@@ -93,6 +90,11 @@ public class OrderDetailsComponentController {
         totalAmount.setText("RM" + order.getPrice());
         carImg.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/cars/"+carModel.getCarModel()+".png"));
         //paymentLogo.setImage(new javafx.scene.image.Image(new File("src/main/resources/images/"+detailsList[14].toString()).toURI().toString()));
+        lblFeedback.setVisible(false);
+
+        if(order.getStatus() == 5){
+            lblFeedback.setVisible(true);
+        }
     }
 
 
@@ -109,6 +111,7 @@ public class OrderDetailsComponentController {
                 e.printStackTrace();
             }
         });
+        lblFeedback.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> showFeedback());
     }
 
 
@@ -124,7 +127,6 @@ public class OrderDetailsComponentController {
         });
 
         messageFrame.setFailedCallbackFunc((i) -> {
-            //System.out.println(" reject order");
             messageFrame.close();
             return null;
         });
@@ -172,11 +174,14 @@ public class OrderDetailsComponentController {
     private void btnTrackOrderClicked(){
         if (StatusContainer.currentUser instanceof Customer){
             CustomerServiceController.instance.showTrackOrder();
-
-            //System.out.println(CustomerServiceController.instance);
         }else{
             AdminServiceController.instance.showTrackOrder();
-            //System.out.println("btnTrackOrderClicked@!!");
         }
     }
+
+    private void showFeedback(){
+        FeedBackFrame feedBackFrame = new FeedBackFrame(MessageFrameType.FEEDBACK);
+        feedBackFrame.show();
+   }
+
 }

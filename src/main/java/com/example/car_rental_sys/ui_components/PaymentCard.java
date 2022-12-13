@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.controllers.showCardDetailsController;
 import com.example.car_rental_sys.orm.Card;
 import javafx.application.Platform;
@@ -20,10 +21,13 @@ public class PaymentCard extends Pane {
     private String bankName;
     private String cardBalance;
     private String[] themeColor;
+    private String cardType;
 
     public PaymentCard(String type) {
         this.setPrefSize(150,90);
+        this.cardType = type;
         selectCardType(type);
+        initEvent();
     }
 
     public PaymentCard(String type, String number, String cardName, String bankName, String cardBalance) {
@@ -32,6 +36,7 @@ public class PaymentCard extends Pane {
         this.cardName = cardName;
         this.bankName = bankName;
         this.cardBalance = cardBalance;
+        this.cardType = type;
         selectCardType(type);
         initEvent();
     }
@@ -136,7 +141,7 @@ public class PaymentCard extends Pane {
         newCard.setStyle("-fx-text-fill: #000000; -fx-font-size: 14px; -fx-font-family: Arial");
         newCard.setLayoutX(47);
         newCard.setLayoutY(61);
-        this.setStyle(this.getStyle()+ "-fx-background-color: #ffffff; -fx-border-color: #C9CDD4; -fx-border-radius: 6px; -fx-background-radius: 6px");
+        this.setStyle(this.getStyle()+ "-fx-background-color: #ffffff; -fx-border-color: #C9CDD4; -fx-border-radius: 6px; -fx-background-radius: 6px; -fx-cursor: hand;");
         this.getChildren().addAll(addNewCard,newCard);
     }
 
@@ -145,10 +150,15 @@ public class PaymentCard extends Pane {
         this.setOnMouseExited(event -> this.setCursor(Cursor.DEFAULT));
 
         this.setOnMouseClicked(event -> {
-            //System.out.println("clicked " + cardName);
-            StatusContainer.currentCard = new Card(StatusContainer.currentUser.getUserID(),this.cardNumber);
-            //System.out.println(StatusContainer.currentCard);
-            Platform.runLater(() -> showCardDetailsController.instance.initText());
+            System.out.println(this.cardType);
+            if(cardType.equals("addNewCard")){
+                System.out.println("add new card");
+                FXTools.changeScene("addBankCardPage.fxml");
+            }else{
+                StatusContainer.currentCard = new Card(StatusContainer.currentUser.getUserID(),this.cardNumber);
+                Platform.runLater(() -> showCardDetailsController.instance.initText());
+            }
+
         });
 
     }
