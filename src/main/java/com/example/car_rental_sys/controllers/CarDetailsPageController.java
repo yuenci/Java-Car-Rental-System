@@ -136,7 +136,7 @@ public class CarDetailsPageController extends  Controller{
 
         String model = StatusContainer.currentCarChose;
         int modelID = DataTools.getModelIDFromCarModel(model);
-        String sql = "SELECT commentID FROM comments WHERE payload = '"+model+"'" + " and type='modelComment'";
+        String sql = "SELECT commentID FROM comments WHERE payload = '"+modelID+"'" + " and type='modelComment'";
         ArrayList<String[]> result = SQL.query(sql);
 
         commentsNum.setText(result.size() + " comments");
