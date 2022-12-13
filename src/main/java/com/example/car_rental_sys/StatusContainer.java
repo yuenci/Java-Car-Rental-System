@@ -51,6 +51,8 @@ public class StatusContainer {
     public static String pickUpLocation = null;
     public static int currentOrderID = 0;
     public static int currentContinueOrderID = 0;
+    public static boolean ifInCommentPage = false;
+    public static int relevantCommentID = 0;
 
 
     // self-test statues during loading

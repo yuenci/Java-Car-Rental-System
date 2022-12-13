@@ -13,3 +13,31 @@
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
+
+#backBtn:hover{
+    -fx-cursor: hand;
+}
+
+#textArea{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+/*    set textArea background*/
+
+}
+
+.text-area{
+    -fx-text-fill: #f6f6f6 !important;
+    -text-area-background: #151515 !important;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+    -fx-faint-focus-color: transparent !important;
+}
+
+.text-area .content {
+    -fx-background-color: #151515 !important;
+}
+
+#sendIcon:hover{
+    -fx-cursor: hand;
+}

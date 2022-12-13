@@ -42,23 +42,14 @@ public class NavigationBarController {
     private final String imagefolderRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
 
     @FXML
-    private void contactBtnClick() {
-        FXTools.changeScene("contactUsPage.fxml");
-    }
-
-    @FXML
-    private void aboutBtnClick() {
-        FXTools.changeScene("aboutUsPage.fxml");
-//        Loading.show();
-    }
-
-    @FXML
     private void homeBtnClick(ActionEvent actionEvent) {
-        new Tools().reSetScene(actionEvent,"mainPage.fxml");
+        StatusContainer.ifInCommentPage = false;
+        FXTools.changeScene("mainPage.fxml");
     }
 
     @FXML
     private void serviceBtnClick(ActionEvent actionEvent) {
+        StatusContainer.ifInCommentPage = false;
         if (StatusContainer.currentUser instanceof Admin){
             FXTools.changeScene("adminServicePage.fxml");
         }else if (StatusContainer.currentUser instanceof Customer){
@@ -70,6 +61,23 @@ public class NavigationBarController {
             FXTools.changeScene("loginPage.fxml");
         }
     }
+
+    @FXML
+    private void aboutBtnClick() {
+        StatusContainer.ifInCommentPage = false;
+        FXTools.changeScene("aboutUsPage.fxml");
+//        Loading.show();
+    }
+
+    @FXML
+    private void contactBtnClick() {
+        StatusContainer.ifInCommentPage = false;
+        FXTools.changeScene("contactUsPage.fxml");
+    }
+
+
+//
+
 
     @FXML
     void changeImage(String fileUrl, ImageView imageView){

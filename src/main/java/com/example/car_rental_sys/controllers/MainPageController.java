@@ -87,12 +87,8 @@ public class MainPageController extends Controller{
         initIntroLabel();
         mainPageController = this;
         StatusContainer.currentPageController = this;
-        test();
     }
-    private void test(){
-        FeedBackFrame feedBackFrame = new FeedBackFrame(MessageFrameType.FEEDBACK);
-        feedBackFrame.show();
-    }
+
 
 
     private void initIntroLabel(){
