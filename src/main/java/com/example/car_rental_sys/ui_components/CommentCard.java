@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,6 +21,9 @@ public class CommentCard extends Pane {
     private int  cardHeight = 90;
     private int cardWidth = 770;
     private String[] commentData;
+    private Button likeBtn, starBtn, replyBtn;
+    private boolean liked = false;
+    private boolean starred = false;
     public CommentCard(String commentID) {
         super();
         this.commentID = commentID;
@@ -38,7 +42,7 @@ public class CommentCard extends Pane {
                 .toURI().toString());
 
 
-        //System.out.println("commentID: " + commentID);
+        initEvent();
     }
     private void initData(){
         String sql = "select * from comments where commentID = " + commentID;
@@ -114,6 +118,18 @@ public class CommentCard extends Pane {
             button.setStyle("-fx-background-color: transparent;");
             button.getStyleClass().add("toolbarButton");
             hBox.getChildren().add(button);
+
+            switch (i){
+                case 0:
+                    likeBtn = button;
+                    break;
+                case 1:
+                    starBtn = button;
+                    break;
+                case 2:
+                    replyBtn = button;
+                    break;
+            }
         }
 
         return hBox;
@@ -135,5 +151,43 @@ public class CommentCard extends Pane {
     }
 
 
+    private  void initEvent(){
 
+        likeBtn.setOnAction(event -> {
+            if (liked) return;
+            int likeNumNew = Integer.parseInt(commentData[7]) + 1;
+            String sql = "update comments set likes = "+ likeNumNew +" where commentID = " + commentID;
+            System.out.println(sql);
+            SQL.execute(sql);
+            likeBtn.setText(Integer.parseInt(String.valueOf(likeNumNew))+ "");
+            liked = true;
+            setNewImage(likeBtn,"commentLiked.png");
+        });
+
+        starBtn.setOnAction(event -> {
+            if (starred) return;
+            int starNumNew = Integer.parseInt(commentData[8]) +  1;
+            String sql = "update comments set stars = "+ starNumNew +" where commentID = " + commentID;
+            SQL.execute(sql);
+            System.out.println(sql);
+            starBtn.setText(Integer.parseInt(String.valueOf(starNumNew)) + "");
+            starred = true;
+            setNewImage(starBtn,"commentStarred.png");
+        });
+
+        replyBtn.setOnAction(event -> {
+            String sql = "update comments set replies = replies + 1 where commentID = " + commentID;
+            SQL.execute(sql);
+            //replyBtn.setText(Integer.parseInt(replyBtn.getText()) + 1 + "");
+        });
+    }
+
+    private  void setNewImage(Button button, String imageName){
+        String UIImageRoot = "src/main/resources/com/example/car_rental_sys/image/UI/";
+        Image image = ImageTools.getImageObjFromPath(UIImageRoot +imageName );
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        button.setGraphic(imageView);
+    }
 }
