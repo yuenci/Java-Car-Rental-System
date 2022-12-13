@@ -16,7 +16,9 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 
 public class DriverSideController {
+    public Label nameTextLabel;
     private Driver driver = (Driver) StatusContainer.currentUser;
+    public static DriverSideController instance;
 
     @FXML
     Label postLabel,nameLabel,carNumberLabel;
@@ -28,14 +30,23 @@ public class DriverSideController {
     ImageView avatarImageView;
 
     @FXML
-    Pane item1, item2, item3, item4, item5, item6;
+    Pane item1, item2, item3, item4, item5;
+
+    @FXML
+    ImageView imgIcon1, imgIcon2, imgIcon3, imgIcon4, imgIcon5;
+
+    public DriverSideController(){
+        instance = this;
+    }
 
     @FXML
     private void initialize() {
 //        System.out.println("DriverSideController");
         initSideBar();
         initMenuEvent();
+        initIconEvent();
         InitDriverInfo();
+        item3.getStyleClass().add("menuItemActive");
     }
 
     private void initSideBar() {
@@ -55,6 +66,7 @@ public class DriverSideController {
     private void initMenuEvent() {
         item1.setOnMouseClicked(event -> {
             changeMenuStyle(item1);
+            DriverMainPageController.driverMainPageInstance.showProfilePage();
         });
         item2.setOnMouseClicked(event -> {
             changeMenuStyle(item2);
@@ -62,20 +74,43 @@ public class DriverSideController {
         });
         item3.setOnMouseClicked(event -> {
             changeMenuStyle(item3);
+            DriverMainPageController.driverMainPageInstance.showWorkPlace();
         });
         item4.setOnMouseClicked(event -> {
             changeMenuStyle(item4);
+            DriverMainPageController.driverMainPageInstance.showSettingPage();
         });
         item5.setOnMouseClicked(event -> {
             changeMenuStyle(item5);
-        });
-        item6.setOnMouseClicked(event -> {
-            changeMenuStyle(item6);
             StatusContainer.currentUser = null;
             DataTools.logOut();
             FXTools.changeScene("mainPage.fxml");
         });
+    }
 
+    private void initIconEvent(){
+        imgIcon1.setOnMouseClicked(event -> {
+            changeMenuStyle(item1);
+            DriverMainPageController.driverMainPageInstance.showProfilePage();
+        });
+        imgIcon2.setOnMouseClicked(event -> {
+            changeMenuStyle(item2);
+            FXTools.changeScene("messagePage.fxml");
+        });
+        imgIcon3.setOnMouseClicked(event -> {
+            changeMenuStyle(item3);
+            DriverMainPageController.driverMainPageInstance.showWorkPlace();
+        });
+        imgIcon4.setOnMouseClicked(event -> {
+            changeMenuStyle(item4);
+            DriverMainPageController.driverMainPageInstance.showSettingPage();
+        });
+        imgIcon5.setOnMouseClicked(event -> {
+            changeMenuStyle(item5);
+            StatusContainer.currentUser = null;
+            DataTools.logOut();
+            FXTools.changeScene("mainPage.fxml");
+        });
     }
 
 
@@ -86,7 +121,6 @@ public class DriverSideController {
         item3.getStyleClass().remove("menuItemActive");
         item4.getStyleClass().remove("menuItemActive");
         item5.getStyleClass().remove("menuItemActive");
-        item6.getStyleClass().remove("menuItemActive");
 
         activePane.getStyleClass().add("menuItemActive");
     }

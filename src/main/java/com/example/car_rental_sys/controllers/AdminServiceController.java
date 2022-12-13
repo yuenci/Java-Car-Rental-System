@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
 import javafx.fxml.FXML;
@@ -86,12 +87,6 @@ public class AdminServiceController extends Controller{
         instance = this;
     }
 
-    private void initFXML(Pane pane, String fxml)throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));
-        pane.getChildren().clear();
-        pane.getChildren().add(fxmlLoader.load());
-    }
-
     private void initHugeContainer(){
         hugeContainer.getChildren().clear();
         hugeContainer.setVisible(true);
@@ -102,9 +97,8 @@ public class AdminServiceController extends Controller{
         try {
             initHugeContainer();
             dashboardContainer.setVisible(false);
-            System.out.println("showSettingPage");
-            initFXML(middlePanel, settingMiddleBar);
-            initFXML(settingMainPanel, settingMain);
+            FXTools.initFXML(middlePanel, settingMiddleBar);
+            FXTools.initFXML(settingMainPanel, settingMain);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,9 +107,8 @@ public class AdminServiceController extends Controller{
     public void showVehiclePage(){
         try {
             dashboardContainer.setVisible(false);
-            hugeContainer.getChildren().clear();
             hugeContainer.setVisible(true);
-            initFXML(hugeContainer, adminVehicle);
+            FXTools.initFXML(hugeContainer, adminVehicle);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -126,7 +119,7 @@ public class AdminServiceController extends Controller{
             StatusContainer.paginationUsage = "order";
             rightContainer.getChildren().clear();
             dashboardContainer.setVisible(false);
-            initFXML(centerContainer, orderMain);
+            FXTools.initFXML(centerContainer, orderMain);
             rightContainer.getChildren().add(new UIEmptyOrderPane("Select any order to view more details"));
             //initFXML(rightContainer, orderSide);
             hugeContainer.getChildren().clear();
@@ -138,8 +131,7 @@ public class AdminServiceController extends Controller{
 
     public void showOrderDetails(){
         try {
-            rightContainer.getChildren().clear();
-            initFXML(rightContainer, orderSide);
+            FXTools.initFXML(rightContainer, orderSide);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,7 +139,7 @@ public class AdminServiceController extends Controller{
 
     public void showTrackOrder(){
         try {
-            initFXML(rightContainer, trackPane);
+            FXTools.initFXML(rightContainer, trackPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,10 +153,8 @@ public class AdminServiceController extends Controller{
         try {
             initHugeContainer();
             dashboardContainer.setVisible(false);
-            middlePanel.getChildren().clear();
-            settingMainPanel.getChildren().clear();
-            initFXML(middlePanel, infoMiddleBar);
-            initFXML(settingMainPanel, personalInfo);
+            FXTools.initFXML(middlePanel, infoMiddleBar);
+            FXTools.initFXML(settingMainPanel, personalInfo);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -172,8 +162,7 @@ public class AdminServiceController extends Controller{
 
     public void showAccSecurity(){
         try {
-            settingMainPanel.getChildren().clear();
-            initFXML(settingMainPanel, accountSecurity);
+            FXTools.initFXML(settingMainPanel, accountSecurity);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -181,8 +170,7 @@ public class AdminServiceController extends Controller{
 
     public void showPasswordPage(){
         try {
-            settingMainPanel.getChildren().clear();
-            initFXML(settingMainPanel, passwordPage);
+            FXTools.initFXML(settingMainPanel, passwordPage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -190,8 +178,7 @@ public class AdminServiceController extends Controller{
 
     public void closeTrackOrder() {
         try {
-            rightContainer.getChildren().clear();
-            initFXML(rightContainer, orderSide);
+            FXTools.initFXML(rightContainer, orderSide);
         } catch (IOException e) {
             e.printStackTrace();
         }

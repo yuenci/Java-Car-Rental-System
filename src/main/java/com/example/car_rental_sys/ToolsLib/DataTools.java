@@ -382,7 +382,7 @@ public class DataTools {
 
     public static void updateOrderStatusWithID(int orderID, int status){
         String sql = "update orders set status = " + status + " where orderID = " + orderID;
-        System.out.println(sql);
+        //System.out.println(sql);
         System.out.println(SQL.execute(sql));
     }
 

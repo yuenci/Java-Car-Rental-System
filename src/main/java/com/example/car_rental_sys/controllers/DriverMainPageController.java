@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -40,10 +41,9 @@ public class DriverMainPageController extends  Controller{
     public ImageView carImageView,renterAvatar,avatarImageView;
 
     @FXML
-    Pane mainPane, closeSideBarPane, phonePane, messagePane, sidePane ,processTipPane,processImagePane;
+    Pane mainPane, closeSideBarPane, phonePane, messagePane, sidePane, processTipPane, processImagePane,
+            workplacePane, optionPane, middlePanel, settingMainPanel;
 
-    @FXML
-    Pane item1, item2, item3, item4, item5, item6;
 
     private String renterNameCache;
 
@@ -60,6 +60,14 @@ public class DriverMainPageController extends  Controller{
 
     private int continueOrderID = -1;
 
+    //Setting Page
+    private final String settingMain = "SettingPage.fxml";
+    private final String accountSecurity = "AccountSecurityPage.fxml";
+    private final String passwordPage = "PasswordPage.fxml";
+    private final String personalInfo = "PersonalInfoPage.fxml";
+    private final String settingMiddleBar = "MiddleBar.fxml";
+    private final String infoMiddleBar = "InfoMiddleBar.fxml";
+
     @FXML
     public void initialize() {
         driverMainPageInstance = this;
@@ -72,16 +80,14 @@ public class DriverMainPageController extends  Controller{
         initFirstOrderCard();
         initProcessTip();
         StatusContainer.currentPageController = this;
+        optionPane.setVisible(false);
+        optionPane.setStyle("-fx-background-color: #ffffff");
     }
 
     private void initWebview() {
         WebEngine engine = webview.getEngine();
         String path = "/com/example/car_rental_sys/html/directions.html";
         engine.load(Objects.requireNonNull(getClass().getResource(path)).toString());
-    }
-
-    private void initScrollPane() {
-        //scrollPane.setFitToWidth(true);
     }
 
     private void initData() {
@@ -196,59 +202,6 @@ public class DriverMainPageController extends  Controller{
 
     }
 
-//    private void initSideBar() {
-//       // label set text align center
-//        postLabel.setText(StringTools.capitalizeFirstLetter(driver.getPost()));
-//        postLabel.setAlignment(Pos.CENTER);
-//
-//        nameLabel.setText(StringTools.capitalizeFirstLetter(driver.getUserName()));
-//        nameLabel.setAlignment(Pos.CENTER);
-//
-//        carNumberLabel.setAlignment(Pos.CENTER);
-//
-//        avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
-//        ImageTools.setImageShapeToCircle(avatarImageView);
-//
-//    }
-
-//    private void initMenuEvent() {
-//        item1.setOnMouseClicked(event -> {
-//            changeMenuStyle(item1);
-//        });
-//        item2.setOnMouseClicked(event -> {
-//            changeMenuStyle(item2);
-//            FXTools.changeScene("messagePage.fxml");
-//        });
-//        item3.setOnMouseClicked(event -> {
-//            changeMenuStyle(item3);
-//        });
-//        item4.setOnMouseClicked(event -> {
-//            changeMenuStyle(item4);
-//        });
-//        item5.setOnMouseClicked(event -> {
-//            changeMenuStyle(item5);
-//        });
-//        item6.setOnMouseClicked(event -> {
-//            changeMenuStyle(item6);
-//            StatusContainer.currentUser = null;
-//            DataTools.logOut();
-//            FXTools.changeScene("mainPage.fxml");
-//        });
-//
-//    }
-
-//    private void changeMenuStyle(Pane activePane) {
-//        System.out.println(activePane.toString() + "changeMenuStyle-line229");
-//        item1.getStyleClass().remove("menuItemActive");
-//        item2.getStyleClass().remove("menuItemActive");
-//        item3.getStyleClass().remove("menuItemActive");
-//        item4.getStyleClass().remove("menuItemActive");
-//        item5.getStyleClass().remove("menuItemActive");
-//        item6.getStyleClass().remove("menuItemActive");
-//
-//        activePane.getStyleClass().add("menuItemActive");
-//    }
-
     private void initFirstOrderCard(){
         if (continueOrderID ==-1) {
             currentOrderCard = new OrderCard(new Order(orderIDs[0]));
@@ -278,7 +231,6 @@ public class DriverMainPageController extends  Controller{
         //System.out.println(jsFunc);
         webview.getEngine().executeScript(jsFunc);
     }
-
 
     private void setCarInfo(){
         String[] data = DataTools.getCarSeatsSpeedPowerFromCarModel(currentOrderCard.carModel);
@@ -339,7 +291,7 @@ public class DriverMainPageController extends  Controller{
         StatusContainer.currentOrderCard.saveEventToSchedule();
     }
 
-    private  void   showSuccessMessage(){
+    private void showSuccessMessage(){
         MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Order accepted successfully!");
         messageFrame.show();
     }
@@ -373,6 +325,53 @@ public class DriverMainPageController extends  Controller{
     private void changeToDriveMode(){
         FXTools.changeScene("drivingModePage.fxml");
     }
+
+    private void displayWorkspace(boolean display){
+        workplacePane.setVisible(display);
+        optionPane.setVisible(!display);
+    }
+
+    public void showProfilePage(){
+        try {
+            displayWorkspace(false);
+            FXTools.initFXML(middlePanel, infoMiddleBar);
+            FXTools.initFXML(settingMainPanel, personalInfo);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showWorkPlace(){
+        optionPane.getChildren().clear();
+        displayWorkspace(true);
+    }
+
+    public void showSettingPage(){
+        try {
+            displayWorkspace(false);
+            FXTools.initFXML(middlePanel, settingMiddleBar);
+            FXTools.initFXML(settingMainPanel, settingMain);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showAccSecurity(){
+        try {
+            FXTools.initFXML(settingMainPanel, accountSecurity);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordPage(){
+        try {
+            FXTools.initFXML(settingMainPanel, passwordPage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
 

@@ -1,7 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +25,7 @@ public class MiddleBarController {
     private Button btnAccPwd;
 
     public static MiddleBarController instance;
+    private User user = StatusContainer.currentUser;
 
     public MiddleBarController() {
         instance = this;
@@ -45,7 +48,7 @@ public class MiddleBarController {
     }
 
     private void initTheme(){
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             userMiddleBar.getStylesheets()
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/middleBarDark.css")
                             .toURI().toString());
@@ -56,35 +59,38 @@ public class MiddleBarController {
     @FXML
     void btnSysSettingClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             CustomerServiceController.instance.showSettingPage();
-        }else{
+        }else if(user instanceof Admin){
             AdminServiceController.instance.showSettingPage();
+        }else{
+            DriverMainPageController.driverMainPageInstance.showSettingPage();
         }
-        //System.out.println("btnSysSettingClicked");
     }
 
     @FXML
     void btnAccSettingClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             CustomerServiceController.instance.showAccSecurity();
-        }else{
+        }else if(user instanceof Admin){
             AdminServiceController.instance.showAccSecurity();
+        }else{
+            DriverMainPageController.driverMainPageInstance.showAccSecurity();
         }
-        //System.out.println("btnAccSettingClicked");
     }
 
 
     @FXML
     void btnAccPasswordClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             CustomerServiceController.instance.showPasswordPage();
-        }else{
+        }else if(user instanceof Admin){
             AdminServiceController.instance.showPasswordPage();
+        }else{
+            DriverMainPageController.driverMainPageInstance.showPasswordPage();
         }
-        //System.out.println("btnAccPasswordClicked");
     }
 
 
