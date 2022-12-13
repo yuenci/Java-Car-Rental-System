@@ -1,7 +1,9 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +20,7 @@ public class InfoMiddleBarController {
     private Button btnPersonInfo;
 
     public static InfoMiddleBarController instance;
+    private User user = StatusContainer.currentUser;
 
     public InfoMiddleBarController() {
         instance = this;
@@ -32,15 +35,10 @@ public class InfoMiddleBarController {
 
     private void initButtonStyle(){
         btnPersonInfo.getStyleClass().add("btnMiddleFocusStyle");
-//        btnPersonInfo.getStyleClass().remove("defaultMiddleBtnStyle");
-//        Button[] btns = {btnAccSecurity, btnAccPwd};
-//        for (Button btn : btns) {
-//            btn.getStyleClass().add("defaultMiddleBtnStyle");
-//        }
     }
 
     private void initTheme(){
-        if(StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             userMiddleBar.getStylesheets()
                     .add(new File("src/main/resources/com/example/car_rental_sys/style/middleBarDark.css")
                             .toURI().toString());
@@ -50,12 +48,13 @@ public class InfoMiddleBarController {
     @FXML
     void btnPersonInfoClicked(MouseEvent event) {
         barButtonClickEvent(event);
-        if( StatusContainer.currentUser instanceof Customer){
+        if(user instanceof Customer){
             CustomerServiceController.instance.showProfilePage();
-        }else{
+        }else if(user instanceof Admin){
             AdminServiceController.instance.showProfilePage();
+        }else{
+            DriverMainPageController.driverMainPageInstance.showProfilePage();
         }
-        //System.out.println("btnPersonInfoClicked");
     }
 
     @FXML

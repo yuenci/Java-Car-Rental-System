@@ -44,6 +44,7 @@ public class PasswordPageController {
         initAvatar();
         initTextEventListener();
         btnChangePwd.setDisable(true);
+        imgOldPwd.setVisible(false);
     }
 
     private void initDefaultText(){
@@ -88,7 +89,11 @@ public class PasswordPageController {
             txtNewPwd.setText("");
             txtReEnterPwd.setText("");
             btnChangePwd.setDisable(true);
-            txtOldPwd.setText(user.getPassword());
+            String password = user.getPassword();
+            for (int i = 0; i < password.length(); i++) {
+                password = password.replace(password.charAt(i), '●');
+            }
+            txtOldPwd.setText(password);
         });
 
         Platform.runLater(this::showNotification);
@@ -96,14 +101,14 @@ public class PasswordPageController {
 
     @FXML
     void imgOldPwdClicked() {
-        if(showPassword){
-            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/view.png"));
-            showPassword = false;
-        }else{
-            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/hidden.png"));
-            showPassword = true;
-        }
-        changeDisplayPwdStyle();
+//        if(showPassword){
+//            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/view.png"));
+//            showPassword = false;
+//        }else{
+//            imgOldPwd.setImage(new Image("file:src/main/resources/com/example/car_rental_sys/image/UI/hidden.png"));
+//            showPassword = true;
+//        }
+//        changeDisplayPwdStyle();
     }
 
     private void initTheme(){

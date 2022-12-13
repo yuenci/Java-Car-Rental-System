@@ -52,6 +52,12 @@ public class FXTools {
         }
     }
 
+    public static void initFXML(Pane pane, String fxml)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));
+        pane.getChildren().clear();
+        pane.getChildren().add(fxmlLoader.load());
+    }
+
     public static void componentTest(String fxmlName, double width, double height) throws IOException {
         Stage stage = Application.stageInstance;
 

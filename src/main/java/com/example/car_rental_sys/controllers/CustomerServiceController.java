@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,15 +66,8 @@ public class CustomerServiceController extends Controller{
         //showWalletPage();
         StatusContainer.currentPageController = this;
 
-        showOrderPage();
-
-
-    }
-
-    private void initFXML(Pane pane, String fxml)throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));
-        pane.getChildren().clear();
-        pane.getChildren().add(fxmlLoader.load());
+        showProfilePage();
+        //showOrderPage();
     }
 
     private void initHugeContainer(){
@@ -84,7 +78,7 @@ public class CustomerServiceController extends Controller{
 
     public void showTrackOrder(){
         try {
-            initFXML(rightContainer, trackPane);
+            FXTools.initFXML(rightContainer, trackPane);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,8 +86,7 @@ public class CustomerServiceController extends Controller{
 
     public void closeTrackOrder(){
         try {
-            rightContainer.getChildren().clear();
-            initFXML(rightContainer, orderSide);
+            FXTools.initFXML(rightContainer, orderSide);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +96,7 @@ public class CustomerServiceController extends Controller{
         try {
             StatusContainer.paginationUsage = "order";
             rightContainer.getChildren().clear();
-            initFXML(centerContainer, orderMain);
+            FXTools.initFXML(centerContainer, orderMain);
             rightContainer.getChildren().add(new UIEmptyOrderPane("Select any order to view more details"));
             hugeContainer.getChildren().clear();
             hugeContainer.setVisible(false);
@@ -115,8 +108,8 @@ public class CustomerServiceController extends Controller{
     public void showWalletPage() {
         try {
             StatusContainer.paginationUsage = "wallet";
-            initFXML(centerContainer, walletMain);
-            initFXML(rightContainer, walletSide);
+            FXTools.initFXML(centerContainer, walletMain);
+            FXTools.initFXML(rightContainer, walletSide);
             hugeContainer.getChildren().clear();
             hugeContainer.setVisible(false);
         } catch (IOException e) {
@@ -127,10 +120,8 @@ public class CustomerServiceController extends Controller{
     public void showSettingPage(){
         try {
             initHugeContainer();
-            middlePanel.getChildren().clear();
-            settingMainPanel.getChildren().clear();
-            initFXML(middlePanel, settingMiddleBar);
-            initFXML(settingMainPanel, settingMain);
+            FXTools.initFXML(middlePanel, settingMiddleBar);
+            FXTools.initFXML(settingMainPanel, settingMain);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -139,10 +130,8 @@ public class CustomerServiceController extends Controller{
     public void showProfilePage(){
         try {
             initHugeContainer();
-            middlePanel.getChildren().clear();
-            settingMainPanel.getChildren().clear();
-            initFXML(middlePanel, infoMiddleBar);
-            initFXML(settingMainPanel, personalInfo);
+            FXTools.initFXML(middlePanel, infoMiddleBar);
+            FXTools.initFXML(settingMainPanel, personalInfo);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,8 +139,7 @@ public class CustomerServiceController extends Controller{
 
     public void showAccSecurity(){
         try {
-            settingMainPanel.getChildren().clear();
-            initFXML(settingMainPanel, accountSecurity);
+            FXTools.initFXML(settingMainPanel, accountSecurity);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -159,8 +147,7 @@ public class CustomerServiceController extends Controller{
 
     public void showPasswordPage(){
         try {
-            settingMainPanel.getChildren().clear();
-            initFXML(settingMainPanel, passwordPage);
+            FXTools.initFXML(settingMainPanel, passwordPage);
         } catch (IOException e) {
             e.printStackTrace();
         }
