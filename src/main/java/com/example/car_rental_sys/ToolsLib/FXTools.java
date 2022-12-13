@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -189,7 +190,7 @@ public class FXTools {
             textField.setText(oldValue);
         }
         switch (type) {
-            case "carName":
+            case "cardName":
                 if (newValue.length() > 25) {
                     textField.setText(oldValue);
                 }
@@ -246,6 +247,7 @@ public class FXTools {
             }
         }
     }
+
     public static boolean validInputIsEmail(TextField textField, String newValue){
         if (!newValue.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{1,7}$")) {
             return false;
@@ -263,6 +265,47 @@ public class FXTools {
             return true;
         }
     }
+
+    public static boolean validInputCardValid(TextField textField, String newValue){
+        if(!newValue.matches("\\d*")){
+            textField.setText(newValue.replaceAll("[^\\d]", ""));
+        }
+
+        return true;
+    }
+
+    public static boolean validInputCardNumber(TextField textField, String newValue){
+        if(!newValue.matches("\\d*")){
+            textField.setText(newValue.replaceAll("[^\\d]", ""));
+        }
+        if(newValue.length() == 16){
+            return true;
+        }
+
+        return true;
+    }
+
+    public static boolean validInputCardValueLength(TextField textField, String newValue){
+        if(!newValue.matches("[a-zA-Z ]*")){
+            textField.setText(newValue.replaceAll("[^a-zA-Z ]", ""));
+        }
+        if(newValue.length() > 8){
+            return true;
+        }
+
+        return true;
+    }
+
+    public static boolean validInputBillingAddress(TextArea textArea, String oldValue, String newValue){
+        if(!newValue.matches("[a-zA-Z0-9 ]*")){
+            textArea.setText(oldValue);
+        }
+        if (newValue.length() > 8) {
+            return true;
+        }
+        return true;
+    }
+
 
     public static void pandaHead(){
         String pandaHead = "   ⣠⣤⣤⣤⡀⠀⠀⢀⣀⣀⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"+
