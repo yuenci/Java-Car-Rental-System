@@ -1,5 +1,7 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -53,6 +55,7 @@ public class UIRating extends Pane {
         this.getStylesheets()
                 .add(new File("src/main/resources/com/example/car_rental_sys/style/messageFrame.css")
                         .toURI().toString());
+        initTextArea();
     }
 
     private void initialize(){
@@ -261,13 +264,24 @@ public class UIRating extends Pane {
                 System.out.println("Rating: " + rating + " text: " + text);
 
                 status = 1;
+                boolean res = DataTools.storeComment(rating , text, StatusContainer.currentOrder.getOrderID());
+                if (res) closeFeedback();
             }
         });
+        btnCancel.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            closeFeedback();
+        });
+    }
+
+    private void closeFeedback(){
+        FeedBackFrame.instance.mainPane.getChildren().remove(FeedBackFrame.instance.mainBGPanel);
+        rating = 0;
+        status = 0;
     }
 
     private void initActivateState(){
         this.setPrefSize(395, 500);
-        initTextArea();
+        setupTextArea();
         resetButtonPosition();
         btnPost.setDisable(true);
     }
@@ -283,11 +297,11 @@ public class UIRating extends Pane {
         txtArea.setLayoutY(0);
         txtArea.setPrefSize(345, 170);
         txtArea.getStyleClass().add("text-area");
+    }
 
+    private void setupTextArea(){
         initTextAreaEvent();
-
         txtAreaPane.getChildren().add(txtArea);
-
         this.getChildren().add(txtAreaPane);
     }
 
