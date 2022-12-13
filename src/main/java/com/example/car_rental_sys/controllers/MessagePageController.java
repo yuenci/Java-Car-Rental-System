@@ -49,7 +49,7 @@ public class MessagePageController {
         navBarPane.toFront();
         // use dev tools
 
-        browser.devTools().show();
+        //browser.devTools().show();
 
         Frame frame = browser.frames().get(0);
         frame.localStorage().putItem("Name", "Tom");
@@ -59,7 +59,7 @@ public class MessagePageController {
             String message = consoleMessage.message();
             //System.out.println(message);
             if(Objects.equals(message, "back to service")){
-                backToService();
+                //backToService();
             }else if (Objects.equals(message, "close")){
                 System.exit(0);
             }else if (message.startsWith("[") && message.endsWith("]")){

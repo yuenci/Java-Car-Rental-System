@@ -3,7 +3,10 @@ package com.example.car_rental_sys.controllers;
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.FXTools;
+import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Driver;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +20,7 @@ public class NavigationBaMsgrController {
     private ImageView closeIconBtn;
 
     @FXML
-    private Pane navBarPanel;
+    private Pane navBarPanel,transparentBtn;
 
     @FXML
     public static NavigationBaMsgrController navigationBarControllerInstance;
@@ -28,6 +31,7 @@ public class NavigationBaMsgrController {
 //        System.out.println("Hello World!");
         initIconShowEvent();
         dragAndDrop();
+        intiBackEvent();
         navigationBarControllerInstance = this;
     }
 
@@ -45,6 +49,28 @@ public class NavigationBaMsgrController {
         }
 
         closeIconBtn.setVisible(true);
+    }
+
+    private void  intiBackEvent(){
+        transparentBtn.setOnMouseClicked(event -> {
+            backToMainPage();
+        });
+    }
+
+    private void backToMainPage(){
+        Platform.runLater(() -> {
+            try {
+                if(StatusContainer.currentUser instanceof Admin){
+                    FXTools.changeScene("adminServicePage.fxml");
+                }else if (StatusContainer.currentUser instanceof Driver){
+                    FXTools.changeScene("driverServicePage.fxml");
+                }else if (StatusContainer.currentUser instanceof Customer){
+                    FXTools.changeScene("customerServicePage.fxml");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
