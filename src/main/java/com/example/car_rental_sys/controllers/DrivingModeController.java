@@ -1,11 +1,11 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.ToolsLib.FXTools;
-import com.example.car_rental_sys.ToolsLib.ImageTools;
-import com.example.car_rental_sys.ToolsLib.PlatformTools;
-import com.example.car_rental_sys.ToolsLib.StringTools;
+import com.example.car_rental_sys.ToolsLib.*;
 import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -24,7 +24,7 @@ import java.io.File;
 
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 
-public class DrivingModeController {
+public class DrivingModeController  extends Controller{
     @FXML
     Pane sideIconLogo, sideIconHome, sideIconVolume, sideIconPhone, sideIconSetting, browserContainer, distanceDataPane;
 
@@ -34,6 +34,9 @@ public class DrivingModeController {
     @FXML
     ImageView userAvatar;
 
+    @FXML
+    public Pane mainPane;
+
     private Driver driver = (Driver) StatusContainer.currentUser;
 
     @FXML
@@ -41,6 +44,7 @@ public class DrivingModeController {
         initAvatar();
         initSideIconsEvent();
         initBorwserEvent();
+        StatusContainer.currentPageController = this;
     }
 
     private void initAvatar() {
@@ -159,7 +163,43 @@ public class DrivingModeController {
     }
 
     private void setVolume(){
-        System.out.println("setVolume");
+        //System.out.println("setVolume");
+        //deliveredOrder();
+        ifFinish();
+    }
+
+    private void ifFinish(){
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "Are you sure delivered this car?");
+        messageFrame.setSuccessCallbackFunc((i) -> {
+            deliveredOrder();
+            FXTools.changeScene("driverServicePage.fxml");
+            return null;
+        });
+
+        messageFrame.setFailedCallbackFunc((i) -> {
+            messageFrame.close();
+            return null;
+        });
+        messageFrame.show();
+    }
+
+    private void  deliveredOrder(){
+        // schedule
+        String scheduleID = DataTools.getNewID("schedule") + "";
+        String orderID= StatusContainer.currentContinueOrderID + "";
+        String status = "3";
+        String relate = "null";
+        String time = DateTools.getNow();
+
+        String sql = "INSERT INTO schedule VALUES ('" + scheduleID + "','" + orderID + "','" + status + "','" + relate + "','" + time + "')";
+        System.out.println(sql);
+
+        // order
+        String sql2 = "UPDATE orders SET status = '3' WHERE orderID = '" + orderID + "'";
+        System.out.println(sql2);
+
+        SQL.execute(sql);
+        SQL.execute(sql2);
     }
 }
 

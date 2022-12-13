@@ -50,6 +50,7 @@ public class StatusContainer {
     // mainPage / carDetails
     public static String pickUpLocation = null;
     public static int currentOrderID = 0;
+    public static int currentContinueOrderID = 0;
 
 
     // self-test statues during loading

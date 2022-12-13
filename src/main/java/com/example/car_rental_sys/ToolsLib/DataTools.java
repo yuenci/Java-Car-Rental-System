@@ -188,7 +188,6 @@ public class DataTools {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
 
     public static String getCarModelFromCarID(int carID) {
@@ -897,6 +896,7 @@ public class DataTools {
         if (data.size() == 0) return null;
         return data.get(0)[0];
     }
+
 }
 
 // TODO: No comma "," content is allowed.

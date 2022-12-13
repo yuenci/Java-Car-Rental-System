@@ -112,3 +112,4 @@ errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,er
 111,java.lang.IndexOutOfBoundsException, Index 6 out of bounds for length 6,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-13 05:08:58
 112,java.lang.IndexOutOfBoundsException, Index 5 out of bounds for length 5,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-13 05:08:59
 113,java.lang.IndexOutOfBoundsException, Index 6 out of bounds for length 6,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-13 05:09:00
+114,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:834),2022-12-13 05:09:16
