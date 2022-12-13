@@ -65,13 +65,13 @@
 
 }
 
-.comboFocus .list-cell{
+.borderStyle .list-cell{
     -fx-text-fill: #f6f6f6 !important;
-    -fx-background-color: #111111 !important;
+    -fx-background-color: #282637 !important;
     -fx-font-weight: bold;
 }
 
-.comboFocus .list-cell:hover{
+.borderStyle .list-cell:hover{
     -fx-text-fill: #ffffff !important;
     -fx-background-color: #001a4d !important;
     -fx-font-weight: bold;
