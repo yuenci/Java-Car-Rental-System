@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 
 public class FeedBackFrame extends MessageFrame {
     private Pane paneContainer = new Pane();
-    private Pane mainBGPanel = new Pane();
+    public Pane mainBGPanel = new Pane();
     public static FeedBackFrame instance;
 
 
