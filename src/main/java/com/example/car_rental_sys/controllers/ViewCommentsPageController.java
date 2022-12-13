@@ -67,13 +67,19 @@ public class ViewCommentsPageController {
     }
 
     private void InitSendIconEvent(){
-        sendIcon.setOnMouseClicked(event -> {
-            int commentID = storeComment();
-            System.out.println(commentID);
-            addCommentCards(commentID);
-            textArea.setText("");
-            scrollPane.setVvalue(1.0);
+        sendIcon.setOnMouseClicked(event -> sendIconEvent());
+        // enter key event
+        textArea.setOnKeyPressed(event -> {
+            if(event.getCode().toString().equals("ENTER")) sendIconEvent();
         });
+    }
+
+    private void sendIconEvent(){
+        int commentID = storeComment();
+        System.out.println(commentID);
+        addCommentCards(commentID);
+        textArea.setText("");
+        scrollPane.setVvalue(1.0);
     }
 
     private int  storeComment(){
@@ -83,6 +89,7 @@ public class ViewCommentsPageController {
         int posterID = StatusContainer.currentUser.getUserID();
         String comment = textArea.getText();
         comment = comment.replace(",", "，");
+        comment = comment.replace("\n", " ");
         int relevantCommentID = StatusContainer.relevantCommentID;
         String commentDateTime = DateTools.getNow();
         int likes = 0;
