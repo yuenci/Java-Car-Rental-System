@@ -45,7 +45,7 @@ public class CarDetailsPageController extends  Controller{
     ScrollPane commentScrollPane;
 
     @FXML
-    Label starText,modelText,speedText,seatsText,powerText,priceText,commentsNum;
+    Label starText,modelText,speedText,seatsText,powerText,priceText,commentsNum,viewMore;
 
     @FXML
     Pane containPane,mainPane;
@@ -167,7 +167,7 @@ public class CarDetailsPageController extends  Controller{
 
         backBtnImageView.setOnMouseClicked(event -> FXTools.changeScene("carsListPage.fxml"));
 
-
+        viewMore.setOnMouseClicked(event -> FXTools.changeScene("ViewCommentsPage.fxml"));
     }
 
     private  void initKeyTips(){

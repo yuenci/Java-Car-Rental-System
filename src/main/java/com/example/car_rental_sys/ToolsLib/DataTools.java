@@ -912,19 +912,8 @@ public class DataTools {
         return Integer.parseInt(data.get(0)[0]);
     }
 
-    public static boolean storeComment(int rating , String comment, int orderID){
-        String commentID = getNewID("comments") + "";
-        String type = "modelComment";
-        String payload = getCarIDFromOrderID(orderID) + ""; // carID
-        String posterID = StatusContainer.currentUser.getUserID() + "";
-        String commentStr = comment;
-        String relevantCommentID = "0";
-        String commentDateTime = DateTools.getNow();
-        String like = "0";
-        String star = "0";
-        String ratingStr = rating + "";
-        String orderIDStr = orderID + "";
-
+    public static boolean  storeCommentToDB(int commentID, String type, String payload, int posterID, String commentStr, int relevantCommentID,
+                                            String commentDateTime, int like, int star, int ratingStr, int orderIDStr){
         String sql = "insert into comments values (" +
                 commentID + ", " +
                 "'" + type + "', " +
@@ -942,6 +931,24 @@ public class DataTools {
 
         return SQL.execute(sql);
     }
+
+    public static boolean storeComment(int rating , String comment, int orderID){
+        String commentID = getNewID("comments") + "";
+        String type = "modelComment";
+        String payload = getCarIDFromOrderID(orderID) + ""; // carID
+        String posterID = StatusContainer.currentUser.getUserID() + "";
+        String relevantCommentID = "0";
+        String commentDateTime = DateTools.getNow();
+        String like = "0";
+        String star = "0";
+        String ratingStr = rating + "";
+        String orderIDStr = orderID + "";
+
+        return  storeCommentToDB(Integer.parseInt(commentID), type, payload, Integer.parseInt(posterID), comment, Integer.parseInt(relevantCommentID),
+                commentDateTime, Integer.parseInt(like), Integer.parseInt(star), Integer.parseInt(ratingStr), Integer.parseInt(orderIDStr));
+    }
+
+
 
 }
 

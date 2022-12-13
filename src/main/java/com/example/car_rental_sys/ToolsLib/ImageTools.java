@@ -162,6 +162,12 @@ public class ImageTools {
         imageView.setClip(rectangle);
     }
 
+    /*
+    * this.getChildren().add(imageView);
+    * ImageTools.setImageShapeToCircle(imageView);
+    * put this function after the imageView is added
+    * */
+
     public static void setImageShapeToCircle(ImageView imageView) {
         double imageWidth = imageView.getFitWidth();
         double imageHeight = imageView.getFitHeight();

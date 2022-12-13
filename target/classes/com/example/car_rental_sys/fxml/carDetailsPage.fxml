@@ -27,7 +27,7 @@
          </font>
       </Label>
       <ImageView fx:id="carImageView" fitHeight="541.0" fitWidth="600.0" layoutX="-25.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-z: 100;">
-         <Image url="@../image/cars/Huracan_EVO.png" />
+         <Image url="@../image/cars/Huracan_EVI.png" />
       </ImageView>
       <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="612.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../image/UI/speed.png" />
@@ -77,8 +77,7 @@
                <Font size="24.0" />
             </font>
          </Label>
-         <Pane  layoutX="223.0" prefHeight="80.0" prefWidth="211.0"
-               styleClass="rentPane" onMouseClicked="#rentNowBtnClickEvent">
+         <Pane layoutX="223.0" onMouseClicked="#rentNowBtnClickEvent" prefHeight="80.0" prefWidth="211.0" styleClass="rentPane">
             <Label layoutX="43.0" layoutY="24.0" text="Rent Now" textFill="WHITE">
                <font>
                   <Font size="24.0" />
@@ -94,7 +93,7 @@
       </ImageView>
       <Pane layoutY="460.0" prefHeight="284.0" prefWidth="790.0" style="-fx-background-color: #2f2f2f; -fx-background-radius: 0 10  0  0;">
          <ScrollPane fx:id="commentScrollPane" layoutY="48.0" prefHeight="236.0" prefWidth="790.0" style="-fx-background: #2f2f2f; -fx-border-color: #2f2f2f;" />
-         <Label layoutX="665.0" layoutY="14.0" text="View more" textFill="#1782ff">
+         <Label fx:id="viewMore" layoutX="665.0" layoutY="14.0" text="View more" textFill="#1782ff">
             <font>
                <Font size="18.0" />
             </font>

@@ -23,3 +23,8 @@
     -fx-background-color: #1D90F4 !important;
     -fx-cursor: hand !important;
 }
+
+#viewMore:hover{
+    -fx-cursor: hand;
+}
+

@@ -50,7 +50,10 @@ public class FXTools {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        executeBeforeChangeScene();
     }
+
+    private static void executeBeforeChangeScene(){}
 
     public static void initFXML(Pane pane, String fxml)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/" + fxml));

@@ -1,6 +1,9 @@
 package com.example.car_rental_sys.ui_components;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.controllers.ViewCommentsPageController;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,10 +27,13 @@ public class CommentCard extends Pane {
     private Button likeBtn, starBtn, replyBtn;
     private boolean liked = false;
     private boolean starred = false;
+    private VBox vBoxRightSide;
+    private String userName;
     public CommentCard(String commentID) {
         super();
         this.commentID = commentID;
         initialize();
+        changeStyle();
     }
 
     private  void initialize(){
@@ -60,6 +66,7 @@ public class CommentCard extends Pane {
         Image image = getImageObjFromPath(profileImagePathRoot + userID +".png");
 
         ImageView imageView =  new ImageView(image);
+
         imageView.setFitHeight(40);
         imageView.setFitWidth(40);
         imageView.setImage(image);
@@ -68,6 +75,7 @@ public class CommentCard extends Pane {
         imageView.setLayoutY(10);
 
         this.getChildren().add(imageView);
+        ImageTools.setImageShapeToCircle(imageView);
 
     }
 
@@ -77,7 +85,8 @@ public class CommentCard extends Pane {
     }
 
     private  HBox getUserNameAndCommentTime(){
-        String userName = SQL.query("select userName from userInfo where userID = " + commentData[3]).get(0)[0];
+        userName = SQL.query("select userName from userInfo where userID = " + commentData[3]).get(0)[0];
+        userName = userName.replace("-", " ");
 
         HBox hBox = new HBox();
         Label userNameLabel = new Label("  " +userName + "  ");
@@ -138,9 +147,10 @@ public class CommentCard extends Pane {
     }
 
     private void initRightSide(){
-        VBox vBoxRightSide = new VBox();
+        vBoxRightSide = new VBox();
         vBoxRightSide.setLayoutX(70);
         vBoxRightSide.setLayoutY(10);
+
 
 
         vBoxRightSide.getChildren().addAll(getUserNameAndCommentTime(),getCommentContent(),getToolbar());
@@ -176,10 +186,17 @@ public class CommentCard extends Pane {
         });
 
         replyBtn.setOnAction(event -> {
-            String sql = "update comments set replies = replies + 1 where commentID = " + commentID;
-            SQL.execute(sql);
-            //replyBtn.setText(Integer.parseInt(replyBtn.getText()) + 1 + "");
+            if (!StatusContainer.ifInCommentPage){
+                FXTools.changeScene("ViewCommentsPage.fxml");
+            }else{
+                replyComment();
+            }
         });
+    }
+
+    private void replyComment(){
+        StatusContainer.relevantCommentID = Integer.parseInt(commentID);
+        ViewCommentsPageController.instance.textArea.setText("@" + userName + ": ");
     }
 
     private  void setNewImage(Button button, String imageName){
@@ -189,5 +206,14 @@ public class CommentCard extends Pane {
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
         button.setGraphic(imageView);
+    }
+
+    private void changeStyle(){
+        // get current
+        if (StatusContainer.ifInCommentPage) {
+            //System.out.println("in comment page");
+            this.setPrefHeight(110);
+            vBoxRightSide.setSpacing(10);
+        }
     }
 }
