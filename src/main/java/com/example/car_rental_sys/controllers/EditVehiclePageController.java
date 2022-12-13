@@ -119,6 +119,7 @@ public class EditVehiclePageController {
             btnOperation.setText("Add Vehicle");
             btnOperation.setStyle(btnOperation.getStyle() + "-fx-background-color: #165dff;");
             btnSaveOption.setText("Save Modify");
+            btnOperation.setDisable(isNull());
         }else{
             btnDeleteVehicle.setVisible(true);
             btnOperation.setText("Cancel");
@@ -201,7 +202,7 @@ public class EditVehiclePageController {
         imgPane.setVisible(true);
         dragPane.setVisible(false);
         imgPane.setStyle(imgPane.getStyle() + "-fx-background-color: " + "linear-gradient(to left, " + gradientDark + ", " + gradientLight + ");");
-        System.out.println("->" + imageURL);
+        //System.out.println("->" + imageURL);
         imgVehicle.setImage(ImageTools.getImageObjFromPath(imageURL));
         ImageTools.centerImage(imgVehicle);
     }
@@ -443,17 +444,18 @@ public class EditVehiclePageController {
     }
 
     public void setBackAllValue(){
-        txtVehicleName.setText(StatusContainer.currentNewCarInfo.getCarModel());
-        txtPlateNumber.setText(StatusContainer.currentNewCarInfo.getCarNumber());
-        txtChassisNumber.setText(StatusContainer.currentNewCarInfo.getChassisNumber());
-        txtManufacturing.setText(StatusContainer.currentNewCarInfo.getManufacturingDate());
-        txtPrice.setText(StatusContainer.currentNewCarInfo.getPrice());
-        cmbCategory.setValue(StatusContainer.currentNewCarInfo.getGearType());
-        cmbSeatNumber.setValue(StatusContainer.currentNewCarInfo.getSeatNumber());
-        cmbCarBrand.setValue(StatusContainer.currentNewCarInfo.getCarBrand());
-        imageURL = StatusContainer.currentNewCarInfo.getImageUrl();
-        gradientDark = StatusContainer.currentNewCarInfo.getGradientDark();
-        gradientLight = StatusContainer.currentNewCarInfo.getGradientLight();
+        NewCar newCar = StatusContainer.currentNewCarInfo;
+        txtVehicleName.setText(newCar.getCarModel());
+        txtPlateNumber.setText(newCar.getCarNumber());
+        txtChassisNumber.setText(newCar.getChassisNumber());
+        txtManufacturing.setText(newCar.getManufacturingDate());
+        txtPrice.setText(newCar.getPrice());
+        cmbCategory.setValue(newCar.getGearType());
+        cmbSeatNumber.setValue(newCar.getSeatNumber());
+        cmbCarBrand.setValue(newCar.getCarBrand());
+        imageURL = newCar.getImageUrl();
+        gradientDark = newCar.getGradientDark();
+        gradientLight = newCar.getGradientLight();
         System.out.println(gradientDark + " : " + gradientLight);
         if(imageURL != null){
             showImgPane("image");
@@ -475,7 +477,7 @@ public class EditVehiclePageController {
                 dragPane.setVisible(true);
             }
         }else if(Objects.equals(type, "image")) {
-            newCarImage = ImageTools.removeBackground(imageURL);
+            newCarImage = ImageTools.removeBackground(imageURL);    //when testing please comment this line
             imgVehicle.setImage(newCarImage);
             imgPane.setVisible(true);
             dragPane.setVisible(false);
