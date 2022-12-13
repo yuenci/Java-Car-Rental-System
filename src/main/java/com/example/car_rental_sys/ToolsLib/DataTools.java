@@ -181,7 +181,9 @@ public class DataTools {
         try {
             String userID = result.get(0)[0];
             String newPasswordMD5 = Encryption.med5Encrypt(newPassword);
-            SQL.execute("UPDATE password SET password = '" + newPasswordMD5 + "' WHERE userID = " + userID);
+            String sql = "UPDATE password SET password = '" + newPasswordMD5 + "' WHERE userID = " + userID;
+            //System.out.println(sql);
+            SQL.execute(sql);
             //SendEmail.sendEmail(email, "Your new password", "Your new password is: " + newPassword);
             return true;
         } catch (Exception e) {
