@@ -30,10 +30,9 @@
             <String fx:value="scroll-pane" />
             <String fx:value="text-area" />
          </styleClass></TextArea>
-      <ImageView fx:id="sendIcon" fitHeight="30.0" fitWidth="25.0" layoutX="1220.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/UI/send.png" />
-         </image>
+      <ImageView fx:id="sendIcon" fitHeight="30.0" fitWidth="25.0" layoutX="1220.0" layoutY="66.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../image/UI/send.png"/>
       </ImageView>
    </Pane>
 </AnchorPane>

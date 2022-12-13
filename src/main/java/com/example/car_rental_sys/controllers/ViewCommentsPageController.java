@@ -69,6 +69,7 @@ public class ViewCommentsPageController {
     private void InitSendIconEvent(){
         sendIcon.setOnMouseClicked(event -> {
             int commentID = storeComment();
+            System.out.println(commentID);
             addCommentCards(commentID);
             textArea.setText("");
             scrollPane.setVvalue(1.0);
@@ -81,6 +82,7 @@ public class ViewCommentsPageController {
         String payload = carModelID + "";
         int posterID = StatusContainer.currentUser.getUserID();
         String comment = textArea.getText();
+        comment = comment.replace(",", "，");
         int relevantCommentID = StatusContainer.relevantCommentID;
         String commentDateTime = DateTools.getNow();
         int likes = 0;
