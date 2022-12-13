@@ -18,16 +18,17 @@ public class MessageFrame {
     int titleSpace = 5;
 
 
-    private String type;
-    private String message;
-    private String title = "";
-    private Function<Integer, Void> successCallback = null;
-    private Function<Integer, Void> failedCallback = null;
+    protected String type;
+    protected String message;
+    protected String title = "";
+    protected Function<Integer, Void> successCallback = null;
+    protected Function<Integer, Void> failedCallback = null;
 
-    private final Pane mainPane =StatusContainer.currentPageController.mainPane;
-    private final Pane mainBGCPane = new VBox();
-    private final VBox messageVPane = new VBox();
-    private String iconPath = null;
+    protected final Pane mainPane =StatusContainer.currentPageController.mainPane;
+    protected final Pane mainBGCPane = new VBox();
+    protected final VBox messageVPane = new VBox();
+    protected final Pane messageBoxContainer = new Pane();
+    protected String iconPath = null;
 
     public  MessageFrame(String type) {
         this(type,  "");
@@ -52,6 +53,7 @@ public class MessageFrame {
         addMessage();
         addBtn();
         //System.out.println("MessageFrame.show() called");
+        cleanUp();
     }
 
     private void addBackgroundPane() {
@@ -66,7 +68,6 @@ public class MessageFrame {
     }
 
     private void addMessageBox(){
-        Pane messageBoxContainer = new Pane();
         int width = 465;
         int height = 235;
         messageBoxContainer.setPrefSize(width, height);
@@ -100,6 +101,9 @@ public class MessageFrame {
                 iconPath = iconPathRoot + "warning.png";
                 break;
             case MessageFrameType.NOTIFICATION:
+                iconPath = iconPathRoot + "notification.png";
+                break;
+            case MessageFrameType.FEEDBACK:
                 iconPath = iconPathRoot + "notification.png";
                 break;
             default:
@@ -229,5 +233,11 @@ public class MessageFrame {
 
     public void setFailedCallbackFunc(Function<Integer, Void> func) {
         this.failedCallback = func;
+    }
+
+    private void cleanUp(){
+        if(Objects.equals(type, MessageFrameType.FEEDBACK)){
+            mainPane.getChildren().remove(mainBGCPane);
+        }
     }
 }

@@ -158,8 +158,9 @@ public class DrivingModeController  extends Controller{
 
     @FXML
     private void phoneIconClicked() {
-        System.out.println("phoneIconClicked");
-        PlatformTools.callWhatsApp("601110715226");
+        int userID = StatusContainer.currentOrderCard.userID;
+        String phone = DataTools.getPhoneFromUserID(userID);
+        PlatformTools.callWhatsApp(phone);
     }
 
     private void setVolume(){
