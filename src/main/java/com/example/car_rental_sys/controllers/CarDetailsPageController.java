@@ -135,6 +135,7 @@ public class CarDetailsPageController extends  Controller{
         flowPane.setPrefWidth(780);
 
         String model = StatusContainer.currentCarChose;
+        int modelID = DataTools.getModelIDFromCarModel(model);
         String sql = "SELECT commentID FROM comments WHERE payload = '"+model+"'" + " and type='modelComment'";
         ArrayList<String[]> result = SQL.query(sql);
 
