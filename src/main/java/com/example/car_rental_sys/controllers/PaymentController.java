@@ -396,7 +396,7 @@ public class PaymentController extends Controller{
     }
 
     private void sendSystemMsg(){
-        String msg = "Your order has been paid successfully, please check your email for more details";
+        String msg = "Your order("+ StatusContainer.currentOrderID +") has been paid successfully, please check your email for more details";
         DataTools.sendSystemMessage(StatusContainer.currentUser.getUserID(),msg);
     }
 
