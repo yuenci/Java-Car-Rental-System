@@ -905,6 +905,43 @@ public class DataTools {
         if (data.size() == 0) return null;
         return data.get(0)[0];
     }
+    public static int getCarIDFromOrderID(int carID){
+        String sql = "select carID from orders where orderID = " + carID;
+        ArrayList<String[]> data = SQL.query(sql);
+        if (data.size() == 0) return -1;
+        return Integer.parseInt(data.get(0)[0]);
+    }
+
+    public static boolean storeComment(int rating , String comment, int orderID){
+        String commentID = getNewID("comments") + "";
+        String type = "modelComment";
+        String payload = getCarIDFromOrderID(orderID) + ""; // carID
+        String posterID = StatusContainer.currentUser.getUserID() + "";
+        String commentStr = comment;
+        String relevantCommentID = "0";
+        String commentDateTime = DateTools.getNow();
+        String like = "0";
+        String star = "0";
+        String ratingStr = rating + "";
+        String orderIDStr = orderID + "";
+
+        String sql = "insert into comments values (" +
+                commentID + ", " +
+                "'" + type + "', " +
+                "'" + payload + "', " +
+                posterID + ", " +
+                "'" + commentStr + "', " +
+                relevantCommentID + ", " +
+                "'" + commentDateTime + "', " +
+                like + ", " +
+                star + ", " +
+                ratingStr + ", " +
+                orderIDStr +
+                ")";
+        //System.out.println(sql);
+
+        return SQL.execute(sql);
+    }
 
 }
 

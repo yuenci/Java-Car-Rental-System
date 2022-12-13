@@ -27,15 +27,20 @@ public class FeedBackFrame extends MessageFrame {
         mainBGPanel.setStyle("-fx-background-color: rgba(0,0,0,"+transparent+");");
     }
     private void addNewPaneToContainer() {
-        int width = 450;
-        int height = 520;
+        int width = 395;
+        int height = 330;
 
         paneContainer.setPrefSize(width, height);
         paneContainer.setLayoutX((1280- width)/2);
-        paneContainer.setLayoutY((832- height)/2 - 50);
+        paneContainer.setLayoutY((832- height)/2 - 80);
         paneContainer.setStyle("-fx-background-color: #2a2a2b");
-        mainBGPanel.getChildren().add(paneContainer);
 
+        UIRating rating = new UIRating();
+        rating.setPrefSize(width, height);
+        paneContainer.getChildren().add(rating);
+
+        mainBGPanel.getChildren().add(paneContainer);
         mainPane.getChildren().add(mainBGPanel);
+
     }
 }
