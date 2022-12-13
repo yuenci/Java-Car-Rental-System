@@ -1,6 +1,6 @@
-commentID:num=0,type:str=null,payload:str=null,posterID:num=0,comment:str=null,relevantCommentID:num=0,commentDateTime:str=null,like:num=0,star:num=0
-1,modelComment,Mclaren_720s,1,This is a comment1 I like it,0,2019-01-01 00:00:00,5200,3330
-2,modelComment,Mclaren_720s,1,This is a comment2 I like it,0,2019-01-02 00:00:00,521,331
-3,modelComment,Mclaren_720s,1,This is a comment3 I like it,0,2019-01-03 00:00:00,522,332
-4,modelComment,Mclaren_720s,1,This is a comment4 I like it,0,2019-01-04 00:00:00,523,333
-5,modelComment,Mclaren_720s,1,This is a comment5 I like it,0,2019-01-05 00:00:00,524,334
+commentID:num=0,type:str=null,payload:str=null,posterID:num=0,comment:str=null,relevantCommentID:num=0,commentDateTime:str=null,like:num=0,star:num=0,rating:num=0,orderID:num=0
+1,modelComment,1,1,This is a comment1 I like it,0,2019-01-01 00:00:00,5200,3330,4,1
+2,modelComment,2,1,This is a comment2 I like it,0,2019-01-02 00:00:00,521,331,5,2
+3,modelComment,3,1,This is a comment3 I like it,0,2019-01-03 00:00:00,522,332,3,3
+4,modelComment,4,1,This is a comment4 I like it,0,2019-01-04 00:00:00,523,333,2,4
+5,modelComment,5,1,This is a comment5 I like it,0,2019-01-05 00:00:00,524,334,1,5
