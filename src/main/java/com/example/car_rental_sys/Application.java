@@ -7,10 +7,7 @@ import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.orm.User;
-import com.example.car_rental_sys.ui_components.PaymentCard;
-import com.example.car_rental_sys.ui_components.UICusBillRow;
-import com.example.car_rental_sys.ui_components.UIPagination;
-import com.example.car_rental_sys.ui_components.VehicleCard;
+import com.example.car_rental_sys.ui_components.*;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -82,56 +79,22 @@ public class Application extends javafx.application.Application {
         //setUser("d");
         //setUser("a");
         setUser("c");
-        startStage(fxmlName);
+        //startStage(fxmlName);
         //setUser();
         //setUser("c");
 
 
         //startApplication();
 
-        //testComponent(stage,"css");
+        testComponent(stage,"css");
     }
 
     private static void testComponent(Stage stage, String css){
-        //UIPagination01 pagination = new UIPagination01();
-        UIPagination pagination2 = new UIPagination();
-        //set the resource style sheets
-        //UIPaginationController test = new UIPaginationController();
-        PaymentCard empty = new PaymentCard("empty");
-        //empty.setPrefSize(150,90);
-        empty.setLayoutX(10);
-        empty.setLayoutY(300);
-        PaymentCard visa = new PaymentCard("visa", "123456789123", "Yuenci", "Bank of China", "1000");
-        //visa.setPrefSize(150,90);
-        visa.setLayoutX(10);
-        visa.setLayoutY(200);
-        PaymentCard master = new PaymentCard("master", "123456789123", "My Master:)", "Bank of APU", "1000");
-        //master.setPrefSize(150,90);
-        master.setLayoutX(10);
-        master.setLayoutY(400);
-        PaymentCard paymentCard = new PaymentCard("paypal", "123456789456", "My PayPal", "Bank of China", "1000");
-        //paymentCard.setPrefSize(150,90);
-        paymentCard.setLayoutX(10);
-        paymentCard.setLayoutY(100);
-
-        //UICusBillRow row1 = new UICusBillRow("top-up", "2020-12-12", "2:09", "1000", "1");
-        //row1.setLayoutX(10);
-        //row1.setLayoutY(100);
-        //UICusBillRow row2 = new UICusBillRow("rental", "2020-12-12", "2:09", "1000", "2");
-        //row2.setLayoutX(10);
-        //row2.setLayoutY(150);
-
-        String[] theme = {"#ffffff","#000000"};
-        VehicleCard card = new VehicleCard("Lamborghini_Super","1000", theme[0], theme[1]);
-        card.setLayoutX(10);
-        card.setLayoutY(100);
+        UIRating rating = new UIRating();
 
         Pane pane = new Pane();
         pane.setPrefSize(500,500);
-        //pane.getChildren().addAll(pagination);
-        //pane.getChildren().addAll(row1,row2);
-        //pane.getChildren().addAll(pagination2, paymentCard, empty, visa, master);
-        pane.getChildren().addAll(card);
+        pane.getChildren().addAll(rating);
         Scene scene = new Scene(pane,500,500);
         //scene.getStylesheets().add(css);
         stage.setTitle("Test Component");

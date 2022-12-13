@@ -65,3 +65,15 @@
     -fx-background-color: transparent;
 
 }
+
+.text-area{
+    -fx-text-fill: #f6f6f6 !important;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+    -fx-faint-focus-color: transparent !important;
+}
+
+.text-area .scroll-pane .content {
+    -fx-background-color: #111111 !important;
+}

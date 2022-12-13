@@ -52,7 +52,7 @@
 .text-area{
     -fx-text-fill: #f6f6f6 !important;
     -fx-focus-color: #4080ff !important;
-    -fx-faint-focus-color: transparent;;
+    -fx-faint-focus-color: transparent;
 }
 
 .text-area .scroll-pane .content {
