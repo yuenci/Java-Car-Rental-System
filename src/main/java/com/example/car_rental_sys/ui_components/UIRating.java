@@ -41,6 +41,7 @@ public class UIRating extends Pane {
 
     private int status = 0;
     private int rating = 0;
+    private boolean firstClick = false;
 
 
     public UIRating(){
@@ -198,35 +199,50 @@ public class UIRating extends Pane {
 
     private void initEmojiClickedEvent(){
         emojiPane1.setOnMouseClicked((MouseEvent event) -> {
+            if(!firstClick){
+                firstClick = true;
+                status = 1;
+            }
             rating = 1;
-            checkButtonStatus();
             btnPost.setDisable(false);
             greyPane1.setVisible(false);
         });
 
         emojiPane2.setOnMouseClicked((MouseEvent event) -> {
-            checkButtonStatus();
+            if(!firstClick){
+                firstClick = true;
+                status = 1;
+            }
             rating = 2;
             btnPost.setDisable(false);
             greyPane2.setVisible(false);
         });
 
         emojiPane3.setOnMouseClicked((MouseEvent event) -> {
-            checkButtonStatus();
+            if(!firstClick){
+                firstClick = true;
+                status = 1;
+            }
             rating = 3;
             btnPost.setDisable(false);
             greyPane3.setVisible(false);
         });
 
         emojiPane4.setOnMouseClicked((MouseEvent event) -> {
-            checkButtonStatus();
+            if(!firstClick){
+                firstClick = true;
+                status = 1;
+            }
             rating = 4;
             btnPost.setDisable(false);
             greyPane4.setVisible(false);
         });
 
         emojiPane5.setOnMouseClicked((MouseEvent event) -> {
-            checkButtonStatus();
+            if(!firstClick){
+                firstClick = true;
+                status = 1;
+            }
             rating = 5;
             btnPost.setDisable(false);
             greyPane5.setVisible(false);
@@ -277,6 +293,7 @@ public class UIRating extends Pane {
         FeedBackFrame.instance.mainPane.getChildren().remove(FeedBackFrame.instance.mainBGPanel);
         rating = 0;
         status = 0;
+        firstClick = false;
     }
 
     private void initActivateState(){
