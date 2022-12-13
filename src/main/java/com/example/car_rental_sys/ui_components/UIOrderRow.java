@@ -67,10 +67,10 @@ public class  UIOrderRow extends Pane {
         if(orderStatus == -1){
             status = "Cancelled";
             color = "#F76560";
-        }else if(orderStatus == 0 || orderStatus == 2){
+        }else if(orderStatus == 0 || orderStatus == 1 || orderStatus == 2){
             status = "In Progress";
             color = "#6AA1FF";
-        }else if(orderStatus == 1 || orderStatus == 3 || orderStatus == 4) {
+        }else if(orderStatus == 3 || orderStatus == 4) {
             status = "Continuing";
             color = "#FF9A2E";
         }else if(orderStatus == 5){
