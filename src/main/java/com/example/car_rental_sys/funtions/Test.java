@@ -34,7 +34,8 @@ public class Test {
         //keepLoginTest();
         //gettodoListTest();
         //getStampTest();
-        getCardInfoTest();
+        //getCardInfoTest();
+        feedbackFrameTest();
     }
 
 
@@ -138,5 +139,9 @@ public class Test {
             System.out.println(Arrays.toString(datum));
         }
         System.out.println(data.size());
+    }
+
+    private static void feedbackFrameTest(){
+//        new FeedBackFrame("test");
     }
 }

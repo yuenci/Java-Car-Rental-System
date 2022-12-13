@@ -60,6 +60,18 @@ public class DriverSideController {
         avatarImageView.setImage(ImageTools.getCircleImages(driver.getAvatar()));
         ImageTools.setImageShapeToCircle(avatarImageView);
 
+        avatarImageView.setOnMouseClicked(event -> {
+            FXTools.changeScene("driverServicePage.fxml");
+        });
+
+        // avatarImageView hover
+        avatarImageView.setOnMouseEntered(event -> {
+            avatarImageView.getScene().setCursor(javafx.scene.Cursor.HAND);
+        });
+        avatarImageView.setOnMouseExited(event -> {
+            avatarImageView.getScene().setCursor(javafx.scene.Cursor.DEFAULT);
+        });
+
     }
 
 

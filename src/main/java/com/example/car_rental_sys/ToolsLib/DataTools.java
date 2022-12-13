@@ -190,7 +190,6 @@ public class DataTools {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
 
     public static String getCarModelFromCarID(int carID) {
@@ -899,6 +898,14 @@ public class DataTools {
         if (data.size() == 0) return null;
         return data.get(0)[0];
     }
+
+    public static String getPhoneFromUserID(int userID){
+        String sql = "select phone from userInfo where userID = " + userID;
+        ArrayList<String[]> data = SQL.query(sql);
+        if (data.size() == 0) return null;
+        return data.get(0)[0];
+    }
+
 }
 
 // TODO: No comma "," content is allowed.

@@ -6,4 +6,5 @@ public class MessageFrameType {
     public static final String WARNING = "Warning Notification";
     public static final String SUCCESS = "Success Notification";
     public static final String CONFIRM = "Confirm Notification";
+    public static final String FEEDBACK = "FeedBack Frame";
 }

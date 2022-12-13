@@ -302,6 +302,22 @@ public class CarDetailsPageController extends  Controller{
             return;
         }
 
+        //check if user has phone number
+        if(Objects.equals(StatusContainer.currentUser.getPhone(), "null")){
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You have not upload your phone number, do you want to upload it now?");
+            messageFrame.setSuccessCallbackFunc((i) -> {
+                FXTools.changeScene("customerServicePage.fxml");
+                return null;
+            });
+
+            messageFrame.setFailedCallbackFunc((i) -> {
+                messageFrame.close();
+                return null;
+            });
+            messageFrame.show();
+            return;
+        }
+
 
 
         FXTools.changeScene("paymentPage.fxml");

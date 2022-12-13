@@ -72,16 +72,34 @@ public class DriverMainPageController extends  Controller{
     public void initialize() {
         driverMainPageInstance = this;
         initData();
-        //initSideBar();
+        initRightSideBarEvent();
         initOrderCards();
         initWebview();
         initScrollPaneEvent();
         //initMenuEvent();
         initFirstOrderCard();
         initProcessTip();
+        detectContinueOrder();
         StatusContainer.currentPageController = this;
         optionPane.setVisible(false);
         optionPane.setStyle("-fx-background-color: #ffffff");
+    }
+
+    private void initRightSideBarEvent(){
+        messagePane.setOnMouseClicked(event -> {
+            FXTools.changeScene("messagePage.fxml");
+        });
+
+        phonePane.setOnMouseClicked(event -> {
+            int userID = StatusContainer.currentOrderCard.userID;
+            String phone = DataTools.getPhoneFromUserID(userID);
+            PlatformTools.callWhatsApp(phone);
+            //System.out.println(phone);
+        });
+
+        closeSideBarPane.setOnMouseClicked(event -> {
+            FXTools.changeScene("mainPage.fxml");
+        });
     }
 
     private void initWebview() {
@@ -101,29 +119,37 @@ public class DriverMainPageController extends  Controller{
                 orderIDs[i] = Integer.parseInt(result.get(i)[0]);
             }
         }
-        getContinueOrderID();
     }
 
-    private void getContinueOrderID(){
+    private void detectContinueOrder(){
         String driverID = String.valueOf(driver.getUserID());
+        //10
         ArrayList<String[]> result = FileOperate.readFileToArray(ConfigFile.dataFilesRootPath + "schedule.txt");
         String lastID = "";
         // from end to start loop
         for (int i = result.size() - 1; i >= 0; i--) {
             if ( result.get(i)[3].equals(driverID)) {
                 lastID = result.get(i)[1];
+                break;
             }
         }
 
-        String sql = "select max(status) from schedule where orderID = " + lastID;
-        String maxStatus =  SQL.query(sql).get(0)[0];
-        int status = Double.valueOf(maxStatus).intValue();
-
-        if (status == 2) {
-            continueOrderID =Double.valueOf(lastID).intValue();
-            System.out.println( "continue order id is " + continueOrderID);
+        String sql = "select status from orders where orderID = " + lastID;
+        ArrayList<String[]> result1 = SQL.query(sql);
+        if (result1.size() == 0) {
+            throw new RuntimeException("Order" + lastID + "not found");
+        } else if(result1.get(0)[0].equals("2")){
+            // show processTipPane
+            // hide scrollPane
+            StatusContainer.currentContinueOrderID = Integer.parseInt(lastID);
+            orderContinue();
         }
 
+
+    }
+    private void orderContinue(){
+        scrollPane.setVisible(false);
+        showProcessTip();
     }
 
     private void initOrderCards() {
@@ -183,33 +209,16 @@ public class DriverMainPageController extends  Controller{
     }
 
     @FXML
-    private void closeSideBarPaneClick() {
-////        System.out.println( "closeSideBarPaneClick");
-//        //sidePane.setVisible(false);
-////        mainPane.getChildren().remove(sidePane);
-////        mainPane.getChildren().remove(webview);
-////
-////        WebView newWebview = new WebView();
-////        WebEngine engine = newWebview.getEngine();
-////        String path = "/com/example/car_rental_sys/html/directions.html";
-////        engine.load(Objects.requireNonNull(getClass().getResource(path)).toString());
-////        newWebview.resize(1000, 500);
-////        newWebview.setLayoutX(280);
-////        newWebview.setLayoutY(0);
-////        mainPane.getChildren().add(newWebview);
-//        StatusContainer.isHideDriverSideBar = true;
-//        Tools.changeScene("driverServicePage.fxml");
-
-    }
+    private void closeSideBarPaneClick() {}
 
     private void initFirstOrderCard(){
         if (continueOrderID ==-1) {
             currentOrderCard = new OrderCard(new Order(orderIDs[0]));
         }else{
             currentOrderCard = new OrderCard(new Order(continueOrderID));
-            StatusContainer.currentOrderCard = currentOrderCard;
             generalChosedEvent();
         }
+        StatusContainer.currentOrderCard = currentOrderCard;
 
         setCarInfo();
         setRenterInfo();

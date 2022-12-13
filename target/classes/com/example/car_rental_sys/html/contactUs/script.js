@@ -85,17 +85,20 @@ class Tools {
         })
     }
 
+    // use this one!!!!
+    // static initAvatars() {
+    //     let avatarArgsList = currentUserAvatarPath.split("/");
+    //     avatarArgsList.pop()
+    //     let avatarPath = avatarArgsList.join("/") + "/";
+    //     Tools.avatarRootPath = avatarPath;
+    //     document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
+    // }
 
     static initAvatars() {
-        let avatarArgsList = currentUserAvatarPath.split("/");
-        avatarArgsList.pop()
-        let avatarPath = avatarArgsList.join("/") + "/";
-        Tools.avatarRootPath = avatarPath;
 
-        document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
+        Tools.avatarRootPath = "avatar/";
+        document.getElementById("current-user-avatar-img").src = "avatar/9.png";
     }
-
-
 
     static addMessages(chatterName) {
         let data = JSON.parse(messageData);

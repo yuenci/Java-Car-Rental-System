@@ -44,7 +44,9 @@ public class PlatformTools {
     }
 
     public static void callWhatsApp(String phoneNumber) {
+        phoneNumber = phoneNumber.replace("-", "");
         String url = "https://api.whatsapp.com/send/?phone=" + phoneNumber;
+        System.out.println(url);
         BrowserModal browserModal = new BrowserModal(500, 450, url);
         Function<String, Void> func = (message) -> {
             //System.out.println(message);

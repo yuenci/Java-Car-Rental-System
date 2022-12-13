@@ -6,6 +6,7 @@ import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.BrowserModal;
+import com.example.car_rental_sys.ui_components.FeedBackFrame;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
@@ -86,7 +87,14 @@ public class MainPageController extends Controller{
         initIntroLabel();
         mainPageController = this;
         StatusContainer.currentPageController = this;
+        test();
     }
+    private void test(){
+        FeedBackFrame feedBackFrame = new FeedBackFrame(MessageFrameType.FEEDBACK);
+        feedBackFrame.show();
+    }
+
+
     private void initIntroLabel(){
         introLabel.setWrapText(true);
         String text =

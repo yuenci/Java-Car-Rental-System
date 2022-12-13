@@ -131,9 +131,6 @@ public class BrowserFrame {
     }
 
 
-
-
-
     private  void callBack( String message){
         System.out.println("call back message: [" + message + "] from BrowserFrame");
         callBackFunc.apply(message);

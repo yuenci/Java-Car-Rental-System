@@ -197,10 +197,12 @@ public class OrderCard extends Pane {
     private void changeInfo(){
         driverMainIns.currentOrderCard = this;
         driverMainIns.setRentInfo();
+        StatusContainer.currentOrderCard = this;
     }
 
     private void hideCard(){
         driverMainIns.hideCard(this.orderID);
+        StatusContainer.currentOrderCard = this;
     }
 
     private void chooseCard(){
