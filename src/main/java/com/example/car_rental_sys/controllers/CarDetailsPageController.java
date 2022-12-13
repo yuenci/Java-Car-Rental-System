@@ -319,11 +319,20 @@ public class CarDetailsPageController extends  Controller{
             return;
         }
 
-
-
-        FXTools.changeScene("paymentPage.fxml");
         makeAPayment();
+        sendSystemMsg();
+        FXTools.changeScene("paymentPage.fxml");
+
+
     }
+    private void sendSystemMsg(){
+        String pickUpTime = DateTools.timeStampToDateTime(StatusContainer.pickUpTimeStamp);
+        String returnTime = DateTools.timeStampToDateTime(StatusContainer.returnTimeStamp);
+        String message = "You have made a payment for " + StatusContainer.currentCarChose + " at " + pickUpTime + " from " + returnTime + " to " + StatusContainer.returnTimeStamp + " successfully!";
+        DataTools.sendSystemMessage(StatusContainer.currentUser.getUserID(),message);
+    }
+
+
     private void makeAPayment(){
         // carStatus - for date
         ArrayList<Integer>  carsAvailable = DataTools.carsAvailable(StatusContainer.currentCarChose);

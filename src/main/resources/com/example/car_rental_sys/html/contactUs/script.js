@@ -86,19 +86,19 @@ class Tools {
     }
 
     // use this one!!!!
-    // static initAvatars() {
-    //     let avatarArgsList = currentUserAvatarPath.split("/");
-    //     avatarArgsList.pop()
-    //     let avatarPath = avatarArgsList.join("/") + "/";
-    //     Tools.avatarRootPath = avatarPath;
-    //     document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
-    // }
-
     static initAvatars() {
-
-        Tools.avatarRootPath = "avatar/";
-        document.getElementById("current-user-avatar-img").src = "avatar/9.png";
+        let avatarArgsList = currentUserAvatarPath.split("/");
+        avatarArgsList.pop()
+        let avatarPath = avatarArgsList.join("/") + "/";
+        Tools.avatarRootPath = avatarPath;
+        document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
     }
+
+    // static initAvatars() {
+
+    //     Tools.avatarRootPath = "avatar/";
+    //     document.getElementById("current-user-avatar-img").src = "avatar/9.png";
+    // }
 
     static addMessages(chatterName) {
         let data = JSON.parse(messageData);
@@ -259,6 +259,7 @@ class Message {
 
         let time1 = Tools.getDataTime();
         let message1 = this.message;
+        message1.replaceAll(",", "，");
 
         let data = [type, senderID, reciverID, time1, message1];
         let res = "[" + data.join(",") + "]";

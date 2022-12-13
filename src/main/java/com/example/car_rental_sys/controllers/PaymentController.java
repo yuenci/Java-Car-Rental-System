@@ -391,7 +391,13 @@ public class PaymentController extends Controller{
 
     private void afterPaySuccess(){
         makePayment();
+        sendSystemMsg();
         FXTools.changeScene("paySuccessPage.fxml");
+    }
+
+    private void sendSystemMsg(){
+        String msg = "Your order has been paid successfully, please check your email for more details";
+        DataTools.sendSystemMessage(StatusContainer.currentUser.getUserID(),msg);
     }
 
     private void makePayment(){

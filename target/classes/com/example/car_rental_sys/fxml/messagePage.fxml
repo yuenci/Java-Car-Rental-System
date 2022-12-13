@@ -12,6 +12,6 @@
             fx:id="mainPane"
             prefHeight="832.0" prefWidth="1280.0">
     <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: transparent;" fx:id="navBarPane">
-        <fx:include source="navigationBarShort.fxml" />
+        <fx:include source="navigationBarShortForMsg.fxml" />
     </Pane>
 </Pane>
