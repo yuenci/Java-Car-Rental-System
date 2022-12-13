@@ -81,8 +81,10 @@ public class DriverMainPageController extends  Controller{
         });
 
         phonePane.setOnMouseClicked(event -> {
-
-            //callWhatsApp
+            int userID = StatusContainer.currentOrderCard.userID;
+            String phone = DataTools.getPhoneFromUserID(userID);
+            PlatformTools.callWhatsApp(phone);
+            //System.out.println(phone);
         });
 
         closeSideBarPane.setOnMouseClicked(event -> {
@@ -208,9 +210,9 @@ public class DriverMainPageController extends  Controller{
             currentOrderCard = new OrderCard(new Order(orderIDs[0]));
         }else{
             currentOrderCard = new OrderCard(new Order(continueOrderID));
-            StatusContainer.currentOrderCard = currentOrderCard;
             generalChosedEvent();
         }
+        StatusContainer.currentOrderCard = currentOrderCard;
 
         setCarInfo();
         setRenterInfo();

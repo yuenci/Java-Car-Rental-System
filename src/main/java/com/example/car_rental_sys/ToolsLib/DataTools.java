@@ -897,6 +897,13 @@ public class DataTools {
         return data.get(0)[0];
     }
 
+    public static String getPhoneFromUserID(int userID){
+        String sql = "select phone from userInfo where userID = " + userID;
+        ArrayList<String[]> data = SQL.query(sql);
+        if (data.size() == 0) return null;
+        return data.get(0)[0];
+    }
+
 }
 
 // TODO: No comma "," content is allowed.
