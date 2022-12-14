@@ -8,9 +8,9 @@ import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.CommentCard;
-import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
@@ -296,7 +296,6 @@ public class CarDetailsPageController extends  Controller{
         }
 
 
-
         //check if this car is available
         String currentCarChose = StatusContainer.currentCarChose;
         if(!DataTools.ifCarsAvailable(currentCarChose)){
@@ -310,7 +309,8 @@ public class CarDetailsPageController extends  Controller{
         if(!DataTools.ifCurrentCustomerHasDLNumber()){
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You have not upload your driving license number, do you want to upload it now?");
             messageFrame.setSuccessCallbackFunc((i) -> {
-                System.out.println("go to setting page");
+                FXTools.goToSettingPage();
+               // System.out.println("go to setting page");
                 return null;
             });
 
