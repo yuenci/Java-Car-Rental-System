@@ -291,6 +291,8 @@ public class SignUpPageController extends Controller {
                 newCustomer.setEmail(emailStr);
                 newCustomer.setUserID(DataTools.getNewUserID());
                 newCustomer.setRegTime(DateTools.getFormatDateTime());
+                //random save user gender {Male,Female}
+                newCustomer.setGender(DataTools.getRandomGender());
             } catch (Exception e) {
                 e.printStackTrace();
             }

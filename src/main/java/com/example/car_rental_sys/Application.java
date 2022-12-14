@@ -30,7 +30,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
         NetTools.registerJxBrowserLicence();
-        //NetTools.StartHttpServer();
+        NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
 

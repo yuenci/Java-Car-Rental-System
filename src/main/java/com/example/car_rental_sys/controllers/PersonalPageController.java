@@ -166,9 +166,9 @@ public class PersonalPageController {
 
     @FXML
     void deleteClicked() {
-        System.out.println(user.getGender());
+        //System.out.println(user.getGender());
         avatar = ImageTools.getDefaultProfile(user.getGender());
-        System.out.println("hi: " + avatar);
+        //System.out.println("hi: " + avatar);
         Platform.runLater(() -> {
             ivAvatar.setImage(null);
             setCircleAvatar(avatar);

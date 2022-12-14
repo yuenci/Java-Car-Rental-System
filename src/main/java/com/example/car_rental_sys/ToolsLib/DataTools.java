@@ -116,6 +116,11 @@ public class DataTools {
         return result.size();
     }
 
+    public static String getRandomGender(){
+        String[] gender = {"Male", "Female"};
+        return gender[getRandomInt(0,1)];
+    }
+
     public static boolean checkPassword(String password) {
         if (password.length() < 8) {
             MessageFrame messageFrame = new MessageFrame(MessageFrameType.WARNING, "Password must be at least 8 characters");
