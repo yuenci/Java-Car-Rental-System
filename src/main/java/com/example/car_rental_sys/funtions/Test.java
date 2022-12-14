@@ -30,12 +30,13 @@ public class Test {
         //SelfTestTools.isBackendServerRunning();
 //        screenShotTest();
         //openScreenShotWithMsPaintTest();
-        getMessageJson();
+        //getMessageJson();
         //keepLoginTest();
         //gettodoListTest();
         //getStampTest();
         //getCardInfoTest();
         //feedbackFrameTest();
+        dashboardTest();
     }
 
 
@@ -146,5 +147,10 @@ public class Test {
 
     private static void feedbackFrameTest(){
 //        new FeedBackFrame("test");
+
+    }
+
+    private static void dashboardTest(){
+        DataTools.generateDashboardData();
     }
 }

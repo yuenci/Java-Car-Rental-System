@@ -15,6 +15,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -102,6 +107,14 @@ public class DataTools {
     public static String getProjectPath() {
         return System.getProperty("user.dir");
         //E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs
+    }
+
+    // Path: "src/main/resources/com/example/car_rental_sys/html/dashboard/data.js";
+    // output: E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\html\dashboard\data.js
+
+    public static  String getAbsolutePath(String relativePath) {
+        File file = new File(relativePath);
+        return file.getAbsolutePath();
     }
 
     public static int getNewUserID() {
@@ -965,10 +978,264 @@ public class DataTools {
 
         return SQL.execute(sql);
     }
+    private static String headerData(){
+        //let headerData = [12495, 22495, 32495]
+        ArrayList<String[]> data =FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+        double dailyIncome = 0;
+        double weeklyIncome = 0;
+        double monthlyIncome = 0;
+
+        for (String[] strings : data) {
+            if(strings.length == 0) continue;
+            long timeStamp = DateTools.dateTimeToTimestamp(strings[2]);
+            long now = System.currentTimeMillis();
+            long day = 24 * 60 * 60 * 1000;
+            long week = 7 * day;
+            long month = 30 * day;
+            if (now - timeStamp < day){
+                dailyIncome += Double.parseDouble(strings[8]);
+            }
+            if (now - timeStamp < week){
+                weeklyIncome += Double.parseDouble(strings[8]);
+            }
+            if (now - timeStamp < month){
+                monthlyIncome += Double.parseDouble(strings[8]);
+            }
+        }
+
+        return "let headerData = [" + (int)dailyIncome + "," + (int)weeklyIncome + "," + (int)monthlyIncome + "];";
+
+    }
+
+    private static String[] getDaysOFWeek(){
+        LocalDate endDate = LocalDate.now();
+        LocalDate startDate = endDate.minus(7, ChronoUnit.DAYS);
+        String[] productData = new String[7];
+
+        LocalDate currentDate = endDate;
+        int productDataIndex = 6;
+        while (!currentDate.isBefore(startDate)) {
+            if( productDataIndex < 0) break;
+
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+            String formattedDate = currentDate.format(formatter);
+            //System.out.println(formattedDate);
+
+            String data = "{ product: '" +   formattedDate + "', ";
+            productData[productDataIndex] = data;
+
+            currentDate = currentDate.minus(1, ChronoUnit.DAYS);
+            productDataIndex--;
+        }
+        return productData;
+    }
+    
+    private static ArrayList<int[]> getOrderDataIn7Days(){
+        // get last 7 days every day's income
+        long day1 = 24 * 60 * 60 * 1000;
+        long day2 = 2 * day1;
+        long day3 = 3 * day1;
+        long day4 = 4 * day1;
+        long day5 = 5 * day1;
+        long day6 = 6 * day1;
+        long day7 = 7 * day1;
+
+        int[] dataDay1 = new int[3];
+        int[] dataDay2 = new int[3];
+        int[] dataDay3 = new int[3];
+        int[] dataDay4 = new int[3];
+        int[] dataDay5 = new int[3];
+        int[] dataDay6 = new int[3];
+        int[] dataDay7 = new int[3];
+
+        ArrayList<String[]> data =FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+
+
+        for (String[] strings : data) {
+            if(strings.length == 0) continue;
+            long timeStamp = DateTools.dateTimeToTimestamp(strings[2]);
+
+            long now = System.currentTimeMillis();
+            if (now - timeStamp < day1){
+                if(Objects.equals(strings[11], "1")){
+                    dataDay1[0]++;
+                }
+                else if(Objects.equals(strings[11], "3")) {
+                    dataDay1[1]++;
+                }
+                else if(Objects.equals(strings[11], "5")) {
+                    dataDay1[2]++;
+                }
+            }
+            if (now - timeStamp < day2){
+                if(Objects.equals(strings[11], "1")) dataDay2[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay2[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay2[2]++;
+            }
+            if (now - timeStamp < day3){
+                if(Objects.equals(strings[11], "1")) dataDay3[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay3[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay3[2]++;
+            }
+            if (now - timeStamp < day4){
+                if(Objects.equals(strings[11], "1")) dataDay4[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay4[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay4[2]++;
+            }
+            if (now - timeStamp < day5){
+                if(Objects.equals(strings[11], "1")) dataDay5[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay5[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay5[2]++;
+            }
+            if (now - timeStamp < day6){
+                if(Objects.equals(strings[11], "1")) dataDay6[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay6[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay6[2]++;
+            }
+            if (now - timeStamp < day7){
+                if(Objects.equals(strings[11], "1")) dataDay7[0]++;
+                else if(Objects.equals(strings[11], "3")) dataDay7[1]++;
+                else if(Objects.equals(strings[11], "5")) dataDay7[2]++;
+            }
+        }
+        ArrayList<int[]> orderData = new ArrayList<>();
+        orderData.add(dataDay1);
+        orderData.add(dataDay2);
+        orderData.add(dataDay3);
+        orderData.add(dataDay4);
+        orderData.add(dataDay5);
+        orderData.add(dataDay6);
+        orderData.add(dataDay7);
+        return orderData;
+    }
+
+    private static String lineChartData(){
+
+        //System.out.println(Arrays.toString(productData));
+        String[] productData = getDaysOFWeek();
+        ArrayList<int[]> orderData = getOrderDataIn7Days();
+
+        String dataDay1Str =  productData[0] + "Paid: " + orderData.get(0)[0]+ ", " + "Delivered: " + orderData.get(0)[1] + ", " + "Finished: " + orderData.get(0)[2] + "},";
+        String dataDay2Str =  productData[1] + "Paid: " + orderData.get(1)[0]+ ", " + "Delivered: " + orderData.get(1)[1] + ", " + "Finished: " + orderData.get(1)[2] + "},";
+        String dataDay3Str =  productData[2] + "Paid: " + orderData.get(2)[0]+ ", " + "Delivered: " + orderData.get(2)[1] + ", " + "Finished: " + orderData.get(2)[2] + "},";
+        String dataDay4Str =  productData[3] + "Paid: " + orderData.get(3)[0]+ ", " + "Delivered: " + orderData.get(3)[1] + ", " + "Finished: " + orderData.get(3)[2] + "},";
+        String dataDay5Str =  productData[4] + "Paid: " + orderData.get(4)[0]+ ", " + "Delivered: " + orderData.get(4)[1] + ", " + "Finished: " + orderData.get(4)[2] + "},";
+        String dataDay6Str =  productData[5] + "Paid: " + orderData.get(5)[0]+ ", " + "Delivered: " + orderData.get(5)[1] + ", " + "Finished: " + orderData.get(5)[2] + "},";
+        String dataDay7Str =  productData[6] + "Paid: " + orderData.get(6)[0]+ ", " + "Delivered: " + orderData.get(6)[1] + ", " + "Finished: " + orderData.get(6)[2] + "}";
+
+        //System.out.println(dataStr);
+
+        return "let lineData = [" + dataDay1Str + dataDay2Str + dataDay3Str + dataDay4Str + dataDay5Str + dataDay6Str + dataDay7Str + "];";
+    }
+
+    private  static int[] get7DaysOrderStatus(){
+        int[] data = new int[5];
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            long timeStamp = DateTools.dateTimeToTimestamp(strings[2]);
+            long now = System.currentTimeMillis();
+            long day7 = 7 * 24 * 60 * 60 * 1000;
+            if (now - timeStamp < day7){
+                if(Objects.equals(strings[11], "-1")) data[0]++;
+                else if(Objects.equals(strings[11], "1")) data[1]++;
+                else if(Objects.equals(strings[11], "2")) data[2]++;
+                else if(Objects.equals(strings[11], "3")) data[3]++;
+                else if(Objects.equals(strings[11], "5")) data[4]++;
+            }
+        }
+        return data;
+    }
+
+    private static String pieChartData(){
+        int [] data = get7DaysOrderStatus();
+        String res = "let pieData = [";
+        res += "{value: " + data[0] + ", name: 'Canceled'},";
+        res += "{value: " + data[1] + ", name: 'Paid'},";
+        res += "{value: " + data[2] + ", name: 'Driving'},";
+        res += "{value: " + data[3] + ", name: 'Delivered'},";
+        res += "{value: " + data[4] + ", name: 'Finished'}";
+        res += "];";
+
+        //System.out.println(dataStr);
+        return res;
+    }
+    private static int getUserIDFromOrderID(int OrderID){
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            if(Integer.parseInt(strings[0]) == OrderID){
+                return Integer.parseInt(strings[1]);
+            }
+        }
+        return -1;
+    }
+
+    private static String activityCardData(){
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.schedulePath,true);
+        StringBuilder dataStr = new StringBuilder("let activityCardData = [");
+        for (int i = orderData.size() -6; i < orderData.size(); i++) {
+            String[] shcedule = orderData.get(i);
+
+            String userID = getUserIDFromOrderID(Integer.parseInt(shcedule[1])) + "";
+            String userName ="\"" + getUserNameFromUserID(Integer.parseInt(userID)) +"\"";
+            String time = "\"" + shcedule[4].substring(11,16) +"\"";
+            String status = shcedule[2];
+            if(Objects.equals(status, "-1")) status = "\"Canceled\"";
+            else if(Objects.equals(status, "1")) status = "\"Paid\"";
+            else if(Objects.equals(status, "2")) status = "\"Delivering\"";
+            else if(Objects.equals(status, "3")) status = "\"Delivered\"";
+            else if(Objects.equals(status, "5")) status = "\"Finished\"";
+
+            dataStr.append("[").append(userID).append(",").append(userName).append(",").append(time).append(",").append(status).append("],");
+        }
+        dataStr.append("];");
+        //System.out.println(dataStr);
+
+        return dataStr.toString();
+    }
+
+    private static String tableData(){
+        ArrayList<String[]> avtivityCardData = FileOperate.readFileToArray(ConfigFile.transactionRecordPath,true);
+        StringBuilder dataStr = new StringBuilder("let tableData = [");
+        for (int i = avtivityCardData.size() -5; i < avtivityCardData.size(); i++) {
+            String[] transactionRecord = avtivityCardData.get(i);
+            String transactionRecordID = transactionRecord[0];
+            String userID = getUserIDFromOrderID(Integer.parseInt(transactionRecord[1])) + "";
+            String userName = "\"" + getUserNameFromUserID(Integer.parseInt(userID)) +"\"";
+            String invoice = generateRandomInvoiceNo(Integer.parseInt(transactionRecordID));
+            String time = "\"" + transactionRecord[6].substring(0,10)+ "\"";
+            String amount = transactionRecord[5];
+
+            dataStr.append("[").append(userName).append(",").append(invoice).append(",").append(time).append(",").append(amount).append("],");
+        }
+        dataStr.append("];");
+        //System.out.println(dataStr);
+        return dataStr.toString();
+    }
 
     public static boolean generateDashboardData(){
-        return  true;
+        String avatarFolder = "let avatarFolderPath = \"" +
+                getAbsolutePath("src/main/resources/com/example/car_rental_sys/image/avatar")+ "\";";
+        String headerData = headerData();
+        String lineChartData= lineChartData();
+        String pieChartData = pieChartData();
+        String tableData= tableData();
+        String activityCardData = activityCardData();
 
+        String res = avatarFolder + "\n" + headerData + "\n" + lineChartData + "\n" +
+                pieChartData + "\n" + tableData + "\n" + activityCardData ;
+
+        //src/main/resources/com/example/car_rental_sys/html/dashboard/data.js
+        // get system path
+        String path = "src/main/resources/com/example/car_rental_sys/html/dashboard/data.js";
+        String absolutePath = getAbsolutePath(path);
+
+        FileOperate.rewriteFile(path,res);
+        System.out.println("Dashboard data generated");
+
+        return  true;
     }
 
     public static boolean generateAnalysisData(){

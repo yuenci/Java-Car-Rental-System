@@ -232,3 +232,4 @@ messageID:num=0,status:num=0,type:num=-1,senderID:num=0,receiverID:num=0,time:da
 231,0,1,0,11,2022-12-14 17:58:51,Your payment has been received and we will prepare your Car as soon as possible.
 232,0,1,0,1,2022-12-14 18:09:13,Unknown
 233,0,0,0,10,2022-12-14 18:09:55,Your order(64) has been delivered address: Astro Go Shop
+234,0,1,0,1,2022-12-14 18:11:15,Unknown

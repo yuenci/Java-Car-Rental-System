@@ -1,1 +1,1 @@
-let messageData= '{}';let currentUserID = 10;
+let messageData= '{"233":{"chatterID":0,"chatter":"System","isFromMe":0,"time":"2022-12-14 18:09:55","type":0,"message":"Your order(64) has been delivered address: Astro Go Shop","status":0}}';let currentUserID = 10;

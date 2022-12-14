@@ -21,7 +21,7 @@ function addAvtivityCard(id, name, time, event) {
     let card = document.createElement("div");
     card.classList.add("activity-card");
     card.innerHTML = `
-        <div><img src="./${id}.png" class="activity-card-avatar"></div>
+        <div><img src="../contactUs/avatar/${id}.png" class="activity-card-avatar"></div>
                     <div class="activity-card-info">
                         <p class="activity-card-name">${name}</p>
                         <p class="activity-card-time">${time}</p>
@@ -174,30 +174,33 @@ function addPieChart(pieData) {
 /////// initData 
 addHeaderData(headerData); // add header data
 
-let lineData = [
-    { product: 'Sun', Paid: 43.3, Delivered: 85.8, Finished: 93.7 },
-    { product: 'Mon', Paid: 83.1, Delivered: 73.4, Finished: 55.1 },
-    { product: 'Tur', Paid: 86.4, Delivered: 65.2, Finished: 82.5 },
-    { product: 'Wed', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Thu', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Fri', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Sat', Paid: 72.4, Delivered: 53.9, Finished: 39.1 }
-]
+// let lineData = [
+//     { product: 'Sun', Paid: 43.3, Delivered: 85.8, Finished: 93.7 },
+//     { product: 'Mon', Paid: 83.1, Delivered: 73.4, Finished: 55.1 },
+//     { product: 'Tur', Paid: 86.4, Delivered: 65.2, Finished: 82.5 },
+//     { product: 'Wed', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+//     { product: 'Thu', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+//     { product: 'Fri', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+//     { product: 'Sat', Paid: 72.4, Delivered: 53.9, Finished: 39.1 }
+// ]
 addLineChart(lineData)
 
-let pieData = [
-    { value: 1048, name: 'Paid' },
-    { value: 735, name: 'Canceled' },
-    { value: 580, name: 'Delivered' },
-    { value: 484, name: 'Driving' },
-    { value: 300, name: 'Finished' }
-]
+// let pieData = [
+//     { value: 1048, name: 'Paid' },
+//     { value: 735, name: 'Canceled' },
+//     { value: 580, name: 'Delivered' },
+//     { value: 484, name: 'Driving' },
+//     { value: 300, name: 'Finished' }
+// ]
 addPieChart(pieData)
 
-for (let i = 0; i < 6; i++) {
-    addAvtivityCard(16, "Alehe Anuha", "17:33", "PaidPaid");
+
+for (let i = 0; i < 5; i++) {
+    addAvtivityCard(activityCardData[i][0], activityCardData[i][1], activityCardData[i][2], activityCardData[i][3])
+    //addAvtivityCard(16, "Alehe Anuha", "17:33", "PaidPaid");
 }
 
 for (let i = 0; i < 5; i++) {
-    addTableRow("Alehe Anuha", 4564166543446, "2022-01-10", 84546);
+    addTableRow(tableData[i][0], tableData[i][1], tableData[i][2], tableData[i][3]);
+    //addTableRow("Alehe Anuha", 4564166543446, "2022-01-10", 84546);
 }

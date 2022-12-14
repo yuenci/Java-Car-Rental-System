@@ -40,6 +40,9 @@ public class ConfigFile {
     public static final String carsInfoPath = "src/main/resources/com/example/car_rental_sys/data/carInfo.txt";
     public static final String orderInfoPath = "src/main/resources/com/example/car_rental_sys/data/orders.txt";
     public static final String carStatusPath = "src/main/resources/com/example/car_rental_sys/data/carStatus.txt";
+    public static final String schedulePath = "src/main/resources/com/example/car_rental_sys/data/schedule.txt";
+    public static final String transactionRecordPath = "src/main/resources/com/example/car_rental_sys/data/transactionRecord.txt";
+
     public static final String dataFilesRootPath = "src/main/resources/com/example/car_rental_sys/data/";
     public static final String htmlComponents = "\\src\\main\\resources\\com\\example\\car_rental_sys\\html\\";
     public static final String fakeData = "src/main/resources/com/example/car_rental_sys/data/fakeData.txt";
