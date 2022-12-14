@@ -215,7 +215,7 @@ public class OrderListComponentController {
     private void recountTotalOrders(){
         totalOrders = data.size();
         pagContainer.getChildren().clear();
-        if(totalOrders > 0){
+        if(totalOrders > 15){
             initPagination();
         }
         Platform.runLater(() -> numOrder.setText(totalOrders + " Orders"));

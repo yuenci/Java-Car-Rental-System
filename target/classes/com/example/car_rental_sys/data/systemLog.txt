@@ -165,3 +165,7 @@ errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,er
 164,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:03:07
 165,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:09:10
 166,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:13:23
+167,java.lang.IndexOutOfBoundsException, Index 4 out of bounds for length 4,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 05:25:04
+168,java.lang.IndexOutOfBoundsException, Index 2 out of bounds for length 2,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 05:25:06
+169,java.lang.IndexOutOfBoundsException, Index 4 out of bounds for length 4,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 05:25:09
+170,java.lang.IndexOutOfBoundsException, Index 2 out of bounds for length 2,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 05:25:10
