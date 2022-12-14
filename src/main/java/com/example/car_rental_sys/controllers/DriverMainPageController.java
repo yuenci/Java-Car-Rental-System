@@ -86,9 +86,7 @@ public class DriverMainPageController extends  Controller{
     }
 
     private void initRightSideBarEvent(){
-        messagePane.setOnMouseClicked(event -> {
-            FXTools.changeScene("messagePage.fxml");
-        });
+        messagePane.setOnMouseClicked(event -> FXTools.changeScene("messagePage.fxml"));
 
         phonePane.setOnMouseClicked(event -> {
             int userID = StatusContainer.currentOrderCard.userID;
@@ -97,9 +95,7 @@ public class DriverMainPageController extends  Controller{
             //System.out.println(phone);
         });
 
-        closeSideBarPane.setOnMouseClicked(event -> {
-            FXTools.changeScene("mainPage.fxml");
-        });
+        closeSideBarPane.setOnMouseClicked(event -> FXTools.changeScene("mainPage.fxml"));
     }
 
     private void initWebview() {
@@ -238,7 +234,8 @@ public class DriverMainPageController extends  Controller{
 
         String jsFunc = "changeDirections(" + start+","+  end +")";
         //System.out.println(jsFunc);
-        webview.getEngine().executeScript(jsFunc);
+       // webview.getEngine().executeScript(jsFunc);
+        Platform.runLater(() -> webview.getEngine().executeScript(jsFunc));
     }
 
     private void setCarInfo(){
@@ -307,17 +304,11 @@ public class DriverMainPageController extends  Controller{
 
     private void initProcessTip(){
         processTipPane.setVisible(false);
-        processImagePane.setOnMouseEntered(event -> {
-            HoverProcessTip();
-        });
+        processImagePane.setOnMouseEntered(event -> HoverProcessTip());
 
-        processImagePane.setOnMouseExited(event -> {
-            showProcessTip();
-        });
+        processImagePane.setOnMouseExited(event -> showProcessTip());
 
-        processImagePane.setOnMouseClicked(event -> {
-            changeToDriveMode();
-        });
+        processImagePane.setOnMouseClicked(event -> changeToDriveMode());
     }
 
     private void showProcessTip(){

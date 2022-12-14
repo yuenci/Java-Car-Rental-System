@@ -51,8 +51,8 @@ public class MessagePageController {
 
         //browser.devTools().show();
 
-        Frame frame = browser.frames().get(0);
-        frame.localStorage().putItem("Name", "Tom");
+//        Frame frame = browser.frames().get(0);
+//        frame.localStorage().putItem("Name", "Tom");
 
         browser.on(ConsoleMessageReceived.class, event -> {
             ConsoleMessage consoleMessage = event.consoleMessage();
