@@ -32,4 +32,3 @@ userID:num=0,cardType:str=null,cardName:str=null,bankName:str=null,cardHolder:st
 11,visa,let,be,Ian Willis,05/30,4128092473656,USS Mcguir,16584,1
 12,paypal,bring,listen,Benjamin Carter,10/23,4949369686773,Unit 7166 ,19816,3
 12,visa,wish,maintain,Linda Harris,12/22,376076854372287,USS Willia,5512,3
-1,tng,MY TNGGOOO, Citibank,GOGOGOGOG,01/15,5909094980262633,This is an address,0,0

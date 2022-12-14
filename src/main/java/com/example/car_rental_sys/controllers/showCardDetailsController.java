@@ -1,7 +1,10 @@
 package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.orm.Card;
+import com.example.car_rental_sys.ui_components.MessageFrame;
+import com.example.car_rental_sys.ui_components.MessageFrameType;
 import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
@@ -13,7 +16,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
-public class showCardDetailsController {
+public class showCardDetailsController{
 
     public static showCardDetailsController instance;
 
@@ -67,9 +70,20 @@ public class showCardDetailsController {
     private void cardDeleteClicked() {
         setComponentVisible(false);
         //delete the card
-        clearText();
-        StatusContainer.currentCard.delete();
-        BillingComponentController.instance.refreshCardList();
+        MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM, "Are you sure to delete this card?");
+        messageFrame.setSuccessCallbackFunc((i) -> {
+            clearText();
+            StatusContainer.currentCard.delete();
+            BillingComponentController.instance.refreshCardList();
+
+            return null;
+        });
+
+        messageFrame.setFailedCallbackFunc((i) -> {
+            messageFrame.close();
+            return null;
+        });
+        messageFrame.show();
     }
 
     private void getChangesText(){
