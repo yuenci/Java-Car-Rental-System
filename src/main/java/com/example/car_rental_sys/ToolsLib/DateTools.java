@@ -73,6 +73,7 @@ public class DateTools {
 
     // 2022-09-24 02:07:32 | 2022-09-24 to timestamp
     public static long dateTimeToTimestamp(String time) {
+        time = time.replace("_", " ");
         SimpleDateFormat sdf  = null;
         if (time.length() == 19){
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

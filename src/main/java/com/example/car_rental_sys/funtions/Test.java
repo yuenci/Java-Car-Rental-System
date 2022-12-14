@@ -151,6 +151,7 @@ public class Test {
     }
 
     private static void dashboardTest(){
-        DataTools.generateDashboardData();
+//        DataTools.generateDashboardData();
+        //DataTools.generateAnalysisData();
     }
 }

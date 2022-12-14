@@ -21,7 +21,7 @@ function addAvtivityCard(id, name, time, event) {
     let card = document.createElement("div");
     card.classList.add("activity-card");
     card.innerHTML = `
-        <div><img src="../contactUs/avatar/${id}.png" class="activity-card-avatar"></div>
+        <div><img src="../contactUs/avatar/${id}.png" class="activity-card-avatar" alt="user avatar"></div>
                     <div class="activity-card-info">
                         <p class="activity-card-name">${name}</p>
                         <p class="activity-card-time">${time}</p>
@@ -57,7 +57,7 @@ function addLineChart(lineChartData) {
         renderer: 'canvas',
         useDirtyRect: false
     });
-    var app = {};
+    // var app = {};
 
     var option;
 
@@ -123,7 +123,7 @@ function addPieChart(pieData) {
         renderer: 'canvas',
         useDirtyRect: false
     });
-    var app = {};
+    //var app = {};
 
     var option;
 

@@ -1235,15 +1235,126 @@ public class DataTools {
         //src/main/resources/com/example/car_rental_sys/html/dashboard/data.js
         // get system path
         String path = "src/main/resources/com/example/car_rental_sys/html/dashboard/data.js";
-        String absolutePath = getAbsolutePath(path);
-
         FileOperate.rewriteFile(path,res);
-        System.out.println("Dashboard data generated");
+//        System.out.println("Dashboard data generated");
 
         return  true;
     }
 
+    private static String getMonthOrderData(){
+        long day30 = 30L * 24 * 60 * 60 * 1000;
+        long now = System.currentTimeMillis();
+
+        long income = 0;
+        long orderCount = 0;
+        long maxIncome = 0;
+
+        long[] res = new long[4];
+
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            long timeStamp = DateTools.dateTimeToTimestamp(strings[2]);
+            if (now - timeStamp < day30){
+                income += Integer.parseInt(strings[8]);
+                orderCount++;
+                if(Integer.parseInt(strings[8]) > maxIncome) maxIncome = Integer.parseInt(strings[8]);
+            }
+        }
+//        System.out.println(income);
+//        System.out.println(orderCount);
+//        System.out.println(maxIncome);
+
+        res[0] = income;
+        res[1] = orderCount;
+        res[2] = getMonthTransactionData();
+        res[3] = maxIncome;
+
+        return "let monthOrderData = [" + res[0] + "," + res[1] + "," + res[2] + "," + res[3] + "];";
+    }
+    private static int getMonthTransactionData(){
+        long day30 = 30L * 24 * 60 * 60 * 1000;
+        long now = System.currentTimeMillis();
+
+        int transactionCount = 0;
+
+
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.transactionRecordPath,true);
+
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            long timeStamp = DateTools.dateTimeToTimestamp(strings[6]);
+            if (now - timeStamp < day30){
+                transactionCount++;
+            }
+        }
+        return transactionCount;
+    }
+
+    private static  String getMonthlyIncome(){
+        // get this year
+        String year = Calendar.getInstance().get(Calendar.YEAR) + "";
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+
+        long[] income = {0,0,0,0,0,0,0,0,0,0,0,0};
+
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            String[] date = strings[2].split(" ");
+            String[] yearMonth = date[0].split("-");
+            if(yearMonth[0].equals(year)){
+                income[Integer.parseInt(yearMonth[1]) - 1] += Integer.parseInt(strings[8]);
+            }
+        }
+
+        StringBuilder res = new StringBuilder();
+        for (long l : income) {
+            res.append(l).append(",");
+        }
+        return "let barData = [" +  res + "]" ;
+    }
+
+    private static  String getHourlyIncome(){
+        // get this year
+        String year = Calendar.getInstance().get(Calendar.YEAR) + "";
+        ArrayList<String[]> orderData = FileOperate.readFileToArray(ConfigFile.orderInfoPath,true);
+
+        long[] hours = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+        for (String[] strings : orderData) {
+            if(strings.length == 0) continue;
+            String[] date = strings[2].split(" ");
+            String[] yearMonth = date[0].split("-");
+            String[] time = date[1].split(":");
+            if(yearMonth[0].equals(year)){
+                hours[Integer.parseInt(time[0])] ++;
+            }
+        }
+
+        StringBuilder res = new StringBuilder();
+        for (long l : hours) {
+            res.append(l).append(",");
+        }
+        return "let lineData = [" +  res + "]" ;
+    }
+
     public static boolean generateAnalysisData(){
+        String MonthOrderData =  getMonthOrderData();
+
+        String HourlyIncome =  getHourlyIncome();
+
+        String MonthlyIncome =  getMonthlyIncome();
+
+        String res = MonthOrderData + "\n" + HourlyIncome + "\n" + MonthlyIncome;
+
+
+        String path = "src/main/resources/com/example/car_rental_sys/html/incomeAnalysis/data.js";
+        FileOperate.rewriteFile(path,res);
+
+        System.out.println("Analysis data generated");
+
+
         return  true;
     }
 

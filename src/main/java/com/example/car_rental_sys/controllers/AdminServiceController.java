@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
@@ -57,6 +58,8 @@ public class AdminServiceController extends Controller{
         StatusContainer.currentPageController = this;
 
         //showOrderPage();
+        DataTools.generateDashboardData();
+        DataTools.generateAnalysisData();
     }
 
     private void initToRightBtnEvent(){
