@@ -60,10 +60,10 @@ public class Application extends javafx.application.Application {
        // String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
 //        String fxmlName = "aboutUsPage.fxml";
-       // String fxmlName = "messagePage.fxml";
+        String fxmlName = "messagePage.fxml";
         //String fxmlName = "showCardDetails.fxml";
         //String fxmlName = "Invoice.fxml";
-        String fxmlName = "customerServicePage.fxml";
+       // String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "BillingComponent.fxml";
         //String fxmlName = "AdminVehiclePage.fxml";
         //String fxmlName = "AccountSecurityPage.fxml";
