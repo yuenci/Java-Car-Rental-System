@@ -95,6 +95,10 @@ public class OrderDetailsComponentController {
         if(order.getStatus() == 5){
             lblFeedback.setVisible(true);
         }
+
+        if(user instanceof Admin){
+            lblFeedback.setVisible(false);
+        }
     }
 
 

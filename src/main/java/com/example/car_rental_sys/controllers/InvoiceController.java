@@ -1,17 +1,21 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.ui_components.InvoiceBox;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.io.IOException;
 
 public class InvoiceController {
 
@@ -34,7 +38,8 @@ public class InvoiceController {
     String userName;
     String unitPrice;
 
-
+    @FXML
+    private Pane dragPane;
     @FXML
     private Label ivAddressTwo;
 
@@ -77,7 +82,7 @@ public class InvoiceController {
     @FXML
     private ImageView qrCodeImageView;
 
-
+    private double locationX,locationY;
 
     public InvoiceController() {
         instance = this;
@@ -157,16 +162,29 @@ public class InvoiceController {
         ImageTools.generateQRCode(qrCodeImageView,qrContent,100,100);
     }
 
-    public void ivDownloadClicked(MouseEvent mouseEvent) {
+    @FXML
+    void dragPanePressed(MouseEvent event) {
+        locationX = InvoiceBox.instance.stageInvoice.getX() - event.getScreenX();
+        locationY = InvoiceBox.instance.stageInvoice.getY() - event.getScreenY();
+    }
+
+    @FXML
+    void dragPaneDragged(MouseEvent event) {
+        InvoiceBox.instance.stageInvoice.setX(event.getScreenX() + locationX);
+        InvoiceBox.instance.stageInvoice.setY(event.getScreenY() + locationY);
+    }
+
+    public void ivDownloadClicked() {
         //download function
     }
 
-    public void downloadBtnClick(MouseEvent mouseEvent) {
+    public void downloadBtnClick() {
         //printAreaPane
         FXTools.printJavaFXNode(printAreaPane);
 
     }
 
-    public void cancelBtnClick(MouseEvent mouseEvent) {
+    public void cancelBtnClick() throws IOException {
+        InvoiceBox.instance.closeInvoiceStage();
     }
 }

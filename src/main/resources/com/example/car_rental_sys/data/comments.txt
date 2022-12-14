@@ -17,9 +17,9 @@ commentID:num=0,type:str=null,payload:str=null,posterID:num=0,comment:str=null,r
 16,modelComment,2,4,Enough since scientist own assume car indicate bank.,0,2022-12-14 02:18:38,42,25,1,70
 17,modelComment,2,8,Break price shake some be else.,0,2022-12-14 02:18:38,85,51,4,28
 18,modelComment,2,1,He feel fact lot full staff tree.,0,2022-12-14 02:18:45,2,32,4,4
-19,modelComment,3,5,Or develop black possible ability series pressure improve.,0,2022-12-14 02:18:18,44,24,4,38
+19,modelComment,3,5,Or develop black possible ability series pressure improve.,0,2022-12-14 02:18:18,44,25,4,38
 20,modelComment,3,8,Move tax glass woman relationship fire kind because computer thought.,0,2022-12-14 02:18:19,52,66,2,12
-21,modelComment,3,6,Democrat mention whole forget agree seat question big stuff season job keep.,0,2022-12-14 02:18:24,52,67,3,74
+21,modelComment,3,6,Democrat mention whole forget agree seat question big stuff season job keep.,0,2022-12-14 02:18:24,53,67,3,74
 22,modelComment,3,6,Kid father consumer start debate likely allow.,0,2022-12-14 02:18:39,86,71,2,38
 23,modelComment,3,5,Employee sense every authority course about kitchen point cover goal economy.,0,2022-12-14 02:18:28,10,8,1,89
 24,modelComment,4,9,Fear fire image history than career appear east stand open civil.,0,2022-12-14 02:18:07,71,53,4,81
@@ -143,9 +143,11 @@ commentID:num=0,type:str=null,payload:str=null,posterID:num=0,comment:str=null,r
 142,modelComment,34,5,Traditional day short stage water may skill suggest order this.,0,2022-12-14 02:17:56,30,84,1,77
 143,modelComment,34,4,Compare people up test voice require student include market use pay media.,0,2022-12-14 02:18:09,4,49,3,25
 144,modelComment,34,8,Dog new care within hope media yes house painting money imagine.,0,2022-12-14 02:18:21,53,55,4,57
-145,modelComment,1,1,Hiiiiii， this is a test,0,2022-12-14 03:20:32,1,0,0,0
-146,modelComment,1,1,@Jennifer Lawrence: hello，Law,10,2022-12-14 03:32:40,0,0,0,0
+145,modelComment,1,1,Hiiiiii， this is a test,0,2022-12-14 03:20:32,2,1,0,0
+146,modelComment,1,1,@Jennifer Lawrence: hello，Law,10,2022-12-14 03:32:40,1,0,0,0
 147,modelComment,2,1,@kk Tku: Hiiii my friend,2,2022-12-14 04:01:10,0,0,0,0
 148,modelComment,5,1,@Paul Jackson: hiihihi,28,2022-12-14 04:03:16,0,0,0,0
 149,modelComment,2,1,@Innis YU: it is me ， hh,147,2022-12-14 04:04:53,0,0,0,0
 150,modelComment,2,1,@kk Tku: Hi， my friend!,2,2022-12-14 04:09:11,1,1,0,0
+151,modelComment,1,4,@Innis YU Hi ,0,2022-12-14 14:18:33,0,0,0,0
+152,modelComment,7,1,A demo comment & rating,0,2022-12-14 15:13:51,0,0,5,9

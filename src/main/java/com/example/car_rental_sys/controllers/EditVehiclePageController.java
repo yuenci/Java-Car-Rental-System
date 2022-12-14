@@ -88,6 +88,9 @@ public class EditVehiclePageController {
         if(isSaved){
             setBackAllValue();
             //System.out.println("isSaved");
+        }else{
+            gradientLight = "#FFFFFF";
+            gradientDark = "#FFFFFF";
         }
         initComboBox();
         initComponent();

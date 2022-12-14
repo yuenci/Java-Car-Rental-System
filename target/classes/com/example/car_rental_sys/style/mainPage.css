@@ -80,3 +80,7 @@
 #logoImage:hover{
     -fx-cursor: hand;
 }
+
+#transparentBtn:hover{
+    -fx-cursor: hand;
+}
