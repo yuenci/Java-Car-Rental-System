@@ -40,14 +40,14 @@ public class BillingSideBarController {
 
         Engine engine = Engine.newInstance(RenderingMode.OFF_SCREEN);
         Browser browser = engine.newBrowser();
-        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/radio.html").getAbsolutePath());
+        browser.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/wallet/radio.html").getAbsolutePath());
         BrowserView view = BrowserView.newInstance(browser);
         view.setPrefSize(250, 200);
         radioChart.getChildren().add(view);
 
         Engine engine1 = Engine.newInstance(RenderingMode.OFF_SCREEN);
         Browser browser1 = engine1.newBrowser();
-        browser1.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/bar.html").getAbsolutePath());
+        browser1.navigation().loadUrl(new File("src/main/resources/com/example/car_rental_sys/html/wallet/bar.html").getAbsolutePath());
         BrowserView view1 = BrowserView.newInstance(browser1);
         view1.setPrefSize(310, 200);
         lineChart.getChildren().add(view1);

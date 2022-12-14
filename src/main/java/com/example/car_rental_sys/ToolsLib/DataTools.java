@@ -1358,6 +1358,44 @@ public class DataTools {
         return  true;
     }
 
+    public static boolean generateWalletRatioData(String carData){
+//        String carData = carData();
+//
+        String path = "src/main/resources/com/example/car_rental_sys/html/wallet/radio.js";
+        FileOperate.rewriteFile(path,carData);
+        return true;
+    }
+
+    // get user transaction data in last 6 months
+    public static boolean generateWalletLineData(){
+        //src/main/resources/com/example/car_rental_sys/html/wallet/bar.js
+        String res = "let barData = [";
+
+        ArrayList<String[]> transactionData = FileOperate.readFileToArray(ConfigFile.transactionRecordPath,true);
+        int[] monthIncome = new int[6];
+
+        for (String[] strings : transactionData) {
+            if(strings.length == 0) continue;
+            if(Integer.parseInt(strings[1]) == StatusContainer.currentUser.getUserID()){
+                String[] date = strings[6].split(" ");
+                String[] yearMonth = date[0].split("-");
+                int month = Integer.parseInt(yearMonth[1]);
+                int year = Integer.parseInt(yearMonth[0]);
+                int nowMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                int nowYear = Calendar.getInstance().get(Calendar.YEAR);
+                if(year == nowYear && month >= nowMonth - 5){
+                    monthIncome[nowMonth - month] += Integer.parseInt(strings[5]);
+                }
+            }
+        }
+
+        //System.out.println( Arrays.toString(monthIncome));
+        res += monthIncome[0] + "," + monthIncome[1] + "," + monthIncome[2] + "," + monthIncome[3] + "," + monthIncome[4] + "," + monthIncome[5] + "];";
+
+        String path = "src/main/resources/com/example/car_rental_sys/html/wallet/bar.js";
+        FileOperate.rewriteFile(path,res);
+        return true;
+    }
 }
 
 // TODO: No comma "," content is allowed.

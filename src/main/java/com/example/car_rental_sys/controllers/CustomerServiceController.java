@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ui_components.UIEmptyOrderPane;
 import javafx.fxml.FXML;
@@ -68,6 +69,8 @@ public class CustomerServiceController extends Controller{
 
         showProfilePage();
         //showOrderPage();
+
+        DataTools.generateWalletLineData();
     }
 
     private void initHugeContainer(){

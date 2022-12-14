@@ -25,7 +25,7 @@ for (i = 0; i < 12; i++) {
 }
 
 
-function barChart() {
+function barChart(barData) {
     var dom = document.getElementById('bar-chart');
     var myChart = echarts.init(dom, null, {
         renderer: 'canvas',
@@ -58,7 +58,7 @@ function barChart() {
         },
         series: [
             {
-                data: [120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130],
+                data: barData,
                 type: 'bar',
                 itemStyle: {
                     color: '#389dff'
@@ -76,10 +76,10 @@ function barChart() {
 
     window.addEventListener('resize', myChart.resize);
 }
-barChart();
+barChart(barData);
 
 
-function lineChart() {
+function lineChart(lineData) {
 
     var dom = document.getElementById('line-chart');
     var myChart = echarts.init(dom, null, {
@@ -116,7 +116,7 @@ function lineChart() {
         },
         series: [
             {
-                data: [820, 932, 901, 934, 1290, 1330, 820, 932, 901, 934, 1290, 1330, 820, 932, 901, 934, 1290, 1330, 820, 932, 901, 934, 1290, 1330,],
+                data: lineData,
                 type: 'line',
                 smooth: true,
                 areaStyle: {},
@@ -140,7 +140,7 @@ function lineChart() {
 
     window.addEventListener('resize', myChart.resize);
 }
-lineChart()
+lineChart(lineData)
 
 function paymentChart() {
     var dom = document.getElementById('payment-chart');
@@ -312,3 +312,18 @@ function maxChart() {
     window.addEventListener('resize', myChart.resize);
 }
 maxChart();
+
+function addHearderData(monthOrderData) {
+    let hd1 = document.getElementById('header-data-1');
+    let hd2 = document.getElementById('header-data-2');
+    let hd3 = document.getElementById('header-data-3');
+    let hd4 = document.getElementById('header-data-4');
+
+    hd1.innerHTML = "RM " + monthOrderData[0];
+    hd2.innerHTML = "RM " + monthOrderData[1];
+    hd3.innerHTML = "RM " + monthOrderData[2];
+    hd4.innerHTML = "RM " + monthOrderData[3];
+}
+
+/// init data 
+addHearderData(monthOrderData);

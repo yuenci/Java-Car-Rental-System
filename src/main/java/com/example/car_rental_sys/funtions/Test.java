@@ -153,5 +153,6 @@ public class Test {
     private static void dashboardTest(){
 //        DataTools.generateDashboardData();
         //DataTools.generateAnalysisData();
+        DataTools.generateWalletLineData();
     }
 }

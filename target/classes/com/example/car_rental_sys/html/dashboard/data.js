@@ -1,6 +1,6 @@
-let avatarFolderPath = "C:\Users\GIGA\Desktop\module\school\year2sem1\Java-Car-Rental-System\src\main\resources\com\example\car_rental_sys\image\avatar";
-let headerData = [24509,193053,281227];
-let lineData = [{ product: 'Fri', Paid: 4, Delivered: 2, Finished: 1},{ product: 'Sat', Paid: 8, Delivered: 4, Finished: 2},{ product: 'Sun', Paid: 10, Delivered: 7, Finished: 4},{ product: 'Mon', Paid: 11, Delivered: 9, Finished: 8},{ product: 'Tue', Paid: 11, Delivered: 9, Finished: 11},{ product: 'Wed', Paid: 13, Delivered: 10, Finished: 13},{ product: 'Thu', Paid: 16, Delivered: 13, Finished: 16}];
-let pieData = [{value: 14, name: 'Canceled'},{value: 16, name: 'Paid'},{value: 16, name: 'Driving'},{value: 13, name: 'Delivered'},{value: 16, name: 'Finished'}];
-let tableData = [["Paul-Jackson",8407464231,"2022-05-18",800],["Paul-Jackson",2021947311,"2022-05-18",9900],["kk-Tku",7837830015,"2022-05-18",4000],["Innis-YU",5064072041,"2022-05-18",4000],["Paul-Jackson",1878785764,"2022-05-18",4000],];
-let activityCardData = [[17,"Kristine Mcneil","18:25","Delivering"],[25,"Shannon Newton","11:27","Canceled"],[23,"Ryan Cameron","13:43","Delivered"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:28","Delivered"],];
+let avatarFolderPath = "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\image\avatar";
+let headerData = [26602,203868,315593];
+let lineData = [{ product: 'Fri', Paid: 4, Delivered: 2, Finished: 1},{ product: 'Sat', Paid: 8, Delivered: 4, Finished: 2},{ product: 'Sun', Paid: 10, Delivered: 7, Finished: 4},{ product: 'Mon', Paid: 11, Delivered: 9, Finished: 8},{ product: 'Tue', Paid: 11, Delivered: 9, Finished: 11},{ product: 'Wed', Paid: 12, Delivered: 10, Finished: 13},{ product: 'Thu', Paid: 16, Delivered: 14, Finished: 16}];
+let pieData = [{value: 17, name: 'Canceled'},{value: 16, name: 'Paid'},{value: 16, name: 'Driving'},{value: 14, name: 'Delivered'},{value: 16, name: 'Finished'}];
+let tableData = [["Paul-Jackson",3755285324,"2022-12-08",1207],["David Chill",8531198027,"2022-12-14",2474],["Paul-Jackson",8614712074,"2022-12-10",3661],["Gregory-Adams",4310633777,"2022-12-14",1714],["kk-Tku",7832116868,"2022-12-14",2483],];
+let activityCardData = [[15,"Keith Alvarado","23:27","Canceled"],[4,"John-Rollins","09:17","Paid"],[5,"Jaclyn-Kelley","17:21","Finished"],[17,"Kristine Mcneil","18:25","Delivering"],[25,"Shannon Newton","11:27","Canceled"],[23,"Ryan Cameron","13:43","Delivered"],];
