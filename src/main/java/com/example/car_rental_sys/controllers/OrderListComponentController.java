@@ -169,7 +169,7 @@ public class OrderListComponentController {
     @FXML
     void btnContinueClicked(MouseEvent event) {
         headerButtonClickEvent(event);
-        String query = "SELECT * FROM orders WHERE status = 3 OR status = 4 OR status = 1";
+        String query = "SELECT * FROM orders WHERE status = 3 OR status = 4";
         //System.out.println(query);
         data = SQL.query(query);
         if(user instanceof Customer){

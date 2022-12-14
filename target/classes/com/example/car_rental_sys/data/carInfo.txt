@@ -32,5 +32,3 @@ carID:num=0,carModel:str=null,chassisNumber:str=0,carNumber:str=null,manufacturi
 31,Terzo_Millennio,rTevMw,184ZXP,2019-01-26,2022-05-11 00:41:13,1
 32,Toyota_GR_Supra,LORvUF,NBD-172,1977-10-06,2022-08-20 17:08:35,1
 33,Honda_Acura_NSX,TWsVBE,MR 1839,1997-07-04,2022-02-28 07:25:00,1
-34,AmardeepPushCar,gfQjKr,UWH 869,1981-05-23,2022-06-18 15:46:22,1
-35,IAmDEEPDEEP,9595955926,as9d65,2022-12-14,2022-12-14 02:57:40,1
