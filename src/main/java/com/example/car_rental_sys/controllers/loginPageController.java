@@ -87,7 +87,7 @@ public class loginPageController extends Controller{
 
     @FXML
     private void signUpBtnClick(){
-        new Tools().reSetScene( "signUpPage.fxml");
+        FXTools.changeScene("signUpPage.fxml");
     }
 
     @FXML
@@ -143,7 +143,7 @@ public class loginPageController extends Controller{
 
         }else if(validCode == 400){
             new MessageFrame(MessageFrameType.ERROR,"Unknown error occurred." ).show();
-            new Tools().reSetScene( "mainPage.fxml");
+            FXTools.changeScene("mainPage.fxml");
             return false;
         }
 

@@ -201,6 +201,15 @@ public class DrivingModeController  extends Controller{
 
         SQL.execute(sql);
         SQL.execute(sql2);
+        sendSystemMsg();
+
+        StatusContainer.currentContinueOrderID = 0;
+    }
+
+    private void sendSystemMsg(){
+        String orderID = StatusContainer.currentContinueOrderID + "";
+        String msg = "Your order("+ orderID +") has been delivered address: " + StatusContainer.currentOrderCard.pickUpLocation;
+        DataTools.sendSystemMessage(StatusContainer.currentUser.getUserID(),msg);
     }
 }
 

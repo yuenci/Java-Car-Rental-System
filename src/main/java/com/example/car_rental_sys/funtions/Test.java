@@ -30,12 +30,12 @@ public class Test {
         //SelfTestTools.isBackendServerRunning();
 //        screenShotTest();
         //openScreenShotWithMsPaintTest();
-        //getMessageJson();
+        getMessageJson();
         //keepLoginTest();
         //gettodoListTest();
         //getStampTest();
         //getCardInfoTest();
-        feedbackFrameTest();
+        //feedbackFrameTest();
     }
 
 
@@ -110,7 +110,10 @@ public class Test {
     }
 
     public static void  getMessageJson(){
-        DataTools.generateMessageJSON(9);
+
+        //DataTools.generateMessageJSON(4);
+        DataTools.generateMessageJSON(StatusContainer.currentUser.getUserID());
+        System.out.println("getMessage Json done");
     }
 
     private static void keepLoginTest(){

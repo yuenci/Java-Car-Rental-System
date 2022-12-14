@@ -503,7 +503,6 @@ public class DataTools {
             try {
                 msg.put("status", Integer.valueOf(strings[1]));
                 msg.put("type", Integer.valueOf(strings[2]));
-
                 int isFromMe = strings[3].equals(String.valueOf(userID)) ? 1 : 0;
                 //msg.put("receiverID",Integer.valueOf(strings[1]));
                 int chatterID = isFromMe == 1 ? Integer.valueOf(strings[4]) : Integer.valueOf(strings[3]);
@@ -946,6 +945,25 @@ public class DataTools {
 
         return  storeCommentToDB(Integer.parseInt(commentID), type, payload, Integer.parseInt(posterID), comment, Integer.parseInt(relevantCommentID),
                 commentDateTime, Integer.parseInt(like), Integer.parseInt(star), Integer.parseInt(ratingStr), Integer.parseInt(orderIDStr));
+    }
+
+    public static  boolean sendSystemMessage(int userID, String message){
+        int messageID = getNewID("messages");
+        int status = 0;
+        int type = 0;
+        int senderID = 0;
+        String time = DateTools.getNow();
+        String sql = "insert into messages values (" +
+                messageID + ", " +
+                status + ", " +
+                type + ", " +
+                senderID + ", " +
+                userID + ", " +
+                "'" + time + "', " +
+                "'" + message + "'" +
+                ")";
+
+        return SQL.execute(sql);
     }
 
 

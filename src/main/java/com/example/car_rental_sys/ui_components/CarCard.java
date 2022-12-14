@@ -2,6 +2,7 @@ package com.example.car_rental_sys.ui_components;
 
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.FXTools;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
@@ -136,7 +137,7 @@ public class CarCard extends Pane {
     }
 
     private void goToDetailsPage(){
-        new Tools().reSetScene("carDetailsPage.fxml");
+        FXTools.changeScene("carDetailsPage.fxml");
     }
 }
 

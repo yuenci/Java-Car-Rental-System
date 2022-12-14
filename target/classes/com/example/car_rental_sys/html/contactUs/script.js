@@ -29,6 +29,7 @@ class Tools {
     static chatterNameIDMap = {};
     static currentChatWith = null;
     static currentServicer = null;
+    static senderAndMessageBoxMap = {};
     static getTime() {
         let newDate = new Date();
         let format = (x) => x.toString().padStart(2, "0");
@@ -86,19 +87,19 @@ class Tools {
     }
 
     // use this one!!!!
-    // static initAvatars() {
-    //     let avatarArgsList = currentUserAvatarPath.split("/");
-    //     avatarArgsList.pop()
-    //     let avatarPath = avatarArgsList.join("/") + "/";
-    //     Tools.avatarRootPath = avatarPath;
-    //     document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
-    // }
-
     static initAvatars() {
-
-        Tools.avatarRootPath = "avatar/";
-        document.getElementById("current-user-avatar-img").src = "avatar/9.png";
+        let avatarArgsList = currentUserAvatarPath.split("/");
+        avatarArgsList.pop()
+        let avatarPath = avatarArgsList.join("/") + "/";
+        Tools.avatarRootPath = avatarPath;
+        document.getElementById("current-user-avatar-img").src = currentUserAvatarPath;
     }
+
+    // static initAvatars() {
+
+    //     Tools.avatarRootPath = "avatar/";
+    //     document.getElementById("current-user-avatar-img").src = "avatar/9.png";
+    // }
 
     static addMessages(chatterName) {
         let data = JSON.parse(messageData);
@@ -171,6 +172,18 @@ class Tools {
             let message = new Message(Tools.getCurrentInput(), "me", true, time);
             message.sendCustomerMessage();
         }
+    }
+
+    static getSenterAndMsgBox() {
+        let messageBoxes = $("#message-container").find(".message-box");
+
+        for (let i = 0; i < messageBoxes.length; i++) {
+            let $messageBox = $(messageBoxes[i]);
+            // get data-sender value
+            let sender = $messageBox.data("sender");
+            Tools.senderAndMessageBoxMap[sender] = $messageBox;
+        }
+        console.log(Tools.senderAndMessageBoxMap);
     }
 }
 
@@ -259,6 +272,7 @@ class Message {
 
         let time1 = Tools.getDataTime();
         let message1 = this.message;
+        message1.replaceAll(",", "，");
 
         let data = [type, senderID, reciverID, time1, message1];
         let res = "[" + data.join(",") + "]";
@@ -289,11 +303,13 @@ class Message {
             }
             let messageText = messageDataJson[messageID]["message"];
 
+            let chatNameStr = chatter.replace("-", " ");
+
             let messageRes = `
-                        <div class="message-box">
+                        <div class="message-box" data-sender="${chatNameStr.toLowerCase()}">
                 <img class="message-box-avatar" src="${Tools.avatarRootPath}${chatterID}.png">
                 <div class="message-box-right">
-                    <div class="sender-name">${chatter.replace("-", " ")}</div>
+                    <div class="sender-name">${chatNameStr}</div>
                     <div class="message-box-text">${messageText}</div>
                     <div class="unread">${unreadNum}</div>
                 </div>
@@ -397,6 +413,7 @@ class Application {
         //Application.sendWelcomeMessage();
         //Tools.loadMessageData();
         Message.addMessageList();
+        Tools.getSenterAndMsgBox();
     }
 
     static initEvent() {
@@ -433,6 +450,26 @@ class Application {
 
         $("#closeIcon").click(function () {
             console.log("close");
+        });
+
+        // run every input
+        $("#search-input").on("input", function () {
+            let $this = $(this);
+            let value = $this.val().toLowerCase();
+
+
+            // if senderAndMessageBoxMap keys containes value then show it, unless hide it
+            for (let key in Tools.senderAndMessageBoxMap) {
+                if (key.includes(value)) {
+                    Tools.senderAndMessageBoxMap[key].show();
+                } else {
+                    Tools.senderAndMessageBoxMap[key].hide();
+                }
+            }
+        });
+
+        $("#search-icon").click(function () {
+            $("#search-input").focus();
         });
     }
 

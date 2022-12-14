@@ -10,6 +10,7 @@ import com.example.car_rental_sys.sqlParser.SQL;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.browser.event.ConsoleMessageReceived;
 import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.RenderingMode;
 import com.teamdev.jxbrowser.frame.Frame;
 import com.teamdev.jxbrowser.js.ConsoleMessage;
 import com.teamdev.jxbrowser.view.javafx.BrowserView;
@@ -35,7 +36,7 @@ public class MessagePageController {
     }
 
     private void initBrowser() {
-        Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+        Engine engine = Engine.newInstance(RenderingMode.OFF_SCREEN);
 
         Browser browser = engine.newBrowser();
 
@@ -46,6 +47,9 @@ public class MessagePageController {
         mainPane.getChildren().add(view);
 
         navBarPane.toFront();
+        // use dev tools
+
+        //browser.devTools().show();
 
         Frame frame = browser.frames().get(0);
         frame.localStorage().putItem("Name", "Tom");
@@ -55,7 +59,7 @@ public class MessagePageController {
             String message = consoleMessage.message();
             //System.out.println(message);
             if(Objects.equals(message, "back to service")){
-                backToService();
+                //backToService();
             }else if (Objects.equals(message, "close")){
                 System.exit(0);
             }else if (message.startsWith("[") && message.endsWith("]")){
@@ -75,6 +79,9 @@ public class MessagePageController {
         message = message.substring(1,message.length()-1);
 
         String[] messageArray = message.split(",");
+
+        if(messageArray.length !=5) return;
+
         // insert to db with sql
         //  (id,status, type,senderID, receiverID, message)
         String sql = "INSERT INTO messages VALUES ("+id+", " +status+ ", "
@@ -82,7 +89,7 @@ public class MessagePageController {
                 +messageArray[3] +"', '" + messageArray[4] +"')";
 
         SQL.execute(sql);
-        System.out.println(sql);
+        System.out.println("add message: " + sql);
     }
 
     private void removeUnread(String message){
@@ -92,9 +99,11 @@ public class MessagePageController {
 
         String sql = "UPDATE messages SET status = 1 WHERE senderID = "+senderID+" AND receiverID = "+receiverID;
         SQL.execute(sql);
+
+        if(Objects.equals(receiverID, "undefined")) return;
         sql = "UPDATE messages SET status = 1 WHERE senderID = "+receiverID+" AND receiverID = "+senderID;
         SQL.execute(sql);
-        System.out.println("remove unread");
+        System.out.println("remove unread: " + sql);
     }
 
 

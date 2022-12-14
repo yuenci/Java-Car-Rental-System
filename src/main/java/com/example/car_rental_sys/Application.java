@@ -34,7 +34,7 @@ public class Application extends javafx.application.Application {
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
 
-//        Test.test();
+
         //FXTools.pandaHead();
         //System.out.println(DataTools.ifCarsAvailable("Mclaren_2018"));
     }
@@ -55,12 +55,12 @@ public class Application extends javafx.application.Application {
        // String fxmlName = "driverServicePage.fxml";
         //String fxmlName = "test.fxml";
         //String fxmlName = "drivingModePage.fxml";
-        String fxmlName = "customerServicePage.fxml";
+        //String fxmlName = "customerServicePage.fxml";
         //String fxmlName = "addBankCardPage.fxml";
        // String fxmlName = "adminServicePage.fxml";
         //String fxmlName = "showOrderComponent.fxml";
 //        String fxmlName = "aboutUsPage.fxml";
-        //String fxmlName = "messagePage.fxml";
+        String fxmlName = "messagePage.fxml";
         //String fxmlName = "showCardDetails.fxml";
         //String fxmlName = "Invoice.fxml";
       //  String fxmlName = "customerServicePage.fxml";
@@ -85,6 +85,8 @@ public class Application extends javafx.application.Application {
         //setUser();
         //setUser("c");
 
+        // message page test
+        Test.test();
 
         //startApplication();
 
@@ -120,8 +122,8 @@ public class Application extends javafx.application.Application {
     }
     private static  void setUser(String type){
         if(Objects.equals(type, "c")){
-            StatusContainer.currentUser  = new Customer("1575270674@qq.com");
-            //StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
+            //StatusContainer.currentUser  = new Customer("1575270674@qq.com");
+            StatusContainer.currentUser  = new Customer("lbaker@hotmail.com");
 //            StatusContainer.currentUser  = new Customer("15705156@qq.com");
         }else if(Objects.equals(type, "d")){
             StatusContainer.currentUser  = new Driver("cervantesmichael@yahoo.com");
