@@ -322,6 +322,7 @@ public class DriverMainPageController extends  Controller{
 
     private void showProcessTip(){
         processTipPane.setVisible(true);
+        processTipPane.toFront();
         processTipLabel.setVisible(false);
         processTipPane.setStyle("-fx-background-color:transparent");
     }

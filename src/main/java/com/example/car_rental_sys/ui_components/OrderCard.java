@@ -6,6 +6,7 @@ import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.controllers.DriverMainPageController;
 import com.example.car_rental_sys.orm.Order;
+import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -206,9 +207,33 @@ public class OrderCard extends Pane {
     }
 
     private void chooseCard(){
+        storeData();
         driverMainIns.chooseCard(this.orderID);
         StatusContainer.currentOrderCard = this;
     }
+
+    private boolean storeData(){
+        StatusContainer.currentContinueOrderID = this.orderID;
+        String sql  = "update orders set status = 2 where orderID = " + this.orderID;
+
+
+        int scheduleID= DataTools.getNewID("schedule");
+        int orderID = this.orderID;
+        int status = 2;
+        String relate = StatusContainer.currentUser.getUserID() + "";
+        String time = DateTools.getNow();
+
+        String sql1 = "INSERT INTO schedule values (" + scheduleID + "," + orderID + "," + status + ",'" + relate + "','" + time + "')";
+
+//        System.out.println(sql);
+//        System.out.println(sql1);
+
+
+        SQL.execute(sql);
+        SQL.execute(sql1);
+        return  true;
+    }
+
 
     public void saveEventToSchedule(){
         String driverID = String.valueOf(StatusContainer.currentUser.getUserID());
