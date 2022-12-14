@@ -966,7 +966,14 @@ public class DataTools {
         return SQL.execute(sql);
     }
 
+    public static boolean generateDashboardData(){
+        return  true;
 
+    }
+
+    public static boolean generateAnalysisData(){
+        return  true;
+    }
 
 }
 
