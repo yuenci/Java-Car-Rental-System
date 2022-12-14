@@ -150,3 +150,4 @@ commentID:num=0,type:str=null,payload:str=null,posterID:num=0,comment:str=null,r
 149,modelComment,2,1,@Innis YU: it is me ， hh,147,2022-12-14 04:04:53,0,0,0,0
 150,modelComment,2,1,@kk Tku: Hi， my friend!,2,2022-12-14 04:09:11,1,1,0,0
 151,modelComment,1,4,@Innis YU Hi ,0,2022-12-14 14:18:33,0,0,0,0
+152,modelComment,7,1,A demo comment & rating,0,2022-12-14 15:13:51,0,0,5,9

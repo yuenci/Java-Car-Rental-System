@@ -9,10 +9,11 @@
 <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #ffffff;" stylesheets="@../style/messageFrame.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.InvoiceController">
     <Pane fx:id="printAreaPane" layoutY="6.0" prefHeight="549.0" prefWidth="500.0">
     <Line endX="240.0" layoutX="225.0" layoutY="2.0" startX="-190.0" stroke="#3498db" strokeWidth="4.0" />
-    <Pane id="qrcodePane" fx:id="ivQrCodePane" layoutX="368.0" layoutY="26.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #000000;">
-         <children>
-            <ImageView fx:id="qrCodeImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-         </children></Pane>
+        <Pane id="qrcodePane" fx:id="ivQrCodePane" layoutX="368.0" layoutY="26.0" prefHeight="100.0" prefWidth="100.0"
+              style="-fx-background-color: #000000;">
+            <ImageView fx:id="qrCodeImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
+                       preserveRatio="true"/>
+        </Pane>
     <Pane layoutX="33.0" layoutY="26.0" prefHeight="100.0" prefWidth="179.0">
         <Label fx:id="ivUserName" layoutY="5.0" text="Cody Fisher" textFill="#4e5969">
             <font>
@@ -149,6 +150,7 @@
     </Label>
     <Line endX="240.0" fill="#94bfff" layoutX="225.0" layoutY="523.0" startX="-190.0" stroke="#94bfff" strokeWidth="2.0" />
     </Pane>
- <Button fx:id="okBtn" layoutX="228.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#downloadBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="Download" />
- <Button fx:id="cancelBtn" layoutX="369.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#cancelBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnRed" text="Cancel" />
+ <Button layoutX="228.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#downloadBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnBlue" text="Download" />
+ <Button layoutX="369.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#cancelBtnClick" prefHeight="30.0" prefWidth="100.0" style="-fx-font-size: 15;" styleClass="btnRed" text="Cancel" />
+ <Pane fx:id="dragPane" prefHeight="40.0" prefWidth="500.0" onMousePressed="#dragPanePressed" onMouseDragged="#dragPaneDragged"/>
 </Pane>
