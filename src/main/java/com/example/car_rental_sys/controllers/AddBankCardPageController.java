@@ -2,6 +2,7 @@ package com.example.car_rental_sys.controllers;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -68,9 +69,7 @@ public class AddBankCardPageController extends Controller {
     }
 
     private void initComponentEvent() {
-        backBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            backToPreviousPage();
-        });
+        backBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> backToPreviousPage());
 
         txtCardNumber.textProperty().addListener((observable, oldValue, newValue) -> {
             cardNumberFormat = FXTools.validInputCardNumber(txtCardNumber, newValue);
@@ -142,9 +141,10 @@ public class AddBankCardPageController extends Controller {
 
         String sql = "INSERT INTO bankCardInfo VALUES ('" +
                 userID + "', '" + cardType + "', '" + cardName + "', '" + bankName + "', '" + cardHolder + "', '" +
-                validDate + "', '" + cardNumber + "', '" + billingAddress + "', " + 0 + "," + 0 + ");";
-        System.out.println(sql);
-        System.out.println(SQL.execute(sql));
+                validDate + "', '" + cardNumber + "', '" + billingAddress + "', " + DataTools.getRandomInt(10000,99999) + "," + 0 + ");";
+        //System.out.println(sql);
+        //System.out.println(SQL.execute(sql));
+        SQL.execute(sql);
     }
 
     private void initRadioGroup(){

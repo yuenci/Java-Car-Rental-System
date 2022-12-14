@@ -137,6 +137,10 @@ public class FXTools {
 
     }
 
+    public static boolean checkCurrentUserStage(){
+        return StatusContainer.currentUser instanceof Customer;
+    }
+
     public static void goToSettingPage(){
         User user = StatusContainer.currentUser;
         if(user instanceof Customer){
