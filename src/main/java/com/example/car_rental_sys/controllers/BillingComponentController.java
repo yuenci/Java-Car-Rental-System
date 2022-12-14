@@ -50,7 +50,9 @@ public class BillingComponentController {
         billAllBtn.getStyleClass().add("focusCusBillButton");
         initTotalOrder();
         addPaymentCardToPane();
-        initPagination();
+        if(totalBills > 0){
+            initPagination();
+        }
         initTable();
     }
 
