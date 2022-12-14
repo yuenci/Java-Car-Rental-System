@@ -6,6 +6,8 @@ import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.orm.Admin;
+import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.CommentCard;
 import com.example.car_rental_sys.sqlParser.SQL;
@@ -254,6 +256,24 @@ public class CarDetailsPageController extends  Controller{
 
     @FXML
     private void rentNowBtnClickEvent(){
+        // check if user is admin or driver
+        if (StatusContainer.currentUser != null){
+            if (StatusContainer.currentUser instanceof Admin || StatusContainer.currentUser instanceof Driver) {
+                MessageFrame messageFrame = new MessageFrame(MessageFrameType.CONFIRM,"You are not allowed to rent a car, please login as a customer");
+                messageFrame.setSuccessCallbackFunc((i) -> {
+                    FXTools.changeScene("loginPage.fxml");
+                    return null;
+                });
+                messageFrame.setFailedCallbackFunc((i) -> {
+                    messageFrame.close();
+                    return null;
+                });
+                messageFrame.show();
+                return;
+            }
+        }
+
+
         //check if user choose date
         if(StatusContainer.pickUpTimeStamp == 0 || StatusContainer.returnTimeStamp == 0){
             showDatePicker();

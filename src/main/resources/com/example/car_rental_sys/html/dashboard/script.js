@@ -1,5 +1,22 @@
 let avtivityBox = document.getElementById("right-bottom-box");
 
+let hd1 = document.getElementById("headerData-1");
+let hd2 = document.getElementById("headerData-2");
+let hd3 = document.getElementById("headerData-3");
+
+function addHeaderData(headerData) {
+    let hd1Text = headerData[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let hd2Text = headerData[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let hd3Text = headerData[2].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+
+
+    hd1.innerHTML = "RM" + hd1Text;
+    hd2.innerHTML = "RM" + hd2Text;
+    hd3.innerHTML = "RM" + hd3Text;
+}
+
+
 function addAvtivityCard(id, name, time, event) {
     let card = document.createElement("div");
     card.classList.add("activity-card");
@@ -26,28 +43,13 @@ function addTableRow(name, id, date, anount) {
 }
 
 
-for (let i = 0; i < 6; i++) {
-    addAvtivityCard(16, "Alehe Anuha", "17:33", "PaidPaid");
-}
-
-for (let i = 0; i < 5; i++) {
-    addTableRow("Alehe Anuha", 4564166543446, "2022-01-10", 84546);
-}
 
 
 
 
 
 /////// chart - line chart
-let data = [
-    { product: 'Sun', Paid: 43.3, Delivered: 85.8, Finished: 93.7 },
-    { product: 'Mon', Paid: 83.1, Delivered: 73.4, Finished: 55.1 },
-    { product: 'Tur', Paid: 86.4, Delivered: 65.2, Finished: 82.5 },
-    { product: 'Wed', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Thu', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Fri', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
-    { product: 'Sat', Paid: 72.4, Delivered: 53.9, Finished: 39.1 }
-]
+
 
 function addLineChart(lineChartData) {
     var dom = document.getElementById('line-chart');
@@ -110,16 +112,10 @@ function addLineChart(lineChartData) {
 
     window.addEventListener('resize', myChart.resize);
 }
-addLineChart(data)
 
 
-let pieData = [
-    { value: 1048, name: 'Paid' },
-    { value: 735, name: 'Canceled' },
-    { value: 580, name: 'Delivered' },
-    { value: 484, name: 'Driving' },
-    { value: 300, name: 'Finished' }
-]
+
+
 
 function addPieChart(pieData) {
     var dom = document.getElementById('pie-char');
@@ -173,4 +169,35 @@ function addPieChart(pieData) {
 
     window.addEventListener('resize', myChart.resize);
 }
+
+
+/////// initData 
+addHeaderData(headerData); // add header data
+
+let lineData = [
+    { product: 'Sun', Paid: 43.3, Delivered: 85.8, Finished: 93.7 },
+    { product: 'Mon', Paid: 83.1, Delivered: 73.4, Finished: 55.1 },
+    { product: 'Tur', Paid: 86.4, Delivered: 65.2, Finished: 82.5 },
+    { product: 'Wed', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+    { product: 'Thu', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+    { product: 'Fri', Paid: 72.4, Delivered: 53.9, Finished: 39.1 },
+    { product: 'Sat', Paid: 72.4, Delivered: 53.9, Finished: 39.1 }
+]
+addLineChart(lineData)
+
+let pieData = [
+    { value: 1048, name: 'Paid' },
+    { value: 735, name: 'Canceled' },
+    { value: 580, name: 'Delivered' },
+    { value: 484, name: 'Driving' },
+    { value: 300, name: 'Finished' }
+]
 addPieChart(pieData)
+
+for (let i = 0; i < 6; i++) {
+    addAvtivityCard(16, "Alehe Anuha", "17:33", "PaidPaid");
+}
+
+for (let i = 0; i < 5; i++) {
+    addTableRow("Alehe Anuha", 4564166543446, "2022-01-10", 84546);
+}
