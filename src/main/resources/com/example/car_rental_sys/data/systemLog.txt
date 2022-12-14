@@ -159,3 +159,9 @@ errorID:num=0,errorType:str=null,errorMessage:str=null,errorPosition:str=null,er
 158,java.lang.IndexOutOfBoundsException, Index 8 out of bounds for length 8,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-14 17:00:36
 159,java.lang.IndexOutOfBoundsException, Index 7 out of bounds for length 7,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-14 17:00:37
 160,java.lang.IndexOutOfBoundsException, Index 80 out of bounds for length 80,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-14 17:00:43
+161,java.lang.IndexOutOfBoundsException, Index 1 out of bounds for length 1,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 02:35:19
+162,java.lang.IndexOutOfBoundsException, Index 0 out of bounds for length 0,jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100),2022-12-15 02:36:06
+163,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 03:01:21
+164,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:03:07
+165,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:09:10
+166,java.lang.NullPointerException, Cannot invoke "java.util.ArrayList.get(int)" because "data" is null,com.example.car_rental_sys.ToolsLib.DataTools.getTableData(DataTools.java:852),2022-12-15 04:13:23
