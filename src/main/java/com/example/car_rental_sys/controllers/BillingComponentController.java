@@ -208,7 +208,7 @@ public class BillingComponentController {
     private void recountTotalBills(){
         totalBills = data.size();
         pagContainer.getChildren().clear();
-        if(totalBills > 0){
+        if(totalBills > 6){
             initPagination();
         }
     }
