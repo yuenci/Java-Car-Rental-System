@@ -224,3 +224,8 @@ messageID:num=0,status:num=0,type:num=-1,senderID:num=0,receiverID:num=0,time:da
 223,0,0,0,4,2022-12-14 14:34:00,Your order(81) has been paid successfully, please check your email for more details
 224,0,0,0,4,2022-12-14 14:41:30,You have made a payment for McLaren_620R at 2022-12-15 14:29:07 from 2023-01-13 06:29:07 to 1673562547000 successfully!
 225,0,0,0,4,2022-12-14 14:42:22,Your order(81) has been paid successfully, please check your email for more details
+226,0,1,0,11,2022-12-14 17:19:54,Your payment has been received and we will prepare your Car as soon as possible.
+227,0,1,0,11,2022-12-14 17:35:22,Your payment has been received and we will prepare your Car as soon as possible.
+228,0,1,0,11,2022-12-14 17:38:51,Your payment has been received and we will prepare your Car as soon as possible.
+229,0,1,0,11,2022-12-14 17:39:18,Your payment has been received and we will prepare your Car as soon as possible.
+230,0,1,0,11,2022-12-14 17:41:19,Your payment has been received and we will prepare your Car as soon as possible.

@@ -2,7 +2,13 @@ package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.Application;
 import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.controllers.AdminServiceController;
+import com.example.car_rental_sys.controllers.CustomerServiceController;
+import com.example.car_rental_sys.controllers.DriverMainPageController;
+import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
+import com.example.car_rental_sys.orm.Driver;
+import com.example.car_rental_sys.orm.User;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.teamdev.jxbrowser.browser.Browser;
 import com.teamdev.jxbrowser.engine.Engine;
@@ -129,6 +135,19 @@ public class FXTools {
             ifShowDiagnosticDataPageOpen = true;
         }
 
+    }
+
+    public static void goToSettingPage(){
+        User user = StatusContainer.currentUser;
+        if(user instanceof Customer){
+            CustomerServiceController.instance.showSettingPage();
+        }else if(user instanceof Admin){
+            AdminServiceController.instance.showSettingPage();
+        }else if(user instanceof Driver){
+            DriverMainPageController.driverMainPageInstance.showSettingPage();
+        }else{
+            System.out.println("Please login");
+        }
     }
 
     public static double[] getMousePosition() {

@@ -30,7 +30,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
         NetTools.registerJxBrowserLicence();
-        //NetTools.StartHttpServer();
+        NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
 
@@ -78,8 +78,8 @@ public class Application extends javafx.application.Application {
 
         stageInstance = stage;
 
-        //setUser("d");
-        setUser("a");
+        setUser("d");
+        //setUser("a");
         //setUser("c");
         startStage(fxmlName);
         //setUser();

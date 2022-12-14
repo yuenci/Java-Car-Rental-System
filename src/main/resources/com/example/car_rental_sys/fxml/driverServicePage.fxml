@@ -138,7 +138,7 @@
       </Pane>
    </Pane>
    <Pane fx:id="optionPane" layoutX="280.0" prefHeight="832.0" prefWidth="1000.0">
-      <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0" />
+      <Pane fx:id="middlePanel" prefHeight="700.0" prefWidth="200.0"/>
       <Pane fx:id="settingMainPanel" layoutX="200.0" prefHeight="700.0" prefWidth="820.0" />
    </Pane>
 
