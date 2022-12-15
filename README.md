@@ -34,7 +34,9 @@
 
 ![product-screenshot](https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/mainPage.png)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Our project is a car rental system with Java as the main back-end language and JavaFX as the interface design framework with various special and rich visual designs.
+
+This project is a recent Java assignment for our team. In addition to meeting the assignment requirements, we also added more interesting features, most notably we embedded JXBrowser in the UI section to display more advanced screens
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
@@ -43,7 +45,6 @@ Here's why:
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
 
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -173,7 +174,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Kai Kiat - [] - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
