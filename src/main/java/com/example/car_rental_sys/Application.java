@@ -78,7 +78,7 @@ public class Application extends javafx.application.Application {
 
         stageInstance = stage;
 
-        setUser("d");
+        //setUser("d");
         //setUser("a");
         //setUser("c");
 
