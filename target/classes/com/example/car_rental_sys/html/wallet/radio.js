@@ -1,0 +1,1 @@
+let radioValue = (Math.random() * 100).toFixed(0);
