@@ -545,7 +545,7 @@ public class DataTools {
         FileOperate.rewriteFile(path, json);
 
         File avatarFile = new File("src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png");
-        String avatarPath = "let currentUserAvatarPath='" + avatarFile.toURI() + "';";
+        String avatarPath = "let currentUserAvatarPath='" + "avatar/" + userID + ".png" + "';";
         String avatarSettingFilepath = "src/main/resources/com/example/car_rental_sys/html/contactUs/avatarFilepath.js";
         FileOperate.rewriteFile(avatarSettingFilepath, avatarPath);
         //System.out.println(avatarPath);
@@ -554,7 +554,7 @@ public class DataTools {
 //        for (String[] strings : result) {
 //            System.out.println(Arrays.toString(strings));
 //        }
-
+        System.out.println("messageData.js has been generated");
         return true;
     }
 
