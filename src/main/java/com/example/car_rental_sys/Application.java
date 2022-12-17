@@ -80,7 +80,7 @@ public class Application extends javafx.application.Application {
 
         //setUser("d");
         //setUser("a");
-        //setUser("c");
+        setUser("c");
 
         //Test.test();
 
