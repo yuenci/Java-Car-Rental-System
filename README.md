@@ -58,6 +58,7 @@ Thank you for support our project!
 
 ### Built With
 
+
 <a href="https://www.java.com">
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/java_logo_icon.png" alt="JavaLogo" height="60">
 </a>
@@ -70,9 +71,16 @@ Thank you for support our project!
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/Node.js_logo.png" alt="JavaFXLogo" height="60"> 
 </a>
 
-
 <a href="https://jxbrowser-support.teamdev.com/">
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/jxBrower.png" alt="jxBrowerLogo" height="60"> 
+</a>
+
+<a href="https://developers.google.com/maps">
+<img src="src/main/resources/com/example/car_rental_sys/image/others/google-maps-platform-1200x675%201.png" alt="GoogleMapLogo" height="60"> 
+</a>
+
+<a href="https://github.com/yuenci/sqlParser-SQL2TXT">
+<img src="https://github.com/yuenci/sqlParser-SQL2TXT/blob/master/src/example/SQLTOPNG.jpg" alt="JavaLogo" height="60">
 </a>
 
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
@@ -191,7 +199,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - [] - https://github.com/Kaikiat1126
+Kai Kiat - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -212,7 +220,9 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
+* [JxBrowser](https://jxbrowser-support.teamdev.com/docs/guides/content.html)
+* [Web Design: Rent - Car Rental Home Page](https://dribbble.com/shots/17734452-Web-Design-Rent-Car-Rental-Home-Page)
+* [Electric Car Dashboard](https://dribbble.com/shots/19111426-Electric-Car-Dashboard)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
