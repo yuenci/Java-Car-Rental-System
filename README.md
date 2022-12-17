@@ -143,6 +143,71 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- UI design -->
+## UI design
+### Customer UI
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+### Admin UI
+<details><summary>Dashboard</summary>
+
+</details>
+
+
+### Driver UI
+<details><summary>Ani</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+<details><summary>CLICK ME</summary>
+
+</details>
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage

@@ -1,6 +1,6 @@
 let avatarFolderPath = "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\image\avatar";
-let headerData = [26602,203868,315593];
-let lineData = [{ product: 'Fri', Paid: 4, Delivered: 2, Finished: 1},{ product: 'Sat', Paid: 8, Delivered: 4, Finished: 2},{ product: 'Sun', Paid: 10, Delivered: 7, Finished: 4},{ product: 'Mon', Paid: 11, Delivered: 9, Finished: 8},{ product: 'Tue', Paid: 11, Delivered: 9, Finished: 11},{ product: 'Wed', Paid: 12, Delivered: 10, Finished: 13},{ product: 'Thu', Paid: 16, Delivered: 14, Finished: 16}];
-let pieData = [{value: 17, name: 'Canceled'},{value: 16, name: 'Paid'},{value: 16, name: 'Driving'},{value: 14, name: 'Delivered'},{value: 16, name: 'Finished'}];
-let tableData = [["Paul-Jackson",3755285324,"2022-12-08",1207],["David Chill",8531198027,"2022-12-14",2474],["Paul-Jackson",8614712074,"2022-12-10",3661],["Gregory-Adams",4310633777,"2022-12-14",1714],["kk-Tku",7832116868,"2022-12-14",2483],];
-let activityCardData = [[15,"Keith Alvarado","23:27","Canceled"],[4,"John-Rollins","09:17","Paid"],[5,"Jaclyn-Kelley","17:21","Finished"],[17,"Kristine Mcneil","18:25","Delivering"],[25,"Shannon Newton","11:27","Canceled"],[23,"Ryan Cameron","13:43","Delivered"],];
+let headerData = [0,116275,305699];
+let lineData = [{ product: 'Sun', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Mon', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Tue', Paid: 3, Delivered: 2, Finished: 1},{ product: 'Wed', Paid: 6, Delivered: 3, Finished: 1},{ product: 'Thu', Paid: 9, Delivered: 7, Finished: 4},{ product: 'Fri', Paid: 11, Delivered: 8, Finished: 7},{ product: 'Sat', Paid: 11, Delivered: 9, Finished: 9}];
+let pieData = [{value: 9, name: 'Canceled'},{value: 11, name: 'Paid'},{value: 9, name: 'Driving'},{value: 9, name: 'Delivered'},{value: 9, name: 'Finished'}];
+let tableData = [["Innis-YU",9575832245,"2022-07-22",1801],["kk-Tku",7722944471,"2022-09-20",2356],["Jaclyn-Kelley",2518667172,"2022-11-04",2111],["John-Rollins",5130341155,"2022-07-21",2776],["Paul-Jackson",1916032978,"2022-10-09",3782],];
+let activityCardData = [[23,"Ryan Cameron","13:43","Delivered"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:28","Delivered"],[20,"Robert Murphy","21:42","Delivering"],[20,"Robert Murphy","21:42","Delivering"],];
