@@ -148,7 +148,6 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 ### Customer UI
 <details><summary>Main Page</summary>
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/main.png"  height="300"> 
-
 </details>
 
 <details><summary>CLICK ME</summary>
