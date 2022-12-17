@@ -199,7 +199,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - [] - https://github.com/Kaikiat1126
+Kai Kiat - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -220,7 +220,9 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
+* [JxBrowser](https://jxbrowser-support.teamdev.com/docs/guides/content.html)
+* [Web Design: Rent - Car Rental Home Page](https://dribbble.com/shots/17734452-Web-Design-Rent-Car-Rental-Home-Page)
+* [Electric Car Dashboard](https://dribbble.com/shots/19111426-Electric-Car-Dashboard)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
