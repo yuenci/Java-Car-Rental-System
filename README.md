@@ -15,10 +15,10 @@
   <p align="center">
     An awesome Car Rental System build with Java!
     <br />
-    <a href="https://github.com/yuenci/Java-Car-Rental-System"><strong>Explore the docs »</strong></a>
+    <a href="Doc/Tutorial.md"><strong>Explore the tutorial doc »</strong></a>
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="Doc/Dev.md">Dev doc</a>
     ·
     <a href="https://github.com/yuenci/Java-Car-Rental-System/issues">Report Bug</a>
     ·
@@ -38,12 +38,6 @@ Our project is a car rental system with Java as the main back-end language and J
 
 This project is a recent Java assignment for our team. In addition to meeting the assignment requirements, we also added more interesting features, most notably we embedded JXBrowser in the UI section to display more advanced screens
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -80,42 +74,48 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <!-- GETTING STARTED -->
 ## Getting Started
+Welcome to our project! Before you can get started, you will need to make sure that you have a device that is capable of running Java. If you do not already have Java installed on your device, you can download it from the official Java website.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+In addition to having Java installed, you will also need to obtain any necessary API or license keys for the third-party services that our project relies on. These keys will likely be required in order to access certain features or functionality within the project. If you are unsure of which keys you need or how to obtain them, please consult the documentation for the specific service or reach out to the service provider for assistance.
+
+Once you have Java installed and have obtained the necessary keys, you are ready to launch the project. Follow the instructions in the documentation to get up and running. We hope you enjoy using our project!
 
 ### Prerequisites
+1. You need to install the Java environment first, download Java JDK18 here: https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html.
+2. Get your SMTP email address, password and SMTP server address.
+3. Get JxBrowser license key here: https://www.teamdev.com/jxbrowser#evaluate
+4. Get Google Map API key here: https://developers.google.com/maps/documentation/javascript/get-api-key
+5. Get remove.bg API key here: https://www.remove.bg/zh/tools-api
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+After you get all the keys, you need to modify the following files: src/main/java/com/example/car_rental_sys/ConfigFile.java
+```java
+// Email service
+public static final String myEmailAccount = "email address";
+public static final String myEmailPassword = "email password";
+public static final String myEmailSMTPHost = "email SMTP server address";
 
-* Google map key
-* JxBrower license
-There can be no spaces or characters other than letters in the path.
-Add a library for mail
- ```sh
-npm i http-server -g
+// jxBrowserLicense key
+public static final String jxBrowserLicense = "your jxBrowserLicense key";
+
+// Google Map API key
+public static final String googleMapAPIKey = "your google map API key";
+
+// remove.bg API key
+public static final String removebgKey = "your remove.bg API key";
 ```
+
+
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. Make sure you have Git installed on your device. If you don't have it, you can download it from the official Git website (https://git-scm.com/).
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+2. Open a terminal or command prompt and navigate to the directory where you want to clone the repository.
+
+3. Use the git clone command to clone the repository. The repository URL can be found on the GitHub page for the project. 
+```shell
+git clone https://github.com/yuenci/Java-Car-Rental-System
+```
+4. Open the project in your IDE and run the Application.main method in the Application.java file.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,6 +134,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
+- [ ] Change the database from TXT to MySQL
+- [ ] Add more features to the system
 
 
 
