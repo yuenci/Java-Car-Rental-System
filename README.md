@@ -179,7 +179,7 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 </details>
 
 <details><summary>Place Order Animation</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/waiting.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wating.png"  height="300"> 
 </details>
 
 <details><summary>Order Placed</summary>
@@ -239,9 +239,6 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
-
-</details>
 
 ### Driver UI
 <details><summary>Workplace</summary>
@@ -252,9 +249,6 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
-
-</details>
 
 
 
