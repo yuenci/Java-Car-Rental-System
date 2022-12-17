@@ -42,7 +42,7 @@ To make our UI as visually appealing as possible, we used Figma for extensive de
 
 To ensure the scalability of our program, we implemented a modular design that separates the interface, events, tools, and business logic. We also abstracted and encapsulated various features to further improve our program's structure.
 
-For the data layer, we used TXT files as our storage medium, which greatly improved the performance of our program. However, in order to be able to upgrade to a database storage solution in the future, we created a library that allows us to use SQL to operate on TXT files. This not only made development more convenient for us, but it also means that when we do decide to migrate to a database, we can do so without having to rewrite our entire program.
+For the data layer, we used TXT files as our storage medium, which greatly improved the performance of our program. However, in order to be able to upgrade to a database storage solution in the future, we created a [SQL library](https://github.com/yuenci/sqlParser-SQL2TXT)  that allows us to use SQL to operate on TXT files. This not only made development more convenient for us, but it also means that when we do decide to migrate to a database, we can do so without having to rewrite our entire program.
 
 In addition to these core features, we have also included a number of fun and modern touches, such as email verification, slider verification, internet connectivity detection, music playback, and a map component. We hope you enjoy using our rental car system as much as we enjoyed creating it!
 
