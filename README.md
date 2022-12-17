@@ -34,19 +34,29 @@
 
 ![product-screenshot](https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/mainPage.png)
 
-Our project is a car rental system with Java as the main back-end language and JavaFX as the interface design framework with various special and rich visual designs.
+Welcome to our rental car system!
 
-This project is a recent Java assignment for our team. In addition to meeting the assignment requirements, we also added more interesting features, most notably we embedded JXBrowser in the UI section to display more advanced screens
+This project was developed as part of the Object Oriented Development with Java module, using Java as the programming language and TXT files as the data storage. Our goal was to create a modern, user-friendly, and highly scalable Java FX project. To achieve this, we spent over 300 hours and two months of development to create a product that we are proud of.
 
+To make our UI as visually appealing as possible, we used Figma for extensive design work, resulting in a sleek and user-friendly interface. We hope you enjoy using our rental car system as much as we enjoyed creating it!
 
+To ensure the scalability of our program, we implemented a modular design that separates the interface, events, tools, and business logic. We also abstracted and encapsulated various features to further improve our program's structure.
+
+For the data layer, we used TXT files as our storage medium, which greatly improved the performance of our program. However, in order to be able to upgrade to a database storage solution in the future, we created a library that allows us to use SQL to operate on TXT files. This not only made development more convenient for us, but it also means that when we do decide to migrate to a database, we can do so without having to rewrite our entire program.
+
+In addition to these core features, we have also included a number of fun and modern touches, such as email verification, slider verification, internet connectivity detection, music playback, and a map component. We hope you enjoy using our rental car system as much as we enjoyed creating it!
+
+During the development of this project, we received a lot of help and support from our friends, for which we are extremely grateful. We would also like to express our special thanks to the team at jxbrowser for extending our trial period twice to support our project.
+
+We hope you enjoy using our rental car system. If you do, please consider giving us a star to show your support.
+
+Thank you for considering our project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 <a href="https://www.java.com">
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/java_logo_icon.png" alt="JavaLogo" height="60">
