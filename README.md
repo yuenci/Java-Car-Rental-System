@@ -50,7 +50,7 @@ During the development of this project, we received a lot of help and support fr
 
 We hope you enjoy using our rental car system. If you do, please consider giving us a star to show your support.
 
-Thank you for considering our project!
+Thank you for support our project! 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
