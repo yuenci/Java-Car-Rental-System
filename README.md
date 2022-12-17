@@ -310,7 +310,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - https://github.com/Kaikiat1126
+Kai Kiat - [tyukaikiat0211626@gmail.com](contact me) - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -333,6 +333,12 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 ## Acknowledgments
 * [JxBrowser](https://jxbrowser-support.teamdev.com/docs/guides/content.html)
 * [Web Design: Rent - Car Rental Home Page](https://dribbble.com/shots/17734452-Web-Design-Rent-Car-Rental-Home-Page)
+* [Checkout Flow](https://dribbble.com/shots/18772772-Checkout-Flow)
+* [Invoice/Payment Component](https://dribbble.com/shots/18967201-Invoice-Payment-Components)
+* [Dashoboard/ Order Details](https://dribbble.com/shots/15755635/attachments/7560677/?mode=media)
+* [Dashboard/Product Page](https://dribbble.com/shots/15781384/attachments/7589449?mode=media)
+* [Us](https://www.awwwards.com/inspiration/us-zapiens-hybrid-design-agency)
+* [Order Info](https://dribbble.com/shots/17920706-Order-Info)
 * [Electric Car Dashboard](https://dribbble.com/shots/19111426-Electric-Car-Dashboard)
 * [Mangrove: Settings Interaction](https://dribbble.com/shots/17698340-Mangrove-Settings-Interaction)
 
