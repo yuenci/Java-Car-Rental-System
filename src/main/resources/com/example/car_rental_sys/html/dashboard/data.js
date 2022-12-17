@@ -1,6 +1,6 @@
-let avatarFolderPath = "E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\image\avatar";
-let headerData = [0,116275,305699];
-let lineData = [{ product: 'Sun', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Mon', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Tue', Paid: 3, Delivered: 2, Finished: 1},{ product: 'Wed', Paid: 6, Delivered: 3, Finished: 1},{ product: 'Thu', Paid: 9, Delivered: 7, Finished: 4},{ product: 'Fri', Paid: 11, Delivered: 8, Finished: 7},{ product: 'Sat', Paid: 11, Delivered: 9, Finished: 9}];
-let pieData = [{value: 9, name: 'Canceled'},{value: 11, name: 'Paid'},{value: 9, name: 'Driving'},{value: 9, name: 'Delivered'},{value: 9, name: 'Finished'}];
+let avatarFolderPath = "C:\Users\GIGA\Desktop\module\school\year2sem1\Java-Car-Rental-System\src\main\resources\com\example\car_rental_sys\image\avatar";
+let headerData = [0,111038,302609];
+let lineData = [{ product: 'Sun', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Mon', Paid: 0, Delivered: 0, Finished: 0},{ product: 'Tue', Paid: 1, Delivered: 1, Finished: 1},{ product: 'Wed', Paid: 5, Delivered: 3, Finished: 1},{ product: 'Thu', Paid: 9, Delivered: 7, Finished: 3},{ product: 'Fri', Paid: 11, Delivered: 8, Finished: 5},{ product: 'Sat', Paid: 11, Delivered: 9, Finished: 8}];
+let pieData = [{value: 8, name: 'Canceled'},{value: 11, name: 'Paid'},{value: 9, name: 'Driving'},{value: 9, name: 'Delivered'},{value: 8, name: 'Finished'}];
 let tableData = [["Innis-YU",9575832245,"2022-07-22",1801],["kk-Tku",7722944471,"2022-09-20",2356],["Jaclyn-Kelley",2518667172,"2022-11-04",2111],["John-Rollins",5130341155,"2022-07-21",2776],["Paul-Jackson",1916032978,"2022-10-09",3782],];
 let activityCardData = [[23,"Ryan Cameron","13:43","Delivered"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:26","Delivering"],[7,"Paul-Jackson","04:28","Delivered"],[20,"Robert Murphy","21:42","Delivering"],[20,"Robert Murphy","21:42","Delivering"],];
