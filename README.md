@@ -70,9 +70,12 @@ Thank you for support our project!
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/Node.js_logo.png" alt="JavaFXLogo" height="60"> 
 </a>
 
+<a href="https://jxbrowser-support.teamdev.com/">
+<img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/jxBrower.png" alt="jxBrowerLogo" height="60"> 
+</a>
+
 <a href="https://developers.google.com/maps">
-<img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/google-maps-platform-1200x675%201.png
-" alt="jxBrowerLogo" height="60"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/google-maps-platform-1200x675%201.png" alt="GoogleMapLogo" height="60"> 
 </a>
 
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
