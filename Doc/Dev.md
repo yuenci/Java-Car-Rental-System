@@ -433,7 +433,7 @@ return null;
 messageFrame.show();
 ```
 
-## ## How to use JavaFX webview
+## How to use JavaFX webview
 ```java
 ebView webView = new WebView();
 WebEngine engine = webview.getEngine();
