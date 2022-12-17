@@ -38,11 +38,11 @@ Welcome to our rental car system!
 
 This project was developed as part of the Object Oriented Development with Java module, using Java as the programming language and TXT files as the data storage. Our goal was to create a modern, user-friendly, and highly scalable Java FX project. To achieve this, we spent over 300 hours and two months of development to create a product that we are proud of.
 
-To make our UI as visually appealing as possible, we used Figma for extensive design work, resulting in a sleek and user-friendly interface. We hope you enjoy using our rental car system as much as we enjoyed creating it!
+To make our UI as visually appealing as possible, we used Figma for extensive design work ([check here](https://www.figma.com/file/RE7NHdlnO52kMQa0YttcZB/Top-Gun?node-id=0%3A1&t=we9XeUmdO0a0OczL-1)), resulting in a sleek and user-friendly interface. We hope you enjoy using our rental car system as much as we enjoyed creating it!
 
 To ensure the scalability of our program, we implemented a modular design that separates the interface, events, tools, and business logic. We also abstracted and encapsulated various features to further improve our program's structure.
 
-For the data layer, we used TXT files as our storage medium, which greatly improved the performance of our program. However, in order to be able to upgrade to a database storage solution in the future, we created a library that allows us to use SQL to operate on TXT files. This not only made development more convenient for us, but it also means that when we do decide to migrate to a database, we can do so without having to rewrite our entire program.
+For the data layer, we used TXT files as our storage medium, which greatly improved the performance of our program. However, in order to be able to upgrade to a database storage solution in the future, we created a [SQL library](https://github.com/yuenci/sqlParser-SQL2TXT)  that allows us to use SQL to operate on TXT files. This not only made development more convenient for us, but it also means that when we do decide to migrate to a database, we can do so without having to rewrite our entire program.
 
 In addition to these core features, we have also included a number of fun and modern touches, such as email verification, slider verification, internet connectivity detection, music playback, and a map component. We hope you enjoy using our rental car system as much as we enjoyed creating it!
 
@@ -50,7 +50,7 @@ During the development of this project, we received a lot of help and support fr
 
 We hope you enjoy using our rental car system. If you do, please consider giving us a star to show your support.
 
-Thank you for considering our project!
+Thank you for support our project! 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
