@@ -150,8 +150,40 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/main.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
+<details><summary>About Us</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/aboutUs.png"  height="300"> 
+</details>
 
+<details><summary>Contact Us</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/contactUs.png"  height="300"> 
+</details>
+
+<details><summary>Register</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/register.png"  height="300"> 
+</details>
+
+<details><summary>View Car</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/viewCars.png"  height="300"> 
+</details>
+
+<details><summary>Car Details</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/carDetails.png"  height="300"> 
+</details>
+
+<details><summary>Comments</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="300"> 
+</details>
+
+<details><summary>Payment</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/payment.png"  height="300"> 
+</details>
+
+<details><summary>Place Order Animation</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/waiting.png"  height="300"> 
+</details>
+
+<details><summary>Order Placed</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="300"> 
 </details>
 
 <details><summary>CLICK ME</summary>
@@ -165,21 +197,6 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <details><summary>CLICK ME</summary>
 
 </details>
-
-<details><summary>CLICK ME</summary>
-
-</details>
-
-
-<details><summary>CLICK ME</summary>
-
-</details>
-
-
-<details><summary>CLICK ME</summary>
-
-</details>
-
 
 <details><summary>CLICK ME</summary>
 
@@ -187,17 +204,32 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 
 ### Admin UI
 <details><summary>Dashboard</summary>
-
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/dashboard.png"  height="300"> 
 </details>
 
+<details><summary>Analysis</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/analysis.png"  height="300"> 
+</details>
 
-### Driver UI
-<details><summary>Ani</summary>
+<details><summary>Message</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="300"> 
+</details>
+
+<details><summary>CLICK ME</summary>
 
 </details>
 
 <details><summary>CLICK ME</summary>
 
+</details>
+
+### Driver UI
+<details><summary>Workplace</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverService.png"  height="300"> 
+</details>
+
+<details><summary>Driving Mode</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="300"> 
 </details>
 
 <details><summary>CLICK ME</summary>
