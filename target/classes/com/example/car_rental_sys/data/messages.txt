@@ -239,3 +239,4 @@ messageID:num=0,status:num=0,type:num=-1,senderID:num=0,receiverID:num=0,time:da
 238,0,1,0,1,2022-12-15 04:26:08,Unknown
 239,0,0,0,10,2022-12-15 04:28:00,Your order(44) has been delivered address: Astro Go Shop
 240,0,1,0,2,2022-12-16 21:42:05,Unknown
+240,0,1,0,2,2022-12-16 21:42:05,Unknown
