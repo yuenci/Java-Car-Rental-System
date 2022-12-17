@@ -171,7 +171,7 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 </details>
 
 <details><summary>Comments</summary>
-
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="300"> 
 </details>
 
 <details><summary>Payment</summary>
@@ -186,20 +186,32 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
+<details><summary>Wallet</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wallet.png"  height="300"> 
+</details>
 
+<details><summary>Add New Payment Card</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addCards.png"  height="300"> 
+</details>
+
+<details><summary>Order History</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/history.png"  height="300"> 
 </details>
 
 <details><summary>CLICK ME</summary>
 
 </details>
 
-<details><summary>CLICK ME</summary>
-
+<details><summary>Invoice</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/invoice.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
+<details><summary>Giving Feedback</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/feedback.png"  height="300"> 
+</details>
 
+<details><summary>Settings</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/setting.png"  height="300"> 
 </details>
 
 ### Admin UI
