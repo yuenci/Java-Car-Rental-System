@@ -151,102 +151,102 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 </details>
 
 <details><summary>About Us</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/aboutUs.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/aboutUs.png"  height="400"> 
 </details>
 
 <details><summary>Contact Us</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/contactUs.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/contactUs.png"  height="400"> 
 </details>
 
 <details><summary>Register</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/register.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/register.png"  height="400"> 
 </details>
 
 <details><summary>View Car</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/viewCars.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/viewCars.png"  height="400"> 
 </details>
 
 <details><summary>Car Details</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/carDetails.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/carDetails.png"  height="400"> 
 </details>
 
 <details><summary>Comments</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="400"> 
 </details>
 
 <details><summary>Payment</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/payment.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/payment.png"  height="400"> 
 </details>
 
 <details><summary>Place Order Animation</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wating.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wating.png"  height="400"> 
 </details>
 
 <details><summary>Order Placed</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="400"> 
 </details>
 
 <details><summary>Wallet</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wallet.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wallet.png"  height="400"> 
 </details>
 
 <details><summary>Add New Payment Card</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addCards.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addCards.png"  height="400"> 
 </details>
 
 <details><summary>Order History</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/history.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/history.png"  height="400"> 
 </details>
 
 <details><summary>Track Order</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/trackOrder.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/trackOrder.png"  height="400"> 
 </details>
 
 <details><summary>Invoice</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/invoice.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/invoice.png"  height="400"> 
 </details>
 
 <details><summary>Giving Feedback</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/feedback.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/feedback.png"  height="400"> 
 </details>
 
 <details><summary>Settings</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/setting.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/setting.png"  height="400"> 
 </details>
 
 ### Admin UI
 <details><summary>Dashboard</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/dashboard.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/dashboard.png"  height="400"> 
 </details>
 
 <details><summary>Analysis</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/analysis.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/analysis.png"  height="400"> 
 </details>
 
 <details><summary>Message</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="400"> 
 </details>
 
 <details><summary>Manage Vehicle</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/manageVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/manageVehicle.png"  height="400"> 
 </details>
 
 <details><summary>Add New Vehicle</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addVehicle.png"  height="400"> 
 </details>
 
 <details><summary>Edit Car's Details</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="400"> 
 </details>
 
 
 ### Driver UI
 <details><summary>Workplace</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverService.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverService.png"  height="400"> 
 </details>
 
 <details><summary>Driving Mode</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="400"> 
 </details>
 
 
