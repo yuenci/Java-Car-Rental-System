@@ -316,7 +316,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - [contact me](tyukaikiat0211626@gmail.com) - https://github.com/Kaikiat1126
+Kai Kiat - [tyukaikiat0211626@gmail.com](tyukaikiat0211626@gmail.com) - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
