@@ -171,7 +171,7 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 </details>
 
 <details><summary>Comments</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="300"> 
+
 </details>
 
 <details><summary>Payment</summary>
@@ -215,8 +215,16 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="300"> 
 </details>
 
-<details><summary>CLICK ME</summary>
+<details><summary>Manage Vehicle</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/manageVehicle.png"  height="300"> 
+</details>
 
+<details><summary>Add New Vehicle</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addVehicle.png"  height="300"> 
+</details>
+
+<details><summary>Edit Car's Details</summary>
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="300"> 
 </details>
 
 <details><summary>CLICK ME</summary>
