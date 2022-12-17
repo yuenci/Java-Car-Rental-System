@@ -60,6 +60,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/Node.js_logo.png" alt="JavaFXLogo" height="60"> 
 </a>
 
+
+<a href="https://jxbrowser-support.teamdev.com/">
+<img src="https://github.com/yuenci/Java-Car-Rental-System/blob/master/src/main/resources/com/example/car_rental_sys/image/others/jxBrower.png" alt="jxBrowerLogo" height="60"> 
+</a>
+
 * [JSqlParser](https://github.com/JSQLParser/JSqlParser) - SQL statement parser
 * [SQL2TXT](https://github.com/yuenci/sqlParser-SQL2TXT) - SQL statement operation txt file CRUD
 * [Google Map platform](https://developers.google.com/maps/documentation/embed/get-started) - Map embed frame 
