@@ -341,6 +341,7 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 * [Order Info](https://dribbble.com/shots/17920706-Order-Info)
 * [Electric Car Dashboard](https://dribbble.com/shots/19111426-Electric-Car-Dashboard)
 * [Mangrove: Settings Interaction](https://dribbble.com/shots/17698340-Mangrove-Settings-Interaction)
+* [Feedback User Modal](https://dribbble.com/shots/17510975-Feedback-User-Modal)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
