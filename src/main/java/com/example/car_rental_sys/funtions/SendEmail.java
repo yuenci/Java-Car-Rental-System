@@ -114,7 +114,7 @@ public class SendEmail {
     }
 
     public static void sendVerificationEmail(String receiveEmailAddress,String uerName,String type) throws Exception {
-        SendEmail.send("yuenci1575270674@gmail.com","Innis",type);
+        SendEmail.send(receiveEmailAddress,uerName,type);
         // sign up ; login; reset password
     }
 

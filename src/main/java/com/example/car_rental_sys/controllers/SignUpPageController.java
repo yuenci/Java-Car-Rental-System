@@ -8,6 +8,7 @@ import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.StringTools;
 import com.example.car_rental_sys.funtions.Encryption;
+import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.BrowserModal;
@@ -78,6 +79,7 @@ public class SignUpPageController extends Controller {
                         createAccountBtn.setText("Create Account");
                         addVerifyCodePage();
                         setNewCustomerInfo();
+                        showValidEmail();
                     }
                 }else{
                     String msg = "First name and last name can only contain letters";
@@ -105,6 +107,14 @@ public class SignUpPageController extends Controller {
 
 
     }
+    private void showValidEmail(){
+        try {
+            SendEmail.sendVerificationEmail(emailInput.getText(),firstNameStr + lastNameStr,"Sign Up");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void getAllTextFieldStr(){
         firstNameStr = firstName.getText();
         lastNameStr = lastName.getText();
