@@ -4,7 +4,7 @@ public class ConfigFile {
     //configs
     public static final int netDetectMaxTime = 1500; //millisecond
     public static final boolean enableSQLParserSecurityMode = false;
-    public static final int  passwordStrength = 1; //1:weak -  5:strong
+    public static final int  passwordStrength = 5; //1:weak -  5:strong
     public static final int  remeberMeDays = 7;
 
     // price
