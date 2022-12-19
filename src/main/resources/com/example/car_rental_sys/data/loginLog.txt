@@ -39,3 +39,4 @@ loginID:num=0,useID:num=0,loginIP:str=127.0.0.1,loginMethod:str=password,platfor
 38,4,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Kuala Lumpur,Kuala Lumpur,3.0604 101.6894,2020-01-01_00:00:00,2022-12-19 12:48:23
 39,4,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Kuala Lumpur,Kuala Lumpur,3.0604 101.6894,2020-01-01_00:00:00,2022-12-19 12:49:33
 40,1,202.185.225.28,Windows 10,desktop,LAPTOP-5ACE008F,Malaysia,Kuala Lumpur,Kuala Lumpur,3.0604 101.6894,2020-01-01_00:00:00,2022-12-19 13:05:19
+41,4,180.75.238.147,Windows 11,desktop,DESKTOP-M7QH62V,Malaysia,Selangor,Seri Kembangan,3.0384 101.7105,2020-01-01_00:00:00,2022-12-19 13:33:35

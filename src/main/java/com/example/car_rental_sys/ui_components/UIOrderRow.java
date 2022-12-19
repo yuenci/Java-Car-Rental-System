@@ -60,6 +60,9 @@ public class  UIOrderRow extends Pane {
         lblOrderStatus = new Label();
 
         lblOrderID.setText(DataTools.getOrderIDStr(orderID));
+        if(name.length() > 16){
+            name = name.substring(0,16) + "...";
+        }
         lblName.setText(name);
         lblOrderDate.setText(orderDate);
         lblOrderAmount.setText(orderAmount);
