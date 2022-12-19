@@ -510,6 +510,16 @@ public class DataTools {
         }
     }
 
+    public static String getUserAddressFromUserID(int userID){
+        String sql = "SELECT address FROM userInfo WHERE userID = " + userID;
+        ArrayList<String[]> result = SQL.query(sql);
+        if (result.size() == 1) {
+            return result.get(0)[0];
+        } else {
+            return null;
+        }
+    }
+
     public static boolean generateMessageJSON(int userID) {
         String sql = "SELECT * FROM messages WHERE senderID = " + userID + " OR receiverID = " + userID + " ORDER BY time ASC";
         ArrayList<String[]> result = SQL.query(sql);
