@@ -1,1 +1,1 @@
-let currentUserAvatarPath='avatar/51.png';
+let currentUserAvatarPath='avatar/5.png';

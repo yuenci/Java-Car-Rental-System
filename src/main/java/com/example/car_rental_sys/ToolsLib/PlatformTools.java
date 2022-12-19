@@ -98,15 +98,19 @@ public class PlatformTools {
     }
 
     public static void logError(Exception e){
-        String error = e.toString();
-        String errorID = String.valueOf(DataTools.getID("systemLog"));
-        String errorType =error.split(":")[0];
-        String errorContent = error.split(":")[1];
-        String errorPosition =  e.getStackTrace()[0].toString().split("/")[1];
-        String errorTime = DateTools.getNow();
+        try {
+            String error = e.toString();
+            String errorID = String.valueOf(DataTools.getID("systemLog"));
+            String errorType =error.split(":")[0];
+            String errorContent = error.split(":")[1];
+            String errorPosition =  e.getStackTrace()[0].toString().split("/")[1];
+            String errorTime = DateTools.getNow();
 
-        String sql = "INSERT INTO systemLog VALUES ("+errorID+",'"+errorType+"','"+errorContent+"','"+errorPosition+"','"+errorTime+"')";
-        //System.out.println(sql);
-        SQL.execute(sql);
+            String sql = "INSERT INTO systemLog VALUES ("+errorID+",'"+errorType+"','"+errorContent+"','"+errorPosition+"','"+errorTime+"')";
+            //System.out.println(sql);
+            SQL.execute(sql);
+    }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

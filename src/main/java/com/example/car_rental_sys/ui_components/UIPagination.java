@@ -331,7 +331,7 @@ public class UIPagination extends Pane {
         }
         //get the length of cards then set the width of flowPane
         int length = cards.size();
-        flowPane.setPrefWidth(length * 30);
+        flowPane.setPrefWidth(length * 31);
 
         return flowPane;
     }

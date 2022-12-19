@@ -85,9 +85,9 @@ public class Application extends javafx.application.Application {
 
         //Test.test();
 
-        startStage(fxmlName);
+        //startStage(fxmlName);
 
-        //startApplication();
+        startApplication();
 
         //testComponent(stage,"css");
 

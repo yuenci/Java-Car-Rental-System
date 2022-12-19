@@ -877,7 +877,7 @@ public class DataTools {
                 result.add(row);
             }
         } catch (Exception e) {
-            PlatformTools.logError(e);
+            //PlatformTools.logError(e);
         }
 
         return result;

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class UIPaginationCard extends Button {
     private final int cardHeight = 30;
-    private final int cardWidth = 30;
+    private final int cardWidth = 31;
 
     public UIPaginationCard(int number){
         super();
