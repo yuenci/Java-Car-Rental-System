@@ -392,6 +392,16 @@ public class PaymentController extends Controller{
     private void afterPaySuccess(){
         makePayment();
         sendSystemMsg();
+        new Thread(() -> {
+            int currentUserID = StatusContainer.currentUser.getUserID();
+            int newLevel = DataTools.gerCustomerLevel(currentUserID);
+            String newLevelStr = "VIP " + newLevel;
+            String sql = "update userInfo set post = '" +newLevelStr +"' where userID = " + currentUserID ;
+            System.out.println(sql);
+            SQL.execute(sql);
+        }).start();
+
+
         FXTools.changeScene("paySuccessPage.fxml");
     }
 
