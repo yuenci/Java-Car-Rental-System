@@ -40,8 +40,6 @@ public class InvoiceController {
 
     @FXML
     private Pane dragPane;
-    @FXML
-    private Label ivAddressTwo;
 
     @FXML
     private Label ivQuantity;
@@ -95,10 +93,6 @@ public class InvoiceController {
         initQrCode();
     }
 
-    private void getLabelText(){
-        //String query = "SELECT * FROM orders WHERE order_id = " + orderID + " AND user_id = " + LoginController.instance.getUserID();
-    }
-
     private void setLabelLayout(){
         ivPrice.setAlignment(Pos.CENTER_RIGHT);
         ivSubTotal.setAlignment(Pos.CENTER_RIGHT);
@@ -111,8 +105,7 @@ public class InvoiceController {
     private void setLabelText(){
         Order order = StatusContainer.currentOrder;
 
-        ivAddressOne.setText("Address One");
-        ivAddressTwo.setText("Address Two");
+        ivAddressOne.setText(DataTools.getUserAddressFromUserID(order.getUserID()).replace("_"," "));
 
         carName = DataTools.getCarModelFromCarID(order.getCarID()).replace("_"," ");
         ivCarName.setText(carName);
