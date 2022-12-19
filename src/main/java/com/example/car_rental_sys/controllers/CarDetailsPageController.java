@@ -348,7 +348,7 @@ public class CarDetailsPageController extends  Controller{
     private void sendSystemMsg(){
         String pickUpTime = DateTools.timeStampToDateTime(StatusContainer.pickUpTimeStamp);
         String returnTime = DateTools.timeStampToDateTime(StatusContainer.returnTimeStamp);
-        String message = "You have made a payment for " + StatusContainer.currentCarChose + " at " + pickUpTime + " from " + returnTime + " to " + StatusContainer.returnTimeStamp + " successfully!";
+        String message = "You have made a payment for " + StatusContainer.currentCarChose + " at " + pickUpTime + " from " + returnTime + " to " + returnTime + " successfully!";
         DataTools.sendSystemMessage(StatusContainer.currentUser.getUserID(),message);
     }
 
@@ -386,6 +386,7 @@ public class CarDetailsPageController extends  Controller{
         //System.out.println(sql3);
 
         StatusContainer.currentOrderID = Integer.parseInt(orderID);
+
 
 //        SQL.execute(sql1);
 //        SQL.execute(sql2);

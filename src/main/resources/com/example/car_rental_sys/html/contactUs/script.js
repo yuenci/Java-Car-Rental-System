@@ -212,7 +212,7 @@ class Message {
         let messageRes = `
                         <div class="message-container-left">
                             <div class="avatar">
-                                <img src="${avatarPath}" alt="Logo" class="avatarImage">
+                                <img src="${avatarPath}" alt="Logo" class="avatarImage" "  />
                             </div>
                             <div class="message-area">
                                 <div class="message-topic">
@@ -307,7 +307,7 @@ class Message {
 
             let messageRes = `
                         <div class="message-box" data-sender="${chatNameStr.toLowerCase()}">
-                <img class="message-box-avatar" src="${Tools.avatarRootPath}${chatterID}.png">
+                <img class="message-box-avatar" src="${Tools.avatarRootPath}${chatterID}.png ">
                 <div class="message-box-right">
                     <div class="sender-name">${chatNameStr}</div>
                     <div class="message-box-text">${messageText}</div>
