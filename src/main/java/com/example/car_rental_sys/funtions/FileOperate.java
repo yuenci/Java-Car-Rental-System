@@ -1,6 +1,6 @@
 package com.example.car_rental_sys.funtions;
 
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.PlatformTools;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class FileOperate {
             fOut.close();
             return true;
         } catch (Exception e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
             return false;
         }
     }
@@ -94,7 +94,7 @@ public class FileOperate {
             myReader.close();
             return content.toString();
         } catch (Exception e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
             return content.toString();
         }
     }

@@ -1,17 +1,21 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.FXTools;
 import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import com.example.car_rental_sys.funtions.SendEmail;
 import com.example.car_rental_sys.orm.Admin;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.Driver;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -20,6 +24,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class loginPageController extends Controller{
     @FXML
@@ -78,6 +83,15 @@ public class loginPageController extends Controller{
                 StatusContainer.currentUser = new Admin(emailValue);
                 FXTools.changeScene("adminServicePage.fxml");
             }
+            new Thread(() -> {
+                try {
+                    SendEmail.sendVerificationEmail("yuenci1575270674@gmail.com","Innis","Login");
+                } catch (Exception e) {
+                    PlatformTools.logError(e);
+                    e.printStackTrace();
+                }
+            }).start();
+
             DataTools.logLogin(rememberMe);
         }else{
             System.out.println( "login fail" );
@@ -128,6 +142,8 @@ public class loginPageController extends Controller{
 
         int validCode = Tools.loginValidation(emailValue,passwordValue);
 
+        System.out.println("validCode:" + validCode);
+
         // return code
         // 200: success
         // 100: email not found
@@ -175,7 +191,7 @@ public class loginPageController extends Controller{
         // send email
         new Thread(() -> {
             try {
-                SendEmail.sendVerificationEmail(emailValue,userName,"reset password");
+                SendEmail.sendVerificationEmail("yuenci1575270674@gmail.com","Innis","reset password");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -232,6 +248,9 @@ public class loginPageController extends Controller{
         if(Objects.equals(verifyCode, StatusContainer.currentPinCode) ){
             loginToReset(false);
             DataTools.resetPassword(StatusContainer.currentResetPassWordEmail,getPasswordInput());
+            MessageFrame messageFrame = new MessageFrame(MessageFrameType.SUCCESS, "Reset password successfully");
+            messageFrame.show();
+
         }else {
             new MessageFrame(MessageFrameType.WARNING,"Verification code is incorrect" ).show();
         }

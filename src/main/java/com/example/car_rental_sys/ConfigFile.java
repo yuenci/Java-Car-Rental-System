@@ -4,7 +4,7 @@ public class ConfigFile {
     //configs
     public static final int netDetectMaxTime = 1500; //millisecond
     public static final boolean enableSQLParserSecurityMode = false;
-    public static final int  passwordStrength = 1; //1:weak -  5:strong
+    public static final int  passwordStrength = 5; //1:weak -  5:strong
     public static final int  remeberMeDays = 7;
 
     // price
@@ -30,7 +30,7 @@ public class ConfigFile {
     // services
     public static final String myEmailSMTPHost = "smtp.163.com";
     public static final String apiGeoSP = "http://ip-api.com/json/";
-    public static final String backendPost = "http://127.0.0.1:8174/";
+    public static final String backendPost = "http://127.0.0.1:8080/";
     public static final String connectTestUrl = "http://www.google.com";
 
     // location

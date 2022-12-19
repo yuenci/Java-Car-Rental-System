@@ -1,5 +1,6 @@
 package com.example.car_rental_sys.ToolsLib;
 
+import com.example.car_rental_sys.sqlParser.SQL;
 import com.example.car_rental_sys.ui_components.BrowserModal;
 import javafx.scene.image.Image;
 
@@ -72,8 +73,8 @@ public class PlatformTools {
             ImageIO.write(screenFullImage, "png", new File(path));
             System.out.println("A full screenshot saved!");
             return path;
-        } catch (AWTException | IOException ex) {
-            System.err.println(ex);
+        } catch (AWTException | IOException e) {
+            System.err.println(e);
             return null;
         }
 
@@ -94,5 +95,18 @@ public class PlatformTools {
         //System.out.println(filePath);
         String cmd = "mspaint " + "\"" + filePath + "\"";
         exebat(cmd);
+    }
+
+    public static void logError(Exception e){
+        String error = e.toString();
+        String errorID = String.valueOf(DataTools.getID("systemLog"));
+        String errorType =error.split(":")[0];
+        String errorContent = error.split(":")[1];
+        String errorPosition =  e.getStackTrace()[0].toString().split("/")[1];
+        String errorTime = DateTools.getNow();
+
+        String sql = "INSERT INTO systemLog VALUES ("+errorID+",'"+errorType+"','"+errorContent+"','"+errorPosition+"','"+errorTime+"')";
+        //System.out.println(sql);
+        SQL.execute(sql);
     }
 }

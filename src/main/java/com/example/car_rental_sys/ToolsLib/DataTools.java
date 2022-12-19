@@ -2,20 +2,20 @@ package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.funtions.FileOperate;
 import com.example.car_rental_sys.orm.Customer;
 import com.example.car_rental_sys.orm.UserFactory;
 import com.example.car_rental_sys.sqlParser.SQL;
+import com.example.car_rental_sys.ui_components.BrowserModal;
 import com.example.car_rental_sys.ui_components.MessageFrame;
 import com.example.car_rental_sys.ui_components.MessageFrameType;
+import javafx.application.Platform;
 import javafx.stage.FileChooser;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Function;
 
 public class DataTools {
     public static String[] getRenterNameAndPostFromUserID(int userID) {
@@ -64,7 +65,7 @@ public class DataTools {
             }
             return true;
         } catch (Exception e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
             e.printStackTrace();
         }
         return false;
@@ -876,7 +877,7 @@ public class DataTools {
                 result.add(row);
             }
         } catch (Exception e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
         }
 
         return result;
@@ -1406,6 +1407,23 @@ public class DataTools {
         FileOperate.rewriteFile(path,res);
         return true;
     }
+
+    public static void slideVerify() {
+        String url = ConfigFile.backendPost +  "slideVerify/index.html";
+        BrowserModal browserModal = new BrowserModal(375, 450, url) ;
+        // modal
+        browserModal.setModality();
+        Function<String, Void> func =(message) -> {
+            if (Objects.equals(message, "Verification succeeded")) {
+                StatusContainer.ifVerify = true;
+                System.out.println(message);
+            }
+            return null;
+        };
+        browserModal.setFunction(func);
+        browserModal.show();
+    }
+
 }
 
 // TODO: No comma "," content is allowed.

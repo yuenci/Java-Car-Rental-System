@@ -48,12 +48,12 @@ public class SendEmail {
         transport.close();
     }
 
-    private static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String useName,String type) throws Exception {
+    private static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String userName,String type) throws Exception {
         MimeMessage message = new MimeMessage(session);
 
         message.setFrom(new InternetAddress(sendMail, "Rent.Inc", "UTF-8"));
 
-        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "Dear xx(user)", "UTF-8"));
+        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "Dear " + userName, "UTF-8"));
 
         message.setSubject("Your Rent.Inc "+type+" verification is in progres", "UTF-8");
 
@@ -63,7 +63,7 @@ public class SendEmail {
         System.out.println("pinCode:[" + pinCode + "]");
 
         StatusContainer.currentPinCode = String.valueOf(pinCode);
-        String content = getHtmlContent(StatusContainer.currentPinCode,useName,type);
+        String content = getHtmlContent(StatusContainer.currentPinCode,userName,type);
 
         message.setContent(content, "text/html;charset=UTF-8");
 //        message.setContent("<h1>This is actual message</h1>", "text/html" ); // 发送 HTML 消息, 可以插入html标签
@@ -114,7 +114,7 @@ public class SendEmail {
     }
 
     public static void sendVerificationEmail(String receiveEmailAddress,String uerName,String type) throws Exception {
-        SendEmail.send("yuenci1575270674@gmail.com","Innis","signUp");
+        SendEmail.send("yuenci1575270674@gmail.com","Innis",type);
         // sign up ; login; reset password
     }
 

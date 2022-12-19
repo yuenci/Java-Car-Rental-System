@@ -2,7 +2,6 @@ package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +11,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.util.Objects;
-import java.util.Timer;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
@@ -54,7 +52,7 @@ public class NetTools {
         try {
             addObj = InetAddress.getLocalHost();
         } catch (UnknownHostException e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
             e.printStackTrace();
         }
         assert addObj != null;
@@ -87,8 +85,8 @@ public class NetTools {
             resArr[2] = city;
             resArr[3] = latLon;
 
-        }catch (JSONException err){
-            System.out.println( err);
+        }catch (JSONException e){
+            System.out.println( e);
         }
         // join
         return String.join("','", resArr);
@@ -133,12 +131,9 @@ public class NetTools {
     public static boolean netIsAvailable(String urlParam) {
         //automatic return false after 5 second
 
-        FutureTask<Boolean> future = new FutureTask<>(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                Thread.sleep(ConfigFile.netDetectMaxTime);
-                return false;
-            }
+        FutureTask<Boolean> future = new FutureTask<>(() -> {
+            Thread.sleep(ConfigFile.netDetectMaxTime);
+            return false;
         });
         future.run();
 
@@ -169,7 +164,7 @@ public class NetTools {
             StatusContainer.idBackEndServerStart = true;
         }catch (Exception e){
             StatusContainer.idBackEndServerStart = false;
-            Tools.logError(e);
+            PlatformTools.logError(e);
             StatusContainer.backEndErrorMessage = e.toString();
             e.printStackTrace();
         }

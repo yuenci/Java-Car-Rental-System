@@ -33,3 +33,4 @@ modelID:num=0,carModel:str=None,seats:num=2,price:num=0,gearType:str=Manual,dark
 32,Toyota_GR_Supra,2,1988,Automatic,#dd1b23,#d46c6c,Toyota,4.3,315,6.7
 33,Honda_Acura_NSX,2,4220,Automatic,#234064,#b5d1df,Honda,4.2,360,5.9
 34,FerrariTemplate,2,5000,Automatic, #f27717, #6d6d6f,Ferrari,3.2,342,105.8
+35,Huracan2016,2,1200,Automatic, #4380c3, #72b1e7,lamborghini,3.6,467,123.5
