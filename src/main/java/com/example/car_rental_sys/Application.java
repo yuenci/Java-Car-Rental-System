@@ -80,15 +80,12 @@ public class Application extends javafx.application.Application {
 
         //setUser("d");
         //setUser("a");
-        setUser("c");
+        //setUser("c");
+        //setUser();
 
         //Test.test();
 
         startStage(fxmlName);
-        //setUser();
-        //setUser("c");
-
-        // message page test
 
         //startApplication();
 

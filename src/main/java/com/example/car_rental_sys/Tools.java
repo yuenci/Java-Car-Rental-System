@@ -1,23 +1,17 @@
 package com.example.car_rental_sys;
 
-import com.example.car_rental_sys.ToolsLib.DataTools;
-import com.example.car_rental_sys.ToolsLib.DateTools;
-import com.example.car_rental_sys.ToolsLib.FXTools;
-import com.example.car_rental_sys.ToolsLib.ImageTools;
+import com.example.car_rental_sys.ToolsLib.*;
 import com.example.car_rental_sys.funtions.Encryption;
 import com.example.car_rental_sys.sqlParser.SQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Tools {
     /**
@@ -70,6 +64,7 @@ public class Tools {
             if (result.size() == 0) return 100; // email not found return 100
 
             String userID = result.get(0)[0];
+            System.out.println( "userID: " + userID);
 
             String passwordMD5InDB = SQL.query("SELECT password FROM password WHERE userID = " + userID).get(0)[0];
             String passwordInputMD5 = Encryption.med5Encrypt(password);
@@ -78,6 +73,8 @@ public class Tools {
             else return 300; // password not match return 300
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            PlatformTools.logError(e);
             return 400; //unknown error
         }
         // return code
@@ -87,16 +84,4 @@ public class Tools {
         // 400: unknown error
     }
 
-    public static void logError(Exception e){
-        String error = e.toString();
-        String errorID = String.valueOf(DataTools.getID("systemLog"));
-        String errorType =error.split(":")[0];
-        String errorContent = error.split(":")[1];
-        String errorPosition =  e.getStackTrace()[0].toString().split("/")[1];
-        String errorTime = DateTools.getNow();
-
-        String sql = "INSERT INTO systemLog VALUES ("+errorID+",'"+errorType+"','"+errorContent+"','"+errorPosition+"','"+errorTime+"')";
-        //System.out.println(sql);
-        SQL.execute(sql);
-    }
 }

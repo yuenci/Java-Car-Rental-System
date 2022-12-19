@@ -30,7 +30,7 @@ public class ConfigFile {
     // services
     public static final String myEmailSMTPHost = "smtp.163.com";
     public static final String apiGeoSP = "http://ip-api.com/json/";
-    public static final String backendPost = "http://127.0.0.1:8174/";
+    public static final String backendPost = "http://127.0.0.1:8080/";
     public static final String connectTestUrl = "http://www.google.com";
 
     // location

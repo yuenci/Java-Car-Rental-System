@@ -1,7 +1,7 @@
 package com.example.car_rental_sys.funtions;
 
 import com.example.car_rental_sys.ConfigFile;
-import com.example.car_rental_sys.Tools;
+import com.example.car_rental_sys.ToolsLib.PlatformTools;
 import org.apache.commons.codec.digest.DigestUtils;
 
 
@@ -63,7 +63,7 @@ public class Encryption {
             String decryptedContent = AESEncrypt(ConfigFile.AESKey, fileContent);
             FileOperate.rewriteFile(path + ".secret",decryptedContent);
         }catch (Exception e){
-            Tools.logError(e);
+            PlatformTools.logError(e);
             return false;
         }
         return true;
@@ -81,7 +81,7 @@ public class Encryption {
             //FileOperate.rewriteFile(path + ".txt",decryptedContent);
             FileOperate.rewriteFile(path.replace( ".secret",""),decryptedContent);
         }catch (Exception e){
-            Tools.logError(e);
+            PlatformTools.logError(e);
             return false;
         }
         return true;

@@ -2,7 +2,6 @@ package com.example.car_rental_sys.funtions;
 
 import com.example.car_rental_sys.ConfigFile;
 import com.example.car_rental_sys.StatusContainer;
-import com.example.car_rental_sys.Tools;
 import com.example.car_rental_sys.ToolsLib.DataTools;
 import com.example.car_rental_sys.ToolsLib.DateTools;
 import com.example.car_rental_sys.ToolsLib.NetTools;
@@ -46,7 +45,7 @@ public class Test {
             throw new Exception("Test");
             //int a  = 2/0;
         } catch (Exception e) {
-            Tools.logError(e);
+            PlatformTools.logError(e);
         }
     }
     
