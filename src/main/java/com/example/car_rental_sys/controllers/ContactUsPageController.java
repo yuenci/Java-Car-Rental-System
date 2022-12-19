@@ -1,5 +1,8 @@
 package com.example.car_rental_sys.controllers;
 
+import com.example.car_rental_sys.StatusContainer;
+import com.example.car_rental_sys.ToolsLib.DataTools;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -12,6 +15,10 @@ public class ContactUsPageController {
 
     @FXML
     private  void initialize(){
+        initWebView();
+    }
+
+    private void initWebView(){
         // inint webview
         //System.out.println("hiiii");
         WebEngine engine = webview.getEngine();

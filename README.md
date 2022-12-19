@@ -55,8 +55,20 @@ Thank you for support our project!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Demo Video
+### Customer
+[![Java_Car_Rental_System_Customer](https://res.cloudinary.com/marcomontalbano/image/upload/v1671293666/video_to_markdown/images/youtube--VgT5MSb58Rc-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/VgT5MSb58Rc?t=87 "Java_Car_Rental_System_Customer")
 
-### Built With
+### Driver
+[![Java_Car_Rental_System_Driver](https://res.cloudinary.com/marcomontalbano/image/upload/v1671301143/video_to_markdown/images/youtube--GVQukIScKTQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/GVQukIScKTQ "Java_Car_Rental_System_Driver")
+
+### Admin
+[![Java_Car_Rental_System_Admin](https://res.cloudinary.com/marcomontalbano/image/upload/v1671304899/video_to_markdown/images/youtube--TgKx1BcXq80-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/TgKx1BcXq80 "Java_Car_Rental_System_Admin")
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Built With
 
 
 <a href="https://www.java.com">
@@ -147,106 +159,106 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 ## UI design
 ### Customer UI
 <details><summary>Main Page</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/main.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/main.png"  height="400"> 
 </details>
 
 <details><summary>About Us</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/aboutUs.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/aboutUs.png"  height="400"> 
 </details>
 
 <details><summary>Contact Us</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/contactUs.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/contactUs.png"  height="400"> 
 </details>
 
 <details><summary>Register</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/register.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/register.png"  height="400"> 
 </details>
 
 <details><summary>View Car</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/viewCars.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/viewCars.png"  height="400"> 
 </details>
 
 <details><summary>Car Details</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/carDetails.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/carDetails.png"  height="400"> 
 </details>
 
 <details><summary>Comments</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/comments.png"  height="400"> 
 </details>
 
 <details><summary>Payment</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/payment.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/payment.png"  height="400"> 
 </details>
 
 <details><summary>Place Order Animation</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wating.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wating.png"  height="400"> 
 </details>
 
 <details><summary>Order Placed</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/paid.png"  height="400"> 
 </details>
 
 <details><summary>Wallet</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wallet.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/wallet.png"  height="400"> 
 </details>
 
 <details><summary>Add New Payment Card</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addCards.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addCards.png"  height="400"> 
 </details>
 
 <details><summary>Order History</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/history.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/history.png"  height="400"> 
 </details>
 
 <details><summary>Track Order</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/trackOrder.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/trackOrder.png"  height="400"> 
 </details>
 
 <details><summary>Invoice</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/invoice.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/invoice.png"  height="400"> 
 </details>
 
 <details><summary>Giving Feedback</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/feedback.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/feedback.png"  height="400"> 
 </details>
 
 <details><summary>Settings</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/setting.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/setting.png"  height="400"> 
 </details>
 
 ### Admin UI
 <details><summary>Dashboard</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/dashboard.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/dashboard.png"  height="400"> 
 </details>
 
 <details><summary>Analysis</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/analysis.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/analysis.png"  height="400"> 
 </details>
 
 <details><summary>Message</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/message.png"  height="400"> 
 </details>
 
 <details><summary>Manage Vehicle</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/manageVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/manageVehicle.png"  height="400"> 
 </details>
 
 <details><summary>Add New Vehicle</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/addVehicle.png"  height="400"> 
 </details>
 
 <details><summary>Edit Car's Details</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/editVehicle.png"  height="400"> 
 </details>
 
 
 ### Driver UI
 <details><summary>Workplace</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverService.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverService.png"  height="400"> 
 </details>
 
 <details><summary>Driving Mode</summary>
-<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="300"> 
+<img src="src/main/resources/com/example/car_rental_sys/image/others/UI_design_screenshot/driverMode.png"  height="400"> 
 </details>
 
 
@@ -258,9 +270,7 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -310,7 +320,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - https://github.com/Kaikiat1126
+Kai Kiat - [tyukaikiat0211626@gmail.com](tyukaikiat0211626@gmail.com) - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -333,8 +343,15 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 ## Acknowledgments
 * [JxBrowser](https://jxbrowser-support.teamdev.com/docs/guides/content.html)
 * [Web Design: Rent - Car Rental Home Page](https://dribbble.com/shots/17734452-Web-Design-Rent-Car-Rental-Home-Page)
+* [Checkout Flow](https://dribbble.com/shots/18772772-Checkout-Flow)
+* [Invoice/Payment Component](https://dribbble.com/shots/18967201-Invoice-Payment-Components)
+* [Dashoboard/ Order Details](https://dribbble.com/shots/15755635/attachments/7560677/?mode=media)
+* [Dashboard/Product Page](https://dribbble.com/shots/15781384/attachments/7589449?mode=media)
+* [Us](https://www.awwwards.com/inspiration/us-zapiens-hybrid-design-agency)
+* [Order Info](https://dribbble.com/shots/17920706-Order-Info)
 * [Electric Car Dashboard](https://dribbble.com/shots/19111426-Electric-Car-Dashboard)
 * [Mangrove: Settings Interaction](https://dribbble.com/shots/17698340-Mangrove-Settings-Interaction)
+* [Feedback User Modal](https://dribbble.com/shots/17510975-Feedback-User-Modal)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

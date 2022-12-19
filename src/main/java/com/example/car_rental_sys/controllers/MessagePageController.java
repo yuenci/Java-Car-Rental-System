@@ -33,6 +33,7 @@ public class MessagePageController {
     public void initialize() {
         initBrowser();
         //System.out.println("MessagePageController initialize");
+        initData();
     }
 
     private void initBrowser() {
@@ -70,6 +71,10 @@ public class MessagePageController {
                 removeUnread(message);
             }
         });
+    }
+
+    private void initData(){
+        DataTools.generateMessageJSON(StatusContainer.currentUser.getUserID());
     }
 
     private void generateMessage(String message){

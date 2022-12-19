@@ -1,1 +1,1 @@
-let currentUserAvatarPath='file:/C:/Users/GIGA/Desktop/module/school/year2sem1/Java-Car-Rental-System/src/main/resources/com/example/car_rental_sys/image/avatar/1.png';
+let currentUserAvatarPath='avatar/1.png';
