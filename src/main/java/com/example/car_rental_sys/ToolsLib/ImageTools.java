@@ -1,6 +1,7 @@
 package com.example.car_rental_sys.ToolsLib;
 
 import com.example.car_rental_sys.ConfigFile;
+import com.example.car_rental_sys.StatusContainer;
 import com.example.car_rental_sys.funtions.MatrixImage;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -250,7 +251,16 @@ public class ImageTools {
         //System.out.println(outputFilePathA);
         //E:\Materials\Semester 3\【OODJ】\assignment\version0.1\crs\src\main\resources\com\example\car_rental_sys\image\avatar\1.png
         covertImageToPng(inputFile, outputFilePathA);
+        asycImage(inputFile, userID);
         return getImageObjFromPath(outputFilePathA);
+    }
+
+    private static void asycImage(String path, int userID) {
+        String asycFilePath = "src/main/resources/com/example/car_rental_sys/html/contactUs/avatar/" + userID + ".png";
+        File file1 = new File(asycFilePath);
+        String asycFilePathA = file1.getAbsolutePath();
+
+        covertImageToPng(path, asycFilePathA);
     }
 
     public static void  generateQRCode(ImageView imageView, String content, int width, int height) {
@@ -515,16 +525,32 @@ public class ImageTools {
             case "male":
             case "Male":
                 type = "male";
-                System.out.println("hi = " + type);
+                //System.out.println("hi = " + type);
                 break;
             case "female":
             case "Female":
                 type = "female";
-                System.out.println("type = " + type);
+                //System.out.println("type = " + type);
                 break;
         }
-        System.out.println("type = " + type);
-        return new Image("file:src/main/resources/com/example/car_rental_sys/image/avatar/avatar_" + type + ".png");
+        //System.out.println("type = " + type);
+        String inputFilePath = "file:src/main/resources/com/example/car_rental_sys/image/avatar/avatar_" + type + ".png";
+        replaceDefaultAvatar(inputFilePath);
+        return new Image(inputFilePath);
+    }
+
+    private static void replaceDefaultAvatar(String inputFile){
+        int userID = StatusContainer.currentUser.getUserID();
+        //remove the first 5 characters of the string
+        if (inputFile.startsWith("file:")) {
+            inputFile = inputFile.substring(5);
+        }
+        String outputFilePath = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        File outputFile = new File(outputFilePath);
+        String outputPath = outputFile.getAbsolutePath();
+
+        covertImageToPng(inputFile,outputPath);
+        asycImage(inputFile,userID);
     }
 
 

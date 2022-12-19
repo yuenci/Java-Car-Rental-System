@@ -55,8 +55,20 @@ Thank you for support our project!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Demo Video
+### Customer
+[![Java_Car_Rental_System_Customer](https://res.cloudinary.com/marcomontalbano/image/upload/v1671293666/video_to_markdown/images/youtube--VgT5MSb58Rc-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/VgT5MSb58Rc?t=87 "Java_Car_Rental_System_Customer")
 
-### Built With
+### Driver
+[![Java_Car_Rental_System_Driver](https://res.cloudinary.com/marcomontalbano/image/upload/v1671301143/video_to_markdown/images/youtube--GVQukIScKTQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/GVQukIScKTQ "Java_Car_Rental_System_Driver")
+
+### Admin
+[![Java_Car_Rental_System_Admin](https://res.cloudinary.com/marcomontalbano/image/upload/v1671304899/video_to_markdown/images/youtube--TgKx1BcXq80-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/TgKx1BcXq80 "Java_Car_Rental_System_Admin")
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Built With
 
 
 <a href="https://www.java.com">
@@ -258,9 +270,7 @@ git clone https://github.com/yuenci/Java-Car-Rental-System
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -310,7 +320,7 @@ Don't forget to give the project a star! Thanks again!
 
 Innis - [yuenci1575270674@gmail.com](yuenci1575270674@gmail.com) - https://www.enjoycoding.me/
 
-Kai Kiat - [contact me](tyukaikiat0211626@gmail.com) - https://github.com/Kaikiat1126
+Kai Kiat - [tyukaikiat0211626@gmail.com](tyukaikiat0211626@gmail.com) - https://github.com/Kaikiat1126
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
