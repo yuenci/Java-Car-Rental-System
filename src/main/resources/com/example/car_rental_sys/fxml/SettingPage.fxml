@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<Pane fx:id="settingPane" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.car_rental_sys.controllers.SettingPageController"
-      stylesheets="@../style/settingComponentLight.css">
-   <Pane fx:id="switchPaneOne" layoutX="70.0" layoutY="62.0" prefHeight="16.0" prefWidth="30.0"/>
-   <Label layoutX="57.0" layoutY="90.0" styleClass="lblSecSettingText" text="Allow others to search yourself."
-          textFill="#86909c">
+
+<Pane fx:id="settingPane" prefHeight="700.0" prefWidth="820.0" style="-fx-background-color: transparent;" stylesheets="@../style/settingComponentLight.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.car_rental_sys.controllers.SettingPageController">
+   <Pane fx:id="switchPaneOne" layoutX="70.0" layoutY="87.0" prefHeight="16.0" prefWidth="30.0" />
+   <Label layoutX="57.0" layoutY="115.0" styleClass="lblSecSettingText" text="Allow others to search yourself." textFill="#86909c">
       <font>
-         <Font name="Arial" size="12.0"/>
+         <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <Label layoutX="116.0" layoutY="58.0" styleClass="lblSettingText" text="Search" textFill="#4e5969">
+   <Label layoutX="116.0" layoutY="83.0" styleClass="lblSettingText" text="Search" textFill="#4e5969">
       <font>
-         <Font name="System Bold" size="16.0"/>
+         <Font name="System Bold" size="16.0" />
       </font>
    </Label>
-   <Label layoutX="116.0" layoutY="158.0" styleClass="lblSettingText" text="Record" textFill="#4e5969">
+   <Label layoutX="116.0" layoutY="183.0" styleClass="lblSettingText" text="Record" textFill="#4e5969">
       <font>
-         <Font name="System Bold" size="16.0"/>
+         <Font name="System Bold" size="16.0" />
       </font>
    </Label>
-   <Label layoutX="57.0" layoutY="190.0" styleClass="lblSecSettingText" text="Allow system to record your login status."
-          textFill="#86909c">
+   <Label layoutX="57.0" layoutY="215.0" styleClass="lblSecSettingText" text="Allow system to record your login status." textFill="#86909c">
       <font>
-         <Font name="Arial" size="12.0"/>
+         <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <Pane fx:id="switchPaneTwo" layoutX="70.0" layoutY="162.0" prefHeight="16.0" prefWidth="30.0"/>
-   <Pane fx:id="switchPaneThree" layoutX="70.0" layoutY="262.0" prefHeight="16.0" prefWidth="30.0"/>
-   <Label layoutX="57.0" layoutY="290.0" styleClass="lblSecSettingText"
-          text="Whether sending usage data helps us improve our services" textFill="#86909c">
+   <Pane fx:id="switchPaneTwo" layoutX="70.0" layoutY="187.0" prefHeight="16.0" prefWidth="30.0" />
+   <Pane fx:id="switchPaneThree" layoutX="70.0" layoutY="287.0" prefHeight="16.0" prefWidth="30.0" />
+   <Label layoutX="57.0" layoutY="315.0" styleClass="lblSecSettingText" text="Whether sending usage data helps us improve our services" textFill="#86909c">
       <font>
-         <Font name="Arial" size="12.0"/>
+         <Font name="Arial" size="12.0" />
       </font>
    </Label>
-   <Label layoutX="116.0" layoutY="258.0" styleClass="lblSettingText" text="Sending Data" textFill="#4e5969">
+   <Label layoutX="116.0" layoutY="283.0" styleClass="lblSettingText" text="Sending Data" textFill="#4e5969">
       <font>
-         <Font name="System Bold" size="16.0"/>
+         <Font name="System Bold" size="16.0" />
       </font>
    </Label>
-   <Line endX="620.0" layoutX="150.0" layoutY="132.0" startX="-120.0" stroke="#e5e6eb"/>
-   <Line endX="620.0" layoutX="150.0" layoutY="232.0" startX="-120.0" stroke="#e5e6eb"/>
-   <Line endX="620.0" layoutX="150.0" layoutY="342.0" startX="-120.0" stroke="#e5e6eb"/>
+   <Line endX="620.0" layoutX="150.0" layoutY="157.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="257.0" startX="-120.0" stroke="#e5e6eb" />
+   <Line endX="620.0" layoutX="150.0" layoutY="357.0" startX="-120.0" stroke="#e5e6eb" />
 </Pane>

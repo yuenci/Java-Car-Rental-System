@@ -53,9 +53,11 @@ public class TrackOrderController {
     @FXML
     private void leftIconClicked() {
         if(user instanceof Customer){
-            CustomerServiceController.instance.showOrderPage();
+            mapTracking.setVisible(false);
+            CustomerServiceController.instance.showOrderDetails();
         }else{
-            AdminServiceController.instance.showOrderPage();
+            mapTracking.setVisible(false);
+            AdminServiceController.instance.showOrderDetails();
         }
     }
 
@@ -112,6 +114,7 @@ public class TrackOrderController {
     }
 
     private  void initMap(){
+        mapTracking.setVisible(true);
         mapTracking.getChildren().add(FXTools.getMapComponent());
     }
 

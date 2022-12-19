@@ -108,6 +108,14 @@ public class CustomerServiceController extends Controller{
         }
     }
 
+    public void showOrderDetails(){
+        try {
+            FXTools.initFXML(rightContainer, orderSide);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showWalletPage() {
         try {
             StatusContainer.paginationUsage = "wallet";
