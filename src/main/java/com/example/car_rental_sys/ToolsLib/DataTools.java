@@ -1410,7 +1410,6 @@ public class DataTools {
             }
             return null;
         };
-
         browserModal.setFunction(func);
         browserModal.show();
     }
