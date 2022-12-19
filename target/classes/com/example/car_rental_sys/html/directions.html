@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./googleMapKey.js"></script>
     <style>
         #iframe1 {
             width: 700px;
@@ -26,7 +27,7 @@
 
     <script>
         let ifr1 = document.getElementById("iframe1");
-        let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+        let key = googleMapKey;
         let mode = "directions";
         let parameter = "&origin=Asia+Pacific+University+of+Technology+"
             + "&destination=Endah+Regal+Condominium"
@@ -46,7 +47,7 @@
             start = start.replace(" ", "+");
             end = end.replace(" ", "+");
             let ifr1 = document.getElementById("iframe1");
-            let key = "AIzaSyBam-tEfHfTu0QbI4J3H2HzX85JKvXDEig";
+            let key = googleMapKey;
             let mode = "directions";
             let parameter = `&origin=${start}`
                 + `&destination=${end}`

@@ -1414,6 +1414,12 @@ public class DataTools {
         browserModal.show();
     }
 
+    public static void initKeys(){
+        String mapKeyPath = "src/main/resources/com/example/car_rental_sys/html/googleMapKey.js";
+        // write google map key to file
+        String mapKey = "let googleMapKey = \"" + ConfigFile.googleMapKey + "\";";
+        FileOperate.rewriteFile(mapKeyPath,mapKey);
+    }
 }
 
 // TODO: No comma "," content is allowed.

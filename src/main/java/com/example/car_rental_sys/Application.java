@@ -33,10 +33,10 @@ public class Application extends javafx.application.Application {
         //NetTools.StartHttpServer();
         //dataFilesDecrypt();
         DataTools.keepUserLoggedIn();
+        DataTools.initKeys();
 
-//        Test.test();
+        //Test.test();
         //FXTools.pandaHead();
-        //System.out.println(DataTools.ifCarsAvailable("Mclaren_2018"));
     }
 
     @Override
