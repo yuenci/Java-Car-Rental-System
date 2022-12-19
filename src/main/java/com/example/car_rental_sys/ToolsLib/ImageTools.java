@@ -553,5 +553,9 @@ public class ImageTools {
         asycImage(inputFile,userID);
     }
 
-
+    public static void addDefaultAvatar(int userID) throws IOException {
+        String defaultAvaPath = DataTools.getAbsolutePath("src/main/resources/com/example/car_rental_sys/image/avatar/avatar_male.png");
+        String outputPath = "src/main/resources/com/example/car_rental_sys/image/avatar/" + userID + ".png";
+        DataTools.copyFileUsingApacheCommonsIO(defaultAvaPath,outputPath);
+    }
 }

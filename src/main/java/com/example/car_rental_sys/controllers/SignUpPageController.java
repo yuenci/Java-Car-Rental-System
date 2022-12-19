@@ -108,11 +108,13 @@ public class SignUpPageController extends Controller {
 
     }
     private void showValidEmail(){
-        try {
-            SendEmail.sendVerificationEmail(emailInput.getText(),firstNameStr + lastNameStr,"Sign Up");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new Thread(() -> {
+            try {
+                SendEmail.sendVerificationEmail(emailInput.getText(),firstNameStr + lastNameStr,"Sign Up");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void getAllTextFieldStr(){

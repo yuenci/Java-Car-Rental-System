@@ -6,6 +6,7 @@ import com.example.car_rental_sys.ToolsLib.ImageTools;
 import com.example.car_rental_sys.funtions.FileOperate;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Customer extends User {
@@ -71,7 +72,7 @@ public class Customer extends User {
         this.vipCard = vipCard;
     }
 
-    public boolean storeCustomerInfo() {
+    public boolean storeCustomerInfo() throws IOException {
         String userID = String.valueOf(DataTools.getNewUserID());
         String[] userinfo = new String[]{
                 userID, userFirstName + "-" + userLastName, userGroup, post, securityProblem, securityAnswer,
@@ -83,11 +84,17 @@ public class Customer extends User {
         try {
             FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "userinfo.txt", userinfoStr);
             FileOperate.addStringToFile(ConfigFile.dataFilesRootPath + "password.txt", userAndPassword);
+
+            // add default avatar
+            ImageTools.addDefaultAvatar(Integer.parseInt(userID));
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+
+
     }
 
     public ArrayList<String[]> getBankCardData() {
