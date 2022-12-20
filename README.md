@@ -341,6 +341,10 @@ Distributed under the GPL License. See [LICENSE](./LICENSE) for more information
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
+We would like to extend our heartfelt thanks to Mr. Amardeep and Mr. Naushath, our teacher and mentor, who has supported us throughout the creation of this project. Without their guidance and support, we would not have been able to develop the skills and knowledge necessary to complete this project.
+
+Mr. Amardeep and Mr. Naushath has been an invaluable resource, and we are deeply grateful for the impact that they have had on our learning and development. Thank you so much for everything!
+
 * [JxBrowser](https://jxbrowser-support.teamdev.com/docs/guides/content.html)
 * [Web Design: Rent - Car Rental Home Page](https://dribbble.com/shots/17734452-Web-Design-Rent-Car-Rental-Home-Page)
 * [Checkout Flow](https://dribbble.com/shots/18772772-Checkout-Flow)
